@@ -2,7 +2,7 @@
 <html lang="fr">
 <head>
   <meta charset="UTF-8">
-  <title>Naël - Informations du bien | Jérémy Heyob Immobilier</title>
+  <title>40 Bd Edouard Herriot — T3 Centre-ville | Jérémy Heyob Immobilier</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
   :root {
@@ -19,11 +19,11 @@
   * {
     box-sizing: border-box;
   }
-    
+
   body {
     margin: 0;
     font-family: -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
-    background: #FFFBF5;
+    background: var(--bg);
     color: var(--text-main);
     min-height: 100vh;
   }
@@ -34,7 +34,7 @@
     padding: 24px 16px 50px;
   }
 
-  /* --- Header premium arrondi --- */
+  /* HEADER */
   header {
     display: flex;
     align-items: center;
@@ -49,19 +49,9 @@
     border: 1px solid rgba(15, 23, 42, 0.04);
   }
 
-  .header-left {
-    display: flex;
-    align-items: flex-end;
-  }
-
   .logo {
     max-width: 140px;
     height: auto;
-  }
-
-  .header-center {
-    flex: 1;
-    text-align: center;
   }
 
   .tagline-main {
@@ -73,53 +63,41 @@
   }
 
   .tagline-sub {
-    margin-top: 14px;
-    font-size: 11.5px;
-    letter-spacing: 0.12em;
+    margin-top: 6px;
+    font-size: 12px;
     text-transform: uppercase;
     color: var(--text-soft);
   }
-
   .tagline-sub strong {
     color: var(--text-main);
-    font-weight: 1000;
   }
 
-  /* --- Layout 2 colonnes --- */
+  /* LAYOUT 2 COLONNES FIXE */
   .layout {
     display: grid;
-    grid-template-columns: minmax(0, 1.2fr) minmax(0, 0.9fr);
+    grid-template-columns: minmax(0, 1fr) minmax(0, 0.8fr);
     gap: 18px;
-    align-items: flex-start;
   }
 
-  /* SUPPRESSION volontaire du responsive qui cassait tout */
-  @media (max-width: 860px) {
-    header {
-      flex-direction: column;
-      align-items: flex-start;
-    }
-  }
-
+  /* CARDS */
   .card {
     background: var(--card-bg);
     border-radius: 22px;
     border: 1px solid var(--border-soft);
-    padding: 16px 18px 18px;
+    padding: 18px 20px;
     box-shadow: var(--shadow-soft);
   }
 
   .pill {
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-    padding: 4px 10px;
-    border-radius: 999px;
+    display: inline-block;
+    padding: 5px 12px;
     background: var(--accent-soft);
     color: var(--accent);
+    border-radius: 999px;
     font-size: 11px;
-    font-weight: 500;
     text-transform: uppercase;
+    margin-bottom: 8px;
+    font-weight: 600;
   }
 
   .subtitle {
@@ -129,28 +107,35 @@
   }
 
   .chip {
-    padding: 4px 8px;
-    border-radius: 999px;
-    background: rgba(198,169,119,0.10);
-    color: #7a5a29;
+    padding: 5px 10px;
     font-size: 12px;
+    background: rgba(198, 169, 119,0.10);
+    border-radius: 999px;
+    margin-right: 6px;
+    margin-bottom: 6px;
+    display: inline-block;
   }
 
+  .chips {
+    margin: 10px 0 14px;
+  }
+
+  /* GRID INFO */
   .grid-two {
     display: grid;
     grid-template-columns: repeat(2, minmax(0,1fr));
-    gap: 10px;
+    gap: 8px;
     margin-top: 14px;
     font-size: 13px;
   }
 
-  .grid-two div span {
+  .grid-two span {
     display: block;
     color: var(--text-soft);
     font-size: 12px;
   }
 
-  /* --- Carrousel --- */
+  /* CARROUSEL */
   .carousel {
     position: relative;
     overflow: hidden;
@@ -177,7 +162,7 @@
     transform: translateY(-50%);
     background: rgba(255,255,255,0.75);
     border: none;
-    font-size: 20px;
+    font-size: 22px;
     padding: 6px 12px;
     border-radius: 999px;
     cursor: pointer;
@@ -186,7 +171,7 @@
   .carousel-btn.prev { left: 10px; }
   .carousel-btn.next { right: 10px; }
 
-  /* --- Champs formulaire --- */
+  /* FORMULAIRE */
   label {
     display: block;
     font-size: 12px;
@@ -194,29 +179,21 @@
     color: var(--text-soft);
   }
 
-  input,
-  select {
+  input, select {
     width: 100%;
-    padding: 7px 9px;
-    border-radius: 8px;
+    padding: 8px 10px;
+    border-radius: 10px;
     border: 1px solid var(--border-soft);
     background: #f9fafb;
-    color: var(--text-main);
     font-size: 13px;
   }
 
-  input:focus,
-  select:focus {
-    outline: none;
-    border-color: var(--accent);
-  }
-
   .btn {
-    margin-top: 12px;
+    margin-top: 14px;
     width: 100%;
     background: linear-gradient(135deg, #fbe4b9, #f3c98b);
     color: #7a5a29;
-    padding: 9px 14px;
+    padding: 10px 14px;
     border-radius: 999px;
     font-size: 14px;
     font-weight: 600;
@@ -224,24 +201,12 @@
     cursor: pointer;
   }
 
-  .btn:hover {
-    filter: brightness(1.03);
-  }
-
-  .side-small {
-    margin-top: 12px;
-    font-size: 11px;
-    color: var(--text-soft);
-  }
-
   .contact-card {
     margin-top: 14px;
     display: flex;
     gap: 10px;
-    align-items: center;
-    padding-top: 10px;
     border-top: 1px solid var(--border-soft);
-    font-size: 13px;
+    padding-top: 12px;
   }
 
   .contact-photo {
@@ -251,28 +216,21 @@
     object-fit: cover;
     border: 1px solid #e5e7eb;
   }
-
-  .contact-links {
-    margin-top: 4px;
-    display: flex;
-    gap: 10px;
-    font-size: 12px;
-    flex-wrap: wrap;
-  }
   </style>
 
   <script>
 function sendEmail() {
-  const bien = "Naël";
+  const bien = "T3 - 40 Bd Edouard Herriot – Saint-Priest";
 
   const prenom = document.getElementById("prenomClient").value;
   const nom = document.getElementById("nomClient").value;
+  const telephone = document.getElementById("telephoneClient").value;
   const emailClient = document.getElementById("emailClient").value;
   const date = document.getElementById("date").value;
   const creneau = document.getElementById("creneau").value;
 
-  if(!prenom || !nom || !emailClient || !date || !creneau){
-    alert("Merci de renseigner votre nom, prénom, email, une date et un créneau.");
+  if(!prenom || !nom || !emailClient || !telephone || !date || !creneau){
+    alert("Merci de renseigner nom, prénom, téléphone, email, date et créneau.");
     return;
   }
 
@@ -281,165 +239,167 @@ function sendEmail() {
     "Bonjour,\n\n" +
     "Je souhaite programmer une contre-visite pour le bien : " + bien + ".\n\n" +
     "Nom : " + prenom + " " + nom + "\n" +
+    "Téléphone : " + telephone + "\n" +
     "Email : " + emailClient + "\n\n" +
     "Date souhaitée : " + date + "\n" +
-    "Créneau : " + creneau + "\n\n" +
+    "Créneau souhaité : " + creneau + "\n\n" +
     "Merci pour votre retour.\n"
   );
 
-  window.location.href =
-    "mailto:contact@jeremyheyob.fr?subject=" + subject + "&body=" + body;
+  window.location.href = "mailto:contact@jeremyheyob.fr?subject=" + subject + "&body=" + body;
 }
   </script>
 </head>
 
 <body>
-  <div class="page">
+<div class="page">
 
-    <!-- HEADER -->
-    <header>
-      <div class="header-left">
-        <img src="images/logo.png" alt="Logo Jérémy Heyob" class="logo">
+  <!-- HEADER -->
+  <header>
+    <img src="images/logo.png" class="logo">
+    <div class="header-center">
+      <div class="tagline-main">VOS PROJETS IMMOBILIERS N'ONT JAMAIS ÉTÉ AUSSI SIMPLES !</div>
+      <div class="tagline-sub"><strong>Jérémy Heyob</strong></div>
+    </div>
+  </header>
+
+  <!-- RETOUR -->
+  <a href="index.html" style="display:inline-block;margin-bottom:18px;font-size:13px;color:#7a5a29;text-decoration:none;">← Retour à l'accueil</a>
+
+  <main class="layout">
+
+    <!-- SECTION INFORMATIONS -->
+    <section class="card">
+      <div class="pill">Informations du bien</div>
+
+      <h1>T3 – 72 m² – Centre-ville – Terrasse – Garage</h1>
+      <p class="subtitle">
+        40 Boulevard Edouard Herriot, 69800 Saint-Priest – Résidence 2017 – 1er étage
+      </p>
+
+      <div class="chips">
+        <span class="chip">T3</span>
+        <span class="chip">72 m² habitables</span>
+        <span class="chip">8,39 m² d’extérieur</span>
+        <span class="chip">Étage : 1/5</span>
+        <span class="chip">DPE : B-B</span>
+        <span class="chip">Garage compris</span>
+        <span class="chip">Prix : 220 000 €</span>
       </div>
-      <div class="header-center">
-        <div class="tagline-main">VOS PROJETS IMMOBILIERS N'ONT JAMAIS ÉTÉ AUSSI SIMPLES !</div>
-        <div class="tagline-sub"><strong>Jérémy HEYOB</strong></div>
+
+      <!-- CARROUSEL -->
+      <div class="carousel">
+        <div class="carousel-track">
+          <img src="images/Nael1.jpg">
+          <img src="images/Nael2.jpg">
+          <img src="images/Nael3.jpg">
+          <img src="images/Nael4.jpg">
+          <img src="images/Nael5.jpg">
+          <img src="images/Nael6.jpg">
+          <img src="images/Nael7.jpg">
+          <img src="images/Nael8.jpg">
+          <img src="images/Nael9.jpg">
+          <img src="images/Nael10.jpg">
+        </div>
+        <button class="carousel-btn prev">‹</button>
+        <button class="carousel-btn next">›</button>
       </div>
-      <nav></nav>
-    </header>
 
-    <!-- Bouton retour -->
-    <a href="index.html" style="display:inline-block;margin-bottom:18px;font-size:13px;color:#7a5a29;text-decoration:none;">
-        ← Retour à l'accueil
-    </a>
-    
-    <!-- LAYOUT -->
-    <main class="layout">
+      <div class="grid-two">
+        <div><span>Adresse</span>40 Bd Edouard Herriot</div>
+        <div><span>Secteur</span>Centre-ville</div>
 
-      <!-- CARD GAUCHE -->
-      <section class="card">
+        <div><span>Charges</span>152 €/mois (chauffage, EC/EF, communs)</div>
+        <div><span>Taxe foncière</span>1152 €/an</div>
 
-        <div class="pill">Informations du bien</div>
-        <h1>T3 Terrasse Parilly (2022)</h1>
-        <p class="subtitle">Saint-Priest – Secteur Parilly – Résidence récente avec grande terrasse.</p>
+        <div><span>Chauffage</span>Gaz collectif avec compteur individuel</div>
+        <div><span>Année</span>2017</div>
 
-        <div class="chips">
-          <span class="chip">≈ 68 m²</span>
-          <span class="chip">Terrasse ≈ 60 m²</span>
-          <span class="chip">Étage à préciser</span>
-          <span class="chip">Année 2022</span>
-          <span class="chip">DPE à renseigner</span>
+        <div><span>À proximité</span>Écoles, commerces, Tram T2, Bus C25</div>
+        <div><span>Points forts</span>Sécurisée, décennale, traversant, garage</div>
+      </div>
+
+      <div class="video-section" style="margin-top:20px;">
+        <h2>Vidéo de présentation</h2>
+        <iframe src="https://youtu.be/BcZKUKU0p-U" allowfullscreen></iframe>
+      </div>
+
+      <div style="margin-top:18px;">
+        <h2>Annonce complète</h2>
+        <a href="https://www.agence.immo/achat/appartement-t3-3-pieces-saint-priest-69800-VA33868" target="_blank" style="color:#7a5a29;">
+          Voir l’annonce sur Agence.Immo →
+        </a>
+      </div>
+
+    </section>
+
+    <!-- ASIDE FORMULAIRE -->
+    <aside class="card">
+      <h2>Programmer une contre-visite</h2>
+      <p class="subtitle">Remplissez vos coordonnées et vos disponibilités.</p>
+
+      <label>Votre prénom</label>
+      <input id="prenomClient" type="text">
+
+      <label>Votre nom</label>
+      <input id="nomClient" type="text">
+
+      <label>Votre téléphone</label>
+      <input id="telephoneClient" type="tel" placeholder="06…">
+
+      <label>Votre email</label>
+      <input id="emailClient" type="email" placeholder="exemple@domaine.fr">
+
+      <label>Date souhaitée</label>
+      <input id="date" type="date">
+
+      <label>Créneau souhaité</label>
+      <select id="creneau">
+        <option value="">-- Choisir --</option>
+        <option>09:00 - 10:00</option>
+        <option>10:00 - 11:00</option>
+        <option>11:00 - 12:00</option>
+        <option>12:00 - 13:00</option>
+        <option>13:00 - 14:00</option>
+        <option>14:00 - 15:00</option>
+        <option>15:00 - 16:00</option>
+        <option>16:00 - 17:00</option>
+        <option>17:00 - 18:00</option>
+        <option>18:00 - 19:00</option>
+      </select>
+
+      <button class="btn" onclick="sendEmail()">Valider ma demande</button>
+
+      <div class="contact-card">
+        <img src="images/photo.png" class="contact-photo">
+        <div>
+          <strong>Jérémy Heyob</strong><br>
+          <span style="font-size:12px;color:var(--text-soft);">Négociateur Immobilier</span><br>
+          <a href="mailto:contact@jeremyheyob.fr">Email</a> ·
+          <a href="sms:+33648145565">SMS</a> ·
+          <a href="tel:+33648145565">Appel</a>
         </div>
+      </div>
+    </aside>
 
-        <!-- CARROUSEL -->
-        <div class="carousel">
-          <div class="carousel-track">
-            <img src="images/appart1.jpg" alt="">
-            <img src="images/appart2.jpg" alt="">
-            <img src="images/appart3.jpg" alt="">
-          </div>
-          <button class="carousel-btn prev">‹</button>
-          <button class="carousel-btn next">›</button>
-        </div>
+  </main>
+</div>
 
-        <div class="grid-two">
-          <div><span>Type de bien</span>Appartement T3 avec balcon</div>
-          <div><span>Localisation</span>Saint-Priest – proximité parc de Parilly et transports</div>
-          <div><span>Points forts</span>Extérieur généreux, résidence récente, luminosité, cadre agréable</div>
-          <div><span>Remarques</span>À compléter selon votre analyse</div>
-        </div>
+<script>
+let idx = 0;
+const track = document.querySelector('.carousel-track');
+const slides = document.querySelectorAll('.carousel img');
 
-        <div class="video-section">
-          <h2>Vidéo de présentation du bien</h2>
-          <iframe src="https://youtu.be/BcZKUKU0p-U" allowfullscreen></iframe>
-        </div>
+document.querySelector('.next').onclick = () => {
+  idx = (idx + 1) % slides.length;
+  track.style.transform = `translateX(-${idx * 100}%)`;
+};
 
-        <div class="docs">
-          <h2>Documents associés au bien</h2>
-          <ul>
-            <li><a href="documents/dpe-parilly.pdf" target="_blank">DPE – T3 Terrasse Parilly</a></li>
-            <li><a href="documents/plan-parilly.pdf" target="_blank">Plan 2D / 3D</a></li>
-            <li><a href="documents/diagnostics-parilly.pdf" target="_blank">Diagnostics</a></li>
-          </ul>
-        </div>
-
-      </section>
-
-      <!-- CARD DROITE -->
-      <aside class="card">
-        <h2 class="side-card-title">Programmer une contre-visite</h2>
-        <p class="subtitle">
-          Indiquez votre email, la date souhaitée et un créneau. Un email sera pré-rempli.
-        </p>
-
-        <label for="prenomClient">Votre prénom</label>
-        <input id="prenomClient" type="text" placeholder="Prénom">
-
-        <label for="nomClient">Votre nom</label>
-        <input id="nomClient" type="text" placeholder="Nom">
-
-        <label for="emailClient">Votre email</label>
-        <input id="emailClient" type="email" placeholder="exemple@domaine.fr">
-
-        <label for="date">Date souhaitée</label>
-        <input id="date" type="date">
-
-        <label for="creneau">Créneau souhaité</label>
-        <select id="creneau">
-          <option value="">-- Choisissez un créneau --</option>
-          <option>09:00 - 10:00</option>
-          <option>10:00 - 11:00</option>
-          <option>11:00 - 12:00</option>
-          <option>12:00 - 13:00</option>
-          <option>13:00 - 14:00</option>
-          <option>14:00 - 15:00</option>
-          <option>15:00 - 16:00</option>
-          <option>16:00 - 17:00</option>
-          <option>17:00 - 18:00</option>
-          <option>18:00 - 19:00</option>
-          <option>19:00 - 20:00</option>
-        </select>
-
-        <button class="btn" onclick="sendEmail()">Valider la demande de contre-visite</button>
-
-        <div class="side-small">
-          Aucun rendez-vous n’est créé automatiquement : je vous recontacte pour confirmer.
-        </div>
-
-        <div class="contact-card">
-          <img src="images/photo.png" alt="Photo de Jérémy Heyob" class="contact-photo">
-          <div>
-            <div><strong>Jérémy Heyob</strong></div>
-            <div style="font-size:12px;color:var(--text-soft);">Négociateur Immobilier – Saint-Priest</div>
-            <div class="contact-links">
-              <a href="mailto:contact@jeremyheyob.fr">📧 Email</a>
-              <a href="sms:+33648145565">💬 SMS</a>
-              <a href="tel:+33648145565">📞 Appel direct</a>
-            </div>
-          </div>
-        </div>
-
-      </aside>
-
-    </main>
-  </div>
-
-  <!-- Carrousel JS -->
-  <script>
-  let indexImg = 0;
-  const track = document.querySelector('.carousel-track');
-  const slides = document.querySelectorAll('.carousel img');
-
-  document.querySelector('.next').onclick = () => {
-    indexImg = (indexImg + 1) % slides.length;
-    track.style.transform = `translateX(-${indexImg * 100}%)`;
-  };
-
-  document.querySelector('.prev').onclick = () => {
-    indexImg = (indexImg - 1 + slides.length) % slides.length;
-    track.style.transform = `translateX(-${indexImg * 100}%)`;
-  };
-  </script>
+document.querySelector('.prev').onclick = () => {
+  idx = (idx - 1 + slides.length) % slides.length;
+  track.style.transform = `translateX(-${idx * 100}%)`;
+};
+</script>
 
 </body>
 </html>
