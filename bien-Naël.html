@@ -6,25 +6,39 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
   :root {
-    --bg: #f5f5fb;
-    --accent: #d4a15f;
-    --accent-soft: rgba(212,161,95,0.16);
-    --text-main: #111827;
-    --text-soft: #6b7280;
+    /* Fond principal crème */
+    --bg: #FFFBF5;
+
+    /* Doré */
+    /* HEX : #C6AA77 — RGB : (198, 169, 119) */
+    --accent: #C6AA77;
+    --accent-soft: rgba(198, 169, 119, 0.16);
+
+    /* Noir principal */
+    /* HEX : #191919 — RGB : (25, 25, 25) */
+    --text-main: #191919; /* Noir premium */
+
+    /* On garde un gris doux pour les textes secondaires */
+    --text-soft: #7A7A7A;
+
     --border-soft: #e5e7eb;
+
+    /* Fond des cartes : on peut conserver le blanc pur
+       pour garder du contraste sur le crème de fond */
     --card-bg: #ffffff;
-    --shadow-soft: 0 20px 50px rgba(15,23,42,0.10);
+
+    --shadow-soft: 0 20px 50px rgba(25,25,25,0.10);
   }
 
   * {
     box-sizing: border-box;
   }
-
-  body {
+    
+    body {
     margin: 0;
     font-family: -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
-    background: linear-gradient(180deg, #fdfdfd 0%, #f5f5fb 40%, #eef2ff 100%);
-    color: var(--text-main);
+    background: #FFFBF5; /* Crème */
+    color: var(--text-main); /* Noir #191919 */
     min-height: 100vh;
   }
 
@@ -114,19 +128,18 @@
     color: var(--text-soft);
   }
 
-  .chips {
-    margin-top: 10px;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 6px;
-    font-size: 11px;
+  .chip {
+    padding: 4px 8px;
+    border-radius: 999px;
+    background: rgba(198, 169, 119, 0.10); /* Doré adouci */
+    color: #7a5a29; /* Tu peux le laisser ou le rapprocher du noir/doré */
   }
 
   .chip {
     padding: 4px 8px;
     border-radius: 999px;
-    background: rgba(212,161,95,0.10);
-    color: #7a5a29;
+    background: rgba(198, 169, 119, 0.10); /* Doré adouci */
+    color: #7a5a29; /* Tu peux le laisser ou le rapprocher du noir/doré */
   }
 
   .grid-two {
