@@ -31,7 +31,7 @@
     padding: 24px 16px 50px;
   }
 
-  /* ---------------------- HEADER PREMIUM A ---------------------- */
+  /* ---------------------- HEADER PREMIUM ---------------------- */
   header {
     display: flex;
     align-items: center;
@@ -49,7 +49,6 @@
   .header-left {
     display: flex;
     align-items: center;
-    gap: 14px;
   }
 
   .logo {
@@ -71,7 +70,7 @@
   }
 
   .tagline-sub {
-    margin-top: 4px;
+    margin-top: 12px; /* ESPACEMENT AUGMENTÉ */
     font-size: 12px;
     text-transform: uppercase;
     letter-spacing: 0.12em;
@@ -82,9 +81,8 @@
     font-weight: 900;
   }
 
-  /* -------------------------------------------------------------- */
+  /* ------------------------------------------------------------ */
 
-  /* LAYOUT */
   .layout {
     display: grid;
     grid-template-columns: 1fr 0.8fr;
@@ -92,7 +90,6 @@
     align-items: start;
   }
 
-  /* Cards */
   .card {
     background: var(--card-bg);
     border-radius: 22px;
@@ -165,7 +162,6 @@
   .carousel-btn.prev { left: 10px; }
   .carousel-btn.next { right: 10px; }
 
-  /* Grid infos */
   .grid-two {
     display: grid;
     grid-template-columns: repeat(2,1fr);
@@ -180,7 +176,6 @@
     color: var(--text-soft);
   }
 
-  /* Formulaire */
   .form-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -217,7 +212,6 @@
     cursor: pointer;
   }
 
-  /* Contact */
   .contact-card {
     margin-top: 18px;
     display: flex;
@@ -276,7 +270,6 @@ function sendEmail() {
 <body>
 <div class="page">
 
-<!-- HEADER PREMIUM A -->
 <header>
   <div class="header-left">
     <img src="images/logo.png" class="logo">
@@ -299,6 +292,13 @@ function sendEmail() {
 
   <h1>Naël</h1>
   <p class="subtitle">40 Boulevard Edouard Herriot, 69800 Saint-Priest</p>
+
+  <!-- 🔗 LIEN AGENCE.IMMO AJOUTÉ -->
+  <p style="margin:8px 0 18px;">
+    <a href="https://agence.immo/annonce-nael" target="_blank" style="color:#7a5a29;text-decoration:none;">
+      Voir l’annonce complète →
+    </a>
+  </p>
 
   <div class="chips">
     <span class="chip">T3</span>
@@ -351,9 +351,104 @@ function sendEmail() {
 
   <h2 style="margin-top:28px;">Documents du bien</h2>
 
-  <!-- BLOC PDF VALIDÉ -->
+  <!-- BLOC PDF COMPLET -->
   <ul style="list-style:none;padding:0;margin:12px 0;font-size:15px;">
     <li><a href="biens-immobiliers/documents/assurance-copropriete.pdf" target="_blank">Assurance copropriété →</a></li>
     <li><a href="biens-immobiliers/documents/attestation-achievement-travaux.pdf" target="_blank">Attestation achèvement des travaux →</a></li>
     <li><a href="biens-immobiliers/documents/attestation-assurance-dommages-ouvrages.pdf" target="_blank">Assurance dommages ouvrages →</a></li>
-    <li><a href="biens-immobiliers/documents/attestation-non-opposition.pdf" target="_blank">Attes_
+    <li><a href="biens-immobiliers/documents/attestation-non-opposition.pdf" target="_blank">Attestation de non opposition →</a></li>
+    <li><a href="biens-immobiliers/documents/carrez.pdf" target="_blank">Mesurage Carrez →</a></li>
+    <li><a href="biens-immobiliers/documents/carnet-entretien.pdf" target="_blank">Carnet d’entretien →</a></li>
+    <li><a href="biens-immobiliers/documents/daact.pdf" target="_blank">DAACT →</a></li>
+    <li><a href="biens-immobiliers/documents/dpe.pdf" target="_blank">DPE →</a></li>
+    <li><a href="biens-immobiliers/documents/pv-ag-2022.pdf" target="_blank">PV AG 2022 →</a></li>
+    <li><a href="biens-immobiliers/documents/pv-ag-2023.pdf" target="_blank">PV AG 2023 →</a></li>
+    <li><a href="biens-immobiliers/documents/pv-ag-2024.pdf" target="_blank">PV AG 2024 →</a></li>
+    <li><a href="biens-immobiliers/documents/plan.pdf" target="_blank">Plan →</a></li>
+    <li><a href="biens-immobiliers/documents/reglement-copropriete.pdf" target="_blank">Règlement de copropriété →</a></li>
+  </ul>
+
+</section>
+
+<!-- --------------------- BLOC CONTRE-VISITE --------------------- -->
+<aside class="card">
+  <h2>Programmer une contre-visite</h2>
+  <p class="subtitle">Remplissez vos coordonnées et vos disponibilités.</p>
+
+  <div class="form-grid">
+    <div>
+      <label>Votre prénom</label>
+      <input id="prenomClient" type="text">
+    </div>
+
+    <div>
+      <label>Votre nom</label>
+      <input id="nomClient" type="text">
+    </div>
+
+    <div>
+      <label>Votre téléphone</label>
+      <input id="telephoneClient" type="tel" placeholder="06…">
+    </div>
+
+    <div>
+      <label>Votre email</label>
+      <input id="emailClient" type="email" placeholder="exemple@domaine.fr">
+    </div>
+
+    <div>
+      <label>Date souhaitée</label>
+      <input id="date" type="date">
+    </div>
+
+    <div>
+      <label>Créneau souhaité</label>
+      <select id="creneau">
+        <option value="">-- Choisir --</option>
+        <option>09:00 - 10:00</option>
+        <option>10:00 - 11:00</option>
+        <option>11:00 - 12:00</option>
+        <option>14:00 - 15:00</option>
+        <option>15:00 - 16:00</option>
+        <option>16:00 - 17:00</option>
+        <option>17:00 - 18:00</option>
+      </select>
+    </div>
+
+    <button class="btn" onclick="sendEmail()">Valider ma demande</button>
+  </div>
+
+  <div class="contact-card">
+    <img src="images/photo.png" class="contact-photo">
+    <div>
+      <strong>Jérémy Heyob</strong><br>
+      <span style="font-size:12px;color:var(--text-soft);">Négociateur Immobilier</span><br>
+      <a href="mailto:contact@jeremyheyob.fr">✉️ Email</a> ·
+      <a href="sms:+33648145565">💬 SMS</a> ·
+      <a href="tel:+33648145565">📞 Appel</a>
+    </div>
+  </div>
+</aside>
+
+</main>
+
+</div>
+
+<script>
+let idx = 0;
+const track = document.querySelector('.carousel-track');
+const slides = document.querySelectorAll('.carousel img');
+
+document.querySelector('.next').onclick = () => {
+  idx = (idx + 1) % slides.length;
+  track.style.transform = `translateX(-${idx * 100}%)`;
+};
+
+document.querySelector('.prev').onclick = () => {
+  idx = (idx - 1 + slides.length) % slides.length;
+  track.style.transform = `translateX(-${idx * 100}%)`;
+};
+</script>
+
+</body>
+</html>
