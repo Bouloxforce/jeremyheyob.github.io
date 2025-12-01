@@ -23,7 +23,6 @@
     font-family: -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
     background: var(--bg);
     color: var(--text-main);
-    min-height: 100vh;
   }
 
   .page {
@@ -32,23 +31,21 @@
     padding: 24px 16px 50px;
   }
 
+  /* HEADER */
   header {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    gap: 18px;
     max-width: 960px;
     margin: 16px auto 24px;
     padding: 8px 28px;
     background: var(--card-bg);
     border-radius: 999px;
-    box-shadow: 0 18px 40px rgba(15,23,42,0.06);
-    border: 1px solid rgba(15,23,42,0.04);
+    border: 1px solid rgba(15, 23, 42, 0.04);
+    box-shadow: 0 18px 40px rgba(15, 23, 42, 0.06);
   }
 
-  .logo {
-    max-width: 140px;
-  }
+  .logo { max-width: 140px; }
 
   .tagline-main {
     font-size: 13px;
@@ -57,10 +54,15 @@
     color: var(--text-soft);
   }
 
-  .tagline-sub strong {
-    color: var(--text-main);
+  .tagline-sub {
+    margin-top: 6px;
+    font-size: 12px;
+    text-transform: uppercase;
+    color: var(--text-soft);
   }
+  .tagline-sub strong { color: var(--text-main); }
 
+  /* LAYOUT */
   .layout {
     display: grid;
     grid-template-columns: minmax(0, 1fr) minmax(0, 0.8fr);
@@ -82,19 +84,19 @@
     color: var(--accent);
     border-radius: 999px;
     font-size: 11px;
-    text-transform: uppercase;
     font-weight: 600;
+    margin-bottom: 8px;
   }
 
-  .chips { margin: 10px 0 14px; }
+  .subtitle { font-size: 13px; color: var(--text-soft); }
 
   .chip {
-    padding: 5px 10px;
-    font-size: 12px;
-    background: rgba(198,169,119,0.10);
-    border-radius: 999px;
-    margin-right: 6px;
     display: inline-block;
+    padding: 5px 10px;
+    background: rgba(198, 169, 119,0.10);
+    border-radius: 999px;
+    margin: 0 6px 6px 0;
+    font-size: 12px;
   }
 
   /* CARROUSEL */
@@ -102,8 +104,8 @@
     position: relative;
     overflow: hidden;
     border-radius: 16px;
-    margin: 16px 0;
     height: 260px;
+    margin: 16px 0;
   }
 
   .carousel-track {
@@ -129,48 +131,47 @@
     border-radius: 999px;
     cursor: pointer;
   }
-
   .carousel-btn.prev { left: 10px; }
   .carousel-btn.next { right: 10px; }
 
-  /* FORMULAIRE */
-  label {
+  /* INFO GRID PREMIUM */
+  .info-grid {
+    margin-top: 32px;
+    background: #ffffff;
+    border-radius: 20px;
+    padding: 26px;
+    border: 1px solid #e5e7eb;
+    box-shadow: 0 12px 32px rgba(0,0,0,0.05);
+  }
+
+  .info-grid-title {
+    font-size: 18px;
+    font-weight: 700;
+    margin-bottom: 22px;
+    letter-spacing: 0.5px;
+  }
+
+  .info-grid-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 18px 28px;
+  }
+
+  .info-item { display: flex; flex-direction: column; }
+  .info-label {
     font-size: 12px;
-    color: var(--text-soft);
-    margin-top: 10px;
-    display: block;
+    color: #7A7A7A;
+    text-transform: uppercase;
+    margin-bottom: 4px;
+    letter-spacing: 0.05em;
   }
-
-  input, select {
-    width: 100%;
-    padding: 8px 10px;
-    border-radius: 10px;
-    border: 1px solid var(--border-soft);
-    background: #f9fafb;
-    font-size: 13px;
-  }
-
-  .btn {
-    margin-top: 14px;
-    width: 100%;
-    background: linear-gradient(135deg,#fbe4b9,#f3c98b);
-    color: #7a5a29;
-    padding: 10px 14px;
-    border-radius: 999px;
-    font-size: 14px;
+  .info-value {
+    font-size: 15px;
     font-weight: 600;
-    border: none;
-    cursor: pointer;
+    color: #191919;
   }
 
-  .contact-card {
-    margin-top: 18px;
-    display: flex;
-    gap: 10px;
-    border-top: 1px solid var(--border-soft);
-    padding-top: 12px;
-  }
-
+  /* CONTACT */
   .contact-photo {
     width: 52px;
     height: 52px;
@@ -179,50 +180,53 @@
     border: 1px solid #e5e7eb;
   }
 
-  .contact-links a {
-    color: var(--accent);
-    text-decoration: none;
-    font-size: 13px;
+  .contact-links {
+    display: flex; gap: 8px; font-size: 13px; margin-top: 6px;
   }
+  .contact-links a {
+    text-decoration: none;
+    color: var(--accent);
+    font-weight: 500;
+  }
+  .sep { color: var(--text-soft); }
   </style>
 
   <script>
-function sendEmail() {
-  const bien = "T3 - 40 Bd Edouard Herriot – Saint-Priest";
+    function sendEmail() {
+      const bien = "T3 - 40 Bd Edouard Herriot – Saint-Priest";
+      const prenom = document.getElementById("prenomClient").value;
+      const nom = document.getElementById("nomClient").value;
+      const telephone = document.getElementById("telephoneClient").value;
+      const emailClient = document.getElementById("emailClient").value;
+      const date = document.getElementById("date").value;
+      const creneau = document.getElementById("creneau").value;
 
-  const prenom = document.getElementById("prenomClient").value;
-  const nom = document.getElementById("nomClient").value;
-  const telephone = document.getElementById("telephoneClient").value;
-  const emailClient = document.getElementById("emailClient").value;
-  const date = document.getElementById("date").value;
-  const creneau = document.getElementById("creneau").value;
+      if(!prenom || !nom || !emailClient || !telephone || !date || !creneau){
+        alert("Merci de renseigner nom, prénom, téléphone, email, date et créneau.");
+        return;
+      }
 
-  if(!prenom || !nom || !emailClient || !telephone || !date || !creneau){
-    alert("Merci de renseigner nom, prénom, téléphone, email, date et créneau.");
-    return;
-  }
+      const subject = encodeURIComponent("Demande de contre-visite - " + bien);
+      const body = encodeURIComponent(
+        "Bonjour,\n\n" +
+        "Je souhaite programmer une contre-visite pour le bien : " + bien + ".\n\n" +
+        "Nom : " + prenom + " " + nom + "\n" +
+        "Téléphone : " + telephone + "\n" +
+        "Email : " + emailClient + "\n\n" +
+        "Date souhaitée : " + date + "\n" +
+        "Créneau souhaité : " + creneau + "\n\n" +
+        "Merci pour votre retour.\n"
+      );
 
-  const subject = encodeURIComponent("Demande de contre-visite - " + bien);
-  const body = encodeURIComponent(
-    "Bonjour,\n\nJe souhaite programmer une contre-visite pour le bien : " + bien + ".\n\n" +
-    "Nom : " + prenom + " " + nom + "\n" +
-    "Téléphone : " + telephone + "\n" +
-    "Email : " + emailClient + "\n\n" +
-    "Date souhaitée : " + date + "\n" +
-    "Créneau souhaité : " + creneau + "\n\nMerci pour votre retour.\n"
-  );
-
-  window.location.href =
-    "mailto:contact@jeremyheyob.fr?subject=" +
-    subject + "&body=" + body;
-}
+      window.location.href = "mailto:contact@jeremyheyob.fr?subject=" + subject + "&body=" + body;
+    }
   </script>
+
 </head>
-
 <body>
-
 <div class="page">
 
+  <!-- HEADER -->
   <header>
     <img src="images/logo.png" class="logo">
     <div>
@@ -231,13 +235,13 @@ function sendEmail() {
     </div>
   </header>
 
+  <!-- RETOUR -->
   <a href="index.html" style="display:inline-block;margin-bottom:18px;font-size:13px;color:#7a5a29;text-decoration:none;">← Retour à l'accueil</a>
 
   <main class="layout">
 
-    <!-- COLONNE 1 -->
+    <!-- INFORMATIONS BIEN -->
     <section class="card">
-
       <div class="pill">Informations du bien</div>
 
       <h1>Naël</h1>
@@ -245,89 +249,148 @@ function sendEmail() {
 
       <div class="chips">
         <span class="chip">T3</span>
-        <span class="chip">72 m²</span>
-        <span class="chip">8,39 m² extérieur</span>
-        <span class="chip">Étage 1/5</span>
+        <span class="chip">72 m² habitables</span>
+        <span class="chip">8,39 m² d’extérieur</span>
+        <span class="chip">Étage : 1/5</span>
         <span class="chip">DPE : B-B</span>
-        <span class="chip">Garage</span>
-        <span class="chip">220 000 €</span>
+        <span class="chip">Garage compris</span>
+        <span class="chip">Prix : 220 000 €</span>
       </div>
 
-      <!-- CARROUSEL RÉPARÉ -->
+      <!-- CARROUSEL -->
       <div class="carousel">
         <div class="carousel-track">
-          <img src="biens-immobiliers/photos/Nael%201.png">
-          <img src="biens-immobiliers/photos/Nael%202.png">
-          <img src="biens-immobiliers/photos/Nael%203.png">
-          <img src="biens-immobiliers/photos/Nael%204.png">
-          <img src="biens-immobiliers/photos/Nael%205.png">
-          <img src="biens-immobiliers/photos/Nael%206.png">
-          <img src="biens-immobiliers/photos/Nael%207.png">
-          <img src="biens-immobiliers/photos/Nael%208.png">
-          <img src="biens-immobiliers/photos/Nael%209.png">
-          <img src="biens-immobiliers/photos/Nael%2010.png">
-          <img src="biens-immobiliers/photos/Nael%2011.png">
+          <img src="biens-immobiliers/photos/Nael 1.png">
+          <img src="biens-immobiliers/photos/Nael 2.png">
+          <img src="biens-immobiliers/photos/Nael 3.png">
+          <img src="biens-immobiliers/photos/Nael 4.png">
+          <img src="biens-immobiliers/photos/Nael 5.png">
+          <img src="biens-immobiliers/photos/Nael 6.png">
+          <img src="biens-immobiliers/photos/Nael 7.png">
+          <img src="biens-immobiliers/photos/Nael 8.png">
+          <img src="biens-immobiliers/photos/Nael 9.png">
+          <img src="biens-immobiliers/photos/Nael 10.png">
+          <img src="biens-immobiliers/photos/Nael 11.png">
         </div>
 
         <button class="carousel-btn prev">‹</button>
         <button class="carousel-btn next">›</button>
       </div>
 
-      <div class="grid-two">
-        <div><span>Adresse</span>40 Bd Edouard Herriot</div>
-        <div><span>Secteur</span>Centre-ville</div>
-        <div><span>Charges</span>152 €/mois</div>
-        <div><span>Taxe foncière</span>1152 €/an</div>
-        <div><span>Chauffage</span>Gaz collectif</div>
-        <div><span>Année</span>2017</div>
-        <div><span>Proximité</span>T2, C25, commerces</div>
-        <div><span>Points forts</span>Sécurisé, traversant, garage</div>
+      <!-- GRID DÉTAILS PREMIUM -->
+      <div class="info-grid">
+        <div class="info-grid-title">Détails du bien</div>
+        <div class="info-grid-container">
+
+          <div class="info-item">
+            <div class="info-label">Adresse</div>
+            <div class="info-value">40 Bd Edouard Herriot</div>
+          </div>
+
+          <div class="info-item">
+            <div class="info-label">Secteur</div>
+            <div class="info-value">Centre-ville</div>
+          </div>
+
+          <div class="info-item">
+            <div class="info-label">Charges</div>
+            <div class="info-value">152 €/mois</div>
+          </div>
+
+          <div class="info-item">
+            <div class="info-label">Taxe foncière</div>
+            <div class="info-value">1152 €/an</div>
+          </div>
+
+          <div class="info-item">
+            <div class="info-label">Chauffage</div>
+            <div class="info-value">Gaz collectif</div>
+          </div>
+
+          <div class="info-item">
+            <div class="info-label">Année</div>
+            <div class="info-value">2017</div>
+          </div>
+
+          <div class="info-item">
+            <div class="info-label">À proximité</div>
+            <div class="info-value">Tram T2, C25, commerces</div>
+          </div>
+
+          <div class="info-item">
+            <div class="info-label">Points forts</div>
+            <div class="info-value">Sécurisé, traversant, garage</div>
+          </div>
+
+        </div>
       </div>
 
-      <!-- VIDEO -->
-      <div style="margin-top:20px;">
-        <h2>Vidéo de présentation</h2>
-        <iframe src="https://www.youtube.com/embed/BcZKUKU0p-U"
-          allowfullscreen
-          style="width:100%;height:260px;border:0;border-radius:16px;">
-        </iframe>
-      </div>
-
-      <!-- ANNONCE -->
-      <div style="margin-top:18px;">
-        <h2>Annonce complète</h2>
-        <a href="https://www.agence.immo/achat/appartement-t3-3-pieces-saint-priest-69800-VA33868" 
-           target="_blank" style="color:#7a5a29;">
-          Voir l’annonce →
-        </a>
-      </div>
-
-      <!-- DOCUMENTS AVEC CHEMINS CORRIGÉS -->
+      <!-- DOCUMENTS -->
       <div style="margin-top:28px;">
         <h2>Documents du bien</h2>
-
         <ul style="list-style:none;padding:0;margin:12px 0;font-size:14px;">
-          <li><a style="color:#7a5a29;" target="_blank" href="biens-immobiliers/documents/Assurance%20copropri%C3%A9t%C3%A9.pdf">Assurance copropriété →</a></li>
-          <li><a style="color:#7a5a29;" target="_blank" href="biens-immobiliers/documents/Attestation%20achievement%20des%20travaux.pdf">Attestation achèvement travaux →</a></li>
-          <li><a style="color:#7a5a29;" target="_blank" href="biens-immobiliers/documents/Attestation%20assurance%20dommages%20ouvrages.pdf">Assurance dommages ouvrages →</a></li>
-          <li><a style="color:#7a5a29;" target="_blank" href="biens-immobiliers/documents/Attestation%20de%20non%20opposition.pdf">Non opposition →</a></li>
-          <li><a style="color:#7a5a29;" target="_blank" href="biens-immobiliers/documents/CARREZ%203562.pdf">Mesurage Carrez →</a></li>
-          <li><a style="color:#7a5a29;" target="_blank" href="biens-immobiliers/documents/Carnet%20d%27entretien.pdf">Carnet d’entretien →</a></li>
-          <li><a style="color:#7a5a29;" target="_blank" href="biens-immobiliers/documents/DAACT.pdf">DAACT →</a></li>
-          <li><a style="color:#7a5a29;" target="_blank" href="biens-immobiliers/documents/DPE.pdf">DPE →</a></li>
-          <li><a style="color:#7a5a29;" target="_blank" href="biens-immobiliers/documents/PV%20AG%202022.pdf">PV AG 2022 →</a></li>
-          <li><a style="color:#7a5a29;" target="_blank" href="biens-immobiliers/documents/PV%20AG%202023.pdf">PV AG 2023 →</a></li>
-          <li><a style="color:#7a5a29;" target="_blank" href="biens-immobiliers/documents/PV%20AG%202024.pdf">PV AG 2024 →</a></li>
-          <li><a style="color:#7a5a29;" target="_blank" href="biens-immobiliers/documents/Plan.pdf">Plan →</a></li>
-          <li><a style="color:#7a5a29;" target="_blank" href="biens-immobiliers/documents/Reglement%20copropri%C3%A9t%C3%A9.pdf">Règlement copropriété →</a></li>
+
+          <li style="margin-bottom:6px;">
+            <a href="biens-immobiliers/documents/Assurance copropriété.pdf" target="_blank" style="color:#7a5a29;">Assurance copropriété →</a>
+          </li>
+
+          <li style="margin-bottom:6px;">
+            <a href="biens-immobiliers/documents/Attestation achievement des travaux.pdf" target="_blank" style="color:#7a5a29;">Attestation achèvement des travaux →</a>
+          </li>
+
+          <li style="margin-bottom:6px;">
+            <a href="biens-immobiliers/documents/Attestation assurance dommages ouvrages.pdf" target="_blank" style="color:#7a5a29;">Assurance dommages ouvrages →</a>
+          </li>
+
+          <li style="margin-bottom:6px;">
+            <a href="biens-immobiliers/documents/Attestation de non opposition.pdf" target="_blank" style="color:#7a5a29;">Attestation de non opposition →</a>
+          </li>
+
+          <li style="margin-bottom:6px;">
+            <a href="biens-immobiliers/documents/CARREZ 3562.pdf" target="_blank" style="color:#7a5a29;">Mesurage Carrez →</a>
+          </li>
+
+          <li style="margin-bottom:6px;">
+            <a href="biens-immobiliers/documents/Carnet d'entretien.pdf" target="_blank" style="color:#7a5a29;">Carnet d'entretien →</a>
+          </li>
+
+          <li style="margin-bottom:6px;">
+            <a href="biens-immobiliers/documents/DAACT.pdf" target="_blank" style="color:#7a5a29;">DAACT →</a>
+          </li>
+
+          <li style="margin-bottom:6px;">
+            <a href="biens-immobiliers/documents/DPE.pdf" target="_blank" style="color:#7a5a29;">DPE →</a>
+          </li>
+
+          <li style="margin-bottom:6px;">
+            <a href="biens-immobiliers/documents/PV AG 2022.pdf" target="_blank" style="color:#7a5a29;">PV AG 2022 →</a>
+          </li>
+
+          <li style="margin-bottom:6px;">
+            <a href="biens-immobiliers/documents/PV AG 2023.pdf" target="_blank" style="color:#7a5a29;">PV AG 2023 →</a>
+          </li>
+
+          <li style="margin-bottom:6px;">
+            <a href="biens-immobiliers/documents/PV AG 2024.pdf" target="_blank" style="color:#7a5a29;">PV AG 2024 →</a>
+          </li>
+
+          <li style="margin-bottom:6px;">
+            <a href="biens-immobiliers/documents/Plan.pdf" target="_blank" style="color:#7a5a29;">Plan →</a>
+          </li>
+
+          <li style="margin-bottom:6px;">
+            <a href="biens-immobiliers/documents/Reglement copropriété.pdf" target="_blank" style="color:#7a5a29;">Règlement de copropriété →</a>
+          </li>
+
         </ul>
       </div>
 
     </section>
 
-    <!-- COLONNE 2 -->
+    <!-- FORMULAIRE -->
     <aside class="card">
       <h2>Programmer une contre-visite</h2>
+      <p class="subtitle">Remplissez vos coordonnées et vos disponibilités.</p>
 
       <label>Votre prénom</label>
       <input id="prenomClient" type="text">
@@ -361,7 +424,7 @@ function sendEmail() {
 
       <button class="btn" onclick="sendEmail()">Valider ma demande</button>
 
-      <div class="contact-card">
+      <div class="contact-card" style="margin-top:14px;display:flex;gap:10px;border-top:1px solid var(--border-soft);padding-top:12px;">
         <img src="images/photo.png" class="contact-photo">
         <div>
           <strong>Jérémy Heyob</strong><br>
