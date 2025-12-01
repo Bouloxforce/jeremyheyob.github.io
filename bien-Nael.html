@@ -5,6 +5,7 @@
   <title>Naël - 40 Bd Edouard Herriot | Jérémy Heyob Immobilier</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
+
   :root {
     --bg: #FFFBF5;
     --accent: #C6AA77;
@@ -16,13 +17,17 @@
     --shadow-soft: 0 20px 50px rgba(25,25,25,0.10);
   }
 
-  * { box-sizing: border-box; }
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
 
   body {
-    margin: 0;
     font-family: -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
     background: var(--bg);
     color: var(--text-main);
+    overflow-x: hidden; /* sécurité anti débordement */
   }
 
   .page {
@@ -31,7 +36,7 @@
     padding: 24px 16px 50px;
   }
 
-  /* ---------------------- HEADER PREMIUM ---------------------- */
+  /* HEADER */
   header {
     display: flex;
     align-items: center;
@@ -46,16 +51,15 @@
     border: 1px solid rgba(15, 23, 42, 0.04);
   }
 
-  .header-left { display: flex; align-items: center; }
-  .logo { max-width: 140px; height: auto; }
-  .header-center { flex: 1; text-align: center; }
+  .logo {
+    max-width: 140px;
+  }
 
   .tagline-main {
     font-size: 13px;
     letter-spacing: 0.18em;
     text-transform: uppercase;
     color: var(--text-soft);
-    font-weight: 500;
   }
 
   .tagline-sub {
@@ -64,13 +68,6 @@
     text-transform: uppercase;
     letter-spacing: 0.12em;
   }
-
-  .tagline-sub strong {
-    color: var(--text-main);
-    font-weight: 900;
-  }
-
-  /* ------------------------------------------------------------ */
 
   .layout {
     display: grid;
@@ -87,17 +84,15 @@
   }
 
   .pill {
-    display: inline-block;
     padding: 5px 12px;
     background: var(--accent-soft);
     color: var(--accent);
     border-radius: 999px;
     font-size: 11px;
-    margin-bottom: 10px;
     font-weight: 600;
+    margin-bottom: 10px;
+    display: inline-block;
   }
-
-  .subtitle { font-size: 14px; color: var(--text-soft); margin-top: -4px; }
 
   .chip {
     padding: 6px 12px;
@@ -109,9 +104,10 @@
     display: inline-block;
   }
 
-  /* Carrousel */
+  /* CARROUSEL */
   .carousel {
     position: relative;
+    width: 100%;
     overflow: hidden;
     border-radius: 16px;
     margin: 20px 0;
@@ -120,16 +116,16 @@
 
   .carousel-track {
     display: flex;
-    width: max-content; /* responsive + fix */
     transition: transform 0.35s ease;
+    width: 100%;
   }
 
   .carousel img {
-    width: 100%;
+    min-width: 100%; /* image 100% du conteneur */
     height: 260px;
     object-fit: cover;
+    flex-shrink: 0;
     cursor: pointer;
-    flex-shrink: 0; /* fix */
   }
 
   .carousel-btn {
@@ -155,13 +151,7 @@
     margin-top: 20px;
   }
 
-  .grid-two span {
-    display: block;
-    font-size: 12px;
-    color: var(--text-soft);
-  }
-
-  /* Formulaire */
+  /* FORMULAIRE */
   .form-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -178,8 +168,6 @@
     font-size: 14px;
   }
 
-  label { font-size: 13px; margin-bottom: 4px; display: block; }
-
   .btn {
     grid-column: span 2;
     margin-top: 6px;
@@ -192,7 +180,7 @@
     border: none;
   }
 
-  /* Contact */
+  /* CONTACT */
   .contact-card {
     margin-top: 18px;
     display: flex;
@@ -210,24 +198,7 @@
     border: 1px solid #e5e7eb;
   }
 
-  .contact-links {
-    margin-top: 6px;
-    display: flex;
-    gap: 8px;
-    font-size: 12px;
-  }
-
-  .contact-links a {
-    color: #C6AA77;
-    font-size: 12px;
-    font-weight: 500;
-    text-decoration: none;
-  }
-
-  .contact-links a:hover { filter: brightness(1.25); }
-
-
-  /* Lightbox */
+  /* LIGHTBOX */
   .lightbox {
     position: fixed;
     inset: 0;
@@ -281,7 +252,7 @@
     border-radius: 999px;
   }
 
-  /* Bouton retour */
+  /* BOUTON RETOUR */
   .btn-retour {
     display: inline-block;
     margin: 10px 0 18px;
@@ -296,90 +267,43 @@
     transition: 0.20s ease;
   }
 
-  .btn-retour:hover {
-    background: rgba(198,169,119,0.20);
-    border-color: rgba(198,169,119,0.55);
-    transform: translateX(-2px);
-  }
-
-  /* ------------------------------------------------------------
-     RESPONSIVE DESIGN
-  ------------------------------------------------------------ */
-
-  /* TABLETTES ≤1024px */
+  /* RESPONSIVE */
   @media (max-width: 1024px) {
-    header { padding: 6px 20px; gap: 12px; }
-    .logo { max-width: 120px; }
     .layout { grid-template-columns: 1fr; }
-    .carousel { height: 230px; }
-    .carousel img { height: 230px; }
+    .carousel, .carousel img { height: 230px; }
   }
 
-  /* MOBILES ≤768px */
   @media (max-width: 768px) {
-
-    .page { padding: 16px 12px 40px; }
-
     header {
       flex-direction: column;
       padding: 14px;
       border-radius: 22px;
     }
 
-    .tagline-main { font-size: 11px; letter-spacing: 0.14em; }
-    .tagline-sub { font-size: 11px; margin-top: 6px; }
-
-    .layout { grid-template-columns: 1fr; gap: 16px; }
-
-    h1 { font-size: 22px; }
-
-    .chip { font-size: 11px; padding: 5px 10px; }
+    .page { padding: 16px 12px 40px; }
 
     .carousel { height: auto; aspect-ratio: 16/10; }
     .carousel img { height: 100%; }
 
-    .grid-two { grid-template-columns: 1fr; font-size: 13px; }
+    .grid-two { grid-template-columns: 1fr; }
 
     .form-grid { grid-template-columns: 1fr; }
+    .btn { grid-column: 1; }
 
-    .btn {
-      grid-column: span 1;
-      font-size: 14px;
-    }
-
-    .contact-photo { width: 46px; height: 46px; }
-
-    .lightbox-prev, .lightbox-next {
-      font-size: 36px;
-      padding: 14px 20px;
-    }
-
-    .lightbox-close {
-      font-size: 46px;
-      right: 20px;
+    .contact-photo {
+      width: 46px;
+      height: 46px;
     }
   }
 
-  /* PETITS MOBILES ≤480px */
   @media (max-width: 480px) {
-
-    .logo { max-width: 110px; }
-    h1 { font-size: 20px; }
-
     .carousel { aspect-ratio: 4/3; }
 
     .carousel-btn.prev { left: 6px; }
     .carousel-btn.next { right: 6px; }
 
     .lightbox-prev, .lightbox-next {
-      font-size: 30px;
-      padding: 12px 16px;
-    }
-
-    .lightbox-close {
-      font-size: 38px;
-      top: 18px;
-      right: 18px;
+      font-size: 32px;
     }
   }
 
@@ -411,26 +335,24 @@ function sendEmail() {
     "Créneau souhaité : " + creneau + "\n\n"
   );
 
-  window.location.href = "mailto:contact@jeremyheyob.fr?subject=" + subject + "&body=" + body;
+  window.location.href =
+    "mailto:contact@jeremyheyob.fr?subject=" + subject + "&body=" + body;
 }
 </script>
 
 </head>
 
+
 <body>
 <div class="page">
 
 <header>
-  <div class="header-left">
-    <img src="images/logo.png" class="logo">
-  </div>
+  <img src="images/logo.png" class="logo">
 
   <div class="header-center">
     <div class="tagline-main">VOS PROJETS IMMOBILIERS N'ONT JAMAIS ÉTÉ AUSSI SIMPLES !</div>
     <div class="tagline-sub"><strong>JÉRÉMY HEYOB</strong></div>
   </div>
-
-  <nav></nav>
 </header>
 
 <a href="index.html" class="btn-retour">← Retour</a>
@@ -438,6 +360,7 @@ function sendEmail() {
 <main class="layout">
 
 <section class="card">
+
   <div class="pill">Informations du bien</div>
 
   <h1>Naël</h1>
@@ -473,6 +396,7 @@ function sendEmail() {
     <button class="carousel-btn next">›</button>
   </div>
 
+  <!-- DETAILS -->
   <div class="grid-two">
     <div><span>Adresse</span>40 Bd Edouard Herriot</div>
     <div><span>Secteur</span>Centre-ville</div>
@@ -484,23 +408,19 @@ function sendEmail() {
     <div><span>Points forts</span>Sécurisé, traversant, garage</div>
   </div>
 
-  <!-- Vidéo -->
   <h2 style="margin-top:20px;">Vidéo de présentation</h2>
   <iframe src="https://www.youtube.com/embed/BcZKUKU0p-U"
           allowfullscreen
           style="width:100%;height:260px;border:0;border-radius:16px;"></iframe>
 
-  <!-- Lien annonce -->
   <h2 style="margin-top:20px;">Lien de l’annonce</h2>
   <a href="https://www.agence.immo/achat/appartement-t3-3-pieces-saint-priest-69800-VA33868"
      target="_blank"
-     style="color:#1a73e8;font-size:15px;text-decoration:underline;">
+     style="color:#1a73e8;text-decoration:underline;font-size:15px;">
      Voir l’annonce sur le site →
   </a>
 
-  <!-- Documents -->
   <h2 style="margin-top:28px;">Documents du bien</h2>
-
   <ul style="list-style:none;padding:0;margin:12px 0;font-size:15px;">
     <li><a href="biens-immobiliers/documents/assurance-copropriete.pdf" target="_blank">Assurance copropriété →</a></li>
     <li><a href="biens-immobiliers/documents/attestation-achievement-travaux.pdf" target="_blank">Attestation achèvement des travaux →</a></li>
@@ -519,18 +439,39 @@ function sendEmail() {
 
 </section>
 
-<!-- Contre-visite -->
+<!-- CONTRE VISITE -->
 <aside class="card">
   <h2>Programmer une contre-visite</h2>
   <p class="subtitle">Remplissez vos coordonnées et vos disponibilités.</p>
 
   <div class="form-grid">
-    <div><label>Votre prénom</label><input id="prenomClient" type="text"></div>
-    <div><label>Votre nom</label><input id="nomClient" type="text"></div>
-    <div><label>Votre téléphone</label><input id="telephoneClient" type="tel" placeholder="06…"></div>
-    <div><label>Votre email</label><input id="emailClient" type="email" placeholder="exemple@domaine.fr"></div>
-    <div><label>Date souhaitée</label><input id="date" type="date"></div>
-    <div><label>Créneau souhaité</label>
+    <div>
+      <label>Votre prénom</label>
+      <input id="prenomClient" type="text">
+    </div>
+
+    <div>
+      <label>Votre nom</label>
+      <input id="nomClient" type="text">
+    </div>
+
+    <div>
+      <label>Votre téléphone</label>
+      <input id="telephoneClient" type="tel" placeholder="06…">
+    </div>
+
+    <div>
+      <label>Votre email</label>
+      <input id="emailClient" type="email" placeholder="exemple@domaine.fr">
+    </div>
+
+    <div>
+      <label>Date souhaitée</label>
+      <input id="date" type="date">
+    </div>
+
+    <div>
+      <label>Créneau souhaité</label>
       <select id="creneau">
         <option value="">-- Choisir --</option>
         <option>09:00 - 10:00</option>
@@ -553,7 +494,7 @@ function sendEmail() {
     <div>
       <strong>Jérémy Heyob</strong><br>
       <span style="font-size:12px;color:var(--text-soft);">Négociateur Immobilier à Saint-Priest</span><br>
-      <div class="contact-links">
+      <div class="contact-links" style="margin-top:6px;display:flex;gap:8px;">
         <a href="mailto:contact@jeremyheyob.fr">✉️ Email</a>
         <a href="sms:+33648145565">💬 SMS</a>
         <a href="tel:+33648145565">📞 Appel</a>
@@ -567,7 +508,7 @@ function sendEmail() {
 
 </div>
 
-<!-- Lightbox -->
+<!-- LIGHTBOX -->
 <div class="lightbox" id="lightbox">
   <span class="lightbox-close" id="lightboxClose">×</span>
   <span class="lightbox-prev" id="lightboxPrev">‹</span>
@@ -576,7 +517,6 @@ function sendEmail() {
 </div>
 
 <script>
-/* CARROUSEL */
 let idx = 0;
 const track = document.querySelector('.carousel-track');
 const slides = document.querySelectorAll('.carousel img');
@@ -591,7 +531,6 @@ document.querySelector('.prev').onclick = () => {
   track.style.transform = `translateX(-${idx * 100}%)`;
 };
 
-/* LIGHTBOX */
 const lightbox = document.getElementById('lightbox');
 const lightboxImg = document.getElementById('lightboxImg');
 const btnClose = document.getElementById('lightboxClose');
@@ -613,7 +552,10 @@ function openLightbox() {
 }
 
 btnClose.onclick = () => lightbox.classList.remove('active');
-lightbox.onclick = (e) => { if (e.target === lightbox) lightbox.classList.remove('active'); };
+
+lightbox.onclick = (e) => {
+  if (e.target === lightbox) lightbox.classList.remove('active');
+};
 
 btnPrev.onclick = () => {
   currentSlide = (currentSlide - 1 + slides.length) % slides.length;
