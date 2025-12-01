@@ -2,7 +2,7 @@
 <html lang="fr">
 <head>
   <meta charset="UTF-8">
-  <title>40 Bd Edouard Herriot — T3 Centre-ville | Jérémy Heyob Immobilier</title>
+  <title>Naël - 40 Bd Edouard Herriot | Jérémy Heyob Immobilier</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
   :root {
@@ -277,11 +277,30 @@
     background: rgba(0,0,0,0.35);
     border-radius: 999px;
   }
+    .btn-retour {
+    display: inline-block;
+    margin: 10px 0 18px;
+    padding: 6px 12px;
+    font-size: 13px;
+    font-weight: 500;
+    color: #7a5a29; /* or premium */
+    text-decoration: none;
+    border-radius: 10px;
+    border: 1px solid rgba(198,169,119,0.35);
+    background: rgba(198,169,119,0.10);
+    transition: 0.20s ease;
+  }
+
+    .btn-retour:hover {
+    background: rgba(198,169,119,0.20);
+    border-color: rgba(198,169,119,0.55);
+    transform: translateX(-2px);
+  }
   </style>
 
 <script>
 function sendEmail() {
-  const bien = "T3 - 40 Bd Edouard Herriot – Saint-Priest";
+  const bien = "Naël - 40 Bd Edouard Herriot";
   const prenom = document.getElementById("prenomClient").value;
   const nom = document.getElementById("nomClient").value;
   const telephone = document.getElementById("telephoneClient").value;
@@ -327,7 +346,7 @@ function sendEmail() {
   <nav></nav>
 </header>
 
-<a href="index.html" style="font-size:13px;color:#7a5a29;text-decoration:none;">← Retour</a>
+<a href="index.html" class="btn-retour">← Retour</a>
 
 <main class="layout">
 
@@ -434,6 +453,7 @@ function sendEmail() {
         <option>15:00 - 16:00</option>
         <option>16:00 - 17:00</option>
         <option>17:00 - 18:00</option>
+        <option>18:00 - 19:00</option>
       </select>
     </div>
 
