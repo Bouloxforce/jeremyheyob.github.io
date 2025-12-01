@@ -70,7 +70,7 @@
   }
 
   .tagline-sub {
-    margin-top: 12px; /* ESPACEMENT AUGMENTÉ */
+    margin-top: 12px; /* espace augmenté */
     font-size: 12px;
     text-transform: uppercase;
     letter-spacing: 0.12em;
@@ -145,6 +145,7 @@
     height: 260px;
     object-fit: cover;
     flex-shrink: 0;
+    cursor: pointer; /* clic possible pour agrandissement */
   }
 
   .carousel-btn {
@@ -225,13 +226,45 @@
     height: 52px;
     border-radius: 999px;
     object-fit: cover;
+    object-position: center; /* photo centrée, non coupée en haut */
     border: 1px solid #e5e7eb;
   }
 
+  .contact-links {
+    margin-top: 6px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    font-size: 12px;
+  }
+
   .contact-links a {
-    color: var(--accent);
-    text-decoration: none;
+    color: #C6AA77;        /* or premium */
+    font-size: 12px;
     font-weight: 500;
+    text-decoration: none;
+  }
+
+  .contact-links a:hover {
+    filter: brightness(1.2);
+  }
+
+  /* Lightbox pour agrandir les photos */
+  .lightbox {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.75);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+  }
+
+  .lightbox img {
+    max-width: 92%;
+    max-height: 92%;
+    border-radius: 12px;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.5);
   }
   </style>
 
@@ -272,7 +305,7 @@ function sendEmail() {
 
 <header>
   <div class="header-left">
-    <img src="images/logo.png" class="logo">
+    <img src="images/logo.png" class="logo" alt="Logo Jérémy Heyob Immobilier">
   </div>
 
   <div class="header-center">
@@ -293,13 +326,6 @@ function sendEmail() {
   <h1>Naël</h1>
   <p class="subtitle">40 Boulevard Edouard Herriot, 69800 Saint-Priest</p>
 
-  <!-- 🔗 LIEN AGENCE.IMMO AJOUTÉ -->
-  <p style="margin:8px 0 18px;">
-    <a href="https://agence.immo/annonce-nael" target="_blank" style="color:#7a5a29;text-decoration:none;">
-      Voir l’annonce complète →
-    </a>
-  </p>
-
   <div class="chips">
     <span class="chip">T3</span>
     <span class="chip">72 m²</span>
@@ -313,21 +339,21 @@ function sendEmail() {
   <!-- CARROUSEL -->
   <div class="carousel">
     <div class="carousel-track">
-      <img src="biens-immobiliers/photos/Nael 1.png">
-      <img src="biens-immobiliers/photos/Nael 2.png">
-      <img src="biens-immobiliers/photos/Nael 3.png">
-      <img src="biens-immobiliers/photos/Nael 4.png">
-      <img src="biens-immobiliers/photos/Nael 5.png">
-      <img src="biens-immobiliers/photos/Nael 6.png">
-      <img src="biens-immobiliers/photos/Nael 7.png">
-      <img src="biens-immobiliers/photos/Nael 8.png">
-      <img src="biens-immobiliers/photos/Nael 9.png">
-      <img src="biens-immobiliers/photos/Nael 10.png">
-      <img src="biens-immobiliers/photos/Nael 11.png">
+      <img src="biens-immobiliers/photos/Nael 1.png" alt="Naël 1">
+      <img src="biens-immobiliers/photos/Nael 2.png" alt="Naël 2">
+      <img src="biens-immobiliers/photos/Nael 3.png" alt="Naël 3">
+      <img src="biens-immobiliers/photos/Nael 4.png" alt="Naël 4">
+      <img src="biens-immobiliers/photos/Nael 5.png" alt="Naël 5">
+      <img src="biens-immobiliers/photos/Nael 6.png" alt="Naël 6">
+      <img src="biens-immobiliers/photos/Nael 7.png" alt="Naël 7">
+      <img src="biens-immobiliers/photos/Nael 8.png" alt="Naël 8">
+      <img src="biens-immobiliers/photos/Nael 9.png" alt="Naël 9">
+      <img src="biens-immobiliers/photos/Nael 10.png" alt="Naël 10">
+      <img src="biens-immobiliers/photos/Nael 11.png" alt="Naël 11">
     </div>
 
-    <button class="carousel-btn prev">‹</button>
-    <button class="carousel-btn next">›</button>
+    <button class="carousel-btn prev" type="button">‹</button>
+    <button class="carousel-btn next" type="button">›</button>
   </div>
 
   <div class="grid-two">
@@ -349,9 +375,17 @@ function sendEmail() {
           allowfullscreen
           style="width:100%;height:260px;border:0;border-radius:16px;"></iframe>
 
+  <!-- Lien Agence.Immo après la vidéo -->
+  <p style="margin:18px 0;">
+    <a href="https://www.agence.immo/achat/appartement-t3-3-pieces-saint-priest-69800-VA33868"
+       target="_blank"
+       style="color:#7a5a29;text-decoration:none;">
+      Voir l’annonce complète sur Agence.Immo →
+    </a>
+  </p>
+
   <h2 style="margin-top:28px;">Documents du bien</h2>
 
-  <!-- BLOC PDF COMPLET -->
   <ul style="list-style:none;padding:0;margin:12px 0;font-size:15px;">
     <li><a href="biens-immobiliers/documents/assurance-copropriete.pdf" target="_blank">Assurance copropriété →</a></li>
     <li><a href="biens-immobiliers/documents/attestation-achievement-travaux.pdf" target="_blank">Attestation achèvement des travaux →</a></li>
@@ -419,19 +453,26 @@ function sendEmail() {
   </div>
 
   <div class="contact-card">
-    <img src="images/photo.png" class="contact-photo">
+    <img src="images/photo.png" class="contact-photo" alt="Photo de Jérémy Heyob">
     <div>
       <strong>Jérémy Heyob</strong><br>
       <span style="font-size:12px;color:var(--text-soft);">Négociateur Immobilier</span><br>
-      <a href="mailto:contact@jeremyheyob.fr">✉️ Email</a> ·
-      <a href="sms:+33648145565">💬 SMS</a> ·
-      <a href="tel:+33648145565">📞 Appel</a>
+      <div class="contact-links">
+        <a href="mailto:contact@jeremyheyob.fr">✉️ Email</a>
+        <a href="sms:+33648145565">💬 SMS</a>
+        <a href="tel:+33648145565">📞 Appel</a>
+      </div>
     </div>
   </div>
 </aside>
 
 </main>
 
+</div>
+
+<!-- Lightbox pour agrandir les photos -->
+<div class="lightbox" id="lightbox">
+  <img id="lightbox-img" alt="Photo agrandie">
 </div>
 
 <script>
@@ -448,6 +489,22 @@ document.querySelector('.prev').onclick = () => {
   idx = (idx - 1 + slides.length) % slides.length;
   track.style.transform = `translateX(-${idx * 100}%)`;
 };
+
+/* Lightbox : clic sur une image du carrousel = agrandissement */
+const lightbox = document.getElementById('lightbox');
+const lightboxImg = document.getElementById('lightbox-img');
+const carouselImages = document.querySelectorAll('.carousel img');
+
+carouselImages.forEach(img => {
+  img.addEventListener('click', () => {
+    lightboxImg.src = img.src;
+    lightbox.style.display = 'flex';
+  });
+});
+
+lightbox.addEventListener('click', () => {
+  lightbox.style.display = 'none';
+});
 </script>
 
 </body>
