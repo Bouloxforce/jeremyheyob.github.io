@@ -127,7 +127,8 @@
     max-width: 520px;
   }
 
-  .hero-highlight {
+.hero-highlight {
+    display: inline-block;  /* <- le point clé */
     margin-top: 14px;
     padding: 10px 12px;
     border-radius: 12px;
@@ -135,7 +136,9 @@
     border: 1px dashed var(--border-soft);
     font-size: 13px;
     color: #374151;
-  }
+    max-width: 100%; /* sécurité */
+    line-height: 1.45;
+}
 
   .hero-meta {
     margin-top: 14px;
