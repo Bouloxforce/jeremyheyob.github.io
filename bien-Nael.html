@@ -46,20 +46,9 @@
     border: 1px solid rgba(15, 23, 42, 0.04);
   }
 
-  .header-left {
-    display: flex;
-    align-items: center;
-  }
-
-  .logo {
-    max-width: 140px;
-    height: auto;
-  }
-
-  .header-center {
-    flex: 1;
-    text-align: center;
-  }
+  .header-left { display: flex; align-items: center; }
+  .logo { max-width: 140px; height: auto; }
+  .header-center { flex: 1; text-align: center; }
 
   .tagline-main {
     font-size: 13px;
@@ -70,7 +59,7 @@
   }
 
   .tagline-sub {
-    margin-top: 12px; /* espace augmenté */
+    margin-top: 12px;
     font-size: 12px;
     text-transform: uppercase;
     letter-spacing: 0.12em;
@@ -87,7 +76,6 @@
     display: grid;
     grid-template-columns: 1fr 0.8fr;
     gap: 22px;
-    align-items: start;
   }
 
   .card {
@@ -105,22 +93,17 @@
     color: var(--accent);
     border-radius: 999px;
     font-size: 11px;
-    text-transform: uppercase;
     margin-bottom: 10px;
     font-weight: 600;
   }
 
-  .subtitle {
-    font-size: 14px;
-    margin-top: -4px;
-    color: var(--text-soft);
-  }
+  .subtitle { font-size: 14px; color: var(--text-soft); margin-top: -4px; }
 
   .chip {
     padding: 6px 12px;
-    font-size: 12px;
     background: rgba(198, 169, 119, 0.10);
     border-radius: 999px;
+    font-size: 12px;
     margin-right: 6px;
     margin-bottom: 6px;
     display: inline-block;
@@ -144,8 +127,7 @@
     width: 100%;
     height: 260px;
     object-fit: cover;
-    flex-shrink: 0;
-    cursor: pointer; /* clic possible pour agrandissement */
+    cursor: pointer;
   }
 
   .carousel-btn {
@@ -177,6 +159,7 @@
     color: var(--text-soft);
   }
 
+  /* Formulaire */
   .form-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -193,12 +176,7 @@
     font-size: 14px;
   }
 
-  label {
-    font-size: 13px;
-    font-weight: 500;
-    margin-bottom: 4px;
-    display: block;
-  }
+  label { font-size: 13px; margin-bottom: 4px; display: block; }
 
   .btn {
     grid-column: span 2;
@@ -210,9 +188,9 @@
     font-size: 15px;
     font-weight: 600;
     border: none;
-    cursor: pointer;
   }
 
+  /* Contact */
   .contact-card {
     margin-top: 18px;
     display: flex;
@@ -226,45 +204,77 @@
     height: 52px;
     border-radius: 999px;
     object-fit: cover;
-    object-position: center; /* photo centrée, non coupée en haut */
-    border: 1px solid #e5e7eb;
+    object-position: center;
   }
 
   .contact-links {
     margin-top: 6px;
     display: flex;
-    flex-wrap: wrap;
     gap: 8px;
     font-size: 12px;
   }
 
   .contact-links a {
-    color: #C6AA77;        /* or premium */
+    color: #C6AA77;
     font-size: 12px;
     font-weight: 500;
     text-decoration: none;
   }
 
-  .contact-links a:hover {
-    filter: brightness(1.2);
-  }
+  .contact-links a:hover { filter: brightness(1.25); }
 
-  /* Lightbox pour agrandir les photos */
+  /* Lightbox premium */
   .lightbox {
     position: fixed;
     inset: 0;
-    background: rgba(0,0,0,0.75);
-    display: none;
+    background: rgba(0,0,0,0.85);
+    display: flex;
     justify-content: center;
     align-items: center;
     z-index: 9999;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.25s ease;
+  }
+
+  .lightbox.active {
+    opacity: 1;
+    pointer-events: auto;
   }
 
   .lightbox img {
-    max-width: 92%;
-    max-height: 92%;
+    max-width: 90%;
+    max-height: 90vh;
     border-radius: 12px;
-    box-shadow: 0 10px 40px rgba(0,0,0,0.5);
+    box-shadow: 0 0 40px rgba(0,0,0,0.45);
+  }
+
+  .lightbox-prev,
+  .lightbox-next {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    color: white;
+    font-size: 46px;
+    cursor: pointer;
+    padding: 18px 24px;
+    background: rgba(0,0,0,0.35);
+    border-radius: 999px;
+  }
+
+  .lightbox-prev { left: 40px; }
+  .lightbox-next { right: 40px; }
+
+  .lightbox-close {
+    position: absolute;
+    top: 30px;
+    right: 40px;
+    color: white;
+    font-size: 52px;
+    cursor: pointer;
+    padding: 8px 16px;
+    background: rgba(0,0,0,0.35);
+    border-radius: 999px;
   }
   </style>
 
@@ -305,7 +315,7 @@ function sendEmail() {
 
 <header>
   <div class="header-left">
-    <img src="images/logo.png" class="logo" alt="Logo Jérémy Heyob Immobilier">
+    <img src="images/logo.png" class="logo">
   </div>
 
   <div class="header-center">
@@ -339,50 +349,49 @@ function sendEmail() {
   <!-- CARROUSEL -->
   <div class="carousel">
     <div class="carousel-track">
-      <img src="biens-immobiliers/photos/Nael 1.png" alt="Naël 1">
-      <img src="biens-immobiliers/photos/Nael 2.png" alt="Naël 2">
-      <img src="biens-immobiliers/photos/Nael 3.png" alt="Naël 3">
-      <img src="biens-immobiliers/photos/Nael 4.png" alt="Naël 4">
-      <img src="biens-immobiliers/photos/Nael 5.png" alt="Naël 5">
-      <img src="biens-immobiliers/photos/Nael 6.png" alt="Naël 6">
-      <img src="biens-immobiliers/photos/Nael 7.png" alt="Naël 7">
-      <img src="biens-immobiliers/photos/Nael 8.png" alt="Naël 8">
-      <img src="biens-immobiliers/photos/Nael 9.png" alt="Naël 9">
-      <img src="biens-immobiliers/photos/Nael 10.png" alt="Naël 10">
-      <img src="biens-immobiliers/photos/Nael 11.png" alt="Naël 11">
+      <img src="biens-immobiliers/photos/Nael 1.png">
+      <img src="biens-immobiliers/photos/Nael 2.png">
+      <img src="biens-immobiliers/photos/Nael 3.png">
+      <img src="biens-immobiliers/photos/Nael 4.png">
+      <img src="biens-immobiliers/photos/Nael 5.png">
+      <img src="biens-immobiliers/photos/Nael 6.png">
+      <img src="biens-immobiliers/photos/Nael 7.png">
+      <img src="biens-immobiliers/photos/Nael 8.png">
+      <img src="biens-immobiliers/photos/Nael 9.png">
+      <img src="biens-immobiliers/photos/Nael 10.png">
+      <img src="biens-immobiliers/photos/Nael 11.png">
     </div>
 
-    <button class="carousel-btn prev" type="button">‹</button>
-    <button class="carousel-btn next" type="button">›</button>
+    <button class="carousel-btn prev">‹</button>
+    <button class="carousel-btn next">›</button>
   </div>
 
   <div class="grid-two">
     <div><span>Adresse</span>40 Bd Edouard Herriot</div>
     <div><span>Secteur</span>Centre-ville</div>
-
     <div><span>Charges</span>152 €/mois</div>
     <div><span>Taxe foncière</span>1152 €/an</div>
-
     <div><span>Chauffage</span>Gaz collectif</div>
     <div><span>Année</span>2017</div>
-
     <div><span>À proximité</span>Écoles, commerces, Tram T2, C25</div>
     <div><span>Points forts</span>Sécurisé, traversant, garage</div>
   </div>
 
+  <!-- Vidéo -->
   <h2 style="margin-top:20px;">Vidéo de présentation</h2>
   <iframe src="https://www.youtube.com/embed/BcZKUKU0p-U"
           allowfullscreen
           style="width:100%;height:260px;border:0;border-radius:16px;"></iframe>
 
-  <!-- Lien Agence.Immo après la vidéo -->
+  <!-- Lien annonce -->
   <h2 style="margin-top:20px;">Lien de l’annonce</h2>
-  <a href="https://www.agence.immo/achat/appartement-t3-3-pieces-saint-priest-69800-VA33868" 
-     target="_blank" 
-     style="color:#1a73e8; font-size:15px; text-decoration:underline;">
-    Voir l’annonce sur le site →
+  <a href="https://www.agence.immo/achat/appartement-t3-3-pieces-saint-priest-69800-VA33868"
+     target="_blank"
+     style="color:#1a73e8;font-size:15px;text-decoration:underline;">
+     Voir l’annonce sur le site →
   </a>
 
+  <!-- Documents -->
   <h2 style="margin-top:28px;">Documents du bien</h2>
 
   <ul style="list-style:none;padding:0;margin:12px 0;font-size:15px;">
@@ -403,39 +412,18 @@ function sendEmail() {
 
 </section>
 
-<!-- --------------------- BLOC CONTRE-VISITE --------------------- -->
+<!-- Contre-visite -->
 <aside class="card">
   <h2>Programmer une contre-visite</h2>
   <p class="subtitle">Remplissez vos coordonnées et vos disponibilités.</p>
 
   <div class="form-grid">
-    <div>
-      <label>Votre prénom</label>
-      <input id="prenomClient" type="text">
-    </div>
-
-    <div>
-      <label>Votre nom</label>
-      <input id="nomClient" type="text">
-    </div>
-
-    <div>
-      <label>Votre téléphone</label>
-      <input id="telephoneClient" type="tel" placeholder="06…">
-    </div>
-
-    <div>
-      <label>Votre email</label>
-      <input id="emailClient" type="email" placeholder="exemple@domaine.fr">
-    </div>
-
-    <div>
-      <label>Date souhaitée</label>
-      <input id="date" type="date">
-    </div>
-
-    <div>
-      <label>Créneau souhaité</label>
+    <div><label>Votre prénom</label><input id="prenomClient" type="text"></div>
+    <div><label>Votre nom</label><input id="nomClient" type="text"></div>
+    <div><label>Votre téléphone</label><input id="telephoneClient" type="tel" placeholder="06…"></div>
+    <div><label>Votre email</label><input id="emailClient" type="email" placeholder="exemple@domaine.fr"></div>
+    <div><label>Date souhaitée</label><input id="date" type="date"></div>
+    <div><label>Créneau souhaité</label>
       <select id="creneau">
         <option value="">-- Choisir --</option>
         <option>09:00 - 10:00</option>
@@ -452,7 +440,7 @@ function sendEmail() {
   </div>
 
   <div class="contact-card">
-    <img src="images/photo.png" class="contact-photo" alt="Photo de Jérémy Heyob">
+    <img src="images/photo.png" class="contact-photo">
     <div>
       <strong>Jérémy Heyob</strong><br>
       <span style="font-size:12px;color:var(--text-soft);">Négociateur Immobilier</span><br>
@@ -463,18 +451,23 @@ function sendEmail() {
       </div>
     </div>
   </div>
+
 </aside>
 
 </main>
 
 </div>
 
-<!-- Lightbox pour agrandir les photos -->
+<!-- Lightbox -->
 <div class="lightbox" id="lightbox">
-  <img id="lightbox-img" alt="Photo agrandie">
+  <span class="lightbox-close" id="lightboxClose">×</span>
+  <span class="lightbox-prev" id="lightboxPrev">‹</span>
+  <img id="lightboxImg" src="">
+  <span class="lightbox-next" id="lightboxNext">›</span>
 </div>
 
 <script>
+/* CARROUSEL */
 let idx = 0;
 const track = document.querySelector('.carousel-track');
 const slides = document.querySelectorAll('.carousel img');
@@ -489,20 +482,51 @@ document.querySelector('.prev').onclick = () => {
   track.style.transform = `translateX(-${idx * 100}%)`;
 };
 
-/* Lightbox : clic sur une image du carrousel = agrandissement */
+/* LIGHTBOX */
 const lightbox = document.getElementById('lightbox');
-const lightboxImg = document.getElementById('lightbox-img');
-const carouselImages = document.querySelectorAll('.carousel img');
+const lightboxImg = document.getElementById('lightboxImg');
+const btnClose = document.getElementById('lightboxClose');
+const btnPrev = document.getElementById('lightboxPrev');
+const btnNext = document.getElementById('lightboxNext');
 
-carouselImages.forEach(img => {
+let currentSlide = 0;
+
+// ouvrir lightbox
+slides.forEach((img, i) => {
   img.addEventListener('click', () => {
-    lightboxImg.src = img.src;
-    lightbox.style.display = 'flex';
+    currentSlide = i;
+    openLightbox();
   });
 });
 
-lightbox.addEventListener('click', () => {
-  lightbox.style.display = 'none';
+function openLightbox() {
+  lightboxImg.src = slides[currentSlide].src;
+  lightbox.classList.add('active');
+}
+
+// fermer
+btnClose.onclick = () => lightbox.classList.remove('active');
+lightbox.onclick = (e) => {
+  if (e.target === lightbox) lightbox.classList.remove('active');
+};
+
+// navigation flèches
+btnPrev.onclick = () => {
+  currentSlide = (currentSlide - 1 + slides.length) % slides.length;
+  openLightbox();
+};
+
+btnNext.onclick = () => {
+  currentSlide = (currentSlide + 1) % slides.length;
+  openLightbox();
+};
+
+// navigation clavier
+document.addEventListener('keydown', (e) => {
+  if (!lightbox.classList.contains('active')) return;
+  if (e.key === 'ArrowRight') btnNext.onclick();
+  if (e.key === 'ArrowLeft') btnPrev.onclick();
+  if (e.key === 'Escape') btnClose.onclick();
 });
 </script>
 
