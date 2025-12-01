@@ -208,6 +208,32 @@
     border-top: 1px solid var(--border-soft);
     padding-top: 12px;
   }
+    
+  .contact-links {
+    margin-top: 4px;
+    display: flex;
+    gap: 8px;
+    font-size: 13px;
+    align-items: center;
+  }
+
+  .contact-links a {
+    color: var(--accent);
+    font-weight: 500;
+    text-decoration: none;
+    padding: 2px 4px;
+    transition: 0.25s ease;
+    border-bottom: 1px solid transparent;
+}
+
+  .contact-links a:hover {
+    border-bottom: 1px solid var(--accent);
+    filter: brightness(1.15);
+}
+
+  .contact-links .sep {
+    color: var(--text-soft);
+}
 
   .contact-photo {
     width: 52px;
@@ -380,8 +406,11 @@ function sendEmail() {
         <div>
           <strong>Jérémy Heyob</strong><br>
           <span style="font-size:12px;color:var(--text-soft);">Négociateur Immobilier</span><br>
-          <a href="mailto:contact@jeremyheyob.fr">Email</a> ·
-          <a href="sms:+33648145565">SMS</a> ·
+        <div class="contact-links">
+          <a href="mailto:contact@jeremyheyob.fr">Email</a>
+          <span class="sep">·</span>
+          <a href="sms:+33648145565">SMS</a>
+          <span class="sep">·</span>
           <a href="tel:+33648145565">Appel</a>
         </div>
       </div>
