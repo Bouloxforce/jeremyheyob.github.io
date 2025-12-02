@@ -2,13 +2,16 @@
 <html lang="fr">
 <head>
   <meta charset="UTF-8">
-  <title>40 Bd Edouard Herriot — T3 Centre-ville | Jérémy Heyob Immobilier</title>
+  <title>Naël - 40 Bd Edouard Herriot | Jérémy Heyob Immobilier</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link rel="preload" href="biens-immobiliers/photos/Nael 1.webp" as="image">
+
   <style>
   :root {
     --bg: #FFFBF5;
     --accent: #C6AA77;
-    --accent-soft: rgba(198, 169, 119, 0.16);
+    --accent-soft: rgba(198,169,119,0.16);
     --text-main: #191919;
     --text-soft: #7A7A7A;
     --border-soft: #e5e7eb;
@@ -17,12 +20,12 @@
   }
 
   * { box-sizing: border-box; }
-
   body {
     margin: 0;
     font-family: -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
     background: var(--bg);
     color: var(--text-main);
+    overflow-x: hidden;
   }
 
   .page {
@@ -40,21 +43,19 @@
     margin: 16px auto 24px;
     padding: 8px 28px;
     background: var(--card-bg);
-    border-radius: 999px;
-    box-shadow: 0 18px 40px rgba(15, 23, 42, 0.06);
-    border: 1px solid rgba(15, 23, 42, 0.04);
+    border-radius: 22px;
+    box-shadow: var(--shadow-soft);
+    border: 1px solid rgba(15,23,42,0.04);
   }
 
-  .header-left { display: flex; align-items: center; }
-  .logo { max-width: 140px; height: auto; }
+  .logo { max-width: 140px; }
+
   .header-center { flex: 1; text-align: center; }
 
   .tagline-main {
     font-size: 13px;
     letter-spacing: 0.18em;
-    text-transform: uppercase;
     color: var(--text-soft);
-    font-weight: 500;
   }
 
   .tagline-sub {
@@ -71,8 +72,9 @@
 
   .layout {
     display: grid;
-    grid-template-columns: 1fr 0.8fr;
+    grid-template-columns: 1.2fr 0.8fr;
     gap: 22px;
+    align-items: start; /* Empêche la colonne droite de s'étirer */
   }
 
   .card {
@@ -84,21 +86,22 @@
   }
 
   .pill {
-    display: inline-block;
-    padding: 5px 12px;
     background: var(--accent-soft);
     color: var(--accent);
+    padding: 5px 12px;
     border-radius: 999px;
     font-size: 11px;
-    margin-bottom: 10px;
     font-weight: 600;
+    margin-bottom: 10px;
+    display: inline-block;
   }
 
-  .subtitle { font-size: 14px; color: var(--text-soft); margin-top: -4px; }
+  h1 { font-size: 26px; margin-bottom: 0; }
+  .subtitle { color: var(--text-soft); margin-top: 4px; }
 
   .chip {
     padding: 6px 12px;
-    background: rgba(198, 169, 119, 0.10);
+    background: rgba(198,169,119,0.10);
     border-radius: 999px;
     font-size: 12px;
     margin-right: 6px;
@@ -106,24 +109,28 @@
     display: inline-block;
   }
 
-  /* -------------------- CARROUSEL AUTO-HAUTEUR --------------------- */
+  /* CARROUSEL */
   .carousel {
     position: relative;
+    width: 100%;
+    height: 260px;
+    margin: 20px 0;
     overflow: hidden;
     border-radius: 16px;
-    margin: 20px 0;
-    width: 100%;
   }
 
   .carousel-track {
     display: flex;
+    width: 100%;
+    height: 100%;
     transition: transform 0.35s ease;
   }
 
   .carousel img {
+    flex: 0 0 100%;
     width: 100%;
-    height: auto;        /* PREND LA HAUTEUR NATURELLE DE L’IMAGE */
-    display: block;
+    height: 100%;
+    object-fit: cover;
     cursor: pointer;
   }
 
@@ -137,14 +144,12 @@
     padding: 6px 12px;
     border-radius: 999px;
     cursor: pointer;
-    z-index: 10;
   }
 
   .carousel-btn.prev { left: 10px; }
   .carousel-btn.next { right: 10px; }
 
-  /* ----------------------------------------------------------------- */
-
+  /* GRID */
   .grid-two {
     display: grid;
     grid-template-columns: repeat(2,1fr);
@@ -159,6 +164,7 @@
     color: var(--text-soft);
   }
 
+  /* FORMULAIRE */
   .form-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -187,9 +193,22 @@
     font-size: 15px;
     font-weight: 600;
     border: none;
-    cursor: pointer;
   }
 
+  .btn-retour {
+    display: inline-block;
+    margin: 10px 0 18px;
+    padding: 6px 12px;
+    font-size: 13px;
+    font-weight: 500;
+    color: #7a5a29;
+    text-decoration: none;
+    border-radius: 10px;
+    border: 1px solid rgba(198,169,119,0.35);
+    background: rgba(198,169,119,0.10);
+  }
+
+  /* CONTACT */
   .contact-card {
     margin-top: 18px;
     display: flex;
@@ -203,16 +222,11 @@
     height: 52px;
     border-radius: 999px;
     object-fit: cover;
-    object-position: top center;
+    object-position: center;
     border: 1px solid #e5e7eb;
   }
 
-  .contact-links {
-    margin-top: 6px;
-    display: flex;
-    gap: 8px;
-    font-size: 12px;
-  }
+  .contact-links { margin-top: 6px; display: flex; gap: 8px; font-size: 12px; }
 
   .contact-links a {
     color: #C6AA77;
@@ -221,9 +235,29 @@
     text-decoration: none;
   }
 
-  .contact-links a:hover { filter: brightness(1.25); }
+  /* YOUTUBE LAZY */
+  .yt-lazy {
+    position: relative;
+    width: 100%;
+    border-radius: 16px;
+    overflow: hidden;
+    cursor: pointer;
+  }
 
-  /* Lightbox premium */
+  .yt-thumb { width: 100%; display: block; }
+
+  .yt-play {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 46px;
+    color: white;
+    background: radial-gradient(circle at center, rgba(0,0,0,0), rgba(0,0,0,0.45));
+  }
+
+  /* LIGHTBOX */
   .lightbox {
     position: fixed;
     inset: 0;
@@ -237,10 +271,7 @@
     transition: opacity 0.25s ease;
   }
 
-  .lightbox.active {
-    opacity: 1;
-    pointer-events: auto;
-  }
+  .lightbox.active { opacity: 1; pointer-events: auto; }
 
   .lightbox img {
     max-width: 90%;
@@ -276,189 +307,223 @@
     background: rgba(0,0,0,0.35);
     border-radius: 999px;
   }
-  </style>
 
-<script>
-function sendEmail() {
-  const bien = "T3 - 40 Bd Edouard Herriot – Saint-Priest";
-  const prenom = document.getElementById("prenomClient").value;
-  const nom = document.getElementById("nomClient").value;
-  const telephone = document.getElementById("telephoneClient").value;
-  const emailClient = document.getElementById("emailClient").value;
-  const date = document.getElementById("date").value;
-  const creneau = document.getElementById("creneau").value;
-
-  if(!prenom || !nom || !emailClient || !telephone || !date || !creneau){
-    alert("Merci de renseigner tous les champs.");
-    return;
+  /* RESPONSIVE */
+  @media (max-width: 1024px) {
+    .layout { grid-template-columns: 1fr; }
   }
 
-  const subject = encodeURIComponent("Demande de contre-visite - " + bien);
-  const body = encodeURIComponent(
-    "Bonjour,\n\n" +
-    "Je souhaite programmer une contre-visite pour le bien : " + bien + ".\n\n" +
-    "Nom : " + prenom + " " + nom + "\n" +
-    "Téléphone : " + telephone + "\n" +
-    "Email : " + emailClient + "\n\n" +
-    "Date souhaitée : " + date + "\n" +
-    "Créneau souhaité : " + creneau + "\n\n"
-  );
+  @media (max-width: 768px) {
+    .page { padding: 16px 12px 40px; }
 
-  window.location.href = "mailto:contact@jeremyheyob.fr?subject=" + subject + "&body=" + body;
-}
-</script>
+    header {
+      flex-direction: column;
+      padding: 14px;
+      border-radius: 22px;
+    }
 
+    .carousel { height: auto; aspect-ratio: 16/10; }
+    .carousel img { height: 100%; }
+
+    .grid-two { grid-template-columns: 1fr; font-size: 13px; }
+
+    .form-grid { grid-template-columns: 1fr; }
+
+    .btn { font-size: 14px; }
+  }
+
+  @media (max-width: 480px) {
+    .carousel { aspect-ratio: 4/3; }
+    .lightbox-prev, .lightbox-next { font-size: 32px; }
+    .lightbox-close { font-size: 40px; }
+  }
+  </style>
+
+  <script>
+  function sendEmail() {
+    const bien = "Naël - 40 Bd Edouard Herriot";
+    const p = document.getElementById("prenomClient").value;
+    const n = document.getElementById("nomClient").value;
+    const t = document.getElementById("telephoneClient").value;
+    const e = document.getElementById("emailClient").value;
+    const d = document.getElementById("date").value;
+    const c = document.getElementById("creneau").value;
+
+    if(!p || !n || !e || !t || !d || !c){
+      alert("Merci de renseigner tous les champs.");
+      return;
+    }
+
+    const subject = encodeURIComponent("Demande de contre-visite - " + bien);
+    const body = encodeURIComponent(
+      "Bonjour,\n\n" +
+      "Je souhaite programmer une contre-visite pour le bien : " + bien + ".\n\n" +
+      "Nom : " + p + " " + n + "\n" +
+      "Téléphone : " + t + "\n" +
+      "Email : " + e + "\n\n" +
+      "Date souhaitée : " + d + "\n" +
+      "Créneau souhaité : " + c + "\n\n"
+    );
+
+    window.location.href =
+      "mailto:contact@jeremyheyob.fr?subject=" + subject + "&body=" + body;
+  }
+  </script>
 </head>
 
 <body>
 <div class="page">
 
-<header>
-  <div class="header-left">
-    <img src="images/logo.png" class="logo">
-  </div>
-
-  <div class="header-center">
-    <div class="tagline-main">VOS PROJETS IMMOBILIERS N'ONT JAMAIS ÉTÉ AUSSI SIMPLES !</div>
-    <div class="tagline-sub"><strong>JÉRÉMY HEYOB</strong></div>
-  </div>
-
-  <nav></nav>
-</header>
-
-<a href="index.html" style="font-size:13px;color:#7a5a29;text-decoration:none;">← Retour</a>
-
-<main class="layout">
-
-<section class="card">
-  <div class="pill">Informations du bien</div>
-
-  <h1>Naël</h1>
-  <p class="subtitle">40 Boulevard Edouard Herriot, 69800 Saint-Priest</p>
-
-  <div class="chips">
-    <span class="chip">T3</span>
-    <span class="chip">72 m²</span>
-    <span class="chip">8,39 m² extérieur</span>
-    <span class="chip">Étage 1/5</span>
-    <span class="chip">DPE B-B</span>
-    <span class="chip">Garage compris</span>
-    <span class="chip">220 000 €</span>
-  </div>
-
-  <!-- CARROUSEL AUTO-HAUTEUR -->
-  <div class="carousel">
-    <div class="carousel-track">
-      <img src="biens-immobiliers/photos/Nael%201.png">
-      <img src="biens-immobiliers/photos/Nael%202.png">
-      <img src="biens-immobiliers/photos/Nael%203.png">
-      <img src="biens-immobiliers/photos/Nael%204.png">
-      <img src="biens-immobiliers/photos/Nael%205.png">
-      <img src="biens-immobiliers/photos/Nael%206.png">
-      <img src="biens-immobiliers/photos/Nael%207.png">
-      <img src="biens-immobiliers/photos/Nael%208.png">
-      <img src="biens-immobiliers/photos/Nael%209.png">
-      <img src="biens-immobiliers/photos/Nael%2010.png">
-      <img src="biens-immobiliers/photos/Nael%2011.png">
+  <header>
+    <img src="images/logo.webp" class="logo">
+    <div class="header-center">
+      <div class="tagline-main">VOS PROJETS IMMOBILIERS N'ONT JAMAIS ÉTÉ AUSSI SIMPLES !</div>
+      <div class="tagline-sub"><strong>JÉRÉMY HEYOB</strong></div>
     </div>
+  </header>
 
-    <button class="carousel-btn prev">‹</button>
-    <button class="carousel-btn next">›</button>
-  </div>
+  <a href="index.html" class="btn-retour">← Retour</a>
 
-  <div class="grid-two">
-    <div><span>Adresse</span>40 Bd Edouard Herriot</div>
-    <div><span>Secteur</span>Centre-ville</div>
-    <div><span>Charges</span>152 €/mois</div>
-    <div><span>Taxe foncière</span>1152 €/an</div>
-    <div><span>Chauffage</span>Gaz collectif</div>
-    <div><span>Année</span>2017</div>
-    <div><span>À proximité</span>Écoles, commerces, Tram T2, C25</div>
-    <div><span>Points forts</span>Sécurisé, traversant, garage</div>
-  </div>
+  <main class="layout">
 
-  <h2 style="margin-top:20px;">Vidéo de présentation</h2>
-  <iframe src="https://www.youtube.com/embed/BcZKUKU0p-U"
-          allowfullscreen
-          style="width:100%;height:260px;border:0;border-radius:16px;"></iframe>
+    <section class="card">
+      <div class="pill">Informations du bien</div>
 
-  <h2 style="margin-top:20px;">Lien de l’annonce</h2>
-  <a href="https://www.agence.immo/achat/appartement-t3-3-pieces-saint-priest-69800-VA33868"
-     target="_blank"
-     style="color:#1a73e8;font-size:15px;text-decoration:underline;">
-     Voir l’annonce sur le site →
-  </a>
+      <h1>Naël</h1>
+      <p class="subtitle">40 Boulevard Edouard Herriot, 69800 Saint-Priest</p>
 
-  <h2 style="margin-top:28px;">Documents du bien</h2>
-
-  <ul style="list-style:none;padding:0;margin:12px 0;font-size:15px;">
-    <li><a href="biens-immobiliers/documents/assurance-copropriete.pdf" target="_blank">Assurance copropriété →</a></li>
-    <li><a href="biens-immobiliers/documents/attestation-achievement-travaux.pdf" target="_blank">Attestation achèvement des travaux →</a></li>
-    <li><a href="biens-immobiliers/documents/attestation-assurance-dommages-ouvrages.pdf" target="_blank">Assurance dommages ouvrages →</a></li>
-    <li><a href="biens-immobiliers/documents/attestation-non-opposition.pdf" target="_blank">Attestation de non opposition →</a></li>
-    <li><a href="biens-immobiliers/documents/carrez.pdf" target="_blank">Mesurage Carrez →</a></li>
-    <li><a href="biens-immobiliers/documents/carnet-entretien.pdf" target="_blank">Carnet d’entretien →</a></li>
-    <li><a href="biens-immobiliers/documents/daact.pdf" target="_blank">DAACT →</a></li>
-    <li><a href="biens-immobiliers/documents/dpe.pdf" target="_blank">DPE →</a></li>
-    <li><a href="biens-immobiliers/documents/pv-ag-2022.pdf" target="_blank">PV AG 2022 →</a></li>
-    <li><a href="biens-immobiliers/documents/pv-ag-2023.pdf" target="_blank">PV AG 2023 →</a></li>
-    <li><a href="biens-immobiliers/documents/pv-ag-2024.pdf" target="_blank">PV AG 2024 →</a></li>
-    <li><a href="biens-immobiliers/documents/plan.pdf" target="_blank">Plan →</a></li>
-    <li><a href="biens-immobiliers/documents/reglement-copropriete.pdf" target="_blank">Règlement de copropriété →</a></li>
-  </ul>
-
-</section>
-
-<aside class="card">
-  <h2>Programmer une contre-visite</h2>
-  <p class="subtitle">Remplissez vos coordonnées et vos disponibilités.</p>
-
-  <div class="form-grid">
-    <div><label>Votre prénom</label><input id="prenomClient" type="text"></div>
-    <div><label>Votre nom</label><input id="nomClient" type="text"></div>
-    <div><label>Votre téléphone</label><input id="telephoneClient" type="tel" placeholder="06…"></div>
-    <div><label>Votre email</label><input id="emailClient" type="email" placeholder="exemple@domaine.fr"></div>
-    <div><label>Date souhaitée</label><input id="date" type="date"></div>
-    <div><label>Créneau souhaité</label>
-      <select id="creneau">
-        <option value="">-- Choisir --</option>
-        <option>09:00 - 10:00</option>
-        <option>10:00 - 11:00</option>
-        <option>11:00 - 12:00</option>
-        <option>14:00 - 15:00</option>
-        <option>15:00 - 16:00</option>
-        <option>16:00 - 17:00</option>
-        <option>17:00 - 18:00</option>
-      </select>
-    </div>
-
-    <button class="btn" onclick="sendEmail()">Valider ma demande</button>
-  </div>
-
-  <div class="contact-card">
-    <img src="images/photo.png" class="contact-photo">
-    <div>
-      <strong>Jérémy Heyob</strong><br>
-      <span style="font-size:12px;color:var(--text-soft);">Négociateur Immobilier</span><br>
-      <div class="contact-links">
-        <a href="mailto:contact@jeremyheyob.fr">✉️ Email</a>
-        <a href="sms:+33648145565">💬 SMS</a>
-        <a href="tel:+33648145565">📞 Appel</a>
+      <div class="chips">
+        <span class="chip">T3</span>
+        <span class="chip">72 m²</span>
+        <span class="chip">8,39 m² extérieur</span>
+        <span class="chip">Étage 1/5</span>
+        <span class="chip">DPE B-B</span>
+        <span class="chip">Garage compris</span>
+        <span class="chip">220 000 €</span>
       </div>
-    </div>
-  </div>
 
-</aside>
+      <!-- CARROUSEL -->
+      <div class="carousel">
+        <div class="carousel-track">
+          <img src="biens-immobiliers/photos/Nael 1.webp">
+          <img src="biens-immobiliers/photos/Nael 2.webp" loading="lazy">
+          <img src="biens-immobiliers/photos/Nael 3.webp" loading="lazy">
+          <img src="biens-immobiliers/photos/Nael 4.webp" loading="lazy">
+          <img src="biens-immobiliers/photos/Nael 5.webp" loading="lazy">
+          <img src="biens-immobiliers/photos/Nael 6.webp" loading="lazy">
+          <img src="biens-immobiliers/photos/Nael 7.webp" loading="lazy">
+          <img src="biens-immobiliers/photos/Nael 8.webp" loading="lazy">
+          <img src="biens-immobiliers/photos/Nael 9.webp" loading="lazy">
+          <img src="biens-immobiliers/photos/Nael 10.webp" loading="lazy">
+          <img src="biens-immobiliers/photos/Nael 11.webp" loading="lazy">
+        </div>
 
-</main>
+        <button class="carousel-btn prev">‹</button>
+        <button class="carousel-btn next">›</button>
+      </div>
+
+      <!-- INFOS -->
+      <div class="grid-two">
+        <div><span>Adresse</span>40 Bd Edouard Herriot</div>
+        <div><span>Secteur</span>Centre-ville</div>
+        <div><span>Charges</span>152 €/mois (chauffage, EC, EF, EPC, ascenseur, charges garage)</div>
+        <div><span>Taxe foncière</span>1152 €/an</div>
+        <div><span>Chauffage</span>Gaz collectif</div>
+        <div><span>Année</span>2017</div>
+        <div><span>À proximité</span>Écoles, commerces, Tram T2, C25</div>
+        <div><span>Points forts</span>Sécurisé, traversant, garage</div>
+      </div>
+
+      <!-- VIDEO -->
+      <h2 style="margin-top:20px;">Vidéo de présentation</h2>
+
+      <div class="yt-lazy" data-id="BcZKUKU0p-U">
+        <img src="biens-immobiliers/photos/Miniature_YouTube_2.webp" class="yt-thumb">
+        <div class="yt-play">▶</div>
+      </div>
+
+      <!-- LIEN ANNONCE -->
+      <h2 style="margin-top:20px;">Lien de l’annonce</h2>
+      <a href="https://www.agence.immo/achat/appartement-t3-3-pieces-saint-priest-69800-VA33868"
+         target="_blank"
+         style="color:#1a73e8;font-size:15px;text-decoration:underline;">
+         Voir l’annonce sur le site →
+      </a>
+
+      <!-- DOCUMENTS -->
+      <h2 style="margin-top:28px;">Documents du bien</h2>
+
+      <ul style="list-style:none;padding:0;margin:12px 0;font-size:15px;">
+        <li><a href="biens-immobiliers/documents/assurance-copropriete.pdf" target="_blank">Assurance copropriété →</a></li>
+        <li><a href="biens-immobiliers/documents/attestation-achievement-travaux.pdf" target="_blank">Attestation achèvement des travaux →</a></li>
+        <li><a href="biens-immobiliers/documents/attestation-assurance-dommages-ouvrages.pdf" target="_blank">Assurance dommages ouvrages →</a></li>
+        <li><a href="biens-immobiliers/documents/attestation-non-opposition.pdf" target="_blank">Attestation de non opposition →</a></li>
+        <li><a href="biens-immobiliers/documents/carrez.pdf" target="_blank">Mesurage Carrez →</a></li>
+        <li><a href="biens-immobiliers/documents/carnet-entretien.pdf" target="_blank">Carnet d’entretien →</a></li>
+        <li><a href="biens-immobiliers/documents/daact.pdf" target="_blank">DAACT →</a></li>
+        <li><a href="biens-immobiliers/documents/dpe.pdf" target="_blank">DPE →</a></li>
+        <li><a href="biens-immobiliers/documents/pv-ag-2022.pdf" target="_blank">PV AG 2022 →</a></li>
+        <li><a href="biens-immobiliers/documents/pv-ag-2023.pdf" target="_blank">PV AG 2023 →</a></li>
+        <li><a href="biens-immobiliers/documents/pv-ag-2024.pdf" target="_blank">PV AG 2024 →</a></li>
+        <li><a href="biens-immobiliers/documents/plan.pdf" target="_blank">Plan →</a></li>
+        <li><a href="biens-immobiliers/documents/reglement-copropriete.pdf" target="_blank">Règlement de copropriété →</a></li>
+      </ul>
+
+    </section>
+
+    <!-- CONTRE VISITE -->
+    <aside class="card">
+      <h2>Programmer une contre-visite</h2>
+      <p class="subtitle">Remplissez vos coordonnées et vos disponibilités.</p>
+
+      <div class="form-grid">
+        <div><label>Votre prénom</label><input id="prenomClient" type="text"></div>
+        <div><label>Votre nom</label><input id="nomClient" type="text"></div>
+        <div><label>Votre téléphone</label><input id="telephoneClient" type="tel"></div>
+        <div><label>Votre email</label><input id="emailClient" type="email"></div>
+        <div><label>Date souhaitée</label><input id="date" type="date"></div>
+        <div><label>Créneau souhaité</label>
+          <select id="creneau">
+            <option value="">-- Choisir --</option>
+            <option>09:00 - 10:00</option>
+            <option>10:00 - 11:00</option>
+            <option>11:00 - 12:00</option>
+            <option>14:00 - 15:00</option>
+            <option>15:00 - 16:00</option>
+            <option>16:00 - 17:00</option>
+            <option>17:00 - 18:00</option>
+            <option>18:00 - 19:00</option>
+            <option>19:00 - 20:00</option>
+          </select>
+        </div>
+
+        <button class="btn" onclick="sendEmail()">Valider ma demande</button>
+      </div>
+
+      <div class="contact-card">
+        <img src="images/photo.webp" class="contact-photo">
+        <div>
+          <strong>Jérémy Heyob</strong><br>
+          <span style="font-size:12px;color:var(--text-soft);">Négociateur Immobilier à Saint-Priest</span><br>
+          <div class="contact-links">
+            <a href="mailto:contact@jeremyheyob.fr">✉️ Email</a>
+            <a href="sms:+33648145565">💬 SMS</a>
+            <a href="tel:+33648145565">📞 Appel</a>
+          </div>
+        </div>
+      </div>
+
+    </aside>
+
+  </main>
 
 </div>
 
-<!-- Lightbox -->
+<!-- LIGHTBOX -->
 <div class="lightbox" id="lightbox">
   <span class="lightbox-close" id="lightboxClose">×</span>
   <span class="lightbox-prev" id="lightboxPrev">‹</span>
-  <img id="lightboxImg" src="">
+  <img id="lightboxImg">
   <span class="lightbox-next" id="lightboxNext">›</span>
 </div>
 
@@ -500,6 +565,7 @@ function openLightbox() {
 }
 
 btnClose.onclick = () => lightbox.classList.remove('active');
+
 lightbox.onclick = (e) => {
   if (e.target === lightbox) lightbox.classList.remove('active');
 };
@@ -519,6 +585,17 @@ document.addEventListener('keydown', (e) => {
   if (e.key === 'ArrowRight') btnNext.onclick();
   if (e.key === 'ArrowLeft') btnPrev.onclick();
   if (e.key === 'Escape') btnClose.onclick();
+});
+
+/* YOUTUBE AUTOPLAY AU CLIC */
+document.querySelectorAll('.yt-lazy').forEach(el => {
+  el.addEventListener('click', () => {
+    const id = el.dataset.id;
+    el.innerHTML = `
+      <iframe src="https://www.youtube.com/embed/${id}?autoplay=1"
+              allowfullscreen
+              style="width:100%;height:260px;border:0;border-radius:16px;"></iframe>`;
+  }, { once: true });
 });
 </script>
 
