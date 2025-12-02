@@ -4,6 +4,10 @@
   <meta charset="UTF-8">
   <title>Naël - 40 Bd Edouard Herriot | Jérémy Heyob Immobilier</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Préchargement de l'image principale du carrousel -->
+  <link rel="preload" href="biens-immobiliers/photos/Nael 1.webp" as="image">
+
   <style>
   :root {
     --bg: #FFFBF5;
@@ -16,16 +20,14 @@
     --shadow-soft: 0 20px 50px rgba(25,25,25,0.10);
   }
 
-  * {
-    box-sizing: border-box;
-  }
+  * { box-sizing: border-box; }
 
   body {
     margin: 0;
     font-family: -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
     background: var(--bg);
     color: var(--text-main);
-    overflow-x: hidden; /* sécurité : aucun débordement horizontal possible */
+    overflow-x: hidden;
   }
 
   .page {
@@ -49,9 +51,15 @@
     border: 1px solid rgba(15, 23, 42, 0.04);
   }
 
-  .logo { max-width: 140px; height: auto; }
+  .logo {
+    max-width: 140px;
+    height: auto;
+  }
 
-  .header-center { flex: 1; text-align: center; }
+  .header-center {
+    flex: 1;
+    text-align: center;
+  }
 
   .tagline-main {
     font-size: 13px;
@@ -111,13 +119,13 @@
     display: inline-block;
   }
 
-  /* CARROUSEL – version stable (aucun débordement) */
+  /* CARROUSEL */
   .carousel {
     position: relative;
     width: 100%;
     height: 260px;
     margin: 20px 0;
-    overflow: hidden;      /* coupe tout ce qui dépasse */
+    overflow: hidden;
     border-radius: 16px;
   }
 
@@ -126,11 +134,11 @@
     width: 100%;
     height: 100%;
     transition: transform 0.35s ease;
-    overflow: hidden;      /* sécurité supplémentaire */
+    overflow: hidden;
   }
 
   .carousel img {
-    flex: 0 0 100%;        /* chaque slide = 100% de la largeur du carrousel */
+    flex: 0 0 100%;
     width: 100%;
     height: 100%;
     object-fit: cover;
@@ -307,18 +315,38 @@
     transform: translateX(-2px);
   }
 
-  /* RESPONSIVE */
+  /* YOUTUBE LAZY */
+  .yt-lazy {
+    position: relative;
+    width: 100%;
+    border-radius: 16px;
+    overflow: hidden;
+    cursor: pointer;
+  }
 
+  .yt-thumb {
+    width: 100%;
+    display: block;
+  }
+
+  .yt-play {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 46px;
+    color: white;
+    background: radial-gradient(circle at center, rgba(0,0,0,0.0), rgba(0,0,0,0.45));
+  }
+
+  /* RESPONSIVE */
   @media (max-width: 1024px) {
-    .layout {
-      grid-template-columns: 1fr;
-    }
+    .layout { grid-template-columns: 1fr; }
   }
 
   @media (max-width: 768px) {
-    .page {
-      padding: 16px 12px 40px;
-    }
+    .page { padding: 16px 12px 40px; }
 
     header {
       flex-direction: column;
@@ -356,9 +384,7 @@
   }
 
   @media (max-width: 480px) {
-    .carousel {
-      aspect-ratio: 4/3;
-    }
+    .carousel { aspect-ratio: 4/3; }
 
     .carousel-btn.prev { left: 6px; }
     .carousel-btn.next { right: 6px; }
@@ -406,14 +432,13 @@
     window.location.href = "mailto:contact@jeremyheyob.fr?subject=" + subject + "&body=" + body;
   }
   </script>
-
 </head>
 
 <body>
 <div class="page">
 
   <header>
-    <img src="images/logo.png" class="logo">
+    <img src="images/logo.webp" alt="Jérémy Heyob Immobilier" class="logo">
     <div class="header-center">
       <div class="tagline-main">VOS PROJETS IMMOBILIERS N'ONT JAMAIS ÉTÉ AUSSI SIMPLES !</div>
       <div class="tagline-sub"><strong>JÉRÉMY HEYOB</strong></div>
@@ -443,17 +468,18 @@
       <!-- CARROUSEL -->
       <div class="carousel">
         <div class="carousel-track">
-          <img src="biens-immobiliers/photos/Nael 1.png">
-          <img src="biens-immobiliers/photos/Nael 2.png">
-          <img src="biens-immobiliers/photos/Nael 3.png">
-          <img src="biens-immobiliers/photos/Nael 4.png">
-          <img src="biens-immobiliers/photos/Nael 5.png">
-          <img src="biens-immobiliers/photos/Nael 6.png">
-          <img src="biens-immobiliers/photos/Nael 7.png">
-          <img src="biens-immobiliers/photos/Nael 8.png">
-          <img src="biens-immobiliers/photos/Nael 9.png">
-          <img src="biens-immobiliers/photos/Nael 10.png">
-          <img src="biens-immobiliers/photos/Nael 11.png">
+          <!-- première image sans lazy pour affichage instantané -->
+          <img src="biens-immobiliers/photos/Nael 1.webp" alt="Naël - Photo 1">
+          <img src="biens-immobiliers/photos/Nael 2.webp" alt="Naël - Photo 2" loading="lazy">
+          <img src="biens-immobiliers/photos/Nael 3.webp" alt="Naël - Photo 3" loading="lazy">
+          <img src="biens-immobiliers/photos/Nael 4.webp" alt="Naël - Photo 4" loading="lazy">
+          <img src="biens-immobiliers/photos/Nael 5.webp" alt="Naël - Photo 5" loading="lazy">
+          <img src="biens-immobiliers/photos/Nael 6.webp" alt="Naël - Photo 6" loading="lazy">
+          <img src="biens-immobiliers/photos/Nael 7.webp" alt="Naël - Photo 7" loading="lazy">
+          <img src="biens-immobiliers/photos/Nael 8.webp" alt="Naël - Photo 8" loading="lazy">
+          <img src="biens-immobiliers/photos/Nael 9.webp" alt="Naël - Photo 9" loading="lazy">
+          <img src="biens-immobiliers/photos/Nael 10.webp" alt="Naël - Photo 10" loading="lazy">
+          <img src="biens-immobiliers/photos/Nael 11.webp" alt="Naël - Photo 11" loading="lazy">
         </div>
 
         <button class="carousel-btn prev">‹</button>
@@ -471,11 +497,13 @@
         <div><span>Points forts</span>Sécurisé, traversant, garage</div>
       </div>
 
-      <!-- Vidéo -->
+      <!-- Vidéo avec Youtube lazy-load -->
       <h2 style="margin-top:20px;">Vidéo de présentation</h2>
-      <iframe src="https://www.youtube.com/embed/BcZKUKU0p-U"
-              allowfullscreen
-              style="width:100%;height:260px;border:0;border-radius:16px;"></iframe>
+      <div class="yt-lazy" data-id="BcZKUKU0p-U">
+        <!-- On utilise la première photo comme vignette vidéo -->
+        <img src="biens-immobiliers/photos/Nael 1.webp" alt="Vidéo de présentation Naël" class="yt-thumb" loading="lazy">
+        <div class="yt-play">▶</div>
+      </div>
 
       <!-- Lien annonce -->
       <h2 style="margin-top:20px;">Lien de l’annonce</h2>
@@ -536,7 +564,7 @@
       </div>
 
       <div class="contact-card">
-        <img src="images/photo.png" class="contact-photo">
+        <img src="images/photo.webp" alt="Photo Jérémy Heyob" class="contact-photo" loading="lazy">
         <div>
           <strong>Jérémy Heyob</strong><br>
           <span style="font-size:12px;color:var(--text-soft);">Négociateur Immobilier à Saint-Priest</span><br>
@@ -558,7 +586,7 @@
 <div class="lightbox" id="lightbox">
   <span class="lightbox-close" id="lightboxClose">×</span>
   <span class="lightbox-prev" id="lightboxPrev">‹</span>
-  <img id="lightboxImg" src="">
+  <img id="lightboxImg" src="" alt="">
   <span class="lightbox-next" id="lightboxNext">›</span>
 </div>
 
@@ -620,6 +648,17 @@ document.addEventListener('keydown', (e) => {
   if (e.key === 'ArrowRight') btnNext.onclick();
   if (e.key === 'ArrowLeft') btnPrev.onclick();
   if (e.key === 'Escape') btnClose.onclick();
+});
+
+/* YOUTUBE LAZY LOAD */
+document.querySelectorAll('.yt-lazy').forEach(el => {
+  el.addEventListener('click', () => {
+    const id = el.dataset.id;
+    el.innerHTML = `
+      <iframe src="https://www.youtube.com/embed/${id}" 
+              allowfullscreen 
+              style="width:100%;height:260px;border:0;border-radius:16px;"></iframe>`;
+  }, { once: true });
 });
 </script>
 
