@@ -21,6 +21,7 @@
   }
 
   * { box-sizing: border-box; }
+
   body {
     margin: 0;
     font-family: -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
@@ -29,299 +30,636 @@
     overflow-x: hidden;
   }
 
-  .page { max-width: 1100px; margin: 0 auto; padding: 24px 16px 50px; }
+  .page {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 24px 16px 50px;
+  }
 
   /* HEADER */
   header {
-    display: flex; align-items: center; justify-content: space-between;
-    gap: 18px; max-width: 960px; margin: 16px auto 24px;
-    padding: 8px 28px; background: var(--card-bg); border-radius: 999px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 18px;
+    max-width: 960px;
+    margin: 16px auto 24px;
+    padding: 8px 28px;
+    background: var(--card-bg);
+    border-radius: 999px;
     box-shadow: 0 18px 40px rgba(15, 23, 42, 0.06);
     border: 1px solid rgba(15, 23, 42, 0.04);
   }
-  .logo { max-width: 140px; height: auto; }
-  .header-center { flex: 1; text-align: center; }
-  .tagline-main { font-size: 13px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--text-soft); }
-  .tagline-sub { margin-top: 12px; font-size: 12px; text-transform: uppercase; letter-spacing: 0.12em; }
 
-  /* LAYOUT */
-  .layout { display: grid; grid-template-columns: 1fr 0.8fr; gap: 22px; }
-  .card {
-    background: var(--card-bg); border-radius: 22px; border: 1px solid var(--border-soft);
-    padding: 20px 22px; box-shadow: var(--shadow-soft);
+  .logo {
+    max-width: 140px;
+    height: auto;
   }
-  .pill { padding: 5px 12px; background: var(--accent-soft); color: var(--accent); border-radius: 999px; font-size: 11px; font-weight: 600; }
+
+  .header-center {
+    flex: 1;
+    text-align: center;
+  }
+
+  .tagline-main {
+    font-size: 13px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--text-soft);
+    font-weight: 500;
+  }
+
+  .tagline-sub {
+    margin-top: 12px;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+  }
+
+  .tagline-sub strong {
+    color: var(--text-main);
+    font-weight: 900;
+  }
+
+  /* LAYOUT – colonne gauche un peu plus large */
+  .layout {
+    display: grid;
+    grid-template-columns: 1.2fr 0.8fr;
+    gap: 22px;
+  }
+
+  .card {
+    background: var(--card-bg);
+    border-radius: 22px;
+    border: 1px solid var(--border-soft);
+    padding: 20px 22px;
+    box-shadow: var(--shadow-soft);
+  }
+
+  .pill {
+    display: inline-block;
+    padding: 5px 12px;
+    background: var(--accent-soft);
+    color: var(--accent);
+    border-radius: 999px;
+    font-size: 11px;
+    margin-bottom: 10px;
+    font-weight: 600;
+  }
+
+  h1 {
+    font-size: 26px;
+    margin: 6px 0 4px;
+  }
+
+  .subtitle {
+    font-size: 15px;
+    color: var(--text-soft);
+    margin-top: -2px;
+    margin-bottom: 6px;
+  }
 
   .chip {
-    padding: 6px 12px; background: rgba(198, 169, 119, 0.10); border-radius: 999px;
-    font-size: 12px; margin-right: 6px; margin-bottom: 6px; display: inline-block;
+    padding: 6px 12px;
+    background: rgba(198, 169, 119, 0.10);
+    border-radius: 999px;
+    font-size: 12px;
+    margin-right: 6px;
+    margin-bottom: 6px;
+    display: inline-block;
   }
 
   /* CARROUSEL */
   .carousel {
-    position: relative; width: 100%; height: 260px; margin: 20px 0;
-    overflow: hidden; border-radius: 16px;
+    position: relative;
+    width: 100%;
+    height: 260px;
+    margin: 20px 0;
+    overflow: hidden;
+    border-radius: 16px;
   }
+
   .carousel-track {
-    display: flex; width: 100%; height: 100%; transition: transform 0.35s ease; overflow: hidden;
+    display: flex;
+    width: 100%;
+    height: 100%;
+    transition: transform 0.35s ease;
+    overflow: hidden;
   }
+
   .carousel img {
-    flex: 0 0 100%; width: 100%; height: 100%; object-fit: cover; cursor: pointer;
+    flex: 0 0 100%;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    cursor: pointer;
   }
 
   .carousel-btn {
-    position: absolute; top: 50%; transform: translateY(-50%);
-    background: rgba(255,255,255,0.75); border: none; font-size: 22px;
-    padding: 6px 12px; border-radius: 999px; cursor: pointer;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(255,255,255,0.75);
+    border: none;
+    font-size: 22px;
+    padding: 6px 12px;
+    border-radius: 999px;
+    cursor: pointer;
   }
+
   .carousel-btn.prev { left: 10px; }
   .carousel-btn.next { right: 10px; }
 
-  .grid-two { display: grid; grid-template-columns: repeat(2,1fr); gap: 12px; font-size: 14px; margin-top: 20px; }
-  .grid-two span { font-size: 12px; color: var(--text-soft); display: block; }
+  .grid-two {
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    gap: 12px;
+    font-size: 14px;
+    margin-top: 20px;
+  }
+
+  .grid-two span {
+    display: block;
+    font-size: 12px;
+    color: var(--text-soft);
+  }
 
   /* FORMULAIRE */
-  .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-top: 14px; }
-  input, select {
-    width: 100%; padding: 10px 12px; border-radius: 12px; border: 1px solid var(--border-soft);
-    background: #fafafa; font-size: 14px;
+  .form-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+    margin-top: 14px;
   }
+
+  input, select {
+    width: 100%;
+    padding: 10px 12px;
+    border-radius: 12px;
+    border: 1px solid var(--border-soft);
+    background: #fafafa;
+    font-size: 14px;
+  }
+
+  label { font-size: 13px; margin-bottom: 4px; display: block; }
+
   .btn {
-    grid-column: span 2; margin-top: 6px; background: linear-gradient(135deg, #fbe4b9, #f3c98b);
-    color: #7a5a29; padding: 12px 16px; border-radius: 999px; font-size: 15px; font-weight: 600; border: none; cursor:pointer;
+    grid-column: span 2;
+    margin-top: 6px;
+    background: linear-gradient(135deg, #fbe4b9, #f3c98b);
+    color: #7a5a29;
+    padding: 12px 16px;
+    border-radius: 999px;
+    font-size: 15px;
+    font-weight: 600;
+    border: none;
+    cursor: pointer;
+  }
+
+  .btn-retour {
+    display: inline-block;
+    margin: 10px 0 18px;
+    padding: 6px 12px;
+    font-size: 13px;
+    font-weight: 500;
+    color: #7a5a29;
+    text-decoration: none;
+    border-radius: 10px;
+    border: 1px solid rgba(198,169,119,0.35);
+    background: rgba(198,169,119,0.10);
+    transition: 0.20s ease;
   }
 
   /* CONTACT */
-  .contact-card { margin-top: 18px; display: flex; gap: 10px; border-top: 1px solid var(--border-soft); padding-top: 12px; }
-  .contact-photo { width: 52px; height: 52px; border-radius: 999px; object-fit: cover; border: 1px solid #e5e7eb; }
+  .contact-card {
+    margin-top: 18px;
+    display: flex;
+    gap: 10px;
+    border-top: 1px solid var(--border-soft);
+    padding-top: 12px;
+  }
+
+  .contact-photo {
+    width: 52px;
+    height: 52px;
+    border-radius: 999px;
+    object-fit: cover;
+    object-position: top center;
+    border: 1px solid #e5e7eb;
+  }
+
+  .contact-links {
+    margin-top: 6px;
+    display: flex;
+    gap: 8px;
+    font-size: 12px;
+  }
+
+  .contact-links a {
+    color: #C6AA77;
+    font-size: 12px;
+    font-weight: 500;
+    text-decoration: none;
+  }
 
   /* YOUTUBE LAZY */
   .yt-lazy {
-    position: relative; width: 100%; border-radius: 16px; overflow: hidden; cursor: pointer;
+    position: relative;
+    width: 100%;
+    border-radius: 16px;
+    overflow: hidden;
+    cursor: pointer;
   }
-  .yt-thumb { width: 100%; display: block; }
-  .yt-play { position: absolute; inset: 0; display: flex; justify-content: center; align-items: center; font-size: 46px; color: white; background: rgba(0,0,0,0.45); }
+
+  .yt-thumb {
+    width: 100%;
+    display: block;
+  }
+
+  .yt-play {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 46px;
+    color: white;
+    background: radial-gradient(circle at center, rgba(0,0,0,0.0), rgba(0,0,0,0.45));
+  }
+
+  /* LIGHTBOX */
+  .lightbox {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.85);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.25s ease;
+  }
+
+  .lightbox.active {
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  .lightbox img {
+    max-width: 90%;
+    max-height: 90vh;
+    border-radius: 12px;
+    box-shadow: 0 0 40px rgba(0,0,0,0.45);
+  }
+
+  .lightbox-prev,
+  .lightbox-next {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    color: white;
+    font-size: 46px;
+    cursor: pointer;
+    padding: 18px 24px;
+    background: rgba(0,0,0,0.35);
+    border-radius: 999px;
+  }
+
+  .lightbox-prev { left: 40px; }
+  .lightbox-next { right: 40px; }
+
+  .lightbox-close {
+    position: absolute;
+    top: 30px;
+    right: 40px;
+    color: white;
+    font-size: 52px;
+    cursor: pointer;
+    padding: 8px 16px;
+    background: rgba(0,0,0,0.35);
+    border-radius: 999px;
+  }
 
   /* RESPONSIVE */
-  @media (max-width: 1024px) { .layout { grid-template-columns: 1fr; } }
+  @media (max-width: 1024px) {
+    .layout { grid-template-columns: 1fr; }
+  }
+
   @media (max-width: 768px) {
     .page { padding: 16px 12px 40px; }
-    header { flex-direction: column; padding: 14px; border-radius: 22px; }
-    .carousel { height: auto; aspect-ratio: 16/10; }
-    .grid-two { grid-template-columns: 1fr; }
-    .form-grid { grid-template-columns: 1fr; }
-    .btn { grid-column: span 1; }
+
+    header {
+      flex-direction: column;
+      padding: 14px;
+      border-radius: 22px;
+    }
+
+    .carousel {
+      height: auto;
+      aspect-ratio: 16/10;
+    }
+
+    .carousel img {
+      height: 100%;
+    }
+
+    .grid-two {
+      grid-template-columns: 1fr;
+      font-size: 13px;
+    }
+
+    .form-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .btn {
+      grid-column: span 1;
+      font-size: 14px;
+    }
+
+    .contact-photo {
+      width: 46px;
+      height: 46px;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .carousel { aspect-ratio: 4/3; }
+
+    .lightbox-prev,
+    .lightbox-next {
+      font-size: 32px;
+      padding: 14px 18px;
+    }
+
+    .lightbox-close {
+      font-size: 40px;
+      top: 18px;
+      right: 18px;
+    }
   }
   </style>
 
-<script>
-function sendEmail() {
-  const bien = "Naël - 40 Bd Edouard Herriot";
-  const prenom = document.getElementById("prenomClient").value;
-  const nom = document.getElementById("nomClient").value;
-  const tel = document.getElementById("telephoneClient").value;
-  const email = document.getElementById("emailClient").value;
-  const date = document.getElementById("date").value;
-  const creneau = document.getElementById("creneau").value;
+  <script>
+  function sendEmail() {
+    const bien = "Naël - 40 Bd Edouard Herriot";
+    const prenom = document.getElementById("prenomClient").value;
+    const nom = document.getElementById("nomClient").value;
+    const telephone = document.getElementById("telephoneClient").value;
+    const emailClient = document.getElementById("emailClient").value;
+    const date = document.getElementById("date").value;
+    const creneau = document.getElementById("creneau").value;
 
-  if(!prenom || !nom || !email || !tel || !date || !creneau){
-    alert("Merci de renseigner tous les champs."); return;
+    if(!prenom || !nom || !emailClient || !telephone || !date || !creneau){
+      alert("Merci de renseigner tous les champs.");
+      return;
+    }
+
+    const subject = encodeURIComponent("Demande de contre-visite - " + bien);
+    const body = encodeURIComponent(
+      "Bonjour,\n\n" +
+      "Je souhaite programmer une contre-visite pour le bien : " + bien + ".\n\n" +
+      "Nom : " + prenom + " " + nom + "\n" +
+      "Téléphone : " + telephone + "\n" +
+      "Email : " + emailClient + "\n\n" +
+      "Date souhaitée : " + date + "\n" +
+      "Créneau souhaité : " + creneau + "\n\n"
+    );
+
+    window.location.href =
+      "mailto:contact@jeremyheyob.fr?subject=" + subject + "&body=" + body;
   }
-
-  const subject = encodeURIComponent("Demande de contre-visite - " + bien);
-  const body = encodeURIComponent(
-    "Bonjour,\n\nJe souhaite programmer une contre-visite pour le bien : " + bien +
-    ".\n\nNom : " + prenom + " " + nom +
-    "\nTéléphone : " + tel +
-    "\nEmail : " + email +
-    "\n\nDate souhaitée : " + date +
-    "\nCréneau souhaité : " + creneau + "\n\n"
-  );
-
-  window.location.href = "mailto:contact@jeremyheyob.fr?subject=" + subject + "&body=" + body;
-}
-</script>
-
+  </script>
 </head>
-
 
 <body>
 <div class="page">
 
-<header>
-  <img src="images/logo.webp" class="logo" alt="Logo Jérémy Heyob">
-  <div class="header-center">
-    <div class="tagline-main">VOS PROJETS IMMOBILIERS N'ONT JAMAIS ÉTÉ AUSSI SIMPLES !</div>
-    <div class="tagline-sub"><strong>JÉRÉMY HEYOB</strong></div>
-  </div>
-</header>
-
-<a href="index.html" class="btn-retour">← Retour</a>
-
-<main class="layout">
-<section class="card">
-  <div class="pill">Informations du bien</div>
-
-  <h1>Naël</h1>
-  <p class="subtitle">40 Boulevard Edouard Herriot, 69800 Saint-Priest</p>
-
-  <div class="chips">
-    <span class="chip">T3</span>
-    <span class="chip">72 m²</span>
-    <span class="chip">8,39 m² extérieur</span>
-    <span class="chip">Étage 1/5</span>
-    <span class="chip">DPE B-B</span>
-    <span class="chip">Garage compris</span>
-    <span class="chip">220 000 €</span>
-  </div>
-
-  <!-- CARROUSEL -->
-  <div class="carousel">
-    <div class="carousel-track">
-      <img src="biens-immobiliers/photos/Nael 1.webp" alt="">
-      <img src="biens-immobiliers/photos/Nael 2.webp" loading="lazy">
-      <img src="biens-immobiliers/photos/Nael 3.webp" loading="lazy">
-      <img src="biens-immobiliers/photos/Nael 4.webp" loading="lazy">
-      <img src="biens-immobiliers/photos/Nael 5.webp" loading="lazy">
-      <img src="biens-immobiliers/photos/Nael 6.webp" loading="lazy">
-      <img src="biens-immobiliers/photos/Nael 7.webp" loading="lazy">
-      <img src="biens-immobiliers/photos/Nael 8.webp" loading="lazy">
-      <img src="biens-immobiliers/photos/Nael 9.webp" loading="lazy">
-      <img src="biens-immobiliers/photos/Nael 10.webp" loading="lazy">
-      <img src="biens-immobiliers/photos/Nael 11.webp" loading="lazy">
+  <header>
+    <img src="images/logo.webp" alt="Jérémy Heyob Immobilier" class="logo">
+    <div class="header-center">
+      <div class="tagline-main">VOS PROJETS IMMOBILIERS N'ONT JAMAIS ÉTÉ AUSSI SIMPLES !</div>
+      <div class="tagline-sub"><strong>JÉRÉMY HEYOB</strong></div>
     </div>
-    <button class="carousel-btn prev">‹</button>
-    <button class="carousel-btn next">›</button>
-  </div>
+  </header>
 
-  <!-- GRILLE INFOS -->
-  <div class="grid-two">
-    <div><span>Adresse</span>40 Bd Edouard Herriot</div>
-    <div><span>Secteur</span>Centre-ville</div>
-    <div><span>Charges</span>152 €/mois</div>
-    <div><span>Taxe foncière</span>1152 €/an</div>
-    <div><span>Chauffage</span>Gaz collectif</div>
-    <div><span>Année</span>2017</div>
-    <div><span>À proximité</span>Écoles, commerces, Tram T2</div>
-    <div><span>Points forts</span>Sécurisé, traversant, garage</div>
-  </div>
+  <a href="index.html" class="btn-retour">← Retour</a>
 
-  <!-- VIDEO : MINIATURE PERSONNALISÉE -->
-  <h2 style="margin-top:20px;">Vidéo de présentation</h2>
+  <main class="layout">
 
-  <div class="yt-lazy" data-id="BcZKUKU0p-U">
-    <img src="biens-immobiliers/photos/Miniature_YouTube_2.webp"
-         alt="Miniature vidéo"
-         class="yt-thumb"
-         loading="lazy">
-    <div class="yt-play">▶</div>
-  </div>
+    <section class="card">
+      <div class="pill">Informations du bien</div>
 
-  <!-- LIEN ANNONCE -->
-  <h2 style="margin-top:20px;">Lien de l’annonce</h2>
-  <a href="https://www.agence.immo/achat/appartement-t3-3-pieces-saint-priest-69800-VA33868"
-     target="_blank" style="color:#1a73e8;text-decoration:underline;">
-     Voir l’annonce sur le site →
-  </a>
+      <h1>Naël</h1>
+      <p class="subtitle">40 Boulevard Edouard Herriot, 69800 Saint-Priest</p>
 
-  <!-- DOCUMENTS -->
-  <h2 style="margin-top:28px;">Documents du bien</h2>
-  <ul style="list-style:none;padding:0;margin:12px 0;font-size:15px;">
-    <li><a href="biens-immobiliers/documents/assurance-copropriete.pdf" target="_blank">Assurance copropriété →</a></li>
-    <li><a href="biens-immobiliers/documents/attestation-achievement-travaux.pdf" target="_blank">Attestation achèvement →</a></li>
-    <li><a href="biens-immobiliers/documents/dpe.pdf" target="_blank">DPE →</a></li>
-    <li><a href="biens-immobiliers/documents/plan.pdf" target="_blank">Plan →</a></li>
-    <!-- etc… -->
-  </ul>
-
-</section>
-
-<!-- FORMULAIRE -->
-<aside class="card">
-  <h2>Programmer une contre-visite</h2>
-  <p class="subtitle">Remplissez vos coordonnées et vos disponibilités.</p>
-
-  <div class="form-grid">
-    <div><label>Votre prénom</label><input id="prenomClient" type="text"></div>
-    <div><label>Votre nom</label><input id="nomClient" type="text"></div>
-    <div><label>Votre téléphone</label><input id="telephoneClient" type="tel"></div>
-    <div><label>Votre email</label><input id="emailClient" type="email"></div>
-    <div><label>Date souhaitée</label><input id="date" type="date"></div>
-    <div><label>Créneau</label>
-      <select id="creneau">
-        <option value="">-- Choisir --</option>
-        <option>09h00 - 10h00</option>
-        <option>10h00 - 11h00</option>
-        <option>11h00 - 12h00</option>
-        <option>14h00 - 15h00</option>
-        <option>15h00 - 16h00</option>
-        <option>16h00 - 17h00</option>
-        <option>17h00 - 18h00</option>
-      </select>
-    </div>
-
-    <button class="btn" onclick="sendEmail()">Valider ma demande</button>
-  </div>
-
-  <div class="contact-card">
-    <img src="images/photo.webp" class="contact-photo">
-    <div>
-      <strong>Jérémy Heyob</strong><br>
-      <span style="font-size:12px;color:var(--text-soft);">Négociateur Immobilier</span>
-      <div class="contact-links">
-        <a href="mailto:contact@jeremyheyob.fr">✉️ Email</a>
-        <a href="sms:+33648145565">💬 SMS</a>
-        <a href="tel:+33648145565">📞 Appel</a>
+      <div class="chips">
+        <span class="chip">T3</span>
+        <span class="chip">72 m²</span>
+        <span class="chip">8,39 m² extérieur</span>
+        <span class="chip">Étage 1/5</span>
+        <span class="chip">DPE B-B</span>
+        <span class="chip">Garage compris</span>
+        <span class="chip">220 000 €</span>
       </div>
-    </div>
-  </div>
 
-</aside>
+      <!-- CARROUSEL -->
+      <div class="carousel">
+        <div class="carousel-track">
+          <img src="biens-immobiliers/photos/Nael 1.webp" alt="Naël - Photo 1">
+          <img src="biens-immobiliers/photos/Nael 2.webp" alt="Naël - Photo 2" loading="lazy">
+          <img src="biens-immobiliers/photos/Nael 3.webp" alt="Naël - Photo 3" loading="lazy">
+          <img src="biens-immobiliers/photos/Nael 4.webp" alt="Naël - Photo 4" loading="lazy">
+          <img src="biens-immobiliers/photos/Nael 5.webp" alt="Naël - Photo 5" loading="lazy">
+          <img src="biens-immobiliers/photos/Nael 6.webp" alt="Naël - Photo 6" loading="lazy">
+          <img src="biens-immobiliers/photos/Nael 7.webp" alt="Naël - Photo 7" loading="lazy">
+          <img src="biens-immobiliers/photos/Nael 8.webp" alt="Naël - Photo 8" loading="lazy">
+          <img src="biens-immobiliers/photos/Nael 9.webp" alt="Naël - Photo 9" loading="lazy">
+          <img src="biens-immobiliers/photos/Nael 10.webp" alt="Naël - Photo 10" loading="lazy">
+          <img src="biens-immobiliers/photos/Nael 11.webp" alt="Naël - Photo 11" loading="lazy">
+        </div>
 
-</main>
+        <button class="carousel-btn prev">‹</button>
+        <button class="carousel-btn next">›</button>
+      </div>
+
+      <!-- DÉTAILS COMPLETS -->
+      <div class="grid-two">
+        <div><span>Adresse</span>40 Bd Edouard Herriot</div>
+        <div><span>Secteur</span>Centre-ville</div>
+        <div><span>Charges</span>152 €/mois (chauffage, EC, EF, EPC, ascenseur, charges garage)</div>
+        <div><span>Taxe foncière</span>1152 €/an</div>
+        <div><span>Chauffage</span>Gaz collectif</div>
+        <div><span>Année</span>2017</div>
+        <div><span>À proximité</span>Écoles, commerces, Tram T2, C25</div>
+        <div><span>Points forts</span>Sécurisé, traversant, garage</div>
+      </div>
+
+      <!-- Vidéo avec miniature dédiée -->
+      <h2 style="margin-top:20px;">Vidéo de présentation</h2>
+      <div class="yt-lazy" data-id="BcZKUKU0p-U">
+        <img src="biens-immobiliers/photos/Miniature_YouTube_2.webp"
+             alt="Vidéo de présentation Naël"
+             class="yt-thumb"
+             loading="lazy">
+        <div class="yt-play">▶</div>
+      </div>
+
+      <!-- Lien annonce -->
+      <h2 style="margin-top:20px;">Lien de l’annonce</h2>
+      <a href="https://www.agence.immo/achat/appartement-t3-3-pieces-saint-priest-69800-VA33868"
+         target="_blank"
+         style="color:#1a73e8;font-size:15px;text-decoration:underline;">
+         Voir l’annonce sur le site →
+      </a>
+
+      <!-- Documents – liste complète -->
+      <h2 style="margin-top:28px;">Documents du bien</h2>
+
+      <ul style="list-style:none;padding:0;margin:12px 0;font-size:15px;">
+        <li><a href="biens-immobiliers/documents/assurance-copropriete.pdf" target="_blank">Assurance copropriété →</a></li>
+        <li><a href="biens-immobiliers/documents/attestation-achievement-travaux.pdf" target="_blank">Attestation achèvement des travaux →</a></li>
+        <li><a href="biens-immobiliers/documents/attestation-assurance-dommages-ouvrages.pdf" target="_blank">Assurance dommages ouvrages →</a></li>
+        <li><a href="biens-immobiliers/documents/attestation-non-opposition.pdf" target="_blank">Attestation de non opposition →</a></li>
+        <li><a href="biens-immobiliers/documents/carrez.pdf" target="_blank">Mesurage Carrez →</a></li>
+        <li><a href="biens-immobiliers/documents/carnet-entretien.pdf" target="_blank">Carnet d’entretien →</a></li>
+        <li><a href="biens-immobiliers/documents/daact.pdf" target="_blank">DAACT →</a></li>
+        <li><a href="biens-immobiliers/documents/dpe.pdf" target="_blank">DPE →</a></li>
+        <li><a href="biens-immobiliers/documents/pv-ag-2022.pdf" target="_blank">PV AG 2022 →</a></li>
+        <li><a href="biens-immobiliers/documents/pv-ag-2023.pdf" target="_blank">PV AG 2023 →</a></li>
+        <li><a href="biens-immobiliers/documents/pv-ag-2024.pdf" target="_blank">PV AG 2024 →</a></li>
+        <li><a href="biens-immobiliers/documents/plan.pdf" target="_blank">Plan →</a></li>
+        <li><a href="biens-immobiliers/documents/reglement-copropriete.pdf" target="_blank">Règlement de copropriété →</a></li>
+      </ul>
+
+    </section>
+
+    <!-- Contre-visite -->
+    <aside class="card">
+      <h2>Programmer une contre-visite</h2>
+      <p class="subtitle">Remplissez vos coordonnées et vos disponibilités.</p>
+
+      <div class="form-grid">
+        <div><label>Votre prénom</label><input id="prenomClient" type="text"></div>
+        <div><label>Votre nom</label><input id="nomClient" type="text"></div>
+        <div><label>Votre téléphone</label><input id="telephoneClient" type="tel" placeholder="06…"></div>
+        <div><label>Votre email</label><input id="emailClient" type="email" placeholder="exemple@domaine.fr"></div>
+        <div><label>Date souhaitée</label><input id="date" type="date"></div>
+        <div><label>Créneau souhaité</label>
+          <select id="creneau">
+            <option value="">-- Choisir --</option>
+            <option>09:00 - 10:00</option>
+            <option>10:00 - 11:00</option>
+            <option>11:00 - 12:00</option>
+            <option>14:00 - 15:00</option>
+            <option>15:00 - 16:00</option>
+            <option>16:00 - 17:00</option>
+            <option>17:00 - 18:00</option>
+            <option>18:00 - 19:00</option>
+            <option>19:00 - 20:00</option>
+          </select>
+        </div>
+
+        <button class="btn" onclick="sendEmail()">Valider ma demande</button>
+      </div>
+
+      <div class="contact-card">
+        <img src="images/photo.webp" alt="Photo Jérémy Heyob" class="contact-photo" loading="lazy">
+        <div>
+          <strong>Jérémy Heyob</strong><br>
+          <span style="font-size:12px;color:var(--text-soft);">Négociateur Immobilier à Saint-Priest</span><br>
+          <div class="contact-links">
+            <a href="mailto:contact@jeremyheyob.fr">✉️ Email</a>
+            <a href="sms:+33648145565">💬 SMS</a>
+            <a href="tel:+33648145565">📞 Appel</a>
+          </div>
+        </div>
+      </div>
+
+    </aside>
+
+  </main>
+
 </div>
 
 <!-- LIGHTBOX -->
 <div class="lightbox" id="lightbox">
   <span class="lightbox-close" id="lightboxClose">×</span>
   <span class="lightbox-prev" id="lightboxPrev">‹</span>
-  <img id="lightboxImg">
+  <img id="lightboxImg" src="" alt="">
   <span class="lightbox-next" id="lightboxNext">›</span>
 </div>
 
 <script>
 /* CARROUSEL */
-let idx=0;
-const track=document.querySelector('.carousel-track');
-const slides=document.querySelectorAll('.carousel img');
+let idx = 0;
+const track = document.querySelector('.carousel-track');
+const slides = document.querySelectorAll('.carousel img');
 
-document.querySelector('.next').onclick=()=>{idx=(idx+1)%slides.length;track.style.transform=`translateX(-${idx*100}%)`;};
-document.querySelector('.prev').onclick=()=>{idx=(idx-1+slides.length)%slides.length;track.style.transform=`translateX(-${idx*100}%)`;};
+document.querySelector('.next').onclick = () => {
+  idx = (idx + 1) % slides.length;
+  track.style.transform = `translateX(-${idx * 100}%)`;
+};
+
+document.querySelector('.prev').onclick = () => {
+  idx = (idx - 1 + slides.length) % slides.length;
+  track.style.transform = `translateX(-${idx * 100}%)`;
+};
 
 /* LIGHTBOX */
-const lightbox=document.getElementById('lightbox');
-const lightboxImg=document.getElementById('lightboxImg');
-let currentSlide=0;
+const lightbox = document.getElementById('lightbox');
+const lightboxImg = document.getElementById('lightboxImg');
+const btnClose = document.getElementById('lightboxClose');
+const btnPrev = document.getElementById('lightboxPrev');
+const btnNext = document.getElementById('lightboxNext');
 
-slides.forEach((img,i)=>img.onclick=()=>{currentSlide=i;openLightbox();});
+let currentSlide = 0;
 
-function openLightbox(){lightboxImg.src=slides[currentSlide].src;lightbox.classList.add('active');}
-document.getElementById('lightboxClose').onclick=()=>lightbox.classList.remove('active');
-document.getElementById('lightboxPrev').onclick=()=>{currentSlide=(currentSlide-1+slides.length)%slides.length;openLightbox();}
-document.getElementById('lightboxNext').onclick=()=>{currentSlide=(currentSlide+1)%slides.length;openLightbox();}
-document.addEventListener('keydown',e=>{
-  if(!lightbox.classList.contains('active'))return;
-  if(e.key==='ArrowRight')document.getElementById('lightboxNext').click();
-  if(e.key==='ArrowLeft')document.getElementById('lightboxPrev').click();
-  if(e.key==='Escape')document.getElementById('lightboxClose').click();
+slides.forEach((img, i) => {
+  img.addEventListener('click', () => {
+    currentSlide = i;
+    openLightbox();
+  });
+});
+
+function openLightbox() {
+  lightboxImg.src = slides[currentSlide].src;
+  lightbox.classList.add('active');
+}
+
+btnClose.onclick = () => lightbox.classList.remove('active');
+
+lightbox.onclick = (e) => {
+  if (e.target === lightbox) lightbox.classList.remove('active');
+};
+
+btnPrev.onclick = () => {
+  currentSlide = (currentSlide - 1 + slides.length) % slides.length;
+  openLightbox();
+};
+
+btnNext.onclick = () => {
+  currentSlide = (currentSlide + 1) % slides.length;
+  openLightbox();
+};
+
+document.addEventListener('keydown', (e) => {
+  if (!lightbox.classList.contains('active')) return;
+  if (e.key === 'ArrowRight') btnNext.onclick();
+  if (e.key === 'ArrowLeft') btnPrev.onclick();
+  if (e.key === 'Escape') btnClose.onclick();
 });
 
 /* YOUTUBE LAZY LOAD */
-document.querySelectorAll('.yt-lazy').forEach(el=>{
-  el.addEventListener('click',()=>{
-    const id=el.dataset.id;
-    el.innerHTML=`<iframe src="https://www.youtube.com/embed/${id}" allowfullscreen style="width:100%;height:260px;border:0;border-radius:16px;"></iframe>`;
-  },{once:true});
+document.querySelectorAll('.yt-lazy').forEach(el => {
+  el.addEventListener('click', () => {
+    const id = el.dataset.id;
+    el.innerHTML = `
+      <iframe src="https://www.youtube.com/embed/${id}"
+              allowfullscreen
+              style="width:100%;height:260px;border:0;border-radius:16px;"></iframe>`;
+  }, { once: true });
 });
 </script>
 
