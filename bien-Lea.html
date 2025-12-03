@@ -50,7 +50,6 @@
   }
 
   .logo { max-width: 140px; }
-
   .header-center { flex: 1; text-align: center; }
 
   .tagline-main {
@@ -236,7 +235,7 @@
     text-decoration: none;
   }
 
-  /* YOUTUBE LAZY */
+  /* YOUTUBE */
   .yt-lazy {
     position: relative;
     width: 100%;
@@ -307,36 +306,6 @@
     padding: 8px 16px;
     background: rgba(0,0,0,0.35);
     border-radius: 999px;
-  }
-
-  /* RESPONSIVE */
-  @media (max-width: 1024px) {
-    .layout { grid-template-columns: 1fr; }
-  }
-
-  @media (max-width: 768px) {
-    .page { padding: 16px 12px 40px; }
-
-    header {
-      flex-direction: column;
-      padding: 14px;
-      border-radius: 22px;
-    }
-
-    .carousel { height: auto; aspect-ratio: 16/10; }
-    .carousel img { height: 100%; }
-
-    .grid-two { grid-template-columns: 1fr; font-size: 13px; }
-
-    .form-grid { grid-template-columns: 1fr; }
-
-    .btn { font-size: 14px; }
-  }
-
-  @media (max-width: 480px) {
-    .carousel { aspect-ratio: 4/3; }
-    .lightbox-prev, .lightbox-next { font-size: 32px; }
-    .lightbox-close { font-size: 40px; }
   }
   </style>
 
@@ -429,16 +398,16 @@
         <div><span>Surface</span>74 m² int. / 110 m² ext.</div>
         <div><span>Garage / parking</span>Garage inclus</div>
         <div><span>Chauffage</span>Gaz collectif</div>
-        <div><span>Charges</span>215 €/mois (chauffage, EC, EF, EPC, ascenseur, charges garage)</div>
+        <div><span>Charges</span>215 €/mois</div>
         <div><span>Taxe foncière</span>923 €</div>
         <div><span>À proximité</span>Écoles, commerces, T2 et C25 tout proche</div>
         <div><span>Points forts</span>Grand extérieur, calme, garage</div>
       </div>
 
-      <!-- VIDEO -->
+      <!-- VIDEO YOUTUBE — NOUVELLE MÉTHODE -->
       <h2 style="margin-top:20px;">Vidéo de présentation</h2>
 
-      <div class="yt-lazy" data-id="oDVpOTFooCE">
+      <div class="yt-lazy" data-url="https://www.youtube.com/watch?v=oDVpOTFooCE">
         <img src="biens-immobiliers/lea/photos/Miniature_YouTube.webp" class="yt-thumb">
         <div class="yt-play">▶</div>
       </div>
@@ -527,6 +496,7 @@
   <span class="lightbox-next" id="lightboxNext">›</span>
 </div>
 
+<!-- SCRIPTS -->
 <script>
 /* CARROUSEL */
 let idx = 0;
@@ -587,18 +557,23 @@ document.addEventListener('keydown', (e) => {
   if (e.key === 'Escape') btnClose.onclick();
 });
 
-/* YOUTUBE AUTOPLAY AU CLIC */
+/* YOUTUBE — NOUVELLE MÉTHODE 100 % FIABLE */
 document.querySelectorAll('.yt-lazy').forEach(el => {
   el.addEventListener('click', () => {
-    const id = el.dataset.id;
+
+    const url = el.dataset.url;
+    if (!url) return;
+
+    const embed = url.replace("watch?v=", "embed/").replace("&", "?");
+
     el.innerHTML = `
-      <iframe src="https://www.youtube.com/embed/${id}?autoplay=1"
+      <iframe src="${embed}?autoplay=1"
               allowfullscreen
-              style="width:100%;height:260px;border:0;border-radius:16px;"></iframe>`;
+              style="width:100%;height:260px;border:0;border-radius:16px;">
+      </iframe>`;
   }, { once: true });
 });
 </script>
 
 </body>
 </html>
-
