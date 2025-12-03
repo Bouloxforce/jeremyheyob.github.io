@@ -159,10 +159,34 @@
       padding: 8px 16px; background: rgba(0,0,0,0.35);
       border-radius: 999px;
     }
-    @media (max-width: 880px) {
-    .layout {
-      grid-template-columns: 1fr;   /* ← Passe en une seule colonne */
-      gap: 30px;                    /* ← Espace vertical entre les blocs */
+    /* RESPONSIVE */
+    @media (max-width: 1024px) {
+      .layout { grid-template-columns: 1fr; }
+    }
+
+    @media (max-width: 768px) {
+      .page { padding: 16px 12px 40px; }
+
+      header {
+        flex-direction: column;
+        padding: 14px;
+        border-radius: 22px;
+    }
+
+      .carousel { height: auto; aspect-ratio: 16/10; }
+      .carousel img { height: 100%; }
+
+      .grid-two { grid-template-columns: 1fr; font-size: 13px; }
+
+      .form-grid { grid-template-columns: 1fr; }
+
+      .btn { font-size: 14px; }
+    }
+
+    @media (max-width: 480px) {
+      .carousel { aspect-ratio: 4/3; }
+      .lightbox-prev, .lightbox-next { font-size: 32px; }
+      .lightbox-close { font-size: 40px; }
     }
   </style>
 
