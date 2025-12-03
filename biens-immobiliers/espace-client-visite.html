@@ -1,0 +1,541 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="robots" content="noindex, nofollow, noarchive, nosnippet">
+  <title>Informations biens immobiliers - Espace client | Jérémy Heyob Immobilier</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <style>
+    :root {
+      --bg: #FFFBF5;
+      --bg-soft: #ffffff;
+      --accent: #C6AA77;
+      --accent-soft: rgba(198, 169, 119, 0.16);
+      --accent-soft-strong: rgba(212,161,95,0.08);
+      --text-main: #191919;
+      --text-soft: #7A7A7A;
+      --border-soft: #e5e7eb;
+      --card-bg: #ffffff;
+      --shadow-soft: 0 20px 50px rgba(25,25,25,0.10);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+      background: #FFFBF5;
+      color: var(--text-main);
+      min-height: 100vh;
+    }
+
+    .page {
+      max-width: 1150px;
+      margin: 0 auto;
+      padding: 26px 18px 60px;
+    }
+
+     header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+      max-width: 960px;
+      margin: 16px auto 24px;
+      padding: 8px 28px;
+      background: var(--card-bg);
+      border-radius: 22px;
+      box-shadow: var(--shadow-soft);
+      border: 1px solid rgba(15,23,42,0.04);
+    }
+
+    .logo { max-width: 140px; }
+
+    .header-center { flex: 1; text-align: center; }
+
+    .tagline-main {
+      font-size: 13px;
+      letter-spacing: 0.18em;
+      color: var(--text-soft);
+    }
+
+    .tagline-sub {
+      margin-top: 12px;
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+    }
+
+    .tagline-sub strong {
+      color: var(--text-main);
+      font-weight: 900;
+    }
+
+    .header-left {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .logo {
+      max-width: 140px;
+      height: auto;
+    }
+
+    .slogan {
+      font-size: 13px;
+      color: var(--text-soft);
+      font-style: italic;
+    }
+
+    nav {
+      display: flex;
+      gap: 18px;
+      font-size: 14px;
+    }
+
+    nav a {
+      color: var(--text-soft);
+      text-decoration: none;
+    }
+
+    nav a:hover {
+      color: var(--accent);
+    }
+
+    nav a.active {
+      color: var(--accent);
+      font-weight: 600;
+    }
+
+    /* HERO */
+    .hero {
+      position: relative;
+      border-radius: 20px;
+      overflow: hidden;
+      background:
+        linear-gradient(135deg, rgba(212,161,95,0.18), transparent 55%),
+        linear-gradient(145deg, #ffffff, #FFFBF5 55%);
+      border: 1px solid var(--border-soft);
+      box-shadow: var(--shadow-soft);
+      margin-bottom: 30px;
+    }
+
+    .hero-inner {
+      display: block;
+    }
+
+    .hero-text {
+      padding: 24px 26px 24px;
+    }
+
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 4px 10px;
+      border-radius: 999px;
+      background: var(--accent-soft);
+      color: var(--accent);
+      font-size: 11px;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .hero-text h1 {
+      margin: 10px 0 8px;
+      font-size: clamp(24px, 3.2vw, 30px);
+    }
+
+    .hero-text p {
+      margin: 0;
+      font-size: 14px;
+      color: var(--text-soft);
+      max-width: 520px;
+    }
+
+    .hero-highlight {
+      display: inline-block;
+      margin-top: 14px;
+      padding: 10px 12px;
+      border-radius: 12px;
+      background: #ffffff;
+      border: 1px dashed var(--border-soft);
+      font-size: 13px;
+      color: #4A4A4A;
+      max-width: 100%;
+      line-height: 1.45;
+    }
+
+    .hero-meta {
+      margin-top: 14px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      font-size: 12px;
+      color: var(--text-soft);
+    }
+
+    .hero-meta span {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .hero-meta-dot {
+      width: 3px;
+      height: 3px;
+      border-radius: 999px;
+      background: var(--text-soft);
+    }
+
+    /* GRID DES BIENS */
+    .section-title {
+      margin: 18px 0 10px;
+      font-size: 18px;
+      border-left: 4px solid var(--accent);
+      padding-left: 10px;
+    }
+
+    .section-sub {
+      margin: 0 0 16px;
+      font-size: 13px;
+      color: var(--text-soft);
+      max-width: 650px;
+    }
+
+    .properties-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 18px;
+      margin-bottom: 34px;
+    }
+
+    .property-card {
+      background: var(--card-bg);
+      border-radius: 18px;
+      border: 1px solid var(--border-soft);
+      box-shadow: 0 14px 35px rgba(25,25,25,0.06);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      min-height: 250px;
+    }
+
+    .property-cover {
+      position: relative;
+      aspect-ratio: 4/3; /* ratio réaliste pour photos immobilières */
+      overflow: hidden;
+    }
+
+    .property-cover img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .property-tag {
+      position: absolute;
+      top: 10px;
+      right: 10px;   /* déplace le tag à droite */
+      background: rgba(255,255,255,0.9);
+      color: #4A4A4A;
+      font-size: 11px;
+      padding: 4px 10px;
+      border-radius: 999px;
+      border: 1px solid var(--border-soft);
+    }
+
+    .property-body {
+      padding: 14px 14px 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      flex: 1;
+    }
+
+    .property-title {
+      margin: 0;
+      font-size: 16px;
+    }
+
+    .property-location {
+      font-size: 12px;
+      color: var(--text-soft);
+    }
+
+    .property-meta {
+      margin-top: 4px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      font-size: 11px;
+      color: #4A4A4A;
+    }
+
+    .property-meta span {
+      padding: 3px 8px;
+      border-radius: 999px;
+      background: var(--accent-soft-strong);
+    }
+
+    .property-info {
+      font-size: 13px;
+      color: #4A4A4A;
+      margin-top: 4px;
+    }
+
+    .property-footer {
+      margin-top: 14px;  /* ← ajoute la marge au-dessus */
+      display: flex;
+      justify-content: center;      /* centre horizontalement */
+      align-items: center;          /* centre verticalement */
+      gap: 8px;                     /* espace entre les éléments */
+      font-size: 11px;
+      color: var(--text-soft);
+      text-align: center;           /* sécurise le centrage du texte */
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      background: linear-gradient(135deg, #fbe4b9, #f3c98b);
+      color: #7a5a29;
+      padding: 8px 14px;
+      border-radius: 999px;
+      font-size: 13px;
+      font-weight: 600;
+      text-decoration: none;
+      border: none;
+      cursor: pointer;
+      white-space: nowrap;
+    }
+
+    .btn:hover {
+      filter: brightness(1.03);
+    }
+
+    /* CONTACT */
+    .contact-block {
+      display: flex;
+      gap: 18px;
+      align-items: center;
+      background: #ffffff;
+      border-radius: 20px;
+      padding: 16px 18px;
+      border: 1px solid var(--border-soft);
+      box-shadow: 0 18px 40px rgba(25, 25, 25, 0.08);
+      margin-top: 10px;
+    }
+
+    .contact-photo {
+      width: 90px;
+      height: 90px;
+      border-radius: 999px;
+      object-fit: cover;
+      object-position: 50% 20%; /* centre parfaitement ton visage */
+      object-position: top center;
+      border: 2px solid #e5e7eb;
+    }
+
+    .contact-text h3 {
+      margin: 0 0 4px;
+      font-size: 17px;
+    }
+
+    .contact-text p {
+      margin: 0;
+      font-size: 13px;
+      color: var(--text-soft);
+    }
+
+    .contact-links {
+      margin-top: 8px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      font-size: 13px;
+    }
+
+    .contact-links a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    .contact-links a:hover {
+      text-decoration: underline;
+    }
+
+    @media (max-width: 880px) {
+      .hero-inner {
+        grid-template-columns: minmax(0, 1fr);
+      }
+      header {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      .contact-block {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="page">
+
+    <header>
+      <div class="header-left">
+        <img src="images/logo.webp" alt="Logo Jérémy Heyob" class="logo">
+      </div>
+
+      <div class="header-center">
+        <div class="tagline-main">VOS PROJETS IMMOBILIERS N'ONT JAMAIS ÉTÉ AUSSI SIMPLES !</div>
+        <div class="tagline-sub"><strong>Jérémy HEYOB</strong></div>
+      </div>
+
+      <nav></nav>
+    </header>
+
+    <section class="hero">
+      <div class="hero-inner">
+        <div class="hero-text">
+
+          <div class="pill">Espace d'accès aux informations</div>
+
+          <h1>Retrouvez toutes les informations des biens que vous avez visités.</h1>
+
+          <p>
+            Après votre visite, cette page vous permet d'accéder à la fiche détaillée du bien,
+            à la vidéo de présentation et à l'ensemble des documents associés (diagnostics, plans…).
+            Vous pouvez également y programmer une contre-visite.
+          </p>
+
+          <div class="hero-highlight">
+            Conseil : partagez ce lien avec vos proches pour revoir le bien à tête reposée
+            et comparer sereinement avec d'autres projets.
+          </div>
+
+          <div class="hero-meta">
+            <span><span class="hero-meta-dot"></span> Accès 24/7 aux informations des biens</span>
+            <span><span class="hero-meta-dot"></span> Informations centralisées</span>
+            <span><span class="hero-meta-dot"></span> Contre-visites simplifiées</span>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <h2 class="section-title">Sélection de biens</h2>
+
+    <p class="section-sub">
+      Choisissez le bien qui vous concerne pour accéder à sa page dédiée, retrouver la vidéo,
+      les documents officiels et demander une contre-visite si vous le souhaitez.
+    </p>
+
+    <section class="properties-grid">
+
+      <!-- BIEN LEA -->
+      <article class="property-card">
+        <div class="property-cover">
+          <img src="biens-immobiliers/lea/photos/photo-accueil.webp">
+          <div class="property-tag">Appartement T4 – Rez-de-jardin</div>
+        </div>
+
+        <div class="property-body">
+          <h3 class="property-title">Léa</h3>
+          <div class="property-location">Saint-Priest - Secteur Centre-Ville</div>
+
+          <div class="property-meta">
+            <span>T4</span>
+            <span>≈ 74 m²</span>
+            <span>Extérieur ≈ 110 m²</span>
+            <span>Année 2015</span>
+          </div>
+
+          <div class="property-footer">
+            <a href="bien-Lea.html" class="btn">Voir les informations du bien</a>
+          </div>
+        </div>
+      </article>
+
+      <!-- BIEN NAEL -->
+      <article class="property-card">
+        <div class="property-cover">
+          <img src="biens-immobiliers/nael/photos/photo-accueil.webp">
+          <div class="property-tag">Appartement T4 – 1er étage</div>
+        </div>
+
+        <div class="property-body">
+          <h3 class="property-title">Naël</h3>
+          <div class="property-location">Saint-Priest - Secteur Centre-Ville</div>
+
+          <div class="property-meta">
+            <span>T4</span>
+            <span>≈ 72 m²</span>
+            <span>Extérieur ≈ 8 m²</span>
+            <span>Année 2017</span>
+          </div>
+
+          <div class="property-footer">
+            <a href="bien-Nael.html" class="btn">Voir les informations du bien</a>
+          </div>
+        </div>
+      </article>
+      
+      <!-- BIEN ESTRELLA -->
+      <article class="property-card">
+        <div class="property-cover">
+          <img src="biens-immobiliers/estrella/photos/photo-accueil.webp">
+          <div class="property-tag">Maison T7 – 2 niveaux</div>
+        </div>
+
+        <div class="property-body">
+          <h3 class="property-title">Estrella</h3>
+          <div class="property-location">Montrottier - Secteur Centre</div>
+
+          <div class="property-meta">
+            <span>T7</span>
+            <span>≈ 190 m²</span>
+            <span>Extérieur ≈ 54 m²</span>
+            <span>Année 1835</span>
+          </div>
+
+          <div class="property-footer">
+            <a href="bien-Estrella.html" class="btn">Voir les informations du bien</a>
+          </div>
+        </div>
+      </article>
+
+    </section>
+
+    <section class="contact-block">
+      <img src="images/photo.webp" alt="Photo de Jérémy Heyob" class="contact-photo">
+
+      <div class="contact-text">
+        <h3>Une question sur l'un de ces biens ?</h3>
+
+        <p>
+          Je reste disponible pour vous apporter des précisions,
+          vous envoyer des documents complémentaires ou organiser
+          une contre-visite sur les créneaux qui vous conviennent.
+        </p>
+
+        <div class="contact-links">
+          <a href="mailto:contact@jeremyheyob.fr">✉️ Email</a>
+          <a href="sms:+33648145565">💬 SMS</a>
+          <a href="tel:+33648145565">📞 Appel</a>
+        </div>
+      </div>
+    </section>
+
+  </div>
+</body>
+</html>
