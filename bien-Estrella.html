@@ -273,22 +273,20 @@
         <div><span>Points forts</span>Grandes chambres, grande pièce de vie, suite parentale</div>
       </div>
 
-      <!-- VIDEO -->
+      <!-- VIDEO — NOUVELLE MÉTHODE -->
       <h2 style="margin-top:20px;">Vidéo de présentation</h2>
 
-      <div class="yt-lazy" data-id="BcZKUKU0p-U">
+      <div class="yt-lazy" data-url="https://www.youtube.com/watch?v=BcZKUKU0p-U">
         <img src="biens-immobiliers/estrella/photos/Miniature_YouTube.webp" class="yt-thumb">
         <div class="yt-play">▶</div>
       </div>
-
-      <!-- LIEN ANNONCE – LIGNE SUPPRIMÉE (PAS DE LIEN POUR CE BIEN) -->
 
       <!-- DOCUMENTS -->
       <h2 style="margin-top:28px;">Documents du bien</h2>
 
       <ul style="list-style:none;padding:0;margin:12px 0;font-size:15px;">
         <li><a href="biens-immobiliers/estrella/documents/estrella-amiante.pdf" target="_blank">Amiante →</a></li>
-        <li><a href="biens-immobiliers/estrella/documents/estrella-devis.pdf" target="_blank">Devis Technic Chauffage→</a></li>
+        <li><a href="biens-immobiliers/estrella/documents/estrella-devis.pdf" target="_blank">Devis Technic Chauffage →</a></li>
         <li><a href="biens-immobiliers/estrella/documents/estrella-devis-2.pdf" target="_blank">Devis Oriol →</a></li>
         <li><a href="biens-immobiliers/estrella/documents/estrella-dpe.pdf" target="_blank">DPE →</a></li>
         <li><a href="biens-immobiliers/estrella/documents/estrella-dpe-2020.pdf" target="_blank">DPE projeté →</a></li>
@@ -299,7 +297,7 @@
 
     </section>
 
-    <!-- CONTRE VISITE – IDENTIQUE À NAËL -->
+    <!-- CONTRE VISITE -->
     <aside class="card">
       <h2>Programmer une contre-visite</h2>
       <p class="subtitle">Remplissez vos coordonnées et vos disponibilités.</p>
@@ -310,6 +308,7 @@
         <div><label>Votre téléphone</label><input id="telephoneClient" type="tel"></div>
         <div><label>Votre email</label><input id="emailClient" type="email"></div>
         <div><label>Date souhaitée</label><input id="date" type="date"></div>
+
         <div>
           <label>Créneau souhaité</label>
           <select id="creneau">
@@ -350,7 +349,7 @@
 
 </div>
 
-<!-- LIGHTBOX + CARROUSEL + YOUTUBE – IDENTIQUES -->
+<!-- LIGHTBOX + CARROUSEL + YOUTUBE -->
 <script>
 /* CARROUSEL */
 let idx = 0;
@@ -411,12 +410,17 @@ document.addEventListener('keydown', (e) => {
   if (e.key === 'Escape') btnClose.onclick();
 });
 
-/* YOUTUBE */
+/* YOUTUBE — NOUVELLE MÉTHODE */
 document.querySelectorAll('.yt-lazy').forEach(el => {
   el.addEventListener('click', () => {
-    const id = el.dataset.id;
+
+    const url = el.dataset.url;
+    if (!url) return;
+
+    const embed = url.replace("watch?v=", "embed/").replace("&", "?");
+
     el.innerHTML = `
-      <iframe src="https://www.youtube.com/embed/${id}?autoplay=1"
+      <iframe src="${embed}?autoplay=1"
               allowfullscreen
               style="width:100%;height:260px;border:0;border-radius:16px;"></iframe>`;
   }, { once: true });
