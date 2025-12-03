@@ -383,6 +383,36 @@
         flex-direction: column;
         align-items: flex-start;
       }
+      .property-card.horizontal {
+        display: flex;
+        flex-direction: row;
+        gap: 16px;
+        align-items: stretch;
+      }
+      .property-card.horizontal .property-cover {
+        width: 45%;
+        min-width: 45%;
+        aspect-ratio: 4/3;
+        overflow: hidden;
+        border-radius: 12px;
+      }
+      .property-card.horizontal .property-body {
+        flex: 1;
+        padding: 10px 4px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+      }
+      .property-tag-right {
+        font-size: 12px;
+        background: rgba(255,255,255,0.9);
+        color: #4A4A4A;
+        padding: 4px 10px;
+        border-radius: 999px;
+        border: 1px solid var(--border-soft);
+        display: inline-block;
+        margin-bottom: 8px;
+      }
     }
   </style>
 </head>
@@ -442,13 +472,13 @@
     <section class="properties-grid">
 
       <!-- BIEN LEA -->
-      <article class="property-card">
+      <article class="property-card horizontal">
         <div class="property-cover">
           <img src="biens-immobiliers/lea/photos/photo-accueil.webp">
-          <div class="property-tag">Appartement T4 – 0/4</div>
         </div>
 
         <div class="property-body">
+          <div class="property-tag-right">Appartement T4 – 0/4</div>
           <h3 class="property-title">Léa</h3>
           <div class="property-location">Secteur Centre-Ville</div>
 
@@ -466,13 +496,13 @@
       </article>
       
       <!-- BIEN NAEL -->
-      <article class="property-card">
+      <article class="property-card horizontal">
         <div class="property-cover">
           <img src="biens-immobiliers/nael/photos/photo-accueil.webp">
-          <div class="property-tag">Appartement T3 – 1er étage</div>
         </div>
 
         <div class="property-body">
+          <div class="property-tag">Appartement T3 – 1er étage</div>
           <h3 class="property-title">Naël</h3>
           <div class="property-location">Saint-Priest – Secteur Centre-Ville</div>
 
