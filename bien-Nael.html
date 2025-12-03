@@ -9,8 +9,6 @@
   <link rel="preload" href="biens-immobiliers/nael/photos/nael 1.webp" as="image">
 
   <style>
-    /* CSS IDENTIQUE À LA VERSION DE RÉFÉRENCE – NON MODIFIÉ */
-    /* ----------------------------------------------------- */
     :root {
       --bg: #FFFBF5;
       --accent: #C6AA77;
@@ -270,13 +268,13 @@
         <div><span>Surface</span>72 m² int. / 8 m² ext.</div>
         <div><span>Garage / parking</span>Garage inclus</div>
         <div><span>Chauffage</span>Gaz collectif</div>
-        <div><span>Charges</span>152 €/mois (chauffage, EC, EF, EPC, ascenseur, charges garage)</div>
+        <div><span>Charges</span>152 €/mois</div>
         <div><span>Taxe foncière</span>1152 €</div>
         <div><span>À proximité</span>Écoles, commerces, Tram T2, C25</div>
         <div><span>Points forts</span>Sécurisé, traversant, garage</div>
       </div>
 
-      <!-- VIDEO -->
+      <!-- VIDEO YOUTUBE -->
       <h2 style="margin-top:20px;">Vidéo de présentation</h2>
 
       <div class="yt-lazy" data-id="BcZKUKU0p-U">
@@ -298,7 +296,7 @@
       <ul style="list-style:none;padding:0;margin:12px 0;font-size:15px;">
         <li><a href="biens-immobiliers/nael/documents/assurance-copropriete.pdf" target="_blank">Assurance copropriété →</a></li>
         <li><a href="biens-immobiliers/nael/documents/attestation-achievement-travaux.pdf" target="_blank">Attestation achievement travaux →</a></li>
-        <li><a href="biens-immobiliers/nael/documents/attestation-assurance-dommages-ouvrages.pdf" target="_blank">Attestation assurance dommages-ouvrages →</a></li>
+        <li><a href="biens-immobiliers/nael/documents/attestation-assurance-dommages-ouvrages.pdf" target="_blank">Assurance dommages-ouvrages →</a></li>
         <li><a href="biens-immobiliers/nael/documents/attestation-non-opposition.pdf" target="_blank">Attestation de non-opposition →</a></li>
         <li><a href="biens-immobiliers/nael/documents/carnet-entretien.pdf" target="_blank">Carnet d’entretien →</a></li>
         <li><a href="biens-immobiliers/nael/documents/daact.pdf" target="_blank">DAACT →</a></li>
@@ -313,7 +311,7 @@
 
     </section>
 
-    <!-- CONTRE VISITE – IDENTIQUE -->
+    <!-- CONTRE VISITE -->
     <aside class="card">
       <h2>Programmer une contre-visite</h2>
       <p class="subtitle">Remplissez vos coordonnées et vos disponibilités.</p>
@@ -324,6 +322,7 @@
         <div><label>Votre téléphone</label><input id="telephoneClient" type="tel"></div>
         <div><label>Votre email</label><input id="emailClient" type="email"></div>
         <div><label>Date souhaitée</label><input id="date" type="date"></div>
+
         <div>
           <label>Créneau souhaité</label>
           <select id="creneau">
@@ -364,7 +363,7 @@
 
 </div>
 
-<!-- LIGHTBOX + CARROUSEL + YOUTUBE – IDENTIQUES -->
+<!-- LIGHTBOX + CARROUSEL + YOUTUBE -->
 <script>
 /* CARROUSEL */
 let idx = 0;
@@ -435,6 +434,7 @@ document.querySelectorAll('.yt-lazy').forEach(el => {
               style="width:100%;height:260px;border:0;border-radius:16px;"></iframe>`;
   }, { once: true });
 });
+</script>
 
 <div class="lightbox" id="lightbox">
   <span class="lightbox-close" id="lightboxClose">×</span>
