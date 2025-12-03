@@ -1,0 +1,571 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="robots" content="noindex, nofollow, noarchive, nosnippet">
+  <title>Léa | Jérémy Heyob Immobilier</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link rel="preload" href="/site-apres-visite/lea/photos/Lea 1.webp" as="image">
+
+  <style>
+  :root {
+    --bg: #FFFBF5;
+    --accent: #C6AA77;
+    --accent-soft: rgba(198,169,119,0.16);
+    --text-main: #191919;
+    --text-soft: #7A7A7A;
+    --border-soft: #e5e7eb;
+    --card-bg: #ffffff;
+    --shadow-soft: 0 20px 50px rgba(25,25,25,0.10);
+  }
+
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+    background: var(--bg);
+    color: var(--text-main);
+    overflow-x: hidden;
+  }
+
+  .page {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 24px 16px 50px;
+  }
+
+  header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 18px;
+    max-width: 960px;
+    margin: 16px auto 24px;
+    padding: 8px 28px;
+    background: var(--card-bg);
+    border-radius: 22px;
+    box-shadow: var(--shadow-soft);
+    border: 1px solid rgba(15,23,42,0.04);
+  }
+
+  .logo { max-width: 140px; }
+
+  .header-center { flex: 1; text-align: center; }
+
+  .tagline-main {
+    font-size: 13px;
+    letter-spacing: 0.18em;
+    color: var(--text-soft);
+  }
+
+  .tagline-sub {
+    margin-top: 12px;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+  }
+
+  .tagline-sub strong {
+    color: var(--text-main);
+    font-weight: 900;
+  }
+
+  .layout {
+    display: grid;
+    grid-template-columns: 1.2fr 0.8fr;
+    gap: 22px;
+    align-items: start;
+  }
+
+  .card {
+    background: var(--card-bg);
+    border-radius: 22px;
+    border: 1px solid var(--border-soft);
+    padding: 20px 22px;
+    box-shadow: var(--shadow-soft);
+  }
+
+  .pill {
+    background: var(--accent-soft);
+    color: var(--accent);
+    padding: 5px 12px;
+    border-radius: 999px;
+    font-size: 11px;
+    font-weight: 600;
+    margin-bottom: 10px;
+    display: inline-block;
+  }
+
+  h1 { font-size: 26px; margin-bottom: 0; }
+  .subtitle { color: var(--text-soft); margin-top: 4px; }
+
+  .chip {
+    padding: 6px 12px;
+    background: rgba(198,169,119,0.10);
+    border-radius: 999px;
+    font-size: 12px;
+    margin-right: 6px;
+    margin-bottom: 6px;
+    display: inline-block;
+  }
+
+  /* CARROUSEL */
+  .carousel {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    border-radius: 16px;
+    background: #00000008;
+    margin: 20px 0;
+  }
+
+  .carousel-track {
+    display: flex;
+    width: 100%;
+    transition: transform 0.35s ease;
+  }
+
+  .carousel img {
+    flex: 0 0 100%;
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+    background: #00000008;
+    cursor: pointer;
+  }
+
+  .carousel-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(255,255,255,0.75);
+    border: none;
+    font-size: 22px;
+    padding: 6px 12px;
+    border-radius: 999px;
+    cursor: pointer;
+  }
+
+  .carousel-btn.prev { left: 10px; }
+  .carousel-btn.next { right: 10px; }
+
+  /* GRID */
+  .grid-two {
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    gap: 12px;
+    font-size: 14px;
+    margin-top: 20px;
+  }
+
+  .grid-two span {
+    display: block;
+    font-size: 12px;
+    color: var(--text-soft);
+  }
+
+  /* FORMULAIRE */
+  .form-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+    margin-top: 14px;
+  }
+
+  input, select {
+    width: 100%;
+    padding: 10px 12px;
+    border-radius: 12px;
+    border: 1px solid var(--border-soft);
+    background: #fafafa;
+    font-size: 14px;
+  }
+
+  label { font-size: 13px; margin-bottom: 4px; display: block; }
+
+  .btn {
+    grid-column: span 2;
+    margin-top: 6px;
+    background: linear-gradient(135deg, #fbe4b9, #f3c98b);
+    color: #7a5a29;
+    padding: 12px 16px;
+    border-radius: 999px;
+    font-size: 15px;
+    font-weight: 600;
+    border: none;
+  }
+
+  .btn-retour {
+    display: inline-block;
+    margin: 10px 0 18px;
+    padding: 6px 12px;
+    font-size: 13px;
+    font-weight: 500;
+    color: #7a5a29;
+    text-decoration: none;
+    border-radius: 10px;
+    border: 1px solid rgba(198,169,119,0.35);
+    background: rgba(198,169,119,0.10);
+  }
+
+  /* CONTACT */
+  .contact-card {
+    margin-top: 18px;
+    display: flex;
+    gap: 10px;
+    border-top: 1px solid var(--border-soft);
+    padding-top: 12px;
+  }
+
+  .contact-photo {
+    width: 52px;
+    height: 52px;
+    border-radius: 999px;
+    object-fit: cover;
+    object-position: top center;
+    border: 1px solid #e5e7eb;
+  }
+
+  .contact-links { margin-top: 6px; display: flex; gap: 8px; font-size: 12px; }
+
+  .contact-links a {
+    color: #C6AA77;
+    font-size: 12px;
+    font-weight: 500;
+    text-decoration: none;
+  }
+
+  /* LIGHTBOX */
+  .lightbox {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.85);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.25s ease;
+  }
+
+  .lightbox.active { opacity: 1; pointer-events: auto; }
+
+  .lightbox img {
+    max-width: 90%;
+    max-height: 90vh;
+    border-radius: 12px;
+    box-shadow: 0 0 40px rgba(0,0,0,0.45);
+  }
+
+  .lightbox-prev,
+  .lightbox-next {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    color: white;
+    font-size: 46px;
+    cursor: pointer;
+    padding: 18px 24px;
+    background: rgba(0,0,0,0.35);
+    border-radius: 999px;
+  }
+
+  .lightbox-prev { left: 40px; }
+  .lightbox-next { right: 40px; }
+
+  .lightbox-close {
+    position: absolute;
+    top: 30px;
+    right: 40px;
+    color: white;
+    font-size: 52px;
+    cursor: pointer;
+    padding: 8px 16px;
+    background: rgba(0,0,0,0.35);
+    border-radius: 999px;
+  }
+
+  /* RESPONSIVE */
+  @media (max-width: 1024px) {
+    .layout { grid-template-columns: 1fr; }
+  }
+
+  @media (max-width: 768px) {
+    .page { padding: 16px 12px 40px; }
+
+    header {
+      flex-direction: column;
+      padding: 14px;
+      border-radius: 22px;
+    }
+
+    .carousel { height: auto; aspect-ratio: 16/10; }
+    .carousel img { height: 100%; }
+
+    .grid-two { grid-template-columns: 1fr; font-size: 13px; }
+
+    .form-grid { grid-template-columns: 1fr; }
+
+    .btn { font-size: 14px; }
+  }
+
+  @media (max-width: 480px) {
+    .carousel { aspect-ratio: 4/3; }
+    .lightbox-prev, .lightbox-next { font-size: 32px; }
+    .lightbox-close { font-size: 40px; }
+  }
+  </style>
+
+  <script>
+  function sendEmail() {
+    const bien = "Léa - Appartement T4";
+    const p = document.getElementById("prenomClient").value;
+    const n = document.getElementById("nomClient").value;
+    const t = document.getElementById("telephoneClient").value;
+    const e = document.getElementById("emailClient").value;
+    const d = document.getElementById("date").value;
+    const c = document.getElementById("creneau").value;
+
+    if(!p || !n || !e || !t || !d || !c){
+      alert("Merci de renseigner tous les champs.");
+      return;
+    }
+
+    const subject = encodeURIComponent("Demande de contre-visite - " + bien);
+    const body = encodeURIComponent(
+      "Bonjour,\n\n" +
+      "Je souhaite programmer une contre-visite pour le bien : " + bien + ".\n\n" +
+      "Nom : " + p + " " + n + "\n" +
+      "Téléphone : " + t + "\n" +
+      "Email : " + e + "\n\n" +
+      "Date souhaitée : " + d + "\n" +
+      "Créneau souhaité : " + c + "\n\n"
+    );
+
+    window.location.href =
+      "mailto:contact@jeremyheyob.fr?subject=" + subject + "&body=" + body;
+  }
+  </script>
+</head>
+
+<body>
+<div class="page">
+
+  <header>
+    <img src="/images/logo.webp" class="logo">
+    <div class="header-center">
+      <div class="tagline-main">VOS PROJETS IMMOBILIERS N'ONT JAMAIS ÉTÉ AUSSI SIMPLES !</div>
+      <div class="tagline-sub"><strong>JÉRÉMY HEYOB</strong></div>
+    </div>
+  </header>
+
+  <a href="/site-apres-visite/espace-client-visite.html" class="btn-retour">← Retour</a>
+
+  <main class="layout">
+
+    <section class="card">
+      <div class="pill">Informations du bien</div>
+
+      <h1>Léa</h1>
+      <p class="subtitle">Appartement T4 avec grand extérieur, calme et garage.</p>
+
+      <div class="chips">
+        <span class="chip">T4</span>
+        <span class="chip">74 m²</span>
+        <span class="chip">110 m² extérieur</span>
+        <span class="chip">Étage 0/4</span>
+        <span class="chip">DPE C-C</span>
+        <span class="chip">Garage inclus</span>
+      </div>
+
+      <!-- CARROUSEL -->
+      <div class="carousel">
+        <div class="carousel-track">
+          <img src="/site-apres-visite/lea/photos/Lea 1.webp">
+          <img src="/site-apres-visite/lea/photos/Lea 2.webp" loading="lazy">
+          <img src="/site-apres-visite/lea/photos/Lea 3.webp" loading="lazy">
+          <img src="/site-apres-visite/lea/photos/Lea 4.webp" loading="lazy">
+          <img src="/site-apres-visite/lea/photos/Lea 5.webp" loading="lazy">
+          <img src="/site-apres-visite/lea/photos/Lea 6.webp" loading="lazy">
+          <img src="/site-apres-visite/lea/photos/Lea 7.webp" loading="lazy">
+        </div>
+
+        <button class="carousel-btn prev">‹</button>
+        <button class="carousel-btn next">›</button>
+      </div>
+
+      <!-- INFOS -->
+      <div class="grid-two">
+        <div><span>Type</span>Appartement T4</div>
+        <div><span>Prix</span>260 000 €</div>
+        <div><span>Ville</span>Saint-Priest</div>
+        <div><span>Secteur</span>Centre-Ville</div>
+        <div><span>Année</span>2015</div>
+        <div><span>Étage</span>Rez-de-jardin</div>
+        <div><span>DPE</span>C-C</div>
+        <div><span>Surface</span>74 m² int. / 110 m² ext.</div>
+        <div><span>Garage / parking</span>Garage inclus</div>
+        <div><span>Chauffage</span>Gaz collectif</div>
+        <div><span>Charges</span>215 €/mois (chauffage, EC, EF, EPC, ascenseur, charges garage)</div>
+        <div><span>Taxe foncière</span>923 €</div>
+        <div><span>À proximité</span>Écoles, commerces, T2 et C25 tout proche</div>
+        <div><span>Points forts</span>Grand extérieur, calme, garage</div>
+      </div>
+
+      <!-- VIDEO → LIEN SIMPLE -->
+      <h2 style="margin-top:20px;">Vidéo de présentation</h2>
+      <a href="https://youtu.be/oDVpOTFooCE"
+         target="_blank"
+         style="color:#1a73e8;font-size:15px;text-decoration:underline;">
+        Voir la vidéo de présentation du bien →
+      </a>
+
+      <!-- LIEN ANNONCE -->
+      <h2 style="margin-top:20px;">Lien de l’annonce</h2>
+      <a href="https://www.agence.immo/achat/appartement-t4-4-pieces-saint-priest-69800-VA33801"
+         target="_blank"
+         style="color:#1a73e8;font-size:15px;text-decoration:underline;">
+         Voir l’annonce sur le site →
+      </a>
+
+      <!-- DOCUMENTS -->
+      <h2 style="margin-top:28px;">Documents du bien</h2>
+
+      <ul style="list-style:none;padding:0;margin:12px 0;font-size:15px;">
+        <li><a href="/site-apres-visite/lea/documents/Lea-acte-rectificatif-edd-rcp.pdf" target="_blank">Acte rectificatif EDD/RCP →</a></li>
+        <li><a href="/site-apres-visite/lea/documents/Lea-carnet-entretien.pdf" target="_blank">Carnet d’entretien →</a></li>
+        <li><a href="/site-apres-visite/lea/documents/Lea-dpe.pdf" target="_blank">DPE →</a></li>
+        <li><a href="/site-apres-visite/lea/documents/Lea-facture-chauffage-p2-e2s.pdf" target="_blank">Facture chauffage P2 E2S →</a></li>
+        <li><a href="/site-apres-visite/lea/documents/Lea-carrez.pdf" target="_blank">Mesurage Carrez →</a></li>
+        <li><a href="/site-apres-visite/lea/documents/Lea-modificatif-reglement-chauffage-2015.pdf" target="_blank">Modificatif règlement chauffage 2015 →</a></li>
+        <li><a href="/site-apres-visite/lea/documents/Lea-modificatif-edd-rcp.pdf" target="_blank">Modificatif EDD/RCP →</a></li>
+        <li><a href="/site-apres-visite/lea/documents/Lea-plan.pdf" target="_blank">Plan →</a></li>
+        <li><a href="/site-apres-visite/lea/documents/Lea-pv-ag-2022.pdf" target="_blank">PV AG 2022 →</a></li>
+        <li><a href="/site-apres-visite/lea/documents/Lea-pv-ag-2024.pdf" target="_blank">PV AG 2024 →</a></li>
+        <li><a href="/site-apres-visite/lea/documents/Lea-ag-2025.pdf" target="_blank">PV AG 2025 →</a></li>
+        <li><a href="/site-apres-visite/lea/documents/Lea-reglement-copropriete.pdf" target="_blank">Règlement de copropriété →</a></li>
+      </ul>
+
+    </section>
+
+    <!-- CONTRE VISITE -->
+    <aside class="card">
+      <h2>Programmer une contre-visite</h2>
+      <p class="subtitle">Remplissez vos coordonnées et vos disponibilités.</p>
+
+      <div class="form-grid">
+        <div><label>Votre prénom</label><input id="prenomClient" type="text"></div>
+        <div><label>Votre nom</label><input id="nomClient" type="text"></div>
+        <div><label>Votre téléphone</label><input id="telephoneClient" type="tel"></div>
+        <div><label>Votre email</label><input id="emailClient" type="email"></div>
+        <div><label>Date souhaitée</label><input id="date" type="date"></div>
+        <div><label>Créneau souhaité</label>
+          <select id="creneau">
+            <option value="">-- Choisir --</option>
+            <option>09:00 - 10:00</option>
+            <option>10:00 - 11:00</option>
+            <option>11:00 - 12:00</option>
+            <option>14:00 - 15:00</option>
+            <option>15:00 - 16:00</option>
+            <option>16:00 - 17:00</option>
+            <option>17:00 - 18:00</option>
+            <option>18:00 - 19:00</option>
+            <option>19:00 - 20:00</option>
+          </select>
+        </div>
+
+        <button class="btn" onclick="sendEmail()">Valider ma demande</button>
+      </div>
+
+      <div class="contact-card">
+        <img src="/images/photo.webp" class="contact-photo">
+        <div>
+          <strong>Jérémy Heyob</strong><br>
+          <span style="font-size:12px;color:var(--text-soft);">Négociateur Immobilier à Saint-Priest</span><br>
+          <div class="contact-links">
+            <a href="mailto:contact@jeremyheyob.fr">✉️ Email</a>
+            <a href="sms:+33648145565">💬 SMS</a>
+            <a href="tel:+33648145565">📞 Appel</a>
+          </div>
+        </div>
+      </div>
+
+    </aside>
+
+  </main>
+
+</div>
+
+<!-- LIGHTBOX -->
+<div class="lightbox" id="lightbox">
+  <span class="lightbox-close" id="lightboxClose">×</span>
+  <span class="lightbox-prev" id="lightboxPrev">‹</span>
+  <img id="lightboxImg">
+  <span class="lightbox-next" id="lightboxNext">›</span>
+</div>
+
+<script>
+/* CARROUSEL */
+let idx = 0;
+const track = document.querySelector('.carousel-track');
+const slides = document.querySelectorAll('.carousel img');
+
+document.querySelector('.next').onclick = () => {
+  idx = (idx + 1) % slides.length;
+  track.style.transform = `translateX(-${idx * 100}%)`;
+};
+
+document.querySelector('.prev').onclick = () => {
+  idx = (idx - 1 + slides.length) % slides.length;
+  track.style.transform = `translateX(-${idx * 100}%)`;
+};
+
+/* LIGHTBOX */
+const lightbox = document.getElementById('lightbox');
+const lightboxImg = document.getElementById('lightboxImg');
+const btnClose = document.getElementById('lightboxClose');
+const btnPrev = document.getElementById('lightboxPrev');
+const btnNext = document.getElementById('lightboxNext');
+
+let currentSlide = 0;
+
+slides.forEach((img, i) => {
+  img.addEventListener('click', () => {
+    currentSlide = i;
+    openLightbox();
+  });
+});
+
+function openLightbox() {
+  lightboxImg.src = slides[currentSlide].src;
+  lightbox.classList.add('active');
+}
+
+btnClose.onclick = () => lightbox.classList.remove('active');
+
+lightbox.onclick = (e) => {
+  if (e.target === lightbox) lightbox.classList.remove('active');
+};
+
+btnPrev.onclick = () => {
+  currentSlide = (currentSlide - 1 + slides.length) % slides.length;
+  openLightbox();
+};
+
+btnNext.onclick = () => {
+  currentSlide = (currentSlide + 1) % slides.length;
+  openLightbox();
+};
+
+document.addEventListener('keydown', (e) => {
+  if (!lightbox.classList.contains('active')) return;
+  if (e.key === 'ArrowRight') btnNext.onclick();
+  if (e.key === 'ArrowLeft') btnPrev.onclick();
+  if (e.key === 'Escape') btnClose.onclick();
+});
+</script>
+
+</body>
+</html>
