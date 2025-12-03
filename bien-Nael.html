@@ -276,20 +276,13 @@
         <div><span>Points forts</span>Sécurisé, traversant, garage</div>
       </div>
 
-        /* YOUTUBE */
-        document.querySelectorAll('.yt-lazy').forEach(el => {
-          el.addEventListener('click', () => {
-            const id = el.dataset.id;
-            el.innerHTML = `
-             <iframe 
-              src="https://www.youtube.com/embed/${id}?autoplay=1"
-              allowfullscreen 
-              style="width:100%;height:260px;border:0;border-radius:16px;">
-            </iframe>
-            `;
-          }, { once: true });
-        });
+      <!-- VIDEO -->
+      <h2 style="margin-top:20px;">Vidéo de présentation</h2>
 
+      <div class="yt-lazy" data-id="BcZKUKU0p-U">
+        <img src="biens-immobiliers/nael/photos/Miniature_YouTube_2.webp" class="yt-thumb">
+        <div class="yt-play">▶</div>
+      </div>
 
       <!-- LIEN ANNONCE -->
       <h2 style="margin-top:20px;">Lien de l’annonce</h2>
@@ -442,7 +435,6 @@ document.querySelectorAll('.yt-lazy').forEach(el => {
               style="width:100%;height:260px;border:0;border-radius:16px;"></iframe>`;
   }, { once: true });
 });
-</script>
 
 <div class="lightbox" id="lightbox">
   <span class="lightbox-close" id="lightboxClose">×</span>
