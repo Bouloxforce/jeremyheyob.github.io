@@ -181,21 +181,10 @@
 
       .grid-two { grid-template-columns: 1fr; font-size: 13px; }
 
-      .form-grid { grid-template-columns: 1fr; }
-
-      .btn { font-size: 14px; }
-    }
-
-    @media (max-width: 480px) {
-      .carousel { aspect-ratio: 4/3; }
-      .lightbox-prev, .lightbox-next { font-size: 32px; }
-      .lightbox-close { font-size: 40px; }
-    }
-
-    /* FIX MOBILE - AJOUTÉ EN BAS (comme demandé) */
-    @media (max-width: 768px) {
-
-      .form-grid { grid-template-columns: 1fr !important; }
+      /* Formulaire : 1 colonne et pas de débordement */
+      .form-grid {
+        grid-template-columns: 1fr;
+      }
 
       .form-grid > div {
         min-width: 0;
@@ -211,16 +200,16 @@
         max-width: 100%;
       }
 
-      /* contact centré sur mobile, comme Estrella */
-      .contact-card {
-        flex-direction: column;
-        align-items: center;
-        text-align: center;
+      .btn {
+        font-size: 14px;
+        grid-column: 1 / -1;
       }
+    }
 
-      .contact-links {
-        justify-content: center;
-      }
+    @media (max-width: 480px) {
+      .carousel { aspect-ratio: 4/3; }
+      .lightbox-prev, .lightbox-next { font-size: 32px; }
+      .lightbox-close { font-size: 40px; }
     }
   </style>
 
