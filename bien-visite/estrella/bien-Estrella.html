@@ -190,6 +190,21 @@
       .lightbox-prev, .lightbox-next { font-size: 32px; }
       .lightbox-close { font-size: 40px; }
     }
+    @media (max-width: 768px) {
+      .form-grid > div {
+        min-width: 0;           /* Permet à l’input de rétrécir */
+    }
+
+      label {
+        white-space: normal;    /* Autorise le retour à la ligne du label */
+        display: block;
+    }
+
+      input, select {
+        width: 100%;            /* Sécurise le comportement */
+        max-width: 100%;
+    }
+      
   </style>
 
   <script>
