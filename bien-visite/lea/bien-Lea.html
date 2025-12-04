@@ -52,7 +52,6 @@
   }
 
   .logo { max-width: 140px; }
-
   .header-center { flex: 1; text-align: center; }
 
   .tagline-main {
@@ -63,7 +62,7 @@
 
   .tagline-sub {
     margin-top: 12px;
-    margin-bottom: 8px; 
+    margin-bottom: 8px;
     font-size: 12px;
     text-transform: uppercase;
     letter-spacing: 0.12em;
@@ -318,6 +317,36 @@
     .carousel { aspect-ratio: 4/3; }
     .lightbox-prev, .lightbox-next { font-size: 32px; }
     .lightbox-close { font-size: 40px; }
+  }
+
+  /* FIX MOBILE — FORMULAIRE + CONTACT */
+  @media (max-width: 768px) {
+
+    .form-grid { grid-template-columns: 1fr !important; }
+
+    .form-grid > div {
+      min-width: 0;
+    }
+
+    label {
+      white-space: normal;
+      display: block;
+    }
+
+    input, select {
+      width: 100%;
+      max-width: 100%;
+    }
+
+    .contact-card {
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+
+    .contact-links {
+      justify-content: center;
+    }
   }
   </style>
 
