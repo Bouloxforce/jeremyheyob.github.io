@@ -289,60 +289,55 @@
     border-radius: 999px;
   }
 
-  /* RESPONSIVE */
-  @media (max-width: 1024px) {
-    .layout { grid-template-columns: 1fr; }
-  }
-
-  @media (max-width: 768px) {
-    .page { padding: 16px 12px 40px; }
-
-    header {
-      flex-direction: column;
-      padding: 14px;
-      border-radius: 22px;
+      /* RESPONSIVE */
+    @media (max-width: 1024px) {
+      .layout { grid-template-columns: 1fr; }
     }
 
-    .carousel { height: auto; aspect-ratio: 16/10; }
-    .carousel img { height: 100%; }
+    @media (max-width: 768px) {
+      .page { padding: 16px 12px 40px; }
 
-    .grid-two { grid-template-columns: 1fr; font-size: 13px; }
+      header {
+        flex-direction: column;
+        padding: 14px;
+        border-radius: 22px;
+      }
 
-    .form-grid { grid-template-columns: 1fr; }
+      .carousel { height: auto; aspect-ratio: 16/10; }
+      .carousel img { height: 100%; }
 
-    .btn { font-size: 14px; }
-  }
+      .grid-two { grid-template-columns: 1fr; font-size: 13px; }
 
-  @media (max-width: 480px) {
-    .carousel { aspect-ratio: 4/3; }
-    .lightbox-prev, .lightbox-next { font-size: 32px; }
-    .lightbox-close { font-size: 40px; }
-  } /* ← ACCOLADE CORRIGÉE ICI */
+      /* Formulaire : 1 colonne et pas de débordement */
+      .form-grid {
+        grid-template-columns: 1fr;
+      }
 
-  /* FIX MOBILE — FORMULAIRE + CONTACT */
-  @media (max-width: 768px) {
+      .form-grid > div {
+        min-width: 0;
+      }
 
-    .form-grid { grid-template-columns: 1fr !important; }
+      label {
+        white-space: normal;
+        display: block;
+      }
 
-    .form-grid > div { min-width: 0; }
+      input, select {
+        width: 100%;
+        max-width: 100%;
+      }
 
-    label { white-space: normal; display: block; }
-
-    input, select {
-      width: 100%;
-      max-width: 100%;
+      .btn {
+        font-size: 14px;
+        grid-column: 1 / -1;
+      }
     }
 
-    .contact-card {
-      flex-direction: column;
-      align-items: center;
-      text-align: center;
+    @media (max-width: 480px) {
+      .carousel { aspect-ratio: 4/3; }
+      .lightbox-prev, .lightbox-next { font-size: 32px; }
+      .lightbox-close { font-size: 40px; }
     }
-
-    .contact-links {
-      justify-content: center;
-    }
-  }
   </style>
 
   <script>
