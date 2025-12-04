@@ -52,7 +52,6 @@
   }
 
   .logo { max-width: 140px; }
-
   .header-center { flex: 1; text-align: center; }
 
   .tagline-main {
@@ -103,10 +102,7 @@
   h1 { font-size: 26px; margin-bottom: 0; }
   .subtitle { color: var(--text-soft); margin-top: 4px; }
 
-  .chips {
-    margin-top: 12px;
-  }
-
+  .chips { margin-top: 12px; }
   .chip {
     padding: 6px 12px;
     background: rgba(198,169,119,0.10);
@@ -234,7 +230,12 @@
     border: 1px solid #e5e7eb;
   }
 
-  .contact-links { margin-top: 6px; display: flex; gap: 8px; font-size: 12px; }
+  .contact-links {
+    margin-top: 6px;
+    display: flex;
+    gap: 8px;
+    font-size: 12px;
+  }
 
   .contact-links a {
     color: #C6AA77;
@@ -294,11 +295,13 @@
     border-radius: 999px;
   }
 
+  /* RESPONSIVE */
   @media (max-width: 1024px) {
     .layout { grid-template-columns: 1fr; }
   }
 
   @media (max-width: 768px) {
+
     .page { padding: 16px 12px 40px; }
 
     header {
@@ -312,9 +315,21 @@
 
     .grid-two { grid-template-columns: 1fr; font-size: 13px; }
 
-    .form-grid { grid-template-columns: 1fr; }
+    /* FORMULAIRE FIX MOBILE */
+    .form-grid { grid-template-columns: 1fr !important; }
+    .form-grid > div { min-width: 0; }
+    label { white-space: normal; display: block; }
+    input, select { width: 100%; max-width: 100%; }
 
-    .btn { font-size: 14px; }
+    /* CONTACT CENTRÉ UNIQUEMENT SUR MOBILE */
+    .contact-card {
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+    .contact-links {
+      justify-content: center;
+    }
   }
 
   @media (max-width: 480px) {
@@ -362,7 +377,9 @@
   <header>
     <img src="/images/logo.webp" class="logo">
     <div class="header-center">
-      <div class="tagline-main">VOS PROJETS IMMOBILIERS N'ONT JAMAIS ÉTÉ AUSSI SIMPLES !</div>
+      <div class="tagline-main">
+        VOS PROJETS IMMOBILIERS N'ONT JAMAIS ÉTÉ AUSSI SIMPLES !
+      </div>
       <div class="tagline-sub"><strong>JÉRÉMY HEYOB</strong></div>
     </div>
   </header>
@@ -375,7 +392,9 @@
       <div class="pill">Informations du bien</div>
 
       <h1>Lucas</h1>
-      <p class="subtitle">Appartement T4, sécurisé, traversant, calme avec balcon.</p>
+      <p class="subtitle">
+        Appartement T4, sécurisé, traversant, calme avec balcon.
+      </p>
 
       <div class="chips">
         <span class="chip">T4</span>
@@ -496,7 +515,9 @@
         <img src="/images/photo.webp" class="contact-photo">
         <div>
           <strong>Jérémy Heyob</strong><br>
-          <span style="font-size:12px;color:var(--text-soft);">Négociateur Immobilier à Saint-Priest</span><br>
+          <span style="font-size:12px;color:var(--text-soft);">
+            Négociateur Immobilier à Saint-Priest
+          </span><br>
           <div class="contact-links">
             <a href="mailto:contact@jeremyheyob.fr">✉️ Email</a>
             <a href="sms:+33648145565">💬 SMS</a>
