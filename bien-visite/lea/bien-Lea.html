@@ -317,21 +317,16 @@
     .carousel { aspect-ratio: 4/3; }
     .lightbox-prev, .lightbox-next { font-size: 32px; }
     .lightbox-close { font-size: 40px; }
-  }
+  } /* ← ACCOLADE CORRIGÉE ICI */
 
   /* FIX MOBILE — FORMULAIRE + CONTACT */
   @media (max-width: 768px) {
 
     .form-grid { grid-template-columns: 1fr !important; }
 
-    .form-grid > div {
-      min-width: 0;
-    }
+    .form-grid > div { min-width: 0; }
 
-    label {
-      white-space: normal;
-      display: block;
-    }
+    label { white-space: normal; display: block; }
 
     input, select {
       width: 100%;
