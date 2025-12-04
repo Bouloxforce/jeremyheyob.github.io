@@ -79,24 +79,14 @@
       font-weight: 900;
     }
 
-    .header-left {
-      display: flex;
-      align-items: center;
-      gap: 16px;
-    }
-
-    .logo {
-      max-width: 140px;
-      height: auto;
-    }
+    .header-left { display: flex; align-items: center; gap: 16px; }
+    .logo { max-width: 140px; height: auto; }
 
     nav { display: flex; gap: 18px; font-size: 14px; }
-
     nav a { color: var(--text-soft); text-decoration: none; }
     nav a:hover { color: var(--accent); }
     nav a.active { color: var(--accent); font-weight: 600; }
 
-    /* HERO */
     .hero {
       position: relative;
       border-radius: 20px;
@@ -110,7 +100,6 @@
     }
 
     .hero-inner { display: block; }
-
     .hero-text { padding: 24px 26px 24px; }
 
     .pill {
@@ -169,7 +158,6 @@
       background: var(--text-soft);
     }
 
-    /* GRID DES BIENS */
     .section-title {
       margin: 18px 0 10px;
       font-size: 18px;
@@ -282,7 +270,6 @@
 
     .btn:hover { filter: brightness(1.03); }
 
-    /* CONTACT */
     .contact-block {
       display: flex;
       gap: 18px;
@@ -322,7 +309,6 @@
 
     .contact-links a:hover { text-decoration: underline; }
 
-    /* FOOTER LÉGAL */
     .legal-footer {
       margin-top: 40px;
       padding: 18px;
@@ -491,6 +477,18 @@
 
     </section>
 
+    <!-- NOUVEAU BLOC : BIENS SOUS COMPROMIS -->
+    <h2 class="section-title">Biens sous compromis</h2>
+
+    <p class="section-sub">
+      Ces biens sont actuellement sous compromis.  
+      Si l’un d’eux vous intéresse, vous pouvez me contacter pour connaître l’avancement des démarches.
+    </p>
+
+    <section class="properties-grid">
+      <!-- Grille vide pour le moment -->
+    </section>
+
     <section class="contact-block">
       <img src="/images/photo.webp" alt="Photo de Jérémy Heyob" class="contact-photo">
 
@@ -511,7 +509,6 @@
       </div>
     </section>
 
-    <!-- FOOTER LÉGAL AJOUTÉ -->
     <footer class="legal-footer">
       Les photos et documents présentés sur cette page sont la propriété exclusive de <strong>Jérémy HEYOB Immobilier</strong>.<br>
       Toute reproduction, diffusion ou utilisation est strictement interdite sans autorisation préalable.
