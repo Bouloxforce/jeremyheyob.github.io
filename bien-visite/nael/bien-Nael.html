@@ -176,34 +176,24 @@
         border-radius: 22px;
       }
 
+      /* Centrer la tagline sous le logo */
+      .header-center { text-align: center; width: 100%; }
+
       .carousel { height: auto; aspect-ratio: 16/10; }
       .carousel img { height: 100%; }
 
+      /* Gird infos → une seule colonne */
       .grid-two { grid-template-columns: 1fr; font-size: 13px; }
 
-      /* Formulaire : 1 colonne et pas de débordement */
-      .form-grid {
-        grid-template-columns: 1fr;
-      }
+      /* Formulaire : 1 colonne */
+      .form-grid { grid-template-columns: 1fr; }
+      .form-grid > div { min-width: 0; }
 
-      .form-grid > div {
-        min-width: 0;
-      }
+      input, select { width: 100%; max-width: 100%; }
 
-      label {
-        white-space: normal;
-        display: block;
-      }
-
-      input, select {
-        width: 100%;
-        max-width: 100%;
-      }
-
-      .btn {
-        font-size: 14px;
-        grid-column: 1 / -1;
-      }
+      /* Centrage photo contact */
+      .contact-card { justify-content: center; text-align: center; }
+      .contact-links { justify-content: center; }
     }
 
     @media (max-width: 480px) {
@@ -213,7 +203,8 @@
     }
   </style>
 
-  <script>
+<!-- SCRIPT ENVOI EMAIL -->
+<script>
     function sendEmail() {
       const bien = "Naël - Appartement T3";
       const p = document.getElementById("prenomClient").value;
@@ -242,7 +233,7 @@
       window.location.href =
         "mailto:contact@jeremyheyob.fr?subject=" + subject + "&body=" + body;
     }
-  </script>
+</script>
 </head>
 
 <body>
@@ -305,7 +296,7 @@
         <div><span>Surface</span>72 m² int. / 8 m² ext.</div>
         <div><span>Garage / parking</span>Garage inclus</div>
         <div><span>Chauffage</span>Gaz collectif</div>
-        <div><span>Charges</span>152 €/mois (chauffage, eau chaude, eau froide, entretiens parties communes, ascenseur, charges garage)</div>
+        <div><span>Charges</span>152 €/mois</div>
         <div><span>Taxe foncière</span>1152 €</div>
         <div><span>À proximité</span>Écoles, commerces, Tram T2, C25</div>
         <div><span>Points forts</span>Sécurisé, traversant, garage</div>
@@ -397,6 +388,14 @@
 
 </div>
 
+<!-- LIGHTBOX -->
+<div class="lightbox" id="lightbox">
+  <span class="lightbox-close" id="lightboxClose">×</span>
+  <span class="lightbox-prev" id="lightboxPrev">‹</span>
+  <img id="lightboxImg">
+  <span class="lightbox-next" id="lightboxNext">›</span>
+</div>
+
 <script>
 let idx = 0;
 const track = document.querySelector('.carousel-track');
@@ -456,11 +455,11 @@ document.addEventListener('keydown', (e) => {
 });
 </script>
 
-<div class="lightbox" id="lightbox">
-  <span class="lightbox-close" id="lightboxClose">×</span>
-  <span class="lightbox-prev" id="lightboxPrev">‹</span>
-  <img id="lightboxImg">
-  <span class="lightbox-next" id="lightboxNext">›</span>
+<!-- FOOTER JURIDIQUE -->
+<div style="text-align:center;margin-top:40px;font-size:12px;color:#7A7A7A;">
+  Tous les documents et photos présentés sur cette page sont la propriété exclusive de
+  <strong>Jérémy HEYOB Immobilier</strong>.<br>
+  Toute reproduction, diffusion ou exploitation est strictement interdite.
 </div>
 
 </body>
