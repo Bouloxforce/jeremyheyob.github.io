@@ -136,6 +136,16 @@
     .contact-links a { color: #C6AA77; font-size: 12px;
       font-weight: 500; text-decoration: none; }
 
+    /* FOOTER LEGAL */
+    .legal-footer {
+      margin-top: 40px;
+      padding: 18px;
+      text-align: center;
+      font-size: 11.5px;
+      color: var(--text-soft);
+      opacity: 0.8;
+    }
+
     .lightbox {
       position: fixed; inset: 0; background: rgba(0,0,0,0.85);
       display: flex; justify-content: center; align-items: center;
@@ -167,7 +177,6 @@
       border-radius: 999px;
     }
 
-    /* RESPONSIVE */
     @media (max-width: 1024px) {
       .layout { grid-template-columns: 1fr; }
     }
@@ -186,28 +195,20 @@
 
       .grid-two { grid-template-columns: 1fr; font-size: 13px; }
 
-      /* Formulaire : 1 colonne et pas de débordement */
-      .form-grid {
-        grid-template-columns: 1fr;
-      }
+      .form-grid { grid-template-columns: 1fr; }
+      .form-grid > div { min-width: 0; }
 
-      .form-grid > div {
-        min-width: 0;
-      }
+      label { white-space: normal; display: block; }
 
-      label {
-        white-space: normal;
-        display: block;
-      }
+      input, select { width: 100%; max-width: 100%; }
 
-      input, select {
-        width: 100%;
-        max-width: 100%;
-      }
+      .btn { font-size: 14px; grid-column: 1 / -1; }
 
-      .btn {
-        font-size: 14px;
-        grid-column: 1 / -1;
+      /* contact mobile */
+      .contact-card {
+        flex-direction: column;
+        text-align: center;
+        align-items: center;
       }
     }
 
@@ -216,6 +217,7 @@
       .lightbox-prev, .lightbox-next { font-size: 32px; }
       .lightbox-close { font-size: 40px; }
     }
+
   </style>
 
   <script>
@@ -389,11 +391,16 @@
 
   </main>
 
+  <!-- FOOTER LÉGAL AJOUTÉ -->
+  <footer class="legal-footer">
+    Les photos et documents présentés sur cette page sont la propriété exclusive de Jérémy HEYOB Immobilier.
+    Toute reproduction, diffusion ou utilisation est strictement interdite sans autorisation préalable.
+  </footer>
+
 </div>
 
 <!-- LIGHTBOX + CARROUSEL -->
 <script>
-/* CARROUSEL */
 let idx = 0;
 const track = document.querySelector('.carousel-track');
 const slides = document.querySelectorAll('.carousel img');
@@ -408,7 +415,6 @@ document.querySelector('.prev').onclick = () => {
   track.style.transform = `translateX(-${idx * 100}%)`;
 };
 
-/* LIGHTBOX */
 const lightbox = document.getElementById('lightbox');
 const lightboxImg = document.getElementById('lightboxImg');
 const btnClose = document.getElementById('lightboxClose');
