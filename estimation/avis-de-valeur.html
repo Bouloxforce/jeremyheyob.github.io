@@ -403,7 +403,7 @@
 
 <script>
 function sendMail() {
-  const subject = encodeURIComponent("Demande d’avis de valeur immobilier");
+  const subject = encodeURIComponent("Demande d’avis de valeur immobilière");
   const body = encodeURIComponent(
     "Bonjour,\n\n" +
     "Nom : " + prenom.value + " " + nom.value + "\n" +
@@ -412,8 +412,8 @@ function sendMail() {
     "Adresse : " + adresse.value + "\n" +
     "Type : " + typeBien.value + "\n" +
     "Typologie : " + typologie.value + "\n" +
-    "Date : " + date.value + "\n" +
-    "Créneau : " + creneau.value
+    "Date souhaitée : " + date.value + "\n" +
+    "Créneau souhaité : " + creneau.value
   );
   window.location.href =
     "mailto:contact@jeremyheyob.fr?subject=" + subject + "&body=" + body;
