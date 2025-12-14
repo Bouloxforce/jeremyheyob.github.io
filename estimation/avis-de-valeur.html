@@ -66,12 +66,9 @@
       letter-spacing: 0.12em;
     }
 
-    .tagline-sub strong {
-      color: var(--text-main);
-      font-weight: 900;
-    }
+    .tagline-sub strong { font-weight: 900; }
 
-    /* HERO + CONTACT HERO */
+    /* HERO */
     .hero {
       border-radius: 20px;
       background:
@@ -82,9 +79,7 @@
       margin-bottom: 30px;
     }
 
-    .hero-text {
-      padding: 26px 28px;
-    }
+    .hero-text { padding: 26px 28px; }
 
     .pill {
       display: inline-flex;
@@ -102,11 +97,6 @@
       font-size: clamp(24px, 3vw, 30px);
     }
 
-    .hero-text h3 {
-      margin: 0 0 6px;
-      font-size: 22px;
-    }
-
     .hero-text p {
       font-size: 14px;
       color: var(--text-soft);
@@ -121,24 +111,33 @@
       background: #ffffff;
       border: 1px dashed var(--border-soft);
       font-size: 13px;
-      line-height: 1.5;
       color: #4A4A4A;
+      line-height: 1.5;
     }
 
+    /* PUCE META */
     .hero-meta {
       margin-top: 14px;
       display: flex;
       flex-wrap: wrap;
-      gap: 12px;
+      gap: 18px;
       font-size: 12px;
       color: var(--text-soft);
     }
 
-    .hero-meta-dot {
-      width: 3px;
-      height: 3px;
-      border-radius: 999px;
-      background: var(--text-soft);
+    .hero-meta span {
+      position: relative;
+      padding-left: 12px;
+      display: inline-flex;
+      align-items: center;
+    }
+
+    .hero-meta span::before {
+      content: "•";
+      position: absolute;
+      left: 0;
+      font-size: 14px;
+      color: var(--text-soft);
     }
 
     /* FORM */
@@ -154,7 +153,7 @@
 
     .card-title {
       font-size: 20px;
-      margin: 0 0 18px;
+      margin-bottom: 18px;
       border-left: 4px solid var(--accent);
       padding-left: 10px;
     }
@@ -191,13 +190,43 @@
       cursor: pointer;
     }
 
-    /* CONTACT LINKS */
-    .contact-links {
-      margin-top: 12px;
+    /* CONTACT LARGE */
+    .contact-block {
       display: flex;
-      flex-wrap: wrap;
+      gap: 18px;
+      align-items: center;
+      background:
+        linear-gradient(135deg, rgba(198,169,119,0.18), transparent 55%),
+        linear-gradient(145deg, #ffffff, #FFFBF5 55%);
+      border-radius: 20px;
+      padding: 26px 28px;
+      border: 1px solid var(--border-soft);
+      box-shadow: var(--shadow-soft);
+      margin-bottom: 30px;
+    }
+
+    .contact-photo {
+      width: 90px;
+      height: 90px;
+      border-radius: 999px;
+      object-fit: cover;
+      border: 2px solid #e5e7eb;
+    }
+
+    .contact-text h3 { margin: 0 0 6px; font-size: 18px; }
+
+    .contact-text p {
+      margin: 0;
+      font-size: 13px;
+      color: var(--text-soft);
+      max-width: 720px;
+    }
+
+    .contact-links {
+      margin-top: 10px;
+      display: flex;
       gap: 14px;
-      font-size: 14px;
+      flex-wrap: wrap;
     }
 
     .contact-links a {
@@ -205,8 +234,6 @@
       text-decoration: none;
       font-weight: 500;
     }
-
-    .contact-links a:hover { text-decoration: underline; }
 
     /* FOOTER */
     .legal-footer {
@@ -218,9 +245,11 @@
       opacity: 0.75;
     }
 
-    @media (max-width: 768px) {
+    @media (max-width: 880px) {
       header { flex-direction: column; }
       .form-grid { grid-template-columns: 1fr; }
+      .contact-block { flex-direction: column; text-align: center; }
+      .contact-links { justify-content: center; }
     }
   </style>
 </head>
@@ -228,69 +257,98 @@
 <body>
 <div class="page">
 
-  <!-- HEADER -->
-  <header>
-    <img src="/images/logo.webp" class="logo">
-    <div class="header-center">
-      <div class="tagline-main">VOS PROJETS IMMOBILIERS N'ONT JAMAIS ÉTÉ AUSSI SIMPLES !</div>
-      <div class="tagline-sub"><strong>JÉRÉMY HEYOB</strong></div>
+<header>
+  <img src="/images/logo.webp" class="logo" alt="Logo Jérémy Heyob">
+  <div class="header-center">
+    <div class="tagline-main">VOS PROJETS IMMOBILIERS N'ONT JAMAIS ÉTÉ AUSSI SIMPLES !</div>
+    <div class="tagline-sub"><strong>JÉRÉMY HEYOB</strong></div>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="hero-text">
+    <div class="pill">Avis de valeur</div>
+    <h1>Demander un avis de valeur précis</h1>
+    <p>Cette page vous permet de programmer un avis de valeur clair et structuré.</p>
+
+    <div class="hero-highlight">
+      <strong>Information importante :</strong><br><br>
+      • Tous les propriétaires doivent être présents.<br><br>
+      • Accompagnement en deux rendez-vous distincts.<br><br>
+      • Avis gratuit et sans engagement.
     </div>
-  </header>
 
-  <!-- HERO INFO -->
-  <section class="hero">
-    <div class="hero-text">
-      <div class="pill">Avis de valeur</div>
-      <h1>Demander un avis de valeur précis</h1>
-      <p>
-        Cette page vous permet de programmer un avis de valeur clair et structuré,
-        afin d’aborder votre projet de vente avec méthode, lucidité et cohérence.
-      </p>
-
-      <div class="hero-highlight">
-        <strong>Information importante :</strong><br><br>
-        • Tous les propriétaires doivent impérativement être présents.<br><br>
-        • L’accompagnement se déroule en <strong>2 étapes</strong> :
-        <br>1️⃣ Découverte de votre projet et du bien.
-        <br>2️⃣ Présentation claire de l’avis de valeur et de ma méthode de travail.<br><br>
-        • Cet avis de valeur est <strong>gratuit et sans engagement</strong>.
-      </div>
+    <div class="hero-meta">
+      <span>Avis personnalisé</span>
+      <span>Méthode claire</span>
+      <span>Sans engagement</span>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- FORM -->
-  <section class="card">
-    <h2 class="card-title">Vos informations</h2>
-    <!-- formulaire inchangé -->
-  </section>
+<section class="card">
+  <h2 class="card-title">Vos informations</h2>
 
-  <!-- CONTACT HERO -->
-  <section class="hero">
-    <div class="hero-text">
-      <div class="pill">Contact</div>
-      <h3>Une question sur votre projet ?</h3>
-      <p>
-        Je reste disponible pour vous apporter des précisions,
-        vous envoyer des documents complémentaires ou répondre
-        à vos interrogations avant le rendez-vous.
-      </p>
-
-      <div class="contact-links">
-        <a href="mailto:contact@jeremyheyob.fr">✉️ Email</a>
-        <a href="sms:+33648145565">💬 SMS</a>
-        <a href="tel:+33648145565">📞 Appel</a>
-        <a href="https://linktr.ee/jeremyheyob" target="_blank">💻 Site</a>
-      </div>
+  <div class="form-grid">
+    <div><label>Prénom</label><input id="prenom"></div>
+    <div><label>Nom</label><input id="nom"></div>
+    <div><label>Téléphone</label><input id="tel"></div>
+    <div><label>Email</label><input id="email"></div>
+    <div class="full"><label>Adresse du bien</label><input id="adresse"></div>
+    <div><label>Type de bien</label><select id="typeBien"><option>Appartement</option><option>Maison</option></select></div>
+    <div><label>Typologie</label><select id="typologie"><option>T1</option><option>T2</option><option>T3</option><option>T4</option><option>T5+</option></select></div>
+    <div><label>Date</label><input id="date" type="date"></div>
+    <div><label>Créneau</label>
+      <select id="creneau">
+        <option>09h - 10h</option><option>10h - 11h</option><option>11h - 12h</option>
+        <option>14h - 15h</option><option>15h - 16h</option><option>16h - 17h</option>
+        <option>17h - 18h</option><option>18h - 19h</option>
+      </select>
     </div>
-  </section>
+    <button class="btn" onclick="sendMail()">Valider ma demande</button>
+  </div>
+</section>
 
-  <!-- FOOTER -->
-  <footer class="legal-footer">
-    Les photos et documents présentés sur cette page sont la propriété exclusive de
-    <strong>Jérémy HEYOB Immobilier</strong>.<br>
-    Toute reproduction, diffusion ou utilisation est strictement interdite sans autorisation préalable.
-  </footer>
+<section class="contact-block">
+  <img src="/images/photo.webp" class="contact-photo" alt="Jérémy Heyob">
+  <div class="contact-text">
+    <h3>Une question sur votre projet ?</h3>
+    <p>Je reste disponible pour vous accompagner avant le rendez-vous.</p>
+    <div class="contact-links">
+      <a href="mailto:contact@jeremyheyob.fr">✉️ Email</a>
+      <a href="sms:+33648145565">💬 SMS</a>
+      <a href="tel:+33648145565">📞 Appel</a>
+      <a href="https://linktr.ee/jeremyheyob" target="_blank">💻 Site</a>
+    </div>
+  </div>
+</section>
+
+<footer class="legal-footer">
+  Les photos et documents présentés sur cette page sont la propriété exclusive de
+  <strong>Jérémy HEYOB Immobilier</strong>.<br>
+  Toute reproduction est strictement interdite.
+</footer>
 
 </div>
+
+<script>
+function sendMail() {
+  const subject = encodeURIComponent("Demande d’avis de valeur immobilier");
+  const body = encodeURIComponent(
+    "Bonjour,\n\n" +
+    "Nom : " + prenom.value + " " + nom.value + "\n" +
+    "Téléphone : " + tel.value + "\n" +
+    "Email : " + email.value + "\n\n" +
+    "Adresse : " + adresse.value + "\n" +
+    "Type : " + typeBien.value + "\n" +
+    "Typologie : " + typologie.value + "\n" +
+    "Date : " + date.value + "\n" +
+    "Créneau : " + creneau.value
+  );
+  window.location.href =
+    "mailto:contact@jeremyheyob.fr?subject=" + subject + "&body=" + body;
+}
+</script>
+
 </body>
 </html>
