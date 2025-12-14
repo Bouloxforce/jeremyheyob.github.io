@@ -136,7 +136,7 @@
       background: var(--text-soft);
     }
 
-    /* FORM */
+    /* FORM CARD */
     .card {
       max-width: 720px;
       margin: 0 auto 30px;
@@ -145,6 +145,13 @@
       padding: 26px 28px;
       border: 1px solid var(--border-soft);
       box-shadow: var(--shadow-soft);
+    }
+
+    .card-title {
+      font-size: 20px;
+      margin: 0 0 18px;
+      border-left: 4px solid var(--accent);
+      padding-left: 10px;
     }
 
     .form-grid {
@@ -258,7 +265,7 @@
 
   <!-- HEADER -->
   <header>
-    <img src="/images/logo.webp" class="logo">
+    <img src="/images/logo.webp" alt="Logo Jérémy Heyob" class="logo">
     <div class="header-center">
       <div class="tagline-main">VOS PROJETS IMMOBILIERS N'ONT JAMAIS ÉTÉ AUSSI SIMPLES !</div>
       <div class="tagline-sub"><strong>JÉRÉMY HEYOB</strong></div>
@@ -294,6 +301,8 @@
 
   <!-- FORM -->
   <section class="card">
+    <h2 class="card-title">Vos informations</h2>
+
     <div class="form-grid">
       <div><label>Prénom</label><input id="prenom"></div>
       <div><label>Nom</label><input id="nom"></div>
@@ -305,14 +314,22 @@
         <input id="adresse">
       </div>
 
-      <div><label>Type de bien</label>
-        <select id="typeBien"><option>Appartement</option><option>Maison</option></select>
+      <div>
+        <label>Type de bien</label>
+        <select id="typeBien">
+          <option>Appartement</option>
+          <option>Maison</option>
+        </select>
       </div>
 
-      <div><label>Typologie</label>
+      <div>
+        <label>Typologie</label>
         <select id="typologie">
-          <option>T1</option><option>T2</option><option>T3</option>
-          <option>T4</option><option>T5 et +</option>
+          <option>T1</option>
+          <option>T2</option>
+          <option>T3</option>
+          <option>T4</option>
+          <option>T5 et +</option>
         </select>
       </div>
 
@@ -320,10 +337,14 @@
 
       <div><label>Créneau</label>
         <select id="creneau">
-          <option>09h - 10h</option><option>10h - 11h</option>
-          <option>11h - 12h</option><option>14h - 15h</option>
-          <option>15h - 16h</option><option>16h - 17h</option>
-          <option>17h - 18h</option><option>18h - 19h</option>
+          <option>09h - 10h</option>
+          <option>10h - 11h</option>
+          <option>11h - 12h</option>
+          <option>14h - 15h</option>
+          <option>15h - 16h</option>
+          <option>16h - 17h</option>
+          <option>17h - 18h</option>
+          <option>18h - 19h</option>
         </select>
       </div>
 
