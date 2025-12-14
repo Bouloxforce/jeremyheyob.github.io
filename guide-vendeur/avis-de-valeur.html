@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <link rel="icon" type="image/x-icon" href="/images/favicon.ico">
+  <link rel="shortcut icon" href="/images/favicon.ico">
+  <meta charset="UTF-8">
+  <meta name="robots" content="noindex, nofollow, noarchive, nosnippet">
+  <title>Avis de valeur immobilier | Jérémy Heyob Immobilier</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- STYLE IDENTIQUE À TON SITE -->
+  <style>
+    :root {
+      --bg: #FFFBF5;
+      --accent: #C6AA77;
+      --accent-soft: rgba(198,169,119,0.16);
+      --text-main: #191919;
+      --text-soft: #7A7A7A;
+      --border-soft: #e5e7eb;
+      --card-bg: #ffffff;
+      --shadow-soft: 0 20px 50px rgba(25,25,25,0.10);
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+      background: var(--bg);
+      color: var(--text-main);
+    }
+
+    .page {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 24px 16px 60px;
+    }
+
+    /* HEADER IDENTIQUE */
+    header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+      max-width: 960px;
+      margin: 16px auto 24px;
+      padding: 8px 28px;
+      background: var(--card-bg);
+      border-radius: 22px;
+      box-shadow: var(--shadow-soft);
+      border: 1px solid rgba(15,23,42,0.04);
+    }
+
+    .logo { max-width: 140px; }
+    .header-center { flex: 1; text-align: center; }
+    .tagline-main {
+      font-size: 13px;
+      letter-spacing: 0.18em;
+      color: var(--text-soft);
+    }
+    .tagline-sub {
+      margin-top: 12px;
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+    }
+    .tagline-sub strong {
+      color: var(--text-main);
+      font-weight: 900;
+    }
+
+    /* CARTE FORMULAIRE */
+    .card {
+      max-width: 720px;
+      margin: 0 auto;
+      background: var(--card-bg);
+      border-radius: 22px;
+      padding: 26px 28px;
+      border: 1px solid var(--border-soft);
+      box-shadow: var(--shadow-soft);
+    }
+
+    h1 {
+      margin-top: 0;
+      font-size: 26px;
+    }
+
+    .subtitle {
+      font-size: 14px;
+      color: var(--text-soft);
+      margin-bottom: 20px;
+    }
+
+    .info-block {
+      background: var(--accent-soft);
+      border-radius: 14px;
+      padding: 14px 16px;
+      font-size: 13px;
+      color: #4A4A4A;
+      margin-bottom: 20px;
+      line-height: 1.5;
+    }
+
+    .form-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+    }
+
+    label {
+      font-size: 13px;
+      margin-bottom: 4px;
+      display: block;
+    }
+
+    input, select {
+      width: 100%;
+      padding: 10px 12px;
+      border-radius: 12px;
+      border: 1px solid var(--border-soft);
+      background: #fafafa;
+      font-size: 14px;
+    }
+
+    .btn {
+      grid-column: 1 / -1;
+      margin-top: 14px;
+      background: linear-gradient(135deg, #fbe4b9, #f3c98b);
+      color: #7a5a29;
+      padding: 14px;
+      border-radius: 999px;
+      font-size: 15px;
+      font-weight: 600;
+      border: none;
+      cursor: pointer;
+    }
+
+    /* FOOTER LEGAL */
+    .legal-footer {
+      margin-top: 40px;
+      padding: 18px;
+      text-align: center;
+      font-size: 11.5px;
+      color: var(--text-soft);
+      opacity: 0.75;
+    }
+
+    @media (max-width: 768px) {
+      .form-grid { grid-template-columns: 1fr; }
+      header { flex-direction: column; }
+    }
+  </style>
+</head>
+
+<body>
+<div class="page">
+
+  <!-- HEADER -->
+  <header>
+    <img src="/images/logo.webp" class="logo">
+    <div class="header-center">
+      <div class="tagline-main">VOS PROJETS IMMOBILIERS N'ONT JAMAIS ÉTÉ AUSSI SIMPLES !</div>
+      <div class="tagline-sub"><strong>JÉRÉMY HEYOB</strong></div>
+    </div>
+  </header>
+
+  <!-- FORMULAIRE -->
+  <section class="card">
+    <h1>Demander un avis de valeur précis</h1>
+    <p class="subtitle">
+      Renseignez vos coordonnées et vos disponibilités afin de programmer un avis de valeur de votre bien.
+    </p>
+
+    <div class="info-block">
+      <strong>Information importante :</strong><br>
+      • Tous les propriétaires du bien doivent impérativement être présents lors du rendez-vous.<br><br>
+      • Cet accompagnement se déroule en <strong>2 étapes</strong> :
+      <br>1️⃣ Un premier rendez-vous pour découvrir votre projet de vente et le bien.
+      <br>2️⃣ Un second rendez-vous pour vous expliquer clairement l’avis de valeur
+      et ma méthode de travail.<br><br>
+      • Cet avis de valeur est <strong>gratuit et sans engagement</strong>.
+    </div>
+
+    <div class="form-grid">
+      <div>
+        <label>Votre prénom</label>
+        <input id="prenom">
+      </div>
+
+      <div>
+        <label>Votre nom</label>
+        <input id="nom">
+      </div>
+
+      <div>
+        <label>Votre téléphone</label>
+        <input id="tel">
+      </div>
+
+      <div>
+        <label>Votre email</label>
+        <input id="email">
+      </div>
+
+      <div>
+        <label>Type de bien</label>
+        <select id="typeBien">
+          <option>Appartement</option>
+          <option>Maison</option>
+        </select>
+      </div>
+
+      <div>
+        <label>Typologie</label>
+        <select id="typologie">
+          <option>T1</option>
+          <option>T2</option>
+          <option>T3</option>
+          <option>T4</option>
+          <option>T5 et +</option>
+        </select>
+      </div>
+
+      <div>
+        <label>Date souhaitée</label>
+        <input id="date" type="date">
+      </div>
+
+      <div>
+        <label>Créneau souhaité</label>
+        <select id="creneau">
+          <option>09h - 10h</option>
+          <option>10h - 11h</option>
+          <option>11h - 12h</option>
+          <option>12h - 13h</option>
+          <option>13h - 14h</option>
+          <option>14h - 15h</option>
+          <option>15h - 16h</option>
+          <option>16h - 17h</option>
+          <option>17h - 18h</option>
+          <option>18h - 19h</option>
+        </select>
+      </div>
+
+      <button class="btn" onclick="sendMail()">Valider ma demande</button>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="legal-footer">
+    Les photos et documents présentés sur cette page sont la propriété exclusive de
+    <strong>Jérémy HEYOB Immobilier</strong>.<br>
+    Toute reproduction, diffusion ou utilisation est strictement interdite sans autorisation préalable.
+  </footer>
+
+</div>
+
+<script>
+function sendMail() {
+  const subject = encodeURIComponent("Demande d’avis de valeur immobilier");
+
+  const body = encodeURIComponent(
+    "Bonjour,\n\n" +
+    "Je souhaite obtenir un avis de valeur pour mon bien.\n\n" +
+    "Nom : " + prenom.value + " " + nom.value + "\n" +
+    "Téléphone : " + tel.value + "\n" +
+    "Email : " + email.value + "\n\n" +
+    "Type de bien : " + typeBien.value + "\n" +
+    "Typologie : " + typologie.value + "\n\n" +
+    "Date souhaitée : " + date.value + "\n" +
+    "Créneau souhaité : " + creneau.value + "\n\n"
+  );
+
+  window.location.href =
+    "mailto:contact@jeremyheyob.fr?subject=" + subject + "&body=" + body;
+}
+</script>
+
+</body>
+</html>
