@@ -249,6 +249,35 @@
       color: var(--text-soft);
       opacity: 0.75;
     }
+    /* HERO HIGHLIGHT AVEC LOGO */
+    .hero-highlight-with-logo {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+    }
+
+    .hero-highlight-text {
+      flex: 1;
+    }
+
+    .hero-highlight-logo img {
+      width: 64px;
+      height: auto;
+      opacity: 0.75;
+    }
+
+    /* Mobile : logo en dessous */
+   @media (max-width: 600px) {
+    .hero-highlight-with-logo {
+      flex-direction: column;
+      text-align: left;
+    }
+
+    .hero-highlight-logo img {
+      width: 56px;
+    }
+  }
 
         @media (max-width: 880px) {
     header {
@@ -296,8 +325,8 @@
         Cette page vous permet de programmer un avis de valeur clair et structuré,
         afin d’aborder votre projet de vente avec méthode, lucidité et cohérence.
       </p>
-
-      <div class="hero-highlight">
+    <div class="hero-highlight hero-highlight-with-logo">
+      <div class="hero-highlight-text">
         <strong>Information importante :</strong><br><br>
         • Tous les propriétaires doivent impérativement être présents.<br><br>
         • L’accompagnement se déroule en <strong>2 étapes</strong> :
@@ -305,6 +334,11 @@
         <br>2️⃣ Présentation claire de l’avis de valeur et de ma méthode de travail.<br><br>
         • Cet avis de valeur est <strong>gratuit et sans engagement</strong>.
       </div>
+      
+      <div class="hero-highlight-logo">
+        <img src="/images/logo.webp" alt="Jérémy Heyob Immobilier">
+      </div>
+    </div>
 
       <div class="hero-meta">
         <span>Avis personnalisé</span>
