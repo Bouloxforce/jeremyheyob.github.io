@@ -2,317 +2,306 @@
 <html lang="fr">
 <head>
   <meta charset="UTF-8">
-  <title>Péter la baraque – Accès au guide vendeur | Jérémy Heyob Immobilier</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="robots" content="noindex, nofollow, noarchive, nosnippet">
+  <title>Péter la baraque – Guide vendeur | Jérémy Heyob Immobilier</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <style>
-    :root{
-      --bg:#FFFBF5;
-      --card-bg:#ffffff;
-      --accent:#C6AA77;
-      --accent-soft:rgba(198,169,119,0.16);
-      --accent-soft-strong:rgba(212,161,95,0.08);
-      --text-main:#191919;
-      --text-soft:#7A7A7A;
-      --border-soft:#e5e7eb;
-      --shadow-soft:0 20px 50px rgba(25,25,25,0.10);
+    :root {
+      --bg: #FFFBF5;
+      --bg-soft: #ffffff;
+      --accent: #C6AA77;
+      --accent-soft: rgba(198, 169, 119, 0.16);
+      --accent-soft-strong: rgba(212,161,95,0.08);
+      --text-main: #191919;
+      --text-soft: #7A7A7A;
+      --border-soft: #e5e7eb;
+      --card-bg: #ffffff;
+      --shadow-soft: 0 20px 50px rgba(25,25,25,0.10);
     }
 
-    *{box-sizing:border-box}
-    body{
-      margin:0;
-      font-family:-apple-system,BlinkMacSystemFont,system-ui,sans-serif;
-      background:var(--bg);
-      color:var(--text-main);
-      min-height:100vh;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      padding:22px;
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+      background: var(--bg);
+      color: var(--text-main);
+      min-height: 100vh;
     }
 
-    .wrap{
-      width:100%;
-      max-width:980px;
-      display:grid;
-      grid-template-columns: 1.05fr 0.95fr;
-      gap:18px;
-      align-items:stretch;
+    .page {
+      max-width: 1150px;
+      margin: 0 auto;
+      padding: 26px 18px 60px;
     }
 
-    .card{
-      background:var(--card-bg);
-      border-radius:24px;
-      border:1px solid rgba(15,23,42,0.06);
-      box-shadow:var(--shadow-soft);
-      padding:26px;
-      overflow:hidden;
-      position:relative;
+    /* HEADER IDENTIQUE */
+    header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+      max-width: 960px;
+      margin: 16px auto 24px;
+      padding: 8px 28px;
+      background: var(--card-bg);
+      border-radius: 22px;
+      box-shadow: var(--shadow-soft);
+      border: 1px solid rgba(15,23,42,0.04);
     }
 
-    .card::before{
-      content:"";
-      position:absolute;
-      inset:-120px -120px auto auto;
-      width:260px;height:260px;
-      background:radial-gradient(circle at 30% 30%, rgba(198,169,119,0.28), transparent 60%);
-      transform:rotate(18deg);
-      pointer-events:none;
+    .logo { max-width: 140px; }
+
+    .header-center {
+      flex: 1;
+      text-align: center;
     }
 
-    .brand{
-      display:flex;
-      align-items:center;
-      gap:12px;
-      margin-bottom:16px;
+    .tagline-main {
+      font-size: 13px;
+      letter-spacing: 0.18em;
+      color: var(--text-soft);
     }
 
-    .logo{
-      width:44px;height:44px;
-      border-radius:12px;
-      border:1px solid var(--border-soft);
-      background:#fff;
-      overflow:hidden;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-    }
-    .logo img{ width:100%; height:100%; object-fit:cover; }
-
-    .brand-txt{
-      line-height:1.15;
-    }
-    .brand-txt .top{
-      font-size:12px;
-      letter-spacing:0.16em;
-      color:var(--text-soft);
-      text-transform:uppercase;
-    }
-    .brand-txt .name{
-      margin-top:6px;
-      font-size:13px;
-      font-weight:800;
-      letter-spacing:0.08em;
-      text-transform:uppercase;
+    .tagline-sub {
+      margin-top: 12px;
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
     }
 
-    .badge{
-      display:inline-flex;
-      align-items:center;
-      gap:8px;
-      padding:7px 12px;
-      border-radius:999px;
-      background:var(--accent-soft);
-      color:#7a5a29;
-      font-size:12px;
-      font-weight:700;
-      letter-spacing:0.06em;
-      text-transform:uppercase;
+    .tagline-sub strong {
+      color: var(--text-main);
+      font-weight: 900;
     }
 
-    h1{
-      margin:14px 0 10px;
-      font-size: clamp(26px, 3.2vw, 34px);
-      letter-spacing:-0.01em;
+    /* CONTENU GUIDE */
+    .guide-card {
+      max-width: 900px;
+      margin: 0 auto 30px;
+      background: var(--card-bg);
+      border-radius: 24px;
+      padding: 34px 30px;
+      box-shadow: var(--shadow-soft);
+      border: 1px solid var(--border-soft);
+      text-align: center;
     }
 
-    .lead{
-      margin:0 0 16px;
-      color:var(--text-soft);
-      font-size:14px;
-      line-height:1.55;
-      max-width:520px;
+    .badge {
+      display: inline-block;
+      padding: 6px 14px;
+      border-radius: 999px;
+      background: var(--accent-soft);
+      color: var(--accent);
+      font-size: 11px;
+      letter-spacing: 0.08em;
+      font-weight: 600;
+      text-transform: uppercase;
     }
 
-    .proof{
-      margin:14px 0 0;
-      display:flex;
-      flex-wrap:wrap;
-      gap:10px;
-      font-size:12px;
-      color:#4A4A4A;
-    }
-    .proof span{
-      padding:6px 10px;
-      border-radius:999px;
-      background:var(--accent-soft-strong);
+    .guide-card h1 {
+      font-size: 30px;
+      margin: 14px 0 10px;
     }
 
-    .cta{
-      margin-top:18px;
-      display:flex;
-      flex-direction:column;
-      gap:10px;
-      max-width:460px;
+    .guide-card p {
+      font-size: 14px;
+      color: var(--text-soft);
+      line-height: 1.6;
+      max-width: 620px;
+      margin: 0 auto 16px;
     }
 
-    .btn{
-      display:inline-flex;
-      align-items:center;
-      justify-content:center;
-      gap:10px;
-      padding:14px 18px;
-      border-radius:999px;
-      background:linear-gradient(135deg,#fbe4b9,#f3c98b);
-      color:#7a5a29;
-      text-decoration:none;
-      font-size:15px;
-      font-weight:800;
-      border:1px solid rgba(122,90,41,0.10);
-      cursor:pointer;
-      transition:filter 0.15s ease, transform 0.15s ease;
-      white-space:nowrap;
-    }
-    .btn:hover{ filter:brightness(1.04); transform:translateY(-1px); }
-
-    .reassure{
-      display:flex;
-      flex-wrap:wrap;
-      gap:10px;
-      font-size:12px;
-      color:var(--text-soft);
-    }
-    .reassure span{
-      display:inline-flex;
-      align-items:center;
-      gap:8px;
-    }
-    .dot{
-      width:5px;height:5px;border-radius:999px;background:var(--accent);
-      display:inline-block;
+    .proof {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      flex-wrap: wrap;
+      font-size: 12px;
+      color: #4A4A4A;
+      margin-bottom: 18px;
     }
 
-    /* Right card: “Ce que vous obtenez” */
-    .side-title{
-      margin:0 0 10px;
-      font-size:16px;
-      font-weight:900;
-      letter-spacing:0.02em;
+    .proof span {
+      padding: 6px 10px;
+      border-radius: 999px;
+      background: var(--accent-soft-strong);
     }
 
-    .list{
-      margin:0;
-      padding:0;
-      list-style:none;
-      display:flex;
-      flex-direction:column;
-      gap:10px;
-      color:#2b2b2b;
-      font-size:13px;
-      line-height:1.45;
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 14px 24px;
+      border-radius: 999px;
+      background: linear-gradient(135deg, #fbe4b9, #f3c98b);
+      color: #7a5a29;
+      font-size: 15px;
+      font-weight: 700;
+      text-decoration: none;
+      margin-top: 10px;
     }
 
-    .list li{
-      padding:12px 12px;
-      border-radius:16px;
-      border:1px solid var(--border-soft);
+    .reassure {
+      margin-top: 12px;
+      font-size: 12px;
+      color: var(--text-soft);
+    }
+
+    /* CONTACT BLOCK (ADAPTÉ VENDEUR) */
+    .contact-block {
+      display: flex;
+      gap: 18px;
+      align-items: center;
       background: #ffffff;
-      box-shadow: 0 10px 25px rgba(25,25,25,0.05);
+      border-radius: 20px;
+      padding: 16px 18px;
+      border: 1px solid var(--border-soft);
+      box-shadow: 0 18px 40px rgba(25, 25, 25, 0.08);
+      max-width: 900px;
+      margin: 0 auto 30px;
     }
 
-    .list b{ font-weight:900; }
-    .subnote{
-      margin-top:14px;
-      padding:12px;
-      border-radius:16px;
-      background: #ffffff;
-      border:1px dashed var(--border-soft);
-      font-size:12px;
-      color:#4A4A4A;
-      line-height:1.55;
+    .contact-photo {
+      width: 90px;
+      height: 90px;
+      border-radius: 999px;
+      object-fit: cover;
+      object-position: top center;
+      border: 2px solid #e5e7eb;
     }
 
-    .legal{
-      margin-top:16px;
-      font-size:11.5px;
-      color:var(--text-soft);
-      opacity:0.78;
-      line-height:1.45;
+    .contact-text h3 {
+      margin: 0 0 6px;
+      font-size: 17px;
     }
 
-    @media (max-width: 920px){
-      .wrap{ grid-template-columns:1fr; }
-      .card{ padding:22px; }
+    .contact-text p {
+      margin: 0;
+      font-size: 13px;
+      color: var(--text-soft);
+    }
+
+    .contact-links {
+      margin-top: 8px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      font-size: 13px;
+    }
+
+    .contact-links a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    .contact-links a:hover {
+      text-decoration: underline;
+    }
+
+    /* FOOTER IDENTIQUE */
+    .legal-footer {
+      margin-top: 40px;
+      padding: 18px;
+      text-align: center;
+      font-size: 11.5px;
+      color: var(--text-soft);
+      opacity: 0.75;
+    }
+
+    @media (max-width: 880px) {
+      header { flex-direction: column; }
+      .contact-block {
+        flex-direction: column;
+        text-align: center;
+      }
+      .contact-links {
+        justify-content: center;
+      }
     }
   </style>
 </head>
 
 <body>
+  <div class="page">
 
-  <div class="wrap">
-
-    <!-- LEFT: Pitch + CTA -->
-    <section class="card">
-      <div class="brand">
-        <div class="logo">
-          <!-- Optionnel : mets ton logo -->
-          <img src="/images/logo.webp" alt="Logo Jérémy Heyob">
-        </div>
-        <div class="brand-txt">
-          <div class="top">Espace vendeur</div>
-          <div class="name">Jérémy Heyob Immobilier</div>
-        </div>
+    <!-- HEADER -->
+    <header>
+      <div class="header-left">
+        <img src="/images/logo.webp" alt="Logo Jérémy Heyob" class="logo">
       </div>
 
-      <div class="badge">Accès réservé aux vendeurs sérieux</div>
+      <div class="header-center">
+        <div class="tagline-main">VOS PROJETS IMMOBILIERS N'ONT JAMAIS ÉTÉ AUSSI SIMPLES !</div>
+        <div class="tagline-sub"><strong>Jérémy HEYOB</strong></div>
+      </div>
+
+      <nav></nav>
+    </header>
+
+    <!-- GUIDE -->
+    <section class="guide-card">
+      <span class="badge">Accès réservé aux vendeurs sérieux</span>
 
       <h1>Péter la baraque</h1>
 
-      <p class="lead">
-        Le guide opérationnel que j’utilise pour cadrer une vente, éviter les erreurs qui coûtent cher,
-        et défendre le meilleur prix possible — sans perdre des semaines en tâtonnements.
+      <p>
+        Le guide opérationnel que j’utilise pour cadrer une vente immobilière,
+        éviter les erreurs coûteuses et défendre le meilleur prix possible,
+        sans perdre de temps ni multiplier les interlocuteurs.
       </p>
 
       <div class="proof">
-        <span><b>Lecture :</b> ~12 min</span>
-        <span><b>Format :</b> guide pratique</span>
-        <span><b>Objectif :</b> vendre proprement</span>
+        <span>Lecture ≈ 12 min</span>
+        <span>Guide pratique</span>
+        <span>Stratégie vendeur</span>
       </div>
 
-      <div class="cta">
-        <!-- Remplace le lien du formulaire Google -->
-        <a class="btn" href="https://forms.gle/RCyLyYtVuj1hy2mS9" target="_blank" rel="noopener">
-          Accéder au guide vendeur
-          <span aria-hidden="true">→</span>
-        </a>
+      <!-- ⚠️ REMPLACER XXXXXXXXX -->
+      <a
+        href="https://docs.google.com/forms/d/e/XXXXXXXX/viewform"
+        class="btn"
+        target="_blank"
+      >
+        Accéder au guide vendeur
+      </a>
 
-        <div class="reassure">
-          <span><i class="dot"></i> Accès immédiat après demande</span>
-          <span><i class="dot"></i> Aucun engagement</span>
-          <span><i class="dot"></i> Aucun appel non sollicité</span>
-        </div>
-      </div>
-
-      <div class="legal">
-        En soumettant votre demande, vous acceptez que vos informations soient utilisées uniquement
-        pour vous donner accès au guide et, si besoin, répondre à votre sollicitation.
+      <div class="reassure">
+        Accès immédiat – Aucun engagement – Aucun appel non sollicité
       </div>
     </section>
 
-    <!-- RIGHT: Value framing -->
-    <aside class="card">
-      <h2 class="side-title">Ce que vous obtenez</h2>
+    <!-- CONTACT -->
+    <section class="contact-block">
+      <img src="/images/photo.webp" alt="Photo de Jérémy Heyob" class="contact-photo">
 
-      <ul class="list">
-        <li><b>Une méthode claire</b> pour cadrer le prix et éviter les sur/sous-estimations.</li>
-        <li><b>Un plan d’action</b> pour présenter le bien comme un produit premium (sans surjouer).</li>
-        <li><b>Les leviers de négociation</b> à anticiper avant qu’ils ne deviennent des concessions.</li>
-        <li><b>Un filtre anti-curieux</b> : attirer des acheteurs cohérents, pas des touristes.</li>
-      </ul>
+      <div class="contact-text">
+        <h3>Une question sur votre projet de vente ?</h3>
 
-      <div class="subnote">
-        Après validation, la page de confirmation vous donnera :
-        <b>le lien du guide</b> et <b>un lien pour choisir un créneau</b> si vous souhaitez avancer vite.
+        <p>
+          Je reste disponible pour répondre à vos interrogations,
+          vous aider à clarifier votre situation et, si nécessaire,
+          vous orienter vers la stratégie de vente la plus adaptée.
+        </p>
+
+        <div class="contact-links">
+          <a href="mailto:contact@jeremyheyob.fr">✉️ Email</a>
+          <a href="sms:+33648145565">💬 SMS</a>
+          <a href="tel:+33648145565">📞 Appel</a>
+          <a href="https://linktr.ee/jeremyheyob" target="_blank">💻 Site</a>
+        </div>
       </div>
+    </section>
 
-      <div class="legal">
-        Conseil : si vous vendez dans un contexte “tendu” (divorce, succession, prêt relais),
-        prenez un créneau. Les erreurs coûtent plus cher que le rendez-vous.
-      </div>
-    </aside>
+    <!-- FOOTER -->
+    <footer class="legal-footer">
+      Les photos et documents présentés sur cette page sont la propriété exclusive de
+      <strong>Jérémy HEYOB Immobilier</strong>.<br>
+      Toute reproduction, diffusion ou utilisation est strictement interdite sans autorisation préalable.
+    </footer>
 
   </div>
-
 </body>
 </html>
