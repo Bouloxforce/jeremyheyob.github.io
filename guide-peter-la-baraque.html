@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Péter la baraque – Accès au guide vendeur | Jérémy Heyob Immobilier</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex, nofollow, noarchive, nosnippet">
+
+  <style>
+    :root{
+      --bg:#FFFBF5;
+      --card-bg:#ffffff;
+      --accent:#C6AA77;
+      --accent-soft:rgba(198,169,119,0.16);
+      --accent-soft-strong:rgba(212,161,95,0.08);
+      --text-main:#191919;
+      --text-soft:#7A7A7A;
+      --border-soft:#e5e7eb;
+      --shadow-soft:0 20px 50px rgba(25,25,25,0.10);
+    }
+
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family:-apple-system,BlinkMacSystemFont,system-ui,sans-serif;
+      background:var(--bg);
+      color:var(--text-main);
+      min-height:100vh;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      padding:22px;
+    }
+
+    .wrap{
+      width:100%;
+      max-width:980px;
+      display:grid;
+      grid-template-columns: 1.05fr 0.95fr;
+      gap:18px;
+      align-items:stretch;
+    }
+
+    .card{
+      background:var(--card-bg);
+      border-radius:24px;
+      border:1px solid rgba(15,23,42,0.06);
+      box-shadow:var(--shadow-soft);
+      padding:26px;
+      overflow:hidden;
+      position:relative;
+    }
+
+    .card::before{
+      content:"";
+      position:absolute;
+      inset:-120px -120px auto auto;
+      width:260px;height:260px;
+      background:radial-gradient(circle at 30% 30%, rgba(198,169,119,0.28), transparent 60%);
+      transform:rotate(18deg);
+      pointer-events:none;
+    }
+
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:12px;
+      margin-bottom:16px;
+    }
+
+    .logo{
+      width:44px;height:44px;
+      border-radius:12px;
+      border:1px solid var(--border-soft);
+      background:#fff;
+      overflow:hidden;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+    }
+    .logo img{ width:100%; height:100%; object-fit:cover; }
+
+    .brand-txt{
+      line-height:1.15;
+    }
+    .brand-txt .top{
+      font-size:12px;
+      letter-spacing:0.16em;
+      color:var(--text-soft);
+      text-transform:uppercase;
+    }
+    .brand-txt .name{
+      margin-top:6px;
+      font-size:13px;
+      font-weight:800;
+      letter-spacing:0.08em;
+      text-transform:uppercase;
+    }
+
+    .badge{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      padding:7px 12px;
+      border-radius:999px;
+      background:var(--accent-soft);
+      color:#7a5a29;
+      font-size:12px;
+      font-weight:700;
+      letter-spacing:0.06em;
+      text-transform:uppercase;
+    }
+
+    h1{
+      margin:14px 0 10px;
+      font-size: clamp(26px, 3.2vw, 34px);
+      letter-spacing:-0.01em;
+    }
+
+    .lead{
+      margin:0 0 16px;
+      color:var(--text-soft);
+      font-size:14px;
+      line-height:1.55;
+      max-width:520px;
+    }
+
+    .proof{
+      margin:14px 0 0;
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px;
+      font-size:12px;
+      color:#4A4A4A;
+    }
+    .proof span{
+      padding:6px 10px;
+      border-radius:999px;
+      background:var(--accent-soft-strong);
+    }
+
+    .cta{
+      margin-top:18px;
+      display:flex;
+      flex-direction:column;
+      gap:10px;
+      max-width:460px;
+    }
+
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap:10px;
+      padding:14px 18px;
+      border-radius:999px;
+      background:linear-gradient(135deg,#fbe4b9,#f3c98b);
+      color:#7a5a29;
+      text-decoration:none;
+      font-size:15px;
+      font-weight:800;
+      border:1px solid rgba(122,90,41,0.10);
+      cursor:pointer;
+      transition:filter 0.15s ease, transform 0.15s ease;
+      white-space:nowrap;
+    }
+    .btn:hover{ filter:brightness(1.04); transform:translateY(-1px); }
+
+    .reassure{
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px;
+      font-size:12px;
+      color:var(--text-soft);
+    }
+    .reassure span{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+    }
+    .dot{
+      width:5px;height:5px;border-radius:999px;background:var(--accent);
+      display:inline-block;
+    }
+
+    /* Right card: “Ce que vous obtenez” */
+    .side-title{
+      margin:0 0 10px;
+      font-size:16px;
+      font-weight:900;
+      letter-spacing:0.02em;
+    }
+
+    .list{
+      margin:0;
+      padding:0;
+      list-style:none;
+      display:flex;
+      flex-direction:column;
+      gap:10px;
+      color:#2b2b2b;
+      font-size:13px;
+      line-height:1.45;
+    }
+
+    .list li{
+      padding:12px 12px;
+      border-radius:16px;
+      border:1px solid var(--border-soft);
+      background: #ffffff;
+      box-shadow: 0 10px 25px rgba(25,25,25,0.05);
+    }
+
+    .list b{ font-weight:900; }
+    .subnote{
+      margin-top:14px;
+      padding:12px;
+      border-radius:16px;
+      background: #ffffff;
+      border:1px dashed var(--border-soft);
+      font-size:12px;
+      color:#4A4A4A;
+      line-height:1.55;
+    }
+
+    .legal{
+      margin-top:16px;
+      font-size:11.5px;
+      color:var(--text-soft);
+      opacity:0.78;
+      line-height:1.45;
+    }
+
+    @media (max-width: 920px){
+      .wrap{ grid-template-columns:1fr; }
+      .card{ padding:22px; }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="wrap">
+
+    <!-- LEFT: Pitch + CTA -->
+    <section class="card">
+      <div class="brand">
+        <div class="logo">
+          <!-- Optionnel : mets ton logo -->
+          <img src="/images/logo.webp" alt="Logo Jérémy Heyob">
+        </div>
+        <div class="brand-txt">
+          <div class="top">Espace vendeur</div>
+          <div class="name">Jérémy Heyob Immobilier</div>
+        </div>
+      </div>
+
+      <div class="badge">Accès réservé aux vendeurs sérieux</div>
+
+      <h1>Péter la baraque</h1>
+
+      <p class="lead">
+        Le guide opérationnel que j’utilise pour cadrer une vente, éviter les erreurs qui coûtent cher,
+        et défendre le meilleur prix possible — sans perdre des semaines en tâtonnements.
+      </p>
+
+      <div class="proof">
+        <span><b>Lecture :</b> ~12 min</span>
+        <span><b>Format :</b> guide pratique</span>
+        <span><b>Objectif :</b> vendre proprement</span>
+      </div>
+
+      <div class="cta">
+        <!-- Remplace le lien du formulaire Google -->
+        <a class="btn" href="https://docs.google.com/forms/d/e/XXXXXXXX/viewform" target="_blank" rel="noopener">
+          Accéder au guide vendeur
+          <span aria-hidden="true">→</span>
+        </a>
+
+        <div class="reassure">
+          <span><i class="dot"></i> Accès immédiat après demande</span>
+          <span><i class="dot"></i> Aucun engagement</span>
+          <span><i class="dot"></i> Aucun appel non sollicité</span>
+        </div>
+      </div>
+
+      <div class="legal">
+        En soumettant votre demande, vous acceptez que vos informations soient utilisées uniquement
+        pour vous donner accès au guide et, si besoin, répondre à votre sollicitation.
+      </div>
+    </section>
+
+    <!-- RIGHT: Value framing -->
+    <aside class="card">
+      <h2 class="side-title">Ce que vous obtenez</h2>
+
+      <ul class="list">
+        <li><b>Une méthode claire</b> pour cadrer le prix et éviter les sur/sous-estimations.</li>
+        <li><b>Un plan d’action</b> pour présenter le bien comme un produit premium (sans surjouer).</li>
+        <li><b>Les leviers de négociation</b> à anticiper avant qu’ils ne deviennent des concessions.</li>
+        <li><b>Un filtre anti-curieux</b> : attirer des acheteurs cohérents, pas des touristes.</li>
+      </ul>
+
+      <div class="subnote">
+        Après validation, la page de confirmation vous donnera :
+        <b>le lien du guide</b> et <b>un lien pour choisir un créneau</b> si vous souhaitez avancer vite.
+      </div>
+
+      <div class="legal">
+        Conseil : si vous vendez dans un contexte “tendu” (divorce, succession, prêt relais),
+        prenez un créneau. Les erreurs coûtent plus cher que le rendez-vous.
+      </div>
+    </aside>
+
+  </div>
+
+</body>
+</html>
