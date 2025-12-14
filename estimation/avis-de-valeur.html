@@ -190,19 +190,17 @@
       cursor: pointer;
     }
 
-    /* CONTACT LARGE */
+   /* CONTACT BLOCK — IDENTIQUE PAGE DE RÉFÉRENCE */
     .contact-block {
       display: flex;
       gap: 18px;
       align-items: center;
-      background:
-        linear-gradient(135deg, rgba(198,169,119,0.18), transparent 55%),
-        linear-gradient(145deg, #ffffff, #FFFBF5 55%);
+      background: #ffffff;
       border-radius: 20px;
-      padding: 26px 28px;
+      padding: 16px 18px;
       border: 1px solid var(--border-soft);
-      box-shadow: var(--shadow-soft);
-      margin-bottom: 30px;
+      box-shadow: 0 18px 40px rgba(25, 25, 25, 0.08);
+      margin-top: 10px;
     }
 
     .contact-photo {
@@ -210,29 +208,36 @@
       height: 90px;
       border-radius: 999px;
       object-fit: cover;
+      object-position: top center; /* 🔴 ESSENTIEL */
       border: 2px solid #e5e7eb;
     }
 
-    .contact-text h3 { margin: 0 0 6px; font-size: 18px; }
+    .contact-text h3 {
+      margin: 0 0 4px;
+      font-size: 17px; /* 🔴 TAILLE EXACTE */
+    }
 
     .contact-text p {
       margin: 0;
-      font-size: 13px;
+      font-size: 13px; /* 🔴 TAILLE EXACTE */
       color: var(--text-soft);
-      max-width: 720px;
     }
 
     .contact-links {
-      margin-top: 10px;
+      margin-top: 8px;
       display: flex;
-      gap: 14px;
       flex-wrap: wrap;
+      gap: 10px;
+      font-size: 13px;
     }
 
     .contact-links a {
       color: var(--accent);
       text-decoration: none;
-      font-weight: 500;
+    }
+
+    .contact-links a:hover {
+      text-decoration: underline;
     }
 
     /* FOOTER */
