@@ -415,20 +415,29 @@
 
 </div>
 
+  
 <script>
 function sendMail() {
   const subject = encodeURIComponent("Demande d’avis de valeur immobilière");
   const body = encodeURIComponent(
-    "Bonjour,\n\n" +
-    "Nom : " + prenom.value + " " + nom.value + "\n" +
-    "Téléphone : " + tel.value + "\n" +
-    "Email : " + email.value + "\n\n" +
-    "Adresse : " + adresse.value + "\n" +
-    "Type : " + typeBien.value + "\n" +
-    "Typologie : " + typologie.value + "\n" +
-    "Date souhaitée : " + date.value + "\n" +
-    "Créneau souhaité : " + creneau.value
-  );
+const body = encodeURIComponent(
+  "Bonjour,\n\n" +
+  "Je souhaite obtenir un avis de valeur pour mon bien immobilier.\n\n" +
+  "Voici mes informations :\n\n" +
+  "Nom : " + prenom.value + " " + nom.value + "\n" +
+  "Téléphone : " + tel.value + "\n" +
+  "Email : " + email.value + "\n\n" +
+  "Bien concerné :\n" +
+  "Adresse : " + adresse.value + "\n" +
+  "Type de bien : " + typeBien.value + "\n" +
+  "Typologie : " + typologie.value + "\n\n" +
+  "Disponibilités :\n" +
+  "Date souhaitée : " + date.value + "\n" +
+  "Créneau horaire : " + creneau.value + "\n\n" +
+  "Je vous remercie par avance pour votre retour.\n\n" +
+  "Cordialement,\n" +
+  prenom.value + " " + nom.value
+);
   window.location.href =
     "mailto:contact@jeremyheyob.fr?subject=" + subject + "&body=" + body;
 }
