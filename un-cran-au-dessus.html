@@ -308,6 +308,35 @@
       height: 20px;
     }
 
+    .header-links {
+      display: flex;
+      justify-content: center;
+      gap: 18px;
+      font-size: 14px;
+      margin: 0 auto 24px;
+    }
+
+    .header-links a {
+      color: var(--text-soft);
+      text-decoration: none;
+      position: relative;
+    }
+
+    .header-links a:hover {
+      color: var(--accent);
+    }
+
+    .header-links a.active::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: -6px;
+      height: 2px;
+      background: var(--accent);
+      border-radius: 2px;
+    }
+
     /* FOOTER */
     .legal-footer {
       margin-top: 40px;
