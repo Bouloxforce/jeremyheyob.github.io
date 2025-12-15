@@ -505,6 +505,42 @@
       color: var(--text-soft);
       opacity: 0.75;
     }
+    .header-links {
+      display: flex;
+      justify-content: center;
+      gap: 18px;
+      font-size: 14px;
+      margin: 0 auto 24px;
+    }
+
+    .header-links a {
+      color: var(--text-soft);
+      text-decoration: none;
+    }
+
+    .header-links a:hover {
+      color: var(--accent);
+    }
+
+    .apa-centered {
+      justify-content: center;
+      flex-direction: column;
+      text-align: center;
+    }
+
+    .apa-logo-big {
+      width: 110px;
+      height: auto;
+      margin-bottom: 10px;
+    }
+    
+    .social-block {
+      justify-content: center;
+    }
+
+    .social-icons {
+      justify-content: center;
+    }
 
     /* SEO “invisible propre” (accessible, non intrusif) */
     .sr-only {
@@ -576,13 +612,13 @@
         <div class="tagline-main">VOS PROJETS IMMOBILIERS N'ONT JAMAIS ÉTÉ AUSSI SIMPLES !</div>
         <div class="tagline-sub"><strong>Jérémy HEYOB</strong></div>
       </div>
+    </header>
 
-      <nav>
+      <div class="header-links">
         <a href="https://www.agence.immo/professionnels/jeremy-heyob-453" target="_blank" rel="noopener">Mes biens</a>
         <a href="https://www.jeremyheyob.fr/avis-de-valeur.html">Estimation</a>
         <a href="https://www.jeremyheyob.fr/un-cran-au-dessus.html">Guide vendeur</a>
-      </nav>
-    </header>
+      </div>
 
     <!-- HERO -->
     <section class="hero">
@@ -613,16 +649,14 @@
 
     <!-- MÉTHODE APA -->
     <section class="apa-block">
-      <div class="apa-top">
-        <div class="apa-logo">
-          <img src="/images/logo methode apa.webp" alt="Logo Méthode APA">
-          <div>
-            <strong>Méthode APA</strong>
-            <span>Avant • Pendant • Après diffusion — “APA” comme à la pêche : la bonne stratégie, au bon moment.</span>
-          </div>
-        </div>
-        <span class="pill">Méthode exclusive</span>
+     <div class="apa-top apa-centered">
+      <img src="/images/logo methode apa.webp" alt="Logo Méthode APA" class="apa-logo-big">
+
+      <div class="apa-title">
+        <strong>MÉTHODE APA</strong>
+        <span>Avant • Pendant • Après diffusion — “APA” comme à la pêche : la bonne stratégie, au bon moment.</span>
       </div>
+    </div>
 
       <p class="section-sub" style="margin-top:10px;">
         Une méthode pensée pour vendre <strong>au meilleur prix</strong>, dans les <strong>meilleures conditions</strong>
@@ -769,7 +803,6 @@
 
     <!-- RÉSEAUX (un seul bloc, logos) -->
     <section class="social-block" aria-label="Réseaux sociaux">
-      <div class="social-title">Découvrir mes réseaux sociaux</div>
 
       <div class="social-icons">
         <!-- Google -->
