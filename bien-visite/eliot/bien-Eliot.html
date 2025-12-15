@@ -199,6 +199,7 @@
       font-size: 15px;
       font-weight: 600;
       border: none;
+      cursor: pointer;
     }
 
     .btn-retour {
@@ -376,16 +377,16 @@
 
       const subject = encodeURIComponent("Demande de contre-visite - " + bien);
       const body = encodeURIComponent(
-        "Bonjour,\n\n" +
-        "Je souhaite programmer une contre-visite pour le bien : " + bien + ".\n\n" +
-        "Nom : " + p + " " + n + "\n" +
-        "Téléphone : " + t + "\n" +
-        "Email : " + e + "\n\n" +
-        "Date souhaitée : " + d + "\n" +
-        "Créneau souhaité : " + c + "\n\n"
-        "Je vous remercie par avance pour votre retour.\n\n" +
-        "Cordialement,\n" +
-        p + " " + n
+      "Bonjour,\n\n" +
+      "Je souhaite programmer une contre-visite pour le bien : " + bien + ".\n\n" +
+      "Nom : " + p + " " + n + "\n" +
+      "Téléphone : " + t + "\n" +
+      "Email : " + e + "\n\n" +
+      "Date souhaitée : " + d + "\n" +
+      "Créneau souhaité : " + c + "\n\n" +
+      "Je vous remercie par avance pour votre retour.\n\n" +
+      "Cordialement,\n" +
+      p + " " + n
       );
 
       window.location.href =
