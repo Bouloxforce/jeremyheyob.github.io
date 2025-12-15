@@ -288,9 +288,17 @@
       width: 90px;
       height: 90px;
       border-radius: 50%;
+      overflow: hidden;          /* 🔴 CLÉ ABSOLUE */
+      border: 2px solid #e5e7eb;
+      flex-shrink: 0;
+    }
+
+    .contact-photo img {
+      width: 100%;
+      height: 100%;
       object-fit: cover;
       object-position: top center;
-      border: 2px solid #e5e7eb;
+      display: block;
     }
 
     .contact-text h3 { margin: 0 0 4px; font-size: 17px; }
@@ -592,7 +600,9 @@
     </section> <!-- FIN DU GRID SOUS COMPROMIS -->
     
     <section class="contact-block">
-      <img src="/images/photo.webp" alt="Photo de Jérémy Heyob" class="contact-photo">
+      <div class="contact-photo">
+        <img src="/images/photo.webp" alt="Photo de Jérémy Heyob">
+      </div>
 
       <div class="contact-text">
         <h3>Une question sur l'un de ces biens ?</h3>
