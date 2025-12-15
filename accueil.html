@@ -529,7 +529,7 @@
     }
 
     .apa-logo-big {
-      width: 400px;
+      width: 300px;
       height: auto;
       margin-bottom: 10px;
     }
@@ -546,6 +546,20 @@
       width: fit-content;
       margin-left: auto;
       margin-right: auto;
+    }
+    .header-links a {
+      position: relative;
+    }
+
+    .header-links a.active::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: -6px;
+      height: 2px;
+      background: var(--accent);
+      border-radius: 2px;
     }
 
     /* SEO “invisible propre” (accessible, non intrusif) */
@@ -621,7 +635,7 @@
     </header>
 
       <div class="header-links">
-        <a href="https://www.jeremyheyob.fr/">Accueil</a>
+        <a href="https://www.jeremyheyob.fr/" class="active">Accueil</a>
         <a href="https://www.agence.immo/professionnels/jeremy-heyob-453" target="_blank" rel="noopener">Mes biens</a>
         <a href="https://www.jeremyheyob.fr/avis-de-valeur.html">Estimation</a>
         <a href="https://www.immodvisor.com/pro/agencimmocom-jeremy-heyob-saint-priest-69800-53519.html" target="_blank" rel="noopener">Avis vérifiés</a>
