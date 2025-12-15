@@ -562,6 +562,18 @@
       border-radius: 2px;
     }
 
+    .image-full {
+      width: 100%;
+      height: 100%;
+    }
+
+    .image-full img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
     /* SEO “invisible propre” (accessible, non intrusif) */
     .sr-only {
       position: absolute;
@@ -720,18 +732,9 @@
       <article class="action-card">
         <div class="action-cover">
           <div class="action-cover-inner">
-            <div class="action-icon" aria-hidden="true">
-              <!-- icône maison -->
-              <svg viewBox="0 0 24 24" fill="none" stroke="#7a5a29" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M3 10.5L12 3l9 7.5"></path>
-                <path d="M5 10v10h14V10"></path>
-                <path d="M9 20v-6h6v6"></path>
-              </svg>
+            <div class="action-cover-title image-full">
+              <img src="/images/projet de vente.webp" alt="Projet de vente">
             </div>
-            <div class="action-cover-title">
-              <img src="/images/projet de vente.webp" alt="Projet de vente" style="max-width:100%; height:auto;">
-            </div>
-            <span class="action-badge">Vendeur</span>
           </div>
         </div>
 
@@ -782,17 +785,9 @@
       <article class="action-card">
         <div class="action-cover">
           <div class="action-cover-inner">
-            <div class="action-icon" aria-hidden="true">
-              <!-- icône loupe -->
-              <svg viewBox="0 0 24 24" fill="none" stroke="#7a5a29" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <circle cx="11" cy="11" r="7"></circle>
-                <path d="M21 21l-4.3-4.3"></path>
-              </svg>
+            <div class="action-cover-title image-full">
+              <img src="/images/projet d'achat.webp" alt="Projet d'achat">
             </div>
-            <div class="action-cover-title">
-              <img src="/images/projet d'achat.webp" alt="Projet d'achat" style="max-width:100%; height:auto;">
-            </div>
-            <span class="action-badge">Acquéreur</span>
           </div>
         </div>
 
