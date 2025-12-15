@@ -317,9 +317,23 @@
       width: 20px;
       height: 20px;
     }
-    
+
+    .header-links {
+      display: flex;
+      justify-content: center;
+      gap: 18px;
+      font-size: 14px;
+      margin: 0 auto 24px;
+    }
+
     .header-links a {
+      color: var(--text-soft);
+      text-decoration: none;
       position: relative;
+    }
+
+    .header-links a:hover {
+      color: var(--accent);
     }
 
     .header-links a.active::after {
