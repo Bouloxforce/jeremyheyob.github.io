@@ -1,136 +1,722 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
+  <link rel="icon" type="image/x-icon" href="/images/favicon.ico">
+  <link rel="shortcut icon" href="/images/favicon.ico">
   <meta charset="UTF-8">
-  <title>Jérémy Heyob Immobilier | Vente & Achat immobilier à Saint-Priest</title>
 
-  <!-- SEO ESSENTIEL -->
-  <meta name="description" content="Jérémy Heyob, négociateur immobilier à Saint-Priest. Méthode APA : vendre au meilleur prix, dans les meilleures conditions et délais. Estimation gratuite, guide vendeur, biens en avant-première.">
+  <!-- ✅ INDEXATION GOOGLE (à l’inverse de tes pages noindex) -->
+  <meta name="robots" content="index, follow, max-image-preview:large">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <!-- Open Graph (partages réseaux) -->
-  <meta property="og:title" content="Jérémy Heyob Immobilier – Méthode APA">
-  <meta property="og:description" content="Une méthode immobilière claire et structurée pour vendre au meilleur prix, sans improvisation.">
+  <title>Accueil | Jérémy Heyob Immobilier – Achat, Vente, Estimation, Guide & Méthode APA</title>
+  <meta name="description" content="Accédez à vos ressources : estimation, guide vendeur « Un cran au-dessus », inscription acquéreur pour recevoir les nouveaux biens en avant-première, biens en vente, avis vérifiés et honoraires. Découvrez ma Méthode APA pour vendre au meilleur prix, dans les meilleures conditions et délais.">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Accueil | Jérémy Heyob Immobilier">
+  <meta property="og:description" content="Estimation, guide vendeur, inscription acquéreur, biens en vente, avis vérifiés, honoraires. Méthode APA : vendre au meilleur prix, au meilleur délai, dans les meilleures conditions.">
   <meta property="og:type" content="website">
-  <meta property="og:url" content="https://www.jeremyheyob.fr/">
-  <meta property="og:image" content="https://www.jeremyheyob.fr/images/og-cover.webp">
+  <meta property="og:image" content="/images/photo.webp">
 
   <style>
-    /* ⚠️ CSS IDENTIQUE À CELUI FOURNI PRÉCÉDEMMENT */
-    /* (aucune réécriture ici pour éviter les erreurs) */
+    :root {
+      --bg: #FFFBF5;
+      --bg-soft: #ffffff;
+      --accent: #C6AA77;
+      --accent-soft: rgba(198, 169, 119, 0.16);
+      --accent-soft-strong: rgba(212,161,95,0.08);
+      --text-main: #191919;
+      --text-soft: #7A7A7A;
+      --border-soft: #e5e7eb;
+      --card-bg: #ffffff;
+      --shadow-soft: 0 20px 50px rgba(25,25,25,0.10);
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+      background: #FFFBF5;
+      color: var(--text-main);
+      min-height: 100vh;
+    }
+
+    .page {
+      max-width: 1150px;
+      margin: 0 auto;
+      padding: 26px 18px 60px;
+    }
+
+    header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+      max-width: 960px;
+      margin: 16px auto 24px;
+      padding: 8px 28px;
+      background: var(--card-bg);
+      border-radius: 22px;
+      box-shadow: var(--shadow-soft);
+      border: 1px solid rgba(15,23,42,0.04);
+    }
+
+    .header-left { display: flex; align-items: center; gap: 16px; }
+    .logo { max-width: 140px; height: auto; }
+
+    .header-center { flex: 1; text-align: center; }
+
+    .tagline-main {
+      font-size: 13px;
+      letter-spacing: 0.18em;
+      color: var(--text-soft);
+    }
+
+    .tagline-sub {
+      margin-top: 12px;
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+    }
+
+    .tagline-sub strong { color: var(--text-main); font-weight: 900; }
+
+    nav { display: flex; gap: 18px; font-size: 14px; }
+    nav a { color: var(--text-soft); text-decoration: none; }
+    nav a:hover { color: var(--accent); }
+    nav a.active { color: var(--accent); font-weight: 600; }
+
+    .hero {
+      position: relative;
+      border-radius: 20px;
+      overflow: hidden;
+      background:
+        linear-gradient(135deg, rgba(212,161,95,0.18), transparent 55%),
+        linear-gradient(145deg, #ffffff, #FFFBF5 55%);
+      border: 1px solid var(--border-soft);
+      box-shadow: var(--shadow-soft);
+      margin-bottom: 30px;
+    }
+
+    .hero-inner { display: block; }
+    .hero-text { padding: 24px 26px 24px; }
+
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 4px 10px;
+      border-radius: 999px;
+      background: var(--accent-soft);
+      color: var(--accent);
+      font-size: 11px;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .hero-text h1 {
+      margin: 10px 0 8px;
+      font-size: clamp(24px, 3.2vw, 30px);
+    }
+
+    .hero-text p {
+      margin: 0;
+      font-size: 14px;
+      color: var(--text-soft);
+      max-width: 720px;
+      line-height: 1.55;
+    }
+
+    .hero-highlight {
+      margin-top: 14px;
+      padding: 12px 14px;
+      border-radius: 14px;
+      background: #ffffff;
+      border: 1px dashed var(--border-soft);
+      font-size: 13px;
+      color: #4A4A4A;
+      line-height: 1.45;
+    }
+
+    /* ✅ BLOC “info importante” avec logo à droite */
+    .hero-highlight-with-logo {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+
+    .hero-highlight-text { flex: 1; }
+
+    .hero-highlight-logo img {
+      width: 92px;
+      height: auto;
+      opacity: 0.92;
+      display: block;
+    }
+
+    .hero-meta {
+      margin-top: 14px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      font-size: 12px;
+      color: var(--text-soft);
+    }
+
+    .hero-meta span {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .hero-meta-dot {
+      width: 3px;
+      height: 3px;
+      border-radius: 999px;
+      background: var(--text-soft);
+    }
+
+    .section-title {
+      margin: 18px 0 10px;
+      font-size: 18px;
+      border-left: 4px solid var(--accent);
+      padding-left: 10px;
+    }
+
+    .section-sub {
+      margin: 0 0 16px;
+      font-size: 13px;
+      color: var(--text-soft);
+      max-width: 760px;
+      line-height: 1.55;
+    }
+
+    .properties-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 18px;
+      margin-bottom: 34px;
+    }
+
+    .property-card {
+      background: var(--card-bg);
+      border-radius: 18px;
+      border: 1px solid var(--border-soft);
+      box-shadow: 0 14px 35px rgba(25,25,25,0.06);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      min-height: 250px;
+    }
+
+    .property-cover {
+      position: relative;
+      aspect-ratio: 4/3;
+      overflow: hidden;
+      background: linear-gradient(145deg, #ffffff, #FFFBF5 55%);
+    }
+
+    .property-cover img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0.95;
+    }
+
+    .property-tag {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      background: rgba(255,255,255,0.92);
+      color: #4A4A4A;
+      font-size: 11px;
+      padding: 4px 10px;
+      border-radius: 999px;
+      border: 1px solid var(--border-soft);
+    }
+
+    .property-body {
+      padding: 14px 14px 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      flex: 1;
+    }
+
+    .property-title { margin: 0; font-size: 16px; }
+    .property-location { font-size: 12px; color: var(--text-soft); }
+
+    .property-meta {
+      margin-top: 4px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      font-size: 11px;
+      color: #4A4A4A;
+    }
+
+    .property-meta span {
+      padding: 3px 8px;
+      border-radius: 999px;
+      background: var(--accent-soft-strong);
+    }
+
+    .property-footer {
+      margin-top: 14px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 8px;
+      font-size: 11px;
+      color: var(--text-soft);
+      text-align: center;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      background: linear-gradient(135deg, #fbe4b9, #f3c98b);
+      color: #7a5a29;
+      padding: 8px 14px;
+      border-radius: 999px;
+      font-size: 13px;
+      font-weight: 600;
+      text-decoration: none;
+      border: none;
+      cursor: pointer;
+      white-space: nowrap;
+    }
+
+    .btn:hover { filter: brightness(1.03); }
+
+    /* ✅ état “bientôt dispo” sans casser le style */
+    .btn.disabled {
+      pointer-events: none;
+      opacity: 0.6;
+      filter: grayscale(0.25);
+    }
+
+    .contact-block {
+      display: flex;
+      gap: 18px;
+      align-items: center;
+      background: #ffffff;
+      border-radius: 20px;
+      padding: 16px 18px;
+      border: 1px solid var(--border-soft);
+      box-shadow: 0 18px 40px rgba(25, 25, 25, 0.08);
+      max-width: 960px;
+      margin: 10px auto 0;
+    }
+
+    .contact-photo {
+      width: 90px;
+      height: 90px;
+      border-radius: 50%;
+      overflow: hidden;
+      border: 2px solid #e5e7eb;
+      flex-shrink: 0;
+    }
+
+    .contact-photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: top center;
+      display: block;
+    }
+
+    .contact-text h3 { margin: 0 0 4px; font-size: 17px; }
+    .contact-text p { margin: 0; font-size: 13px; color: var(--text-soft); }
+
+    .contact-links {
+      margin-top: 8px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      font-size: 13px;
+    }
+
+    .contact-links a { color: var(--accent); text-decoration: none; }
+    .contact-links a:hover { text-decoration: underline; }
+
+    .legal-footer {
+      margin-top: 40px;
+      padding: 18px;
+      text-align: center;
+      font-size: 11.5px;
+      color: var(--text-soft);
+      opacity: 0.75;
+    }
+
+    @media (max-width: 880px) {
+      header { flex-direction: column; align-items: center; }
+      .contact-block { flex-direction: column; align-items: center; text-align: center; }
+      .contact-links { justify-content: center; width: 100%; }
+
+      .hero-highlight-with-logo { flex-direction: column; align-items: flex-start; }
+      .hero-highlight-logo img { width: 78px; }
+    }
   </style>
+
+  <!-- Données structurées (SEO local + marque) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "RealEstateAgent",
+    "name": "Jérémy Heyob Immobilier",
+    "url": "https://www.jeremyheyob.fr/",
+    "image": "https://www.jeremyheyob.fr/images/photo.webp",
+    "sameAs": [
+      "https://www.facebook.com/jeremyheyobpro",
+      "https://www.linkedin.com/company/jérémy-heyob/",
+      "https://www.instagram.com/jeremyheyob/",
+      "https://www.youtube.com/channel/UCpE0arbirH2tkw2THT_Ef9Q",
+      "https://www.tiktok.com/@jeremyheyob",
+      "https://goo.gl/maps/wjfc1aGFBrSLd3tV6",
+      "https://www.pagesjaunes.fr/pros/62191780"
+    ]
+  }
+  </script>
 </head>
 
 <body>
-<div class="page">
+  <div class="page">
 
-<header>
-  <img src="/images/logo.webp" class="logo" alt="Jérémy Heyob Immobilier">
-  <div class="header-center">
-    <div class="tagline-main">VOS PROJETS IMMOBILIERS N’ONT JAMAIS ÉTÉ AUSSI SIMPLES</div>
-    <div class="tagline-sub"><strong>Jérémy HEYOB</strong></div>
-  </div>
-</header>
-
-<!-- MÉTHODE APA -->
-<section class="hero">
-  <span class="pill">Méthode exclusive</span>
-
-  <div class="hero-head">
-    <div class="hero-left">
-      <h1>Vendre ou acheter avec méthode, clarté et sérénité</h1>
-
-      <p>
-        J’ai conçu une méthode unique : <strong>la Méthode APA</strong>.
-        Elle permet de vendre un bien <strong>au meilleur prix</strong>,
-        dans <strong>les meilleures conditions</strong> et dans
-        <strong>les meilleurs délais</strong>, sans improvisation.
-      </p>
-
-      <div class="hero-highlight">
-        La Méthode APA structure chaque étape de votre projet pour éviter
-        les erreurs coûteuses et prendre des décisions rationnelles,
-        basées sur des faits et non sur des suppositions.
+    <header>
+      <div class="header-left">
+        <img src="/images/logo.webp" alt="Logo Jérémy Heyob" class="logo">
       </div>
-    </div>
 
-    <div class="hero-logo">
-      <img src="/images/logo methode apa.webp" alt="Méthode APA">
-    </div>
+      <div class="header-center">
+        <div class="tagline-main">VOS PROJETS IMMOBILIERS N'ONT JAMAIS ÉTÉ AUSSI SIMPLES !</div>
+        <div class="tagline-sub"><strong>Jérémy HEYOB</strong></div>
+      </div>
+
+      <nav></nav>
+    </header>
+
+    <!-- HERO -->
+    <section class="hero">
+      <div class="hero-inner">
+        <div class="hero-text">
+
+          <div class="pill">Accueil & accès rapide</div>
+
+          <h1>Choisissez votre projet : achat ou vente, avec une approche premium et structurée.</h1>
+
+          <p>
+            Ici, tout est pensé pour vous faire gagner du temps et prendre de meilleures décisions :
+            estimation, accès aux biens, ressources vendeurs, avis vérifiés, et inscription acquéreur pour recevoir les nouveautés en avant-première.
+          </p>
+
+          <div class="hero-highlight hero-highlight-with-logo">
+            <div class="hero-highlight-text">
+              <strong>Ma signature :</strong> la <strong>Méthode APA</strong>.<br>
+              Une méthode unique pour vendre <strong>au meilleur prix</strong>, dans les <strong>meilleures conditions</strong>, et dans les <strong>meilleurs délais</strong> — sans improvisation, sans zones grises.
+            </div>
+            <div class="hero-highlight-logo">
+              <!-- ✅ Mets ici ton logo APA -->
+              <img src="/images/logo methode apa.webp" alt="Logo Méthode APA">
+            </div>
+          </div>
+
+          <div class="hero-meta">
+            <span><span class="hero-meta-dot"></span> Parcours clair et guidé</span>
+            <span><span class="hero-meta-dot"></span> Ressources accessibles 24/7</span>
+            <span><span class="hero-meta-dot"></span> Expérience premium, sans friction</span>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- PARTIE VENTE -->
+    <h2 class="section-title">Vous avez un projet de vente</h2>
+    <p class="section-sub">
+      Vendez avec méthode. Ici, vous pouvez réserver une estimation, télécharger le guide vendeur
+      et consulter mes honoraires. Objectif : un projet cadré, des décisions nettes, un résultat maîtrisé.
+    </p>
+
+    <section class="properties-grid">
+
+      <article class="property-card">
+        <div class="property-cover">
+          <img src="/images/photo.webp" alt="Estimation immobilière">
+          <div class="property-tag">Étape 1</div>
+        </div>
+        <div class="property-body">
+          <h3 class="property-title">Réserver une estimation avec moi</h3>
+          <div class="property-location">Avis de valeur précis, gratuit et structuré</div>
+          <div class="property-meta">
+            <span>Méthode APA</span><span>Sans engagement</span><span>Clair & actionnable</span>
+          </div>
+          <div class="property-footer">
+            <a href="https://www.jeremyheyob.fr/avis-de-valeur.html" class="btn" target="_blank" rel="noopener">Accéder</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="property-card">
+        <div class="property-cover">
+          <img src="/images/photo.webp" alt="Guide vendeur">
+          <div class="property-tag">Ressource</div>
+        </div>
+        <div class="property-body">
+          <h3 class="property-title">Télécharger gratuitement le guide « Un cran au-dessus »</h3>
+          <div class="property-location">Mes leviers concrets pour vendre mieux que la moyenne</div>
+          <div class="property-meta">
+            <span>Lecture ≈ 15 min</span><span>Pratique</span><span>Sans blabla</span>
+          </div>
+          <div class="property-footer">
+            <a href="https://www.jeremyheyob.fr/un-cran-au-dessus.html" class="btn" target="_blank" rel="noopener">Télécharger</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="property-card">
+        <div class="property-cover">
+          <img src="/images/photo.webp" alt="Honoraires">
+          <div class="property-tag">Transparence</div>
+        </div>
+        <div class="property-body">
+          <h3 class="property-title">Consulter mes honoraires</h3>
+          <div class="property-location">Clairs, accessibles, sans surprise</div>
+          <div class="property-meta">
+            <span>PDF</span><span>Lecture immédiate</span><span>Cadre net</span>
+          </div>
+          <div class="property-footer">
+            <a href="https://drive.google.com/file/d/1UQ1XtTmemgubwrbZ0p9Ag4Sz_6WxYvCP/view?usp=share_link" class="btn" target="_blank" rel="noopener">Ouvrir</a>
+          </div>
+        </div>
+      </article>
+
+    </section>
+
+    <!-- PARTIE ACHAT -->
+    <h2 class="section-title">Vous avez un projet d’achat</h2>
+    <p class="section-sub">
+      Accédez à mes biens en vente et inscrivez-vous (option “avant-première”) pour recevoir mes nouveaux biens dès leur sortie.
+      L’idée : réduire la concurrence et augmenter vos chances, sans courir après les annonces.
+    </p>
+
+    <section class="properties-grid">
+
+      <article class="property-card">
+        <div class="property-cover">
+          <img src="/images/photo.webp" alt="Biens en vente">
+          <div class="property-tag">En direct</div>
+        </div>
+        <div class="property-body">
+          <h3 class="property-title">Consulter mes biens en vente actuellement</h3>
+          <div class="property-location">Accès à mes annonces et disponibilités</div>
+          <div class="property-meta">
+            <span>Biens</span><span>Infos</span><span>Visites</span>
+          </div>
+          <div class="property-footer">
+            <a href="https://www.agence.immo/professionnels/jeremy-heyob-453" class="btn" target="_blank" rel="noopener">Voir les biens</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="property-card">
+        <div class="property-cover">
+          <img src="/images/photo.webp" alt="Avant-première acquéreur">
+          <div class="property-tag">Avant-première</div>
+        </div>
+        <div class="property-body">
+          <h3 class="property-title">Recevoir mes nouveaux biens en avant-première</h3>
+          <div class="property-location">Inscription acquéreur (page à venir)</div>
+          <div class="property-meta">
+            <span>Priorité</span><span>Nouveautés</span><span>Gain de temps</span>
+          </div>
+          <div class="property-footer">
+            <!-- URL_LISTE_ACQUEREUR pas encore créée -->
+            <a href="#" class="btn disabled" aria-disabled="true" title="Page en cours de création">Bientôt disponible</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="property-card">
+        <div class="property-cover">
+          <img src="/images/photo.webp" alt="Avis Immodvisor">
+          <div class="property-tag">Vérifiés</div>
+        </div>
+        <div class="property-body">
+          <h3 class="property-title">Lire mes avis vérifiés Immodvisor</h3>
+          <div class="property-location">Retours authentiques, transparents</div>
+          <div class="property-meta">
+            <span>Preuve</span><span>Confiance</span><span>Qualité</span>
+          </div>
+          <div class="property-footer">
+            <a href="https://www.immodvisor.com/pro/agencimmocom-jeremy-heyob-saint-priest-69800-53519.html" class="btn" target="_blank" rel="noopener">Consulter</a>
+          </div>
+        </div>
+      </article>
+
+    </section>
+
+    <!-- RÉSEAUX & PROFILS -->
+    <h2 class="section-title">Me retrouver et vérifier mes profils</h2>
+    <p class="section-sub">
+      Pour ceux qui aiment valider avant d’avancer : Google, PagesJaunes et mes réseaux (avec des vidéos de présentation de biens sur YouTube).
+    </p>
+
+    <section class="properties-grid">
+
+      <article class="property-card">
+        <div class="property-cover">
+          <img src="/images/photo.webp" alt="Fiche Google">
+          <div class="property-tag">Local</div>
+        </div>
+        <div class="property-body">
+          <h3 class="property-title">Ma fiche Google</h3>
+          <div class="property-location">Itinéraire, avis, informations</div>
+          <div class="property-meta">
+            <span>Google</span><span>Local</span><span>Infos</span>
+          </div>
+          <div class="property-footer">
+            <a href="https://goo.gl/maps/wjfc1aGFBrSLd3tV6" class="btn" target="_blank" rel="noopener">Ouvrir</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="property-card">
+        <div class="property-cover">
+          <img src="/images/photo.webp" alt="PagesJaunes">
+          <div class="property-tag">Référence</div>
+        </div>
+        <div class="property-body">
+          <h3 class="property-title">Ma fiche PagesJaunes</h3>
+          <div class="property-location">Informations professionnelles</div>
+          <div class="property-meta">
+            <span>PagesJaunes</span><span>Pro</span><span>Vérification</span>
+          </div>
+          <div class="property-footer">
+            <a href="https://www.pagesjaunes.fr/pros/62191780" class="btn" target="_blank" rel="noopener">Consulter</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="property-card">
+        <div class="property-cover">
+          <img src="/images/photo.webp" alt="Facebook">
+          <div class="property-tag">Réseaux</div>
+        </div>
+        <div class="property-body">
+          <h3 class="property-title">Ma page Facebook</h3>
+          <div class="property-location">Actualités, biens, coulisses</div>
+          <div class="property-meta">
+            <span>Facebook</span><span>Actu</span><span>Projets</span>
+          </div>
+          <div class="property-footer">
+            <a href="https://www.facebook.com/jeremyheyobpro" class="btn" target="_blank" rel="noopener">Voir</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="property-card">
+        <div class="property-cover">
+          <img src="/images/photo.webp" alt="LinkedIn">
+          <div class="property-tag">Réseaux</div>
+        </div>
+        <div class="property-body">
+          <h3 class="property-title">Mon LinkedIn</h3>
+          <div class="property-location">Crédibilité, parcours, publications</div>
+          <div class="property-meta">
+            <span>LinkedIn</span><span>Pro</span><span>Réseau</span>
+          </div>
+          <div class="property-footer">
+            <a href="https://www.linkedin.com/company/jérémy-heyob/" class="btn" target="_blank" rel="noopener">Voir</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="property-card">
+        <div class="property-cover">
+          <img src="/images/photo.webp" alt="Instagram">
+          <div class="property-tag">Réseaux</div>
+        </div>
+        <div class="property-body">
+          <h3 class="property-title">Mes aventures Instagram</h3>
+          <div class="property-location">Stories, biens, terrain</div>
+          <div class="property-meta">
+            <span>Instagram</span><span>Terrain</span><span>Coulisses</span>
+          </div>
+          <div class="property-footer">
+            <a href="https://www.instagram.com/jeremyheyob/" class="btn" target="_blank" rel="noopener">Découvrir</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="property-card">
+        <div class="property-cover">
+          <img src="/images/photo.webp" alt="YouTube">
+          <div class="property-tag">Vidéos</div>
+        </div>
+        <div class="property-body">
+          <h3 class="property-title">Ma chaîne YouTube</h3>
+          <div class="property-location">Présentation de biens en vidéo</div>
+          <div class="property-meta">
+            <span>YouTube</span><span>Visites</span><span>Vidéos</span>
+          </div>
+          <div class="property-footer">
+            <a href="https://www.youtube.com/channel/UCpE0arbirH2tkw2THT_Ef9Q" class="btn" target="_blank" rel="noopener">Regarder</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="property-card">
+        <div class="property-cover">
+          <img src="/images/photo.webp" alt="TikTok">
+          <div class="property-tag">Réseaux</div>
+        </div>
+        <div class="property-body">
+          <h3 class="property-title">Mon TikTok</h3>
+          <div class="property-location">Formats courts, astuces, biens</div>
+          <div class="property-meta">
+            <span>TikTok</span><span>Format court</span><span>Conseils</span>
+          </div>
+          <div class="property-footer">
+            <a href="https://www.tiktok.com/@jeremyheyob" class="btn" target="_blank" rel="noopener">Découvrir</a>
+          </div>
+        </div>
+      </article>
+
+    </section>
+
+    <!-- CONTACT -->
+    <section class="contact-block">
+      <div class="contact-photo">
+        <img src="/images/photo.webp" alt="Photo de Jérémy Heyob">
+      </div>
+
+      <div class="contact-text">
+        <h3>Vous voulez avancer vite, proprement, et sans stress ?</h3>
+        <p>
+          Dites-moi où vous en êtes. Je vous réponds avec une stratégie claire,
+          puis on décide ensemble de la meilleure suite — sans pression, mais avec de la méthode.
+        </p>
+
+        <div class="contact-links">
+          <a href="mailto:contact@jeremyheyob.fr">✉️ Email</a>
+          <a href="sms:+33648145565">💬 SMS</a>
+          <a href="tel:+33648145565">📞 Appel</a>
+          <a href="https://linktr.ee/jeremyheyob" target="_blank" rel="noopener">💻 Site</a>
+        </div>
+      </div>
+    </section>
+
+    <footer class="legal-footer">
+      Les contenus présentés sur cette page sont la propriété exclusive de <strong>Jérémy HEYOB Immobilier</strong>.<br>
+      Toute reproduction, diffusion ou utilisation est strictement interdite sans autorisation préalable.
+    </footer>
+
   </div>
-</section>
-
-<!-- PROJET DE VENTE -->
-<section class="section">
-  <h2>Vous avez un projet de vente</h2>
-  <p>
-    Une vente réussie commence par une estimation juste,
-    une stratégie cohérente et une mise en marché maîtrisée.
-  </p>
-
-  <div class="actions">
-    <a class="action" href="https://www.jeremyheyob.fr/avis-de-valeur.html" target="_blank">
-      <div class="icon">🏠</div>
-      <div class="label">Réserver une estimation immobilière gratuite et sans engagement</div>
-    </a>
-
-    <a class="action" href="https://www.jeremyheyob.fr/un-cran-au-dessus.html" target="_blank">
-      <div class="icon">📘</div>
-      <div class="label">Télécharger le guide vendeur « Un cran au-dessus »</div>
-    </a>
-
-    <a class="action" href="https://drive.google.com/file/d/1UQ1XtTmemgubwrbZ0p9Ag4Sz_6WxYvCP/view" target="_blank">
-      <div class="icon">€</div>
-      <div class="label">Consulter mes honoraires en toute transparence</div>
-    </a>
-  </div>
-</section>
-
-<!-- PROJET D’ACHAT -->
-<section class="section">
-  <h2>Vous avez un projet d’achat</h2>
-  <p>
-    Anticiper est la clé. Accédez à mes biens disponibles
-    et soyez informé en priorité des nouveautés.
-  </p>
-
-  <div class="actions">
-    <div class="action" style="opacity:.55; cursor:default;">
-      <div class="icon">🔔</div>
-      <div class="label">S’inscrire à la liste acquéreurs (bientôt disponible)</div>
-    </div>
-
-    <a class="action" href="https://www.agence.immo/professionnels/jeremy-heyob-453" target="_blank">
-      <div class="icon">🔑</div>
-      <div class="label">Consulter mes biens en vente actuellement</div>
-    </a>
-
-    <a class="action" href="https://www.immodvisor.com/pro/agencimmocom-jeremy-heyob-saint-priest-69800-53519.html" target="_blank">
-      <div class="icon">⭐</div>
-      <div class="label">Lire mes avis clients vérifiés (Immodvisor)</div>
-    </a>
-  </div>
-</section>
-
-<!-- RÉSEAUX -->
-<section class="section">
-  <h2>Découvrir mon univers professionnel</h2>
-
-  <div class="actions">
-    <a class="action" href="https://goo.gl/maps/wjfc1aGFBrSLd3tV6" target="_blank"><div class="icon">G</div><div class="label">Ma fiche Google</div></a>
-    <a class="action" href="https://www.pagesjaunes.fr/pros/62191780" target="_blank"><div class="icon">😊</div><div class="label">Ma fiche Pages Jaunes</div></a>
-    <a class="action" href="https://www.facebook.com/jeremyheyobpro" target="_blank"><div class="icon">f</div><div class="label">Ma page Facebook</div></a>
-    <a class="action" href="https://www.linkedin.com/company/jérémy-heyob/" target="_blank"><div class="icon">in</div><div class="label">Mon réseau LinkedIn</div></a>
-    <a class="action" href="https://www.instagram.com/jeremyheyob/" target="_blank"><div class="icon">IG</div><div class="label">Mes aventures Instagram</div></a>
-    <a class="action" href="https://www.youtube.com/channel/UCpE0arbirH2tkw2THT_Ef9Q" target="_blank"><div class="icon">▶</div><div class="label">Ma chaîne YouTube (vidéos de biens)</div></a>
-    <a class="action" href="https://www.tiktok.com/@jeremyheyob" target="_blank"><div class="icon">♪</div><div class="label">Mes vidéos TikTok</div></a>
-  </div>
-</section>
-
-<footer>
-  © Jérémy HEYOB Immobilier – Tous droits réservés
-</footer>
-
-</div>
 </body>
 </html>
