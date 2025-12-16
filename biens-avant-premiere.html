@@ -1,375 +1,772 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <link rel="icon" type="image/x-icon" href="/images/favicon.ico">
-  <link rel="shortcut icon" href="/images/favicon.ico">
   <meta charset="UTF-8">
 
-  <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large">
+    <!-- SEO (INDEXATION ACTIVÉE) -->
+  <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <title>Biens en avant-première | Jérémy Heyob Immobilier</title>
-  <meta name="description" content="Recevez par SMS les biens immobiliers correspondant à vos critères avant toute diffusion sur les sites immobiliers. Inscription gratuite et sans engagement.">
-  <link rel="canonical" href="https://www.jeremyheyob.fr/biens-avant-premiere.html">
+  <meta name="description" content="Recevez par SMS les nouveaux biens en avant-première dès qu’un bien correspond à vos critères, avant la diffusion sur les sites immobiliers. Inscription gratuite.">
+
+  <link rel="canonical" href="https://www.jeremyheyob.fr/">
+
+  <!-- Technique SEO “2” : mots-clés & sémantique (sans affichage agressif) -->
+  <meta name="keywords" content="négociateur immobilier Saint-Priest, estimation Saint-Priest, immobilier Saint-Priest, bien récent, appartement récent, logement récent, appartement rénové, vente appartement Saint-Priest, estimation appartement, Est lyonnais, Bron, Vénissieux, Mions, Corbas, Feyzin, Saint-Fons, Chassieu, Genas, Décines-Charpieu, Meyzieu, Vaulx-en-Velin, Villeurbanne, T3 récent, T4 récent, résidence récente">
 
   <style>
     :root {
-      --bg:#FFFBF5;
-      --accent:#C6AA77;
-      --accent-soft:rgba(198,169,119,0.16);
-      --text-main:#191919;
-      --text-soft:#7A7A7A;
-      --border-soft:#e5e7eb;
-      --card-bg:#ffffff;
-      --shadow-soft:0 20px 50px rgba(25,25,25,0.10);
+      --bg: #FFFBF5;
+      --bg-soft: #ffffff;
+      --accent: #C6AA77;
+      --accent-soft: rgba(198, 169, 119, 0.16);
+      --accent-soft-strong: rgba(212,161,95,0.08);
+      --text-main: #191919;
+      --text-soft: #7A7A7A;
+      --border-soft: #e5e7eb;
+      --card-bg: #ffffff;
+      --shadow-soft: 0 20px 50px rgba(25,25,25,0.10);
     }
 
-    *{box-sizing:border-box}
+    * { box-sizing: border-box; }
 
-    body{
-      margin:0;
-      font-family:-apple-system,BlinkMacSystemFont,system-ui,sans-serif;
-      background:var(--bg);
-      color:var(--text-main);
+    body {
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+      background: var(--bg);
+      color: var(--text-main);
+      min-height: 100vh;
     }
 
-    .page{
-      max-width:1150px;
-      margin:0 auto;
-      padding:26px 18px 60px;
+    .page {
+      max-width: 1150px;
+      margin: 0 auto;
+      padding: 26px 18px 60px;
     }
 
-    header{
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap:18px;
-      max-width:960px;
-      margin:16px auto 24px;
-      padding:8px 28px;
-      background:var(--card-bg);
-      border-radius:22px;
-      box-shadow:var(--shadow-soft);
-      border:1px solid rgba(15,23,42,0.04);
+    /* HEADER */
+    header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+      max-width: 960px;
+      margin: 16px auto 24px;
+      padding: 8px 28px;
+      background: var(--card-bg);
+      border-radius: 22px;
+      box-shadow: var(--shadow-soft);
+      border: 1px solid rgba(15,23,42,0.04);
     }
 
-    .logo{max-width:140px}
-    .header-center{flex:1;text-align:center}
+    .logo { max-width: 140px; }
 
-    .tagline-main{
-      font-size:13px;
-      letter-spacing:.18em;
-      color:var(--text-soft);
+    .header-center {
+      flex: 1;
+      text-align: center;
     }
 
-    .tagline-sub{
-      margin-top:12px;
-      font-size:12px;
-      text-transform:uppercase;
-      letter-spacing:.12em;
+    .tagline-main {
+      font-size: 13px;
+      letter-spacing: 0.18em;
+      color: var(--text-soft);
     }
 
-    .tagline-sub strong{font-weight:900}
-
-    .header-links{
-      display:flex;
-      justify-content:center;
-      gap:18px;
-      font-size:14px;
-      margin:0 auto 24px;
+    .tagline-sub {
+      margin-top: 12px;
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
     }
 
-    .header-links a{
-      color:var(--text-soft);
-      text-decoration:none;
-      position:relative;
+    .tagline-sub strong {
+      color: var(--text-main);
+      font-weight: 900;
     }
 
-    .header-links a.active::after{
-      content:"";
-      position:absolute;
-      left:0;right:0;bottom:-6px;
-      height:2px;
-      background:var(--accent);
-      border-radius:2px;
-    }
-
-    .btn-retour{
-      display:inline-block;
-      margin:10px 0 18px;
-      padding:6px 12px;
-      font-size:13px;
-      color:#7a5a29;
-      text-decoration:none;
-      border-radius:10px;
-      border:1px solid rgba(198,169,119,.35);
-      background:rgba(198,169,119,.10);
-    }
-
-    .hero{
-      border-radius:20px;
+    /* BLOC INFORMATIF */
+    .info-block {
+      max-width: 1113px;
+      margin: 0 auto 30px;
+      padding: 26px 28px;
       background:
-        linear-gradient(135deg, rgba(198,169,119,.18), transparent 55%),
-        linear-gradient(145deg,#fff,#FFFBF5 55%);
-      border:1px solid var(--border-soft);
-      box-shadow:var(--shadow-soft);
-      margin-bottom:30px;
+        linear-gradient(135deg, rgba(212,161,95,0.18), transparent 55%),
+        linear-gradient(145deg, #ffffff, #FFFBF5 55%);
+      border-radius: 22px;
+      border: 1px solid var(--border-soft);
+      box-shadow: var(--shadow-soft);
     }
 
-    .hero-text{padding:26px 28px}
-
-    .pill{
-      display:inline-flex;
-      padding:4px 10px;
-      border-radius:999px;
-      background:var(--accent-soft);
-      color:var(--accent);
-      font-size:11px;
-      text-transform:uppercase;
-      margin-bottom:10px;
+    .info-pill {
+      display: inline-block;
+      padding: 4px 10px;
+      border-radius: 999px;
+      background: var(--accent-soft);
+      color: var(--accent);
+      font-size: 11px;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 10px;
     }
 
-    .hero-text h1{
-      margin:10px 0 8px;
-      font-size:clamp(24px,3vw,30px);
+    .info-block h2 {
+      margin: 8px 0 10px;
+      font-size: 22px;
     }
 
-    .hero-text p{
-      font-size:14px;
-      color:var(--text-soft);
-      max-width:720px;
-      line-height:1.55;
+    .info-block p {
+      margin: 0;
+      font-size: 14px;
+      color: var(--text-soft);
+      max-width: 720px;
+      line-height: 1.55;
     }
 
-    .hero-highlight{
-      margin-top:16px;
-      padding:14px 16px;
-      border-radius:14px;
-      background:#fff;
-      border:1px dashed var(--border-soft);
-      font-size:13px;
-      line-height:1.5;
+    .info-highlight {
+      margin-top: 14px;
+      padding: 12px 14px;
+      border-radius: 14px;
+      background: #ffffff;
+      border: 1px dashed var(--border-soft);
+      font-size: 13px;
+      color: #4A4A4A;
+      line-height: 1.45;
     }
 
-    .hero-meta{
-      margin-top:14px;
-      display:flex;
-      gap:18px;
-      font-size:12px;
-      color:var(--text-soft);
+    /* GUIDE */
+    .guide-card {
+      max-width: 800px;
+      margin: 0 auto 30px;
+      background: var(--card-bg);
+      border-radius: 24px;
+      padding: 34px 30px;
+      box-shadow: var(--shadow-soft);
+      border: 1px solid var(--border-soft);
+      text-align: center;
     }
 
-    .hero-meta span{
-      position:relative;
-      padding-left:12px;
+    .badge {
+      display: inline-block;
+      padding: 6px 14px;
+      border-radius: 999px;
+      background: var(--accent-soft);
+      color: var(--accent);
+      font-size: 11px;
+      letter-spacing: 0.08em;
+      font-weight: 600;
+      text-transform: uppercase;
     }
 
-    .hero-meta span::before{
-      content:"•";
-      position:absolute;
-      left:0;
+    .guide-card h1 {
+      font-size: 30px;
+      margin: 14px 0 10px;
     }
 
-    .card{
-      max-width:800px;
-      margin:0 auto 30px;
-      background:#fff;
-      border-radius:22px;
-      padding:26px 28px;
-      border:1px solid var(--border-soft);
-      box-shadow:var(--shadow-soft);
+    .guide-card p {
+      font-size: 14px;
+      color: var(--text-soft);
+      line-height: 1.6;
+      max-width: 620px;
+      margin: 0 auto 16px;
     }
 
-    .card-title{
-      font-size:20px;
-      margin-bottom:18px;
-      border-left:4px solid var(--accent);
-      padding-left:10px;
+    .proof {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      flex-wrap: wrap;
+      font-size: 12px;
+      color: #4A4A4A;
+      margin-bottom: 18px;
     }
 
-    .form-grid{
-      display:grid;
-      grid-template-columns:1fr 1fr;
-      gap:14px;
+    .proof span {
+      padding: 6px 10px;
+      border-radius: 999px;
+      background: var(--accent-soft-strong);
     }
 
-    label{font-size:13px;margin-bottom:4px;display:block}
-
-    input,select,textarea{
-      width:100%;
-      padding:10px 12px;
-      border-radius:12px;
-      border:1px solid var(--border-soft);
-      background:#fafafa;
-      font-size:14px;
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 14px 24px;
+      border-radius: 999px;
+      background: linear-gradient(135deg, #fbe4b9, #f3c98b);
+      color: #7a5a29;
+      font-size: 15px;
+      font-weight: 700;
+      text-decoration: none;
+      margin-top: 10px;
     }
 
-    textarea{min-height:80px}
-
-    .full{grid-column:1/-1}
-
-    .btn{
-      grid-column:1/-1;
-      margin-top:14px;
-      background:linear-gradient(135deg,#fbe4b9,#f3c98b);
-      color:#7a5a29;
-      padding:14px;
-      border-radius:999px;
-      font-size:15px;
-      font-weight:600;
-      border:none;
-      cursor:pointer;
+    .reassure {
+      margin-top: 12px;
+      font-size: 12px;
+      color: var(--text-soft);
     }
 
-    .success{
-      display:none;
-      margin-top:16px;
-      padding:14px;
-      border-radius:14px;
-      background:#fff;
-      border:1px dashed var(--border-soft);
-      font-size:13px;
+    
+    /* PUCE META */
+    .hero-meta {
+      margin-top: 14px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 18px;
+      font-size: 12px;
+      color: var(--text-soft);
     }
 
-    .social-block{
-      width:fit-content;
-      margin:0 auto 8px;
-      background:#fff;
-      border-radius:20px;
-      border:1px solid #e5e7eb;
-      box-shadow:0 18px 40px rgba(25,25,25,.08);
-      padding:14px 16px;
+    .hero-meta span {
+      position: relative;
+      padding-left: 12px;
+      display: inline-flex;
+      align-items: center;
     }
 
-    .contact-block{
-      display:flex;
-      gap:18px;
-      align-items:center;
-      background:#fff;
-      border-radius:20px;
-      padding:16px 18px;
-      border:1px solid var(--border-soft);
-      box-shadow:0 18px 40px rgba(25,25,25,.08);
-      max-width:960px;
-      margin:16px auto 0;
+    .hero-meta span::before {
+      content: "•";
+      position: absolute;
+      left: 0;
+      font-size: 14px;
+      color: var(--text-soft);
+    }
+    
+    /* CONTACT */
+    .contact-block {
+      display: flex;
+      gap: 18px;
+      align-items: center;
+      background: #ffffff;
+      border-radius: 20px;
+      padding: 16px 18px;
+      border: 1px solid var(--border-soft);
+      box-shadow: 0 18px 40px rgba(25, 25, 25, 0.08);
+      max-width: 960px;
+      margin: 16px auto 0;
     }
 
-    .contact-photo{
-      width:90px;height:90px;
-      border-radius:50%;
-      overflow:hidden;
-      border:2px solid #e5e7eb;
+    .contact-photo {
+      width: 90px;
+      height: 90px;
+      border-radius: 50%;
+      overflow: hidden;          /* 🔴 CLÉ ABSOLUE */
+      border: 2px solid #e5e7eb;
+      flex-shrink: 0;
     }
 
-    .contact-photo img{
-      width:100%;height:100%;
-      object-fit:cover;
-      object-position:top center;
+    .contact-photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: top center;
+      display: block;
     }
 
-    .legal-footer{
-      margin-top:40px;
-      padding:18px;
-      text-align:center;
-      font-size:11.5px;
-      color:var(--text-soft);
-      opacity:.75;
+    .contact-text h3 {
+      margin: 0 0 6px;
+      font-size: 17px;
+    }
+
+    .contact-text p {
+      margin: 0;
+      font-size: 13px;
+      color: var(--text-soft);
+    }
+
+    .contact-links {
+      margin-top: 8px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      font-size: 13px;
+    }
+
+    .contact-links a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    .contact-links a:hover {
+      text-decoration: underline;
+    }
+    
+    .social-block {
+      width: fit-content;
+      margin: 0 auto 8px;
+      background: #ffffff;
+      border-radius: 20px;
+      border: 1px solid #e5e7eb;
+      box-shadow: 0 18px 40px rgba(25,25,25,0.08);
+      padding: 14px 16px;
+    }
+
+    .social-icons {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .social-icons a {
+      width: 42px;
+      height: 42px;
+      border-radius: 14px;
+      display: grid;
+      place-items: center;
+      background: rgba(198, 169, 119, 0.16);
+      border: 1px solid rgba(198,169,119,0.25);
+      transition: transform 0.15s ease, filter 0.15s ease;
+      text-decoration: none;
+    }
+
+    .social-icons a:hover {
+      transform: translateY(-1px);
+      filter: brightness(1.02);
+    }
+
+    .social-icons svg {
+      width: 20px;
+      height: 20px;
+    }
+
+    .header-links {
+      display: flex;
+      justify-content: center;
+      gap: 18px;
+      font-size: 14px;
+      margin: 0 auto 24px;
+    }
+
+    .header-links a {
+      color: var(--text-soft);
+      text-decoration: none;
+      position: relative;
+    }
+
+    .header-links a:hover {
+      color: var(--accent);
+    }
+
+    .header-links a.active::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: -6px;
+      height: 2px;
+      background: var(--accent);
+      border-radius: 2px;
+    }
+    .btn-retour {
+      display: inline-block;
+      margin: 10px 0 18px;
+      padding: 6px 12px;
+      font-size: 13px;
+      font-weight: 500;
+      color: #7a5a29;
+      text-decoration: none;
+      border-radius: 10px;
+      border: 1px solid rgba(198,169,119,0.35);
+      background: rgba(198,169,119,0.10);
+    }
+
+    /* FOOTER */
+    .legal-footer {
+      margin-top: 40px;
+      padding: 18px;
+      text-align: center;
+      font-size: 11.5px;
+      color: var(--text-soft);
+      opacity: 0.75;
+    }
+
+    /* AJOUT MINIMAL POUR LE FORMULAIRE (dans le même style) */
+    .form-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+      text-align: left;
+      margin-top: 18px;
+    }
+
+    label { font-size: 13px; margin-bottom: 4px; display: block; }
+
+    input, select, textarea {
+      width: 100%;
+      padding: 10px 12px;
+      border-radius: 12px;
+      border: 1px solid var(--border-soft);
+      background: #fafafa;
+      font-size: 14px;
+      font-family: inherit;
+    }
+
+    textarea { min-height: 90px; resize: vertical; }
+
+    .full { grid-column: 1 / -1; }
+
+    button.btn {
+      border: none;
+      cursor: pointer;
+    }
+
+    .success-message {
+      display: none;
+      margin-top: 16px;
+      padding: 12px 14px;
+      border-radius: 14px;
+      background: #ffffff;
+      border: 1px dashed var(--border-soft);
+      font-size: 13px;
+      color: #4A4A4A;
+      line-height: 1.45;
+      text-align: left;
+    }
+
+    @media (max-width: 880px) {
+      header { flex-direction: column; }
+      .contact-block {
+        flex-direction: column;
+        text-align: center;
+      }
+      .contact-links {
+        justify-content: center;
+      }
+      .form-grid { grid-template-columns: 1fr; }
     }
   </style>
 </head>
 
 <body>
-<div class="page">
+  <div class="page">
 
-<header>
-  <img src="/images/logo.webp" class="logo">
-  <div class="header-center">
-    <div class="tagline-main">VOS PROJETS IMMOBILIERS N'ONT JAMAIS ÉTÉ AUSSI SIMPLES</div>
-    <div class="tagline-sub"><strong>Jérémy HEYOB</strong></div>
-  </div>
-</header>
+    <!-- HEADER -->
+    <header>
+      <div class="header-left">
+        <img src="/images/logo.webp" alt="Logo Jérémy Heyob" class="logo">
+      </div>
 
-<div class="header-links">
-  <a href="/">Accueil</a>
-  <a href="https://www.agence.immo/professionnels/jeremy-heyob-453">Mes biens</a>
-  <a href="/avis-de-valeur.html">Estimation</a>
-  <a href="/honoraires.html">Mes honoraires</a>
-  <a href="/biens-avant-premiere.html" class="active">Biens en avant-première</a>
-  <a href="/un-cran-au-dessus.html">Guide vendeur</a>
-</div>
+      <div class="header-center">
+        <div class="tagline-main">VOS PROJETS IMMOBILIERS N'ONT JAMAIS ÉTÉ AUSSI SIMPLES !</div>
+        <div class="tagline-sub"><strong>Jérémy HEYOB</strong></div>
+      </div>
+      </header>
 
-<a href="/" class="btn-retour">← Retour</a>
+       <div class="header-links">
+          <a href="https://www.jeremyheyob.fr/">Accueil</a>
+          <a href="https://www.agence.immo/professionnels/jeremy-heyob-453" target="_blank" rel="noopener">Mes biens</a>
+          <a href="https://www.jeremyheyob.fr/avis-de-valeur.html">Estimation</a>
+          <a href="https://www.immodvisor.com/pro/agencimmocom-jeremy-heyob-saint-priest-69800-53519.html" target="_blank" rel="noopener">Avis vérifiés</a>
+          <a href="https://www.jeremyheyob.fr/honoraires.html">Mes honoraires</a>
+          <a href="https://www.jeremyheyob.fr/biens-avant-premiere.html" class="active">Biens en avant-première</a>
+          <a href="https://www.jeremyheyob.fr/un-cran-au-dessus.html">Guide vendeur</a>
+       </div>
 
-<section class="hero">
-  <div class="hero-text">
-    <div class="pill">Avant-première</div>
-    <h1>Recevez les biens avant tout le monde</h1>
-    <p>
-      Vous recevez par SMS les biens correspondant réellement à vos critères,
-      avant toute diffusion sur les sites immobiliers.
-    </p>
+        <div class="btn-retour-wrap">
+          <a href="https://www.jeremyheyob.fr" class="btn-retour">← Retour</a>
+        </div>
+    
+    <!-- BLOC INFORMATIF -->
+    <section class="info-block">
+      <span class="info-pill">Espace acquéreur</span>
 
-    <div class="hero-highlight">
-      Cette inscription me permet de vous contacter en priorité,
-      sans concurrence inutile, uniquement pour des biens ciblés.
-    </div>
+      <h2>Recevez des nouveaux biens avant tout le monde.</h2>
 
-    <div class="hero-meta">
-      <span>Priorité SMS</span>
-      <span>Sans engagement</span>
-      <span>Sélection personnalisée</span>
-    </div>
+      <p>
+        Vous receverez un SMS en priorité, dès qu'un bien rentre dans vos critères de recherche.
+        C’est tellement plus simple de passer avant tout le monde.
+      </p>
+
+      <div class="info-highlight">
+        Cette inscription me permet de vous contacter en priorité, avant même la mise en ligne de mes biens.
+      </div>
+      
+      <div class="hero-meta">
+        <span>Priorité SMS</span>
+        <span>Critères ciblés</span>
+        <span>Gratuit</span>
+      </div>
+    </section>
+
+    <!-- GUIDE (REMPLACÉ PAR INSCRIPTION AVANT-PREMIÈRE) -->
+    <section class="guide-card">
+      <span class="badge">Accès réservé aux acquéreurs sérieux</span>
+
+      <h1>Biens en avant-première</h1>
+
+      <p>
+        Inscrivez vos critères une seule fois. Je vous contacte par SMS dès qu’un bien correspond à votre recherche,
+        avant toute diffusion sur les sites immobiliers.
+      </p>
+
+      <div class="proof">
+        <span>Inscription ≈ 1 min</span>
+        <span>Critères précis</span>
+        <span>Contact prioritaire</span>
+      </div>
+
+      <div class="form-grid">
+        <div>
+          <label>Votre prénom</label>
+          <input id="prenom" type="text">
+        </div>
+
+        <div>
+          <label>Votre nom</label>
+          <input id="nom" type="text">
+        </div>
+
+        <div>
+          <label>Votre téléphone</label>
+          <input id="telephone" type="tel">
+        </div>
+
+        <div>
+          <label>Votre email</label>
+          <input id="email" type="email">
+        </div>
+
+        <div class="full">
+          <label>Ville recherchée</label>
+          <input id="ville" type="text">
+        </div>
+
+        <div>
+          <label>Type de bien</label>
+          <select id="typeBien">
+            <option value="">-- Choisir --</option>
+            <option>Appartement</option>
+            <option>Maison</option>
+          </select>
+        </div>
+
+        <div>
+          <label>Typologie</label>
+          <select id="typologie">
+            <option value="">-- Choisir --</option>
+            <option>T1</option>
+            <option>T2</option>
+            <option>T3</option>
+            <option>T4</option>
+            <option>T5+</option>
+          </select>
+        </div>
+
+        <div class="full">
+          <label>Budget maximum</label>
+          <input id="budget" type="text" placeholder="Ex : 220 000 €">
+        </div>
+
+        <div>
+          <label>Avez-vous déjà vu votre banque ?</label>
+          <select id="banque">
+            <option value="">-- Choisir --</option>
+            <option>Oui</option>
+            <option>Non</option>
+          </select>
+        </div>
+
+        <div>
+          <label>Souhaitez-vous être mis en relation avec un courtier (gratuit) ?</label>
+          <select id="courtier">
+            <option value="">-- Choisir --</option>
+            <option>Oui</option>
+            <option>Non</option>
+          </select>
+        </div>
+
+        <div class="full">
+          <label>Situation</label>
+          <select id="situation">
+            <option value="">-- Choisir --</option>
+            <option>Locataire</option>
+            <option>Propriétaire</option>
+          </select>
+        </div>
+
+        <div class="full">
+          <label>Si propriétaire : devez-vous vendre votre bien pour acheter ?</label>
+          <select id="venteAvantAchat">
+            <option value="">-- Choisir --</option>
+            <option>Oui</option>
+            <option>Non</option>
+            <option>Je suis locataire</option>
+          </select>
+        </div>
+
+        <div class="full">
+          <label>Message</label>
+          <textarea id="message" placeholder="Informations complémentaires (secteur, étage, extérieur, stationnement, etc.)"></textarea>
+        </div>
+
+        <button class="btn" type="button" onclick="sendMail()">Valider mon inscription</button>
+      </div>
+
+      <div class="success-message" id="successMessage">
+        ✅ Inscription validée. Vous serez contacté dès qu’un bien correspondra à votre recherche.
+      </div>
+
+      <div class="reassure">
+        Inscription gratuite • Traitement prioritaire • 24h/24 • 7j/7
+      </div>
+    </section>
+
+    <section class="social-block" aria-label="Réseaux sociaux">
+  <div class="social-icons">
+
+    <!-- Google -->
+    <a href="https://goo.gl/maps/wjfc1aGFBrSLd3tV6" target="_blank" rel="noopener" aria-label="Google">
+      <svg viewBox="0 0 24 24" fill="none" stroke="#7a5a29" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M12 21s7-4.5 7-11a7 7 0 1 0-14 0c0 6.5 7 11 7 11z"></path>
+        <circle cx="12" cy="10" r="2.5"></circle>
+      </svg>
+    </a>
+
+    <!-- PagesJaunes -->
+    <a href="https://www.pagesjaunes.fr/pros/62191780" target="_blank" rel="noopener" aria-label="Pages Jaunes">
+      <svg viewBox="0 0 24 24" fill="none" stroke="#7a5a29" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M6 3h9a3 3 0 0 1 3 3v12a3 3 0 0 1-3 3H6a3 3 0 0 1-3-3V6a3 3 0 0 1 3-3z"></path>
+        <path d="M8 8h8"></path>
+        <path d="M8 12h8"></path>
+        <path d="M8 16h6"></path>
+      </svg>
+    </a>
+
+    <!-- Facebook -->
+    <a href="https://www.facebook.com/jeremyheyobpro" target="_blank" rel="noopener" aria-label="Facebook">
+      <svg viewBox="0 0 24 24" fill="none" stroke="#7a5a29" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M14 8h3V5h-3a4 4 0 0 0-4 4v3H7v3h3v6h3v-6h3l1-3h-4V9a1 1 0 0 1 1-1z"></path>
+      </svg>
+    </a>
+
+    <!-- LinkedIn -->
+    <a href="https://www.linkedin.com/company/jérémy-heyob/" target="_blank" rel="noopener" aria-label="LinkedIn">
+      <svg viewBox="0 0 24 24" fill="none" stroke="#7a5a29" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4V9h4v2"></path>
+        <rect x="2" y="9" width="4" height="12"></rect>
+        <circle cx="4" cy="4" r="2"></circle>
+      </svg>
+    </a>
+
+    <!-- Instagram -->
+    <a href="https://www.instagram.com/jeremyheyob/" target="_blank" rel="noopener" aria-label="Instagram">
+      <svg viewBox="0 0 24 24" fill="none" stroke="#7a5a29" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <rect x="3" y="3" width="18" height="18" rx="5" ry="5"></rect>
+        <circle cx="12" cy="12" r="4"></circle>
+        <path d="M17.5 6.5h.01"></path>
+      </svg>
+    </a>
+
+    <!-- YouTube -->
+    <a href="https://www.youtube.com/channel/UCpE0arbirH2tkw2THT_Ef9Q" target="_blank" rel="noopener" aria-label="YouTube">
+      <svg viewBox="0 0 24 24" fill="none" stroke="#7a5a29" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M22 12s0-4-1-5-4-1-9-1-8 0-9 1-1 5-1 5 0 4 1 5 4 1 9 1 8 0 9-1 1-5 1-5z"></path>
+        <path d="M10 9l6 3-6 3V9z"></path>
+      </svg>
+    </a>
+
+    <!-- TikTok -->
+    <a href="https://www.tiktok.com/@jeremyheyob" target="_blank" rel="noopener" aria-label="TikTok">
+      <svg viewBox="0 0 24 24" fill="none" stroke="#7a5a29" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M14 3v10a4 4 0 1 1-4-4"></path>
+        <path d="M14 7a6 6 0 0 0 6 2"></path>
+      </svg>
+    </a>
+
   </div>
 </section>
 
-<section class="card">
-  <h2 class="card-title">Votre recherche</h2>
+    <!-- CONTACT -->
+    <section class="contact-block">
+      <div class="contact-photo">
+        <img src="/images/photo.webp" alt="Photo de Jérémy Heyob">
+      </div>
 
-  <form id="form">
-    <div class="form-grid">
-      <div><label>Prénom</label><input required></div>
-      <div><label>Nom</label><input required></div>
-      <div><label>Téléphone</label><input required></div>
-      <div><label>Email</label><input type="email" required></div>
-      <div class="full"><label>Ville recherchée</label><input required></div>
-      <div><label>Type de bien</label><select required><option>Appartement</option><option>Maison</option></select></div>
-      <div><label>Typologie</label><select required><option>T1</option><option>T2</option><option>T3</option><option>T4</option><option>T5+</option></select></div>
-      <div class="full"><label>Budget maximum</label><input required></div>
-      <div><label>Banque consultée ?</label><select required><option>Oui</option><option>Non</option></select></div>
-      <div><label>Souhaitez-vous un courtier ?</label><select required><option>Oui</option><option>Non</option></select></div>
-      <div class="full"><label>Situation actuelle</label><select required><option>Locataire</option><option>Propriétaire avec vente</option></select></div>
-      <div class="full"><label>Message</label><textarea></textarea></div>
-      <button class="btn">Valider mon inscription</button>
-    </div>
+      <div class="contact-text">
+        <h3>Une question sur votre projet de vente ?</h3>
 
-    <div class="success" id="success">
-      ✅ Inscription validée. Vous serez contacté par SMS dès qu’un bien correspondra à votre recherche.
-    </div>
-  </form>
-</section>
+        <p>
+          Je reste disponible pour répondre à vos interrogations,
+          vous aider à clarifier votre situation et, si nécessaire,
+          vous orienter vers la stratégie de vente la plus adaptée.
+        </p>
 
-<section class="contact-block">
-  <div class="contact-photo">
-    <img src="/images/photo.webp">
+        <div class="contact-links">
+          <a href="mailto:contact@jeremyheyob.fr">✉️ Email</a>
+          <a href="sms:+33648145565">💬 SMS</a>
+          <a href="tel:+33648145565">📞 Appel</a>
+          <a href="https://www.jeremyheyob.fr" target="_blank">💻 Site</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="legal-footer">
+      Les photos et documents présentés sur cette page sont la propriété exclusive de
+      <strong>Jérémy HEYOB Immobilier</strong>.<br>
+      Toute reproduction, diffusion ou utilisation est strictement interdite sans autorisation préalable.
+    </footer>
+
   </div>
-  <div>
-    <h3>Une question ?</h3>
-    <p>Je reste disponible pour vous accompagner et vous conseiller.</p>
-  </div>
-</section>
 
-<footer class="legal-footer">
-  © Jérémy HEYOB Immobilier — Toute reproduction interdite.
-</footer>
+  <script>
+    function sendMail() {
+      const prenom = document.getElementById("prenom").value.trim();
+      const nom = document.getElementById("nom").value.trim();
+      const telephone = document.getElementById("telephone").value.trim();
+      const email = document.getElementById("email").value.trim();
+      const ville = document.getElementById("ville").value.trim();
+      const typeBien = document.getElementById("typeBien").value;
+      const typologie = document.getElementById("typologie").value;
+      const budget = document.getElementById("budget").value.trim();
+      const banque = document.getElementById("banque").value;
+      const courtier = document.getElementById("courtier").value;
+      const situation = document.getElementById("situation").value;
+      const venteAvantAchat = document.getElementById("venteAvantAchat").value;
+      const message = document.getElementById("message").value.trim();
 
-</div>
+      if (
+        !prenom || !nom || !telephone || !email || !ville ||
+        !typeBien || !typologie || !budget || !banque || !courtier ||
+        !situation || !venteAvantAchat
+      ) {
+        alert("Merci de renseigner tous les champs obligatoires avant de valider votre inscription.");
+        return;
+      }
 
-<script>
-document.getElementById("form").addEventListener("submit",function(e){
-  e.preventDefault();
-  document.getElementById("success").style.display="block";
-});
-</script>
+      document.getElementById("successMessage").style.display = "block";
 
+      const subject = encodeURIComponent("Inscription acquéreur - Biens en avant-première");
+      const body = encodeURIComponent(
+        "Bonjour,\n\n" +
+        "Je souhaite m'inscrire pour recevoir les biens en avant-première par SMS.\n\n" +
+        "Informations :\n" +
+        "Prénom : " + prenom + "\n" +
+        "Nom : " + nom + "\n" +
+        "Téléphone : " + telephone + "\n" +
+        "Email : " + email + "\n\n" +
+        "Recherche :\n" +
+        "Ville recherchée : " + ville + "\n" +
+        "Type : " + typeBien + "\n" +
+        "Typologie : " + typologie + "\n" +
+        "Budget maximum : " + budget + "\n\n" +
+        "Financement :\n" +
+        "Banque consultée : " + banque + "\n" +
+        "Souhaite un courtier (gratuit) : " + courtier + "\n\n" +
+        "Situation :\n" +
+        "Locataire / Propriétaire : " + situation + "\n" +
+        "Besoin de vendre pour acheter : " + venteAvantAchat + "\n\n" +
+        "Message : " + (message ? message : "(Aucun)") + "\n\n" +
+        "Cordialement,\n"
+      );
+
+      window.location.href = "mailto:contact@jeremyheyob.fr?subject=" + subject + "&body=" + body;
+    }
+  </script>
 </body>
 </html>
