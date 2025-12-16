@@ -297,6 +297,47 @@
       background: rgba(0,0,0,0.35);
       border-radius: 999px;
     }
+    /* ===== BLOC RÉSEAUX SOCIAUX ===== */
+
+    .social-block {
+      width: fit-content;
+      margin: 0 auto 8px;
+      background: #ffffff;
+      border-radius: 20px;
+      border: 1px solid #e5e7eb;
+      box-shadow: 0 18px 40px rgba(25,25,25,0.08);
+      padding: 14px 16px;
+    }
+
+    .social-icons {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .social-icons a {
+      width: 42px;
+      height: 42px;
+      border-radius: 14px;
+      display: grid;
+      place-items: center;
+      background: rgba(198, 169, 119, 0.16);
+      border: 1px solid rgba(198,169,119,0.25);
+      transition: transform 0.15s ease, filter 0.15s ease;
+      text-decoration: none;
+    }
+
+    .social-icons a:hover {
+      transform: translateY(-1px);
+      filter: brightness(1.02);
+    }
+
+    .social-icons svg {
+      width: 20px;
+      height: 20px;
+    }
 
     /* RESPONSIVE */
     @media (max-width: 1024px) {
