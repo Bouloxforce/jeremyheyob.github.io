@@ -209,6 +209,32 @@
       color: var(--text-soft);
     }
 
+    
+    /* PUCE META */
+    .hero-meta {
+      margin-top: 14px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 18px;
+      font-size: 12px;
+      color: var(--text-soft);
+    }
+
+    .hero-meta span {
+      position: relative;
+      padding-left: 12px;
+      display: inline-flex;
+      align-items: center;
+    }
+
+    .hero-meta span::before {
+      content: "•";
+      position: absolute;
+      left: 0;
+      font-size: 14px;
+      color: var(--text-soft);
+    }
+    
     /* CONTACT */
     .contact-block {
       display: flex;
