@@ -9,7 +9,7 @@
   <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>Avis de valeur immobilier | Jérémy Heyob Immobilier</title>
+  <title>Biens en avant-première | Inscription acquéreur | Jérémy Heyob Immobilier</title>
   <meta name="description" content="Jérémy Heyob, négociateur en immobilier à Saint-Priest. Spécialisé dans les biens récents ou rénovés. Estimation, suivi vendeur avec Méthode APA (Avant / Pendant / Après diffusion) et accès aux biens en avant-première.">
 
   <link rel="canonical" href="https://www.jeremyheyob.fr/">
@@ -419,10 +419,10 @@
    <div class="header-links">
       <a href="https://www.jeremyheyob.fr/">Accueil</a>
       <a href="https://www.agence.immo/professionnels/jeremy-heyob-453" target="_blank" rel="noopener">Mes biens</a>
-      <a href="https://www.jeremyheyob.fr/avis-de-valeur.html" class="active">Estimation</a>
+      <a href="https://www.jeremyheyob.fr/avis-de-valeur.html">Estimation</a>
       <a href="https://www.immodvisor.com/pro/agencimmocom-jeremy-heyob-saint-priest-69800-53519.html" target="_blank" rel="noopener">Avis vérifiés</a>
       <a href="https://www.jeremyheyob.fr/honoraires.html">Mes honoraires</a>
-      <a href="https://www.jeremyheyob.fr/biens-avant-premiere.html">Biens en avant-première</a>
+      <a href="https://www.jeremyheyob.fr/biens-avant-premiere.html" class="active">Biens en avant-première</a>
       <a href="https://www.jeremyheyob.fr/un-cran-au-dessus.html">Guide vendeur</a>
    </div>
 
@@ -433,20 +433,19 @@
  <!-- HERO INFO -->
   <section class="hero">
     <div class="hero-text">
-      <div class="pill">Avis de valeur</div>
-      <h1>Demander un avis de valeur précis</h1>
+      <div class="pill">Avant-première</div>
+      <h1>Recevez mes nouveaux biens avant tout le monde</h1>
       <p>
-        Cette page vous permet de programmer un avis de valeur clair et structuré,
-        afin d’aborder votre projet de vente avec méthode, lucidité et cohérence.
+        Vous recevez un SMS en priorité dès qu’un bien correspond à vos critères,
+        avant la diffusion sur les sites immobiliers.
       </p>
     <div class="hero-highlight hero-highlight-with-logo">
       <div class="hero-highlight-text">
-        <strong>Information importante :</strong><br><br>
-        • Tous les propriétaires doivent impérativement être présents.<br><br>
-        • L’accompagnement se déroule en <strong>2 étapes</strong> :
-        <br>1️⃣ Découverte de votre projet et du bien.
-        <br>2️⃣ Présentation claire de l’avis de valeur et de ma méthode de travail.<br><br>
-        • Cet avis de valeur est <strong>gratuit</strong>.
+        <strong>Pourquoi vous inscrire ?</strong><br><br>
+        • Vous passez <strong>avant tout le monde</strong> : notification dès qu’un bien rentre dans vos critères.<br><br>
+        • Vous gagnez du temps : vous évitez de courir après les annonces déjà vues par des dizaines d’acquéreurs.<br><br>
+        • C’est simple : cette inscription me permet de <strong>vous contacter en priorité</strong>, avant même la mise en ligne publique.<br><br>
+        • Si besoin, je peux aussi vous mettre en relation <strong>gratuitement</strong> avec un courtier pour valider ou optimiser votre budget.
       </div>
       
       <div class="hero-highlight-logo">
@@ -455,34 +454,83 @@
     </div>
 
       <div class="hero-meta">
-        <span>Avis personnalisé</span>
-        <span>Méthode claire</span>
+        <span>SMS prioritaire</span>
+        <span>Critères précis</span>
         <span>Gratuit</span>
       </div>
     </div>
 </section>
 
 <section class="card">
-  <h2 class="card-title">Vos informations</h2>
+  <h2 class="card-title">Inscription acquéreur</h2>
 
   <div class="form-grid">
     <div><label>Votre prénom</label><input id="prenom"></div>
     <div><label>Votre nom</label><input id="nom"></div>
     <div><label>Votre téléphone</label><input id="tel"></div>
     <div><label>Votre email</label><input id="email"></div>
-    <div class="full"><label>Adresse du bien</label><input id="adresse"></div>
-    <div><label>Type de bien</label><select id="typeBien"><option>Appartement</option><option>Maison</option></select></div>
-    <div><label>Typologie</label><select id="typologie"><option>T1</option><option>T2</option><option>T3</option><option>T4</option><option>T5+</option></select></div>
-    <div><label>Date souhaitée</label><input id="date" type="date"></div>
-    <div><label>Créneau souhaité</label>
-      <select id="creneau">
+
+    <div class="full"><label>Ville recherchée</label><input id="ville"></div>
+
+    <div><label>Maison ou appartement</label>
+      <select id="typeBien">
         <option value="">-- Choisir --</option>
-        <option>09h - 10h</option><option>10h - 11h</option><option>11h - 12h</option>
-        <option>14h - 15h</option><option>15h - 16h</option><option>16h - 17h</option>
-        <option>17h - 18h</option><option>18h - 19h</option><option>19h - 20h</option>
+        <option>Appartement</option>
+        <option>Maison</option>
       </select>
     </div>
-    <button class="btn" onclick="sendMail()">Valider ma demande</button>
+
+    <div><label>Typologie</label>
+      <select id="typologie">
+        <option value="">-- Choisir --</option>
+        <option>T1</option>
+        <option>T2</option>
+        <option>T3</option>
+        <option>T4</option>
+        <option>T5+</option>
+      </select>
+    </div>
+
+    <div><label>Budget maximum</label><input id="budget" placeholder="Ex : 250 000 €"></div>
+
+    <div><label>Avez-vous déjà vu votre banque ?</label>
+      <select id="banque">
+        <option value="">-- Choisir --</option>
+        <option>Oui</option>
+        <option>Non</option>
+      </select>
+    </div>
+
+    <div class="full"><label>Souhaitez-vous être mis en relation gratuitement avec un courtier (évaluer / comparer) ?</label>
+      <select id="courtier">
+        <option value="">-- Choisir --</option>
+        <option>Oui</option>
+        <option>Non</option>
+      </select>
+    </div>
+
+    <div><label>Vous êtes</label>
+      <select id="statut">
+        <option value="">-- Choisir --</option>
+        <option>Locataire</option>
+        <option>Propriétaire</option>
+      </select>
+    </div>
+
+    <div><label>Avez-vous besoin de vendre pour acheter ?</label>
+      <select id="venteAvantAchat">
+        <option value="">-- Choisir --</option>
+        <option>Oui</option>
+        <option>Non</option>
+      </select>
+    </div>
+
+    <div class="full">
+      <label>Message (facultatif)</label>
+      <textarea id="message" rows="4" style="width:100%;padding:10px 12px;border-radius:12px;border:1px solid var(--border-soft);background:#fafafa;font-size:14px;"></textarea>
+    </div>
+
+    <button class="btn" onclick="sendMail()">Valider mon inscription</button>
   </div>
 </section>
 
@@ -585,58 +633,65 @@
 <script>
 function sendMail() {
 
-  // Récupération des champs
   const prenom = document.getElementById("prenom");
   const nom = document.getElementById("nom");
   const tel = document.getElementById("tel");
   const email = document.getElementById("email");
-  const adresse = document.getElementById("adresse");
+  const ville = document.getElementById("ville");
   const typeBien = document.getElementById("typeBien");
   const typologie = document.getElementById("typologie");
-  const date = document.getElementById("date");
-  const creneau = document.getElementById("creneau");
+  const budget = document.getElementById("budget");
+  const banque = document.getElementById("banque");
+  const courtier = document.getElementById("courtier");
+  const statut = document.getElementById("statut");
+  const venteAvantAchat = document.getElementById("venteAvantAchat");
+  const message = document.getElementById("message");
 
-  // Vérification champs obligatoires
   if (
     !prenom.value.trim() ||
     !nom.value.trim() ||
     !tel.value.trim() ||
     !email.value.trim() ||
-    !adresse.value.trim() ||
+    !ville.value.trim() ||
     !typeBien.value ||
     !typologie.value ||
-    !date.value ||
-    !creneau.value
+    !budget.value.trim() ||
+    !banque.value ||
+    !courtier.value ||
+    !statut.value ||
+    !venteAvantAchat.value
   ) {
-    alert("Merci de renseigner tous les champs avant de valider votre demande.");
+    alert("Merci de renseigner tous les champs obligatoires avant de valider votre inscription.");
     return;
   }
 
-  // Sujet du mail
-  const subject = encodeURIComponent(
-    "Demande d’avis de valeur immobilier"
-  );
+  const subject = encodeURIComponent("Inscription acquéreur – Biens en avant-première (SMS)");
 
-  // Corps du mail (message professionnel)
   const body = encodeURIComponent(
     "Bonjour,\n\n" +
-    "Je souhaite obtenir un avis de valeur pour mon bien immobilier.\n\n" +
-    "Voici mes informations :\n\n" +
-    "Nom : " + prenom.value + " " + nom.value + "\n" +
+    "Je souhaite m’inscrire pour recevoir par SMS les nouveaux biens en avant-première.\n\n" +
+    "Coordonnées :\n" +
+    "Prénom : " + prenom.value + "\n" +
+    "Nom : " + nom.value + "\n" +
     "Téléphone : " + tel.value + "\n" +
     "Email : " + email.value + "\n\n" +
-    "Bien concerné :\n" +
-    "Adresse : " + adresse.value + "\n" +
-    "Type de bien : " + typeBien.value + "\n" +
-    "Typologie : " + typologie.value + "\n\n" +
-    "Disponibilités :\n" +
-    "Date souhaitée : " + date.value + "\n" +
-    "Créneau horaire : " + creneau.value + "\n\n" +
-    "Je vous remercie par avance pour votre retour.\n\n" +
-    "Cordialement,\n" +
+    "Recherche :\n" +
+    "Ville recherchée : " + ville.value + "\n" +
+    "Maison ou appartement : " + typeBien.value + "\n" +
+    "Typologie : " + typologie.value + "\n" +
+    "Budget maximum : " + budget.value + "\n\n" +
+    "Financement :\n" +
+    "Déjà vu la banque : " + banque.value + "\n" +
+    "Souhaite mise en relation courtier (gratuit) : " + courtier.value + "\n\n" +
+    "Situation :\n" +
+    "Statut : " + statut.value + "\n" +
+    "Besoin de vendre pour acheter : " + venteAvantAchat.value + "\n\n" +
+    "Message :\n" + (message.value ? message.value : "—") + "\n\n" +
+    "Merci.\n"
   );
 
-  // Ouverture du client mail
+  alert("Inscription validée. Vous serez contacté dès qu’un bien correspondra à votre recherche.");
+
   window.location.href =
     "mailto:contact@jeremyheyob.fr?subject=" + subject + "&body=" + body;
 }
