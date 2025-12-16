@@ -1,14 +1,16 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
+  <link rel="icon" type="image/x-icon" href="/images/favicon.ico">
+  <link rel="shortcut icon" href="/images/favicon.ico">
   <meta charset="UTF-8">
 
-    <!-- SEO (INDEXATION ACTIVÉE) -->
+  <!-- SEO (INDEXATION ACTIVÉE) -->
   <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>Biens en avant-première | Jérémy Heyob Immobilier</title>
-  <meta name="description" content="Recevez par SMS les nouveaux biens en avant-première dès qu’un bien correspond à vos critères, avant la diffusion sur les sites immobiliers. Inscription gratuite.">
+  <title>Biens en avant-première | Inscription acquéreur | Jérémy Heyob Immobilier</title>
+  <meta name="description" content="Jérémy Heyob, négociateur en immobilier à Saint-Priest. Spécialisé dans les biens récents ou rénovés. Estimation, suivi vendeur avec Méthode APA (Avant / Pendant / Après diffusion) et accès aux biens en avant-première.">
 
   <link rel="canonical" href="https://www.jeremyheyob.fr/">
 
@@ -18,10 +20,8 @@
   <style>
     :root {
       --bg: #FFFBF5;
-      --bg-soft: #ffffff;
       --accent: #C6AA77;
-      --accent-soft: rgba(198, 169, 119, 0.16);
-      --accent-soft-strong: rgba(212,161,95,0.08);
+      --accent-soft: rgba(198,169,119,0.16);
       --text-main: #191919;
       --text-soft: #7A7A7A;
       --border-soft: #e5e7eb;
@@ -36,7 +36,6 @@
       font-family: -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
       background: var(--bg);
       color: var(--text-main);
-      min-height: 100vh;
     }
 
     .page {
@@ -61,11 +60,7 @@
     }
 
     .logo { max-width: 140px; }
-
-    .header-center {
-      flex: 1;
-      text-align: center;
-    }
+    .header-center { flex: 1; text-align: center; }
 
     .tagline-main {
       font-size: 13px;
@@ -80,136 +75,55 @@
       letter-spacing: 0.12em;
     }
 
-    .tagline-sub strong {
-      color: var(--text-main);
-      font-weight: 900;
-    }
+    .tagline-sub strong { font-weight: 900; }
 
-    /* BLOC INFORMATIF */
-    .info-block {
-      max-width: 1113px;
-      margin: 0 auto 30px;
-      padding: 26px 28px;
+    /* HERO */
+    .hero {
+      border-radius: 20px;
       background:
-        linear-gradient(135deg, rgba(212,161,95,0.18), transparent 55%),
+        linear-gradient(135deg, rgba(198,169,119,0.18), transparent 55%),
         linear-gradient(145deg, #ffffff, #FFFBF5 55%);
-      border-radius: 22px;
       border: 1px solid var(--border-soft);
       box-shadow: var(--shadow-soft);
+      margin-bottom: 30px;
     }
 
-    .info-pill {
-      display: inline-block;
+    .hero-text { padding: 26px 28px; }
+
+    .pill {
+      display: inline-flex;
       padding: 4px 10px;
       border-radius: 999px;
       background: var(--accent-soft);
       color: var(--accent);
       font-size: 11px;
-      font-weight: 500;
       text-transform: uppercase;
-      letter-spacing: 0.05em;
       margin-bottom: 10px;
     }
 
-    .info-block h2 {
-      margin: 8px 0 10px;
-      font-size: 22px;
+    .hero-text h1 {
+      margin: 10px 0 8px;
+      font-size: clamp(24px, 3vw, 30px);
     }
 
-    .info-block p {
-      margin: 0;
+    .hero-text p {
       font-size: 14px;
       color: var(--text-soft);
       max-width: 720px;
       line-height: 1.55;
     }
 
-    .info-highlight {
-      margin-top: 14px;
-      padding: 12px 14px;
+    .hero-highlight {
+      margin-top: 16px;
+      padding: 14px 16px;
       border-radius: 14px;
       background: #ffffff;
       border: 1px dashed var(--border-soft);
       font-size: 13px;
       color: #4A4A4A;
-      line-height: 1.45;
+      line-height: 1.5;
     }
 
-    /* GUIDE */
-    .guide-card {
-      max-width: 800px;
-      margin: 0 auto 30px;
-      background: var(--card-bg);
-      border-radius: 24px;
-      padding: 34px 30px;
-      box-shadow: var(--shadow-soft);
-      border: 1px solid var(--border-soft);
-      text-align: center;
-    }
-
-    .badge {
-      display: inline-block;
-      padding: 6px 14px;
-      border-radius: 999px;
-      background: var(--accent-soft);
-      color: var(--accent);
-      font-size: 11px;
-      letter-spacing: 0.08em;
-      font-weight: 600;
-      text-transform: uppercase;
-    }
-
-    .guide-card h1 {
-      font-size: 30px;
-      margin: 14px 0 10px;
-    }
-
-    .guide-card p {
-      font-size: 14px;
-      color: var(--text-soft);
-      line-height: 1.6;
-      max-width: 620px;
-      margin: 0 auto 16px;
-    }
-
-    .proof {
-      display: flex;
-      justify-content: center;
-      gap: 10px;
-      flex-wrap: wrap;
-      font-size: 12px;
-      color: #4A4A4A;
-      margin-bottom: 18px;
-    }
-
-    .proof span {
-      padding: 6px 10px;
-      border-radius: 999px;
-      background: var(--accent-soft-strong);
-    }
-
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 8px;
-      padding: 14px 24px;
-      border-radius: 999px;
-      background: linear-gradient(135deg, #fbe4b9, #f3c98b);
-      color: #7a5a29;
-      font-size: 15px;
-      font-weight: 700;
-      text-decoration: none;
-      margin-top: 10px;
-    }
-
-    .reassure {
-      margin-top: 12px;
-      font-size: 12px;
-      color: var(--text-soft);
-    }
-
-    
     /* PUCE META */
     .hero-meta {
       margin-top: 14px;
@@ -234,9 +148,59 @@
       font-size: 14px;
       color: var(--text-soft);
     }
-    
-    /* CONTACT */
-    .contact-block {
+
+    /* FORM */
+    .card {
+      max-width: 800px;
+      margin: 0 auto 30px;
+      background: var(--card-bg);
+      border-radius: 22px;
+      padding: 26px 28px;
+      border: 1px solid var(--border-soft);
+      box-shadow: var(--shadow-soft);
+    }
+
+    .card-title {
+      font-size: 20px;
+      margin-bottom: 18px;
+      border-left: 4px solid var(--accent);
+      padding-left: 10px;
+    }
+
+    .form-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+    }
+
+    label { font-size: 13px; margin-bottom: 4px; display: block; }
+
+    input, select {
+      width: 100%;
+      padding: 10px 12px;
+      border-radius: 12px;
+      border: 1px solid var(--border-soft);
+      background: #fafafa;
+      font-size: 14px;
+    }
+
+    .full { grid-column: 1 / -1; }
+
+    .btn {
+      grid-column: 1 / -1;
+      margin-top: 14px;
+      background: linear-gradient(135deg, #fbe4b9, #f3c98b);
+      color: #7a5a29;
+      padding: 14px;
+      border-radius: 999px;
+      font-size: 15px;
+      font-weight: 600;
+      border: none;
+      cursor: pointer;
+    }
+
+   /* CONTACT BLOCK — IDENTIQUE PAGE DE RÉFÉRENCE */
+     .contact-block {
       display: flex;
       gap: 18px;
       align-items: center;
@@ -245,8 +209,9 @@
       padding: 16px 18px;
       border: 1px solid var(--border-soft);
       box-shadow: 0 18px 40px rgba(25, 25, 25, 0.08);
-      max-width: 960px;
-      margin: 16px auto 0;
+
+      max-width: 960px;          /* 🔴 IDENTIQUE AU HEADER */
+      margin: 16px auto 0;       /* 🔴 centrage IDENTIQUE */
     }
 
     .contact-photo {
@@ -267,13 +232,13 @@
     }
 
     .contact-text h3 {
-      margin: 0 0 6px;
-      font-size: 17px;
+      margin: 0 0 4px;
+      font-size: 17px; /* 🔴 TAILLE EXACTE */
     }
 
     .contact-text p {
       margin: 0;
-      font-size: 13px;
+      font-size: 13px; /* 🔴 TAILLE EXACTE */
       color: var(--text-soft);
     }
 
@@ -293,7 +258,35 @@
     .contact-links a:hover {
       text-decoration: underline;
     }
-    
+
+    /* FOOTER */
+    .legal-footer {
+      margin-top: 40px;
+      padding: 18px;
+      text-align: center;
+      font-size: 11.5px;
+      color: var(--text-soft);
+      opacity: 0.75;
+    }
+    /* HERO HIGHLIGHT AVEC LOGO */
+    .hero-highlight-with-logo {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+    }
+
+    .hero-highlight-text {
+      flex: 1;
+    }
+
+    .hero-highlight-logo img {
+      width: 180px;              /* logo plus gros */
+      height: auto;
+      opacity: 0.8;
+      margin-left: -250px;       /* décalage vers la gauche */
+    }
+
     .social-block {
       width: fit-content;
       margin: 0 auto 8px;
@@ -362,6 +355,7 @@
       background: var(--accent);
       border-radius: 2px;
     }
+
     .btn-retour {
       display: inline-block;
       margin: 10px 0 18px;
@@ -375,246 +369,170 @@
       background: rgba(198,169,119,0.10);
     }
 
-    /* FOOTER */
-    .legal-footer {
-      margin-top: 40px;
-      padding: 18px;
+    /* Mobile : logo en dessous */
+   @media (max-width: 600px) {
+    .hero-highlight-with-logo {
+      flex-direction: column;
+      text-align: left;
+    }
+
+    .hero-highlight-logo img {
+      width: 56px;
+    }
+  }
+
+        @media (max-width: 880px) {
+    header {
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .contact-block {
+      flex-direction: column;
+      align-items: center;
       text-align: center;
-      font-size: 11.5px;
-      color: var(--text-soft);
-      opacity: 0.75;
     }
 
-    /* AJOUT MINIMAL POUR LE FORMULAIRE (dans le même style) */
-    .form-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 14px;
-      text-align: left;
-      margin-top: 18px;
+    .contact-links {
+      justify-content: center;   /* CENTRAGE UNIQUEMENT SUR MOBILE */
+      width: 100%;               /* permet le centrage optimal */
     }
-
-    label { font-size: 13px; margin-bottom: 4px; display: block; }
-
-    input, select, textarea {
-      width: 100%;
-      padding: 10px 12px;
-      border-radius: 12px;
-      border: 1px solid var(--border-soft);
-      background: #fafafa;
-      font-size: 14px;
-      font-family: inherit;
-    }
-
-    textarea { min-height: 90px; resize: vertical; }
-
-    .full { grid-column: 1 / -1; }
-
-    button.btn {
-      border: none;
-      cursor: pointer;
-    }
-
-    .success-message {
-      display: none;
-      margin-top: 16px;
-      padding: 12px 14px;
-      border-radius: 14px;
-      background: #ffffff;
-      border: 1px dashed var(--border-soft);
-      font-size: 13px;
-      color: #4A4A4A;
-      line-height: 1.45;
-      text-align: left;
-    }
-
-    @media (max-width: 880px) {
-      header { flex-direction: column; }
-      .contact-block {
-        flex-direction: column;
-        text-align: center;
-      }
-      .contact-links {
-        justify-content: center;
-      }
-      .form-grid { grid-template-columns: 1fr; }
-    }
+  }
+    
   </style>
 </head>
 
 <body>
-  <div class="page">
+<div class="page">
 
-    <!-- HEADER -->
-    <header>
-      <div class="header-left">
-        <img src="/images/logo.webp" alt="Logo Jérémy Heyob" class="logo">
-      </div>
+<header>
+  <div class="header-left">
+    <img src="/images/logo.webp" alt="Logo Jérémy Heyob" class="logo">
+  </div>
 
-      <div class="header-center">
-        <div class="tagline-main">VOS PROJETS IMMOBILIERS N'ONT JAMAIS ÉTÉ AUSSI SIMPLES !</div>
-        <div class="tagline-sub"><strong>Jérémy HEYOB</strong></div>
-      </div>
-      </header>
+  <div class="header-center">
+    <div class="tagline-main">VOS PROJETS IMMOBILIERS N'ONT JAMAIS ÉTÉ AUSSI SIMPLES !</div>
+    <div class="tagline-sub"><strong>Jérémy HEYOB</strong></div>
+  </div>
+</header>
 
-       <div class="header-links">
-          <a href="https://www.jeremyheyob.fr/">Accueil</a>
-          <a href="https://www.agence.immo/professionnels/jeremy-heyob-453" target="_blank" rel="noopener">Mes biens</a>
-          <a href="https://www.jeremyheyob.fr/avis-de-valeur.html">Estimation</a>
-          <a href="https://www.immodvisor.com/pro/agencimmocom-jeremy-heyob-saint-priest-69800-53519.html" target="_blank" rel="noopener">Avis vérifiés</a>
-          <a href="https://www.jeremyheyob.fr/honoraires.html">Mes honoraires</a>
-          <a href="https://www.jeremyheyob.fr/biens-avant-premiere.html" class="active">Biens en avant-première</a>
-          <a href="https://www.jeremyheyob.fr/un-cran-au-dessus.html">Guide vendeur</a>
-       </div>
+   <div class="header-links">
+      <a href="https://www.jeremyheyob.fr/">Accueil</a>
+      <a href="https://www.agence.immo/professionnels/jeremy-heyob-453" target="_blank" rel="noopener">Mes biens</a>
+      <a href="https://www.jeremyheyob.fr/avis-de-valeur.html">Estimation</a>
+      <a href="https://www.immodvisor.com/pro/agencimmocom-jeremy-heyob-saint-priest-69800-53519.html" target="_blank" rel="noopener">Avis vérifiés</a>
+      <a href="https://www.jeremyheyob.fr/honoraires.html">Mes honoraires</a>
+      <a href="https://www.jeremyheyob.fr/biens-avant-premiere.html" class="active">Biens en avant-première</a>
+      <a href="https://www.jeremyheyob.fr/un-cran-au-dessus.html">Guide vendeur</a>
+   </div>
 
-        <div class="btn-retour-wrap">
-          <a href="https://www.jeremyheyob.fr" class="btn-retour">← Retour</a>
-        </div>
-    
-    <!-- BLOC INFORMATIF -->
-    <section class="info-block">
-      <span class="info-pill">Espace acquéreur</span>
+    <div class="btn-retour-wrap">
+      <a href="https://www.jeremyheyob.fr" class="btn-retour">← Retour</a>
+    </div>
 
-      <h2>Recevez des nouveaux biens avant tout le monde.</h2>
-
+ <!-- HERO INFO -->
+  <section class="hero">
+    <div class="hero-text">
+      <div class="pill">Avant-première</div>
+      <h1>Recevez mes nouveaux biens avant tout le monde</h1>
       <p>
-        Vous receverez un SMS en priorité, dès qu'un bien rentre dans vos critères de recherche.
-        C’est tellement plus simple de passer avant tout le monde.
+        Vous recevez un SMS en priorité dès qu’un bien correspond à vos critères,
+        avant la diffusion sur les sites immobiliers.
       </p>
-
-      <div class="info-highlight">
-        Cette inscription me permet de vous contacter en priorité, avant même la mise en ligne de mes biens.
+    <div class="hero-highlight hero-highlight-with-logo">
+      <div class="hero-highlight-text">
+        <strong>Pourquoi vous inscrire ?</strong><br><br>
+        • Vous passez <strong>avant tout le monde</strong> : notification dès qu’un bien rentre dans vos critères.<br><br>
+        • Vous gagnez du temps : vous évitez de courir après les annonces déjà vues par des dizaines d’acquéreurs.<br><br>
+        • C’est simple : cette inscription me permet de <strong>vous contacter en priorité</strong>, avant même la mise en ligne publique.<br><br>
+        • Si besoin, je peux aussi vous mettre en relation <strong>gratuitement</strong> avec un courtier pour valider ou optimiser votre budget.
       </div>
       
+      <div class="hero-highlight-logo">
+        <img src="/images/logo methode apa.webp" alt="Méthode APA">
+      </div>
+    </div>
+
       <div class="hero-meta">
-        <span>Priorité SMS</span>
-        <span>Critères ciblés</span>
+        <span>SMS prioritaire</span>
+        <span>Critères précis</span>
         <span>Gratuit</span>
       </div>
-    </section>
+    </div>
+</section>
 
-    <!-- GUIDE (REMPLACÉ PAR INSCRIPTION AVANT-PREMIÈRE) -->
-    <section class="guide-card">
-      <span class="badge">Accès réservé aux acquéreurs sérieux</span>
+<section class="card">
+  <h2 class="card-title">Inscription acquéreur</h2>
 
-      <h1>Biens en avant-première</h1>
+  <div class="form-grid">
+    <div><label>Votre prénom</label><input id="prenom"></div>
+    <div><label>Votre nom</label><input id="nom"></div>
+    <div><label>Votre téléphone</label><input id="tel"></div>
+    <div><label>Votre email</label><input id="email"></div>
 
-      <p>
-        Inscrivez vos critères une seule fois. Je vous contacte par SMS dès qu’un bien correspond à votre recherche,
-        avant toute diffusion sur les sites immobiliers.
-      </p>
+    <div class="full"><label>Ville recherchée</label><input id="ville"></div>
 
-      <div class="proof">
-        <span>Inscription ≈ 1 min</span>
-        <span>Critères précis</span>
-        <span>Contact prioritaire</span>
-      </div>
+    <div><label>Maison ou appartement</label>
+      <select id="typeBien">
+        <option value="">-- Choisir --</option>
+        <option>Appartement</option>
+        <option>Maison</option>
+      </select>
+    </div>
 
-      <div class="form-grid">
-        <div>
-          <label>Votre prénom</label>
-          <input id="prenom" type="text">
-        </div>
+    <div><label>Typologie</label>
+      <select id="typologie">
+        <option value="">-- Choisir --</option>
+        <option>T1</option>
+        <option>T2</option>
+        <option>T3</option>
+        <option>T4</option>
+        <option>T5+</option>
+      </select>
+    </div>
 
-        <div>
-          <label>Votre nom</label>
-          <input id="nom" type="text">
-        </div>
+    <div><label>Budget maximum</label><input id="budget" placeholder="Ex : 250 000 €"></div>
 
-        <div>
-          <label>Votre téléphone</label>
-          <input id="telephone" type="tel">
-        </div>
+    <div><label>Avez-vous déjà vu votre banque ?</label>
+      <select id="banque">
+        <option value="">-- Choisir --</option>
+        <option>Oui</option>
+        <option>Non</option>
+      </select>
+    </div>
 
-        <div>
-          <label>Votre email</label>
-          <input id="email" type="email">
-        </div>
+    <div class="full"><label>Souhaitez-vous être mis en relation gratuitement avec un courtier (évaluer / comparer) ?</label>
+      <select id="courtier">
+        <option value="">-- Choisir --</option>
+        <option>Oui</option>
+        <option>Non</option>
+      </select>
+    </div>
 
-        <div class="full">
-          <label>Ville recherchée</label>
-          <input id="ville" type="text">
-        </div>
+    <div><label>Vous êtes</label>
+      <select id="statut">
+        <option value="">-- Choisir --</option>
+        <option>Locataire</option>
+        <option>Propriétaire</option>
+      </select>
+    </div>
 
-        <div>
-          <label>Type de bien</label>
-          <select id="typeBien">
-            <option value="">-- Choisir --</option>
-            <option>Appartement</option>
-            <option>Maison</option>
-          </select>
-        </div>
+    <div><label>Avez-vous besoin de vendre pour acheter ?</label>
+      <select id="venteAvantAchat">
+        <option value="">-- Choisir --</option>
+        <option>Oui</option>
+        <option>Non</option>
+      </select>
+    </div>
 
-        <div>
-          <label>Typologie</label>
-          <select id="typologie">
-            <option value="">-- Choisir --</option>
-            <option>T1</option>
-            <option>T2</option>
-            <option>T3</option>
-            <option>T4</option>
-            <option>T5+</option>
-          </select>
-        </div>
+    <div class="full">
+      <label>Message (facultatif)</label>
+      <textarea id="message" rows="4" style="width:100%;padding:10px 12px;border-radius:12px;border:1px solid var(--border-soft);background:#fafafa;font-size:14px;"></textarea>
+    </div>
 
-        <div class="full">
-          <label>Budget maximum</label>
-          <input id="budget" type="text" placeholder="Ex : 220 000 €">
-        </div>
-
-        <div>
-          <label>Avez-vous déjà vu votre banque ?</label>
-          <select id="banque">
-            <option value="">-- Choisir --</option>
-            <option>Oui</option>
-            <option>Non</option>
-          </select>
-        </div>
-
-        <div>
-          <label>Souhaitez-vous être mis en relation avec un courtier (gratuit) ?</label>
-          <select id="courtier">
-            <option value="">-- Choisir --</option>
-            <option>Oui</option>
-            <option>Non</option>
-          </select>
-        </div>
-
-        <div class="full">
-          <label>Situation</label>
-          <select id="situation">
-            <option value="">-- Choisir --</option>
-            <option>Locataire</option>
-            <option>Propriétaire</option>
-          </select>
-        </div>
-
-        <div class="full">
-          <label>Si propriétaire : devez-vous vendre votre bien pour acheter ?</label>
-          <select id="venteAvantAchat">
-            <option value="">-- Choisir --</option>
-            <option>Oui</option>
-            <option>Non</option>
-            <option>Je suis locataire</option>
-          </select>
-        </div>
-
-        <div class="full">
-          <label>Message</label>
-          <textarea id="message" placeholder="Informations complémentaires (secteur, étage, extérieur, stationnement, etc.)"></textarea>
-        </div>
-
-        <button class="btn" type="button" onclick="sendMail()">Valider mon inscription</button>
-      </div>
-
-      <div class="success-message" id="successMessage">
-        ✅ Inscription validée. Vous serez contacté dès qu’un bien correspondra à votre recherche.
-      </div>
-
-      <div class="reassure">
-        Inscription gratuite • Traitement prioritaire • 24h/24 • 7j/7
-      </div>
-    </section>
+    <button class="btn" onclick="sendMail()">Valider mon inscription</button>
+  </div>
+</section>
 
     <section class="social-block" aria-label="Réseaux sociaux">
   <div class="social-icons">
@@ -680,93 +598,104 @@
 
   </div>
 </section>
-
-    <!-- CONTACT -->
-    <section class="contact-block">
-      <div class="contact-photo">
-        <img src="/images/photo.webp" alt="Photo de Jérémy Heyob">
-      </div>
-
-      <div class="contact-text">
-        <h3>Une question sur votre projet de vente ?</h3>
-
-        <p>
-          Je reste disponible pour répondre à vos interrogations,
-          vous aider à clarifier votre situation et, si nécessaire,
-          vous orienter vers la stratégie de vente la plus adaptée.
-        </p>
-
-        <div class="contact-links">
-          <a href="mailto:contact@jeremyheyob.fr">✉️ Email</a>
-          <a href="sms:+33648145565">💬 SMS</a>
-          <a href="tel:+33648145565">📞 Appel</a>
-          <a href="https://www.jeremyheyob.fr" target="_blank">💻 Site</a>
-        </div>
-      </div>
-    </section>
-
-    <!-- FOOTER -->
-    <footer class="legal-footer">
-      Les photos et documents présentés sur cette page sont la propriété exclusive de
-      <strong>Jérémy HEYOB Immobilier</strong>.<br>
-      Toute reproduction, diffusion ou utilisation est strictement interdite sans autorisation préalable.
-    </footer>
-
+  
+<section class="contact-block">
+  <div class="contact-photo">
+    <img src="/images/photo.webp" alt="Photo de Jérémy Heyob">
   </div>
 
-  <script>
-    function sendMail() {
-      const prenom = document.getElementById("prenom").value.trim();
-      const nom = document.getElementById("nom").value.trim();
-      const telephone = document.getElementById("telephone").value.trim();
-      const email = document.getElementById("email").value.trim();
-      const ville = document.getElementById("ville").value.trim();
-      const typeBien = document.getElementById("typeBien").value;
-      const typologie = document.getElementById("typologie").value;
-      const budget = document.getElementById("budget").value.trim();
-      const banque = document.getElementById("banque").value;
-      const courtier = document.getElementById("courtier").value;
-      const situation = document.getElementById("situation").value;
-      const venteAvantAchat = document.getElementById("venteAvantAchat").value;
-      const message = document.getElementById("message").value.trim();
+  <div class="contact-text">
+    <h3>Une question sur l'un de ces biens ?</h3>
 
-      if (
-        !prenom || !nom || !telephone || !email || !ville ||
-        !typeBien || !typologie || !budget || !banque || !courtier ||
-        !situation || !venteAvantAchat
-      ) {
-        alert("Merci de renseigner tous les champs obligatoires avant de valider votre inscription.");
-        return;
-      }
+    <p>
+      Je reste disponible pour répondre à vos interrogations, vous aider à clarifier votre situation et, si nécessaire, vous orienter
+      vers la stratégie de vente la plus adaptée.
+    </p>
 
-      document.getElementById("successMessage").style.display = "block";
+    <div class="contact-links">
+      <a href="mailto:contact@jeremyheyob.fr">✉️ Email</a>
+      <a href="sms:+33648145565">💬 SMS</a>
+      <a href="tel:+33648145565">📞 Appel</a>
+      <a href="https://www.jeremyheyob.fr" target="_blank">💻 Site</a>
+    </div>
+  </div>
+</section>
 
-      const subject = encodeURIComponent("Inscription acquéreur - Biens en avant-première");
-      const body = encodeURIComponent(
-        "Bonjour,\n\n" +
-        "Je souhaite m'inscrire pour recevoir les biens en avant-première par SMS.\n\n" +
-        "Informations :\n" +
-        "Prénom : " + prenom + "\n" +
-        "Nom : " + nom + "\n" +
-        "Téléphone : " + telephone + "\n" +
-        "Email : " + email + "\n\n" +
-        "Recherche :\n" +
-        "Ville recherchée : " + ville + "\n" +
-        "Type : " + typeBien + "\n" +
-        "Typologie : " + typologie + "\n" +
-        "Budget maximum : " + budget + "\n\n" +
-        "Financement :\n" +
-        "Banque consultée : " + banque + "\n" +
-        "Souhaite un courtier (gratuit) : " + courtier + "\n\n" +
-        "Situation :\n" +
-        "Locataire / Propriétaire : " + situation + "\n" +
-        "Besoin de vendre pour acheter : " + venteAvantAchat + "\n\n" +
-        "Message : " + (message ? message : "(Aucun)") + "\n\n" +
-        "Cordialement,\n"
-      );
+<footer class="legal-footer">
+  Les photos et documents présentés sur cette page sont la propriété exclusive de
+  <strong>Jérémy HEYOB Immobilier</strong>.<br>
+  Toute reproduction, diffusion ou utilisation est strictement interdite sans autorisation préalable.
+</footer>
 
-      window.location.href = "mailto:contact@jeremyheyob.fr?subject=" + subject + "&body=" + body;
-    }
-  </script>
+</div>
+
+  
+<script>
+function sendMail() {
+
+  const prenom = document.getElementById("prenom");
+  const nom = document.getElementById("nom");
+  const tel = document.getElementById("tel");
+  const email = document.getElementById("email");
+  const ville = document.getElementById("ville");
+  const typeBien = document.getElementById("typeBien");
+  const typologie = document.getElementById("typologie");
+  const budget = document.getElementById("budget");
+  const banque = document.getElementById("banque");
+  const courtier = document.getElementById("courtier");
+  const statut = document.getElementById("statut");
+  const venteAvantAchat = document.getElementById("venteAvantAchat");
+  const message = document.getElementById("message");
+
+  if (
+    !prenom.value.trim() ||
+    !nom.value.trim() ||
+    !tel.value.trim() ||
+    !email.value.trim() ||
+    !ville.value.trim() ||
+    !typeBien.value ||
+    !typologie.value ||
+    !budget.value.trim() ||
+    !banque.value ||
+    !courtier.value ||
+    !statut.value ||
+    !venteAvantAchat.value
+  ) {
+    alert("Merci de renseigner tous les champs obligatoires avant de valider votre inscription.");
+    return;
+  }
+
+  const subject = encodeURIComponent("Inscription acquéreur – Biens en avant-première (SMS)");
+
+  const body = encodeURIComponent(
+    "Bonjour,\n\n" +
+    "Je souhaite m’inscrire pour recevoir par SMS les nouveaux biens en avant-première.\n\n" +
+    "Coordonnées :\n" +
+    "Prénom : " + prenom.value + "\n" +
+    "Nom : " + nom.value + "\n" +
+    "Téléphone : " + tel.value + "\n" +
+    "Email : " + email.value + "\n\n" +
+    "Recherche :\n" +
+    "Ville recherchée : " + ville.value + "\n" +
+    "Maison ou appartement : " + typeBien.value + "\n" +
+    "Typologie : " + typologie.value + "\n" +
+    "Budget maximum : " + budget.value + "\n\n" +
+    "Financement :\n" +
+    "Déjà vu la banque : " + banque.value + "\n" +
+    "Souhaite mise en relation courtier (gratuit) : " + courtier.value + "\n\n" +
+    "Situation :\n" +
+    "Statut : " + statut.value + "\n" +
+    "Besoin de vendre pour acheter : " + venteAvantAchat.value + "\n\n" +
+    "Message :\n" + (message.value ? message.value : "—") + "\n\n" +
+    "Merci.\n"
+  );
+
+  alert("Inscription validée. Vous serez contacté dès qu’un bien correspondra à votre recherche.");
+
+  window.location.href =
+    "mailto:contact@jeremyheyob.fr?subject=" + subject + "&body=" + body;
+}
+</script>
+
 </body>
 </html>
