@@ -402,13 +402,6 @@
       resize: vertical;
     }
 
-    .field-help {
-      display: block;
-      margin-bottom: 6px;
-      font-size: 12px;
-      color: var(--text-soft);
-    }
-
     /* Mobile : logo en dessous */
    @media (max-width: 600px) {
     .hero-highlight-with-logo {
@@ -562,17 +555,11 @@
       </select>
     </div>
 
-    <div class="full">
-      <label>Message (facultatif)</label>
-      <small class="field-help">
-        Informations complémentaires (secteur, étage, extérieur, stationnement, etc.)
-      </small>
-      <textarea
-        id="message"
-        class="textarea-custom"
-        rows="4">
-      </textarea>
-    </div>
+    <label>Message (facultatif)</label>
+    <small class="field-help">
+      Informations complémentaires (secteur, étage, extérieur, stationnement, etc.)
+    </small>
+    <textarea id="message" class="textarea-custom" rows="4"></textarea>
 
     <button class="btn" onclick="sendMail()">Valider mon inscription</button>
 
