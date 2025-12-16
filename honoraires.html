@@ -368,6 +368,81 @@
       border: 1px solid rgba(198,169,119,0.35);
       background: rgba(198,169,119,0.10);
     }
+    
+    /* ===== BLOC LOGIQUE D’EFFORT PARTAGÉ ===== */
+
+    .info-block {
+      max-width: 1113px;
+      margin: 0 auto 30px;
+      padding: 26px 28px;
+      background:
+        linear-gradient(135deg, rgba(212,161,95,0.18), transparent 55%),
+        linear-gradient(145deg, #ffffff, #FFFBF5 55%);
+      border-radius: 22px;
+      border: 1px solid var(--border-soft);
+      box-shadow: var(--shadow-soft);
+    }
+
+    .info-pill {
+      display: inline-block;
+      padding: 4px 10px;
+      border-radius: 999px;
+      background: var(--accent-soft);
+      color: var(--accent);
+      font-size: 11px;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 10px;
+    }
+
+    .info-block h2 {
+      margin: 8px 0 10px;
+      font-size: 22px;
+    }
+
+    .info-block p {
+      margin: 0;
+      font-size: 14px;
+      color: var(--text-soft);
+      max-width: 720px;
+      line-height: 1.55;
+    }
+
+    .info-highlight {
+      margin-top: 14px;
+      padding: 12px 14px;
+      border-radius: 14px;
+      background: #ffffff;
+      border: 1px dashed var(--border-soft);
+      font-size: 13px;
+      color: #4A4A4A;
+      line-height: 1.45;
+    }
+
+    .hero-meta {
+      margin-top: 14px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 18px;
+      font-size: 12px;
+      color: var(--text-soft);
+    }
+
+    .hero-meta span {
+      position: relative;
+      padding-left: 12px;
+      display: inline-flex;
+      align-items: center;
+    }
+
+    .hero-meta span::before {
+      content: "•";
+      position: absolute;
+      left: 0;
+      font-size: 14px;
+      color: var(--text-soft);
+    }
 
     /* Mobile : logo en dessous */
    @media (max-width: 600px) {
@@ -487,6 +562,10 @@
         <tr style="border-top:1px solid #e5e7eb;">
           <td style="padding:14px;">Appartement T4</td>
           <td style="padding:14px; text-align:right;"><strong>12 000 €</strong></td>
+        </tr>
+        <tr style="border-top:1px solid #e5e7eb;">
+          <td style="padding:14px;">Appartement avant 2005</td>
+          <td style="padding:14px; text-align:right;"><strong>5 % TTC</strong></td>
         </tr>
         <tr style="border-top:1px solid #e5e7eb;">
           <td style="padding:14px;">Appartement T4+ et Maison</td>
