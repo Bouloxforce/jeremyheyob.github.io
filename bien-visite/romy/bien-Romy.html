@@ -295,6 +295,62 @@
     background: rgba(0,0,0,0.35);
     border-radius: 999px;
   }
+    
+    /* ===== BLOC RÉSEAUX SOCIAUX ===== */
+
+    /* Wrapper full width pour centrage écran */
+    .social-full {
+      width: 100vw;
+      margin-left: calc(-50vw + 50%);
+      display: flex;
+      justify-content: center;
+      margin-top: 36px;
+    }
+
+    /* Bloc visuel */
+    .social-block {
+      width: fit-content;
+      margin: 0 auto 8px;
+      background: #ffffff;
+      border-radius: 20px;
+      border: 1px solid #e5e7eb;
+      box-shadow: 0 18px 40px rgba(25,25,25,0.08);
+      padding: 14px 16px;
+    }
+
+    /* Conteneur icônes */
+    .social-icons {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: center;
+    }
+
+    /* Boutons */
+    .social-icons a {
+      width: 42px;
+      height: 42px;
+      border-radius: 14px;
+      display: grid;
+      place-items: center;
+      background: rgba(198, 169, 119, 0.16);
+      border: 1px solid rgba(198,169,119,0.25);
+      transition: transform 0.15s ease, filter 0.15s ease;
+      text-decoration: none;
+    }
+
+    /* Hover */
+    .social-icons a:hover {
+      transform: translateY(-1px);
+      filter: brightness(1.02);
+    }
+
+    /* Icônes SVG */
+    .social-icons svg {
+      width: 20px;
+      height: 20px;
+    }
 
   /* RESPONSIVE */
   @media (max-width: 1024px) {
@@ -546,6 +602,74 @@
     </aside>
 
   </main>
+
+  <!-- ===== RÉSEAUX SOCIAUX (CENTRÉ ÉCRAN) ===== -->
+<div class="social-full">
+  <section class="social-block" aria-label="Réseaux sociaux">
+    <div class="social-icons">
+
+      <!-- Google -->
+      <a href="https://goo.gl/maps/wjfc1aGFBrSLd3tV6" target="_blank" rel="noopener" aria-label="Google">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#7a5a29" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M12 21s7-4.5 7-11a7 7 0 1 0-14 0c0 6.5 7 11 7 11z"></path>
+          <circle cx="12" cy="10" r="2.5"></circle>
+        </svg>
+      </a>
+
+      <!-- PagesJaunes -->
+      <a href="https://www.pagesjaunes.fr/pros/62191780" target="_blank" rel="noopener" aria-label="Pages Jaunes">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#7a5a29" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M6 3h9a3 3 0 0 1 3 3v12a3 3 0 0 1-3 3H6a3 3 0 0 1-3-3V6a3 3 0 0 1 3-3z"></path>
+          <path d="M8 8h8"></path>
+          <path d="M8 12h8"></path>
+          <path d="M8 16h6"></path>
+        </svg>
+      </a>
+
+      <!-- Facebook -->
+      <a href="https://www.facebook.com/jeremyheyobpro" target="_blank" rel="noopener" aria-label="Facebook">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#7a5a29" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M14 8h3V5h-3a4 4 0 0 0-4 4v3H7v3h3v6h3v-6h3l1-3h-4V9a1 1 0 0 1 1-1z"></path>
+        </svg>
+      </a>
+
+      <!-- LinkedIn -->
+      <a href="https://www.linkedin.com/company/jérémy-heyob/" target="_blank" rel="noopener" aria-label="LinkedIn">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#7a5a29" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4V9h4v2"></path>
+          <rect x="2" y="9" width="4" height="12"></rect>
+          <circle cx="4" cy="4" r="2"></circle>
+        </svg>
+      </a>
+
+      <!-- Instagram -->
+      <a href="https://www.instagram.com/jeremyheyob/" target="_blank" rel="noopener" aria-label="Instagram">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#7a5a29" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="3" y="3" width="18" height="18" rx="5" ry="5"></rect>
+          <circle cx="12" cy="12" r="4"></circle>
+          <path d="M17.5 6.5h.01"></path>
+        </svg>
+      </a>
+
+      <!-- YouTube -->
+      <a href="https://www.youtube.com/channel/UCpE0arbirH2tkw2THT_Ef9Q" target="_blank" rel="noopener" aria-label="YouTube">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#7a5a29" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M22 12s0-4-1-5-4-1-9-1-8 0-9 1-1 5-1 5 0 4 1 5 4 1 9 1 8 0 9-1 1-5 1-5z"></path>
+          <path d="M10 9l6 3-6 3V9z"></path>
+        </svg>
+      </a>
+
+      <!-- TikTok -->
+      <a href="https://www.tiktok.com/@jeremyheyob" target="_blank" rel="noopener" aria-label="TikTok">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#7a5a29" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M14 3v10a4 4 0 1 1-4-4"></path>
+          <path d="M14 7a6 6 0 0 0 6 2"></path>
+        </svg>
+      </a>
+
+    </div>
+  </section>
+</div>
 
   <!-- FOOTER LÉGAL -->
   <footer class="legal-footer">
