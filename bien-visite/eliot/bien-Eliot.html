@@ -297,21 +297,28 @@
       background: rgba(0,0,0,0.35);
       border-radius: 999px;
     }
-    /* ===== BLOC RÉSEAUX SOCIAUX ===== */
+       /* ===== BLOC RÉSEAUX SOCIAUX ===== */
 
+    /* Wrapper full width pour centrage écran */
+    .social-full {
+      width: 100vw;
+      margin-left: calc(-50vw + 50%);
+      display: flex;
+      justify-content: center;
+    }
+
+    /* Bloc visuel */
     .social-block {
       width: fit-content;
-      margin: 0 auto 8px;   
-      position: relative;
-      left: 50%;
-      transform: translateX(-50%);
+      margin: 0 auto 8px;
       background: #ffffff;
       border-radius: 20px;
       border: 1px solid #e5e7eb;
-      box-shadow: 0 18px 40px rgba(25,25,25,0.08);
+        box-shadow: 0 18px 40px rgba(25,25,25,0.08);
       padding: 14px 16px;
     }
 
+    /* Conteneur icônes */
     .social-icons {
       display: flex;
       gap: 10px;
@@ -320,10 +327,11 @@
       justify-content: center;
     }
 
+    /* Boutons */
     .social-icons a {
       width: 42px;
       height: 42px;
-      border-radius: 14px;
+        border-radius: 14px;
       display: grid;
       place-items: center;
       background: rgba(198, 169, 119, 0.16);
@@ -332,11 +340,13 @@
       text-decoration: none;
     }
 
+    /* Hover */
     .social-icons a:hover {
       transform: translateY(-1px);
       filter: brightness(1.02);
     }
 
+    /* Icônes SVG */
     .social-icons svg {
       width: 20px;
       height: 20px;
