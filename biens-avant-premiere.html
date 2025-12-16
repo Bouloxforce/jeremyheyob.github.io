@@ -199,7 +199,7 @@
       cursor: pointer;
     }
 
-   /* CONTACT BLOCK — IDENTIQUE PAGE DE RÉFÉRENCE */
+    /* CONTACT BLOCK — IDENTIQUE PAGE DE RÉFÉRENCE */
      .contact-block {
       display: flex;
       gap: 18px;
@@ -267,6 +267,25 @@
       font-size: 11.5px;
       color: var(--text-soft);
       opacity: 0.75;
+    }
+
+    /* HERO HIGHLIGHT AVEC LOGO */
+    .hero-highlight-with-logo {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+    }
+
+    .hero-highlight-text {
+      flex: 1;
+    }
+
+    .hero-highlight-logo img {
+      width: 180px;              /* logo plus gros */
+      height: auto;
+      opacity: 0.8;
+      margin-left: -250px;       /* décalage vers la gauche */
     }
 
     .social-block {
@@ -351,6 +370,27 @@
       background: rgba(198,169,119,0.10);
     }
 
+    /* ✅ AJOUT : SURBRILLANCE DES CHAMPS MANQUANTS */
+    .field-error {
+      border: 2px solid #d93025 !important;
+      background: #fff5f5 !important;
+      box-shadow: 0 0 0 4px rgba(217,48,37,0.10) !important;
+    }
+
+    /* ✅ AJOUT : MESSAGE SUCCESS SOUS LE BOUTON (même style que hero-highlight) */
+    .success {
+      display: none;
+      margin-top: 16px;
+      padding: 14px 16px;
+      border-radius: 14px;
+      background: #ffffff;
+      border: 1px dashed var(--border-soft);
+      font-size: 13px;
+      color: #4A4A4A;
+      line-height: 1.5;
+      grid-column: 1 / -1;
+    }
+
     /* Mobile : logo en dessous */
    @media (max-width: 600px) {
     .hero-highlight-with-logo {
@@ -415,7 +455,7 @@
  <!-- HERO INFO -->
   <section class="hero">
     <div class="hero-text">
-      <div class="pill">ESPACE ACQUÉREUR</div>
+      <div class="pill">Avant-première</div>
       <h1>Recevez mes nouveaux biens avant tout le monde</h1>
       <p>
         Vous recevez un SMS en priorité dès qu’un bien correspond à vos critères,
@@ -430,6 +470,9 @@
         • Si besoin, je peux aussi vous mettre en relation <strong>gratuitement</strong> avec un courtier pour valider ou optimiser votre budget.
       </div>
       
+      <div class="hero-highlight-logo">
+        <img src="/images/logo methode apa.webp" alt="Méthode APA">
+      </div>
     </div>
 
       <div class="hero-meta">
@@ -510,6 +553,10 @@
     </div>
 
     <button class="btn" onclick="sendMail()">Valider mon inscription</button>
+
+    <div class="success" id="success">
+      ✅ Inscription validée. Vous serez contacté dès qu’un bien correspondra à votre recherche.
+    </div>
   </div>
 </section>
 
@@ -608,7 +655,6 @@
 
 </div>
 
-  
 <script>
 function sendMail() {
 
@@ -626,21 +672,41 @@ function sendMail() {
   const venteAvantAchat = document.getElementById("venteAvantAchat");
   const message = document.getElementById("message");
 
-  if (
-    !prenom.value.trim() ||
-    !nom.value.trim() ||
-    !tel.value.trim() ||
-    !email.value.trim() ||
-    !ville.value.trim() ||
-    !typeBien.value ||
-    !typologie.value ||
-    !budget.value.trim() ||
-    !banque.value ||
-    !courtier.value ||
-    !statut.value ||
-    !venteAvantAchat.value
-  ) {
-    alert("Merci de renseigner tous les champs obligatoires avant de valider votre inscription.");
+  const success = document.getElementById("success");
+
+  // ✅ reset surbrillance
+  const fields = [prenom, nom, tel, email, ville, budget, typeBien, typologie, banque, courtier, statut, venteAvantAchat];
+  fields.forEach(f => f.classList.remove("field-error"));
+  success.style.display = "none";
+
+  // ✅ validation avec surbrillance
+  let hasError = false;
+
+  function markIfEmpty(el) {
+    if (!el.value || !el.value.trim()) {
+      el.classList.add("field-error");
+      hasError = true;
+    }
+  }
+
+  markIfEmpty(prenom);
+  markIfEmpty(nom);
+  markIfEmpty(tel);
+  markIfEmpty(email);
+  markIfEmpty(ville);
+  markIfEmpty(budget);
+
+  if (!typeBien.value) { typeBien.classList.add("field-error"); hasError = true; }
+  if (!typologie.value) { typologie.classList.add("field-error"); hasError = true; }
+  if (!banque.value) { banque.classList.add("field-error"); hasError = true; }
+  if (!courtier.value) { courtier.classList.add("field-error"); hasError = true; }
+  if (!statut.value) { statut.classList.add("field-error"); hasError = true; }
+  if (!venteAvantAchat.value) { venteAvantAchat.classList.add("field-error"); hasError = true; }
+
+  if (hasError) {
+    // focus sur le premier champ en erreur
+    const firstError = document.querySelector(".field-error");
+    if (firstError) firstError.focus();
     return;
   }
 
@@ -669,8 +735,10 @@ function sendMail() {
     "Merci.\n"
   );
 
-  alert("Inscription validée. Vous serez contacté dès qu’un bien correspondra à votre recherche.");
+  // ✅ message de confirmation sur la page (pas d'alert)
+  success.style.display = "block";
 
+  // ouverture du mail
   window.location.href =
     "mailto:contact@jeremyheyob.fr?subject=" + subject + "&body=" + body;
 }
