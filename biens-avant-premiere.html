@@ -393,6 +393,7 @@
     
     .textarea-custom {
       width: 100%;
+      min-height: 120px;
       padding: 10px 12px;
       border-radius: 12px;
       margin-top: 4px;
@@ -400,7 +401,8 @@
       background: #fafafa;
       font-size: 14px;
       font-family: inherit;
-      resize: vertical;
+      resize: none; /* on enlève le redimensionnement manuel */
+      overflow: hidden; /* évite la scrollbar */
     }
 
     .field-help {
