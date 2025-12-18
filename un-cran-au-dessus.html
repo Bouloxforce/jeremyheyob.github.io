@@ -385,6 +385,89 @@
       opacity: 0.75;
     }
 
+    .card {
+      max-width: 800px;
+      margin: 0 auto 30px;
+      background: var(--card-bg);
+      border-radius: 22px;
+      padding: 26px 28px;
+      border: 1px solid var(--border-soft);
+      box-shadow: var(--shadow-soft);
+    }
+
+    .card-title {
+      font-size: 20px;
+      margin-bottom: 18px;
+      border-left: 4px solid var(--accent);
+      padding-left: 10px;
+    }
+
+    .form-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+    }
+
+    label { font-size: 13px; margin-bottom: 4px; display: block; }
+
+    input, select {
+      width: 100%;
+      padding: 10px 12px;
+      border-radius: 12px;
+      border: 1px solid var(--border-soft);
+      background: #fafafa;
+      font-size: 14px;
+      font-family: inherit;
+    }
+
+    .full { grid-column: 1 / -1; }
+
+    .btn {
+      grid-column: 1 / -1;
+      margin-top: 14px;
+      background: linear-gradient(135deg, #fbe4b9, #f3c98b);
+      color: #7a5a29;
+      padding: 14px;
+      border-radius: 999px;
+      font-size: 15px;
+      font-weight: 600;
+      border: none;
+      cursor: pointer;
+    }
+
+    .textarea-custom {
+      width: 100%;
+      min-height: 120px;
+      padding: 10px 12px;
+      border-radius: 12px;
+      margin-top: 4px;
+      border: 1px solid var(--border-soft);
+      background: #fafafa;
+      font-size: 14px;
+      font-family: inherit;
+      resize: none;
+      overflow: hidden;
+    }
+
+    .field-error {
+      border: 2px solid #191919 !important;
+      background: #ffffff !important;
+      box-shadow: 0 0 0 4px rgba(25,25,25,0.12) !important;
+    }
+
+    .success {
+      display: none;
+      margin-top: 16px;
+      padding: 14px 16px;
+      border-radius: 14px;
+      background: #ffffff;
+      border: 1px dashed var(--border-soft);
+      font-size: 13px;
+      color: #4A4A4A;
+      line-height: 1.5;
+      grid-column: 1 / -1;
+    }
+    
     @media (max-width: 880px) {
       header { flex-direction: column; }
       .contact-block {
@@ -398,6 +481,74 @@
   </style>
 </head>
 
+  <script>
+function sendMail() {
+  const prenom = document.getElementById("prenom");
+  const nom = document.getElementById("nom");
+  const tel = document.getElementById("tel");
+  const email = document.getElementById("email");
+  const adresse = document.getElementById("adresse");
+  const typeBien = document.getElementById("typeBien");
+  const typologie = document.getElementById("typologie");
+  const date = document.getElementById("date");
+  const creneau = document.getElementById("creneau");
+  const commentaire = document.getElementById("commentaire");
+  const success = document.getElementById("success");
+
+  const fields = [prenom, nom, tel, email, adresse, typeBien, typologie, date, creneau];
+
+  success.style.display = "none";
+  let hasError = false;
+
+  fields.forEach(field => {
+    field.classList.remove("field-error");
+
+    if ((field.tagName === "INPUT" || field.tagName === "TEXTAREA") && (!field.value || !field.value.trim())) {
+      field.classList.add("field-error");
+      hasError = true;
+    }
+
+    if (field.tagName === "SELECT" && !field.value) {
+      field.classList.add("field-error");
+      hasError = true;
+    }
+  });
+
+  if (hasError) {
+    const firstError = document.querySelector(".field-error");
+    if (firstError) firstError.focus();
+    return;
+  }
+
+  success.style.display = "block";
+
+  const subject = encodeURIComponent("Demande d’avis de valeur immobilier");
+  const body = encodeURIComponent(
+    "Bonjour,\n\n" +
+    "Je souhaite obtenir un avis de valeur pour mon bien immobilier.\n\n" +
+    "Nom : " + prenom.value + " " + nom.value + "\n" +
+    "Téléphone : " + tel.value + "\n" +
+    "Email : " + email.value + "\n\n" +
+    "Adresse : " + adresse.value + "\n" +
+    "Type de bien : " + typeBien.value + "\n" +
+    "Typologie : " + typologie.value + "\n\n" +
+    "Date : " + date.value + "\n" +
+    "Créneau : " + creneau.value + "\n\n" +
+    "Commentaire : " + (commentaire.value || "") + "\n\n" +
+    "Merci.\n"
+  );
+
+  window.location.href = "mailto:contact@jeremyheyob.fr?subject=" + subject + "&body=" + body;
+}
+
+document.addEventListener("input", function (e) {
+  if (e.target.classList.contains("textarea-custom")) {
+    e.target.style.height = "auto";
+    e.target.style.height = e.target.scrollHeight + "px";
+  }
+});
+</script>
+  
 <body>
   <div class="page">
 
@@ -449,32 +600,66 @@
         <span>Étapes claires</span>
         <span>Accès libre</span>
       </div>
-    </section>
+      </section>
 
-    <!-- ✅ REMPLACEMENT DU BLOC "ACCÈS RÉSERVÉ..." PAR UN SECOND BLOC INFORMATIF -->
-    <section class="info-block">
-      <span class="info-pill">ACCOMPAGNEMENT</span>
+    <section class="card">
+  <h2 class="card-title">Vos informations</h2>
 
-      <h2>Une méthode structurée pour sécuriser votre vente.</h2>
+  <div class="form-grid">
+    <div><label>Votre prénom</label><input id="prenom"></div>
+    <div><label>Votre nom</label><input id="nom"></div>
+    <div><label>Votre téléphone</label><input id="tel"></div>
+    <div><label>Votre email</label><input id="email"></div>
 
-      <p>
-        Mon rôle est de cadrer votre projet avec une stratégie claire : positionnement prix,
-        préparation, mise en valeur, ciblage des bons profils et défense de vos intérêts
-        jusqu’à la signature.
-      </p>
+    <div class="full"><label>Adresse du bien</label><input id="adresse"></div>
 
-      <div class="info-highlight">
-        Objectif : éviter les erreurs coûteuses, garder la maîtrise, et vendre dans les meilleures conditions.
-      </div>
+    <div>
+      <label>Type de bien</label>
+      <select id="typeBien">
+        <option value="">-- Choisir --</option>
+        <option>Appartement</option>
+        <option>Maison</option>
+      </select>
+    </div>
 
-      <div class="hero-meta">
-        <span>Stratégie vendeur</span>
-        <span>Décisions cadrées</span>
-        <span>Process maîtrisé</span>
-      </div>
-    </section>
+    <div>
+      <label>Typologie</label>
+      <select id="typologie">
+        <option value="">-- Choisir --</option>
+        <option>T1</option><option>T2</option><option>T3</option><option>T4</option><option>T5+</option>
+      </select>
+    </div>
 
-    <section class="social-block" aria-label="Réseaux sociaux">
+    <div><label>Date souhaitée</label><input id="date" type="date"></div>
+
+    <div>
+      <label>Créneau souhaité</label>
+      <select id="creneau">
+        <option value="">-- Choisir --</option>
+        <option>09h - 10h</option><option>10h - 11h</option><option>11h - 12h</option>
+        <option>14h - 15h</option><option>15h - 16h</option><option>16h - 17h</option>
+        <option>17h - 18h</option><option>18h - 19h</option><option>19h - 20h</option>
+      </select>
+    </div>
+
+    <div class="full">
+      <label>Commentaire (facultatif)</label>
+      <textarea
+        id="commentaire"
+        class="textarea-custom"
+        placeholder="Informations complémentaires que je devrais connaitre avant notre rendez-vous"></textarea>
+    </div>
+
+    <button class="btn" type="button" onclick="sendMail()">Valider ma demande</button>
+
+    <div class="success" id="success">
+      ✅ Demande envoyée. Vous recevrez un mail et un sms de confirmation dès que le rendez-vous sera validé.
+    </div>
+  </div>
+</section>
+
+<section class="social-block" aria-label="Réseaux sociaux">
+
       <div class="social-icons">
 
         <!-- Google -->
