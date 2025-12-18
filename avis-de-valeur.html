@@ -371,16 +371,13 @@
 
     .textarea-custom {
       width: 100%;
-      min-height: 120px;
       padding: 10px 12px;
       border-radius: 12px;
-      margin-top: 4px;
       border: 1px solid var(--border-soft);
       background: #fafafa;
       font-size: 14px;
       font-family: inherit;
-      resize: none;
-      overflow: hidden;
+      resize: vertical;
     }
 
     .field-error {
@@ -515,13 +512,15 @@
         <option>17h - 18h</option><option>18h - 19h</option><option>19h - 20h</option>
       </select>
     </div>
-    <div class="full">
+    <div style="grid-column: 1 / -1;">
       <label>Commentaire (facultatif)</label>
       <textarea
         id="commentaire"
         class="textarea-custom"
-        placeholder="Informations complémentaires que je devrais connaitre avant notre rendez-vous"></textarea>
+        placeholder="Informations complémentaires que je devrais connaitre avant notre rendez-vous">
+      </textarea>
     </div>
+
     <button class="btn" onclick="sendMail()">Valider ma demande</button>
   </div>
   <div class="success" id="success">
