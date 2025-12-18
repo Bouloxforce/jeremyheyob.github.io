@@ -624,64 +624,61 @@
 
 </div>
 
-  
-<script>
+  <script>
 function sendMail() {
 
-  // Récupération des champs
-  const prenom = document.getElementById("prenom");
-  const nom = document.getElementById("nom");
-  const tel = document.getElementById("tel");
-  const email = document.getElementById("email");
-  const adresse = document.getElementById("adresse");
-  const typeBien = document.getElementById("typeBien");
-  const typologie = document.getElementById("typologie");
-  const date = document.getElementById("date");
-  const creneau = document.getElementById("creneau");
-  const commentaire = document.getElementById("commentaire");
+  const fields = [
+    "prenom","nom","tel","email","adresse",
+    "typeBien","typologie","date","creneau"
+  ];
 
-  // Vérification champs obligatoires
-  if (
-    !prenom.value.trim() ||
-    !nom.value.trim() ||
-    !tel.value.trim() ||
-    !email.value.trim() ||
-    !adresse.value.trim() ||
-    !typeBien.value ||
-    !typologie.value ||
-    !date.value ||
-    !creneau.value
-  ) {
-    alert("Merci de renseigner tous les champs avant de valider votre demande.");
+  const success = document.getElementById("success");
+  success.style.display = "none";
+
+  let hasError = false;
+
+  fields.forEach(id => {
+    const field = document.getElementById(id);
+    field.classList.remove("field-error");
+
+    if (
+      (field.tagName === "INPUT" || field.tagName === "TEXTAREA") &&
+      (!field.value || !field.value.trim())
+    ) {
+      field.classList.add("field-error");
+      hasError = true;
+    }
+
+    if (field.tagName === "SELECT" && !field.value) {
+      field.classList.add("field-error");
+      hasError = true;
+    }
+  });
+
+  if (hasError) {
+    document.querySelector(".field-error").focus();
     return;
   }
 
-  // Sujet du mail
-  const subject = encodeURIComponent(
-    "Demande d’avis de valeur immobilier"
-  );
+  // ✅ Message succès
+  success.style.display = "block";
 
-  // Corps du mail (message professionnel)
+  const subject = encodeURIComponent("Demande d’avis de valeur immobilier");
+
   const body = encodeURIComponent(
     "Bonjour,\n\n" +
     "Je souhaite obtenir un avis de valeur pour mon bien immobilier.\n\n" +
-    "Voici mes informations :\n\n" +
     "Nom : " + prenom.value + " " + nom.value + "\n" +
     "Téléphone : " + tel.value + "\n" +
     "Email : " + email.value + "\n\n" +
-    "Bien concerné :\n" +
     "Adresse : " + adresse.value + "\n" +
     "Type de bien : " + typeBien.value + "\n" +
     "Typologie : " + typologie.value + "\n\n" +
-    "Disponibilités :\n" +
-    "Date souhaitée : " + date.value + "\n" +
-    "Créneau horaire : " + creneau.value + "\n" +
-    "Commentaire : " + commentaire.value + "\n\n" +
-    "Je vous remercie par avance pour votre retour.\n\n" +
-    "Cordialement,\n" +
+    "Date : " + date.value + "\n" +
+    "Créneau : " + creneau.value + "\n\n" +
+    "Commentaire : " + commentaire.value + "\n"
   );
 
-  // Ouverture du client mail
   window.location.href =
     "mailto:contact@jeremyheyob.fr?subject=" + subject + "&body=" + body;
 }
