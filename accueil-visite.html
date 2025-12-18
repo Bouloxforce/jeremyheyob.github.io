@@ -5,16 +5,18 @@
   <link rel="shortcut icon" href="/images/favicon.ico">
   <meta charset="UTF-8">
   <meta name="robots" content="noindex, nofollow, noarchive, nosnippet">
-  <title>Informations biens immobiliers - Espace client | Jérémy Heyob Immobilier</title>
+  <title>Eliot | Jérémy Heyob Immobilier</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+  <link rel="preload" href="/bien-visite/eliot/photos/eliot 1.webp" as="image">
+
   <style>
+    /* CSS IDENTIQUE À LA PAGE DE RÉFÉRENCE – NON MODIFIÉ */
+    /* -------------------------------------------------- */
     :root {
       --bg: #FFFBF5;
-      --bg-soft: #ffffff;
       --accent: #C6AA77;
-      --accent-soft: rgba(198, 169, 119, 0.16);
-      --accent-soft-strong: rgba(212,161,95,0.08);
+      --accent-soft: rgba(198,169,119,0.16);
       --text-main: #191919;
       --text-soft: #7A7A7A;
       --border-soft: #e5e7eb;
@@ -22,22 +24,19 @@
       --shadow-soft: 0 20px 50px rgba(25,25,25,0.10);
     }
 
-    * {
-      box-sizing: border-box;
-    }
-
+    * { box-sizing: border-box; }
     body {
       margin: 0;
       font-family: -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
-      background: #FFFBF5;
+      background: var(--bg);
       color: var(--text-main);
-      min-height: 100vh;
+      overflow-x: hidden;
     }
 
     .page {
-      max-width: 1150px;
+      max-width: 1100px;
       margin: 0 auto;
-      padding: 26px 18px 60px;
+      padding: 24px 16px 50px;
     }
 
     header {
@@ -55,11 +54,7 @@
     }
 
     .logo { max-width: 140px; }
-
-    .header-center {
-      flex: 1;
-      text-align: center;
-    }
+    .header-center { flex: 1; text-align: center; }
 
     .tagline-main {
       font-size: 13px;
@@ -69,6 +64,7 @@
 
     .tagline-sub {
       margin-top: 12px;
+      margin-bottom: 8px;
       font-size: 12px;
       text-transform: uppercase;
       letter-spacing: 0.12em;
@@ -79,255 +75,241 @@
       font-weight: 900;
     }
 
-    .header-left { display: flex; align-items: center; gap: 16px; }
-    .logo { max-width: 140px; height: auto; }
-
-    nav { display: flex; gap: 18px; font-size: 14px; }
-    nav a { color: var(--text-soft); text-decoration: none; }
-    nav a:hover { color: var(--accent); }
-    nav a.active { color: var(--accent); font-weight: 600; }
-
-    .hero {
-      position: relative;
-      border-radius: 20px;
-      overflow: hidden;
-      background:
-        linear-gradient(135deg, rgba(212,161,95,0.18), transparent 55%),
-        linear-gradient(145deg, #ffffff, #FFFBF5 55%);
-      border: 1px solid var(--border-soft);
-      box-shadow: var(--shadow-soft);
-      margin-bottom: 30px;
+    .layout {
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 22px;
+      align-items: start;
     }
 
-    .hero-inner { display: block; }
-    .hero-text { padding: 24px 26px 24px; }
+    .card {
+      background: var(--card-bg);
+      border-radius: 22px;
+      border: 1px solid var(--border-soft);
+      padding: 20px 22px;
+      box-shadow: var(--shadow-soft);
+    }
 
     .pill {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      padding: 4px 10px;
-      border-radius: 999px;
       background: var(--accent-soft);
       color: var(--accent);
+      padding: 5px 12px;
+      border-radius: 999px;
       font-size: 11px;
-      font-weight: 500;
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-    }
-
-    .hero-text h1 {
-      margin: 10px 0 8px;
-      font-size: clamp(24px, 3.2vw, 30px);
-    }
-
-    .hero-text p { margin: 0; font-size: 14px; color: var(--text-soft); max-width: 520px; }
-
-    .hero-highlight {
+      font-weight: 600;
+      margin-bottom: 10px;
       display: inline-block;
-      margin-top: 14px;
-      padding: 10px 12px;
-      border-radius: 12px;
-      background: #ffffff;
-      border: 1px dashed var(--border-soft);
-      font-size: 13px;
-      color: #4A4A4A;
-      max-width: 100%;
-      line-height: 1.45;
     }
 
-    .hero-meta {
-      margin-top: 14px;
+    h1 { font-size: 26px; margin-bottom: 0; }
+    .subtitle { color: var(--text-soft); margin-top: 4px; }
+
+    .chips { margin-top: 12px; }
+    .chip {
+      padding: 6px 12px;
+      background: rgba(198,169,119,0.10);
+      border-radius: 999px;
+      font-size: 12px;
+      margin-right: 6px;
+      margin-bottom: 6px;
+      display: inline-block;
+    }
+
+    /* CARROUSEL */
+    .carousel {
+      position: relative;
+      width: 100%;
+      overflow: hidden;
+      border-radius: 16px;
+      background: #00000008;
+      margin: 20px 0;
+    }
+
+    .carousel-track {
       display: flex;
-      flex-wrap: wrap;
+      width: 100%;
+      transition: transform 0.35s ease;
+    }
+
+    .carousel img {
+      flex: 0 0 100%;
+      width: 100%;
+      height: auto;
+      object-fit: cover;
+      background: #00000008;
+      cursor: pointer;
+    }
+
+    .carousel-btn {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: rgba(255,255,255,0.75);
+      border: none;
+      font-size: 22px;
+      padding: 6px 12px;
+      border-radius: 999px;
+      cursor: pointer;
+    }
+
+    .carousel-btn.prev { left: 10px; }
+    .carousel-btn.next { right: 10px; }
+
+    /* GRID */
+    .grid-two {
+      display: grid;
+      grid-template-columns: repeat(2,1fr);
       gap: 12px;
+      font-size: 14px;
+      margin-top: 20px;
+    }
+
+    .grid-two span {
+      display: block;
       font-size: 12px;
       color: var(--text-soft);
     }
 
-    .hero-meta span {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-    }
-
-    .hero-meta-dot {
-      width: 3px;
-      height: 3px;
-      border-radius: 999px;
-      background: var(--text-soft);
-    }
-
-    .section-title {
-      margin: 18px 0 10px;
-      font-size: 18px;
-      border-left: 4px solid var(--accent);
-      padding-left: 10px;
-    }
-
-    .section-sub {
-      margin: 0 0 16px;
-      font-size: 13px;
-      color: var(--text-soft);
-      max-width: 650px;
-    }
-
-    .properties-grid {
+    /* FORMULAIRE */
+    .form-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-      gap: 18px;
-      margin-bottom: 34px;
-    }
-
-    .property-card {
-      background: var(--card-bg);
-      border-radius: 18px;
-      border: 1px solid var(--border-soft);
-      box-shadow: 0 14px 35px rgba(25,25,25,0.06);
-      overflow: hidden;
-      display: flex;
-      flex-direction: column;
-      min-height: 250px;
-    }
-
-    .property-cover {
-      position: relative;
-      aspect-ratio: 4/3;
-      overflow: hidden;
-    }
-
-    .property-cover img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
-
-    .property-tag {
-      position: absolute;
-      top: 10px;
-      right: 10px;
-      background: rgba(255,255,255,0.9);
-      color: #4A4A4A;
-      font-size: 11px;
-      padding: 4px 10px;
-      border-radius: 999px;
-      border: 1px solid var(--border-soft);
-    }
-
-    .property-body {
-      padding: 14px 14px 16px;
-      display: flex;
-      flex-direction: column;
-      gap: 6px;
-      flex: 1;
-    }
-
-    .property-title { margin: 0; font-size: 16px; }
-    .property-location { font-size: 12px; color: var(--text-soft); }
-
-    .property-meta {
-      margin-top: 4px;
-      display: flex;
-      flex-wrap: wrap;
-      gap: 6px;
-      font-size: 11px;
-      color: #4A4A4A;
-    }
-
-    .property-meta span {
-      padding: 3px 8px;
-      border-radius: 999px;
-      background: var(--accent-soft-strong);
-    }
-
-    .property-footer {
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
       margin-top: 14px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      gap: 8px;
-      font-size: 11px;
-      color: var(--text-soft);
-      text-align: center;
     }
+
+    input, select {
+      width: 100%;
+      padding: 10px 12px;
+      border-radius: 12px;
+      border: 1px solid var(--border-soft);
+      background: #fafafa;
+      font-size: 14px;
+    }
+
+    label { font-size: 13px; margin-bottom: 4px; display: block; }
 
     .btn {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 6px;
+      grid-column: span 2;
+      margin-top: 6px;
       background: linear-gradient(135deg, #fbe4b9, #f3c98b);
       color: #7a5a29;
-      padding: 8px 14px;
+      padding: 12px 16px;
       border-radius: 999px;
-      font-size: 13px;
+      font-size: 15px;
       font-weight: 600;
-      text-decoration: none;
       border: none;
       cursor: pointer;
-      white-space: nowrap;
     }
 
-    .btn:hover { filter: brightness(1.03); }
+    .btn-retour {
+      display: inline-block;
+      margin: 10px 0 18px;
+      padding: 6px 12px;
+      font-size: 13px;
+      font-weight: 500;
+      color: #7a5a29;
+      text-decoration: none;
+      border-radius: 10px;
+      border: 1px solid rgba(198,169,119,0.35);
+      background: rgba(198,169,119,0.10);
+    }
 
-    .contact-block {
+    /* CONTACT (ancien bloc) */
+    .contact-card {
+      margin-top: 18px;
       display: flex;
-      gap: 18px;
-      align-items: center;
-      background: #ffffff;
-      border-radius: 20px;
-      padding: 16px 18px;
-      border: 1px solid var(--border-soft);
-      box-shadow: 0 18px 40px rgba(25, 25, 25, 0.08);
-
-      max-width: 960px;          /* 🔴 IDENTIQUE AU HEADER */
-      margin: 16px auto 0;       /* 🔴 centrage IDENTIQUE */
+      gap: 10px;
+      border-top: 1px solid var(--border-soft);
+      padding-top: 12px;
     }
 
     .contact-photo {
-      width: 90px;
-      height: 90px;
-      border-radius: 50%;
-      overflow: hidden;          /* 🔴 CLÉ ABSOLUE */
-      border: 2px solid #e5e7eb;
-      flex-shrink: 0;
-    }
-
-    .contact-photo img {
-      width: 100%;
-      height: 100%;
+      width: 52px;
+      height: 52px;
+      border-radius: 999px;
       object-fit: cover;
       object-position: top center;
-      display: block;
+      border: 1px solid #e5e7eb;
     }
 
-    .contact-text h3 { margin: 0 0 4px; font-size: 17px; }
-    .contact-text p { margin: 0; font-size: 13px; color: var(--text-soft); }
-
     .contact-links {
-      margin-top: 8px;
+      margin-top: 6px;
       display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      font-size: 13px;
+      gap: 8px;
+      font-size: 12px;
     }
 
     .contact-links a {
-      color: var(--accent);
+      color: #C6AA77;
+      font-size: 12px;
+      font-weight: 500;
       text-decoration: none;
     }
 
-    .contact-links a:hover { text-decoration: underline; }
-
-    .legal-footer {
-      margin-top: 40px;
-      padding: 18px;
-      text-align: center;
-      font-size: 11.5px;
-      color: var(--text-soft);
-      opacity: 0.75;
+    /* LIGHTBOX */
+    .lightbox {
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.85);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 9999;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.25s ease;
     }
 
+    .lightbox.active { opacity: 1; pointer-events: auto; }
+
+    .lightbox img {
+      max-width: 90%;
+      max-height: 90vh;
+      border-radius: 12px;
+      box-shadow: 0 0 40px rgba(0,0,0,0.45);
+    }
+
+    .lightbox-prev,
+    .lightbox-next {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      color: white;
+      font-size: 46px;
+      cursor: pointer;
+      padding: 18px 24px;
+      background: rgba(0,0,0,0.35);
+      border-radius: 999px;
+    }
+
+    .lightbox-prev { left: 40px; }
+    .lightbox-next { right: 40px; }
+
+    .lightbox-close {
+      position: absolute;
+      top: 30px;
+      right: 40px;
+      color: white;
+      font-size: 52px;
+      cursor: pointer;
+      padding: 8px 16px;
+      background: rgba(0,0,0,0.35);
+      border-radius: 999px;
+    }
+
+    /* ===== BLOC RÉSEAUX SOCIAUX ===== */
+
+    /* Wrapper full width pour centrage écran */
+    .social-full {
+      width: 100vw;
+      margin-left: calc(-50vw + 50%);
+      display: flex;
+      justify-content: center;
+      margin-top: 32px;
+    }
+
+    /* Bloc visuel */
     .social-block {
       width: fit-content;
       margin: 0 auto 8px;
@@ -338,6 +320,7 @@
       padding: 14px 16px;
     }
 
+    /* Conteneur icônes */
     .social-icons {
       display: flex;
       gap: 10px;
@@ -346,6 +329,7 @@
       justify-content: center;
     }
 
+    /* Boutons */
     .social-icons a {
       width: 42px;
       height: 42px;
@@ -358,287 +342,501 @@
       text-decoration: none;
     }
 
+    /* Hover */
     .social-icons a:hover {
       transform: translateY(-1px);
       filter: brightness(1.02);
     }
 
+    /* Icônes SVG */
     .social-icons svg {
       width: 20px;
       height: 20px;
     }
 
-    @media (max-width: 880px) {
-    header {
-      flex-direction: column;
-      align-items: center;
+    /* ===== AJOUTS / MODIFS DEMANDÉES ===== */
+
+    /* Séparateur luxe */
+    .luxury-divider {
+      width: 100%;
+      height: 1px;
+      margin: 40px 0;
+      background: linear-gradient(
+        to right,
+        transparent,
+        rgba(180, 160, 120, 0.6),
+        transparent
+      );
     }
 
-    .contact-block {
-      flex-direction: column;
-      align-items: center;
+    /* Boutons sur toute la largeur */
+    .form-grid + .btn,
+    .avis-section .btn {
+      width: 100%;
+      display: block;
+      text-align: center;
+      margin: 16px auto 0;
+    }
+
+    /* Permet à <a class="btn"> de se comporter comme un bouton */
+    a.btn {
+      display: block;
+      text-decoration: none;
+    }
+
+    /* Centrer les 3 titres du bloc avis uniquement */
+    .card-avis-global h2 {
       text-align: center;
     }
 
-    .contact-links {
-      justify-content: center;   /* CENTRAGE UNIQUEMENT SUR MOBILE */
-      width: 100%;               /* permet le centrage optimal */
+    /* Textarea (points + / -) */
+    textarea {
+      width: 100%;
+      padding: 10px 12px;
+      border-radius: 12px;
+      border: 1px solid var(--border-soft);
+      background: #fafafa;
+      font-size: 14px;
+      resize: vertical;
     }
-  }
 
+    /* Surbrillance noire si champ manquant */
+    input.error,
+    select.error,
+    textarea.error {
+      border: 2px solid #191919;
+      background: #fff;
+    }
+
+    /* ===== BLOC CONTACT (comme ta page espace client) ===== */
+    .contact-block {
+      display: flex;
+      gap: 18px;
+      align-items: center;
+      background: #ffffff;
+      border-radius: 20px;
+      padding: 16px 18px;
+      border: 1px solid var(--border-soft);
+      box-shadow: 0 18px 40px rgba(25, 25, 25, 0.08);
+      max-width: 960px;
+      margin: 16px auto 0;
+    }
+
+    .contact-block .contact-photo {
+      width: 90px;
+      height: 90px;
+      border-radius: 50%;
+      overflow: hidden;
+      border: 2px solid #e5e7eb;
+      flex-shrink: 0;
+      object-fit: unset;
+    }
+
+    .contact-block .contact-photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: top center;
+      display: block;
+    }
+
+    .contact-text h3 { margin: 0 0 4px; font-size: 17px; }
+    .contact-text p { margin: 0; font-size: 13px; color: var(--text-soft); }
+
+    .contact-block .contact-links {
+      margin-top: 8px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      font-size: 13px;
+    }
+
+    .contact-block .contact-links a {
+      color: var(--accent);
+      text-decoration: none;
+      font-size: 13px;
+      font-weight: 500;
+    }
+
+    .contact-block .contact-links a:hover { text-decoration: underline; }
+
+    /* RESPONSIVE */
+    @media (max-width: 1024px) {
+      .layout { grid-template-columns: 1fr; }
+    }
+
+    @media (max-width: 768px) {
+      .page { padding: 16px 12px 40px; }
+
+      header {
+        flex-direction: column;
+        padding: 14px;
+        border-radius: 22px;
+      }
+
+      .carousel { height: auto; aspect-ratio: unset; }
+      .carousel img { height: 100%; }
+
+      .grid-two { grid-template-columns: 1fr; font-size: 13px; }
+
+      .form-grid { grid-template-columns: 1fr; }
+      .form-grid > div { min-width: 0; }
+
+      label { white-space: normal; display: block; }
+
+      input, select, textarea {
+        width: 100%;
+        max-width: 100%;
+      }
+
+      .btn {
+        font-size: 14px;
+        grid-column: 1 / -1;
+      }
+
+      .contact-card {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+      }
+
+      .contact-links {
+        justify-content: center;
+      }
+
+      .contact-block {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+      }
+
+      .contact-block .contact-links {
+        justify-content: center;
+        width: 100%;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .carousel { aspect-ratio: unset; }
+      .lightbox-prev, .lightbox-next { font-size: 32px; }
+      .lightbox-close { font-size: 40px; }
+    }
+
+    .legal-footer {
+      margin-top: 40px;
+      padding: 18px;
+      text-align: center;
+      font-size: 11.5px;
+      color: var(--text-soft);
+      opacity: 0.8;
+    }
   </style>
+
+  <script>
+    /* Validation générique : surbrillance noire si champ vide */
+    function validateRequiredFields(fields) {
+      let hasError = false;
+
+      fields.forEach((f) => {
+        if (!f) return;
+        f.classList.remove("error");
+      });
+
+      fields.forEach((f) => {
+        if (!f) return;
+        if (!String(f.value || "").trim()) {
+          f.classList.add("error");
+          hasError = true;
+        }
+      });
+
+      return !hasError;
+    }
+
+    /* 1) Avis sur la visite (SANS EMAIL) */
+    function sendAvisVisite() {
+      const bien = "Eliot - Appartement T3";
+
+      const prenom = document.getElementById("avis_prenom");
+      const nom = document.getElementById("avis_nom");
+      const estimation = document.getElementById("avis_estimation");
+      const plus = document.getElementById("avis_plus");
+      const moins = document.getElementById("avis_moins");
+      const offre = document.getElementById("avis_offre");
+
+      const ok = validateRequiredFields([prenom, nom, estimation, plus, moins, offre]);
+      if (!ok) return;
+
+      const subject = encodeURIComponent("Avis visite - " + bien);
+      const body = encodeURIComponent(
+        "Bonjour,\n\n" +
+        "Voici mon retour suite à la visite du bien : " + bien + "\n\n" +
+        "Prénom : " + prenom.value + "\n" +
+        "Nom : " + nom.value + "\n\n" +
+        "Mon estimation du prix : " + estimation.value + " €\n\n" +
+        "Points positifs :\n" + plus.value + "\n\n" +
+        "Points négatifs :\n" + moins.value + "\n\n" +
+        "Souhaite faire une offre : " + offre.value + "\n\n" +
+        "Cordialement,\n"
+      );
+
+      window.location.href =
+        "mailto:contact@jeremyheyob.fr?subject=" + subject + "&body=" + body;
+    }
+
+    /* 2) Contre-visite (AVEC EMAIL) */
+    function sendContreVisite() {
+      const bien = "Eliot - Appartement T3";
+
+      const prenom = document.getElementById("cv_prenom");
+      const nom = document.getElementById("cv_nom");
+      const tel = document.getElementById("cv_telephone");
+      const email = document.getElementById("cv_email");
+      const date = document.getElementById("cv_date");
+      const creneau = document.getElementById("cv_creneau");
+
+      const ok = validateRequiredFields([prenom, nom, tel, email, date, creneau]);
+      if (!ok) return;
+
+      const subject = encodeURIComponent("Demande de contre-visite - " + bien);
+      const body = encodeURIComponent(
+        "Bonjour,\n\n" +
+        "Je souhaite programmer une contre-visite pour le bien : " + bien + ".\n\n" +
+        "Prénom : " + prenom.value + "\n" +
+        "Nom : " + nom.value + "\n" +
+        "Téléphone : " + tel.value + "\n" +
+        "Email : " + email.value + "\n\n" +
+        "Date souhaitée : " + date.value + "\n" +
+        "Créneau souhaité : " + creneau.value + "\n\n" +
+        "Je vous remercie par avance pour votre retour.\n\n" +
+        "Cordialement,\n"
+      );
+
+      window.location.href =
+        "mailto:contact@jeremyheyob.fr?subject=" + subject + "&body=" + body;
+    }
+  </script>
 </head>
 
 <body>
-  <div class="page">
+<div class="page">
 
-    <header>
-      <div class="header-left">
-        <img src="/images/logo.webp" alt="Logo Jérémy Heyob" class="logo">
+  <header>
+    <img src="/images/logo.webp" class="logo" alt="">
+    <div class="header-center">
+      <div class="tagline-main">
+        VOS PROJETS IMMOBILIERS N'ONT JAMAIS ÉTÉ AUSSI SIMPLES !
+      </div>
+      <div class="tagline-sub"><strong>JÉRÉMY HEYOB</strong></div>
+    </div>
+  </header>
+
+  <a href="/accueil-visite.html" class="btn-retour">← Retour</a>
+
+  <main class="layout">
+
+    <!-- CARTE GAUCHE -->
+    <section class="card">
+      <div class="pill">Informations du bien</div>
+
+      <h1>Eliot</h1>
+      <p class="subtitle">
+        Appartement T3, sécurisé, nombreux rangements et grand extérieur.
+      </p>
+
+      <div class="chips">
+        <span class="chip">T3</span>
+        <span class="chip">54 m²</span>
+        <span class="chip">18 m² extérieur</span>
+        <span class="chip">Étage : Rez-de-jardin</span>
+        <span class="chip">DPE C-C</span>
+        <span class="chip">Parking en location possible</span>
       </div>
 
-      <div class="header-center">
-        <div class="tagline-main">VOS PROJETS IMMOBILIERS N'ONT JAMAIS ÉTÉ AUSSI SIMPLES !</div>
-        <div class="tagline-sub"><strong>Jérémy HEYOB</strong></div>
+      <!-- CARROUSEL -->
+      <div class="carousel">
+        <div class="carousel-track">
+          <img src="/bien-visite/eliot/photos/eliot 1.webp" alt="">
+          <img src="/bien-visite/eliot/photos/eliot 2.webp" loading="lazy" alt="">
+          <img src="/bien-visite/eliot/photos/eliot 3.webp" loading="lazy" alt="">
+          <img src="/bien-visite/eliot/photos/eliot 4.webp" loading="lazy" alt="">
+          <img src="/bien-visite/eliot/photos/eliot 5.webp" loading="lazy" alt="">
+        </div>
+
+        <button class="carousel-btn prev" type="button">‹</button>
+        <button class="carousel-btn next" type="button">›</button>
       </div>
 
-      <nav></nav>
-    </header>
-
-    <section class="hero">
-      <div class="hero-inner">
-        <div class="hero-text">
-
-          <div class="pill">Espace d'accès aux informations</div>
-
-          <h1>Retrouvez toutes les informations des biens que vous avez visités.</h1>
-
-          <p>
-            Après votre visite, cette page vous permet d'accéder à la fiche détaillée du bien, à la vidéo de présentation
-            et à l'ensemble des documents associés (diagnostics, plans…).
-            Vous pouvez également y programmer une contre-visite.
-          </p>
-
-          <div class="hero-highlight">
-            Conseil : partagez ce lien avec vos proches pour revoir le bien à tête reposée
-            et comparer sereinement avec d'autres projets.
-          </div>
-
-          <div class="hero-meta">
-            <span><span class="hero-meta-dot"></span> Accès 24/7 aux informations des biens</span>
-            <span><span class="hero-meta-dot"></span> Informations centralisées</span>
-            <span><span class="hero-meta-dot"></span> Contre-visites simplifiées</span>
-          </div>
-
-        </div>
+      <!-- INFOS -->
+      <div class="grid-two">
+        <div><span>Type</span>Appartement T3</div>
+        <div><span>Prix</span>190 000 €</div>
+        <div><span>Ville</span>Saint-Priest</div>
+        <div><span>Secteur</span>Centre-Ville</div>
+        <div><span>Année</span>2018</div>
+        <div><span>Étage</span>Rez-de-jardin sur 5</div>
+        <div><span>DPE</span>C-C</div>
+        <div><span>Surface</span>54 m² int. / 18 m² ext.</div>
+        <div><span>Garage / parking</span>Parking en location possible</div>
+        <div><span>Chauffage</span>Gaz collectif</div>
+        <div><span>Charges</span>156 €/mois (chauffage, eau chaude, entretiens parties communes, ascenseur, charges garage)</div>
+        <div><span>Taxe foncière</span>845 €/an</div>
+        <div><span>À proximité</span>Écoles, commerces, Tram T2, C25</div>
+        <div><span>Points forts</span>Sécurisé, nombreux rangements, grand extérieur</div>
       </div>
-    </section>
 
-    <h2 class="section-title">Sélection de biens</h2>
+      <!-- VIDEO -->
+      <h2 style="margin-top:20px;">Vidéo de présentation</h2>
+      <a href="https://youtu.be/6Tc7e8RrH_Y"
+         target="_blank"
+         rel="noopener"
+         style="color:#1a73e8;font-size:15px;text-decoration:underline;">
+        Voir la vidéo de présentation du bien →
+      </a>
 
-    <p class="section-sub">
-      Choisissez le bien qui vous concerne pour accéder à sa page dédiée, retrouver la vidéo,
-      les documents officiels et demander une contre-visite si vous le souhaitez.
-    </p>
+      <!-- LIEN ANNONCE -->
+      <h2 style="margin-top:20px;">Lien de l’annonce</h2>
+      <a href="https://www.agence.immo/achat/appartement-t3-3-pieces-saint-priest-69800-VA33855"
+         target="_blank"
+         rel="noopener"
+         style="color:#1a73e8;font-size:15px;text-decoration:underline;">
+         Voir l’annonce sur le site →
+      </a>
 
-    <section class="properties-grid">
+      <!-- DOCUMENTS -->
+      <h2 style="margin-top:28px;">Documents du bien</h2>
 
-      <!-- BIEN ELIOT -->
-      <article class="property-card">
-        <div class="property-cover">
-          <img src="/bien-visite/eliot/photos/photo-accueil.webp">
-          <div class="property-tag">Appartement T3 – Rez-de-jardin</div>
-        </div>
-  
-        <div class="property-body">
-          <h3 class="property-title">Eliot</h3>
-          <div class="property-location">Saint-Priest - Secteur Centre-Ville</div>
-
-          <div class="property-meta">
-            <span>T3</span>
-            <span>≈ 54 m²</span>
-            <span>Extérieur ≈ 18 m²</span>
-            <span>Année 2018</span>
-          </div>
-
-          <div class="property-footer">
-            <a href="/bien-visite/eliot/bien-Eliot.html" class="btn">Voir les informations du bien</a>
-          </div>
-         </div>
-      </article>
-
-      <!-- BIEN LUCAS -->
-      <article class="property-card">
-        <div class="property-cover">
-          <img src="/bien-visite/lucas/photos/photo-accueil.webp">
-          <div class="property-tag">Appartement T4 – 3ème étage</div>
-        </div>
-
-        <div class="property-body">
-          <h3 class="property-title">Lucas</h3>
-          <div class="property-location">Saint-Priest - Secteur Centre-Ville</div>
-
-          <div class="property-meta">
-            <span>T4</span>
-            <span>≈ 82 m²</span>
-            <span>Extérieur ≈ 14 m²</span>
-            <span>Année 2018</span>
-          </div>
-
-          <div class="property-footer">
-            <a href="/bien-visite/lucas/bien-Lucas.html" class="btn">Voir les informations du bien</a>
-          </div>
-        </div>
-      </article>
-
-      <!-- BIEN LEA -->
-      <article class="property-card">
-        <div class="property-cover">
-          <img src="/bien-visite/lea/photos/photo-accueil.webp">
-          <div class="property-tag">Appartement T4 – Rez-de-jardin</div>
-        </div>
-
-        <div class="property-body">
-          <h3 class="property-title">Léa</h3>
-          <div class="property-location">Saint-Priest - Secteur Centre-Ville</div>
-
-          <div class="property-meta">
-            <span>T4</span>
-            <span>≈ 74 m²</span>
-            <span>Extérieur ≈ 110 m²</span>
-            <span>Année 2015</span>
-          </div>
-
-          <div class="property-footer">
-            <a href="/bien-visite/lea/bien-Lea.html" class="btn">Voir les informations du bien</a>
-          </div>
-        </div>
-      </article>
-
-      <!-- BIEN NAEL -->
-      <article class="property-card">
-        <div class="property-cover">
-          <img src="/bien-visite/nael/photos/photo-accueil.webp">
-          <div class="property-tag">Appartement T3 – 1er étage</div>
-        </div>
-
-        <div class="property-body">
-          <h3 class="property-title">Naël</h3>
-          <div class="property-location">Saint-Priest - Secteur Centre-Ville</div>
-
-          <div class="property-meta">
-            <span>T3</span>
-            <span>≈ 72 m²</span>
-            <span>Extérieur ≈ 8 m²</span>
-            <span>Année 2017</span>
-          </div>
-
-          <div class="property-footer">
-            <a href="/bien-visite/nael/bien-Nael.html" class="btn">Voir les informations du bien</a>
-          </div>
-        </div>
-      </article>
-      
-      <!-- BIEN ESTRELLA -->
-      <article class="property-card">
-        <div class="property-cover">
-          <img src="/bien-visite/estrella/photos/photo-accueil.webp">
-          <div class="property-tag">Maison T7 – 2 niveaux</div>
-        </div>
-
-        <div class="property-body">
-          <h3 class="property-title">Estrella</h3>
-          <div class="property-location">Montrottier - Secteur Centre</div>
-
-          <div class="property-meta">
-            <span>T7</span>
-            <span>≈ 190 m²</span>
-            <span>Extérieur ≈ 54 m²</span>
-            <span>Année 1835</span>
-          </div>
-
-          <div class="property-footer">
-            <a href="/bien-visite/estrella/bien-Estrella.html" class="btn">Voir les informations du bien</a>
-          </div>
-        </div>
-      </article>
+      <ul style="list-style:none;padding:0;margin:12px 0;font-size:15px;">
+        <li><a href="/bien-visite/eliot/documents/eliot-0553_carnet_entretien_2023.pdf" target="_blank" rel="noopener">Carnet d’entretien 2023 →</a></li>
+        <li><a href="/bien-visite/eliot/documents/eliot-0553_pv_ag_30_09_2024.pdf" target="_blank" rel="noopener">PV AG 30/09/2024 →</a></li>
+        <li><a href="/bien-visite/eliot/documents/eliot-0554_pv_ag_04_10_2023.pdf" target="_blank" rel="noopener">PV AG 04/10/2023 →</a></li>
+        <li><a href="/bien-visite/eliot/documents/eliot-0554_pv_ag_29_11_2022.pdf" target="_blank" rel="noopener">PV AG 29/11/2022 →</a></li>
+        <li><a href="/bien-visite/eliot/documents/eliot-carrez.pdf" target="_blank" rel="noopener">Loi Carrez →</a></li>
+        <li><a href="/bien-visite/eliot/documents/eliot-daact.pdf" target="_blank" rel="noopener">DAACT →</a></li>
+        <li><a href="/bien-visite/eliot/documents/eliot-dpe.pdf" target="_blank" rel="noopener">DPE →</a></li>
+        <li><a href="/bien-visite/eliot/documents/eliot-info_copro.pdf" target="_blank" rel="noopener">Info copropriété →</a></li>
+        <li><a href="/bien-visite/eliot/documents/eliot-non_opposition.pdf" target="_blank" rel="noopener">Non opposition →</a></li>
+        <li><a href="/bien-visite/eliot/documents/eliot-permis_de_construire.pdf" target="_blank" rel="noopener">Permis de construire →</a></li>
+        <li><a href="/bien-visite/eliot/documents/eliot-permis_de_construire_2.pdf" target="_blank" rel="noopener">Permis de construire 2 →</a></li>
+        <li><a href="/bien-visite/eliot/documents/eliot-0553_doe_niveau_0_bat_a.pdf" target="_blank" rel="noopener">Plan Niveau 0 Bât A →</a></li>
+        <li><a href="/bien-visite/eliot/documents/eliot-plan_cadastrale.pdf" target="_blank" rel="noopener">Plan cadastral →</a></li>
+        <li><a href="/bien-visite/eliot/documents/eliot-pv_livraison_des_parties_communes.pdf" target="_blank" rel="noopener">PV livraison des parties communes →</a></li>
+        <li><a href="/bien-visite/eliot/documents/eliot-rcp.pdf" target="_blank" rel="noopener">RCP →</a></li>
+        <li><a href="/bien-visite/eliot/documents/eliot-rfct_2019_11_12_sans_reserve_.pdf" target="_blank" rel="noopener">RFCT 2019 →</a></li>
+        <li><a href="/bien-visite/eliot/documents/eliot-statuts_association.pdf" target="_blank" rel="noopener">Statuts association →</a></li>
+        <li><a href="/bien-visite/eliot/documents/eliot-urbanisme.pdf" target="_blank" rel="noopener">Urbanisme →</a></li>
+        <li><a href="/bien-visite/eliot/documents/eliot-urbanisme_2.pdf" target="_blank" rel="noopener">Urbanisme 2 →</a></li>
+      </ul>
 
     </section>
 
-    <!-- NOUVEAU BLOC : BIENS SOUS COMPROMIS -->
-    <h2 class="section-title">Biens sous compromis</h2>
+    <!-- PARCOURS AVIS & CONTRE-VISITE -->
+    <aside class="card card-avis-global">
 
-    <p class="section-sub">
-      Ces biens sont actuellement sous compromis. L’accès à leurs informations détaillées est temporairement inaccessible.
-    </p>
+      <!-- SECTION 1 : AVIS SUR LA VISITE -->
+      <section class="avis-section">
+        <h2>Votre avis sur cette visite</h2>
+        <p class="subtitle">
+          Votre retour est essentiel pour me permettre d’avancer efficacement sur ce bien et de mieux comprendre votre recherche.
+          Il m’aide à affiner les prochaines propositions et à vous orienter vers des biens réellement adaptés à vos attentes.
+        </p>
 
-    <section class="properties-grid">
+        <div class="form-grid">
+          <div><label>Votre prénom</label><input id="avis_prenom" type="text"></div>
+          <div><label>Votre nom</label><input id="avis_nom" type="text"></div>
 
-            <!-- BIEN ROMY -->
-      <article class="property-card">
-        <div class="property-cover">
-          <img src="/bien-visite/romy/photos/photo-accueil.webp">
-          <div class="property-tag">Appartement T3 – 3ème étage</div>
-        </div>
+          <div style="grid-column: 1 / -1;">
+            <label>Votre estimation du prix (€)</label>
+            <input
+              id="avis_estimation"
+              type="text"
+              inputmode="numeric"
+              pattern="[0-9]*"
+              placeholder="Ex : 185000">
+          </div>
 
-        <div class="property-body">
-          <h3 class="property-title">Romy</h3>
-          <div class="property-location">Saint-Priest - Secteur Centre-Ville</div>
+          <div style="grid-column: 1 / -1;">
+            <label>Points positifs du bien</label>
+            <textarea id="avis_plus" rows="3"></textarea>
+          </div>
 
-          <div class="property-meta">
-            <span>T3</span>
-            <span>≈ 60 m²</span>
-            <span>Extérieur ≈ 8,39 m²</span>
-            <span>Année 2019</span>
+          <div style="grid-column: 1 / -1;">
+            <label>Points négatifs du bien</label>
+            <textarea id="avis_moins" rows="3"></textarea>
+          </div>
+
+          <div style="grid-column: 1 / -1;">
+            <label>Souhaitez-vous faire une offre sur ce bien ?</label>
+            <select id="avis_offre">
+              <option value="">-- Choisir --</option>
+              <option value="Oui">Oui</option>
+              <option value="Non">Non</option>
+              <option value="Je souhaite réfléchir">Je souhaite réfléchir</option>
+            </select>
           </div>
         </div>
-      </article>
-      
-    <!-- BIEN ISAC -->
-      <article class="property-card">
-        <div class="property-cover">
-          <img src="/bien-visite/isac/photos/photo-accueil.webp">
-          <div class="property-tag">Appartement T3 – 1er étage</div>
-        </div>
-  
-        <div class="property-body">
-          <h3 class="property-title">Isac</h3>
-          <div class="property-location">Saint-Priest - Secteur Centre-Ville</div>
 
-          <div class="property-meta">
-            <span>T3</span>
-            <span>≈ 62 m²</span>
-            <span>Extérieur ≈ 7 m²</span>
-            <span>Année 2019</span>
+        <button class="btn" type="button" onclick="sendAvisVisite()">Valider mon avis</button>
+      </section>
+
+      <div class="luxury-divider"></div>
+
+      <!-- SECTION 2 : AVIS ACCOMPAGNEMENT -->
+      <section class="avis-section">
+        <h2>Votre retour sur mon accompagnement</h2>
+        <p class="subtitle">
+          Votre avis est précieux. Partagez votre expérience et contribuez à renforcer la qualité de mon accompagnement.
+        </p>
+
+        <a class="btn" href="https://g.page/r/CTwjb6DmOEMGEB0/review" target="_blank" rel="noopener">
+          Déposer un avis sur Google
+        </a>
+      </section>
+
+      <div class="luxury-divider"></div>
+
+      <!-- SECTION 3 : CONTRE-VISITE -->
+      <section class="avis-section">
+        <h2>Programmer une contre-visite</h2>
+        <p class="subtitle">
+          Si ce bien suscite votre intérêt, indiquez vos disponibilités afin d’organiser une nouvelle visite dans les meilleures conditions.
+        </p>
+
+        <div class="form-grid">
+          <div><label>Votre prénom</label><input id="cv_prenom" type="text"></div>
+          <div><label>Votre nom</label><input id="cv_nom" type="text"></div>
+          <div><label>Votre téléphone</label><input id="cv_telephone" type="tel"></div>
+          <div><label>Votre email</label><input id="cv_email" type="email"></div>
+          <div><label>Date souhaitée</label><input id="cv_date" type="date"></div>
+          <div>
+            <label>Créneau souhaité</label>
+            <select id="cv_creneau">
+              <option value="">-- Choisir --</option>
+              <option>09:00 - 10:00</option>
+              <option>10:00 - 11:00</option>
+              <option>11:00 - 12:00</option>
+              <option>14:00 - 15:00</option>
+              <option>15:00 - 16:00</option>
+              <option>16:00 - 17:00</option>
+              <option>17:00 - 18:00</option>
+              <option>18:00 - 19:00</option>
+              <option>19:00 - 20:00</option>
+            </select>
           </div>
-         </div>
-      </article>
-
-      <!-- BIEN EVA -->
-      <article class="property-card">
-        <div class="property-cover">
-          <img src="/bien-visite/eva/photos/photo-accueil.webp">
-          <div class="property-tag">Maison T4 – 1 niveau</div>
         </div>
 
-        <div class="property-body">
-          <h3 class="property-title">Eva</h3>
-          <div class="property-location">Vénissieux - Secteur Parilly-Jules Guesde</div>
+        <button class="btn" type="button" onclick="sendContreVisite()">Valider ma demande</button>
+      </section>
 
-          <div class="property-meta">
-            <span>T4</span>
-            <span>≈ 86 m²</span>
-            <span>Extérieur ≈ 50 m²</span>
-            <span>Année 2019</span>
-          </div>
-        </div>
-      </article>
-    </section> <!-- FIN DU GRID SOUS COMPROMIS -->
+    </aside>
 
-     <!-- RÉSEAUX (un seul bloc, logos) -->
+  </main>
+
+  <!-- ===== RÉSEAUX SOCIAUX (CENTRÉ ÉCRAN) ===== -->
+  <div class="social-full">
     <section class="social-block" aria-label="Réseaux sociaux">
-
       <div class="social-icons">
+
         <!-- Google -->
         <a href="https://goo.gl/maps/wjfc1aGFBrSLd3tV6" target="_blank" rel="noopener" aria-label="Google">
           <svg viewBox="0 0 24 24" fill="none" stroke="#7a5a29" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -651,7 +849,9 @@
         <a href="https://www.pagesjaunes.fr/pros/62191780" target="_blank" rel="noopener" aria-label="Pages Jaunes">
           <svg viewBox="0 0 24 24" fill="none" stroke="#7a5a29" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
             <path d="M6 3h9a3 3 0 0 1 3 3v12a3 3 0 0 1-3 3H6a3 3 0 0 1-3-3V6a3 3 0 0 1 3-3z"></path>
-            <path d="M8 8h8"></path><path d="M8 12h8"></path><path d="M8 16h6"></path>
+            <path d="M8 8h8"></path>
+            <path d="M8 12h8"></path>
+            <path d="M8 16h6"></path>
           </svg>
         </a>
 
@@ -695,37 +895,109 @@
             <path d="M14 7a6 6 0 0 0 6 2"></path>
           </svg>
         </a>
+
       </div>
     </section>
-    
-    <section class="contact-block">
-      <div class="contact-photo">
-        <img src="/images/photo.webp" alt="Photo de Jérémy Heyob">
-      </div>
-
-      <div class="contact-text">
-        <h3>Une question sur l'un de ces biens ?</h3>
-
-        <p>
-          Je reste disponible pour vous apporter des précisions,
-          vous envoyer des documents complémentaires ou organiser
-          une contre-visite sur les créneaux qui vous conviennent.
-        </p>
-
-        <div class="contact-links">
-          <a href="mailto:contact@jeremyheyob.fr">✉️ Email</a>
-          <a href="sms:+33648145565">💬 SMS</a>
-          <a href="tel:+33648145565">📞 Appel</a>
-          <a href="https://www.jeremyheyob.fr" target="_blank">💻 Site</a>
-        </div>
-      </div>
-    </section>
-
-    <footer class="legal-footer">
-      Les photos et documents présentés sur cette page sont la propriété exclusive de <strong>Jérémy HEYOB Immobilier</strong>.<br>
-      Toute reproduction, diffusion ou utilisation est strictement interdite sans autorisation préalable.
-    </footer>
-
   </div>
+
+  <!-- ===== BLOC CONTACT (AJOUTÉ AU MÊME ENDROIT QUE TON AUTRE PAGE) ===== -->
+  <section class="contact-block">
+    <div class="contact-photo">
+      <img src="/images/photo.webp" alt="Photo de Jérémy Heyob">
+    </div>
+
+    <div class="contact-text">
+      <h3>Une question sur ce bien ?</h3>
+
+      <p>
+        Je reste disponible pour vous apporter des précisions,
+        vous envoyer des documents complémentaires ou organiser
+        une contre-visite selon vos disponibilités.
+      </p>
+
+      <div class="contact-links">
+        <a href="mailto:contact@jeremyheyob.fr">✉️ Email</a>
+        <a href="sms:+33648145565">💬 SMS</a>
+        <a href="tel:+33648145565">📞 Appel</a>
+        <a href="https://www.jeremyheyob.fr" target="_blank" rel="noopener">💻 Site</a>
+      </div>
+    </div>
+  </section>
+
+  <footer class="legal-footer">
+    Les photos et documents présentés sur cette page sont la propriété exclusive de <strong>Jérémy HEYOB Immobilier</strong>.<br>
+    Toute reproduction, diffusion ou utilisation est strictement interdite sans autorisation préalable.
+  </footer>
+
+</div>
+
+<!-- LIGHTBOX -->
+<div class="lightbox" id="lightbox">
+  <span class="lightbox-close" id="lightboxClose">×</span>
+  <span class="lightbox-prev" id="lightboxPrev">‹</span>
+  <img id="lightboxImg" alt="">
+  <span class="lightbox-next" id="lightboxNext">›</span>
+</div>
+
+<script>
+  let idx = 0;
+  const track = document.querySelector('.carousel-track');
+  const slides = document.querySelectorAll('.carousel img');
+
+  document.querySelector('.next').onclick = () => {
+    idx = (idx + 1) % slides.length;
+    track.style.transform = `translateX(-${idx * 100}%)`;
+  };
+
+  document.querySelector('.prev').onclick = () => {
+    idx = (idx - 1 + slides.length) % slides.length;
+    track.style.transform = `translateX(-${idx * 100}%)`;
+  };
+
+  /* LIGHTBOX */
+  const lightbox = document.getElementById('lightbox');
+  const lightboxImg = document.getElementById('lightboxImg');
+  const btnClose = document.getElementById('lightboxClose');
+  const btnPrev = document.getElementById('lightboxPrev');
+  const btnNext = document.getElementById('lightboxNext');
+
+  let currentSlide = 0;
+
+  slides.forEach((img, i) => {
+    img.addEventListener('click', () => {
+      currentSlide = i;
+      openLightbox();
+    });
+  });
+
+  function openLightbox() {
+    lightboxImg.src = slides[currentSlide].src;
+    lightbox.classList.add('active');
+  }
+
+  btnClose.onclick = () => lightbox.classList.remove('active');
+
+  lightbox.onclick = (e) => {
+    if (e.target === lightbox) lightbox.classList.remove('active');
+  };
+
+  btnPrev.onclick = () => {
+    currentSlide = (currentSlide - 1 + slides.length) % slides.length;
+    openLightbox();
+  };
+
+  btnNext.onclick = () => {
+    currentSlide = (currentSlide + 1) % slides.length;
+    openLightbox();
+  };
+
+  document.addEventListener('keydown', (e) => {
+    if (!lightbox.classList.contains('active')) return;
+    if (e.key === 'ArrowRight') btnNext.onclick();
+    if (e.key === 'ArrowLeft') btnPrev.onclick();
+    if (e.key === 'Escape') btnClose.onclick();
+  });
+</script>
+
 </body>
 </html>
