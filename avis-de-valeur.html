@@ -638,6 +638,7 @@ function sendMail() {
   const typologie = document.getElementById("typologie");
   const date = document.getElementById("date");
   const creneau = document.getElementById("creneau");
+  const commentaire = document.getElementById("commentaire");
 
   // Vérification champs obligatoires
   if (
@@ -674,7 +675,8 @@ function sendMail() {
     "Typologie : " + typologie.value + "\n\n" +
     "Disponibilités :\n" +
     "Date souhaitée : " + date.value + "\n" +
-    "Créneau horaire : " + creneau.value + "\n\n" +
+    "Créneau horaire : " + creneau.value + "\n" +
+    "Commentaire : " + commentaire.value + "\n\n" +
     "Je vous remercie par avance pour votre retour.\n\n" +
     "Cordialement,\n" +
   );
@@ -684,6 +686,54 @@ function sendMail() {
     "mailto:contact@jeremyheyob.fr?subject=" + subject + "&body=" + body;
 }
 </script>
+  
+<script>
+function validateForm(requiredFieldsIds) {
 
+  const success = document.getElementById("success");
+  success.style.display = "none";
+
+  let hasError = false;
+
+  requiredFieldsIds.forEach(id => {
+    const field = document.getElementById(id);
+    if (!field) return;
+
+    field.classList.remove("field-error");
+
+    if (
+      (field.tagName === "INPUT" || field.tagName === "TEXTAREA") &&
+      (!field.value || !field.value.trim())
+    ) {
+      field.classList.add("field-error");
+      hasError = true;
+    }
+
+    if (field.tagName === "SELECT" && !field.value) {
+      field.classList.add("field-error");
+      hasError = true;
+    }
+  });
+
+  if (hasError) {
+    const firstError = document.querySelector(".field-error");
+    if (firstError) firstError.focus();
+    return false;
+  }
+
+  success.style.display = "block";
+  return true;
+}
+</script>
+
+<script>
+document.addEventListener("input", function (e) {
+  if (e.target.classList.contains("textarea-custom")) {
+    e.target.style.height = "auto";
+    e.target.style.height = e.target.scrollHeight + "px";
+  }
+});
+</script>
+  
 </body>
 </html>
