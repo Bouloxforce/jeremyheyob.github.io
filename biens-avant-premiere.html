@@ -566,13 +566,14 @@
     </div>
 
     <div class="full">
-      <label>Message (facultatif)</label>
+      <label>Commentaire (facultatif)</label>
       <textarea
-        id="message"
+        id="commentaire"
         class="textarea-custom"
         placeholder="Informations complémentaires (secteur, étage, extérieur, stationnement, etc.)"></textarea>
     </div>
-    
+
+    </div>
       ✅ Inscription validée. Vous serez contacté dès qu’un bien correspondra à votre recherche.
     </div>
   </div>
@@ -688,7 +689,7 @@ function sendMail() {
   const courtier = document.getElementById("courtier");
   const statut = document.getElementById("statut");
   const venteAvantAchat = document.getElementById("venteAvantAchat");
-  const message = document.getElementById("message");
+  const commentaire = document.getElementById("commentaire");
 
   const success = document.getElementById("success");
 
@@ -770,7 +771,6 @@ document.addEventListener("input", function (e) {
   }
 });
 </script>
-
 
 </body>
 </html>
