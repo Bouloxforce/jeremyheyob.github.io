@@ -588,60 +588,49 @@
 
   <!-- JS -->
   <script>
-    function sendMail() {
-      const prenom = document.getElementById("prenom");
-      const nom = document.getElementById("nom");
-      const tel = document.getElementById("tel");
-      const email = document.getElementById("email");
-      const success = document.getElementById("success");
+  function sendMail() {
+    const prenom = document.getElementById("prenom");
+    const nom = document.getElementById("nom");
+    const tel = document.getElementById("tel");
+    const email = document.getElementById("email");
+    const success = document.getElementById("success");
 
-      const fields = [prenom, nom, tel, email, adresse];
+    const fields = [prenom, nom, tel, email];
 
-      success.style.display = "none";
-      let hasError = false;
+    success.style.display = "none";
+    let hasError = false;
 
-      fields.forEach(field => {
-        field.classList.remove("field-error");
+    fields.forEach(field => {
+      field.classList.remove("field-error");
 
-        if ((field.tagName === "INPUT" || field.tagName === "TEXTAREA") && (!field.value || !field.value.trim())) {
-          field.classList.add("field-error");
-          hasError = true;
-        }
-
-        if (field.tagName === "SELECT" && !field.value) {
-          field.classList.add("field-error");
-          hasError = true;
-        }
-      });
-
-      if (hasError) {
-        const firstError = document.querySelector(".field-error");
-        if (firstError) firstError.focus();
-        return;
-      }
-
-      success.style.display = "block";
-
-      const subject = encodeURIComponent("Demande d’avis de valeur immobilier");
-      const body = encodeURIComponent(
-        "Bonjour,\n\n" +
-        "Je souhaite recevoir le guide vendeur "un cran au-dessus".\n\n" +
-        "Nom : " + prenom.value + " " + nom.value + "\n" +
-        "Téléphone : " + tel.value + "\n" +
-        "Email : " + email.value + "\n\n" +
-        "Merci.\n"
-      );
-
-      window.location.href = "mailto:contact@jeremyheyob.fr?subject=" + subject + "&body=" + body;
-    }
-
-    document.addEventListener("input", function (e) {
-      if (e.target.classList.contains("textarea-custom")) {
-        e.target.style.height = "auto";
-        e.target.style.height = e.target.scrollHeight + "px";
+      if (!field.value || !field.value.trim()) {
+        field.classList.add("field-error");
+        hasError = true;
       }
     });
-  </script>
+
+    if (hasError) {
+      const firstError = document.querySelector(".field-error");
+      if (firstError) firstError.focus();
+      return;
+    }
+
+    success.style.display = "block";
+
+    const subject = encodeURIComponent("Demande du guide vendeur – Un cran au-dessus");
+    const body = encodeURIComponent(
+      "Bonjour,\n\n" +
+      "Je souhaite recevoir le guide vendeur « Un cran au-dessus ».\n\n" +
+      "Nom : " + prenom.value + " " + nom.value + "\n" +
+      "Téléphone : " + tel.value + "\n" +
+      "Email : " + email.value + "\n\n" +
+      "Merci.\n"
+    );
+
+    window.location.href =
+      "mailto:contact@jeremyheyob.fr?subject=" + subject + "&body=" + body;
+  }
+</script>
 
 </body>
 </html>
