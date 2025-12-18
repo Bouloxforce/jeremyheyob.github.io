@@ -736,20 +736,16 @@ function sendMail() {
   const body = encodeURIComponent(
     "Bonjour,\n\n" +
     "Je souhaite m’inscrire pour recevoir par SMS les nouveaux biens en avant-première.\n\n" +
-    "Coordonnées :\n" +
     "Prénom : " + prenom.value + "\n" +
     "Nom : " + nom.value + "\n" +
     "Téléphone : " + tel.value + "\n" +
     "Email : " + email.value + "\n\n" +
-    "Recherche :\n" +
     "Ville recherchée : " + ville.value + "\n" +
     "Maison ou appartement : " + typeBien.value + "\n" +
     "Typologie : " + typologie.value + "\n" +
     "Budget maximum : " + budget.value + "\n\n" +
-    "Financement :\n" +
     "Déjà vu la banque : " + banque.value + "\n" +
     "Souhaite mise en relation courtier (gratuit) : " + courtier.value + "\n\n" +
-    "Situation :\n" +
     "Statut : " + statut.value + "\n" +
     "Besoin de vendre pour acheter : " + venteAvantAchat.value + "\n\n" +
     "Commentaire :\n" + (commentaire.value ? commentaire.value : "—") + "\n\n" +
