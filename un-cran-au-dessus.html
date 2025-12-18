@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
 
-    <!-- SEO (INDEXATION ACTIVÉE) -->
+  <!-- SEO (INDEXATION ACTIVÉE) -->
   <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -12,7 +12,6 @@
 
   <link rel="canonical" href="https://www.jeremyheyob.fr/">
 
-  <!-- Technique SEO “2” : mots-clés & sémantique (sans affichage agressif) -->
   <meta name="keywords" content="négociateur immobilier Saint-Priest, estimation Saint-Priest, immobilier Saint-Priest, bien récent, appartement récent, logement récent, appartement rénové, vente appartement Saint-Priest, estimation appartement, Est lyonnais, Bron, Vénissieux, Mions, Corbas, Feyzin, Saint-Fons, Chassieu, Genas, Décines-Charpieu, Meyzieu, Vaulx-en-Velin, Villeurbanne, T3 récent, T4 récent, résidence récente">
 
   <style>
@@ -135,59 +134,7 @@
       line-height: 1.45;
     }
 
-    /* GUIDE (CSS conservé même si section supprimée, pour ne rien casser si tu le réutilises) */
-    .guide-card {
-      max-width: 800px;
-      margin: 0 auto 30px;
-      background: var(--card-bg);
-      border-radius: 24px;
-      padding: 34px 30px;
-      box-shadow: var(--shadow-soft);
-      border: 1px solid var(--border-soft);
-      text-align: center;
-    }
-
-    .badge {
-      display: inline-block;
-      padding: 6px 14px;
-      border-radius: 999px;
-      background: var(--accent-soft);
-      color: var(--accent);
-      font-size: 11px;
-      letter-spacing: 0.08em;
-      font-weight: 600;
-      text-transform: uppercase;
-    }
-
-    .guide-card h1 {
-      font-size: 30px;
-      margin: 14px 0 10px;
-    }
-
-    .guide-card p {
-      font-size: 14px;
-      color: var(--text-soft);
-      line-height: 1.6;
-      max-width: 620px;
-      margin: 0 auto 16px;
-    }
-
-    .proof {
-      display: flex;
-      justify-content: center;
-      gap: 10px;
-      flex-wrap: wrap;
-      font-size: 12px;
-      color: #4A4A4A;
-      margin-bottom: 18px;
-    }
-
-    .proof span {
-      padding: 6px 10px;
-      border-radius: 999px;
-      background: var(--accent-soft-strong);
-    }
-
+    /* (Ancien style bouton générique, conservé) */
     .btn {
       display: inline-flex;
       align-items: center;
@@ -201,12 +148,6 @@
       font-weight: 700;
       text-decoration: none;
       margin-top: 10px;
-    }
-
-    .reassure {
-      margin-top: 12px;
-      font-size: 12px;
-      color: var(--text-soft);
     }
 
     /* PUCE META */
@@ -385,6 +326,7 @@
       opacity: 0.75;
     }
 
+    /* === FORMULAIRE "VOS INFORMATIONS" === */
     .card {
       max-width: 800px;
       margin: 0 auto 30px;
@@ -422,7 +364,8 @@
 
     .full { grid-column: 1 / -1; }
 
-    .btn {
+    /* ✅ IMPORTANT : bouton du formulaire UNIQUEMENT */
+    .card .btn {
       grid-column: 1 / -1;
       margin-top: 14px;
       background: linear-gradient(135deg, #fbe4b9, #f3c98b);
@@ -433,6 +376,10 @@
       font-weight: 600;
       border: none;
       cursor: pointer;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
     }
 
     .textarea-custom {
@@ -467,88 +414,15 @@
       line-height: 1.5;
       grid-column: 1 / -1;
     }
-    
+
     @media (max-width: 880px) {
       header { flex-direction: column; }
-      .contact-block {
-        flex-direction: column;
-        text-align: center;
-      }
-      .contact-links {
-        justify-content: center;
-      }
+      .contact-block { flex-direction: column; text-align: center; }
+      .contact-links { justify-content: center; }
     }
   </style>
 </head>
 
-  <script>
-function sendMail() {
-  const prenom = document.getElementById("prenom");
-  const nom = document.getElementById("nom");
-  const tel = document.getElementById("tel");
-  const email = document.getElementById("email");
-  const adresse = document.getElementById("adresse");
-  const typeBien = document.getElementById("typeBien");
-  const typologie = document.getElementById("typologie");
-  const date = document.getElementById("date");
-  const creneau = document.getElementById("creneau");
-  const commentaire = document.getElementById("commentaire");
-  const success = document.getElementById("success");
-
-  const fields = [prenom, nom, tel, email, adresse, typeBien, typologie, date, creneau];
-
-  success.style.display = "none";
-  let hasError = false;
-
-  fields.forEach(field => {
-    field.classList.remove("field-error");
-
-    if ((field.tagName === "INPUT" || field.tagName === "TEXTAREA") && (!field.value || !field.value.trim())) {
-      field.classList.add("field-error");
-      hasError = true;
-    }
-
-    if (field.tagName === "SELECT" && !field.value) {
-      field.classList.add("field-error");
-      hasError = true;
-    }
-  });
-
-  if (hasError) {
-    const firstError = document.querySelector(".field-error");
-    if (firstError) firstError.focus();
-    return;
-  }
-
-  success.style.display = "block";
-
-  const subject = encodeURIComponent("Demande d’avis de valeur immobilier");
-  const body = encodeURIComponent(
-    "Bonjour,\n\n" +
-    "Je souhaite obtenir un avis de valeur pour mon bien immobilier.\n\n" +
-    "Nom : " + prenom.value + " " + nom.value + "\n" +
-    "Téléphone : " + tel.value + "\n" +
-    "Email : " + email.value + "\n\n" +
-    "Adresse : " + adresse.value + "\n" +
-    "Type de bien : " + typeBien.value + "\n" +
-    "Typologie : " + typologie.value + "\n\n" +
-    "Date : " + date.value + "\n" +
-    "Créneau : " + creneau.value + "\n\n" +
-    "Commentaire : " + (commentaire.value || "") + "\n\n" +
-    "Merci.\n"
-  );
-
-  window.location.href = "mailto:contact@jeremyheyob.fr?subject=" + subject + "&body=" + body;
-}
-
-document.addEventListener("input", function (e) {
-  if (e.target.classList.contains("textarea-custom")) {
-    e.target.style.height = "auto";
-    e.target.style.height = e.target.scrollHeight + "px";
-  }
-});
-</script>
-  
 <body>
   <div class="page">
 
@@ -562,28 +436,26 @@ document.addEventListener("input", function (e) {
         <div class="tagline-main">VOS PROJETS IMMOBILIERS N'ONT JAMAIS ÉTÉ AUSSI SIMPLES !</div>
         <div class="tagline-sub"><strong>Jérémy HEYOB</strong></div>
       </div>
-      </header>
+    </header>
 
-       <div class="header-links">
-          <a href="https://www.jeremyheyob.fr/">Accueil</a>
-          <a href="https://www.agence.immo/professionnels/jeremy-heyob-453" target="_blank" rel="noopener">Mes biens</a>
-          <a href="https://www.jeremyheyob.fr/avis-de-valeur.html">Estimation</a>
-          <a href="https://www.immodvisor.com/pro/agencimmocom-jeremy-heyob-saint-priest-69800-53519.html" target="_blank" rel="noopener">Avis vérifiés</a>
-          <a href="https://www.jeremyheyob.fr/honoraires.html">Mes honoraires</a>
-          <a href="https://www.jeremyheyob.fr/biens-avant-premiere.html">Biens en avant-première</a>
-          <a href="https://www.jeremyheyob.fr/un-cran-au-dessus.html" class="active">Guide vendeur</a>
-       </div>
+    <div class="header-links">
+      <a href="https://www.jeremyheyob.fr/">Accueil</a>
+      <a href="https://www.agence.immo/professionnels/jeremy-heyob-453" target="_blank" rel="noopener">Mes biens</a>
+      <a href="https://www.jeremyheyob.fr/avis-de-valeur.html">Estimation</a>
+      <a href="https://www.immodvisor.com/pro/agencimmocom-jeremy-heyob-saint-priest-69800-53519.html" target="_blank" rel="noopener">Avis vérifiés</a>
+      <a href="https://www.jeremyheyob.fr/honoraires.html">Mes honoraires</a>
+      <a href="https://www.jeremyheyob.fr/biens-avant-premiere.html">Biens en avant-première</a>
+      <a href="https://www.jeremyheyob.fr/un-cran-au-dessus.html" class="active">Guide vendeur</a>
+    </div>
 
-        <div class="btn-retour-wrap">
-          <a href="https://www.jeremyheyob.fr" class="btn-retour">← Retour</a>
-        </div>
+    <div class="btn-retour-wrap">
+      <a href="https://www.jeremyheyob.fr" class="btn-retour">← Retour</a>
+    </div>
 
     <!-- BLOC INFORMATIF -->
     <section class="info-block">
       <span class="info-pill">ESPACE VENDEUR</span>
-
       <h2>Un cran au-dessus dans la préparation de votre vente.</h2>
-
       <p>
         Vous allez avoir accès à un guide clair et structuré pour préparer votre vente,
         prendre de meilleures décisions que la moyenne et aborder chaque étape avec méthode
@@ -600,68 +472,67 @@ document.addEventListener("input", function (e) {
         <span>Étapes claires</span>
         <span>Accès libre</span>
       </div>
-      </section>
+    </section>
 
+    <!-- VOS INFORMATIONS -->
     <section class="card">
-  <h2 class="card-title">Vos informations</h2>
+      <h2 class="card-title">Vos informations</h2>
 
-  <div class="form-grid">
-    <div><label>Votre prénom</label><input id="prenom"></div>
-    <div><label>Votre nom</label><input id="nom"></div>
-    <div><label>Votre téléphone</label><input id="tel"></div>
-    <div><label>Votre email</label><input id="email"></div>
+      <div class="form-grid">
+        <div><label>Votre prénom</label><input id="prenom"></div>
+        <div><label>Votre nom</label><input id="nom"></div>
+        <div><label>Votre téléphone</label><input id="tel"></div>
+        <div><label>Votre email</label><input id="email"></div>
 
-    <div class="full"><label>Adresse du bien</label><input id="adresse"></div>
+        <div class="full"><label>Adresse du bien</label><input id="adresse"></div>
 
-    <div>
-      <label>Type de bien</label>
-      <select id="typeBien">
-        <option value="">-- Choisir --</option>
-        <option>Appartement</option>
-        <option>Maison</option>
-      </select>
-    </div>
+        <div>
+          <label>Type de bien</label>
+          <select id="typeBien">
+            <option value="">-- Choisir --</option>
+            <option>Appartement</option>
+            <option>Maison</option>
+          </select>
+        </div>
 
-    <div>
-      <label>Typologie</label>
-      <select id="typologie">
-        <option value="">-- Choisir --</option>
-        <option>T1</option><option>T2</option><option>T3</option><option>T4</option><option>T5+</option>
-      </select>
-    </div>
+        <div>
+          <label>Typologie</label>
+          <select id="typologie">
+            <option value="">-- Choisir --</option>
+            <option>T1</option><option>T2</option><option>T3</option><option>T4</option><option>T5+</option>
+          </select>
+        </div>
 
-    <div><label>Date souhaitée</label><input id="date" type="date"></div>
+        <div><label>Date souhaitée</label><input id="date" type="date"></div>
 
-    <div>
-      <label>Créneau souhaité</label>
-      <select id="creneau">
-        <option value="">-- Choisir --</option>
-        <option>09h - 10h</option><option>10h - 11h</option><option>11h - 12h</option>
-        <option>14h - 15h</option><option>15h - 16h</option><option>16h - 17h</option>
-        <option>17h - 18h</option><option>18h - 19h</option><option>19h - 20h</option>
-      </select>
-    </div>
+        <div>
+          <label>Créneau souhaité</label>
+          <select id="creneau">
+            <option value="">-- Choisir --</option>
+            <option>09h - 10h</option><option>10h - 11h</option><option>11h - 12h</option>
+            <option>14h - 15h</option><option>15h - 16h</option><option>16h - 17h</option>
+            <option>17h - 18h</option><option>18h - 19h</option><option>19h - 20h</option>
+          </select>
+        </div>
 
-    <div class="full">
-      <label>Commentaire (facultatif)</label>
-      <textarea
-        id="commentaire"
-        class="textarea-custom"
-        placeholder="Informations complémentaires que je devrais connaitre avant notre rendez-vous"></textarea>
-    </div>
+        <div class="full">
+          <label>Commentaire (facultatif)</label>
+          <textarea
+            id="commentaire"
+            class="textarea-custom"
+            placeholder="Informations complémentaires que je devrais connaitre avant notre rendez-vous"></textarea>
+        </div>
 
-    <button class="btn" type="button" onclick="sendMail()">Valider ma demande</button>
+        <button class="btn" type="button" onclick="sendMail()">Valider ma demande</button>
 
-    <div class="success" id="success">
-      ✅ Demande envoyée. Vous recevrez un mail et un sms de confirmation dès que le rendez-vous sera validé.
-    </div>
-  </div>
-</section>
+        <div class="success" id="success">
+          ✅ Demande envoyée. Vous recevrez un mail et un sms de confirmation dès que le rendez-vous sera validé.
+        </div>
+      </div>
+    </section>
 
-<section class="social-block" aria-label="Réseaux sociaux">
-
+    <section class="social-block" aria-label="Réseaux sociaux">
       <div class="social-icons">
-
         <!-- Google -->
         <a href="https://goo.gl/maps/wjfc1aGFBrSLd3tV6" target="_blank" rel="noopener" aria-label="Google">
           <svg viewBox="0 0 24 24" fill="none" stroke="#7a5a29" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -720,7 +591,6 @@ document.addEventListener("input", function (e) {
             <path d="M14 7a6 6 0 0 0 6 2"></path>
           </svg>
         </a>
-
       </div>
     </section>
 
@@ -732,7 +602,6 @@ document.addEventListener("input", function (e) {
 
       <div class="contact-text">
         <h3>Une question sur votre projet de vente ?</h3>
-
         <p>
           Je reste disponible pour répondre à vos interrogations,
           vous aider à clarifier votre situation et, si nécessaire,
@@ -756,5 +625,75 @@ document.addEventListener("input", function (e) {
     </footer>
 
   </div>
+
+  <!-- JS -->
+  <script>
+    function sendMail() {
+      const prenom = document.getElementById("prenom");
+      const nom = document.getElementById("nom");
+      const tel = document.getElementById("tel");
+      const email = document.getElementById("email");
+      const adresse = document.getElementById("adresse");
+      const typeBien = document.getElementById("typeBien");
+      const typologie = document.getElementById("typologie");
+      const date = document.getElementById("date");
+      const creneau = document.getElementById("creneau");
+      const commentaire = document.getElementById("commentaire");
+      const success = document.getElementById("success");
+
+      const fields = [prenom, nom, tel, email, adresse, typeBien, typologie, date, creneau];
+
+      success.style.display = "none";
+      let hasError = false;
+
+      fields.forEach(field => {
+        field.classList.remove("field-error");
+
+        if ((field.tagName === "INPUT" || field.tagName === "TEXTAREA") && (!field.value || !field.value.trim())) {
+          field.classList.add("field-error");
+          hasError = true;
+        }
+
+        if (field.tagName === "SELECT" && !field.value) {
+          field.classList.add("field-error");
+          hasError = true;
+        }
+      });
+
+      if (hasError) {
+        const firstError = document.querySelector(".field-error");
+        if (firstError) firstError.focus();
+        return;
+      }
+
+      success.style.display = "block";
+
+      const subject = encodeURIComponent("Demande d’avis de valeur immobilier");
+      const body = encodeURIComponent(
+        "Bonjour,\n\n" +
+        "Je souhaite obtenir un avis de valeur pour mon bien immobilier.\n\n" +
+        "Nom : " + prenom.value + " " + nom.value + "\n" +
+        "Téléphone : " + tel.value + "\n" +
+        "Email : " + email.value + "\n\n" +
+        "Adresse : " + adresse.value + "\n" +
+        "Type de bien : " + typeBien.value + "\n" +
+        "Typologie : " + typologie.value + "\n\n" +
+        "Date : " + date.value + "\n" +
+        "Créneau : " + creneau.value + "\n\n" +
+        "Commentaire : " + (commentaire.value || "") + "\n\n" +
+        "Merci.\n"
+      );
+
+      window.location.href = "mailto:contact@jeremyheyob.fr?subject=" + subject + "&body=" + body;
+    }
+
+    document.addEventListener("input", function (e) {
+      if (e.target.classList.contains("textarea-custom")) {
+        e.target.style.height = "auto";
+        e.target.style.height = e.target.scrollHeight + "px";
+      }
+    });
+  </script>
+
 </body>
 </html>
