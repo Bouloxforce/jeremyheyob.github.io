@@ -102,6 +102,7 @@
   h1 { font-size: 26px; margin-bottom: 0; }
   .subtitle { color: var(--text-soft); margin-top: 4px; }
 
+  .chips { margin-top: 12px; }
   .chip {
     padding: 6px 12px;
     background: rgba(198,169,119,0.10);
@@ -195,6 +196,9 @@
     border: none;
     cursor: pointer;
   }
+
+  /* Permet à <a class="btn"> de se comporter comme un bouton */
+  a.btn { display: block; text-decoration: none; text-align: center; }
 
   .btn-retour {
     display: inline-block;
@@ -293,61 +297,144 @@
     color: var(--text-soft);
     opacity: 0.8;
   }
-    /* ===== BLOC RÉSEAUX SOCIAUX ===== */
 
-    /* Wrapper full width pour centrage écran */
-    .social-full {
-      width: 100vw;
-      margin-left: calc(-50vw + 50%);
-      display: flex;
-      justify-content: center;
-      margin-top: 36px;
-    }
+  /* ===== BLOC RÉSEAUX SOCIAUX ===== */
+  .social-full {
+    width: 100vw;
+    margin-left: calc(-50vw + 50%);
+    display: flex;
+    justify-content: center;
+    margin-top: 36px;
+  }
 
-    /* Bloc visuel */
-    .social-block {
-      width: fit-content;
-      margin: 0 auto 8px;
-      background: #ffffff;
-      border-radius: 20px;
-      border: 1px solid #e5e7eb;
-      box-shadow: 0 18px 40px rgba(25,25,25,0.08);
-      padding: 14px 16px;
-    }
+  .social-block {
+    width: fit-content;
+    margin: 0 auto 8px;
+    background: #ffffff;
+    border-radius: 20px;
+    border: 1px solid #e5e7eb;
+    box-shadow: 0 18px 40px rgba(25,25,25,0.08);
+    padding: 14px 16px;
+  }
 
-    /* Conteneur icônes */
-    .social-icons {
-      display: flex;
-      gap: 10px;
-      flex-wrap: wrap;
-      align-items: center;
-      justify-content: center;
-    }
+  .social-icons {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+  }
 
-    /* Boutons */
-    .social-icons a {
-      width: 42px;
-      height: 42px;
-      border-radius: 14px;
-      display: grid;
-      place-items: center;
-      background: rgba(198, 169, 119, 0.16);
-      border: 1px solid rgba(198,169,119,0.25);
-      transition: transform 0.15s ease, filter 0.15s ease;
-      text-decoration: none;
-    }
+  .social-icons a {
+    width: 42px;
+    height: 42px;
+    border-radius: 14px;
+    display: grid;
+    place-items: center;
+    background: rgba(198, 169, 119, 0.16);
+    border: 1px solid rgba(198,169,119,0.25);
+    transition: transform 0.15s ease, filter 0.15s ease;
+    text-decoration: none;
+  }
 
-    /* Hover */
-    .social-icons a:hover {
-      transform: translateY(-1px);
-      filter: brightness(1.02);
-    }
+  .social-icons a:hover {
+    transform: translateY(-1px);
+    filter: brightness(1.02);
+  }
 
-    /* Icônes SVG */
-    .social-icons svg {
-      width: 20px;
-      height: 20px;
-    }
+  .social-icons svg {
+    width: 20px;
+    height: 20px;
+  }
+
+  /* ===== AJOUTS IMPORTÉS (comme Eliot) ===== */
+
+  /* Séparateur luxe */
+  .luxury-divider {
+    width: 100%;
+    height: 1px;
+    margin: 40px 0;
+    background: linear-gradient(
+      to right,
+      transparent,
+      rgba(180, 160, 120, 0.6),
+      transparent
+    );
+  }
+
+  /* Textarea (avis + / -) */
+  textarea {
+    width: 100%;
+    padding: 10px 12px;
+    border-radius: 12px;
+    border: 1px solid var(--border-soft);
+    background: #fafafa;
+    font-size: 14px;
+    resize: vertical;
+  }
+
+  /* Surbrillance noire si champ manquant */
+  input.error,
+  select.error,
+  textarea.error {
+    border: 2px solid #191919;
+    background: #fff;
+  }
+
+  /* Centrer les titres du bloc avis uniquement */
+  .card-avis-global h2 { text-align: center; }
+
+  /* ===== BLOC CONTACT PREMIUM (comme Eliot) ===== */
+  .contact-block {
+    display: flex;
+    gap: 18px;
+    align-items: center;
+    background: #ffffff;
+    border-radius: 20px;
+    padding: 16px 18px;
+    border: 1px solid var(--border-soft);
+    box-shadow: 0 18px 40px rgba(25, 25, 25, 0.08);
+    max-width: 960px;
+    margin: 16px auto 0;
+  }
+
+  .contact-block .contact-photo {
+    width: 90px;
+    height: 90px;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 2px solid #e5e7eb;
+    flex-shrink: 0;
+    object-fit: unset;
+  }
+
+  .contact-block .contact-photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: top center;
+    display: block;
+  }
+
+  .contact-text h3 { margin: 0 0 4px; font-size: 17px; }
+  .contact-text p { margin: 0; font-size: 13px; color: var(--text-soft); }
+
+  .contact-block .contact-links {
+    margin-top: 8px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    font-size: 13px;
+  }
+
+  .contact-block .contact-links a {
+    color: var(--accent);
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: 500;
+  }
+
+  .contact-block .contact-links a:hover { text-decoration: underline; }
 
   /* RESPONSIVE */
   @media (max-width: 1024px) {
@@ -373,7 +460,7 @@
 
     label { white-space: normal; display: block; }
 
-    input, select {
+    input, select, textarea {
       width: 100%;
       max-width: 100%;
     }
@@ -389,8 +476,17 @@
       text-align: center;
     }
 
-    .contact-links {
+    .contact-links { justify-content: center; }
+
+    .contact-block {
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+
+    .contact-block .contact-links {
       justify-content: center;
+      width: 100%;
     }
   }
 
@@ -399,40 +495,91 @@
     .lightbox-prev, .lightbox-next { font-size: 32px; }
     .lightbox-close { font-size: 40px; }
   }
-
   </style>
 
   <script>
-  function sendEmail() {
-    const bien = "Léa - Appartement T4";
-    const p = document.getElementById("prenomClient").value;
-    const n = document.getElementById("nomClient").value;
-    const t = document.getElementById("telephoneClient").value;
-    const e = document.getElementById("emailClient").value;
-    const d = document.getElementById("date").value;
-    const c = document.getElementById("creneau").value;
+    /* Validation générique : surbrillance noire si champ vide */
+    function validateRequiredFields(fields) {
+      let hasError = false;
 
-    if(!p || !n || !e || !t || !d || !c){
-      alert("Merci de renseigner tous les champs.");
-      return;
+      fields.forEach((f) => {
+        if (!f) return;
+        f.classList.remove("error");
+      });
+
+      fields.forEach((f) => {
+        if (!f) return;
+        if (!String(f.value || "").trim()) {
+          f.classList.add("error");
+          hasError = true;
+        }
+      });
+
+      return !hasError;
     }
 
-    const subject = encodeURIComponent("Demande de contre-visite - " + bien);
-    const body = encodeURIComponent(
-      "Bonjour,\n\n" +
-      "Je souhaite programmer une contre-visite pour le bien : " + bien + ".\n\n" +
-      "Nom : " + p + " " + n + "\n" +
-      "Téléphone : " + t + "\n" +
-      "Email : " + e + "\n\n" +
-      "Date souhaitée : " + d + "\n" +
-      "Créneau souhaité : " + c + "\n\n" +
-      "Je vous remercie par avance pour votre retour.\n\n" +
-      "Cordialement,\n"
-    );
+    /* 1) Avis sur la visite */
+    function sendAvisVisite() {
+      const bien = "Léa - Appartement T4";
 
-    window.location.href =
-      "mailto:contact@jeremyheyob.fr?subject=" + subject + "&body=" + body;
-  }
+      const prenom = document.getElementById("avis_prenom");
+      const nom = document.getElementById("avis_nom");
+      const estimation = document.getElementById("avis_estimation");
+      const plus = document.getElementById("avis_plus");
+      const moins = document.getElementById("avis_moins");
+      const offre = document.getElementById("avis_offre");
+
+      const ok = validateRequiredFields([prenom, nom, estimation, plus, moins, offre]);
+      if (!ok) return;
+
+      const subject = encodeURIComponent("Avis visite - " + bien);
+      const body = encodeURIComponent(
+        "Bonjour,\n\n" +
+        "Voici mon retour suite à la visite du bien : " + bien + "\n\n" +
+        "Prénom : " + prenom.value + "\n" +
+        "Nom : " + nom.value + "\n\n" +
+        "Mon estimation du prix : " + estimation.value + " €\n\n" +
+        "Points positifs :\n" + plus.value + "\n\n" +
+        "Points négatifs :\n" + moins.value + "\n\n" +
+        "Souhaite faire une offre : " + offre.value + "\n\n" +
+        "Cordialement,\n"
+      );
+
+      window.location.href =
+        "mailto:contact@jeremyheyob.fr?subject=" + subject + "&body=" + body;
+    }
+
+    /* 2) Contre-visite */
+    function sendContreVisite() {
+      const bien = "Léa - Appartement T4";
+
+      const prenom = document.getElementById("cv_prenom");
+      const nom = document.getElementById("cv_nom");
+      const tel = document.getElementById("cv_telephone");
+      const email = document.getElementById("cv_email");
+      const date = document.getElementById("cv_date");
+      const creneau = document.getElementById("cv_creneau");
+
+      const ok = validateRequiredFields([prenom, nom, tel, email, date, creneau]);
+      if (!ok) return;
+
+      const subject = encodeURIComponent("Demande de contre-visite - " + bien);
+      const body = encodeURIComponent(
+        "Bonjour,\n\n" +
+        "Je souhaite programmer une contre-visite pour le bien : " + bien + ".\n\n" +
+        "Prénom : " + prenom.value + "\n" +
+        "Nom : " + nom.value + "\n" +
+        "Téléphone : " + tel.value + "\n" +
+        "Email : " + email.value + "\n\n" +
+        "Date souhaitée : " + date.value + "\n" +
+        "Créneau souhaité : " + creneau.value + "\n\n" +
+        "Je vous remercie par avance pour votre retour.\n\n" +
+        "Cordialement,\n"
+      );
+
+      window.location.href =
+        "mailto:contact@jeremyheyob.fr?subject=" + subject + "&body=" + body;
+    }
   </script>
 </head>
 
@@ -478,8 +625,8 @@
           <img src="/bien-visite/lea/photos/Lea 7.webp" loading="lazy">
         </div>
 
-        <button class="carousel-btn prev">‹</button>
-        <button class="carousel-btn next">›</button>
+        <button class="carousel-btn prev" type="button">‹</button>
+        <button class="carousel-btn next" type="button">›</button>
       </div>
 
       <!-- INFOS -->
@@ -502,13 +649,13 @@
 
       <!-- VIDEO → LIEN SIMPLE -->
       <h2 style="margin-top:20px;">Vidéo de présentation</h2>
-      <a href="https://youtu.be/oDVpOTFooCE" target="_blank" style="color:#1a73e8;font-size:15px;text-decoration:underline;">
+      <a href="https://youtu.be/oDVpOTFooCE" target="_blank" rel="noopener" style="color:#1a73e8;font-size:15px;text-decoration:underline;">
         Voir la vidéo de présentation du bien →
       </a>
 
       <!-- LIEN ANNONCE -->
       <h2 style="margin-top:20px;">Lien de l’annonce</h2>
-      <a href="https://www.agence.immo/achat/appartement-t4-4-pieces-saint-priest-69800-VA33801" target="_blank" style="color:#1a73e8;font-size:15px;text-decoration:underline;">
+      <a href="https://www.agence.immo/achat/appartement-t4-4-pieces-saint-priest-69800-VA33801" target="_blank" rel="noopener" style="color:#1a73e8;font-size:15px;text-decoration:underline;">
          Voir l’annonce sur le site →
       </a>
 
@@ -516,137 +663,215 @@
       <h2 style="margin-top:28px;">Documents du bien</h2>
 
       <ul style="list-style:none;padding:0;margin:12px 0;font-size:15px;">
-        <li><a href="/bien-visite/lea/documents/Lea-acte-rectificatif-edd-rcp.pdf" target="_blank">Acte rectificatif EDD/RCP →</a></li>
-        <li><a href="/bien-visite/lea/documents/Lea-carnet-entretien.pdf" target="_blank">Carnet d’entretien →</a></li>
-        <li><a href="/bien-visite/lea/documents/Lea-dpe.pdf" target="_blank">DPE →</a></li>
-        <li><a href="/bien-visite/lea/documents/Lea-facture-chauffage-p2-e2s.pdf" target="_blank">Facture chauffage P2 E2S →</a></li>
-        <li><a href="/bien-visite/lea/documents/Lea-info-copro.pdf" target="_blank">Info copropriété →</a></li>
-        <li><a href="/bien-visite/lea/documents/Lea-carrez.pdf" target="_blank">Mesurage Carrez →</a></li>
-        <li><a href="/bien-visite/lea/documents/Lea-modificatif-reglement-chauffage-2015.pdf" target="_blank">Modificatif règlement chauffage 2015 →</a></li>
-        <li><a href="/bien-visite/lea/documents/Lea-modificatif-edd-rcp.pdf" target="_blank">Modificatif EDD/RCP →</a></li>
-        <li><a href="/bien-visite/lea/documents/Lea-plan.pdf" target="_blank">Plan →</a></li>
-        <li><a href="/bien-visite/lea/documents/Lea-pv-ag-2022.pdf" target="_blank">PV AG 2022 →</a></li>
-        <li><a href="/bien-visite/lea/documents/Lea-pv-ag-2024.pdf" target="_blank">PV AG 2024 →</a></li>
-        <li><a href="/bien-visite/lea/documents/Lea-ag-2025.pdf" target="_blank">PV AG 2025 →</a></li>
-        <li><a href="/bien-visite/lea/documents/Lea-reglement-copropriete.pdf" target="_blank">Règlement de copropriété →</a></li>
+        <li><a href="/bien-visite/lea/documents/Lea-acte-rectificatif-edd-rcp.pdf" target="_blank" rel="noopener">Acte rectificatif EDD/RCP →</a></li>
+        <li><a href="/bien-visite/lea/documents/Lea-carnet-entretien.pdf" target="_blank" rel="noopener">Carnet d’entretien →</a></li>
+        <li><a href="/bien-visite/lea/documents/Lea-dpe.pdf" target="_blank" rel="noopener">DPE →</a></li>
+        <li><a href="/bien-visite/lea/documents/Lea-facture-chauffage-p2-e2s.pdf" target="_blank" rel="noopener">Facture chauffage P2 E2S →</a></li>
+        <li><a href="/bien-visite/lea/documents/Lea-info-copro.pdf" target="_blank" rel="noopener">Info copropriété →</a></li>
+        <li><a href="/bien-visite/lea/documents/Lea-carrez.pdf" target="_blank" rel="noopener">Mesurage Carrez →</a></li>
+        <li><a href="/bien-visite/lea/documents/Lea-modificatif-reglement-chauffage-2015.pdf" target="_blank" rel="noopener">Modificatif règlement chauffage 2015 →</a></li>
+        <li><a href="/bien-visite/lea/documents/Lea-modificatif-edd-rcp.pdf" target="_blank" rel="noopener">Modificatif EDD/RCP →</a></li>
+        <li><a href="/bien-visite/lea/documents/Lea-plan.pdf" target="_blank" rel="noopener">Plan →</a></li>
+        <li><a href="/bien-visite/lea/documents/Lea-pv-ag-2022.pdf" target="_blank" rel="noopener">PV AG 2022 →</a></li>
+        <li><a href="/bien-visite/lea/documents/Lea-pv-ag-2024.pdf" target="_blank" rel="noopener">PV AG 2024 →</a></li>
+        <li><a href="/bien-visite/lea/documents/Lea-ag-2025.pdf" target="_blank" rel="noopener">PV AG 2025 →</a></li>
+        <li><a href="/bien-visite/lea/documents/Lea-reglement-copropriete.pdf" target="_blank" rel="noopener">Règlement de copropriété →</a></li>
       </ul>
 
     </section>
 
-    <!-- CONTRE VISITE -->
-    <aside class="card">
-      <h2>Programmer une contre-visite</h2>
-      <p class="subtitle">Remplissez vos coordonnées et vos disponibilités.</p>
+    <!-- PARCOURS AVIS & CONTRE-VISITE (REMPLACE L’ANCIEN BLOC) -->
+    <aside class="card card-avis-global">
 
-      <div class="form-grid">
-        <div><label>Votre prénom</label><input id="prenomClient" type="text"></div>
-        <div><label>Votre nom</label><input id="nomClient" type="text"></div>
-        <div><label>Votre téléphone</label><input id="telephoneClient" type="tel"></div>
-        <div><label>Votre email</label><input id="emailClient" type="email"></div>
-        <div><label>Date souhaitée</label><input id="date" type="date"></div>
-        <div><label>Créneau souhaité</label>
-          <select id="creneau">
-            <option value="">-- Choisir --</option>
-            <option>09:00 - 10:00</option>
-            <option>10:00 - 11:00</option>
-            <option>11:00 - 12:00</option>
-            <option>14:00 - 15:00</option>
-            <option>15:00 - 16:00</option>
-            <option>16:00 - 17:00</option>
-            <option>17:00 - 18:00</option>
-            <option>18:00 - 19:00</option>
-            <option>19:00 - 20:00</option>
-          </select>
-        </div>
+      <!-- SECTION 1 : AVIS SUR LA VISITE -->
+      <section class="avis-section">
+        <h2>Votre avis sur cette visite</h2>
+        <p class="subtitle">
+          Votre retour est essentiel pour me permettre d’avancer efficacement sur ce bien et de mieux comprendre votre recherche.
+        </p>
 
-        <button class="btn" onclick="sendEmail()">Valider ma demande</button>
-      </div>
+        <div class="form-grid">
+          <div><label>Votre prénom</label><input id="avis_prenom" type="text"></div>
+          <div><label>Votre nom</label><input id="avis_nom" type="text"></div>
 
-      <div class="contact-card">
-        <img src="/images/photo.webp" class="contact-photo">
-        <div>
-          <strong>Jérémy Heyob</strong><br>
-          <span style="font-size:12px;color:var(--text-soft);">Négociateur Immobilier à Saint-Priest</span><br>
-          <div class="contact-links">
-            <a href="mailto:contact@jeremyheyob.fr">✉️ Email</a>
-            <a href="sms:+33648145565">💬 SMS</a>
-            <a href="tel:+33648145565">📞 Appel</a>
-            <a href="https://www.jeremyheyob.fr" target="_blank">💻 Site</a>
+          <div style="grid-column: 1 / -1;">
+            <label>Votre estimation du prix (€)</label>
+            <input
+              id="avis_estimation"
+              type="text"
+              inputmode="numeric"
+              pattern="[0-9]*"
+              placeholder="Ex : 260000">
           </div>
+
+          <div style="grid-column: 1 / -1;">
+            <label>Points positifs du bien</label>
+            <textarea id="avis_plus" rows="3"></textarea>
+          </div>
+
+          <div style="grid-column: 1 / -1;">
+            <label>Points négatifs du bien</label>
+            <textarea id="avis_moins" rows="3"></textarea>
+          </div>
+
+          <div style="grid-column: 1 / -1;">
+            <label>Souhaitez-vous faire une offre sur ce bien ?</label>
+            <select id="avis_offre">
+              <option value="">-- Choisir --</option>
+              <option value="Oui">Oui</option>
+              <option value="Non">Non</option>
+              <option value="Je souhaite réfléchir">Je souhaite réfléchir</option>
+            </select>
+          </div>
+
+          <button class="btn" type="button" onclick="sendAvisVisite()">Valider mon avis</button>
         </div>
-      </div>
+      </section>
+
+      <div class="luxury-divider"></div>
+
+      <!-- SECTION 2 : AVIS ACCOMPAGNEMENT -->
+      <section class="avis-section">
+        <h2>Votre retour sur mon accompagnement</h2>
+        <p class="subtitle">
+          Votre avis est précieux. Partagez votre expérience et contribuez à renforcer la qualité de mon accompagnement.
+        </p>
+
+        <a class="btn" href="https://g.page/r/CTwjb6DmOEMGEB0/review" target="_blank" rel="noopener">
+          Déposer un avis sur Google
+        </a>
+      </section>
+
+      <div class="luxury-divider"></div>
+
+      <!-- SECTION 3 : CONTRE-VISITE -->
+      <section class="avis-section">
+        <h2>Programmer une contre-visite</h2>
+        <p class="subtitle">
+          Si ce bien suscite votre intérêt, indiquez vos disponibilités afin d’organiser une nouvelle visite dans les meilleures conditions.
+        </p>
+
+        <div class="form-grid">
+          <div><label>Votre prénom</label><input id="cv_prenom" type="text"></div>
+          <div><label>Votre nom</label><input id="cv_nom" type="text"></div>
+          <div><label>Votre téléphone</label><input id="cv_telephone" type="tel"></div>
+          <div><label>Votre email</label><input id="cv_email" type="email"></div>
+          <div><label>Date souhaitée</label><input id="cv_date" type="date"></div>
+          <div>
+            <label>Créneau souhaité</label>
+            <select id="cv_creneau">
+              <option value="">-- Choisir --</option>
+              <option>09:00 - 10:00</option>
+              <option>10:00 - 11:00</option>
+              <option>11:00 - 12:00</option>
+              <option>14:00 - 15:00</option>
+              <option>15:00 - 16:00</option>
+              <option>16:00 - 17:00</option>
+              <option>17:00 - 18:00</option>
+              <option>18:00 - 19:00</option>
+              <option>19:00 - 20:00</option>
+            </select>
+          </div>
+
+          <button class="btn" type="button" onclick="sendContreVisite()">Valider ma demande</button>
+        </div>
+      </section>
 
     </aside>
 
   </main>
 
   <!-- ===== RÉSEAUX SOCIAUX (CENTRÉ ÉCRAN) ===== -->
-<div class="social-full">
-  <section class="social-block" aria-label="Réseaux sociaux">
-    <div class="social-icons">
+  <div class="social-full">
+    <section class="social-block" aria-label="Réseaux sociaux">
+      <div class="social-icons">
 
-      <!-- Google -->
-      <a href="https://goo.gl/maps/wjfc1aGFBrSLd3tV6" target="_blank" rel="noopener" aria-label="Google">
-        <svg viewBox="0 0 24 24" fill="none" stroke="#7a5a29" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M12 21s7-4.5 7-11a7 7 0 1 0-14 0c0 6.5 7 11 7 11z"></path>
-          <circle cx="12" cy="10" r="2.5"></circle>
-        </svg>
-      </a>
+        <!-- Google -->
+        <a href="https://goo.gl/maps/wjfc1aGFBrSLd3tV6" target="_blank" rel="noopener" aria-label="Google">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#7a5a29" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 21s7-4.5 7-11a7 7 0 1 0-14 0c0 6.5 7 11 7 11z"></path>
+            <circle cx="12" cy="10" r="2.5"></circle>
+          </svg>
+        </a>
 
-      <!-- PagesJaunes -->
-      <a href="https://www.pagesjaunes.fr/pros/62191780" target="_blank" rel="noopener" aria-label="Pages Jaunes">
-        <svg viewBox="0 0 24 24" fill="none" stroke="#7a5a29" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M6 3h9a3 3 0 0 1 3 3v12a3 3 0 0 1-3 3H6a3 3 0 0 1-3-3V6a3 3 0 0 1 3-3z"></path>
-          <path d="M8 8h8"></path>
-          <path d="M8 12h8"></path>
-          <path d="M8 16h6"></path>
-        </svg>
-      </a>
+        <!-- PagesJaunes -->
+        <a href="https://www.pagesjaunes.fr/pros/62191780" target="_blank" rel="noopener" aria-label="Pages Jaunes">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#7a5a29" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M6 3h9a3 3 0 0 1 3 3v12a3 3 0 0 1-3 3H6a3 3 0 0 1-3-3V6a3 3 0 0 1 3-3z"></path>
+            <path d="M8 8h8"></path>
+            <path d="M8 12h8"></path>
+            <path d="M8 16h6"></path>
+          </svg>
+        </a>
 
-      <!-- Facebook -->
-      <a href="https://www.facebook.com/jeremyheyobpro" target="_blank" rel="noopener" aria-label="Facebook">
-        <svg viewBox="0 0 24 24" fill="none" stroke="#7a5a29" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M14 8h3V5h-3a4 4 0 0 0-4 4v3H7v3h3v6h3v-6h3l1-3h-4V9a1 1 0 0 1 1-1z"></path>
-        </svg>
-      </a>
+        <!-- Facebook -->
+        <a href="https://www.facebook.com/jeremyheyobpro" target="_blank" rel="noopener" aria-label="Facebook">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#7a5a29" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M14 8h3V5h-3a4 4 0 0 0-4 4v3H7v3h3v6h3v-6h3l1-3h-4V9a1 1 0 0 1 1-1z"></path>
+          </svg>
+        </a>
 
-      <!-- LinkedIn -->
-      <a href="https://www.linkedin.com/company/jérémy-heyob/" target="_blank" rel="noopener" aria-label="LinkedIn">
-        <svg viewBox="0 0 24 24" fill="none" stroke="#7a5a29" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4V9h4v2"></path>
-          <rect x="2" y="9" width="4" height="12"></rect>
-          <circle cx="4" cy="4" r="2"></circle>
-        </svg>
-      </a>
+        <!-- LinkedIn -->
+        <a href="https://www.linkedin.com/company/jérémy-heyob/" target="_blank" rel="noopener" aria-label="LinkedIn">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#7a5a29" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4V9h4v2"></path>
+            <rect x="2" y="9" width="4" height="12"></rect>
+            <circle cx="4" cy="4" r="2"></circle>
+          </svg>
+        </a>
 
-      <!-- Instagram -->
-      <a href="https://www.instagram.com/jeremyheyob/" target="_blank" rel="noopener" aria-label="Instagram">
-        <svg viewBox="0 0 24 24" fill="none" stroke="#7a5a29" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <rect x="3" y="3" width="18" height="18" rx="5" ry="5"></rect>
-          <circle cx="12" cy="12" r="4"></circle>
-          <path d="M17.5 6.5h.01"></path>
-        </svg>
-      </a>
+        <!-- Instagram -->
+        <a href="https://www.instagram.com/jeremyheyob/" target="_blank" rel="noopener" aria-label="Instagram">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#7a5a29" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="3" y="3" width="18" height="18" rx="5" ry="5"></rect>
+            <circle cx="12" cy="12" r="4"></circle>
+            <path d="M17.5 6.5h.01"></path>
+          </svg>
+        </a>
 
-      <!-- YouTube -->
-      <a href="https://www.youtube.com/channel/UCpE0arbirH2tkw2THT_Ef9Q" target="_blank" rel="noopener" aria-label="YouTube">
-        <svg viewBox="0 0 24 24" fill="none" stroke="#7a5a29" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M22 12s0-4-1-5-4-1-9-1-8 0-9 1-1 5-1 5 0 4 1 5 4 1 9 1 8 0 9-1 1-5 1-5z"></path>
-          <path d="M10 9l6 3-6 3V9z"></path>
-        </svg>
-      </a>
+        <!-- YouTube -->
+        <a href="https://www.youtube.com/channel/UCpE0arbirH2tkw2THT_Ef9Q" target="_blank" rel="noopener" aria-label="YouTube">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#7a5a29" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M22 12s0-4-1-5-4-1-9-1-8 0-9 1-1 5-1 5 0 4 1 5 4 1 9 1 8 0 9-1 1-5 1-5z"></path>
+            <path d="M10 9l6 3-6 3V9z"></path>
+          </svg>
+        </a>
 
-      <!-- TikTok -->
-      <a href="https://www.tiktok.com/@jeremyheyob" target="_blank" rel="noopener" aria-label="TikTok">
-        <svg viewBox="0 0 24 24" fill="none" stroke="#7a5a29" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M14 3v10a4 4 0 1 1-4-4"></path>
-          <path d="M14 7a6 6 0 0 0 6 2"></path>
-        </svg>
-      </a>
+        <!-- TikTok -->
+        <a href="https://www.tiktok.com/@jeremyheyob" target="_blank" rel="noopener" aria-label="TikTok">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#7a5a29" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M14 3v10a4 4 0 1 1-4-4"></path>
+            <path d="M14 7a6 6 0 0 0 6 2"></path>
+          </svg>
+        </a>
 
+      </div>
+    </section>
+  </div>
+
+  <!-- ===== BLOC CONTACT PREMIUM (AJOUTÉ) ===== -->
+  <section class="contact-block">
+    <div class="contact-photo">
+      <img src="/images/photo.webp" alt="">
+    </div>
+
+    <div class="contact-text">
+      <h3>Une question sur ce bien ?</h3>
+
+      <p>
+        Je reste disponible pour vous apporter des précisions,
+        vous envoyer des documents complémentaires ou organiser
+        une contre-visite selon vos disponibilités.
+      </p>
+
+      <div class="contact-links">
+        <a href="mailto:contact@jeremyheyob.fr">✉️ Email</a>
+        <a href="sms:+33648145565">💬 SMS</a>
+        <a href="tel:+33648145565">📞 Appel</a>
+        <a href="https://www.jeremyheyob.fr" target="_blank" rel="noopener">💻 Site</a>
+      </div>
     </div>
   </section>
-</div>
 
   <!-- FOOTER LÉGAL -->
   <footer class="legal-footer">
