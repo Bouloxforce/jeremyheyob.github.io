@@ -684,7 +684,7 @@ function sendMail() {
     "Typologie : " + typologie.value + "\n\n" +
     "Date : " + date.value + "\n" +
     "Créneau : " + creneau.value + "\n\n" +
-    "Commentaire : " + commentaire.value + "\n\n" +
+    "Commentaire :\n" + (commentaire.value ? commentaire.value : "—") + "\n\n" +
     "Merci.\n"
   );
 
