@@ -624,21 +624,30 @@
 
 </div>
 
-  <script>
+<script>
 function sendMail() {
 
+  const prenom = document.getElementById("prenom");
+  const nom = document.getElementById("nom");
+  const tel = document.getElementById("tel");
+  const email = document.getElementById("email");
+  const adresse = document.getElementById("adresse");
+  const typeBien = document.getElementById("typeBien");
+  const typologie = document.getElementById("typologie");
+  const date = document.getElementById("date");
+  const creneau = document.getElementById("creneau");
+  const commentaire = document.getElementById("commentaire");
+  const success = document.getElementById("success");
+
   const fields = [
-    "prenom","nom","tel","email","adresse",
-    "typeBien","typologie","date","creneau"
+    prenom, nom, tel, email, adresse,
+    typeBien, typologie, date, creneau
   ];
 
-  const success = document.getElementById("success");
   success.style.display = "none";
-
   let hasError = false;
 
-  fields.forEach(id => {
-    const field = document.getElementById(id);
+  fields.forEach(field => {
     field.classList.remove("field-error");
 
     if (
@@ -660,7 +669,6 @@ function sendMail() {
     return;
   }
 
-  // ✅ Message succès
   success.style.display = "block";
 
   const subject = encodeURIComponent("Demande d’avis de valeur immobilier");
@@ -676,7 +684,7 @@ function sendMail() {
     "Typologie : " + typologie.value + "\n\n" +
     "Date : " + date.value + "\n" +
     "Créneau : " + creneau.value + "\n\n" +
-    "Commentaire : " + commentaire.value + "\n\n"
+    "Commentaire : " + commentaire.value + "\n\n" +
     "Merci.\n"
   );
 
@@ -684,7 +692,7 @@ function sendMail() {
     "mailto:contact@jeremyheyob.fr?subject=" + subject + "&body=" + body;
 }
 </script>
-  
+
 <script>
 
   const success = document.getElementById("success");
