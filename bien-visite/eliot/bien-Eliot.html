@@ -494,22 +494,22 @@
       const moins = document.getElementById("avis_moins");
       const offre = document.getElementById("avis_offre");
 
-      const ok = validateRequiredFields([prenom, nom, email, estimation, plus, moins, offre]);
+      const ok = validateRequiredFields([prenom, nom, estimation, plus, moins, offre]);
       if (!ok) return;
 
       const subject = encodeURIComponent("Avis visite - " + bien);
       const body = encodeURIComponent(
         "Bonjour,\n\n" +
         "Voici mon retour suite à la visite du bien : " + bien + "\n\n" +
-        "Coordonnées : "\n" +
+        "Coordonnées :\n" +
         "Prénom : " + prenom.value + "\n" +
         "Nom : " + nom.value + "\n\n" +
-        "Estimation : "\n" +
+        "Estimation :\n" +
         "Mon estimation du prix : " + estimation.value + " €\n\n" +
-        "Points positifs et négatifs : "\n" +
+        "Points positifs et négatifs : ""\n" +
         "Points positifs :\n" + plus.value + "\n" +
         "Points négatifs :\n" + moins.value + "\n\n" +
-        "Offre d'achat : "\n" +
+        "Offre d'achat :\n" +
         "Souhaite faire une offre : " + offre.value + "\n\n" +
         "Cordialement,\n"
       );
@@ -536,12 +536,12 @@
       const body = encodeURIComponent(
         "Bonjour,\n\n" +
         "Je souhaite programmer une contre-visite pour le bien : " + bien + ".\n\n" +
-        "Coordonées : "\n" +
+        "Coordonées :\n" +
         "Prénom : " + prenom.value + "\n" +
         "Nom : " + nom.value + "\n" +
         "Téléphone : " + tel.value + "\n" +
         "Email : " + email.value + "\n\n" +
-        "Date souhaitée : "\n" +
+        "Date souhaitée :\n" +
         "Date souhaitée : " + date.value + "\n" +
         "Créneau souhaité : " + creneau.value + "\n\n" +
         "Je vous remercie par avance pour votre retour.\n\n" +
