@@ -676,15 +676,12 @@ function sendMail() {
   const body = encodeURIComponent(
     "Bonjour,\n\n" +
     "Je souhaite obtenir un avis de valeur pour mon bien immobilier.\n\n" +
-    "Coordonnées :\n" +
     "Nom : " + prenom.value + " " + nom.value + "\n" +
     "Téléphone : " + tel.value + "\n" +
     "Email : " + email.value + "\n\n" +
-    "Informations du bien :\n" +
     "Adresse : " + adresse.value + "\n" +
     "Type de bien : " + typeBien.value + "\n" +
     "Typologie : " + typologie.value + "\n\n" +
-    "Rendez-vous :\n" +
     "Date : " + date.value + "\n" +
     "Créneau : " + creneau.value + "\n\n" +
     "Commentaire :\n" + (commentaire.value ? commentaire.value : "—") + "\n\n" +
