@@ -135,7 +135,7 @@
       line-height: 1.45;
     }
 
-    /* GUIDE */
+    /* GUIDE (CSS conservé même si section supprimée, pour ne rien casser si tu le réutilises) */
     .guide-card {
       max-width: 800px;
       margin: 0 auto 30px;
@@ -209,7 +209,6 @@
       color: var(--text-soft);
     }
 
-    
     /* PUCE META */
     .hero-meta {
       margin-top: 14px;
@@ -234,7 +233,7 @@
       font-size: 14px;
       color: var(--text-soft);
     }
-    
+
     /* CONTACT */
     .contact-block {
       display: flex;
@@ -253,7 +252,7 @@
       width: 90px;
       height: 90px;
       border-radius: 50%;
-      overflow: hidden;          /* 🔴 CLÉ ABSOLUE */
+      overflow: hidden;
       border: 2px solid #e5e7eb;
       flex-shrink: 0;
     }
@@ -293,7 +292,7 @@
     .contact-links a:hover {
       text-decoration: underline;
     }
-    
+
     .social-block {
       width: fit-content;
       margin: 0 auto 8px;
@@ -362,6 +361,7 @@
       background: var(--accent);
       border-radius: 2px;
     }
+
     .btn-retour {
       display: inline-block;
       margin: 10px 0 18px;
@@ -426,7 +426,7 @@
         <div class="btn-retour-wrap">
           <a href="https://www.jeremyheyob.fr" class="btn-retour">← Retour</a>
         </div>
-    
+
     <!-- BLOC INFORMATIF -->
     <section class="info-block">
       <span class="info-pill">ESPACE VENDEUR</span>
@@ -443,7 +443,7 @@
         Conseil : ce sont rarement les biens “les mieux situés” qui se vendent le mieux,
         mais ceux qui sont préparés un cran au-dessus des autres.
       </div>
-      
+
       <div class="hero-meta">
         <span>Guide pratique</span>
         <span>Étapes claires</span>
@@ -451,102 +451,93 @@
       </div>
     </section>
 
-    <!-- GUIDE -->
-    <section class="guide-card">
-      <span class="badge">Accès réservé aux vendeurs sérieux</span>
+    <!-- ✅ REMPLACEMENT DU BLOC "ACCÈS RÉSERVÉ..." PAR UN SECOND BLOC INFORMATIF -->
+    <section class="info-block">
+      <span class="info-pill">ACCOMPAGNEMENT</span>
 
-      <h1>Un cran au-dessus</h1>
+      <h2>Une méthode structurée pour sécuriser votre vente.</h2>
 
       <p>
-        Le guide parfait pour cadrer une vente immobilière,
-        éviter les erreurs classiques et défendre votre position
-        face aux acheteurs, sans improvisation.
+        Mon rôle est de cadrer votre projet avec une stratégie claire : positionnement prix,
+        préparation, mise en valeur, ciblage des bons profils et défense de vos intérêts
+        jusqu’à la signature.
       </p>
 
-      <div class="proof">
-        <span>Lecture ≈ 15 min</span>
-        <span>Guide pratique</span>
-        <span>Stratégie vendeur</span>
+      <div class="info-highlight">
+        Objectif : éviter les erreurs coûteuses, garder la maîtrise, et vendre dans les meilleures conditions.
       </div>
 
-      <!-- REMPLACER XXXXXXXXX -->
-      <a
-        href="https://forms.gle/PDYUV7pBphwC3xF66"
-        class="btn"
-        target="_blank"
-      >
-        Accéder au guide « Un cran au-dessus »
-      </a>
-
-      <div class="reassure">
-        Accès immédiat • 24h/24 • 7j/7
+      <div class="hero-meta">
+        <span>Stratégie vendeur</span>
+        <span>Décisions cadrées</span>
+        <span>Process maîtrisé</span>
       </div>
     </section>
 
     <section class="social-block" aria-label="Réseaux sociaux">
-  <div class="social-icons">
+      <div class="social-icons">
 
-    <!-- Google -->
-    <a href="https://goo.gl/maps/wjfc1aGFBrSLd3tV6" target="_blank" rel="noopener" aria-label="Google">
-      <svg viewBox="0 0 24 24" fill="none" stroke="#7a5a29" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-        <path d="M12 21s7-4.5 7-11a7 7 0 1 0-14 0c0 6.5 7 11 7 11z"></path>
-        <circle cx="12" cy="10" r="2.5"></circle>
-      </svg>
-    </a>
+        <!-- Google -->
+        <a href="https://goo.gl/maps/wjfc1aGFBrSLd3tV6" target="_blank" rel="noopener" aria-label="Google">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#7a5a29" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 21s7-4.5 7-11a7 7 0 1 0-14 0c0 6.5 7 11 7 11z"></path>
+            <circle cx="12" cy="10" r="2.5"></circle>
+          </svg>
+        </a>
 
-    <!-- PagesJaunes -->
-    <a href="https://www.pagesjaunes.fr/pros/62191780" target="_blank" rel="noopener" aria-label="Pages Jaunes">
-      <svg viewBox="0 0 24 24" fill="none" stroke="#7a5a29" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-        <path d="M6 3h9a3 3 0 0 1 3 3v12a3 3 0 0 1-3 3H6a3 3 0 0 1-3-3V6a3 3 0 0 1 3-3z"></path>
-        <path d="M8 8h8"></path>
-        <path d="M8 12h8"></path>
-        <path d="M8 16h6"></path>
-      </svg>
-    </a>
+        <!-- PagesJaunes -->
+        <a href="https://www.pagesjaunes.fr/pros/62191780" target="_blank" rel="noopener" aria-label="Pages Jaunes">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#7a5a29" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M6 3h9a3 3 0 0 1 3 3v12a3 3 0 0 1-3 3H6a3 3 0 0 1-3-3V6a3 3 0 0 1 3-3z"></path>
+            <path d="M8 8h8"></path>
+            <path d="M8 12h8"></path>
+            <path d="M8 16h6"></path>
+          </svg>
+        </a>
 
-    <!-- Facebook -->
-    <a href="https://www.facebook.com/jeremyheyobpro" target="_blank" rel="noopener" aria-label="Facebook">
-      <svg viewBox="0 0 24 24" fill="none" stroke="#7a5a29" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-        <path d="M14 8h3V5h-3a4 4 0 0 0-4 4v3H7v3h3v6h3v-6h3l1-3h-4V9a1 1 0 0 1 1-1z"></path>
-      </svg>
-    </a>
+        <!-- Facebook -->
+        <a href="https://www.facebook.com/jeremyheyobpro" target="_blank" rel="noopener" aria-label="Facebook">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#7a5a29" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M14 8h3V5h-3a4 4 0 0 0-4 4v3H7v3h3v6h3v-6h3l1-3h-4V9a1 1 0 0 1 1-1z"></path>
+          </svg>
+        </a>
 
-    <!-- LinkedIn -->
-    <a href="https://www.linkedin.com/company/jérémy-heyob/" target="_blank" rel="noopener" aria-label="LinkedIn">
-      <svg viewBox="0 0 24 24" fill="none" stroke="#7a5a29" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-        <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4V9h4v2"></path>
-        <rect x="2" y="9" width="4" height="12"></rect>
-        <circle cx="4" cy="4" r="2"></circle>
-      </svg>
-    </a>
+        <!-- LinkedIn -->
+        <a href="https://www.linkedin.com/company/jérémy-heyob/" target="_blank" rel="noopener" aria-label="LinkedIn">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#7a5a29" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4V9h4v2"></path>
+            <rect x="2" y="9" width="4" height="12"></rect>
+            <circle cx="4" cy="4" r="2"></circle>
+          </svg>
+        </a>
 
-    <!-- Instagram -->
-    <a href="https://www.instagram.com/jeremyheyob/" target="_blank" rel="noopener" aria-label="Instagram">
-      <svg viewBox="0 0 24 24" fill="none" stroke="#7a5a29" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-        <rect x="3" y="3" width="18" height="18" rx="5" ry="5"></rect>
-        <circle cx="12" cy="12" r="4"></circle>
-        <path d="M17.5 6.5h.01"></path>
-      </svg>
-    </a>
+        <!-- Instagram -->
+        <a href="https://www.instagram.com/jeremyheyob/" target="_blank" rel="noopener" aria-label="Instagram">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#7a5a29" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="3" y="3" width="18" height="18" rx="5" ry="5"></rect>
+            <circle cx="12" cy="12" r="4"></circle>
+            <path d="M17.5 6.5h.01"></path>
+          </svg>
+        </a>
 
-    <!-- YouTube -->
-    <a href="https://www.youtube.com/channel/UCpE0arbirH2tkw2THT_Ef9Q" target="_blank" rel="noopener" aria-label="YouTube">
-      <svg viewBox="0 0 24 24" fill="none" stroke="#7a5a29" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-        <path d="M22 12s0-4-1-5-4-1-9-1-8 0-9 1-1 5-1 5 0 4 1 5 4 1 9 1 8 0 9-1 1-5 1-5z"></path>
-        <path d="M10 9l6 3-6 3V9z"></path>
-      </svg>
-    </a>
+        <!-- YouTube -->
+        <a href="https://www.youtube.com/channel/UCpE0arbirH2tkw2THT_Ef9Q" target="_blank" rel="noopener" aria-label="YouTube">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#7a5a29" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M22 12s0-4-1-5-4-1-9-1-8 0-9 1-1 5-1 5 0 4 1 5 4 1 9 1 8 0 9-1 1-5 1-5z"></path>
+            <path d="M10 9l6 3-6 3V9z"></path>
+          </svg>
+        </a>
 
-    <!-- TikTok -->
-    <a href="https://www.tiktok.com/@jeremyheyob" target="_blank" rel="noopener" aria-label="TikTok">
-      <svg viewBox="0 0 24 24" fill="none" stroke="#7a5a29" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-        <path d="M14 3v10a4 4 0 1 1-4-4"></path>
-        <path d="M14 7a6 6 0 0 0 6 2"></path>
-      </svg>
-    </a>
+        <!-- TikTok -->
+        <a href="https://www.tiktok.com/@jeremyheyob" target="_blank" rel="noopener" aria-label="TikTok">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#7a5a29" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M14 3v10a4 4 0 1 1-4-4"></path>
+            <path d="M14 7a6 6 0 0 0 6 2"></path>
+          </svg>
+        </a>
 
-  </div>
-</section>
+      </div>
+    </section>
 
     <!-- CONTACT -->
     <section class="contact-block">
