@@ -43,7 +43,7 @@
     .logo { max-width: 140px; }
     .header-center { flex: 1; text-align: center; }
     .tagline-main { font-size: 13px; letter-spacing: 0.18em; color: var(--text-soft); }
-    .tagline-sub { margin-top: 12px; margin-bottom: 8px; font-size: 12px; text-transform: uppercase; letter-spacing: 0.12em; }
+    .tagline-sub { margin-top: 12px; font-size: 12px; margin-bottom: 8px; text-transform: uppercase; letter-spacing: 0.12em; }
     .tagline-sub strong { color: var(--text-main); font-weight: 900; }
 
     .layout {
@@ -64,6 +64,7 @@
     h1 { font-size: 26px; margin-bottom: 0; }
     .subtitle { color: var(--text-soft); margin-top: 4px; }
 
+    .chips { margin-top: 12px; }
     .chip {
       padding: 6px 12px; background: rgba(198,169,119,0.10);
       border-radius: 999px; font-size: 12px; margin-right: 6px;
@@ -95,8 +96,10 @@
 
     .grid-two span { display: block; font-size: 12px; color: var(--text-soft); }
 
-    .form-grid { display: grid; grid-template-columns: 1fr 1fr;
-      gap: 14px; margin-top: 14px; }
+    .form-grid {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 14px; margin-top: 14px;
+    }
 
     input, select {
       width: 100%; padding: 10px 12px; border-radius: 12px;
@@ -105,10 +108,18 @@
     }
 
     label { font-size: 13px; margin-bottom: 4px; display: block; }
-    .btn { grid-column: span 2; margin-top: 6px;
+
+    .btn {
+      grid-column: span 2; margin-top: 6px;
       background: linear-gradient(135deg, #fbe4b9, #f3c98b);
       color: #7a5a29; padding: 12px 16px; border-radius: 999px;
-      font-size: 15px; font-weight: 600; border: none; cursor: pointer;}
+      font-size: 15px; font-weight: 600; border: none;
+      cursor: pointer;
+      text-align: center;
+    }
+
+    /* Permet à <a class="btn"> de se comporter comme un bouton */
+    a.btn { display: block; text-decoration: none; }
 
     .btn-retour { display: inline-block; margin: 10px 0 18px;
       padding: 6px 12px; font-size: 13px; font-weight: 500;
@@ -116,21 +127,17 @@
       border: 1px solid rgba(198,169,119,0.35);
       background: rgba(198,169,119,0.10); }
 
-    .contact-card { margin-top: 18px; display: flex; gap: 10px;
-      border-top: 1px solid var(--border-soft); padding-top: 12px; }
-
-    .contact-photo {
-      width: 52px; height: 52px; border-radius: 999px;
-      object-fit: cover; object-position: top center;
-      border: 1px solid #e5e7eb;
+    /* FOOTER LEGAL */
+    .legal-footer {
+      margin-top: 40px;
+      padding: 18px;
+      text-align: center;
+      font-size: 11.5px;
+      color: var(--text-soft);
+      opacity: 0.8;
     }
 
-    .contact-links { margin-top: 6px; display: flex;
-      gap: 8px; font-size: 12px; }
-
-    .contact-links a { color: #C6AA77; font-size: 12px;
-      font-weight: 500; text-decoration: none; }
-
+    /* LIGHTBOX */
     .lightbox {
       position: fixed; inset: 0; background: rgba(0,0,0,0.85);
       display: flex; justify-content: center; align-items: center;
@@ -211,7 +218,9 @@
       height: 20px;
     }
 
-    /* ===== AJOUTS ELIOT ===== */
+    /* ===== AJOUTS (IMPORTÉS D’ELIOT) ===== */
+
+    /* Séparateur luxe */
     .luxury-divider {
       width: 100%;
       height: 1px;
@@ -224,6 +233,7 @@
       );
     }
 
+    /* Textarea (avis + / -) */
     textarea {
       width: 100%;
       padding: 10px 12px;
@@ -234,14 +244,18 @@
       resize: vertical;
     }
 
-    input.error, select.error, textarea.error {
+    /* Surbrillance noire si champ manquant */
+    input.error,
+    select.error,
+    textarea.error {
       border: 2px solid #191919;
       background: #fff;
     }
 
+    /* Centrer les titres du bloc avis uniquement */
     .card-avis-global h2 { text-align: center; }
 
-    /* ===== BLOC CONTACT PREMIUM (comme Eliot) ===== */
+    /* ===== BLOC CONTACT PREMIUM (IMPORTÉ D’ELIOT) ===== */
     .contact-block {
       display: flex;
       gap: 18px;
@@ -255,17 +269,16 @@
       margin: 16px auto 0;
     }
 
-    .contact-block .contact-photo-big {
+    .contact-block .contact-photo {
       width: 90px;
       height: 90px;
       border-radius: 50%;
       overflow: hidden;
       border: 2px solid #e5e7eb;
       flex-shrink: 0;
-      display: block;
     }
 
-    .contact-block .contact-photo-big img {
+    .contact-block .contact-photo img {
       width: 100%;
       height: 100%;
       object-fit: cover;
@@ -293,7 +306,6 @@
 
     .contact-block .contact-links a:hover { text-decoration: underline; }
 
-    /* RESPONSIVE */
     @media (max-width: 1024px) {
       .layout { grid-template-columns: 1fr; }
     }
@@ -317,25 +329,9 @@
 
       label { white-space: normal; display: block; }
 
-      input, select, textarea {
-        width: 100%;
-        max-width: 100%;
-      }
+      input, select, textarea { width: 100%; max-width: 100%; }
 
-      .btn {
-        font-size: 14px;
-        grid-column: 1 / -1;
-      }
-
-      .contact-card {
-        flex-direction: column;
-        align-items: center;
-        text-align: center;
-      }
-
-      .contact-links {
-        justify-content: center;
-      }
+      .btn { font-size: 14px; grid-column: 1 / -1; }
 
       .contact-block {
         flex-direction: column;
@@ -354,23 +350,17 @@
       .lightbox-prev, .lightbox-next { font-size: 32px; }
       .lightbox-close { font-size: 40px; }
     }
-
-    /* FOOTER LÉGAL */
-    .legal-footer {
-      margin-top: 40px;
-      padding: 18px;
-      text-align: center;
-      font-size: 11.5px;
-      color: var(--text-soft);
-      opacity: 0.75;
-    }
   </style>
 
   <script>
+    /* Validation générique : surbrillance noire si champ vide */
     function validateRequiredFields(fields) {
       let hasError = false;
 
-      fields.forEach((f) => { if (f) f.classList.remove("error"); });
+      fields.forEach((f) => {
+        if (!f) return;
+        f.classList.remove("error");
+      });
 
       fields.forEach((f) => {
         if (!f) return;
@@ -383,6 +373,7 @@
       return !hasError;
     }
 
+    /* 1) Avis sur la visite (SANS EMAIL CLIENT) */
     function sendAvisVisite() {
       const bien = "Naël - Appartement T3";
 
@@ -413,6 +404,7 @@
         "mailto:contact@jeremyheyob.fr?subject=" + subject + "&body=" + body;
     }
 
+    /* 2) Contre-visite (AVEC EMAIL CLIENT) */
     function sendContreVisite() {
       const bien = "Naël - Appartement T3";
 
@@ -450,7 +442,7 @@
 <div class="page">
 
   <header>
-    <img src="/images/logo.webp" class="logo" alt="">
+    <img src="/images/logo.webp" class="logo">
     <div class="header-center">
       <div class="tagline-main">VOS PROJETS IMMOBILIERS N'ONT JAMAIS ÉTÉ AUSSI SIMPLES !</div>
       <div class="tagline-sub"><strong>JÉRÉMY HEYOB</strong></div>
@@ -461,7 +453,7 @@
 
   <main class="layout">
 
-    <!-- ===== COLONNE GAUCHE : NAËL (INCHANGÉE) ===== -->
+    <!-- CARTE GAUCHE : NAËL -->
     <section class="card">
       <div class="pill">Informations du bien</div>
 
@@ -477,25 +469,27 @@
         <span class="chip">Garage inclus</span>
       </div>
 
+      <!-- CARROUSEL -->
       <div class="carousel">
         <div class="carousel-track">
-          <img src="/bien-visite/nael/photos/Nael 1.webp">
-          <img src="/bien-visite/nael/photos/Nael 2.webp" loading="lazy">
-          <img src="/bien-visite/nael/photos/Nael 3.webp" loading="lazy">
-          <img src="/bien-visite/nael/photos/Nael 4.webp" loading="lazy">
-          <img src="/bien-visite/nael/photos/Nael 5.webp" loading="lazy">
-          <img src="/bien-visite/nael/photos/Nael 6.webp" loading="lazy">
-          <img src="/bien-visite/nael/photos/Nael 7.webp" loading="lazy">
-          <img src="/bien-visite/nael/photos/Nael 8.webp" loading="lazy">
-          <img src="/bien-visite/nael/photos/Nael 9.webp" loading="lazy">
-          <img src="/bien-visite/nael/photos/Nael 10.webp" loading="lazy">
-          <img src="/bien-visite/nael/photos/Nael 11.webp" loading="lazy">
+          <img src="/bien-visite/nael/photos/nael 1.webp">
+          <img src="/bien-visite/nael/photos/nael 2.webp" loading="lazy">
+          <img src="/bien-visite/nael/photos/nael 3.webp" loading="lazy">
+          <img src="/bien-visite/nael/photos/nael 4.webp" loading="lazy">
+          <img src="/bien-visite/nael/photos/nael 5.webp" loading="lazy">
+          <img src="/bien-visite/nael/photos/nael 6.webp" loading="lazy">
+          <img src="/bien-visite/nael/photos/nael 7.webp" loading="lazy">
+          <img src="/bien-visite/nael/photos/nael 8.webp" loading="lazy">
+          <img src="/bien-visite/nael/photos/nael 9.webp" loading="lazy">
+          <img src="/bien-visite/nael/photos/nael 10.webp" loading="lazy">
+          <img src="/bien-visite/nael/photos/nael 11.webp" loading="lazy">
         </div>
 
         <button class="carousel-btn prev" type="button">‹</button>
         <button class="carousel-btn next" type="button">›</button>
       </div>
 
+      <!-- INFOS -->
       <div class="grid-two">
         <div><span>Type</span>Appartement T3</div>
         <div><span>Prix</span>220 000 €</div>
@@ -513,6 +507,7 @@
         <div><span>Points forts</span>Sécurisé, traversant, garage</div>
       </div>
 
+      <!-- VIDEO → LIEN SIMPLE -->
       <h2 style="margin-top:20px;">Vidéo de présentation</h2>
       <a href="https://youtu.be/BcZKUKU0p-U"
          target="_blank"
@@ -521,14 +516,16 @@
         Voir la vidéo de présentation du bien →
       </a>
 
+      <!-- (Optionnel mais présent dans ton contenu Naël d'origine) -->
       <h2 style="margin-top:20px;">Lien de l’annonce</h2>
       <a href="https://www.agence.immo/achat/appartement-t3-3-pieces-saint-priest-69800-VA33868"
          target="_blank"
          rel="noopener"
          style="color:#1a73e8;font-size:15px;text-decoration:underline;">
-         Voir l’annonce sur le site →
+        Voir l’annonce sur le site →
       </a>
 
+      <!-- DOCUMENTS -->
       <h2 style="margin-top:28px;">Documents du bien</h2>
 
       <ul style="list-style:none;padding:0;margin:12px 0;font-size:15px;">
@@ -549,161 +546,209 @@
       </ul>
 
     </section>
-    <!-- ===== COLONNE DROITE : PARCOURS CLIENT (ELIOT) ===== -->
+
+    <!-- CARTE DROITE : PARCOURS IMPORTÉ D’ELIOT (STRUCTURE ESTRELLA) -->
     <aside class="card card-avis-global">
 
-      <h2>Votre avis sur la visite</h2>
-      <p class="subtitle">Votre retour est précieux pour la suite.</p>
+      <!-- SECTION 1 : AVIS SUR LA VISITE -->
+      <section class="avis-section">
+        <h2>Votre avis sur cette visite</h2>
+        <p class="subtitle">
+          Votre retour est essentiel pour me permettre d’avancer efficacement sur ce bien et de mieux comprendre votre recherche.
+        </p>
 
-      <div class="form-grid">
-        <div>
-          <label>Votre prénom</label>
-          <input id="avis_prenom" type="text">
-        </div>
-        <div>
-          <label>Votre nom</label>
-          <input id="avis_nom" type="text">
-        </div>
-        <div>
-          <label>Votre estimation du prix (€)</label>
-          <input id="avis_estimation" type="number">
-        </div>
-        <div>
-          <label>Souhaitez-vous faire une offre ?</label>
-          <select id="avis_offre">
-            <option value="">-- Choisir --</option>
-            <option>Oui</option>
-            <option>Non</option>
-            <option>À réfléchir</option>
-          </select>
-        </div>
-        <div style="grid-column:1/-1;">
-          <label>Points positifs du bien</label>
-          <textarea id="avis_plus" rows="3"></textarea>
-        </div>
-        <div style="grid-column:1/-1;">
-          <label>Points négatifs du bien</label>
-          <textarea id="avis_moins" rows="3"></textarea>
-        </div>
+        <div class="form-grid">
+          <div><label>Votre prénom</label><input id="avis_prenom" type="text"></div>
+          <div><label>Votre nom</label><input id="avis_nom" type="text"></div>
 
-        <button class="btn" type="button" onclick="sendAvisVisite()">
-          Envoyer mon avis
-        </button>
-      </div>
+          <div style="grid-column: 1 / -1;">
+            <label>Votre estimation du prix (€)</label>
+            <input
+              id="avis_estimation"
+              type="text"
+              inputmode="numeric"
+              pattern="[0-9]*"
+              placeholder="Ex : 220000">
+          </div>
+
+          <div style="grid-column: 1 / -1;">
+            <label>Points positifs du bien</label>
+            <textarea id="avis_plus" rows="3"></textarea>
+          </div>
+
+          <div style="grid-column: 1 / -1;">
+            <label>Points négatifs du bien</label>
+            <textarea id="avis_moins" rows="3"></textarea>
+          </div>
+
+          <div style="grid-column: 1 / -1;">
+            <label>Souhaitez-vous faire une offre sur ce bien ?</label>
+            <select id="avis_offre">
+              <option value="">-- Choisir --</option>
+              <option value="Oui">Oui</option>
+              <option value="Non">Non</option>
+              <option value="Je souhaite réfléchir">Je souhaite réfléchir</option>
+            </select>
+          </div>
+
+          <button class="btn" type="button" onclick="sendAvisVisite()">Valider mon avis</button>
+        </div>
+      </section>
 
       <div class="luxury-divider"></div>
 
-      <h2>Votre avis sur l’accompagnement</h2>
-      <p class="subtitle">Votre retour m’aide à améliorer mon accompagnement.</p>
+      <!-- SECTION 2 : AVIS ACCOMPAGNEMENT -->
+      <section class="avis-section">
+        <h2>Votre retour sur mon accompagnement</h2>
+        <p class="subtitle">
+          Votre avis est précieux. Partagez votre expérience et contribuez à renforcer la qualité de mon accompagnement.
+        </p>
 
-      <p style="text-align:center;margin:18px 0;">
-        <a href="https://g.page/r/CcE2mG8mT7E1EB0/review"
-           target="_blank"
-           rel="noopener"
-           class="btn"
-           style="display:inline-block;max-width:320px;">
-          Laisser un avis Google
+        <a class="btn" href="https://g.page/r/CcE2mG8mT7E1EB0/review" target="_blank" rel="noopener">
+          Déposer un avis sur Google
         </a>
-      </p>
+      </section>
 
       <div class="luxury-divider"></div>
 
-      <h2>Programmer une contre-visite</h2>
-      <p class="subtitle">Indiquez vos disponibilités.</p>
+      <!-- SECTION 3 : CONTRE-VISITE -->
+      <section class="avis-section">
+        <h2>Programmer une contre-visite</h2>
+        <p class="subtitle">
+          Si ce bien suscite votre intérêt, indiquez vos disponibilités afin d’organiser une nouvelle visite dans les meilleures conditions.
+        </p>
 
-      <div class="form-grid">
-        <div>
-          <label>Votre prénom</label>
-          <input id="cv_prenom" type="text">
-        </div>
-        <div>
-          <label>Votre nom</label>
-          <input id="cv_nom" type="text">
-        </div>
-        <div>
-          <label>Votre téléphone</label>
-          <input id="cv_telephone" type="tel">
-        </div>
-        <div>
-          <label>Votre email</label>
-          <input id="cv_email" type="email">
-        </div>
-        <div>
-          <label>Date souhaitée</label>
-          <input id="cv_date" type="date">
-        </div>
-        <div>
-          <label>Créneau souhaité</label>
-          <select id="cv_creneau">
-            <option value="">-- Choisir --</option>
-            <option>09:00 - 10:00</option>
-            <option>10:00 - 11:00</option>
-            <option>11:00 - 12:00</option>
-            <option>14:00 - 15:00</option>
-            <option>15:00 - 16:00</option>
-            <option>16:00 - 17:00</option>
-            <option>17:00 - 18:00</option>
-            <option>18:00 - 19:00</option>
-            <option>19:00 - 20:00</option>
-          </select>
-        </div>
+        <div class="form-grid">
+          <div><label>Votre prénom</label><input id="cv_prenom" type="text"></div>
+          <div><label>Votre nom</label><input id="cv_nom" type="text"></div>
+          <div><label>Votre téléphone</label><input id="cv_telephone" type="tel"></div>
+          <div><label>Votre email</label><input id="cv_email" type="email"></div>
+          <div><label>Date souhaitée</label><input id="cv_date" type="date"></div>
+          <div>
+            <label>Créneau souhaité</label>
+            <select id="cv_creneau">
+              <option value="">-- Choisir --</option>
+              <option>09:00 - 10:00</option>
+              <option>10:00 - 11:00</option>
+              <option>11:00 - 12:00</option>
+              <option>14:00 - 15:00</option>
+              <option>15:00 - 16:00</option>
+              <option>16:00 - 17:00</option>
+              <option>17:00 - 18:00</option>
+              <option>18:00 - 19:00</option>
+              <option>19:00 - 20:00</option>
+            </select>
+          </div>
 
-        <button class="btn" type="button" onclick="sendContreVisite()">
-          Valider ma demande
-        </button>
-      </div>
+          <button class="btn" type="button" onclick="sendContreVisite()">Valider ma demande</button>
+        </div>
+      </section>
 
     </aside>
 
   </main>
 
-  <!-- ===== RÉSEAUX SOCIAUX ===== -->
+  <!-- ===== RÉSEAUX SOCIAUX (CENTRÉ ÉCRAN) ===== -->
   <div class="social-full">
     <section class="social-block" aria-label="Réseaux sociaux">
       <div class="social-icons">
 
-        <a href="https://goo.gl/maps/wjfc1aGFBrSLd3tV6" target="_blank" rel="noopener">
-          <svg viewBox="0 0 24 24" fill="none" stroke="#7a5a29" stroke-width="2"><path d="M12 21s7-4.5 7-11a7 7 0 1 0-14 0c0 6.5 7 11 7 11z"/><circle cx="12" cy="10" r="2.5"/></svg>
+        <!-- Google -->
+        <a href="https://goo.gl/maps/wjfc1aGFBrSLd3tV6" target="_blank" rel="noopener" aria-label="Google">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#7a5a29" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 21s7-4.5 7-11a7 7 0 1 0-14 0c0 6.5 7 11 7 11z"></path>
+            <circle cx="12" cy="10" r="2.5"></circle>
+          </svg>
         </a>
 
-        <a href="https://www.pagesjaunes.fr/pros/62191780" target="_blank" rel="noopener">
-          <svg viewBox="0 0 24 24" fill="none" stroke="#7a5a29" stroke-width="2"><rect x="6" y="3" width="12" height="18" rx="2"/><path d="M8 8h8M8 12h8M8 16h6"/></svg>
+        <!-- PagesJaunes -->
+        <a href="https://www.pagesjaunes.fr/pros/62191780" target="_blank" rel="noopener" aria-label="Pages Jaunes">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#7a5a29" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M6 3h9a3 3 0 0 1 3 3v12a3 3 0 0 1-3 3H6a3 3 0 0 1-3-3V6a3 3 0 0 1 3-3z"></path>
+            <path d="M8 8h8"></path>
+            <path d="M8 12h8"></path>
+            <path d="M8 16h6"></path>
+          </svg>
         </a>
 
-        <a href="https://www.facebook.com/jeremyheyobpro" target="_blank" rel="noopener">
-          <svg viewBox="0 0 24 24" fill="none" stroke="#7a5a29" stroke-width="2"><path d="M14 8h3V5h-3a4 4 0 0 0-4 4v3H7v3h3v6h3v-6h3l1-3h-4V9a1 1 0 0 1 1-1z"/></svg>
+        <!-- Facebook -->
+        <a href="https://www.facebook.com/jeremyheyobpro" target="_blank" rel="noopener" aria-label="Facebook">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#7a5a29" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M14 8h3V5h-3a4 4 0 0 0-4 4v3H7v3h3v6h3v-6h3l1-3h-4V9a1 1 0 0 1 1-1z"></path>
+          </svg>
         </a>
 
-        <a href="https://www.linkedin.com/company/jérémy-heyob/" target="_blank" rel="noopener">
-          <svg viewBox="0 0 24 24" fill="none" stroke="#7a5a29" stroke-width="2"><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4V9h4v2"/></svg>
+        <!-- LinkedIn -->
+        <a href="https://www.linkedin.com/company/jérémy-heyob/" target="_blank" rel="noopener" aria-label="LinkedIn">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#7a5a29" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4V9h4v2"></path>
+            <rect x="2" y="9" width="4" height="12"></rect>
+            <circle cx="4" cy="4" r="2"></circle>
+          </svg>
         </a>
 
-        <a href="https://www.instagram.com/jeremyheyob/" target="_blank" rel="noopener">
-          <svg viewBox="0 0 24 24" fill="none" stroke="#7a5a29" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/></svg>
+        <!-- Instagram -->
+        <a href="https://www.instagram.com/jeremyheyob/" target="_blank" rel="noopener" aria-label="Instagram">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#7a5a29" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="3" y="3" width="18" height="18" rx="5" ry="5"></rect>
+            <circle cx="12" cy="12" r="4"></circle>
+            <path d="M17.5 6.5h.01"></path>
+          </svg>
         </a>
 
-        <a href="https://www.youtube.com/channel/UCpE0arbirH2tkw2THT_Ef9Q" target="_blank" rel="noopener">
-          <svg viewBox="0 0 24 24" fill="none" stroke="#7a5a29" stroke-width="2"><path d="M22 12s0-4-1-5-4-1-9-1-8 0-9 1-1 5-1 5 0 4 1 5 4 1 9 1 8 0 9-1 1-5 1-5z"/><path d="M10 9l6 3-6 3z"/></svg>
+        <!-- YouTube -->
+        <a href="https://www.youtube.com/channel/UCpE0arbirH2tkw2THT_Ef9Q" target="_blank" rel="noopener" aria-label="YouTube">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#7a5a29" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M22 12s0-4-1-5-4-1-9-1-8 0-9 1-1 5-1 5 0 4 1 5 4 1 9 1 8 0 9-1 1-5 1-5z"></path>
+            <path d="M10 9l6 3-6 3V9z"></path>
+          </svg>
         </a>
 
-        <a href="https://www.tiktok.com/@jeremyheyob" target="_blank" rel="noopener">
-          <svg viewBox="0 0 24 24" fill="none" stroke="#7a5a29" stroke-width="2"><path d="M14 3v10a4 4 0 1 1-4-4"/><path d="M14 7a6 6 0 0 0 6 2"/></svg>
+        <!-- TikTok -->
+        <a href="https://www.tiktok.com/@jeremyheyob" target="_blank" rel="noopener" aria-label="TikTok">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#7a5a29" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M14 3v10a4 4 0 1 1-4-4"></path>
+            <path d="M14 7a6 6 0 0 0 6 2"></path>
+          </svg>
         </a>
 
       </div>
     </section>
   </div>
 
-  <!-- ===== FOOTER ===== -->
+  <!-- ===== BLOC CONTACT PREMIUM (AJOUTÉ) ===== -->
+  <section class="contact-block">
+    <div class="contact-photo">
+      <img src="/images/photo.webp" alt="">
+    </div>
+
+    <div class="contact-text">
+      <h3>Une question sur ce bien ?</h3>
+
+      <p>
+        Je reste disponible pour vous apporter des précisions,
+        vous envoyer des documents complémentaires ou organiser
+        une contre-visite selon vos disponibilités.
+      </p>
+
+      <div class="contact-links">
+        <a href="mailto:contact@jeremyheyob.fr">✉️ Email</a>
+        <a href="sms:+33648145565">💬 SMS</a>
+        <a href="tel:+33648145565">📞 Appel</a>
+        <a href="https://www.jeremyheyob.fr" target="_blank" rel="noopener">💻 Site</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER LÉGAL -->
   <footer class="legal-footer">
-    Les photos et documents présentés sur cette page sont la propriété exclusive de
-    <strong>Jérémy HEYOB Immobilier</strong>.<br>
+    Les photos et documents présentés sur cette page sont la propriété exclusive de <strong>Jérémy HEYOB Immobilier</strong>.<br>
     Toute reproduction, diffusion ou utilisation est strictement interdite sans autorisation préalable.
   </footer>
 
 </div>
 
-<!-- ===== LIGHTBOX ===== -->
+<!-- LIGHTBOX -->
 <div class="lightbox" id="lightbox">
   <span class="lightbox-close" id="lightboxClose">×</span>
   <span class="lightbox-prev" id="lightboxPrev">‹</span>
@@ -711,55 +756,64 @@
   <span class="lightbox-next" id="lightboxNext">›</span>
 </div>
 
+<!-- SCRIPT CARROUSEL + LIGHTBOX (PLACÉ APRÈS LE HTML POUR ÉVITER LES NULL) -->
 <script>
-/* ===== CARROUSEL ===== */
-let idx = 0;
-const track = document.querySelector('.carousel-track');
-const slides = document.querySelectorAll('.carousel img');
+  let idx = 0;
+  const track = document.querySelector('.carousel-track');
+  const slides = document.querySelectorAll('.carousel img');
 
-document.querySelector('.carousel-btn.next').onclick = () => {
-  idx = (idx + 1) % slides.length;
-  track.style.transform = `translateX(-${idx * 100}%)`;
-};
+  document.querySelector('.next').onclick = () => {
+    idx = (idx + 1) % slides.length;
+    track.style.transform = `translateX(-${idx * 100}%)`;
+  };
 
-document.querySelector('.carousel-btn.prev').onclick = () => {
-  idx = (idx - 1 + slides.length) % slides.length;
-  track.style.transform = `translateX(-${idx * 100}%)`;
-};
+  document.querySelector('.prev').onclick = () => {
+    idx = (idx - 1 + slides.length) % slides.length;
+    track.style.transform = `translateX(-${idx * 100}%)`;
+  };
 
-/* ===== LIGHTBOX ===== */
-const lightbox = document.getElementById('lightbox');
-const lightboxImg = document.getElementById('lightboxImg');
-const btnClose = document.getElementById('lightboxClose');
-const btnPrev = document.getElementById('lightboxPrev');
-const btnNext = document.getElementById('lightboxNext');
+  const lightbox = document.getElementById('lightbox');
+  const lightboxImg = document.getElementById('lightboxImg');
+  const btnClose = document.getElementById('lightboxClose');
+  const btnPrev = document.getElementById('lightboxPrev');
+  const btnNext = document.getElementById('lightboxNext');
 
-let currentSlide = 0;
+  let currentSlide = 0;
 
-slides.forEach((img, i) => {
-  img.addEventListener('click', () => {
-    currentSlide = i;
+  slides.forEach((img, i) => {
+    img.addEventListener('click', () => {
+      currentSlide = i;
+      openLightbox();
+    });
+  });
+
+  function openLightbox() {
     lightboxImg.src = slides[currentSlide].src;
     lightbox.classList.add('active');
+  }
+
+  btnClose.onclick = () => lightbox.classList.remove('active');
+
+  lightbox.onclick = (e) => {
+    if (e.target === lightbox) lightbox.classList.remove('active');
+  };
+
+  btnPrev.onclick = () => {
+    currentSlide = (currentSlide - 1 + slides.length) % slides.length;
+    openLightbox();
+  };
+
+  btnNext.onclick = () => {
+    currentSlide = (currentSlide + 1) % slides.length;
+    openLightbox();
+  };
+
+  document.addEventListener('keydown', (e) => {
+    if (!lightbox.classList.contains('active')) return;
+    if (e.key === 'ArrowRight') btnNext.onclick();
+    if (e.key === 'ArrowLeft') btnPrev.onclick();
+    if (e.key === 'Escape') btnClose.onclick();
   });
-});
-
-btnClose.onclick = () => lightbox.classList.remove('active');
-btnPrev.onclick = () => {
-  currentSlide = (currentSlide - 1 + slides.length) % slides.length;
-  lightboxImg.src = slides[currentSlide].src;
-};
-btnNext.onclick = () => {
-  currentSlide = (currentSlide + 1) % slides.length;
-  lightboxImg.src = slides[currentSlide].src;
-};
-
-document.addEventListener('keydown', (e) => {
-  if (!lightbox.classList.contains('active')) return;
-  if (e.key === 'ArrowRight') btnNext.onclick();
-  if (e.key === 'ArrowLeft') btnPrev.onclick();
-  if (e.key === 'Escape') btnClose.onclick();
-});
 </script>
 
 </body>
