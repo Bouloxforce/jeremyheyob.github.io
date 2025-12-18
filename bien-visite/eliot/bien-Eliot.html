@@ -215,7 +215,7 @@
       background: rgba(198,169,119,0.10);
     }
 
-    /* CONTACT */
+    /* CONTACT (ancien bloc) */
     .contact-card {
       margin-top: 18px;
       display: flex;
@@ -299,6 +299,8 @@
     }
 
     /* ===== BLOC RÉSEAUX SOCIAUX ===== */
+
+    /* Wrapper full width pour centrage écran */
     .social-full {
       width: 100vw;
       margin-left: calc(-50vw + 50%);
@@ -307,6 +309,7 @@
       margin-top: 32px;
     }
 
+    /* Bloc visuel */
     .social-block {
       width: fit-content;
       margin: 0 auto 8px;
@@ -317,6 +320,7 @@
       padding: 14px 16px;
     }
 
+    /* Conteneur icônes */
     .social-icons {
       display: flex;
       gap: 10px;
@@ -325,6 +329,7 @@
       justify-content: center;
     }
 
+    /* Boutons */
     .social-icons a {
       width: 42px;
       height: 42px;
@@ -337,11 +342,13 @@
       text-decoration: none;
     }
 
+    /* Hover */
     .social-icons a:hover {
       transform: translateY(-1px);
       filter: brightness(1.02);
     }
 
+    /* Icônes SVG */
     .social-icons svg {
       width: 20px;
       height: 20px;
@@ -401,6 +408,58 @@
       background: #fff;
     }
 
+    /* ===== BLOC CONTACT (comme ta page espace client) ===== */
+    .contact-block {
+      display: flex;
+      gap: 18px;
+      align-items: center;
+      background: #ffffff;
+      border-radius: 20px;
+      padding: 16px 18px;
+      border: 1px solid var(--border-soft);
+      box-shadow: 0 18px 40px rgba(25, 25, 25, 0.08);
+      max-width: 960px;
+      margin: 16px auto 0;
+    }
+
+    .contact-block .contact-photo {
+      width: 90px;
+      height: 90px;
+      border-radius: 50%;
+      overflow: hidden;
+      border: 2px solid #e5e7eb;
+      flex-shrink: 0;
+      object-fit: unset;
+    }
+
+    .contact-block .contact-photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: top center;
+      display: block;
+    }
+
+    .contact-text h3 { margin: 0 0 4px; font-size: 17px; }
+    .contact-text p { margin: 0; font-size: 13px; color: var(--text-soft); }
+
+    .contact-block .contact-links {
+      margin-top: 8px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      font-size: 13px;
+    }
+
+    .contact-block .contact-links a {
+      color: var(--accent);
+      text-decoration: none;
+      font-size: 13px;
+      font-weight: 500;
+    }
+
+    .contact-block .contact-links a:hover { text-decoration: underline; }
+
     /* RESPONSIVE */
     @media (max-width: 1024px) {
       .layout { grid-template-columns: 1fr; }
@@ -444,6 +503,17 @@
       .contact-links {
         justify-content: center;
       }
+
+      .contact-block {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+      }
+
+      .contact-block .contact-links {
+        justify-content: center;
+        width: 100%;
+      }
     }
 
     @media (max-width: 480px) {
@@ -483,7 +553,7 @@
       return !hasError;
     }
 
-    /* 1) Avis sur la visite */
+    /* 1) Avis sur la visite (SANS EMAIL) */
     function sendAvisVisite() {
       const bien = "Eliot - Appartement T3";
 
@@ -501,15 +571,11 @@
       const body = encodeURIComponent(
         "Bonjour,\n\n" +
         "Voici mon retour suite à la visite du bien : " + bien + "\n\n" +
-        "Coordonnées :\n" +
         "Prénom : " + prenom.value + "\n" +
         "Nom : " + nom.value + "\n\n" +
-        "Estimation :\n" +
         "Mon estimation du prix : " + estimation.value + " €\n\n" +
-        "Points positifs et négatifs : ""\n" +
-        "Points positifs :\n" + plus.value + "\n" +
+        "Points positifs :\n" + plus.value + "\n\n" +
         "Points négatifs :\n" + moins.value + "\n\n" +
-        "Offre d'achat :\n" +
         "Souhaite faire une offre : " + offre.value + "\n\n" +
         "Cordialement,\n"
       );
@@ -518,7 +584,7 @@
         "mailto:contact@jeremyheyob.fr?subject=" + subject + "&body=" + body;
     }
 
-    /* 2) Contre-visite */
+    /* 2) Contre-visite (AVEC EMAIL) */
     function sendContreVisite() {
       const bien = "Eliot - Appartement T3";
 
@@ -536,12 +602,10 @@
       const body = encodeURIComponent(
         "Bonjour,\n\n" +
         "Je souhaite programmer une contre-visite pour le bien : " + bien + ".\n\n" +
-        "Coordonées :\n" +
         "Prénom : " + prenom.value + "\n" +
         "Nom : " + nom.value + "\n" +
         "Téléphone : " + tel.value + "\n" +
         "Email : " + email.value + "\n\n" +
-        "Date souhaitée :\n" +
         "Date souhaitée : " + date.value + "\n" +
         "Créneau souhaité : " + creneau.value + "\n\n" +
         "Je vous remercie par avance pour votre retour.\n\n" +
@@ -558,7 +622,7 @@
 <div class="page">
 
   <header>
-    <img src="/images/logo.webp" class="logo">
+    <img src="/images/logo.webp" class="logo" alt="">
     <div class="header-center">
       <div class="tagline-main">
         VOS PROJETS IMMOBILIERS N'ONT JAMAIS ÉTÉ AUSSI SIMPLES !
@@ -592,15 +656,15 @@
       <!-- CARROUSEL -->
       <div class="carousel">
         <div class="carousel-track">
-          <img src="/bien-visite/eliot/photos/eliot 1.webp">
-          <img src="/bien-visite/eliot/photos/eliot 2.webp" loading="lazy">
-          <img src="/bien-visite/eliot/photos/eliot 3.webp" loading="lazy">
-          <img src="/bien-visite/eliot/photos/eliot 4.webp" loading="lazy">
-          <img src="/bien-visite/eliot/photos/eliot 5.webp" loading="lazy">
+          <img src="/bien-visite/eliot/photos/eliot 1.webp" alt="">
+          <img src="/bien-visite/eliot/photos/eliot 2.webp" loading="lazy" alt="">
+          <img src="/bien-visite/eliot/photos/eliot 3.webp" loading="lazy" alt="">
+          <img src="/bien-visite/eliot/photos/eliot 4.webp" loading="lazy" alt="">
+          <img src="/bien-visite/eliot/photos/eliot 5.webp" loading="lazy" alt="">
         </div>
 
-        <button class="carousel-btn prev">‹</button>
-        <button class="carousel-btn next">›</button>
+        <button class="carousel-btn prev" type="button">‹</button>
+        <button class="carousel-btn next" type="button">›</button>
       </div>
 
       <!-- INFOS -->
@@ -625,6 +689,7 @@
       <h2 style="margin-top:20px;">Vidéo de présentation</h2>
       <a href="https://youtu.be/6Tc7e8RrH_Y"
          target="_blank"
+         rel="noopener"
          style="color:#1a73e8;font-size:15px;text-decoration:underline;">
         Voir la vidéo de présentation du bien →
       </a>
@@ -633,6 +698,7 @@
       <h2 style="margin-top:20px;">Lien de l’annonce</h2>
       <a href="https://www.agence.immo/achat/appartement-t3-3-pieces-saint-priest-69800-VA33855"
          target="_blank"
+         rel="noopener"
          style="color:#1a73e8;font-size:15px;text-decoration:underline;">
          Voir l’annonce sur le site →
       </a>
@@ -641,26 +707,27 @@
       <h2 style="margin-top:28px;">Documents du bien</h2>
 
       <ul style="list-style:none;padding:0;margin:12px 0;font-size:15px;">
-        <li><a href="/bien-visite/eliot/documents/eliot-0553_carnet_entretien_2023.pdf" target="_blank">Carnet d’entretien 2023 →</a></li>
-        <li><a href="/bien-visite/eliot/documents/eliot-0553_pv_ag_30_09_2024.pdf" target="_blank">PV AG 30/09/2024 →</a></li>
-        <li><a href="/bien-visite/eliot/documents/eliot-0554_pv_ag_04_10_2023.pdf" target="_blank">PV AG 04/10/2023 →</a></li>
-        <li><a href="/bien-visite/eliot/documents/eliot-0554_pv_ag_29_11_2022.pdf" target="_blank">PV AG 29/11/2022 →</a></li>
-        <li><a href="/bien-visite/eliot/documents/eliot-carrez.pdf" target="_blank">Loi Carrez →</a></li>
-        <li><a href="/bien-visite/eliot/documents/eliot-daact.pdf" target="_blank">DAACT →</a></li>
-        <li><a href="/bien-visite/eliot/documents/eliot-dpe.pdf" target="_blank">DPE →</a></li>
-        <li><a href="/bien-visite/eliot/documents/eliot-info_copro.pdf" target="_blank">Info copropriété →</a></li>
-        <li><a href="/bien-visite/eliot/documents/eliot-non_opposition.pdf" target="_blank">Non opposition →</a></li>
-        <li><a href="/bien-visite/eliot/documents/eliot-permis_de_construire.pdf" target="_blank">Permis de construire →</a></li>
-        <li><a href="/bien-visite/eliot/documents/eliot-permis_de_construire_2.pdf" target="_blank">Permis de construire 2 →</a></li>
-        <li><a href="/bien-visite/eliot/documents/eliot-0553_doe_niveau_0_bat_a.pdf" target="_blank">Plan Niveau 0 Bât A →</a></li>
-        <li><a href="/bien-visite/eliot/documents/eliot-plan_cadastrale.pdf" target="_blank">Plan cadastral →</a></li>
-        <li><a href="/bien-visite/eliot/documents/eliot-pv_livraison_des_parties_communes.pdf" target="_blank">PV livraison des parties communes →</a></li>
-        <li><a href="/bien-visite/eliot/documents/eliot-rcp.pdf" target="_blank">RCP →</a></li>
-        <li><a href="/bien-visite/eliot/documents/eliot-rfct_2019_11_12_sans_reserve_.pdf" target="_blank">RFCT 2019 →</a></li>
-        <li><a href="/bien-visite/eliot/documents/eliot-statuts_association.pdf" target="_blank">Statuts association →</a></li>
-        <li><a href="/bien-visite/eliot/documents/eliot-urbanisme.pdf" target="_blank">Urbanisme →</a></li>
-        <li><a href="/bien-visite/eliot/documents/eliot-urbanisme_2.pdf" target="_blank">Urbanisme 2 →</a></li>
+        <li><a href="/bien-visite/eliot/documents/eliot-0553_carnet_entretien_2023.pdf" target="_blank" rel="noopener">Carnet d’entretien 2023 →</a></li>
+        <li><a href="/bien-visite/eliot/documents/eliot-0553_pv_ag_30_09_2024.pdf" target="_blank" rel="noopener">PV AG 30/09/2024 →</a></li>
+        <li><a href="/bien-visite/eliot/documents/eliot-0554_pv_ag_04_10_2023.pdf" target="_blank" rel="noopener">PV AG 04/10/2023 →</a></li>
+        <li><a href="/bien-visite/eliot/documents/eliot-0554_pv_ag_29_11_2022.pdf" target="_blank" rel="noopener">PV AG 29/11/2022 →</a></li>
+        <li><a href="/bien-visite/eliot/documents/eliot-carrez.pdf" target="_blank" rel="noopener">Loi Carrez →</a></li>
+        <li><a href="/bien-visite/eliot/documents/eliot-daact.pdf" target="_blank" rel="noopener">DAACT →</a></li>
+        <li><a href="/bien-visite/eliot/documents/eliot-dpe.pdf" target="_blank" rel="noopener">DPE →</a></li>
+        <li><a href="/bien-visite/eliot/documents/eliot-info_copro.pdf" target="_blank" rel="noopener">Info copropriété →</a></li>
+        <li><a href="/bien-visite/eliot/documents/eliot-non_opposition.pdf" target="_blank" rel="noopener">Non opposition →</a></li>
+        <li><a href="/bien-visite/eliot/documents/eliot-permis_de_construire.pdf" target="_blank" rel="noopener">Permis de construire →</a></li>
+        <li><a href="/bien-visite/eliot/documents/eliot-permis_de_construire_2.pdf" target="_blank" rel="noopener">Permis de construire 2 →</a></li>
+        <li><a href="/bien-visite/eliot/documents/eliot-0553_doe_niveau_0_bat_a.pdf" target="_blank" rel="noopener">Plan Niveau 0 Bât A →</a></li>
+        <li><a href="/bien-visite/eliot/documents/eliot-plan_cadastrale.pdf" target="_blank" rel="noopener">Plan cadastral →</a></li>
+        <li><a href="/bien-visite/eliot/documents/eliot-pv_livraison_des_parties_communes.pdf" target="_blank" rel="noopener">PV livraison des parties communes →</a></li>
+        <li><a href="/bien-visite/eliot/documents/eliot-rcp.pdf" target="_blank" rel="noopener">RCP →</a></li>
+        <li><a href="/bien-visite/eliot/documents/eliot-rfct_2019_11_12_sans_reserve_.pdf" target="_blank" rel="noopener">RFCT 2019 →</a></li>
+        <li><a href="/bien-visite/eliot/documents/eliot-statuts_association.pdf" target="_blank" rel="noopener">Statuts association →</a></li>
+        <li><a href="/bien-visite/eliot/documents/eliot-urbanisme.pdf" target="_blank" rel="noopener">Urbanisme →</a></li>
+        <li><a href="/bien-visite/eliot/documents/eliot-urbanisme_2.pdf" target="_blank" rel="noopener">Urbanisme 2 →</a></li>
       </ul>
+
     </section>
 
     <!-- PARCOURS AVIS & CONTRE-VISITE -->
@@ -677,7 +744,10 @@
         <div class="form-grid">
           <div><label>Votre prénom</label><input id="avis_prenom" type="text"></div>
           <div><label>Votre nom</label><input id="avis_nom" type="text"></div>
-          <div><label>Votre estimation du prix (€)</label><input
+
+          <div style="grid-column: 1 / -1;">
+            <label>Votre estimation du prix (€)</label>
+            <input
               id="avis_estimation"
               type="text"
               inputmode="numeric"
@@ -706,7 +776,7 @@
           </div>
         </div>
 
-        <button class="btn" onclick="sendAvisVisite()">Valider mon avis</button>
+        <button class="btn" type="button" onclick="sendAvisVisite()">Valider mon avis</button>
       </section>
 
       <div class="luxury-divider"></div>
@@ -755,7 +825,7 @@
           </div>
         </div>
 
-        <button class="btn" onclick="sendContreVisite()">Valider ma demande</button>
+        <button class="btn" type="button" onclick="sendContreVisite()">Valider ma demande</button>
       </section>
 
     </aside>
@@ -830,6 +900,30 @@
     </section>
   </div>
 
+  <!-- ===== BLOC CONTACT (AJOUTÉ AU MÊME ENDROIT QUE TON AUTRE PAGE) ===== -->
+  <section class="contact-block">
+    <div class="contact-photo">
+      <img src="/images/photo.webp" alt="Photo de Jérémy Heyob">
+    </div>
+
+    <div class="contact-text">
+      <h3>Une question sur ce bien ?</h3>
+
+      <p>
+        Je reste disponible pour vous apporter des précisions,
+        vous envoyer des documents complémentaires ou organiser
+        une contre-visite selon vos disponibilités.
+      </p>
+
+      <div class="contact-links">
+        <a href="mailto:contact@jeremyheyob.fr">✉️ Email</a>
+        <a href="sms:+33648145565">💬 SMS</a>
+        <a href="tel:+33648145565">📞 Appel</a>
+        <a href="https://www.jeremyheyob.fr" target="_blank" rel="noopener">💻 Site</a>
+      </div>
+    </div>
+  </section>
+
   <footer class="legal-footer">
     Les photos et documents présentés sur cette page sont la propriété exclusive de <strong>Jérémy HEYOB Immobilier</strong>.<br>
     Toute reproduction, diffusion ou utilisation est strictement interdite sans autorisation préalable.
@@ -841,68 +935,68 @@
 <div class="lightbox" id="lightbox">
   <span class="lightbox-close" id="lightboxClose">×</span>
   <span class="lightbox-prev" id="lightboxPrev">‹</span>
-  <img id="lightboxImg">
+  <img id="lightboxImg" alt="">
   <span class="lightbox-next" id="lightboxNext">›</span>
 </div>
 
 <script>
-let idx = 0;
-const track = document.querySelector('.carousel-track');
-const slides = document.querySelectorAll('.carousel img');
+  let idx = 0;
+  const track = document.querySelector('.carousel-track');
+  const slides = document.querySelectorAll('.carousel img');
 
-document.querySelector('.next').onclick = () => {
-  idx = (idx + 1) % slides.length;
-  track.style.transform = `translateX(-${idx * 100}%)`;
-};
+  document.querySelector('.next').onclick = () => {
+    idx = (idx + 1) % slides.length;
+    track.style.transform = `translateX(-${idx * 100}%)`;
+  };
 
-document.querySelector('.prev').onclick = () => {
-  idx = (idx - 1 + slides.length) % slides.length;
-  track.style.transform = `translateX(-${idx * 100}%)`;
-};
+  document.querySelector('.prev').onclick = () => {
+    idx = (idx - 1 + slides.length) % slides.length;
+    track.style.transform = `translateX(-${idx * 100}%)`;
+  };
 
-/* LIGHTBOX */
-const lightbox = document.getElementById('lightbox');
-const lightboxImg = document.getElementById('lightboxImg');
-const btnClose = document.getElementById('lightboxClose');
-const btnPrev = document.getElementById('lightboxPrev');
-const btnNext = document.getElementById('lightboxNext');
+  /* LIGHTBOX */
+  const lightbox = document.getElementById('lightbox');
+  const lightboxImg = document.getElementById('lightboxImg');
+  const btnClose = document.getElementById('lightboxClose');
+  const btnPrev = document.getElementById('lightboxPrev');
+  const btnNext = document.getElementById('lightboxNext');
 
-let currentSlide = 0;
+  let currentSlide = 0;
 
-slides.forEach((img, i) => {
-  img.addEventListener('click', () => {
-    currentSlide = i;
-    openLightbox();
+  slides.forEach((img, i) => {
+    img.addEventListener('click', () => {
+      currentSlide = i;
+      openLightbox();
+    });
   });
-});
 
-function openLightbox() {
-  lightboxImg.src = slides[currentSlide].src;
-  lightbox.classList.add('active');
-}
+  function openLightbox() {
+    lightboxImg.src = slides[currentSlide].src;
+    lightbox.classList.add('active');
+  }
 
-btnClose.onclick = () => lightbox.classList.remove('active');
+  btnClose.onclick = () => lightbox.classList.remove('active');
 
-lightbox.onclick = (e) => {
-  if (e.target === lightbox) lightbox.classList.remove('active');
-};
+  lightbox.onclick = (e) => {
+    if (e.target === lightbox) lightbox.classList.remove('active');
+  };
 
-btnPrev.onclick = () => {
-  currentSlide = (currentSlide - 1 + slides.length) % slides.length;
-  openLightbox();
-};
+  btnPrev.onclick = () => {
+    currentSlide = (currentSlide - 1 + slides.length) % slides.length;
+    openLightbox();
+  };
 
-btnNext.onclick = () => {
-  currentSlide = (currentSlide + 1) % slides.length;
-  openLightbox();
-};
+  btnNext.onclick = () => {
+    currentSlide = (currentSlide + 1) % slides.length;
+    openLightbox();
+  };
 
-document.addEventListener('keydown', (e) => {
-  if (!lightbox.classList.contains('active')) return;
-  if (e.key === 'ArrowRight') btnNext.onclick();
-  if (e.key === 'ArrowLeft') btnPrev.onclick();
-  if (e.key === 'Escape') btnClose.onclick();
-});
+  document.addEventListener('keydown', (e) => {
+    if (!lightbox.classList.contains('active')) return;
+    if (e.key === 'ArrowRight') btnNext.onclick();
+    if (e.key === 'ArrowLeft') btnPrev.onclick();
+    if (e.key === 'Escape') btnClose.onclick();
+  });
 </script>
 
 </body>
