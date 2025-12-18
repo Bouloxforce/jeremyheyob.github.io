@@ -64,7 +64,7 @@
 
     .tagline-sub {
       margin-top: 12px;
-      margin-bottom: 8px; 
+      margin-bottom: 8px;
       font-size: 12px;
       text-transform: uppercase;
       letter-spacing: 0.12em;
@@ -297,9 +297,8 @@
       background: rgba(0,0,0,0.35);
       border-radius: 999px;
     }
-       /* ===== BLOC RÉSEAUX SOCIAUX ===== */
 
-    /* Wrapper full width pour centrage écran */
+    /* ===== BLOC RÉSEAUX SOCIAUX ===== */
     .social-full {
       width: 100vw;
       margin-left: calc(-50vw + 50%);
@@ -308,7 +307,6 @@
       margin-top: 32px;
     }
 
-    /* Bloc visuel */
     .social-block {
       width: fit-content;
       margin: 0 auto 8px;
@@ -319,7 +317,6 @@
       padding: 14px 16px;
     }
 
-    /* Conteneur icônes */
     .social-icons {
       display: flex;
       gap: 10px;
@@ -328,11 +325,10 @@
       justify-content: center;
     }
 
-    /* Boutons */
     .social-icons a {
       width: 42px;
       height: 42px;
-        border-radius: 14px;
+      border-radius: 14px;
       display: grid;
       place-items: center;
       background: rgba(198, 169, 119, 0.16);
@@ -341,18 +337,19 @@
       text-decoration: none;
     }
 
-    /* Hover */
     .social-icons a:hover {
       transform: translateY(-1px);
       filter: brightness(1.02);
     }
 
-    /* Icônes SVG */
     .social-icons svg {
       width: 20px;
       height: 20px;
     }
 
+    /* ===== AJOUTS / MODIFS DEMANDÉES ===== */
+
+    /* Séparateur luxe */
     .luxury-divider {
       width: 100%;
       height: 1px;
@@ -365,12 +362,43 @@
       );
     }
 
+    /* Boutons sur toute la largeur */
     .form-grid + .btn,
     .avis-section .btn {
       width: 100%;
       display: block;
       text-align: center;
       margin: 16px auto 0;
+    }
+
+    /* Permet à <a class="btn"> de se comporter comme un bouton */
+    a.btn {
+      display: block;
+      text-decoration: none;
+    }
+
+    /* Centrer les 3 titres du bloc avis uniquement */
+    .card-avis-global h2 {
+      text-align: center;
+    }
+
+    /* Textarea (points + / -) */
+    textarea {
+      width: 100%;
+      padding: 10px 12px;
+      border-radius: 12px;
+      border: 1px solid var(--border-soft);
+      background: #fafafa;
+      font-size: 14px;
+      resize: vertical;
+    }
+
+    /* Surbrillance noire si champ manquant */
+    input.error,
+    select.error,
+    textarea.error {
+      border: 2px solid #191919;
+      background: #fff;
     }
 
     /* RESPONSIVE */
@@ -397,7 +425,7 @@
 
       label { white-space: normal; display: block; }
 
-      input, select {
+      input, select, textarea {
         width: 100%;
         max-width: 100%;
       }
@@ -432,35 +460,88 @@
       color: var(--text-soft);
       opacity: 0.8;
     }
-
   </style>
 
   <script>
-    function sendEmail() {
-      const bien = "Eliot - Appartement T3";
-      const p = document.getElementById("prenomClient").value;
-      const n = document.getElementById("nomClient").value;
-      const t = document.getElementById("telephoneClient").value;
-      const e = document.getElementById("emailClient").value;
-      const d = document.getElementById("date").value;
-      const c = document.getElementById("creneau").value;
+    /* Validation générique : surbrillance noire si champ vide */
+    function validateRequiredFields(fields) {
+      let hasError = false;
 
-      if(!p || !n || !e || !t || !d || !c){
-        alert("Merci de renseigner tous les champs.");
-        return;
-      }
+      fields.forEach((f) => {
+        if (!f) return;
+        f.classList.remove("error");
+      });
+
+      fields.forEach((f) => {
+        if (!f) return;
+        if (!String(f.value || "").trim()) {
+          f.classList.add("error");
+          hasError = true;
+        }
+      });
+
+      return !hasError;
+    }
+
+    /* 1) Avis sur la visite */
+    function sendAvisVisite() {
+      const bien = "Eliot - Appartement T3";
+
+      const prenom = document.getElementById("avis_prenom");
+      const nom = document.getElementById("avis_nom");
+      const email = document.getElementById("avis_email");
+      const estimation = document.getElementById("avis_estimation");
+      const plus = document.getElementById("avis_plus");
+      const moins = document.getElementById("avis_moins");
+      const offre = document.getElementById("avis_offre");
+
+      const ok = validateRequiredFields([prenom, nom, email, estimation, plus, moins, offre]);
+      if (!ok) return;
+
+      const subject = encodeURIComponent("Avis visite - " + bien);
+      const body = encodeURIComponent(
+        "Bonjour,\n\n" +
+        "Voici mon retour suite à la visite du bien : " + bien + "\n\n" +
+        "Prénom : " + prenom.value + "\n" +
+        "Nom : " + nom.value + "\n" +
+        "Email : " + email.value + "\n\n" +
+        "Mon estimation du prix : " + estimation.value + " €\n\n" +
+        "Points positifs :\n" + plus.value + "\n\n" +
+        "Points négatifs :\n" + moins.value + "\n\n" +
+        "Souhaite faire une offre : " + offre.value + "\n\n" +
+        "Cordialement,\n"
+      );
+
+      window.location.href =
+        "mailto:contact@jeremyheyob.fr?subject=" + subject + "&body=" + body;
+    }
+
+    /* 2) Contre-visite */
+    function sendContreVisite() {
+      const bien = "Eliot - Appartement T3";
+
+      const prenom = document.getElementById("cv_prenom");
+      const nom = document.getElementById("cv_nom");
+      const tel = document.getElementById("cv_telephone");
+      const email = document.getElementById("cv_email");
+      const date = document.getElementById("cv_date");
+      const creneau = document.getElementById("cv_creneau");
+
+      const ok = validateRequiredFields([prenom, nom, tel, email, date, creneau]);
+      if (!ok) return;
 
       const subject = encodeURIComponent("Demande de contre-visite - " + bien);
       const body = encodeURIComponent(
-      "Bonjour,\n\n" +
-      "Je souhaite programmer une contre-visite pour le bien : " + bien + ".\n\n" +
-      "Nom : " + p + " " + n + "\n" +
-      "Téléphone : " + t + "\n" +
-      "Email : " + e + "\n\n" +
-      "Date souhaitée : " + d + "\n" +
-      "Créneau souhaité : " + c + "\n\n" +
-      "Je vous remercie par avance pour votre retour.\n\n" +
-      "Cordialement,\n"
+        "Bonjour,\n\n" +
+        "Je souhaite programmer une contre-visite pour le bien : " + bien + ".\n\n" +
+        "Prénom : " + prenom.value + "\n" +
+        "Nom : " + nom.value + "\n" +
+        "Téléphone : " + tel.value + "\n" +
+        "Email : " + email.value + "\n\n" +
+        "Date souhaitée : " + date.value + "\n" +
+        "Créneau souhaité : " + creneau.value + "\n\n" +
+        "Je vous remercie par avance pour votre retour.\n\n" +
+        "Cordialement,\n"
       );
 
       window.location.href =
@@ -507,13 +588,11 @@
       <!-- CARROUSEL -->
       <div class="carousel">
         <div class="carousel-track">
-
           <img src="/bien-visite/eliot/photos/eliot 1.webp">
           <img src="/bien-visite/eliot/photos/eliot 2.webp" loading="lazy">
           <img src="/bien-visite/eliot/photos/eliot 3.webp" loading="lazy">
           <img src="/bien-visite/eliot/photos/eliot 4.webp" loading="lazy">
           <img src="/bien-visite/eliot/photos/eliot 5.webp" loading="lazy">
-
         </div>
 
         <button class="carousel-btn prev">‹</button>
@@ -558,8 +637,6 @@
       <h2 style="margin-top:28px;">Documents du bien</h2>
 
       <ul style="list-style:none;padding:0;margin:12px 0;font-size:15px;">
-
-        <!-- Liste EXACTE des PDF triés alphabétiquement -->
         <li><a href="/bien-visite/eliot/documents/eliot-0553_carnet_entretien_2023.pdf" target="_blank">Carnet d’entretien 2023 →</a></li>
         <li><a href="/bien-visite/eliot/documents/eliot-0553_pv_ag_30_09_2024.pdf" target="_blank">PV AG 30/09/2024 →</a></li>
         <li><a href="/bien-visite/eliot/documents/eliot-0554_pv_ag_04_10_2023.pdf" target="_blank">PV AG 04/10/2023 →</a></li>
@@ -579,151 +656,170 @@
         <li><a href="/bien-visite/eliot/documents/eliot-statuts_association.pdf" target="_blank">Statuts association →</a></li>
         <li><a href="/bien-visite/eliot/documents/eliot-urbanisme.pdf" target="_blank">Urbanisme →</a></li>
         <li><a href="/bien-visite/eliot/documents/eliot-urbanisme_2.pdf" target="_blank">Urbanisme 2 →</a></li>
-
       </ul>
-
     </section>
 
     <!-- PARCOURS AVIS & CONTRE-VISITE -->
-  <aside class="card card-avis-global">
+    <aside class="card card-avis-global">
 
-    <!-- SECTION 1 : AVIS SUR LA VISITE -->
-    <section class="avis-section">
-      <h2>Votre avis sur cette visite</h2>
-      <p class="subtitle">
-        Votre retour est essentiel pour me permettre d’avancer efficacement sur ce bien et de mieux comprendre votre recherche.
-        Il m’aide à affiner les prochaines propositions et à vous orienter vers des biens réellement adaptés à vos attentes.
-      </p>
+      <!-- SECTION 1 : AVIS SUR LA VISITE -->
+      <section class="avis-section">
+        <h2>Votre avis sur cette visite</h2>
+        <p class="subtitle">
+          Votre retour est essentiel pour me permettre d’avancer efficacement sur ce bien et de mieux comprendre votre recherche.
+          Il m’aide à affiner les prochaines propositions et à vous orienter vers des biens réellement adaptés à vos attentes.
+        </p>
 
-      <div class="form-grid">
-        <div><label>Votre prénom</label><input type="text"></div>
-        <div><label>Votre nom</label><input type="text"></div>
-        <div><label>Votre téléphone</label><input type="tel"></div>
-        <div><label>Votre email</label><input type="email"></div>
-        <div><label>Date souhaitée</label><input type="date"></div>
-      </div>
+        <div class="form-grid">
+          <div><label>Votre prénom</label><input id="avis_prenom" type="text"></div>
+          <div><label>Votre nom</label><input id="avis_nom" type="text"></div>
+          <div><label>Votre email</label><input id="avis_email" type="email"></div>
+          <div><label>Votre estimation du prix (€)</label><input id="avis_estimation" type="number" placeholder="Ex : 185000"></div>
 
-      <button class="btn" onclick="sendEmail()">Valider ma demande</button>
-    </section>
+          <div style="grid-column: 1 / -1;">
+            <label>Points positifs du bien</label>
+            <textarea id="avis_plus" rows="3"></textarea>
+          </div>
 
-    <div class="luxury-divider"></div>
+          <div style="grid-column: 1 / -1;">
+            <label>Points négatifs du bien</label>
+            <textarea id="avis_moins" rows="3"></textarea>
+          </div>
 
-    <!-- SECTION 2 : AVIS ACCOMPAGNEMENT -->
-    <section class="avis-section">
-      <h2>Votre retour sur mon accompagnement</h2>
-      <p class="subtitle">
-        Votre avis est précieux. Partagez votre expérience et contribuez à renforcer la qualité de mon accompagnement.
-      </p>
-
-      <button class="btn secondary" onclick="sendEmail()">Déposer un avis sur Google</button>
-    </section>
-
-    <div class="luxury-divider"></div>
-
-    <!-- SECTION 3 : CONTRE-VISITE -->
-    <section class="avis-section">
-      <h2>Programmer une contre-visite</h2>
-      <p class="subtitle">
-        Si ce bien suscite votre intérêt, indiquez vos disponibilités afin d’organiser une nouvelle visite dans les meilleures conditions.
-      </p>
-
-      <div class="form-grid">
-        <div><label>Votre prénom</label><input type="text"></div>
-        <div><label>Votre nom</label><input type="text"></div>
-        <div><label>Votre téléphone</label><input type="tel"></div>
-        <div><label>Votre email</label><input type="email"></div>
-        <div><label>Date souhaitée</label><input type="date"></div>
-        <div>
-          <label>Créneau souhaité</label>
-          <select>
-            <option value="">-- Choisir --</option>
-            <option>09:00 - 10:00</option>
-            <option>10:00 - 11:00</option>
-            <option>11:00 - 12:00</option>
-            <option>14:00 - 15:00</option>
-            <option>15:00 - 16:00</option>
-            <option>16:00 - 17:00</option>
-            <option>17:00 - 18:00</option>
-            <option>18:00 - 19:00</option>
-            <option>19:00 - 20:00</option>
-          </select>
+          <div style="grid-column: 1 / -1;">
+            <label>Souhaitez-vous faire une offre sur ce bien ?</label>
+            <select id="avis_offre">
+              <option value="">-- Choisir --</option>
+              <option value="Oui">Oui</option>
+              <option value="Non">Non</option>
+              <option value="Je souhaite réfléchir">Je souhaite réfléchir</option>
+            </select>
+          </div>
         </div>
-      </div>
 
-      <button class="btn" onclick="sendEmail()">Valider ma demande</button>
-    </section>
-    
-  </aside>
+        <button class="btn" onclick="sendAvisVisite()">Valider mon avis</button>
+      </section>
+
+      <div class="luxury-divider"></div>
+
+      <!-- SECTION 2 : AVIS ACCOMPAGNEMENT -->
+      <section class="avis-section">
+        <h2>Votre retour sur mon accompagnement</h2>
+        <p class="subtitle">
+          Votre avis est précieux. Partagez votre expérience et contribuez à renforcer la qualité de mon accompagnement.
+        </p>
+
+        <a class="btn" href="https://g.page/r/CTwjb6DmOEMGEB0/review" target="_blank" rel="noopener">
+          Déposer un avis sur Google
+        </a>
+      </section>
+
+      <div class="luxury-divider"></div>
+
+      <!-- SECTION 3 : CONTRE-VISITE -->
+      <section class="avis-section">
+        <h2>Programmer une contre-visite</h2>
+        <p class="subtitle">
+          Si ce bien suscite votre intérêt, indiquez vos disponibilités afin d’organiser une nouvelle visite dans les meilleures conditions.
+        </p>
+
+        <div class="form-grid">
+          <div><label>Votre prénom</label><input id="cv_prenom" type="text"></div>
+          <div><label>Votre nom</label><input id="cv_nom" type="text"></div>
+          <div><label>Votre téléphone</label><input id="cv_telephone" type="tel"></div>
+          <div><label>Votre email</label><input id="cv_email" type="email"></div>
+          <div><label>Date souhaitée</label><input id="cv_date" type="date"></div>
+          <div>
+            <label>Créneau souhaité</label>
+            <select id="cv_creneau">
+              <option value="">-- Choisir --</option>
+              <option>09:00 - 10:00</option>
+              <option>10:00 - 11:00</option>
+              <option>11:00 - 12:00</option>
+              <option>14:00 - 15:00</option>
+              <option>15:00 - 16:00</option>
+              <option>16:00 - 17:00</option>
+              <option>17:00 - 18:00</option>
+              <option>18:00 - 19:00</option>
+              <option>19:00 - 20:00</option>
+            </select>
+          </div>
+        </div>
+
+        <button class="btn" onclick="sendContreVisite()">Valider ma demande</button>
+      </section>
+
+    </aside>
 
   </main>
 
   <!-- ===== RÉSEAUX SOCIAUX (CENTRÉ ÉCRAN) ===== -->
-<div class="social-full">
-  <section class="social-block" aria-label="Réseaux sociaux">
-    <div class="social-icons">
+  <div class="social-full">
+    <section class="social-block" aria-label="Réseaux sociaux">
+      <div class="social-icons">
 
-      <!-- Google -->
-      <a href="https://goo.gl/maps/wjfc1aGFBrSLd3tV6" target="_blank" rel="noopener" aria-label="Google">
-        <svg viewBox="0 0 24 24" fill="none" stroke="#7a5a29" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M12 21s7-4.5 7-11a7 7 0 1 0-14 0c0 6.5 7 11 7 11z"></path>
-          <circle cx="12" cy="10" r="2.5"></circle>
-        </svg>
-      </a>
+        <!-- Google -->
+        <a href="https://goo.gl/maps/wjfc1aGFBrSLd3tV6" target="_blank" rel="noopener" aria-label="Google">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#7a5a29" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 21s7-4.5 7-11a7 7 0 1 0-14 0c0 6.5 7 11 7 11z"></path>
+            <circle cx="12" cy="10" r="2.5"></circle>
+          </svg>
+        </a>
 
-      <!-- PagesJaunes -->
-      <a href="https://www.pagesjaunes.fr/pros/62191780" target="_blank" rel="noopener" aria-label="Pages Jaunes">
-        <svg viewBox="0 0 24 24" fill="none" stroke="#7a5a29" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M6 3h9a3 3 0 0 1 3 3v12a3 3 0 0 1-3 3H6a3 3 0 0 1-3-3V6a3 3 0 0 1 3-3z"></path>
-          <path d="M8 8h8"></path>
-          <path d="M8 12h8"></path>
-          <path d="M8 16h6"></path>
-        </svg>
-      </a>
+        <!-- PagesJaunes -->
+        <a href="https://www.pagesjaunes.fr/pros/62191780" target="_blank" rel="noopener" aria-label="Pages Jaunes">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#7a5a29" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M6 3h9a3 3 0 0 1 3 3v12a3 3 0 0 1-3 3H6a3 3 0 0 1-3-3V6a3 3 0 0 1 3-3z"></path>
+            <path d="M8 8h8"></path>
+            <path d="M8 12h8"></path>
+            <path d="M8 16h6"></path>
+          </svg>
+        </a>
 
-      <!-- Facebook -->
-      <a href="https://www.facebook.com/jeremyheyobpro" target="_blank" rel="noopener" aria-label="Facebook">
-        <svg viewBox="0 0 24 24" fill="none" stroke="#7a5a29" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M14 8h3V5h-3a4 4 0 0 0-4 4v3H7v3h3v6h3v-6h3l1-3h-4V9a1 1 0 0 1 1-1z"></path>
-        </svg>
-      </a>
+        <!-- Facebook -->
+        <a href="https://www.facebook.com/jeremyheyobpro" target="_blank" rel="noopener" aria-label="Facebook">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#7a5a29" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M14 8h3V5h-3a4 4 0 0 0-4 4v3H7v3h3v6h3v-6h3l1-3h-4V9a1 1 0 0 1 1-1z"></path>
+          </svg>
+        </a>
 
-      <!-- LinkedIn -->
-      <a href="https://www.linkedin.com/company/jérémy-heyob/" target="_blank" rel="noopener" aria-label="LinkedIn">
-        <svg viewBox="0 0 24 24" fill="none" stroke="#7a5a29" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4V9h4v2"></path>
-          <rect x="2" y="9" width="4" height="12"></rect>
-          <circle cx="4" cy="4" r="2"></circle>
-        </svg>
-      </a>
+        <!-- LinkedIn -->
+        <a href="https://www.linkedin.com/company/jérémy-heyob/" target="_blank" rel="noopener" aria-label="LinkedIn">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#7a5a29" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4V9h4v2"></path>
+            <rect x="2" y="9" width="4" height="12"></rect>
+            <circle cx="4" cy="4" r="2"></circle>
+          </svg>
+        </a>
 
-      <!-- Instagram -->
-      <a href="https://www.instagram.com/jeremyheyob/" target="_blank" rel="noopener" aria-label="Instagram">
-        <svg viewBox="0 0 24 24" fill="none" stroke="#7a5a29" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <rect x="3" y="3" width="18" height="18" rx="5" ry="5"></rect>
-          <circle cx="12" cy="12" r="4"></circle>
-          <path d="M17.5 6.5h.01"></path>
-        </svg>
-      </a>
+        <!-- Instagram -->
+        <a href="https://www.instagram.com/jeremyheyob/" target="_blank" rel="noopener" aria-label="Instagram">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#7a5a29" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="3" y="3" width="18" height="18" rx="5" ry="5"></rect>
+            <circle cx="12" cy="12" r="4"></circle>
+            <path d="M17.5 6.5h.01"></path>
+          </svg>
+        </a>
 
-      <!-- YouTube -->
-      <a href="https://www.youtube.com/channel/UCpE0arbirH2tkw2THT_Ef9Q" target="_blank" rel="noopener" aria-label="YouTube">
-        <svg viewBox="0 0 24 24" fill="none" stroke="#7a5a29" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M22 12s0-4-1-5-4-1-9-1-8 0-9 1-1 5-1 5 0 4 1 5 4 1 9 1 8 0 9-1 1-5 1-5z"></path>
-          <path d="M10 9l6 3-6 3V9z"></path>
-        </svg>
-      </a>
+        <!-- YouTube -->
+        <a href="https://www.youtube.com/channel/UCpE0arbirH2tkw2THT_Ef9Q" target="_blank" rel="noopener" aria-label="YouTube">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#7a5a29" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M22 12s0-4-1-5-4-1-9-1-8 0-9 1-1 5-1 5 0 4 1 5 4 1 9 1 8 0 9-1 1-5 1-5z"></path>
+            <path d="M10 9l6 3-6 3V9z"></path>
+          </svg>
+        </a>
 
-      <!-- TikTok -->
-      <a href="https://www.tiktok.com/@jeremyheyob" target="_blank" rel="noopener" aria-label="TikTok">
-        <svg viewBox="0 0 24 24" fill="none" stroke="#7a5a29" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M14 3v10a4 4 0 1 1-4-4"></path>
-          <path d="M14 7a6 6 0 0 0 6 2"></path>
-        </svg>
-      </a>
+        <!-- TikTok -->
+        <a href="https://www.tiktok.com/@jeremyheyob" target="_blank" rel="noopener" aria-label="TikTok">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#7a5a29" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M14 3v10a4 4 0 1 1-4-4"></path>
+            <path d="M14 7a6 6 0 0 0 6 2"></path>
+          </svg>
+        </a>
 
-    </div>
-  </section>
-</div>
+      </div>
+    </section>
+  </div>
 
   <footer class="legal-footer">
     Les photos et documents présentés sur cette page sont la propriété exclusive de <strong>Jérémy HEYOB Immobilier</strong>.<br>
