@@ -369,6 +369,39 @@
       background: rgba(198,169,119,0.10);
     }
 
+    .textarea-custom {
+      width: 100%;
+      min-height: 120px;
+      padding: 10px 12px;
+      border-radius: 12px;
+      margin-top: 4px;
+      border: 1px solid var(--border-soft);
+      background: #fafafa;
+      font-size: 14px;
+      font-family: inherit;
+      resize: none;
+      overflow: hidden;
+    }
+
+    .field-error {
+      border: 2px solid #191919 !important;
+      background: #ffffff !important;
+      box-shadow: 0 0 0 4px rgba(25,25,25,0.12) !important;
+    }
+
+    .success {
+      display: none;
+      margin-top: 16px;
+      padding: 14px 16px;
+      border-radius: 14px;
+      background: #ffffff;
+      border: 1px dashed var(--border-soft);
+      font-size: 13px;
+      color: #4A4A4A;
+      line-height: 1.5;
+      grid-column: 1 / -1;
+    }
+
     /* Mobile : logo en dessous */
    @media (max-width: 600px) {
     .hero-highlight-with-logo {
@@ -482,7 +515,17 @@
         <option>17h - 18h</option><option>18h - 19h</option><option>19h - 20h</option>
       </select>
     </div>
+    <div class="full">
+      <label>Commentaire (facultatif)</label>
+      <textarea
+        id="commentaire"
+        class="textarea-custom"
+        placeholder="Informations complémentaires (secteur, étage, extérieur, stationnement, etc.)"></textarea>
+    </div>
     <button class="btn" onclick="sendMail()">Valider ma demande</button>
+  </div>
+  <div class="success" id="success">
+    ✅ Inscription validée. Vous serez contacté dès qu’un bien correspondra à votre recherche.
   </div>
 </section>
 
