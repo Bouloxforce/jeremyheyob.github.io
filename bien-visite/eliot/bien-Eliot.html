@@ -674,7 +674,13 @@
           <div><label>Votre prénom</label><input id="avis_prenom" type="text"></div>
           <div><label>Votre nom</label><input id="avis_nom" type="text"></div>
           <div><label>Votre email</label><input id="avis_email" type="email"></div>
-          <div><label>Votre estimation du prix (€)</label><input id="avis_estimation" type="number" placeholder="Ex : 185000"></div>
+          <div><label>Votre estimation du prix (€)</label><input
+              id="avis_estimation"
+              type="text"
+              inputmode="numeric"
+              pattern="[0-9]*"
+              placeholder="Ex : 185000">
+          </div>
 
           <div style="grid-column: 1 / -1;">
             <label>Points positifs du bien</label>
