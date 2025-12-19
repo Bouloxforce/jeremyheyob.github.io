@@ -817,6 +817,20 @@
           throw new Error("Créneau déjà réservé");
         }
 
+        const newCreneaux = oldCreneaux.map(c => ({
+          id: c.id,
+          etat: c.etat
+        }));
+
+        newCreneaux[index].etat = "pris";
+
+        if (index <= 3 && newCreneaux[index + 1]) {
+          newCreneaux[index + 1].etat = "disponible";
+        }
+
+        transaction.update(docRef, { creneaux: newCreneaux });
+      });
+
         // IMPORTANT : créer un nouveau tableau (pas de mutation “sale”)
         const newCreneaux = oldCreneaux.map(c => ({ id: c.id, etat: c.etat }));
 
@@ -826,10 +840,6 @@
         // débloque le suivant SI AUTORISÉ PAR TES RULES
         // Tes rules refusent le déblocage sur l'avant-dernier (index 4)
         // Donc : on débloque uniquement si index <= 3
-        if (index <= 3 && newCreneaux[index + 1]) {
-          newCreneaux[index + 1].etat = "disponible";
-        }
-
         transaction.update(docRef, { creneaux: newCreneaux });
       });
 
