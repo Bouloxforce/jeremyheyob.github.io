@@ -457,20 +457,6 @@
   </div>
 </header>
 
-<div class="header-links">
-  <a href="https://www.jeremyheyob.fr/">Accueil</a>
-  <a href="https://www.agence.immo/professionnels/jeremy-heyob-453" target="_blank" rel="noopener">Mes biens</a>
-  <a href="https://www.jeremyheyob.fr/avis-de-valeur.html">Estimation</a>
-  <a href="https://www.immodvisor.com/pro/agencimmocom-jeremy-heyob-saint-priest-69800-53519.html" target="_blank" rel="noopener">Avis vérifiés</a>
-  <a href="https://www.jeremyheyob.fr/honoraires.html">Mes honoraires</a>
-  <a href="https://www.jeremyheyob.fr/biens-avant-premiere.html">Biens en avant-première</a>
-  <a href="https://www.jeremyheyob.fr/un-cran-au-dessus.html">Guide vendeur</a>
-</div>
-
-<div class="btn-retour-wrap">
-  <a href="https://www.jeremyheyob.fr" class="btn-retour">← Retour</a>
-</div>
-
 <!-- HERO INFO -->
 <section class="hero">
   <div class="hero-text">
@@ -525,6 +511,7 @@
         <option disabled>Samedi 15h30 – 16h00 (déjà réservé)</option>
         <option disabled>Samedi 16h00 – 16h30 (déjà réservé)</option>
         <option disabled>Samedi 16h30 – 17h00 (déjà réservé)</option>
+        <option value="AUTRE_CRENEAU">Me proposer un autre créneau (selon disponibilités)</option>
       </select>
     </div>
 
@@ -570,10 +557,10 @@
         placeholder="Informations complémentaires (situation, financement, délai, etc.)"></textarea>
     </div>
 
-    <button class="btn" onclick="sendMail()">Envoyer ma demande de créneau</button>
+    <button class="btn" onclick="sendMail()">Envoyer ma demande</button>
 
     <div class="success" id="success">
-      ✅ Demande transmise. Je reviens vers vous par email pour confirmer la disponibilité du créneau et vous transmettre les informations pratiques.
+      ✅ Demande transmise. Je reviens vers vous par email pour confirmer la disponibilité du créneau avec l'adresse exacte du bien.
     </div>
   </div>
 </section>
@@ -740,7 +727,6 @@ function sendMail() {
     "Besoin de vendre pour acheter : " + venteAvantAchat.value + "\n\n" +
     "Commentaire :\n" + (commentaire.value ? commentaire.value : "—") + "\n\n" +
     "Merci.\n\n" +
-    "⚠️ Créneau soumis à validation. Merci d’attendre mon email de confirmation.\n"
   );
 
   // ✅ message de confirmation sur la page (pas d'alert)
