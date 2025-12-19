@@ -673,7 +673,7 @@ import {
 } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
 
 /* ================================
-   2. CONFIG FIREBASE (TON PROJET)
+   2. CONFIG FIREBASE
 ================================ */
 const firebaseConfig = {
   apiKey: "AIzaSyDLXHGbKe8CRtMqvmHH2_R6oggbJhaTeH",
@@ -688,21 +688,19 @@ const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 
 /* ================================
-   3. RÉFÉRENCE DU DOCUMENT
+   3. RÉFÉRENCE FIRESTORE
 ================================ */
 const docRef = doc(db, "portes_ouvertes", "samedi");
 const selectCreneau = document.getElementById("creneau");
 
 /* ================================
-   4. AFFICHAGE DYNAMIQUE DES CRÉNEAUX
+   4. SYNCHRO TEMPS RÉEL DES CRÉNEAUX
 ================================ */
 onSnapshot(docRef, (snapshot) => {
   if (!snapshot.exists()) return;
 
-  const data = snapshot.data();
-  const creneaux = data.creneaux;
+  const { creneaux } = snapshot.data();
 
-  // Reset du select
   selectCreneau.innerHTML = '<option value="">-- Choisir un créneau --</option>';
 
   creneaux.forEach((c) => {
@@ -719,7 +717,6 @@ onSnapshot(docRef, (snapshot) => {
     selectCreneau.appendChild(option);
   });
 
-  // Option "autre créneau"
   const autre = document.createElement("option");
   autre.value = "AUTRE_CRENEAU";
   autre.textContent = "Me proposer un autre créneau";
@@ -727,7 +724,7 @@ onSnapshot(docRef, (snapshot) => {
 });
 
 /* ================================
-   5. RÉSERVATION AU CLIC BOUTON
+   5. CLIC BOUTON → RÉSERVATION
 ================================ */
 window.sendMail = async function () {
 
@@ -742,9 +739,9 @@ window.sendMail = async function () {
     return;
   }
 
-  // Si autre créneau → pas de réservation Firestore
+  // AUTRE CRÉNEAU → PAS DE FIRESTORE
   if (creneauChoisi === "AUTRE_CRENEAU") {
-    ouvrirMail(creneauChoisi);
+    ouvrirMail(creneauChoisi, prenom, nom, tel, email);
     return;
   }
 
@@ -752,22 +749,22 @@ window.sendMail = async function () {
     await runTransaction(db, async (transaction) => {
 
       const snap = await transaction.get(docRef);
-      if (!snap.exists()) throw "Document introuvable";
+      if (!snap.exists()) throw new Error("Document introuvable");
 
       const data = snap.data();
       const creneaux = data.creneaux;
 
       const index = creneaux.findIndex(c => c.id === creneauChoisi);
-      if (index === -1) throw "Créneau introuvable";
+      if (index === -1) throw new Error("Créneau introuvable");
 
       if (creneaux[index].etat !== "disponible") {
-        throw "Créneau déjà réservé";
+        throw new Error("Créneau déjà réservé");
       }
 
-      // Réservation
+      // 🔒 réservation
       creneaux[index].etat = "pris";
 
-      // Déblocage du suivant
+      // 🔓 déblocage du suivant
       if (creneaux[index + 1]) {
         creneaux[index + 1].etat = "disponible";
       }
@@ -775,40 +772,32 @@ window.sendMail = async function () {
       transaction.update(docRef, { creneaux });
     });
 
-    ouvrirMail(creneauChoisi);
+    ouvrirMail(creneauChoisi, prenom, nom, tel, email);
 
   } catch (e) {
-    alert("Ce créneau vient d’être réservé. Merci d’en choisir un autre.");
+    alert("Ce créneau vient d’être réservé par quelqu’un d’autre.");
   }
 };
 
 /* ================================
    6. OUVERTURE EMAIL
 ================================ */
-function ouvrirMail(creneau) {
+function ouvrirMail(creneau, prenom, nom, tel, email) {
+
   const subject = encodeURIComponent("Demande de créneau – Porte ouverte");
   const body = encodeURIComponent(
     `Bonjour,\n\n` +
     `Je souhaite réserver le créneau suivant : ${creneau}\n\n` +
-    `Prénom : ${prenom.value}\n` +
-    `Nom : ${nom.value}\n` +
-    `Téléphone : ${tel.value}\n` +
-    `Email : ${email.value}\n\n` +
+    `Prénom : ${prenom}\n` +
+    `Nom : ${nom}\n` +
+    `Téléphone : ${tel}\n` +
+    `Email : ${email}\n\n` +
     `Merci.`
   );
 
   window.location.href =
     `mailto:contact@jeremyheyob.fr?subject=${subject}&body=${body}`;
 }
-</script>
-
-<script>
-document.addEventListener("input", function (e) {
-  if (e.target.classList.contains("textarea-custom")) {
-    e.target.style.height = "auto";
-    e.target.style.height = e.target.scrollHeight + "px";
-  }
-});
 </script>
 
 </body>
