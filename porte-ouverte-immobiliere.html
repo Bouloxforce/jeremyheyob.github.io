@@ -660,81 +660,145 @@
 
 </div>
 
-<script>
-function sendMail() {
+<script type="module">
+/* ================================
+   1. IMPORT FIREBASE
+================================ */
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
+import {
+  getFirestore,
+  doc,
+  onSnapshot,
+  runTransaction
+} from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
 
-  const prenom = document.getElementById("prenom");
-  const nom = document.getElementById("nom");
-  const tel = document.getElementById("tel");
-  const email = document.getElementById("email");
-  const creneau = document.getElementById("creneau");   // ✅ AJOUT
-  const budget = document.getElementById("budget");
-  const banque = document.getElementById("banque");
-  const courtier = document.getElementById("courtier");
-  const statut = document.getElementById("statut");
-  const venteAvantAchat = document.getElementById("venteAvantAchat");
-  const commentaire = document.getElementById("commentaire");
+/* ================================
+   2. CONFIG FIREBASE (TON PROJET)
+================================ */
+const firebaseConfig = {
+  apiKey: "TA_API_KEY",
+  authDomain: "porte-ouverte-jeremy.firebaseapp.com",
+  projectId: "porte-ouverte-jeremy",
+  storageBucket: "porte-ouverte-jeremy.appspot.com",
+  messagingSenderId: "76592424226",
+  appId: "TON_APP_ID"
+};
 
-  const success = document.getElementById("success");
+const app = initializeApp(firebaseConfig);
+const db = getFirestore(app);
 
-  // ✅ reset surbrillance
-  const fields = [prenom, nom, tel, email, creneau, budget, banque, courtier, statut, venteAvantAchat];
-  fields.forEach(f => f.classList.remove("field-error"));
-  success.style.display = "none";
+/* ================================
+   3. RÉFÉRENCE DU DOCUMENT
+================================ */
+const docRef = doc(db, "portes_ouvertes", "samedi");
+const selectCreneau = document.getElementById("creneau");
 
-  // ✅ validation avec surbrillance
-  let hasError = false;
+/* ================================
+   4. AFFICHAGE DYNAMIQUE DES CRÉNEAUX
+================================ */
+onSnapshot(docRef, (snapshot) => {
+  if (!snapshot.exists()) return;
 
-  function markIfEmpty(el) {
-    if (!el.value || !el.value.trim()) {
-      el.classList.add("field-error");
-      hasError = true;
+  const data = snapshot.data();
+  const creneaux = data.creneaux;
+
+  // Reset du select
+  selectCreneau.innerHTML = '<option value="">-- Choisir un créneau --</option>';
+
+  creneaux.forEach((c) => {
+    const option = document.createElement("option");
+    option.value = c.id;
+
+    if (c.etat === "disponible") {
+      option.textContent = `Samedi ${c.id} (disponible)`;
+    } else {
+      option.textContent = `Samedi ${c.id} (déjà réservé)`;
+      option.disabled = true;
     }
-  }
 
-  markIfEmpty(prenom);
-  markIfEmpty(nom);
-  markIfEmpty(tel);
-  markIfEmpty(email);
-  if (!creneau.value) { creneau.classList.add("field-error"); hasError = true; } // ✅ AJOUT
-  markIfEmpty(budget);
+    selectCreneau.appendChild(option);
+  });
 
-  if (!banque.value) { banque.classList.add("field-error"); hasError = true; }
-  if (!courtier.value) { courtier.classList.add("field-error"); hasError = true; }
-  if (!statut.value) { statut.classList.add("field-error"); hasError = true; }
-  if (!venteAvantAchat.value) { venteAvantAchat.classList.add("field-error"); hasError = true; }
+  // Option "autre créneau"
+  const autre = document.createElement("option");
+  autre.value = "AUTRE_CRENEAU";
+  autre.textContent = "Me proposer un autre créneau";
+  selectCreneau.appendChild(autre);
+});
 
-  if (hasError) {
-    const firstError = document.querySelector(".field-error");
-    if (firstError) firstError.focus();
+/* ================================
+   5. RÉSERVATION AU CLIC BOUTON
+================================ */
+window.sendMail = async function () {
+
+  const prenom = document.getElementById("prenom").value.trim();
+  const nom = document.getElementById("nom").value.trim();
+  const tel = document.getElementById("tel").value.trim();
+  const email = document.getElementById("email").value.trim();
+  const creneauChoisi = selectCreneau.value;
+
+  if (!prenom || !nom || !tel || !email || !creneauChoisi) {
+    alert("Merci de compléter tous les champs obligatoires.");
     return;
   }
 
-  const subject = encodeURIComponent("Demande de créneau – Porte ouverte avant diffusion");
+  // Si autre créneau → pas de réservation Firestore
+  if (creneauChoisi === "AUTRE_CRENEAU") {
+    ouvrirMail(creneauChoisi);
+    return;
+  }
 
+  try {
+    await runTransaction(db, async (transaction) => {
+
+      const snap = await transaction.get(docRef);
+      if (!snap.exists()) throw "Document introuvable";
+
+      const data = snap.data();
+      const creneaux = data.creneaux;
+
+      const index = creneaux.findIndex(c => c.id === creneauChoisi);
+      if (index === -1) throw "Créneau introuvable";
+
+      if (creneaux[index].etat !== "disponible") {
+        throw "Créneau déjà réservé";
+      }
+
+      // Réservation
+      creneaux[index].etat = "pris";
+
+      // Déblocage du suivant
+      if (creneaux[index + 1]) {
+        creneaux[index + 1].etat = "disponible";
+      }
+
+      transaction.update(docRef, { creneaux });
+    });
+
+    ouvrirMail(creneauChoisi);
+
+  } catch (e) {
+    alert("Ce créneau vient d’être réservé. Merci d’en choisir un autre.");
+  }
+};
+
+/* ================================
+   6. OUVERTURE EMAIL
+================================ */
+function ouvrirMail(creneau) {
+  const subject = encodeURIComponent("Demande de créneau – Porte ouverte");
   const body = encodeURIComponent(
-    "Bonjour,\n\n" +
-    "Je souhaite réserver un créneau pour la porte ouverte (avant diffusion publique).\n\n" +
-    "Créneau souhaité (samedi) : " + creneau.value + "\n\n" +
-    "Prénom : " + prenom.value + "\n" +
-    "Nom : " + nom.value + "\n" +
-    "Téléphone : " + tel.value + "\n" +
-    "Email : " + email.value + "\n\n" +
-    "Budget maximum : " + budget.value + "\n" +
-    "Déjà vu la banque : " + banque.value + "\n" +
-    "Souhaite mise en relation courtier (gratuit) : " + courtier.value + "\n" +
-    "Statut : " + statut.value + "\n" +
-    "Besoin de vendre pour acheter : " + venteAvantAchat.value + "\n\n" +
-    "Commentaire :\n" + (commentaire.value ? commentaire.value : "—") + "\n\n" +
-    "Merci.\n\n"
+    `Bonjour,\n\n` +
+    `Je souhaite réserver le créneau suivant : ${creneau}\n\n` +
+    `Prénom : ${prenom.value}\n` +
+    `Nom : ${nom.value}\n` +
+    `Téléphone : ${tel.value}\n` +
+    `Email : ${email.value}\n\n` +
+    `Merci.`
   );
 
-  // ✅ message de confirmation sur la page (pas d'alert)
-  success.style.display = "block";
-
-  // ouverture du mail
   window.location.href =
-    "mailto:contact@jeremyheyob.fr?subject=" + subject + "&body=" + body;
+    `mailto:contact@jeremyheyob.fr?subject=${subject}&body=${body}`;
 }
 </script>
 
