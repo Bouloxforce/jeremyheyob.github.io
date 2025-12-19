@@ -1,0 +1,765 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <link rel="icon" type="image/x-icon" href="/images/favicon.ico">
+  <link rel="shortcut icon" href="/images/favicon.ico">
+  <meta charset="UTF-8">
+
+  <!-- SEO (INDEXATION DÉSACTIVÉE) -->
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Porte ouverte avant diffusion | Choix du créneau | Jérémy Heyob Immobilier</title>
+  <meta name="description" content="Choisissez votre créneau de visite pour la porte ouverte avant diffusion. Jérémy Heyob, négociateur immobilier à Saint-Priest, spécialisé dans les biens récents ou rénovés.">
+
+  <link rel="canonical" href="https://www.jeremyheyob.fr/">
+
+  <meta name="keywords" content="porte ouverte Saint-Priest, visite avant diffusion, négociateur immobilier Saint-Priest, immobilier Saint-Priest, Est lyonnais, appartement récent, appartement rénové, Jérémy Heyob">
+
+  <style>
+    :root {
+      --bg: #FFFBF5;
+      --accent: #C6AA77;
+      --accent-soft: rgba(198,169,119,0.16);
+      --text-main: #191919;
+      --text-soft: #7A7A7A;
+      --border-soft: #e5e7eb;
+      --card-bg: #ffffff;
+      --shadow-soft: 0 20px 50px rgba(25,25,25,0.10);
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+      background: var(--bg);
+      color: var(--text-main);
+    }
+
+    .page {
+      max-width: 1150px;
+      margin: 0 auto;
+      padding: 26px 18px 60px;
+    }
+
+    /* HEADER */
+    header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+      max-width: 960px;
+      margin: 16px auto 24px;
+      padding: 8px 28px;
+      background: var(--card-bg);
+      border-radius: 22px;
+      box-shadow: var(--shadow-soft);
+      border: 1px solid rgba(15,23,42,0.04);
+    }
+
+    .logo { max-width: 140px; }
+    .header-center { flex: 1; text-align: center; }
+
+    .tagline-main {
+      font-size: 13px;
+      letter-spacing: 0.18em;
+      color: var(--text-soft);
+    }
+
+    .tagline-sub {
+      margin-top: 12px;
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+    }
+
+    .tagline-sub strong { font-weight: 900; }
+
+    /* HERO */
+    .hero {
+      border-radius: 20px;
+      background:
+        linear-gradient(135deg, rgba(198,169,119,0.18), transparent 55%),
+        linear-gradient(145deg, #ffffff, #FFFBF5 55%);
+      border: 1px solid var(--border-soft);
+      box-shadow: var(--shadow-soft);
+      margin-bottom: 30px;
+    }
+
+    .hero-text { padding: 26px 28px; }
+
+    .pill {
+      display: inline-flex;
+      padding: 4px 10px;
+      border-radius: 999px;
+      background: var(--accent-soft);
+      color: var(--accent);
+      font-size: 11px;
+      text-transform: uppercase;
+      margin-bottom: 10px;
+    }
+
+    .hero-text h1 {
+      margin: 10px 0 8px;
+      font-size: clamp(24px, 3vw, 30px);
+    }
+
+    .hero-text p {
+      font-size: 14px;
+      color: var(--text-soft);
+      max-width: 720px;
+      line-height: 1.55;
+    }
+
+    .hero-highlight {
+      margin-top: 16px;
+      padding: 14px 16px;
+      border-radius: 14px;
+      background: #ffffff;
+      border: 1px dashed var(--border-soft);
+      font-size: 13px;
+      color: #4A4A4A;
+      line-height: 1.5;
+    }
+
+    /* PUCE META */
+    .hero-meta {
+      margin-top: 14px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 18px;
+      font-size: 12px;
+      color: var(--text-soft);
+    }
+
+    .hero-meta span {
+      position: relative;
+      padding-left: 12px;
+      display: inline-flex;
+      align-items: center;
+    }
+
+    .hero-meta span::before {
+      content: "•";
+      position: absolute;
+      left: 0;
+      font-size: 14px;
+      color: var(--text-soft);
+    }
+
+    /* FORM */
+    .card {
+      max-width: 800px;
+      margin: 0 auto 30px;
+      background: var(--card-bg);
+      border-radius: 22px;
+      padding: 26px 28px;
+      border: 1px solid var(--border-soft);
+      box-shadow: var(--shadow-soft);
+    }
+
+    .card-title {
+      font-size: 20px;
+      margin-bottom: 18px;
+      border-left: 4px solid var(--accent);
+      padding-left: 10px;
+    }
+
+    .form-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+    }
+
+    label { font-size: 13px; margin-bottom: 4px; display: block; }
+
+    input, select {
+      width: 100%;
+      padding: 10px 12px;
+      border-radius: 12px;
+      border: 1px solid var(--border-soft);
+      background: #fafafa;
+      font-size: 14px;
+    }
+
+    .full { grid-column: 1 / -1; }
+
+    .btn {
+      grid-column: 1 / -1;
+      margin-top: 14px;
+      background: linear-gradient(135deg, #fbe4b9, #f3c98b);
+      color: #7a5a29;
+      padding: 14px;
+      border-radius: 999px;
+      font-size: 15px;
+      font-weight: 600;
+      border: none;
+      cursor: pointer;
+    }
+
+    /* CONTACT BLOCK — IDENTIQUE PAGE DE RÉFÉRENCE */
+     .contact-block {
+      display: flex;
+      gap: 18px;
+      align-items: center;
+      background: #ffffff;
+      border-radius: 20px;
+      padding: 16px 18px;
+      border: 1px solid var(--border-soft);
+      box-shadow: 0 18px 40px rgba(25, 25, 25, 0.08);
+
+      max-width: 960px;          /* 🔴 IDENTIQUE AU HEADER */
+      margin: 16px auto 0;       /* 🔴 centrage IDENTIQUE */
+    }
+
+    .contact-photo {
+      width: 90px;
+      height: 90px;
+      border-radius: 50%;
+      overflow: hidden;          /* 🔴 CLÉ ABSOLUE */
+      border: 2px solid #e5e7eb;
+      flex-shrink: 0;
+    }
+
+    .contact-photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: top center;
+      display: block;
+    }
+
+    .contact-text h3 {
+      margin: 0 0 4px;
+      font-size: 17px; /* 🔴 TAILLE EXACTE */
+    }
+
+    .contact-text p {
+      margin: 0;
+      font-size: 13px; /* 🔴 TAILLE EXACTE */
+      color: var(--text-soft);
+    }
+
+    .contact-links {
+      margin-top: 8px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      font-size: 13px;
+    }
+
+    .contact-links a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    .contact-links a:hover {
+      text-decoration: underline;
+    }
+
+    /* FOOTER */
+    .legal-footer {
+      margin-top: 40px;
+      padding: 18px;
+      text-align: center;
+      font-size: 11.5px;
+      color: var(--text-soft);
+      opacity: 0.75;
+    }
+
+    /* HERO HIGHLIGHT AVEC LOGO */
+    .hero-highlight-with-logo {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+    }
+
+    .hero-highlight-text {
+      flex: 1;
+    }
+
+    .hero-highlight-logo img {
+      width: 180px;              /* logo plus gros */
+      height: auto;
+      opacity: 0.8;
+      margin-left: -250px;       /* décalage vers la gauche */
+    }
+
+    .social-block {
+      width: fit-content;
+      margin: 0 auto 8px;
+      background: #ffffff;
+      border-radius: 20px;
+      border: 1px solid #e5e7eb;
+      box-shadow: 0 18px 40px rgba(25,25,25,0.08);
+      padding: 14px 16px;
+    }
+
+    .social-icons {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .social-icons a {
+      width: 42px;
+      height: 42px;
+      border-radius: 14px;
+      display: grid;
+      place-items: center;
+      background: rgba(198, 169, 119, 0.16);
+      border: 1px solid rgba(198,169,119,0.25);
+      transition: transform 0.15s ease, filter 0.15s ease;
+      text-decoration: none;
+    }
+
+    .social-icons a:hover {
+      transform: translateY(-1px);
+      filter: brightness(1.02);
+    }
+
+    .social-icons svg {
+      width: 20px;
+      height: 20px;
+    }
+
+    .header-links {
+      display: flex;
+      justify-content: center;
+      gap: 18px;
+      font-size: 14px;
+      margin: 0 auto 24px;
+    }
+
+    .header-links a {
+      color: var(--text-soft);
+      text-decoration: none;
+      position: relative;
+    }
+
+    .header-links a:hover {
+      color: var(--accent);
+    }
+
+    .header-links a.active::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: -6px;
+      height: 2px;
+      background: var(--accent);
+      border-radius: 2px;
+    }
+
+    .btn-retour {
+      display: inline-block;
+      margin: 10px 0 18px;
+      padding: 6px 12px;
+      font-size: 13px;
+      font-weight: 500;
+      color: #7a5a29;
+      text-decoration: none;
+      border-radius: 10px;
+      border: 1px solid rgba(198,169,119,0.35);
+      background: rgba(198,169,119,0.10);
+    }
+
+    /* ✅ AJOUT : SURBRILLANCE DES CHAMPS MANQUANTS */
+    .field-error {
+      border: 2px solid #191919 !important;               /* noir profond */
+      background: #ffffff !important;                    /* pas de rose */
+      box-shadow: 0 0 0 4px rgba(25,25,25,0.12) !important; /* halo noir doux */
+    }
+
+    /* ✅ AJOUT : MESSAGE SUCCESS SOUS LE BOUTON (même style que hero-highlight) */
+    .success {
+      display: none;
+      margin-top: 16px;
+      padding: 14px 16px;
+      border-radius: 14px;
+      background: #ffffff;
+      border: 1px dashed var(--border-soft);
+      font-size: 13px;
+      color: #4A4A4A;
+      line-height: 1.5;
+      grid-column: 1 / -1;
+    }
+
+    .textarea-custom {
+      width: 100%;
+      min-height: 120px;
+      padding: 10px 12px;
+      border-radius: 12px;
+      margin-top: 4px;
+      border: 1px solid var(--border-soft);
+      background: #fafafa;
+      font-size: 14px;
+      font-family: inherit;
+      resize: none; /* on enlève le redimensionnement manuel */
+      overflow: hidden; /* évite la scrollbar */
+    }
+
+    .field-help {
+      display: block;
+      margin-bottom: 6px;
+      font-size: 12px;
+      color: var(--text-soft);
+    }
+
+    /* Mobile : logo en dessous */
+    @media (max-width: 600px) {
+      .hero-highlight-with-logo {
+        flex-direction: column;
+        text-align: left;
+      }
+
+      .hero-highlight-logo img {
+        width: 56px;
+      }
+    }
+
+    @media (max-width: 880px) {
+      header {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .contact-block {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+      }
+
+      .contact-links {
+        justify-content: center;   /* CENTRAGE UNIQUEMENT SUR MOBILE */
+        width: 100%;               /* permet le centrage optimal */
+      }
+    }
+  </style>
+</head>
+
+<body>
+<div class="page">
+
+<header>
+  <div class="header-left">
+    <img src="/images/logo.webp" alt="Logo Jérémy Heyob" class="logo">
+  </div>
+
+  <div class="header-center">
+    <div class="tagline-main">VOS PROJETS IMMOBILIERS N'ONT JAMAIS ÉTÉ AUSSI SIMPLES !</div>
+    <div class="tagline-sub"><strong>Jérémy HEYOB</strong></div>
+  </div>
+</header>
+
+<div class="header-links">
+  <a href="https://www.jeremyheyob.fr/">Accueil</a>
+  <a href="https://www.agence.immo/professionnels/jeremy-heyob-453" target="_blank" rel="noopener">Mes biens</a>
+  <a href="https://www.jeremyheyob.fr/avis-de-valeur.html">Estimation</a>
+  <a href="https://www.immodvisor.com/pro/agencimmocom-jeremy-heyob-saint-priest-69800-53519.html" target="_blank" rel="noopener">Avis vérifiés</a>
+  <a href="https://www.jeremyheyob.fr/honoraires.html">Mes honoraires</a>
+  <a href="https://www.jeremyheyob.fr/biens-avant-premiere.html">Biens en avant-première</a>
+  <a href="https://www.jeremyheyob.fr/un-cran-au-dessus.html">Guide vendeur</a>
+</div>
+
+<div class="btn-retour-wrap">
+  <a href="https://www.jeremyheyob.fr" class="btn-retour">← Retour</a>
+</div>
+
+<!-- HERO INFO -->
+<section class="hero">
+  <div class="hero-text">
+    <div class="pill">PORTE OUVERTE</div>
+    <h1>Choisissez votre créneau de visite avant la diffusion publique</h1>
+    <p>
+      Cette porte ouverte a lieu <strong>avant la diffusion de l’annonce</strong>.
+      La publication sur les sites de diffusion aura lieu <strong>ce lundi</strong>.
+      Vous visitez donc dans un contexte plus serein, avant l’arrivée d’un flux massif de demandes.
+    </p>
+
+    <div class="hero-highlight hero-highlight-with-logo">
+      <div class="hero-highlight-text">
+        <strong>Pourquoi cette porte ouverte est différente ?</strong><br><br>
+        • Vous passez <strong>avant tout le monde</strong> : visite avant la mise en ligne publique.<br><br>
+        • Moins de concurrence immédiate : échanges plus qualitatifs, rythme de visite maîtrisé.<br><br>
+        • Vous gagnez du temps : si votre projet est cohérent, vous pouvez vous positionner plus vite.<br><br>
+        • Le créneau est <strong>soumis à confirmation</strong> : je valide personnellement la disponibilité par email.
+      </div>
+    </div>
+
+    <div class="hero-meta">
+      <span>Avant diffusion</span>
+      <span>Créneaux 30 min</span>
+      <span>Confirmation par email</span>
+    </div>
+  </div>
+</section>
+
+<section class="card">
+  <h2 class="card-title">Vos coordonnées et votre projet</h2>
+
+  <div class="form-grid">
+    <div><label>Votre prénom</label><input id="prenom"></div>
+    <div><label>Votre nom</label><input id="nom"></div>
+    <div><label>Votre téléphone</label><input id="tel"></div>
+    <div><label>Votre email</label><input id="email"></div>
+
+    <!-- ✅ AJOUT : CRÉNEAU PORTE OUVERTE (SAMEDI 14H-17H, 30 MIN) -->
+    <div class="full">
+      <label>Créneau souhaité (samedi) – sous réserve de confirmation</label>
+      <span class="field-help">Les créneaux affichés “déjà réservé” ne sont plus disponibles.</span>
+      <select id="creneau">
+        <option value="">-- Choisir un créneau --</option>
+
+        <!-- ✅ SEUL CRÉNEAU DISPONIBLE -->
+        <option value="Samedi 14h00 – 14h30">Samedi 14h00 – 14h30 (disponible)</option>
+
+        <!-- 🔒 CRÉNEAUX VISIBLES MAIS DÉJÀ PRIS -->
+        <option disabled>Samedi 14h30 – 15h00 (déjà réservé)</option>
+        <option disabled>Samedi 15h00 – 15h30 (déjà réservé)</option>
+        <option disabled>Samedi 15h30 – 16h00 (déjà réservé)</option>
+        <option disabled>Samedi 16h00 – 16h30 (déjà réservé)</option>
+        <option disabled>Samedi 16h30 – 17h00 (déjà réservé)</option>
+      </select>
+    </div>
+
+    <div><label>Budget maximum</label><input id="budget" placeholder="Ex : 250 000 €"></div>
+
+    <div><label>Avez-vous déjà vu votre banque ?</label>
+      <select id="banque">
+        <option value="">-- Choisir --</option>
+        <option>Oui</option>
+        <option>Non</option>
+      </select>
+    </div>
+
+    <div class="full"><label>Souhaitez-vous être mis en relation gratuitement avec un courtier pour évaluer ou comparer votre budget ?</label>
+      <select id="courtier">
+        <option value="">-- Choisir --</option>
+        <option>Oui</option>
+        <option>Non</option>
+      </select>
+    </div>
+
+    <div><label>Vous êtes</label>
+      <select id="statut">
+        <option value="">-- Choisir --</option>
+        <option>Locataire</option>
+        <option>Propriétaire</option>
+      </select>
+    </div>
+
+    <div><label>Avez-vous besoin de vendre pour acheter ?</label>
+      <select id="venteAvantAchat">
+        <option value="">-- Choisir --</option>
+        <option>Oui</option>
+        <option>Non</option>
+      </select>
+    </div>
+
+    <div class="full">
+      <label>Commentaire (facultatif)</label>
+      <textarea
+        id="commentaire"
+        class="textarea-custom"
+        placeholder="Informations complémentaires (situation, financement, délai, etc.)"></textarea>
+    </div>
+
+    <button class="btn" onclick="sendMail()">Envoyer ma demande de créneau</button>
+
+    <div class="success" id="success">
+      ✅ Demande transmise. Je reviens vers vous par email pour confirmer la disponibilité du créneau et vous transmettre les informations pratiques.
+    </div>
+  </div>
+</section>
+
+<section class="social-block" aria-label="Réseaux sociaux">
+  <div class="social-icons">
+
+    <!-- Google -->
+    <a href="https://goo.gl/maps/wjfc1aGFBrSLd3tV6" target="_blank" rel="noopener" aria-label="Google">
+      <svg viewBox="0 0 24 24" fill="none" stroke="#7a5a29" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M12 21s7-4.5 7-11a7 7 0 1 0-14 0c0 6.5 7 11 7 11z"></path>
+        <circle cx="12" cy="10" r="2.5"></circle>
+      </svg>
+    </a>
+
+    <!-- PagesJaunes -->
+    <a href="https://www.pagesjaunes.fr/pros/62191780" target="_blank" rel="noopener" aria-label="Pages Jaunes">
+      <svg viewBox="0 0 24 24" fill="none" stroke="#7a5a29" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M6 3h9a3 3 0 0 1 3 3v12a3 3 0 0 1-3 3H6a3 3 0 0 1-3-3V6a3 3 0 0 1 3-3z"></path>
+        <path d="M8 8h8"></path>
+        <path d="M8 12h8"></path>
+        <path d="M8 16h6"></path>
+      </svg>
+    </a>
+
+    <!-- Facebook -->
+    <a href="https://www.facebook.com/jeremyheyobpro" target="_blank" rel="noopener" aria-label="Facebook">
+      <svg viewBox="0 0 24 24" fill="none" stroke="#7a5a29" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M14 8h3V5h-3a4 4 0 0 0-4 4v3H7v3h3v6h3v-6h3l1-3h-4V9a1 1 0 0 1 1-1z"></path>
+      </svg>
+    </a>
+
+    <!-- LinkedIn -->
+    <a href="https://www.linkedin.com/company/jérémy-heyob/" target="_blank" rel="noopener" aria-label="LinkedIn">
+      <svg viewBox="0 0 24 24" fill="none" stroke="#7a5a29" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4V9h4v2"></path>
+        <rect x="2" y="9" width="4" height="12"></rect>
+        <circle cx="4" cy="4" r="2"></circle>
+      </svg>
+    </a>
+
+    <!-- Instagram -->
+    <a href="https://www.instagram.com/jeremyheyob/" target="_blank" rel="noopener" aria-label="Instagram">
+      <svg viewBox="0 0 24 24" fill="none" stroke="#7a5a29" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <rect x="3" y="3" width="18" height="18" rx="5" ry="5"></rect>
+        <circle cx="12" cy="12" r="4"></circle>
+        <path d="M17.5 6.5h.01"></path>
+      </svg>
+    </a>
+
+    <!-- YouTube -->
+    <a href="https://www.youtube.com/channel/UCpE0arbirH2tkw2THT_Ef9Q" target="_blank" rel="noopener" aria-label="YouTube">
+      <svg viewBox="0 0 24 24" fill="none" stroke="#7a5a29" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M22 12s0-4-1-5-4-1-9-1-8 0-9 1-1 5-1 5 0 4 1 5 4 1 9 1 8 0 9-1 1-5 1-5z"></path>
+        <path d="M10 9l6 3-6 3V9z"></path>
+      </svg>
+    </a>
+
+    <!-- TikTok -->
+    <a href="https://www.tiktok.com/@jeremyheyob" target="_blank" rel="noopener" aria-label="TikTok">
+      <svg viewBox="0 0 24 24" fill="none" stroke="#7a5a29" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M14 3v10a4 4 0 1 1-4-4"></path>
+        <path d="M14 7a6 6 0 0 0 6 2"></path>
+      </svg>
+    </a>
+
+  </div>
+</section>
+
+<section class="contact-block">
+  <div class="contact-photo">
+    <img src="/images/photo.webp" alt="Photo de Jérémy Heyob">
+  </div>
+
+  <div class="contact-text">
+    <h3>Une question sur votre projet d’achat ?</h3>
+
+    <p>
+      Je vous accompagne pour définir un budget réaliste, sécuriser votre financement et identifier les meilleurs taux du moment,
+      afin d’aborder votre achat avec sérénité et méthode.
+    </p>
+
+    <div class="contact-links">
+      <a href="mailto:contact@jeremyheyob.fr">✉️ Email</a>
+      <a href="sms:+33648145565">💬 SMS</a>
+      <a href="tel:+33648145565">📞 Appel</a>
+      <a href="https://www.jeremyheyob.fr" target="_blank">💻 Site</a>
+    </div>
+  </div>
+</section>
+
+<footer class="legal-footer">
+  Les photos et documents présentés sur cette page sont la propriété exclusive de
+  <strong>Jérémy HEYOB Immobilier</strong>.<br>
+  Toute reproduction, diffusion ou utilisation est strictement interdite sans autorisation préalable.
+</footer>
+
+</div>
+
+<script>
+function sendMail() {
+
+  const prenom = document.getElementById("prenom");
+  const nom = document.getElementById("nom");
+  const tel = document.getElementById("tel");
+  const email = document.getElementById("email");
+  const creneau = document.getElementById("creneau");   // ✅ AJOUT
+  const budget = document.getElementById("budget");
+  const banque = document.getElementById("banque");
+  const courtier = document.getElementById("courtier");
+  const statut = document.getElementById("statut");
+  const venteAvantAchat = document.getElementById("venteAvantAchat");
+  const commentaire = document.getElementById("commentaire");
+
+  const success = document.getElementById("success");
+
+  // ✅ reset surbrillance
+  const fields = [prenom, nom, tel, email, creneau, budget, banque, courtier, statut, venteAvantAchat];
+  fields.forEach(f => f.classList.remove("field-error"));
+  success.style.display = "none";
+
+  // ✅ validation avec surbrillance
+  let hasError = false;
+
+  function markIfEmpty(el) {
+    if (!el.value || !el.value.trim()) {
+      el.classList.add("field-error");
+      hasError = true;
+    }
+  }
+
+  markIfEmpty(prenom);
+  markIfEmpty(nom);
+  markIfEmpty(tel);
+  markIfEmpty(email);
+  if (!creneau.value) { creneau.classList.add("field-error"); hasError = true; } // ✅ AJOUT
+  markIfEmpty(budget);
+
+  if (!banque.value) { banque.classList.add("field-error"); hasError = true; }
+  if (!courtier.value) { courtier.classList.add("field-error"); hasError = true; }
+  if (!statut.value) { statut.classList.add("field-error"); hasError = true; }
+  if (!venteAvantAchat.value) { venteAvantAchat.classList.add("field-error"); hasError = true; }
+
+  if (hasError) {
+    const firstError = document.querySelector(".field-error");
+    if (firstError) firstError.focus();
+    return;
+  }
+
+  const subject = encodeURIComponent("Demande de créneau – Porte ouverte avant diffusion");
+
+  const body = encodeURIComponent(
+    "Bonjour,\n\n" +
+    "Je souhaite réserver un créneau pour la porte ouverte (avant diffusion publique).\n" +
+    "Créneau souhaité (samedi) : " + creneau.value + "\n\n" +
+    "Prénom : " + prenom.value + "\n" +
+    "Nom : " + nom.value + "\n" +
+    "Téléphone : " + tel.value + "\n" +
+    "Email : " + email.value + "\n\n" +
+    "Budget maximum : " + budget.value + "\n" +
+    "Déjà vu la banque : " + banque.value + "\n" +
+    "Souhaite mise en relation courtier (gratuit) : " + courtier.value + "\n" +
+    "Statut : " + statut.value + "\n" +
+    "Besoin de vendre pour acheter : " + venteAvantAchat.value + "\n\n" +
+    "Commentaire :\n" + (commentaire.value ? commentaire.value : "—") + "\n\n" +
+    "Merci.\n\n" +
+    "⚠️ Créneau soumis à validation. Merci d’attendre mon email de confirmation.\n"
+  );
+
+  // ✅ message de confirmation sur la page (pas d'alert)
+  success.style.display = "block";
+
+  // ouverture du mail
+  window.location.href =
+    "mailto:contact@jeremyheyob.fr?subject=" + subject + "&body=" + body;
+}
+</script>
+
+<script>
+document.addEventListener("input", function (e) {
+  if (e.target.classList.contains("textarea-custom")) {
+    e.target.style.height = "auto";
+    e.target.style.height = e.target.scrollHeight + "px";
+  }
+});
+</script>
+
+</body>
+</html>
