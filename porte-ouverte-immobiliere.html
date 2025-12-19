@@ -585,6 +585,15 @@
     btnSend.textContent = locked ? "Traitement en cours…" : "Envoyer ma demande";
   }
 
+  function normalizeId(id) {
+    return String(id || "")
+      // uniformise tous les tirets possibles vers "-"
+      .replace(/[–—−]/g, "-")
+      // supprime les espaces (y compris insécables si un jour ça arrive)
+      .replace(/\s+/g, "")
+      .trim();
+  }
+
   /* ================================
      RESET : dernier vendredi 23h59
      (à l'ouverture de page)
@@ -791,8 +800,18 @@
         const data = snap.data();
         const oldCreneaux = data.creneaux;
 
-        const index = oldCreneaux.findIndex(c => c.id === creneauChoisi);
-        if (index === -1) throw new Error("Créneau introuvable");
+        if (index <= 3 && newCreneaux[index + 1]) {.findIndex(
+          c => normalizeId(c.id) === normalizeId(creneauChoisi)
+        );
+
+        if (index === -1) {
+          throw new Error(
+            "Créneau introuvable (ID mismatch). Choisi=" +
+            creneauChoisi +
+            " | Dispo=" +
+            oldCreneaux.map(x => x.id).join(", ")
+          );
+        }
 
         if (oldCreneaux[index].etat !== "disponible") {
           throw new Error("Créneau déjà réservé");
