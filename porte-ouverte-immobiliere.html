@@ -13,7 +13,6 @@
   <meta name="description" content="Choisissez votre créneau de visite pour la porte ouverte avant diffusion. Jérémy Heyob, négociateur immobilier à Saint-Priest, spécialisé dans les biens récents ou rénovés.">
 
   <link rel="canonical" href="https://www.jeremyheyob.fr/">
-
   <meta name="keywords" content="porte ouverte Saint-Priest, visite avant diffusion, négociateur immobilier Saint-Priest, immobilier Saint-Priest, Est lyonnais, appartement récent, appartement rénové, Jérémy Heyob">
 
   <style>
@@ -199,7 +198,7 @@
     }
 
     /* CONTACT BLOCK — IDENTIQUE PAGE DE RÉFÉRENCE */
-     .contact-block {
+    .contact-block {
       display: flex;
       gap: 18px;
       align-items: center;
@@ -209,15 +208,15 @@
       border: 1px solid var(--border-soft);
       box-shadow: 0 18px 40px rgba(25, 25, 25, 0.08);
 
-      max-width: 960px;          /* 🔴 IDENTIQUE AU HEADER */
-      margin: 16px auto 0;       /* 🔴 centrage IDENTIQUE */
+      max-width: 960px;
+      margin: 16px auto 0;
     }
 
     .contact-photo {
       width: 90px;
       height: 90px;
       border-radius: 50%;
-      overflow: hidden;          /* 🔴 CLÉ ABSOLUE */
+      overflow: hidden;
       border: 2px solid #e5e7eb;
       flex-shrink: 0;
     }
@@ -232,12 +231,12 @@
 
     .contact-text h3 {
       margin: 0 0 4px;
-      font-size: 17px; /* 🔴 TAILLE EXACTE */
+      font-size: 17px;
     }
 
     .contact-text p {
       margin: 0;
-      font-size: 13px; /* 🔴 TAILLE EXACTE */
+      font-size: 13px;
       color: var(--text-soft);
     }
 
@@ -268,25 +267,7 @@
       opacity: 0.75;
     }
 
-    /* HERO HIGHLIGHT AVEC LOGO */
-    .hero-highlight-with-logo {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 18px;
-    }
-
-    .hero-highlight-text {
-      flex: 1;
-    }
-
-    .hero-highlight-logo img {
-      width: 180px;              /* logo plus gros */
-      height: auto;
-      opacity: 0.8;
-      margin-left: -250px;       /* décalage vers la gauche */
-    }
-
+    /* SOCIAL */
     .social-block {
       width: fit-content;
       margin: 0 auto 8px;
@@ -327,56 +308,14 @@
       height: 20px;
     }
 
-    .header-links {
-      display: flex;
-      justify-content: center;
-      gap: 18px;
-      font-size: 14px;
-      margin: 0 auto 24px;
-    }
-
-    .header-links a {
-      color: var(--text-soft);
-      text-decoration: none;
-      position: relative;
-    }
-
-    .header-links a:hover {
-      color: var(--accent);
-    }
-
-    .header-links a.active::after {
-      content: "";
-      position: absolute;
-      left: 0;
-      right: 0;
-      bottom: -6px;
-      height: 2px;
-      background: var(--accent);
-      border-radius: 2px;
-    }
-
-    .btn-retour {
-      display: inline-block;
-      margin: 10px 0 18px;
-      padding: 6px 12px;
-      font-size: 13px;
-      font-weight: 500;
-      color: #7a5a29;
-      text-decoration: none;
-      border-radius: 10px;
-      border: 1px solid rgba(198,169,119,0.35);
-      background: rgba(198,169,119,0.10);
-    }
-
-    /* ✅ AJOUT : SURBRILLANCE DES CHAMPS MANQUANTS */
+    /* ✅ CHAMPS MANQUANTS */
     .field-error {
-      border: 2px solid #191919 !important;               /* noir profond */
-      background: #ffffff !important;                    /* pas de rose */
-      box-shadow: 0 0 0 4px rgba(25,25,25,0.12) !important; /* halo noir doux */
+      border: 2px solid #191919 !important;
+      background: #ffffff !important;
+      box-shadow: 0 0 0 4px rgba(25,25,25,0.12) !important;
     }
 
-    /* ✅ AJOUT : MESSAGE SUCCESS SOUS LE BOUTON (même style que hero-highlight) */
+    /* ✅ SUCCESS */
     .success {
       display: none;
       margin-top: 16px;
@@ -400,8 +339,8 @@
       background: #fafafa;
       font-size: 14px;
       font-family: inherit;
-      resize: none; /* on enlève le redimensionnement manuel */
-      overflow: hidden; /* évite la scrollbar */
+      resize: none;
+      overflow: hidden;
     }
 
     .field-help {
@@ -411,33 +350,19 @@
       color: var(--text-soft);
     }
 
-    /* Mobile : logo en dessous */
-    @media (max-width: 600px) {
-      .hero-highlight-with-logo {
-        flex-direction: column;
-        text-align: left;
-      }
-
-      .hero-highlight-logo img {
-        width: 56px;
-      }
-    }
-
     @media (max-width: 880px) {
       header {
         flex-direction: column;
         align-items: center;
       }
-
       .contact-block {
         flex-direction: column;
         align-items: center;
         text-align: center;
       }
-
       .contact-links {
-        justify-content: center;   /* CENTRAGE UNIQUEMENT SUR MOBILE */
-        width: 100%;               /* permet le centrage optimal */
+        justify-content: center;
+        width: 100%;
       }
     }
   </style>
@@ -457,7 +382,6 @@
   </div>
 </header>
 
-<!-- HERO INFO -->
 <section class="hero">
   <div class="hero-text">
     <div class="pill">PORTE OUVERTE</div>
@@ -468,14 +392,12 @@
       Vous visitez donc dans un contexte plus serein, avant l’arrivée d’un flux massif de demandes.
     </p>
 
-    <div class="hero-highlight hero-highlight-with-logo">
-      <div class="hero-highlight-text">
-        <strong>Pourquoi cette porte ouverte est différente ?</strong><br><br>
-        • Vous passez <strong>avant tout le monde</strong> : visite avant la mise en ligne publique.<br><br>
-        • Moins de concurrence immédiate : échanges plus qualitatifs, rythme de visite maîtrisé.<br><br>
-        • Vous gagnez du temps : si votre projet est cohérent, vous pouvez vous positionner plus vite.<br><br>
-        • Le créneau est <strong>soumis à confirmation</strong> : je valide personnellement la disponibilité par email.
-      </div>
+    <div class="hero-highlight">
+      <strong>Pourquoi cette porte ouverte est différente ?</strong><br><br>
+      • Vous passez <strong>avant tout le monde</strong> : visite avant la mise en ligne publique.<br><br>
+      • Moins de concurrence immédiate : échanges plus qualitatifs, rythme de visite maîtrisé.<br><br>
+      • Vous gagnez du temps : si votre projet est cohérent, vous pouvez vous positionner plus vite.<br><br>
+      • Le créneau est <strong>soumis à confirmation</strong> : je valide personnellement la disponibilité par email.
     </div>
 
     <div class="hero-meta">
@@ -495,23 +417,11 @@
     <div><label>Votre téléphone</label><input id="tel"></div>
     <div><label>Votre email</label><input id="email"></div>
 
-    <!-- ✅ AJOUT : CRÉNEAU PORTE OUVERTE (SAMEDI 14H-17H, 30 MIN) -->
     <div class="full">
-      <label>Créneau souhaité – sous réserve de confirmation</label>
-      <span class="field-help">Les créneaux affichés “déjà réservé” ne sont plus disponibles.</span>
+      <label>Créneau souhaité (samedi) – sous réserve de confirmation</label>
+      <span class="field-help">Les créneaux “déjà réservé” ne sont plus disponibles.</span>
       <select id="creneau">
-        <option value="">-- Choisir un créneau --</option>
-
-        <!-- ✅ SEUL CRÉNEAU DISPONIBLE -->
-        <option value="Samedi 14h00 – 14h30">Samedi 14h00 – 14h30 (disponible)</option>
-
-        <!-- 🔒 CRÉNEAUX VISIBLES MAIS DÉJÀ PRIS -->
-        <option disabled>Samedi 14h30 – 15h00 (déjà réservé)</option>
-        <option disabled>Samedi 15h00 – 15h30 (déjà réservé)</option>
-        <option disabled>Samedi 15h30 – 16h00 (déjà réservé)</option>
-        <option disabled>Samedi 16h00 – 16h30 (déjà réservé)</option>
-        <option disabled>Samedi 16h30 – 17h00 (déjà réservé)</option>
-        <option value="AUTRE_CRENEAU">Me proposer un autre créneau (selon disponibilités)</option>
+        <option value="">Chargement des créneaux…</option>
       </select>
     </div>
 
@@ -551,9 +461,7 @@
 
     <div class="full">
       <label>Commentaire (facultatif)</label>
-      <textarea
-        id="commentaire"
-        class="textarea-custom"
+      <textarea id="commentaire" class="textarea-custom"
         placeholder="Informations complémentaires (situation, financement, délai, etc.)"></textarea>
     </div>
 
@@ -568,7 +476,6 @@
 <section class="social-block" aria-label="Réseaux sociaux">
   <div class="social-icons">
 
-    <!-- Google -->
     <a href="https://goo.gl/maps/wjfc1aGFBrSLd3tV6" target="_blank" rel="noopener" aria-label="Google">
       <svg viewBox="0 0 24 24" fill="none" stroke="#7a5a29" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
         <path d="M12 21s7-4.5 7-11a7 7 0 1 0-14 0c0 6.5 7 11 7 11z"></path>
@@ -576,7 +483,6 @@
       </svg>
     </a>
 
-    <!-- PagesJaunes -->
     <a href="https://www.pagesjaunes.fr/pros/62191780" target="_blank" rel="noopener" aria-label="Pages Jaunes">
       <svg viewBox="0 0 24 24" fill="none" stroke="#7a5a29" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
         <path d="M6 3h9a3 3 0 0 1 3 3v12a3 3 0 0 1-3 3H6a3 3 0 0 1-3-3V6a3 3 0 0 1 3-3z"></path>
@@ -586,14 +492,12 @@
       </svg>
     </a>
 
-    <!-- Facebook -->
     <a href="https://www.facebook.com/jeremyheyobpro" target="_blank" rel="noopener" aria-label="Facebook">
       <svg viewBox="0 0 24 24" fill="none" stroke="#7a5a29" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
         <path d="M14 8h3V5h-3a4 4 0 0 0-4 4v3H7v3h3v6h3v-6h3l1-3h-4V9a1 1 0 0 1 1-1z"></path>
       </svg>
     </a>
 
-    <!-- LinkedIn -->
     <a href="https://www.linkedin.com/company/jérémy-heyob/" target="_blank" rel="noopener" aria-label="LinkedIn">
       <svg viewBox="0 0 24 24" fill="none" stroke="#7a5a29" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
         <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4V9h4v2"></path>
@@ -602,7 +506,6 @@
       </svg>
     </a>
 
-    <!-- Instagram -->
     <a href="https://www.instagram.com/jeremyheyob/" target="_blank" rel="noopener" aria-label="Instagram">
       <svg viewBox="0 0 24 24" fill="none" stroke="#7a5a29" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
         <rect x="3" y="3" width="18" height="18" rx="5" ry="5"></rect>
@@ -611,7 +514,6 @@
       </svg>
     </a>
 
-    <!-- YouTube -->
     <a href="https://www.youtube.com/channel/UCpE0arbirH2tkw2THT_Ef9Q" target="_blank" rel="noopener" aria-label="YouTube">
       <svg viewBox="0 0 24 24" fill="none" stroke="#7a5a29" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
         <path d="M22 12s0-4-1-5-4-1-9-1-8 0-9 1-1 5-1 5 0 4 1 5 4 1 9 1 8 0 9-1 1-5 1-5z"></path>
@@ -619,7 +521,6 @@
       </svg>
     </a>
 
-    <!-- TikTok -->
     <a href="https://www.tiktok.com/@jeremyheyob" target="_blank" rel="noopener" aria-label="TikTok">
       <svg viewBox="0 0 24 24" fill="none" stroke="#7a5a29" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
         <path d="M14 3v10a4 4 0 1 1-4-4"></path>
@@ -637,7 +538,6 @@
 
   <div class="contact-text">
     <h3>Une question sur votre projet d’achat ?</h3>
-
     <p>
       Je vous accompagne pour définir un budget réaliste, sécuriser votre financement et identifier les meilleurs taux du moment,
       afin d’aborder votre achat avec sérénité et méthode.
@@ -647,7 +547,7 @@
       <a href="mailto:contact@jeremyheyob.fr">✉️ Email</a>
       <a href="sms:+33648145565">💬 SMS</a>
       <a href="tel:+33648145565">📞 Appel</a>
-      <a href="https://www.jeremyheyob.fr" target="_blank">💻 Site</a>
+      <a href="https://www.jeremyheyob.fr" target="_blank" rel="noopener">💻 Site</a>
     </div>
   </div>
 </section>
@@ -660,144 +560,216 @@
 
 </div>
 
+<!-- =========================
+     FIREBASE + LOGIQUE CRÉNEAUX
+========================= -->
 <script type="module">
-/* ================================
-   1. IMPORT FIREBASE
-================================ */
-import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
-import {
-  getFirestore,
-  doc,
-  onSnapshot,
-  runTransaction
-} from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
+  import {
+    getFirestore,
+    doc,
+    onSnapshot,
+    runTransaction
+  } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
 
-/* ================================
-   2. CONFIG FIREBASE
-================================ */
-const firebaseConfig = {
-  apiKey: "AIzaSyDLXHGbKe8CRtMqvmHH2_R6oggbJhaTeH",
-  authDomain: "porte-ouverte-jeremy.firebaseapp.com",
-  projectId: "porte-ouverte-jeremy",
-  storageBucket: "porte-ouverte-jeremy.appspot.com",
-  messagingSenderId: "76592424226",
-  appId: "1:76592424226:web:f793f43d4521e8e2b6f17b"
-};
+  const firebaseConfig = {
+    apiKey: "AIzaSyDLXHGbKe8CRtMqvmHH2_R6oggbJhaTeH",
+    authDomain: "porte-ouverte-jeremy.firebaseapp.com",
+    projectId: "porte-ouverte-jeremy",
+    storageBucket: "porte-ouverte-jeremy.appspot.com",
+    messagingSenderId: "76592424226",
+    appId: "1:76592424226:web:f793f43d4521e8e2b6f17b"
+  };
 
-const app = initializeApp(firebaseConfig);
-const db = getFirestore(app);
+  const app = initializeApp(firebaseConfig);
+  const db = getFirestore(app);
 
-/* ================================
-   3. RÉFÉRENCE FIRESTORE
-================================ */
-const docRef = doc(db, "portes_ouvertes", "samedi");
-const selectCreneau = document.getElementById("creneau");
+  const docRef = doc(db, "portes_ouvertes", "samedi");
+  const selectCreneau = document.getElementById("creneau");
 
-/* ================================
-   4. SYNCHRO TEMPS RÉEL DES CRÉNEAUX
-================================ */
-onSnapshot(docRef, (snapshot) => {
-  if (!snapshot.exists()) return;
-
-  const { creneaux } = snapshot.data();
-
-  selectCreneau.innerHTML = '<option value="">-- Choisir un créneau --</option>';
-
-  creneaux.forEach((c) => {
-    const option = document.createElement("option");
-    option.value = c.id;
-
-    if (c.etat === "disponible") {
-      option.textContent = `Samedi ${c.id} (disponible)`;
-    } else {
-      option.textContent = `Samedi ${c.id} (déjà réservé)`;
-      option.disabled = true;
+  // 1) Affichage dynamique des créneaux
+  onSnapshot(docRef, (snapshot) => {
+    if (!snapshot.exists()) {
+      selectCreneau.innerHTML = '<option value="">(Aucun créneau configuré)</option>';
+      return;
     }
 
-    selectCreneau.appendChild(option);
-  });
+    const { creneaux } = snapshot.data();
 
-  const autre = document.createElement("option");
-  autre.value = "AUTRE_CRENEAU";
-  autre.textContent = "Me proposer un autre créneau";
-  selectCreneau.appendChild(autre);
-});
+    selectCreneau.innerHTML = '<option value="">-- Choisir un créneau --</option>';
 
-/* ================================
-   5. CLIC BOUTON → RÉSERVATION
-================================ */
-window.sendMail = async function () {
+    creneaux.forEach((c) => {
+      const option = document.createElement("option");
+      option.value = c.id;
 
-  const prenom = document.getElementById("prenom").value.trim();
-  const nom = document.getElementById("nom").value.trim();
-  const tel = document.getElementById("tel").value.trim();
-  const email = document.getElementById("email").value.trim();
-  const creneauChoisi = selectCreneau.value;
-
-  if (!prenom || !nom || !tel || !email || !creneauChoisi) {
-    alert("Merci de compléter tous les champs obligatoires.");
-    return;
-  }
-
-  // AUTRE CRÉNEAU → PAS DE FIRESTORE
-  if (creneauChoisi === "AUTRE_CRENEAU") {
-    ouvrirMail(creneauChoisi, prenom, nom, tel, email);
-    return;
-  }
-
-  try {
-    await runTransaction(db, async (transaction) => {
-
-      const snap = await transaction.get(docRef);
-      if (!snap.exists()) throw new Error("Document introuvable");
-
-      const data = snap.data();
-      const creneaux = data.creneaux;
-
-      const index = creneaux.findIndex(c => c.id === creneauChoisi);
-      if (index === -1) throw new Error("Créneau introuvable");
-
-      if (creneaux[index].etat !== "disponible") {
-        throw new Error("Créneau déjà réservé");
+      if (c.etat === "disponible") {
+        option.textContent = `Samedi ${c.id} (disponible)`;
+      } else {
+        option.textContent = `Samedi ${c.id} (déjà réservé)`;
+        option.disabled = true;
       }
 
-      // 🔒 réservation
-      creneaux[index].etat = "pris";
-
-      // 🔓 déblocage du suivant
-      if (creneaux[index + 1]) {
-        creneaux[index + 1].etat = "disponible";
-      }
-
-      transaction.update(docRef, { creneaux });
+      selectCreneau.appendChild(option);
     });
 
-    ouvrirMail(creneauChoisi, prenom, nom, tel, email);
+    // Toujours proposer "autre créneau"
+    const autre = document.createElement("option");
+    autre.value = "AUTRE_CRENEAU";
+    autre.textContent = "Me proposer un autre créneau (selon disponibilités)";
+    selectCreneau.appendChild(autre);
+  });
 
-  } catch (e) {
-    alert("Ce créneau vient d’être réservé par quelqu’un d’autre.");
+  // 2) Fonction email + UI
+  function ouvrirMail(payload) {
+    const subject = encodeURIComponent("Demande de créneau – Porte ouverte avant diffusion");
+
+    const body = encodeURIComponent(
+      "Bonjour,\n\n" +
+      payload.intro + "\n\n" +
+      "Créneau souhaité : " + payload.creneauLabel + "\n\n" +
+      "Prénom : " + payload.prenom + "\n" +
+      "Nom : " + payload.nom + "\n" +
+      "Téléphone : " + payload.tel + "\n" +
+      "Email : " + payload.email + "\n\n" +
+      "Budget maximum : " + payload.budget + "\n" +
+      "Déjà vu la banque : " + payload.banque + "\n" +
+      "Souhaite mise en relation courtier (gratuit) : " + payload.courtier + "\n" +
+      "Statut : " + payload.statut + "\n" +
+      "Besoin de vendre pour acheter : " + payload.venteAvantAchat + "\n\n" +
+      "Commentaire :\n" + payload.commentaire + "\n\n" +
+      "Merci.\n"
+    );
+
+    // Message success
+    const success = document.getElementById("success");
+    success.style.display = "block";
+
+    window.location.href = "mailto:contact@jeremyheyob.fr?subject=" + subject + "&body=" + body;
   }
-};
 
-/* ================================
-   6. OUVERTURE EMAIL
-================================ */
-function ouvrirMail(creneau, prenom, nom, tel, email) {
+  // 3) Validation UI (surbrillance)
+  function setFieldError(el, hasError) {
+    if (!el) return;
+    if (hasError) el.classList.add("field-error");
+    else el.classList.remove("field-error");
+  }
 
-  const subject = encodeURIComponent("Demande de créneau – Porte ouverte");
-  const body = encodeURIComponent(
-    `Bonjour,\n\n` +
-    `Je souhaite réserver le créneau suivant : ${creneau}\n\n` +
-    `Prénom : ${prenom}\n` +
-    `Nom : ${nom}\n` +
-    `Téléphone : ${tel}\n` +
-    `Email : ${email}\n\n` +
-    `Merci.`
-  );
+  // 4) sendMail accessible au onclick HTML
+  window.sendMail = async function () {
 
-  window.location.href =
-    `mailto:contact@jeremyheyob.fr?subject=${subject}&body=${body}`;
-}
+    const prenomEl = document.getElementById("prenom");
+    const nomEl = document.getElementById("nom");
+    const telEl = document.getElementById("tel");
+    const emailEl = document.getElementById("email");
+    const budgetEl = document.getElementById("budget");
+    const banqueEl = document.getElementById("banque");
+    const courtierEl = document.getElementById("courtier");
+    const statutEl = document.getElementById("statut");
+    const venteAvantAchatEl = document.getElementById("venteAvantAchat");
+    const commentaireEl = document.getElementById("commentaire");
+
+    const success = document.getElementById("success");
+    success.style.display = "none";
+
+    // Reset erreurs
+    [
+      prenomEl, nomEl, telEl, emailEl, selectCreneau,
+      budgetEl, banqueEl, courtierEl, statutEl, venteAvantAchatEl
+    ].forEach(el => setFieldError(el, false));
+
+    const prenom = (prenomEl.value || "").trim();
+    const nom = (nomEl.value || "").trim();
+    const tel = (telEl.value || "").trim();
+    const email = (emailEl.value || "").trim();
+    const budget = (budgetEl.value || "").trim();
+    const banque = banqueEl.value || "";
+    const courtier = courtierEl.value || "";
+    const statut = statutEl.value || "";
+    const venteAvantAchat = venteAvantAchatEl.value || "";
+    const commentaire = (commentaireEl.value || "").trim() || "—";
+
+    const creneauChoisi = selectCreneau.value || "";
+
+    // Validation
+    let hasError = false;
+    if (!prenom) { setFieldError(prenomEl, true); hasError = true; }
+    if (!nom) { setFieldError(nomEl, true); hasError = true; }
+    if (!tel) { setFieldError(telEl, true); hasError = true; }
+    if (!email) { setFieldError(emailEl, true); hasError = true; }
+    if (!creneauChoisi) { setFieldError(selectCreneau, true); hasError = true; }
+    if (!budget) { setFieldError(budgetEl, true); hasError = true; }
+    if (!banque) { setFieldError(banqueEl, true); hasError = true; }
+    if (!courtier) { setFieldError(courtierEl, true); hasError = true; }
+    if (!statut) { setFieldError(statutEl, true); hasError = true; }
+    if (!venteAvantAchat) { setFieldError(venteAvantAchatEl, true); hasError = true; }
+
+    if (hasError) {
+      const firstError = document.querySelector(".field-error");
+      if (firstError) firstError.focus();
+      return;
+    }
+
+    // Payload email commun
+    const payload = {
+      prenom, nom, tel, email,
+      budget, banque, courtier, statut, venteAvantAchat,
+      commentaire,
+      intro: "Je souhaite réserver un créneau pour la porte ouverte (avant diffusion publique).",
+      creneauLabel: creneauChoisi === "AUTRE_CRENEAU"
+        ? "Me proposer un autre créneau (selon disponibilités)"
+        : ("Samedi " + creneauChoisi)
+    };
+
+    // CAS "AUTRE_CRENEAU" : pas de réservation Firestore
+    if (creneauChoisi === "AUTRE_CRENEAU") {
+      payload.intro = "Je souhaite visiter, mais le créneau proposé ne me convient pas. Pouvez-vous me proposer un autre créneau ?";
+      ouvrirMail(payload);
+      return;
+    }
+
+    // Réservation Firestore + déblocage du suivant (transaction atomique)
+    try {
+      await runTransaction(db, async (transaction) => {
+        const snap = await transaction.get(docRef);
+        if (!snap.exists()) throw new Error("Document Firestore introuvable");
+
+        const data = snap.data();
+        const creneaux = Array.isArray(data.creneaux) ? data.creneaux : [];
+
+        const index = creneaux.findIndex(c => c.id === creneauChoisi);
+        if (index === -1) throw new Error("Créneau introuvable");
+        if (creneaux[index].etat !== "disponible") throw new Error("Créneau déjà réservé");
+
+        // Réserve
+        creneaux[index].etat = "pris";
+
+        // Débloque le suivant
+        if (creneaux[index + 1]) {
+          creneaux[index + 1].etat = "disponible";
+        }
+
+        transaction.update(docRef, { creneaux });
+      });
+
+      // Ouvre l'email
+      ouvrirMail(payload);
+
+    } catch (e) {
+      alert("Ce créneau vient d’être réservé. Merci d’en choisir un autre.");
+    }
+  };
+</script>
+
+<!-- =========================
+     AUTO-SIZE TEXTAREA
+========================= -->
+<script>
+  document.addEventListener("input", function (e) {
+    if (e.target.classList.contains("textarea-custom")) {
+      e.target.style.height = "auto";
+      e.target.style.height = e.target.scrollHeight + "px";
+    }
+  });
 </script>
 
 </body>
