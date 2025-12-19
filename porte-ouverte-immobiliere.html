@@ -800,7 +800,7 @@
         const data = snap.data();
         const oldCreneaux = data.creneaux;
 
-        if (index <= 3 && newCreneaux[index + 1]) {.findIndex(
+        const index = oldCreneaux.findIndex(
           c => normalizeId(c.id) === normalizeId(creneauChoisi)
         );
 
