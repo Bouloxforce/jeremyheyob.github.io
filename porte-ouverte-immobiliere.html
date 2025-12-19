@@ -399,7 +399,6 @@
     <div class="full">
       <label>Créneau souhaité (samedi) – sous réserve de confirmation</label>
       <span class="field-help">Les créneaux affichés “déjà réservé” ne sont plus disponibles.</span>
-      <!-- Options générées par Firestore -->
       <select id="creneau">
         <option value="">Chargement des créneaux…</option>
       </select>
@@ -477,6 +476,15 @@
     <a href="https://www.facebook.com/jeremyheyobpro" target="_blank" rel="noopener" aria-label="Facebook">
       <svg viewBox="0 0 24 24" fill="none" stroke="#7a5a29" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
         <path d="M14 8h3V5h-3a4 4 0 0 0-4 4v3H7v3h3v6h3v-6h3l1-3h-4V9a1 1 0 0 1 1-1z"></path>
+      </svg>
+    </a>
+
+    <!-- LinkedIn -->
+    <a href="https://www.linkedin.com/company/jérémy-heyob/" target="_blank" rel="noopener" aria-label="LinkedIn">
+      <svg viewBox="0 0 24 24" fill="none" stroke="#7a5a29" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4V9h4v2"></path>
+        <rect x="2" y="9" width="4" height="12"></rect>
+        <circle cx="4" cy="4" r="2"></circle>
       </svg>
     </a>
 
@@ -574,20 +582,17 @@
 
   function lockSendButton(locked) {
     btnSend.disabled = locked;
-    if (locked) {
-      btnSend.textContent = "Traitement en cours…";
-    } else {
-      btnSend.textContent = "Envoyer ma demande";
-    }
+    btnSend.textContent = locked ? "Traitement en cours…" : "Envoyer ma demande";
   }
 
   /* ================================
      RESET : dernier vendredi 23h59
+     (à l'ouverture de page)
   ================================ */
   function getDernierVendredi2359() {
     const now = new Date();
     const day = now.getDay(); // 0=dimanche … 5=vendredi
-    const diff = day >= 5 ? day - 5 : day + 2;
+    const diff = day >= 5 ? day - 5 : day + 2; // ramène au dernier vendredi
     const vendredi = new Date(now);
     vendredi.setDate(now.getDate() - diff);
     vendredi.setHours(23, 59, 0, 0);
@@ -602,12 +607,14 @@
     const lastReset = data.lastReset?.toDate?.() || new Date(0);
     const vendredi2359 = getDernierVendredi2359();
 
+    // Reset seulement si lastReset < dernier vendredi 23h59
     if (lastReset < vendredi2359) {
       const creneauxReset = data.creneaux.map((c, index) => ({
-        ...c,
+        id: c.id,
         etat: index === 0 ? "disponible" : "pris"
       }));
 
+      // IMPORTANT : tes rules exigent lastReset timestamp et proche de request.time
       await updateDoc(docRef, {
         creneaux: creneauxReset,
         lastReset: Timestamp.fromDate(new Date())
@@ -631,7 +638,6 @@
         option.textContent = `Samedi ${c.id} (déjà réservé)`;
         option.disabled = true;
       }
-
       selectCreneau.appendChild(option);
     });
 
@@ -642,17 +648,29 @@
   }
 
   /* ================================
-     INIT (reset puis realtime)
+     INIT
   ================================ */
+  // Reset “best effort” : si rules refusent, on continue quand même
   verifierEtResetSiBesoin().catch(err => {
-    console.warn("Reset ignoré (rules strictes)", err);
+    console.warn("Reset refusé (rules strictes) :", err?.code || err);
   });
 
-  onSnapshot(docRef, (snapshot) => {
-    if (!snapshot.exists()) return;
-    const { creneaux } = snapshot.data();
-    renderCreneaux(creneaux);
-  });
+  // IMPORTANT : onSnapshot avec callback d'erreur (sinon blocage “chargement…”)
+  onSnapshot(
+    docRef,
+    (snapshot) => {
+      if (!snapshot.exists()) {
+        selectCreneau.innerHTML = '<option value="">Aucun créneau configuré</option>';
+        return;
+      }
+      const { creneaux } = snapshot.data();
+      renderCreneaux(creneaux);
+    },
+    (error) => {
+      console.error("Erreur Firestore (lecture) :", error);
+      selectCreneau.innerHTML = '<option value="">Impossible de charger les créneaux</option>';
+    }
+  );
 
   /* ================================
      MAIL
@@ -692,11 +710,11 @@
   }
 
   /* ================================
-     RÉSERVATION + EMAIL
+     RÉSERVATION + EMAIL (PROD LOCKED)
+     - Compatible avec TES rules
   ================================ */
   window.sendMail = async function () {
 
-    // ✅ anti double clic / spam
     if (sending) return;
     sending = true;
     lockSendButton(true);
@@ -760,39 +778,44 @@
         return;
       }
 
-      // réservation atomique Firestore
+      // réservation atomique Firestore (COMPATIBLE RULES)
       await runTransaction(db, async (transaction) => {
         const snap = await transaction.get(docRef);
         if (!snap.exists()) throw new Error("Document introuvable");
 
         const data = snap.data();
-        const creneaux = data.creneaux;
+        const oldCreneaux = data.creneaux;
 
-        const index = creneaux.findIndex(c => c.id === creneauChoisi);
+        const index = oldCreneaux.findIndex(c => c.id === creneauChoisi);
         if (index === -1) throw new Error("Créneau introuvable");
 
-        if (creneaux[index].etat !== "disponible") {
+        if (oldCreneaux[index].etat !== "disponible") {
           throw new Error("Créneau déjà réservé");
         }
 
-        // prend le créneau
-        creneaux[index].etat = "pris";
+        // IMPORTANT : créer un nouveau tableau (pas de mutation “sale”)
+        const newCreneaux = oldCreneaux.map(c => ({ id: c.id, etat: c.etat }));
 
-        // débloque le suivant (si existe)
-        if (creneaux[index + 1]) {
-          creneaux[index + 1].etat = "disponible";
+        // prend le créneau
+        newCreneaux[index].etat = "pris";
+
+        // débloque le suivant SI AUTORISÉ PAR TES RULES
+        // Tes rules refusent le déblocage sur l'avant-dernier (index 4)
+        // Donc : on débloque uniquement si index <= 3
+        if (index <= 3 && newCreneaux[index + 1]) {
+          newCreneaux[index + 1].etat = "disponible";
         }
 
-        transaction.update(docRef, { creneaux });
+        transaction.update(docRef, { creneaux: newCreneaux });
       });
 
       success.style.display = "block";
       ouvrirMail("Samedi " + creneauChoisi, payload);
 
     } catch (e) {
+      console.error("Erreur réservation (transaction) :", e);
       alert("Ce créneau vient d’être réservé par quelqu’un d’autre. Merci d’en choisir un autre.");
     } finally {
-      // ✅ réactivation garantie
       sending = false;
       lockSendButton(false);
     }
