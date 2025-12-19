@@ -644,7 +644,9 @@
   /* ================================
      INIT (reset puis realtime)
   ================================ */
-  await verifierEtResetSiBesoin();
+  verifierEtResetSiBesoin().catch(err => {
+    console.warn("Reset ignoré (rules strictes)", err);
+  });
 
   onSnapshot(docRef, (snapshot) => {
     if (!snapshot.exists()) return;
