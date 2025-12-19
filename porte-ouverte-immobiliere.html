@@ -778,6 +778,11 @@
         return;
       }
 
+      console.log("Créneau choisi (select.value) :", creneauChoisi);
+
+      const snapDebug = await getDoc(docRef);
+      console.log("Créneaux Firestore (AVANT transaction) :", snapDebug.data().creneaux);
+
       // réservation atomique Firestore (COMPATIBLE RULES)
       await runTransaction(db, async (transaction) => {
         const snap = await transaction.get(docRef);
