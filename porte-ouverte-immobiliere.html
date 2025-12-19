@@ -569,15 +569,12 @@
 
   const app = initializeApp(firebaseConfig);
   const db = getFirestore(app);
-
   const docRef = doc(db, "portes_ouvertes", "samedi");
+
   const selectCreneau = document.getElementById("creneau");
   const success = document.getElementById("success");
   const btnSend = document.getElementById("btnSend");
 
-  /* ================================
-     SÉCURISATION ANTI SPAM / DOUBLE CLIC
-  ================================ */
   let sending = false;
 
   function lockSendButton(locked) {
@@ -587,21 +584,18 @@
 
   function normalizeId(id) {
     return String(id || "")
-      // uniformise tous les tirets possibles vers "-"
       .replace(/[–—−]/g, "-")
-      // supprime les espaces (y compris insécables si un jour ça arrive)
       .replace(/\s+/g, "")
       .trim();
   }
 
   /* ================================
-     RESET : dernier vendredi 23h59
-     (à l'ouverture de page)
+     RESET AUTO (vendredi 23h59)
   ================================ */
   function getDernierVendredi2359() {
     const now = new Date();
-    const day = now.getDay(); // 0=dimanche … 5=vendredi
-    const diff = day >= 5 ? day - 5 : day + 2; // ramène au dernier vendredi
+    const day = now.getDay();
+    const diff = day >= 5 ? day - 5 : day + 2;
     const vendredi = new Date(now);
     vendredi.setDate(now.getDate() - diff);
     vendredi.setHours(23, 59, 0, 0);
@@ -616,14 +610,12 @@
     const lastReset = data.lastReset?.toDate?.() || new Date(0);
     const vendredi2359 = getDernierVendredi2359();
 
-    // Reset seulement si lastReset < dernier vendredi 23h59
     if (lastReset < vendredi2359) {
-      const creneauxReset = data.creneaux.map((c, index) => ({
+      const creneauxReset = data.creneaux.map((c, i) => ({
         id: c.id,
-        etat: index === 0 ? "disponible" : "pris"
+        etat: i === 0 ? "disponible" : "pris"
       }));
 
-      // IMPORTANT : tes rules exigent lastReset timestamp et proche de request.time
       await updateDoc(docRef, {
         creneaux: creneauxReset,
         lastReset: Timestamp.fromDate(new Date())
@@ -631,22 +623,18 @@
     }
   }
 
-  /* ================================
-     UI: rendu créneaux + option autre
-  ================================ */
   function renderCreneaux(creneaux) {
     selectCreneau.innerHTML = '<option value="">-- Choisir un créneau --</option>';
 
-    creneaux.forEach((c) => {
+    creneaux.forEach(c => {
       const option = document.createElement("option");
       option.value = c.id;
+      option.textContent =
+        c.etat === "disponible"
+          ? `Samedi ${c.id} (disponible)`
+          : `Samedi ${c.id} (déjà réservé)`;
 
-      if (c.etat === "disponible") {
-        option.textContent = `Samedi ${c.id} (disponible)`;
-      } else {
-        option.textContent = `Samedi ${c.id} (déjà réservé)`;
-        option.disabled = true;
-      }
+      if (c.etat !== "disponible") option.disabled = true;
       selectCreneau.appendChild(option);
     });
 
@@ -656,172 +644,89 @@
     selectCreneau.appendChild(autre);
   }
 
-  /* ================================
-     INIT
-  ================================ */
-  // Reset “best effort” : si rules refusent, on continue quand même
-  verifierEtResetSiBesoin().catch(err => {
-    console.warn("Reset refusé (rules strictes) :", err?.code || err);
-  });
+  verifierEtResetSiBesoin().catch(() => {});
 
-  // IMPORTANT : onSnapshot avec callback d'erreur (sinon blocage “chargement…”)
   onSnapshot(
     docRef,
-    (snapshot) => {
-      if (!snapshot.exists()) {
+    snap => {
+      if (!snap.exists()) {
         selectCreneau.innerHTML = '<option value="">Aucun créneau configuré</option>';
         return;
       }
-      const { creneaux } = snapshot.data();
-      renderCreneaux(creneaux);
+      renderCreneaux(snap.data().creneaux);
     },
-    (error) => {
-      console.error("Erreur Firestore (lecture) :", error);
+    () => {
       selectCreneau.innerHTML = '<option value="">Impossible de charger les créneaux</option>';
     }
   );
 
-  /* ================================
-     MAIL
-  ================================ */
-  function ouvrirMail(creneauLabel, payload) {
+  function ouvrirMail(label, payload) {
     const subject = encodeURIComponent("Demande de créneau – Porte ouverte avant diffusion");
-
     const body = encodeURIComponent(
-      "Bonjour,\n\n" +
-      "Je souhaite réserver un créneau pour la porte ouverte (avant diffusion publique).\n" +
-      "Créneau souhaité : " + creneauLabel + "\n\n" +
-      "Prénom : " + payload.prenom + "\n" +
-      "Nom : " + payload.nom + "\n" +
-      "Téléphone : " + payload.tel + "\n" +
-      "Email : " + payload.email + "\n\n" +
-      "Budget maximum : " + payload.budget + "\n" +
-      "Déjà vu la banque : " + payload.banque + "\n" +
-      "Souhaite mise en relation courtier (gratuit) : " + payload.courtier + "\n" +
-      "Statut : " + payload.statut + "\n" +
-      "Besoin de vendre pour acheter : " + payload.venteAvantAchat + "\n\n" +
-      "Commentaire :\n" + (payload.commentaire ? payload.commentaire : "—") + "\n\n" +
-      "Merci.\n"
+      `Bonjour,
+
+Créneau souhaité : ${label}
+
+Prénom : ${payload.prenom}
+Nom : ${payload.nom}
+Téléphone : ${payload.tel}
+Email : ${payload.email}
+
+Budget : ${payload.budget}
+Banque : ${payload.banque}
+Courtier : ${payload.courtier}
+Statut : ${payload.statut}
+Vente avant achat : ${payload.venteAvantAchat}
+
+Commentaire :
+${payload.commentaire || "—"}`
     );
 
-    window.location.href = "mailto:contact@jeremyheyob.fr?subject=" + subject + "&body=" + body;
+    window.location.href = `mailto:contact@jeremyheyob.fr?subject=${subject}&body=${body}`;
   }
 
-  /* ================================
-     VALIDATION UI
-  ================================ */
-  function markIfEmpty(el) {
-    if (!el.value || !el.value.trim()) {
-      el.classList.add("field-error");
-      return true;
-    }
-    return false;
-  }
-
-  /* ================================
-     RÉSERVATION + EMAIL (PROD LOCKED)
-     - Compatible avec TES rules
-  ================================ */
   window.sendMail = async function () {
-
     if (sending) return;
     sending = true;
     lockSendButton(true);
 
-    const prenomEl = document.getElementById("prenom");
-    const nomEl = document.getElementById("nom");
-    const telEl = document.getElementById("tel");
-    const emailEl = document.getElementById("email");
-    const budgetEl = document.getElementById("budget");
-    const banqueEl = document.getElementById("banque");
-    const courtierEl = document.getElementById("courtier");
-    const statutEl = document.getElementById("statut");
-    const venteAvantAchatEl = document.getElementById("venteAvantAchat");
-    const commentaireEl = document.getElementById("commentaire");
-
     try {
-      // reset UI
-      const fields = [prenomEl, nomEl, telEl, emailEl, selectCreneau, budgetEl, banqueEl, courtierEl, statutEl, venteAvantAchatEl];
-      fields.forEach(f => f.classList.remove("field-error"));
-      success.style.display = "none";
-
-      let hasError = false;
-      hasError = markIfEmpty(prenomEl) || hasError;
-      hasError = markIfEmpty(nomEl) || hasError;
-      hasError = markIfEmpty(telEl) || hasError;
-      hasError = markIfEmpty(emailEl) || hasError;
-
-      if (!selectCreneau.value) { selectCreneau.classList.add("field-error"); hasError = true; }
-
-      hasError = markIfEmpty(budgetEl) || hasError;
-      if (!banqueEl.value) { banqueEl.classList.add("field-error"); hasError = true; }
-      if (!courtierEl.value) { courtierEl.classList.add("field-error"); hasError = true; }
-      if (!statutEl.value) { statutEl.classList.add("field-error"); hasError = true; }
-      if (!venteAvantAchatEl.value) { venteAvantAchatEl.classList.add("field-error"); hasError = true; }
-
-      if (hasError) {
-        const firstError = document.querySelector(".field-error");
-        if (firstError) firstError.focus();
-        return;
-      }
-
       const payload = {
-        prenom: prenomEl.value.trim(),
-        nom: nomEl.value.trim(),
-        tel: telEl.value.trim(),
-        email: emailEl.value.trim(),
-        budget: budgetEl.value.trim(),
-        banque: banqueEl.value,
-        courtier: courtierEl.value,
-        statut: statutEl.value,
-        venteAvantAchat: venteAvantAchatEl.value,
-        commentaire: commentaireEl.value ? commentaireEl.value.trim() : ""
+        prenom: prenom.value.trim(),
+        nom: nom.value.trim(),
+        tel: tel.value.trim(),
+        email: email.value.trim(),
+        budget: budget.value.trim(),
+        banque: banque.value,
+        courtier: courtier.value,
+        statut: statut.value,
+        venteAvantAchat: venteAvantAchat.value,
+        commentaire: commentaire.value.trim()
       };
 
       const creneauChoisi = selectCreneau.value;
 
-      // cas "autre créneau" : pas de Firestore
       if (creneauChoisi === "AUTRE_CRENEAU") {
         success.style.display = "block";
-        ouvrirMail("Me proposer un autre créneau", payload);
+        ouvrirMail("Autre créneau", payload);
         return;
       }
 
-      console.log("Créneau choisi (select.value) :", creneauChoisi);
-
-      const snapDebug = await getDoc(docRef);
-      console.log("Créneaux Firestore (AVANT transaction) :", snapDebug.data().creneaux);
-
-      // réservation atomique Firestore (COMPATIBLE RULES)
-      await runTransaction(db, async (transaction) => {
+      await runTransaction(db, async transaction => {
         const snap = await transaction.get(docRef);
         if (!snap.exists()) throw new Error("Document introuvable");
 
-        const data = snap.data();
-        const oldCreneaux = data.creneaux;
+        const oldCreneaux = snap.data().creneaux;
 
         const index = oldCreneaux.findIndex(
           c => normalizeId(c.id) === normalizeId(creneauChoisi)
         );
 
-        if (index === -1) {
-          throw new Error(
-            "Créneau introuvable (ID mismatch). Choisi=" +
-            creneauChoisi +
-            " | Dispo=" +
-            oldCreneaux.map(x => x.id).join(", ")
-          );
-        }
-
-        if (oldCreneaux[index].etat !== "disponible") {
+        if (index === -1) throw new Error("Créneau introuvable");
+        if (oldCreneaux[index].etat !== "disponible")
           throw new Error("Créneau déjà réservé");
-        }
 
-        const newCreneaux = oldCreneaux.map(c => ({
-          id: c.id,
-          etat: c.etat
-        }));
-
+        const newCreneaux = oldCreneaux.map(c => ({ ...c }));
         newCreneaux[index].etat = "pris";
 
         if (index <= 3 && newCreneaux[index + 1]) {
@@ -831,38 +736,16 @@
         transaction.update(docRef, { creneaux: newCreneaux });
       });
 
-        // IMPORTANT : créer un nouveau tableau (pas de mutation “sale”)
-        const newCreneaux = oldCreneaux.map(c => ({ id: c.id, etat: c.etat }));
-
-        // prend le créneau
-        newCreneaux[index].etat = "pris";
-
-        // débloque le suivant SI AUTORISÉ PAR TES RULES
-        // Tes rules refusent le déblocage sur l'avant-dernier (index 4)
-        // Donc : on débloque uniquement si index <= 3
-        transaction.update(docRef, { creneaux: newCreneaux });
-      });
-
       success.style.display = "block";
-      ouvrirMail("Samedi " + creneauChoisi, payload);
+      ouvrirMail(`Samedi ${creneauChoisi}`, payload);
 
     } catch (e) {
-      console.error("Erreur réservation (transaction) :", e);
-      alert("Ce créneau vient d’être réservé par quelqu’un d’autre. Merci d’en choisir un autre.");
+      alert("Ce créneau vient d’être réservé par quelqu’un d’autre.");
     } finally {
       sending = false;
       lockSendButton(false);
     }
   };
-</script>
-
-<script>
-  document.addEventListener("input", function (e) {
-    if (e.target.classList.contains("textarea-custom")) {
-      e.target.style.height = "auto";
-      e.target.style.height = e.target.scrollHeight + "px";
-    }
-  });
 </script>
 
 </body>
