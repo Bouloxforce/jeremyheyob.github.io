@@ -189,6 +189,13 @@
       cursor: pointer;
     }
 
+    /* ✅ sécurisation UX */
+    .btn[disabled] {
+      cursor: not-allowed;
+      opacity: 0.65;
+      filter: grayscale(10%);
+    }
+
     .field-help {
       display: block;
       margin-bottom: 6px;
@@ -392,7 +399,7 @@
     <div class="full">
       <label>Créneau souhaité (samedi) – sous réserve de confirmation</label>
       <span class="field-help">Les créneaux affichés “déjà réservé” ne sont plus disponibles.</span>
-      <!-- IMPORTANT : options générées par Firestore -->
+      <!-- Options générées par Firestore -->
       <select id="creneau">
         <option value="">Chargement des créneaux…</option>
       </select>
@@ -438,7 +445,7 @@
         placeholder="Informations complémentaires (situation, financement, délai, etc.)"></textarea>
     </div>
 
-    <button class="btn" onclick="sendMail()">Envoyer ma demande</button>
+    <button class="btn" id="btnSend" onclick="sendMail()">Envoyer ma demande</button>
 
     <div class="success" id="success">
       ✅ Demande transmise. Je reviens vers vous par email pour confirmer la disponibilité du créneau avec l'adresse exacte du bien.
@@ -558,6 +565,21 @@
   const docRef = doc(db, "portes_ouvertes", "samedi");
   const selectCreneau = document.getElementById("creneau");
   const success = document.getElementById("success");
+  const btnSend = document.getElementById("btnSend");
+
+  /* ================================
+     SÉCURISATION ANTI SPAM / DOUBLE CLIC
+  ================================ */
+  let sending = false;
+
+  function lockSendButton(locked) {
+    btnSend.disabled = locked;
+    if (locked) {
+      btnSend.textContent = "Traitement en cours…";
+    } else {
+      btnSend.textContent = "Envoyer ma demande";
+    }
+  }
 
   /* ================================
      RESET : dernier vendredi 23h59
@@ -594,7 +616,7 @@
   }
 
   /* ================================
-     UI: reset select + rendu
+     UI: rendu créneaux + option autre
   ================================ */
   function renderCreneaux(creneaux) {
     selectCreneau.innerHTML = '<option value="">-- Choisir un créneau --</option>';
@@ -609,6 +631,7 @@
         option.textContent = `Samedi ${c.id} (déjà réservé)`;
         option.disabled = true;
       }
+
       selectCreneau.appendChild(option);
     });
 
@@ -656,7 +679,7 @@
   }
 
   /* ================================
-     VALIDATION UI (même style que ton code)
+     VALIDATION UI
   ================================ */
   function markIfEmpty(el) {
     if (!el.value || !el.value.trim()) {
@@ -667,9 +690,15 @@
   }
 
   /* ================================
-     RÉSERVATION + EMAIL (exposé au onclick)
+     RÉSERVATION + EMAIL
   ================================ */
   window.sendMail = async function () {
+
+    // ✅ anti double clic / spam
+    if (sending) return;
+    sending = true;
+    lockSendButton(true);
+
     const prenomEl = document.getElementById("prenom");
     const nomEl = document.getElementById("nom");
     const telEl = document.getElementById("tel");
@@ -681,55 +710,55 @@
     const venteAvantAchatEl = document.getElementById("venteAvantAchat");
     const commentaireEl = document.getElementById("commentaire");
 
-    // reset UI
-    const fields = [prenomEl, nomEl, telEl, emailEl, selectCreneau, budgetEl, banqueEl, courtierEl, statutEl, venteAvantAchatEl];
-    fields.forEach(f => f.classList.remove("field-error"));
-    success.style.display = "none";
-
-    let hasError = false;
-    hasError = markIfEmpty(prenomEl) || hasError;
-    hasError = markIfEmpty(nomEl) || hasError;
-    hasError = markIfEmpty(telEl) || hasError;
-    hasError = markIfEmpty(emailEl) || hasError;
-
-    if (!selectCreneau.value) { selectCreneau.classList.add("field-error"); hasError = true; }
-
-    hasError = markIfEmpty(budgetEl) || hasError;
-    if (!banqueEl.value) { banqueEl.classList.add("field-error"); hasError = true; }
-    if (!courtierEl.value) { courtierEl.classList.add("field-error"); hasError = true; }
-    if (!statutEl.value) { statutEl.classList.add("field-error"); hasError = true; }
-    if (!venteAvantAchatEl.value) { venteAvantAchatEl.classList.add("field-error"); hasError = true; }
-
-    if (hasError) {
-      const firstError = document.querySelector(".field-error");
-      if (firstError) firstError.focus();
-      return;
-    }
-
-    const payload = {
-      prenom: prenomEl.value.trim(),
-      nom: nomEl.value.trim(),
-      tel: telEl.value.trim(),
-      email: emailEl.value.trim(),
-      budget: budgetEl.value.trim(),
-      banque: banqueEl.value,
-      courtier: courtierEl.value,
-      statut: statutEl.value,
-      venteAvantAchat: venteAvantAchatEl.value,
-      commentaire: commentaireEl.value ? commentaireEl.value.trim() : ""
-    };
-
-    const creneauChoisi = selectCreneau.value;
-
-    // cas "autre créneau" : pas de Firestore
-    if (creneauChoisi === "AUTRE_CRENEAU") {
-      success.style.display = "block";
-      ouvrirMail("Me proposer un autre créneau", payload);
-      return;
-    }
-
-    // réservation atomique
     try {
+      // reset UI
+      const fields = [prenomEl, nomEl, telEl, emailEl, selectCreneau, budgetEl, banqueEl, courtierEl, statutEl, venteAvantAchatEl];
+      fields.forEach(f => f.classList.remove("field-error"));
+      success.style.display = "none";
+
+      let hasError = false;
+      hasError = markIfEmpty(prenomEl) || hasError;
+      hasError = markIfEmpty(nomEl) || hasError;
+      hasError = markIfEmpty(telEl) || hasError;
+      hasError = markIfEmpty(emailEl) || hasError;
+
+      if (!selectCreneau.value) { selectCreneau.classList.add("field-error"); hasError = true; }
+
+      hasError = markIfEmpty(budgetEl) || hasError;
+      if (!banqueEl.value) { banqueEl.classList.add("field-error"); hasError = true; }
+      if (!courtierEl.value) { courtierEl.classList.add("field-error"); hasError = true; }
+      if (!statutEl.value) { statutEl.classList.add("field-error"); hasError = true; }
+      if (!venteAvantAchatEl.value) { venteAvantAchatEl.classList.add("field-error"); hasError = true; }
+
+      if (hasError) {
+        const firstError = document.querySelector(".field-error");
+        if (firstError) firstError.focus();
+        return;
+      }
+
+      const payload = {
+        prenom: prenomEl.value.trim(),
+        nom: nomEl.value.trim(),
+        tel: telEl.value.trim(),
+        email: emailEl.value.trim(),
+        budget: budgetEl.value.trim(),
+        banque: banqueEl.value,
+        courtier: courtierEl.value,
+        statut: statutEl.value,
+        venteAvantAchat: venteAvantAchatEl.value,
+        commentaire: commentaireEl.value ? commentaireEl.value.trim() : ""
+      };
+
+      const creneauChoisi = selectCreneau.value;
+
+      // cas "autre créneau" : pas de Firestore
+      if (creneauChoisi === "AUTRE_CRENEAU") {
+        success.style.display = "block";
+        ouvrirMail("Me proposer un autre créneau", payload);
+        return;
+      }
+
+      // réservation atomique Firestore
       await runTransaction(db, async (transaction) => {
         const snap = await transaction.get(docRef);
         if (!snap.exists()) throw new Error("Document introuvable");
@@ -760,6 +789,10 @@
 
     } catch (e) {
       alert("Ce créneau vient d’être réservé par quelqu’un d’autre. Merci d’en choisir un autre.");
+    } finally {
+      // ✅ réactivation garantie
+      sending = false;
+      lockSendButton(false);
     }
   };
 </script>
