@@ -497,7 +497,7 @@
 
     <!-- ✅ AJOUT : CRÉNEAU PORTE OUVERTE (SAMEDI 14H-17H, 30 MIN) -->
     <div class="full">
-      <label>Créneau souhaité (samedi) – sous réserve de confirmation</label>
+      <label>Créneau souhaité – sous réserve de confirmation</label>
       <span class="field-help">Les créneaux affichés “déjà réservé” ne sont plus disponibles.</span>
       <select id="creneau">
         <option value="">-- Choisir un créneau --</option>
@@ -726,7 +726,7 @@ function sendMail() {
     "Statut : " + statut.value + "\n" +
     "Besoin de vendre pour acheter : " + venteAvantAchat.value + "\n\n" +
     "Commentaire :\n" + (commentaire.value ? commentaire.value : "—") + "\n\n" +
-    "Merci.\n\n" +
+    "Merci.\n\n"
   );
 
   // ✅ message de confirmation sur la page (pas d'alert)
