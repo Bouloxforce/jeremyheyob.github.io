@@ -733,7 +733,10 @@ ${payload.commentaire || "—"}`
           newCreneaux[index + 1].etat = "disponible";
         }
 
-        transaction.update(docRef, { creneaux: newCreneaux });
+        transaction.update(docRef, {
+          creneaux: newCreneaux,
+          lastReset: snap.data().lastReset
+        });
       });
 
       success.style.display = "block";
