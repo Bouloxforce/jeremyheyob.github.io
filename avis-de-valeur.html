@@ -11,10 +11,8 @@
 
   <title>Avis de valeur immobilier | Jérémy Heyob Immobilier</title>
   <meta name="description" content="Jérémy Heyob, négociateur en immobilier à Saint-Priest. Spécialisé dans les biens récents ou rénovés. Estimation, suivi vendeur avec Méthode APA (Avant / Pendant / Après diffusion) et accès aux biens en avant-première.">
-
   <link rel="canonical" href="https://www.jeremyheyob.fr/">
 
-  <!-- Technique SEO “2” : mots-clés & sémantique (sans affichage agressif) -->
   <meta name="keywords" content="négociateur immobilier Saint-Priest, estimation Saint-Priest, immobilier Saint-Priest, bien récent, appartement récent, logement récent, appartement rénové, vente appartement Saint-Priest, estimation appartement, Est lyonnais, Bron, Vénissieux, Mions, Corbas, Feyzin, Saint-Fons, Chassieu, Genas, Décines-Charpieu, Meyzieu, Vaulx-en-Velin, Villeurbanne, T3 récent, T4 récent, résidence récente">
 
   <style>
@@ -44,7 +42,6 @@
       padding: 26px 18px 60px;
     }
 
-    /* HEADER */
     header {
       display: flex;
       align-items: center;
@@ -74,10 +71,49 @@
       text-transform: uppercase;
       letter-spacing: 0.12em;
     }
-
     .tagline-sub strong { font-weight: 900; }
 
-    /* HERO */
+    .header-links {
+      display: flex;
+      justify-content: center;
+      gap: 18px;
+      font-size: 14px;
+      margin: 0 auto 24px;
+      flex-wrap: wrap;
+    }
+
+    .header-links a {
+      color: var(--text-soft);
+      text-decoration: none;
+      position: relative;
+    }
+
+    .header-links a:hover { color: var(--accent); }
+
+    .header-links a.active::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: -6px;
+      height: 2px;
+      background: var(--accent);
+      border-radius: 2px;
+    }
+
+    .btn-retour {
+      display: inline-block;
+      margin: 10px 0 18px;
+      padding: 6px 12px;
+      font-size: 13px;
+      font-weight: 500;
+      color: #7a5a29;
+      text-decoration: none;
+      border-radius: 10px;
+      border: 1px solid rgba(198,169,119,0.35);
+      background: rgba(198,169,119,0.10);
+    }
+
     .hero {
       border-radius: 20px;
       background:
@@ -124,7 +160,22 @@
       line-height: 1.5;
     }
 
-    /* PUCE META */
+    .hero-highlight-with-logo {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+    }
+
+    .hero-highlight-text { flex: 1; }
+
+    .hero-highlight-logo img {
+      width: 180px;
+      height: auto;
+      opacity: 0.8;
+      margin-left: -250px;
+    }
+
     .hero-meta {
       margin-top: 14px;
       display: flex;
@@ -149,7 +200,6 @@
       color: var(--text-soft);
     }
 
-    /* FORM */
     .card {
       max-width: 800px;
       margin: 0 auto 30px;
@@ -199,92 +249,37 @@
       cursor: pointer;
     }
 
-   /* CONTACT BLOCK — IDENTIQUE PAGE DE RÉFÉRENCE */
-     .contact-block {
-      display: flex;
-      gap: 18px;
-      align-items: center;
-      background: #ffffff;
-      border-radius: 20px;
-      padding: 16px 18px;
-      border: 1px solid var(--border-soft);
-      box-shadow: 0 18px 40px rgba(25, 25, 25, 0.08);
-
-      max-width: 960px;          /* 🔴 IDENTIQUE AU HEADER */
-      margin: 16px auto 0;       /* 🔴 centrage IDENTIQUE */
-    }
-
-    .contact-photo {
-      width: 90px;
-      height: 90px;
-      border-radius: 50%;
-      overflow: hidden;          /* 🔴 CLÉ ABSOLUE */
-      border: 2px solid #e5e7eb;
-      flex-shrink: 0;
-    }
-
-    .contact-photo img {
+    .textarea-custom {
       width: 100%;
-      height: 100%;
-      object-fit: cover;
-      object-position: top center;
-      display: block;
+      min-height: 120px;
+      padding: 10px 12px;
+      border-radius: 12px;
+      margin-top: 4px;
+      border: 1px solid var(--border-soft);
+      background: #fafafa;
+      font-size: 14px;
+      font-family: inherit;
+      resize: none;
+      overflow: hidden;
     }
 
-    .contact-text h3 {
-      margin: 0 0 4px;
-      font-size: 17px; /* 🔴 TAILLE EXACTE */
+    .field-error {
+      border: 2px solid #191919 !important;
+      background: #ffffff !important;
+      box-shadow: 0 0 0 4px rgba(25,25,25,0.12) !important;
     }
 
-    .contact-text p {
-      margin: 0;
-      font-size: 13px; /* 🔴 TAILLE EXACTE */
-      color: var(--text-soft);
-    }
-
-    .contact-links {
-      margin-top: 8px;
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
+    .success {
+      display: none;
+      margin-top: 16px;
+      padding: 14px 16px;
+      border-radius: 14px;
+      background: #ffffff;
+      border: 1px dashed var(--border-soft);
       font-size: 13px;
-    }
-
-    .contact-links a {
-      color: var(--accent);
-      text-decoration: none;
-    }
-
-    .contact-links a:hover {
-      text-decoration: underline;
-    }
-
-    /* FOOTER */
-    .legal-footer {
-      margin-top: 40px;
-      padding: 18px;
-      text-align: center;
-      font-size: 11.5px;
-      color: var(--text-soft);
-      opacity: 0.75;
-    }
-    /* HERO HIGHLIGHT AVEC LOGO */
-    .hero-highlight-with-logo {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 18px;
-    }
-
-    .hero-highlight-text {
-      flex: 1;
-    }
-
-    .hero-highlight-logo img {
-      width: 180px;              /* logo plus gros */
-      height: auto;
-      opacity: 0.8;
-      margin-left: -250px;       /* décalage vers la gauche */
+      color: #4A4A4A;
+      line-height: 1.5;
+      grid-column: 1 / -1;
     }
 
     .social-block {
@@ -322,116 +317,74 @@
       filter: brightness(1.02);
     }
 
-    .social-icons svg {
-      width: 20px;
-      height: 20px;
-    }
-
-    .header-links {
-      display: flex;
-      justify-content: center;
-      gap: 18px;
-      font-size: 14px;
-      margin: 0 auto 24px;
-    }
-
-    .header-links a {
-      color: var(--text-soft);
-      text-decoration: none;
-      position: relative;
-    }
-
-    .header-links a:hover {
-      color: var(--accent);
-    }
-
-    .header-links a.active::after {
-      content: "";
-      position: absolute;
-      left: 0;
-      right: 0;
-      bottom: -6px;
-      height: 2px;
-      background: var(--accent);
-      border-radius: 2px;
-    }
-
-    .btn-retour {
-      display: inline-block;
-      margin: 10px 0 18px;
-      padding: 6px 12px;
-      font-size: 13px;
-      font-weight: 500;
-      color: #7a5a29;
-      text-decoration: none;
-      border-radius: 10px;
-      border: 1px solid rgba(198,169,119,0.35);
-      background: rgba(198,169,119,0.10);
-    }
-
-    .textarea-custom {
-      width: 100%;
-      min-height: 120px;
-      padding: 10px 12px;
-      border-radius: 12px;
-      margin-top: 4px;
-      border: 1px solid var(--border-soft);
-      background: #fafafa;
-      font-size: 14px;
-      font-family: inherit;
-      resize: none;
-      overflow: hidden;
-    }
-
-    .field-error {
-      border: 2px solid #191919 !important;
-      background: #ffffff !important;
-      box-shadow: 0 0 0 4px rgba(25,25,25,0.12) !important;
-    }
-
-    .success {
-      display: none;
-      margin-top: 16px;
-      padding: 14px 16px;
-      border-radius: 14px;
-      background: #ffffff;
-      border: 1px dashed var(--border-soft);
-      font-size: 13px;
-      color: #4A4A4A;
-      line-height: 1.5;
-      grid-column: 1 / -1;
-    }
-
-    /* Mobile : logo en dessous */
-   @media (max-width: 600px) {
-    .hero-highlight-with-logo {
-      flex-direction: column;
-      text-align: left;
-    }
-
-    .hero-highlight-logo img {
-      width: 56px;
-    }
-  }
-
-        @media (max-width: 880px) {
-    header {
-      flex-direction: column;
-      align-items: center;
-    }
+    .social-icons svg { width: 20px; height: 20px; }
 
     .contact-block {
-      flex-direction: column;
+      display: flex;
+      gap: 18px;
       align-items: center;
-      text-align: center;
+      background: #ffffff;
+      border-radius: 20px;
+      padding: 16px 18px;
+      border: 1px solid var(--border-soft);
+      box-shadow: 0 18px 40px rgba(25, 25, 25, 0.08);
+      max-width: 960px;
+      margin: 16px auto 0;
     }
 
-    .contact-links {
-      justify-content: center;   /* CENTRAGE UNIQUEMENT SUR MOBILE */
-      width: 100%;               /* permet le centrage optimal */
+    .contact-photo {
+      width: 90px;
+      height: 90px;
+      border-radius: 50%;
+      overflow: hidden;
+      border: 2px solid #e5e7eb;
+      flex-shrink: 0;
     }
-  }
-    
+
+    .contact-photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: top center;
+      display: block;
+    }
+
+    .contact-text h3 { margin: 0 0 4px; font-size: 17px; }
+    .contact-text p { margin: 0; font-size: 13px; color: var(--text-soft); }
+
+    .contact-links {
+      margin-top: 8px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      font-size: 13px;
+    }
+
+    .contact-links a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+    .contact-links a:hover { text-decoration: underline; }
+
+    .legal-footer {
+      margin-top: 40px;
+      padding: 18px;
+      text-align: center;
+      font-size: 11.5px;
+      color: var(--text-soft);
+      opacity: 0.75;
+    }
+
+    @media (max-width: 600px) {
+      .hero-highlight-with-logo { flex-direction: column; text-align: left; }
+      .hero-highlight-logo img { width: 56px; margin-left: 0; }
+    }
+
+    @media (max-width: 880px) {
+      header { flex-direction: column; align-items: center; }
+      .contact-block { flex-direction: column; align-items: center; text-align: center; }
+      .contact-links { justify-content: center; width: 100%; }
+    }
   </style>
 </head>
 
@@ -449,29 +402,29 @@
   </div>
 </header>
 
-   <div class="header-links">
-      <a href="https://www.jeremyheyob.fr/">Accueil</a>
-      <a href="https://www.agence.immo/professionnels/jeremy-heyob-453" target="_blank" rel="noopener">Mes biens</a>
-      <a href="https://www.jeremyheyob.fr/avis-de-valeur.html" class="active">Estimation</a>
-      <a href="https://www.immodvisor.com/pro/agencimmocom-jeremy-heyob-saint-priest-69800-53519.html" target="_blank" rel="noopener">Avis vérifiés</a>
-      <a href="https://www.jeremyheyob.fr/honoraires.html">Mes honoraires</a>
-      <a href="https://www.jeremyheyob.fr/biens-avant-premiere.html">Biens en avant-première</a>
-      <a href="https://www.jeremyheyob.fr/un-cran-au-dessus.html">Guide vendeur</a>
-   </div>
+<div class="header-links">
+  <a href="https://www.jeremyheyob.fr/">Accueil</a>
+  <a href="https://www.agence.immo/professionnels/jeremy-heyob-453" target="_blank" rel="noopener">Mes biens</a>
+  <a href="https://www.jeremyheyob.fr/avis-de-valeur.html" class="active">Estimation</a>
+  <a href="https://www.immodvisor.com/pro/agencimmocom-jeremy-heyob-saint-priest-69800-53519.html" target="_blank" rel="noopener">Avis vérifiés</a>
+  <a href="https://www.jeremyheyob.fr/honoraires.html">Mes honoraires</a>
+  <a href="https://www.jeremyheyob.fr/biens-avant-premiere.html">Biens en avant-première</a>
+  <a href="https://www.jeremyheyob.fr/un-cran-au-dessus.html">Guide vendeur</a>
+</div>
 
-    <div class="btn-retour-wrap">
-      <a href="https://www.jeremyheyob.fr" class="btn-retour">← Retour</a>
-    </div>
+<div class="btn-retour-wrap">
+  <a href="https://www.jeremyheyob.fr" class="btn-retour">← Retour</a>
+</div>
 
- <!-- HERO INFO -->
-  <section class="hero">
-    <div class="hero-text">
-      <div class="pill">ESPACE VENDEUR</div>
-      <h1>Demander un avis de valeur précis</h1>
-      <p>
-        Cette page vous permet de programmer un renddz-vous pour éffectuer un avis de valeur clair et structuré,
-        afin d’aborder votre projet de vente avec méthode, lucidité et cohérence.
-      </p>
+<section class="hero">
+  <div class="hero-text">
+    <div class="pill">ESPACE VENDEUR</div>
+    <h1>Demander un avis de valeur précis</h1>
+    <p>
+      Cette page vous permet de programmer un rendez-vous pour effectuer un avis de valeur clair et structuré,
+      afin d’aborder votre projet de vente avec méthode, lucidité et cohérence.
+    </p>
+
     <div class="hero-highlight hero-highlight-with-logo">
       <div class="hero-highlight-text">
         <strong>Information importante :</strong><br><br>
@@ -481,18 +434,18 @@
         <br>2️⃣ Présentation claire de l’avis de valeur et de ma méthode de travail.<br><br>
         • Cet avis de valeur est <strong>gratuit</strong>.
       </div>
-      
+
       <div class="hero-highlight-logo">
         <img src="/images/logo methode apa.webp" alt="Méthode APA">
       </div>
     </div>
 
-      <div class="hero-meta">
-        <span>Avis personnalisé</span>
-        <span>Méthode claire</span>
-        <span>Gratuit</span>
-      </div>
+    <div class="hero-meta">
+      <span>Avis personnalisé</span>
+      <span>Méthode claire</span>
+      <span>Gratuit</span>
     </div>
+  </div>
 </section>
 
 <section class="card">
@@ -503,11 +456,30 @@
     <div><label>Votre nom</label><input id="nom"></div>
     <div><label>Votre téléphone</label><input id="tel"></div>
     <div><label>Votre email</label><input id="email"></div>
+
     <div class="full"><label>Adresse du bien</label><input id="adresse"></div>
-    <div><label>Type de bien</label><select id="typeBien"><option value="">-- Choisir --</option><option>Appartement</option><option>Maison</option></select></div>
-    <div><label>Typologie</label><select id="typologie"><option value="">-- Choisir --</option><option>T1</option><option>T2</option><option>T3</option><option>T4</option><option>T5+</option></select></div>
+
+    <div>
+      <label>Type de bien</label>
+      <select id="typeBien">
+        <option value="">-- Choisir --</option>
+        <option>Appartement</option>
+        <option>Maison</option>
+      </select>
+    </div>
+
+    <div>
+      <label>Typologie</label>
+      <select id="typologie">
+        <option value="">-- Choisir --</option>
+        <option>T1</option><option>T2</option><option>T3</option><option>T4</option><option>T5+</option>
+      </select>
+    </div>
+
     <div><label>Date souhaitée</label><input id="date" type="date"></div>
-    <div><label>Créneau souhaité</label>
+
+    <div>
+      <label>Créneau souhaité</label>
       <select id="creneau">
         <option value="">-- Choisir --</option>
         <option>09h - 10h</option><option>10h - 11h</option><option>11h - 12h</option>
@@ -515,24 +487,23 @@
         <option>17h - 18h</option><option>18h - 19h</option><option>19h - 20h</option>
       </select>
     </div>
+
     <div class="full">
       <label>Commentaire (facultatif)</label>
-      <textarea
-        id="commentaire"
-        class="textarea-custom"
+      <textarea id="commentaire" class="textarea-custom"
         placeholder="Informations complémentaires que je devrais connaitre avant notre rendez-vous"></textarea>
     </div>
+
     <button class="btn" onclick="sendMail()">Valider ma demande</button>
   </div>
+
   <div class="success" id="success">
     ✅ Demande envoyée. Vous recevrez un mail et un sms de confirmation dès que le rendez-vous sera validé.
   </div>
 </section>
 
-    <section class="social-block" aria-label="Réseaux sociaux">
+<section class="social-block" aria-label="Réseaux sociaux">
   <div class="social-icons">
-
-    <!-- Google -->
     <a href="https://goo.gl/maps/wjfc1aGFBrSLd3tV6" target="_blank" rel="noopener" aria-label="Google">
       <svg viewBox="0 0 24 24" fill="none" stroke="#7a5a29" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
         <path d="M12 21s7-4.5 7-11a7 7 0 1 0-14 0c0 6.5 7 11 7 11z"></path>
@@ -540,7 +511,6 @@
       </svg>
     </a>
 
-    <!-- PagesJaunes -->
     <a href="https://www.pagesjaunes.fr/pros/62191780" target="_blank" rel="noopener" aria-label="Pages Jaunes">
       <svg viewBox="0 0 24 24" fill="none" stroke="#7a5a29" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
         <path d="M6 3h9a3 3 0 0 1 3 3v12a3 3 0 0 1-3 3H6a3 3 0 0 1-3-3V6a3 3 0 0 1 3-3z"></path>
@@ -550,14 +520,12 @@
       </svg>
     </a>
 
-    <!-- Facebook -->
     <a href="https://www.facebook.com/jeremyheyobpro" target="_blank" rel="noopener" aria-label="Facebook">
       <svg viewBox="0 0 24 24" fill="none" stroke="#7a5a29" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
         <path d="M14 8h3V5h-3a4 4 0 0 0-4 4v3H7v3h3v6h3v-6h3l1-3h-4V9a1 1 0 0 1 1-1z"></path>
       </svg>
     </a>
 
-    <!-- LinkedIn -->
     <a href="https://www.linkedin.com/company/jérémy-heyob/" target="_blank" rel="noopener" aria-label="LinkedIn">
       <svg viewBox="0 0 24 24" fill="none" stroke="#7a5a29" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
         <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4V9h4v2"></path>
@@ -566,7 +534,6 @@
       </svg>
     </a>
 
-    <!-- Instagram -->
     <a href="https://www.instagram.com/jeremyheyob/" target="_blank" rel="noopener" aria-label="Instagram">
       <svg viewBox="0 0 24 24" fill="none" stroke="#7a5a29" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
         <rect x="3" y="3" width="18" height="18" rx="5" ry="5"></rect>
@@ -575,7 +542,6 @@
       </svg>
     </a>
 
-    <!-- YouTube -->
     <a href="https://www.youtube.com/channel/UCpE0arbirH2tkw2THT_Ef9Q" target="_blank" rel="noopener" aria-label="YouTube">
       <svg viewBox="0 0 24 24" fill="none" stroke="#7a5a29" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
         <path d="M22 12s0-4-1-5-4-1-9-1-8 0-9 1-1 5-1 5 0 4 1 5 4 1 9 1 8 0 9-1 1-5 1-5z"></path>
@@ -583,17 +549,15 @@
       </svg>
     </a>
 
-    <!-- TikTok -->
     <a href="https://www.tiktok.com/@jeremyheyob" target="_blank" rel="noopener" aria-label="TikTok">
       <svg viewBox="0 0 24 24" fill="none" stroke="#7a5a29" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
         <path d="M14 3v10a4 4 0 1 1-4-4"></path>
         <path d="M14 7a6 6 0 0 0 6 2"></path>
       </svg>
     </a>
-
   </div>
 </section>
-  
+
 <section class="contact-block">
   <div class="contact-photo">
     <img src="/images/photo.webp" alt="Photo de Jérémy Heyob">
@@ -601,7 +565,6 @@
 
   <div class="contact-text">
     <h3>Une question sur votre projet de vente ?</h3>
-
     <p>
       Je reste disponible pour répondre à vos interrogations, vous aider à clarifier votre situation et,
       vous fournir un avis de valeur précis accompagné d’une stratégie de vente claire et structurée.
@@ -625,120 +588,98 @@
 </div>
 
 <script>
-function sendMail() {
-
-  const prenom = document.getElementById("prenom");
-  const nom = document.getElementById("nom");
-  const tel = document.getElementById("tel");
-  const email = document.getElementById("email");
-  const adresse = document.getElementById("adresse");
-  const typeBien = document.getElementById("typeBien");
-  const typologie = document.getElementById("typologie");
-  const date = document.getElementById("date");
-  const creneau = document.getElementById("creneau");
-  const commentaire = document.getElementById("commentaire");
-  const success = document.getElementById("success");
-
-  const fields = [
-    prenom, nom, tel, email, adresse,
-    typeBien, typologie, date, creneau
-  ];
-
-  success.style.display = "none";
-  let hasError = false;
-
-  fields.forEach(field => {
-    field.classList.remove("field-error");
-
-    if (
-      (field.tagName === "INPUT" || field.tagName === "TEXTAREA") &&
-      (!field.value || !field.value.trim())
-    ) {
-      field.classList.add("field-error");
-      hasError = true;
-    }
-
-    if (field.tagName === "SELECT" && !field.value) {
-      field.classList.add("field-error");
-      hasError = true;
+  // Auto-resize textarea
+  document.addEventListener("input", function (e) {
+    if (e.target && e.target.classList && e.target.classList.contains("textarea-custom")) {
+      e.target.style.height = "auto";
+      e.target.style.height = e.target.scrollHeight + "px";
     }
   });
 
-  if (hasError) {
-    document.querySelector(".field-error").focus();
-    return;
-  }
+  // Retire automatiquement la surbrillance dès que le champ devient valide
+  document.addEventListener("input", function (e) {
+    const el = e.target;
+    if (!el || !el.classList) return;
 
-  success.style.display = "block";
+    const isText = (el.tagName === "INPUT" || el.tagName === "TEXTAREA");
+    if (!isText) return;
 
-  const subject = encodeURIComponent("Demande d’avis de valeur immobilier");
-
-  const body = encodeURIComponent(
-    "Bonjour,\n\n" +
-    "Je souhaite obtenir un avis de valeur pour mon bien immobilier.\n\n" +
-    "Nom : " + prenom.value + " " + nom.value + "\n" +
-    "Téléphone : " + tel.value + "\n" +
-    "Email : " + email.value + "\n\n" +
-    "Adresse : " + adresse.value + "\n" +
-    "Type de bien : " + typeBien.value + "\n" +
-    "Typologie : " + typologie.value + "\n\n" +
-    "Date : " + date.value + "\n" +
-    "Créneau : " + creneau.value + "\n\n" +
-    "Commentaire :\n" + (commentaire.value ? commentaire.value : "—") + "\n\n" +
-    "Merci.\n"
-  );
-
-  window.location.href =
-    "mailto:contact@jeremyheyob.fr?subject=" + subject + "&body=" + body;
-}
-</script>
-
-<script>
-
-  const success = document.getElementById("success");
-  success.style.display = "none";
-
-  let hasError = false;
-
-  requiredFieldsIds.forEach(id => {
-    const field = document.getElementById(id);
-    if (!field) return;
-
-    field.classList.remove("field-error");
-
-    if (
-      (field.tagName === "INPUT" || field.tagName === "TEXTAREA") &&
-      (!field.value || !field.value.trim())
-    ) {
-      field.classList.add("field-error");
-      hasError = true;
-    }
-
-    if (field.tagName === "SELECT" && !field.value) {
-      field.classList.add("field-error");
-      hasError = true;
-    }
+    const ok = !!el.value && !!el.value.trim();
+    if (ok) el.classList.remove("field-error");
   });
 
-  if (hasError) {
-    const firstError = document.querySelector(".field-error");
-    if (firstError) firstError.focus();
-    return false;
-  }
+  document.addEventListener("change", function (e) {
+    const el = e.target;
+    if (!el || !el.classList) return;
 
-  success.style.display = "block";
-  return true;
-}
+    if (el.tagName !== "SELECT") return;
+    if (el.value) el.classList.remove("field-error");
+  });
+
+  function sendMail() {
+    const prenom = document.getElementById("prenom");
+    const nom = document.getElementById("nom");
+    const tel = document.getElementById("tel");
+    const email = document.getElementById("email");
+    const adresse = document.getElementById("adresse");
+    const typeBien = document.getElementById("typeBien");
+    const typologie = document.getElementById("typologie");
+    const date = document.getElementById("date");
+    const creneau = document.getElementById("creneau");
+    const commentaire = document.getElementById("commentaire");
+    const success = document.getElementById("success");
+
+    // commentaire facultatif => pas dans la liste des obligatoires
+    const required = [prenom, nom, tel, email, adresse, typeBien, typologie, date, creneau];
+
+    success.style.display = "none";
+    let hasError = false;
+
+    required.forEach(field => {
+      field.classList.remove("field-error");
+
+      if ((field.tagName === "INPUT" || field.tagName === "TEXTAREA") && (!field.value || !field.value.trim())) {
+        field.classList.add("field-error");
+        hasError = true;
+      }
+
+      if (field.tagName === "SELECT" && !field.value) {
+        field.classList.add("field-error");
+        hasError = true;
+      }
+    });
+
+    if (hasError) {
+      const firstError = document.querySelector(".field-error");
+      if (firstError) {
+        firstError.focus();
+        firstError.scrollIntoView({ behavior: "smooth", block: "center" });
+      }
+      return;
+    }
+
+    success.style.display = "block";
+
+    const subject = encodeURIComponent("Demande d’avis de valeur immobilier");
+    const body = encodeURIComponent(
+      "Bonjour,\n\n" +
+      "Je souhaite obtenir un avis de valeur pour mon bien immobilier.\n\n" +
+      "Nom : " + prenom.value + " " + nom.value + "\n" +
+      "Téléphone : " + tel.value + "\n" +
+      "Email : " + email.value + "\n\n" +
+      "Adresse : " + adresse.value + "\n" +
+      "Type de bien : " + typeBien.value + "\n" +
+      "Typologie : " + typologie.value + "\n\n" +
+      "Date : " + date.value + "\n" +
+      "Créneau : " + creneau.value + "\n\n" +
+      "Commentaire :\n" + (commentaire.value && commentaire.value.trim() ? commentaire.value.trim() : "—") + "\n\n" +
+      "Merci.\n"
+    );
+
+    window.location.href =
+      "mailto:contact@jeremyheyob.fr?subject=" + subject + "&body=" + body;
+  }
 </script>
 
-<script>
-document.addEventListener("input", function (e) {
-  if (e.target.classList.contains("textarea-custom")) {
-    e.target.style.height = "auto";
-    e.target.style.height = e.target.scrollHeight + "px";
-  }
-});
-</script>
-  
 </body>
 </html>
