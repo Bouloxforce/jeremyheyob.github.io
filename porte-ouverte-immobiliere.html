@@ -738,7 +738,6 @@ ${payload.commentaire || "—"}`
 
         transaction.update(docRef, {
           creneaux: newCreneaux,
-          lastReset: snap.data().lastReset
         });
       });
 
