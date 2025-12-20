@@ -75,10 +75,7 @@
       letter-spacing: 0.12em;
     }
 
-    .tagline-sub strong {
-      color: var(--text-main);
-      font-weight: 900;
-    }
+    .tagline-sub strong { color: var(--text-main); font-weight: 900; }
 
     .info-block {
       max-width: 1113px;
@@ -182,11 +179,7 @@
 
     .contact-text h3 { margin: 0 0 6px; font-size: 17px; }
 
-    .contact-text p {
-      margin: 0;
-      font-size: 13px;
-      color: var(--text-soft);
-    }
+    .contact-text p { margin: 0; font-size: 13px; color: var(--text-soft); }
 
     .contact-links {
       margin-top: 8px;
@@ -229,7 +222,11 @@
       text-decoration: none;
     }
 
-    .social-icons a:hover { transform: translateY(-1px); filter: brightness(1.02); }
+    .social-icons a:hover {
+      transform: translateY(-1px);
+      filter: brightness(1.02);
+    }
+
     .social-icons svg { width: 20px; height: 20px; }
 
     .header-links {
@@ -307,7 +304,7 @@
 
     label { font-size: 13px; margin-bottom: 4px; display: block; }
 
-    input, select {
+    input {
       width: 100%;
       padding: 10px 12px;
       border-radius: 12px;
@@ -341,6 +338,15 @@
       background: #ffffff !important;
       box-shadow: 0 0 0 4px rgba(25,25,25,0.12) !important;
     }
+
+    .field-msg {
+      display: none;
+      margin-top: 6px;
+      font-size: 12px;
+      color: var(--text-soft);
+      line-height: 1.35;
+    }
+    .field-msg.is-visible { display: block; }
 
     .success {
       display: none;
@@ -416,10 +422,20 @@
       <h2 class="card-title">Vos informations</h2>
 
       <div class="form-grid">
-        <div><label>Votre prénom</label><input id="prenom"></div>
-        <div><label>Votre nom</label><input id="nom"></div>
-        <div><label>Votre téléphone</label><input id="tel"></div>
-        <div><label>Votre email</label><input id="email"></div>
+        <div><label>Votre prénom</label><input id="prenom" autocomplete="given-name"></div>
+        <div><label>Votre nom</label><input id="nom" autocomplete="family-name"></div>
+
+        <div>
+          <label>Votre téléphone</label>
+          <input id="tel" type="tel" inputmode="tel" autocomplete="tel" placeholder="Ex : 06 12 34 56 78">
+          <div class="field-msg" id="msg-tel">Format attendu : 06/07/01… (10 chiffres) ou +33…</div>
+        </div>
+
+        <div>
+          <label>Votre email</label>
+          <input id="email" type="email" inputmode="email" autocomplete="email" placeholder="Ex : prenom.nom@mail.com">
+          <div class="field-msg" id="msg-email">Email invalide. Exemple : prenom.nom@mail.com</div>
+        </div>
 
         <button class="btn" type="button" onclick="sendMail()">Valider ma demande</button>
 
@@ -515,16 +531,63 @@
   </div>
 
   <script>
-    // Retire automatiquement la surbrillance dès que le champ devient valide
+    function normalizeEmail(v) {
+      return String(v || "").trim().toLowerCase();
+    }
+    function isEmailValid(v) {
+      const email = normalizeEmail(v);
+      return /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email);
+    }
+
+    function normalizePhoneFR(v) {
+      let s = String(v || "").trim();
+      s = s.replace(/[\s.\-()]/g, "");
+      if (s.startsWith("+33")) s = "0" + s.slice(3);
+      if (s.startsWith("0033")) s = "0" + s.slice(4);
+      return s;
+    }
+    function isPhoneFRValid(v) {
+      const s = normalizePhoneFR(v);
+      return /^0[1-9]\d{8}$/.test(s);
+    }
+
+    function isNonEmptyText(v) {
+      return !!String(v || "").trim();
+    }
+
+    function setMsg(id, visible) {
+      const el = document.getElementById(id);
+      if (!el) return;
+      el.classList.toggle("is-visible", !!visible);
+    }
+
+    function validateFieldAndToggleError(el) {
+      if (!el) return true;
+
+      const id = el.id;
+      let ok = true;
+
+      const val = el.value;
+
+      if (id === "email") ok = isEmailValid(val);
+      else if (id === "tel") ok = isPhoneFRValid(val);
+      else ok = isNonEmptyText(val);
+
+      el.classList.toggle("field-error", !ok);
+
+      if (id === "email") setMsg("msg-email", !!el.value && !isEmailValid(el.value));
+      if (id === "tel") setMsg("msg-tel", !!el.value && !isPhoneFRValid(el.value));
+
+      return ok;
+    }
+
     document.addEventListener("input", function (e) {
       const el = e.target;
-      if (!el || !el.classList) return;
+      if (!el || !el.id) return;
 
-      // On gère seulement les champs requis de cette page (INPUT)
-      if (el.tagName !== "INPUT") return;
-
-      const ok = !!el.value && !!el.value.trim();
-      if (ok) el.classList.remove("field-error");
+      if (["prenom","nom","tel","email"].includes(el.id)) {
+        validateFieldAndToggleError(el);
+      }
     });
 
     function sendMail() {
@@ -534,18 +597,14 @@
       const email = document.getElementById("email");
       const success = document.getElementById("success");
 
-      const fields = [prenom, nom, tel, email];
-
       success.style.display = "none";
+
+      const required = [prenom, nom, tel, email];
+
       let hasError = false;
-
-      fields.forEach(field => {
-        field.classList.remove("field-error");
-
-        if (!field.value || !field.value.trim()) {
-          field.classList.add("field-error");
-          hasError = true;
-        }
+      required.forEach(el => {
+        const ok = validateFieldAndToggleError(el);
+        if (!ok) hasError = true;
       });
 
       if (hasError) {
@@ -560,12 +619,15 @@
       success.style.display = "block";
 
       const subject = encodeURIComponent("Demande du guide vendeur – Un cran au-dessus");
+      const phoneNormalized = normalizePhoneFR(tel.value);
+      const emailNormalized = normalizeEmail(email.value);
+
       const body = encodeURIComponent(
         "Bonjour,\n\n" +
         "Je souhaite recevoir le guide vendeur « Un cran au-dessus ».\n\n" +
-        "Nom : " + prenom.value + " " + nom.value + "\n" +
-        "Téléphone : " + tel.value + "\n" +
-        "Email : " + email.value + "\n\n" +
+        "Nom : " + prenom.value.trim() + " " + nom.value.trim() + "\n" +
+        "Téléphone : " + phoneNormalized + "\n" +
+        "Email : " + emailNormalized + "\n\n" +
         "Merci.\n"
       );
 
