@@ -367,17 +367,6 @@
   font-weight: 700;
 }
 
-.header-links a.active::after {
-  content: "";
-  position: absolute;
-  left: 16px;
-  right: 0;
-  bottom: -6px;
-  height: 2px;
-  background: var(--accent);
-  border-radius: 2px;
-}
-
     }
   
     .btn-retour {
@@ -502,11 +491,6 @@
   .header-links a {
     font-size: 13px;
     white-space: nowrap;
-  }
-
-  .header-links a.active::after {
-    height: 1px;                  /* clé principale */
-    background: rgba(198,169,119,0.75); /* adoucit visuellement */
   }
       
   .header-links a:not(:last-child)::after {
