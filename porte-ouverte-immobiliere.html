@@ -564,12 +564,12 @@
     const db = getFirestore(app);
     const docRef = doc(db, "portes_ouvertes", "samedi");
 
-    // Eléments UI
+    // UI
     const selectCreneau = document.getElementById("creneau");
     const success = document.getElementById("success");
     const btnSend = document.getElementById("btnSend");
 
-    // Champs du formulaire (déclarés une fois)
+    // Champs (commentaire facultatif)
     const prenomEl = document.getElementById("prenom");
     const nomEl = document.getElementById("nom");
     const telEl = document.getElementById("tel");
@@ -579,7 +579,7 @@
     const courtierEl = document.getElementById("courtier");
     const statutEl = document.getElementById("statut");
     const venteAvantAchatEl = document.getElementById("venteAvantAchat");
-    const commentaireEl = document.getElementById("commentaire"); // facultatif
+    const commentaireEl = document.getElementById("commentaire");
 
     let sending = false;
 
@@ -596,9 +596,13 @@
     }
 
     /* ================================
-       VALIDATION + SURBRILLANCE
-       Champs obligatoires : prénom, nom, tel, email, créneau.
-       Commentaire NON obligatoire.
+       VALIDATION (sans message)
+       Obligatoires :
+       - prénom, nom, tel, email
+       - créneau
+       - budget, banque, courtier, statut, venteAvantAchat
+       Facultatif :
+       - commentaire
     ================================ */
     function isBlank(v) {
       return !String(v ?? "").trim();
@@ -612,11 +616,12 @@
     function clearAllErrors() {
       [
         prenomEl, nomEl, telEl, emailEl, selectCreneau,
-        budgetEl, banqueEl, courtierEl, statutEl, venteAvantAchatEl, commentaireEl
+        budgetEl, banqueEl, courtierEl, statutEl, venteAvantAchatEl,
+        commentaireEl
       ].forEach(el => el && el.classList.remove("field-error"));
     }
 
-    // Retire la surbrillance dès que l’utilisateur corrige
+    // Enlève la surbrillance dès que l’utilisateur corrige
     [prenomEl, nomEl, telEl, emailEl, budgetEl, commentaireEl].forEach(el => {
       if (!el) return;
       el.addEventListener("input", () => el.classList.remove("field-error"));
@@ -634,7 +639,14 @@
         { el: nomEl, check: () => isBlank(nomEl.value) },
         { el: telEl, check: () => isBlank(telEl.value) },
         { el: emailEl, check: () => isBlank(emailEl.value) },
-        { el: selectCreneau, check: () => isBlank(selectCreneau.value) }
+        { el: selectCreneau, check: () => isBlank(selectCreneau.value) },
+
+        // ✅ Nouveaux obligatoires
+        { el: budgetEl, check: () => isBlank(budgetEl.value) },
+        { el: banqueEl, check: () => isBlank(banqueEl.value) },
+        { el: courtierEl, check: () => isBlank(courtierEl.value) },
+        { el: statutEl, check: () => isBlank(statutEl.value) },
+        { el: venteAvantAchatEl, check: () => isBlank(venteAvantAchatEl.value) }
       ];
 
       let firstErrorEl = null;
@@ -648,7 +660,6 @@
       if (firstErrorEl) {
         firstErrorEl.focus();
         firstErrorEl.scrollIntoView({ behavior: "smooth", block: "center" });
-        alert("Merci de compléter les champs en surbrillance.");
         return false;
       }
 
@@ -751,14 +762,13 @@ ${payload.commentaire || "—"}`
       window.location.href = `mailto:contact@jeremyheyob.fr?subject=${subject}&body=${body}`;
     }
 
-    // Exposé à l’HTML (onclick)
     window.sendMail = async function () {
       if (sending) return;
       sending = true;
       lockSendButton(true);
 
       try {
-        // ✅ Validation + surbrillance
+        // ✅ Validation : juste surbrillance, aucun message
         if (!validateRequiredFields()) return;
 
         const payload = {
@@ -776,7 +786,6 @@ ${payload.commentaire || "—"}`
 
         const creneauChoisi = selectCreneau.value;
 
-        // Si "AUTRE", pas d’écriture Firestore
         if (creneauChoisi === "AUTRE_CRENEAU") {
           success.style.display = "block";
           ouvrirMail("Autre créneau", payload);
@@ -799,7 +808,6 @@ ${payload.commentaire || "—"}`
           const newCreneaux = oldCreneaux.map((c) => ({ id: c.id, etat: c.etat }));
           newCreneaux[index].etat = "pris";
 
-          // Déblocage jusqu’au dernier : index <= 4
           if (index <= 4 && newCreneaux[index + 1]) {
             newCreneaux[index + 1].etat = "disponible";
           }
