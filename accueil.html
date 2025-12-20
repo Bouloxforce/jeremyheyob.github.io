@@ -613,6 +613,43 @@
       }
       .contact-links { justify-content: center; width: 100%; }
       .social-block { justify-content: center; text-align: center; }
+
+    @media (max-width: 880px) {
+      .header-center {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding: 10px 0;
+      }
+
+      .tagline-main,
+      .tagline-sub {
+        text-align: center;
+      }
+
+    @media (max-width: 880px) {
+      .header-links {
+        flex-wrap: wrap;
+        row-gap: 10px;
+        column-gap: 14px;
+        padding: 0 10px;
+      }
+
+      .header-links a {
+        font-size: 13px;
+        white-space: nowrap;
+      }
+
+    @media (max-width: 880px) {
+      .social-icons {
+        flex-wrap: nowrap;
+        justify-content: center;
+      }
+
+      .social-icons a {
+        flex-shrink: 0;
+      }
     }
   </style>
 
