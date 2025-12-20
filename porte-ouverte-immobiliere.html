@@ -747,7 +747,6 @@ ${payload.commentaire || "—"}`
     } catch (e) {
       console.error("Transaction Firestore rejetée:", e);
       alert("Erreur Firestore: " + (e?.code || e?.message || e));
-    }
     } finally {
       sending = false;
       lockSendButton(false);
