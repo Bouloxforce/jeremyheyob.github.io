@@ -14,7 +14,6 @@
 
   <link rel="canonical" href="https://www.jeremyheyob.fr/">
 
-  <!-- Technique SEO “2” : mots-clés & sémantique (sans affichage agressif) -->
   <meta name="keywords" content="négociateur immobilier Saint-Priest, estimation Saint-Priest, immobilier Saint-Priest, bien récent, appartement récent, logement récent, appartement rénové, vente appartement Saint-Priest, estimation appartement, Est lyonnais, Bron, Vénissieux, Mions, Corbas, Feyzin, Saint-Fons, Chassieu, Genas, Décines-Charpieu, Meyzieu, Vaulx-en-Velin, Villeurbanne, T3 récent, T4 récent, résidence récente">
 
   <style>
@@ -199,8 +198,8 @@
       cursor: pointer;
     }
 
-    /* CONTACT BLOCK — IDENTIQUE PAGE DE RÉFÉRENCE */
-     .contact-block {
+    /* CONTACT BLOCK */
+    .contact-block {
       display: flex;
       gap: 18px;
       align-items: center;
@@ -209,16 +208,15 @@
       padding: 16px 18px;
       border: 1px solid var(--border-soft);
       box-shadow: 0 18px 40px rgba(25, 25, 25, 0.08);
-
-      max-width: 960px;          /* 🔴 IDENTIQUE AU HEADER */
-      margin: 16px auto 0;       /* 🔴 centrage IDENTIQUE */
+      max-width: 960px;
+      margin: 16px auto 0;
     }
 
     .contact-photo {
       width: 90px;
       height: 90px;
       border-radius: 50%;
-      overflow: hidden;          /* 🔴 CLÉ ABSOLUE */
+      overflow: hidden;
       border: 2px solid #e5e7eb;
       flex-shrink: 0;
     }
@@ -231,14 +229,11 @@
       display: block;
     }
 
-    .contact-text h3 {
-      margin: 0 0 4px;
-      font-size: 17px; /* 🔴 TAILLE EXACTE */
-    }
+    .contact-text h3 { margin: 0 0 4px; font-size: 17px; }
 
     .contact-text p {
       margin: 0;
-      font-size: 13px; /* 🔴 TAILLE EXACTE */
+      font-size: 13px;
       color: var(--text-soft);
     }
 
@@ -250,14 +245,8 @@
       font-size: 13px;
     }
 
-    .contact-links a {
-      color: var(--accent);
-      text-decoration: none;
-    }
-
-    .contact-links a:hover {
-      text-decoration: underline;
-    }
+    .contact-links a { color: var(--accent); text-decoration: none; }
+    .contact-links a:hover { text-decoration: underline; }
 
     /* FOOTER */
     .legal-footer {
@@ -267,25 +256,6 @@
       font-size: 11.5px;
       color: var(--text-soft);
       opacity: 0.75;
-    }
-
-    /* HERO HIGHLIGHT AVEC LOGO */
-    .hero-highlight-with-logo {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 18px;
-    }
-
-    .hero-highlight-text {
-      flex: 1;
-    }
-
-    .hero-highlight-logo img {
-      width: 180px;              /* logo plus gros */
-      height: auto;
-      opacity: 0.8;
-      margin-left: -250px;       /* décalage vers la gauche */
     }
 
     .social-block {
@@ -318,15 +288,8 @@
       text-decoration: none;
     }
 
-    .social-icons a:hover {
-      transform: translateY(-1px);
-      filter: brightness(1.02);
-    }
-
-    .social-icons svg {
-      width: 20px;
-      height: 20px;
-    }
+    .social-icons a:hover { transform: translateY(-1px); filter: brightness(1.02); }
+    .social-icons svg { width: 20px; height: 20px; }
 
     .header-links {
       display: flex;
@@ -334,6 +297,7 @@
       gap: 18px;
       font-size: 14px;
       margin: 0 auto 24px;
+      flex-wrap: wrap;
     }
 
     .header-links a {
@@ -342,9 +306,7 @@
       position: relative;
     }
 
-    .header-links a:hover {
-      color: var(--accent);
-    }
+    .header-links a:hover { color: var(--accent); }
 
     .header-links a.active::after {
       content: "";
@@ -370,14 +332,14 @@
       background: rgba(198,169,119,0.10);
     }
 
-    /* ✅ AJOUT : SURBRILLANCE DES CHAMPS MANQUANTS */
+    /* ✅ SURBRILLANCE CHAMPS */
     .field-error {
-      border: 2px solid #191919 !important;               /* noir profond */
-      background: #ffffff !important;                    /* pas de rose */
-      box-shadow: 0 0 0 4px rgba(25,25,25,0.12) !important; /* halo noir doux */
+      border: 2px solid #191919 !important;
+      background: #ffffff !important;
+      box-shadow: 0 0 0 4px rgba(25,25,25,0.12) !important;
     }
 
-    /* ✅ AJOUT : MESSAGE SUCCESS SOUS LE BOUTON (même style que hero-highlight) */
+    /* ✅ SUCCESS */
     .success {
       display: none;
       margin-top: 16px;
@@ -390,7 +352,7 @@
       line-height: 1.5;
       grid-column: 1 / -1;
     }
-    
+
     .textarea-custom {
       width: 100%;
       min-height: 120px;
@@ -401,47 +363,15 @@
       background: #fafafa;
       font-size: 14px;
       font-family: inherit;
-      resize: none; /* on enlève le redimensionnement manuel */
-      overflow: hidden; /* évite la scrollbar */
+      resize: none;
+      overflow: hidden;
     }
 
-    .field-help {
-      display: block;
-      margin-bottom: 6px;
-      font-size: 12px;
-      color: var(--text-soft);
+    @media (max-width: 880px) {
+      header { flex-direction: column; align-items: center; }
+      .contact-block { flex-direction: column; align-items: center; text-align: center; }
+      .contact-links { justify-content: center; width: 100%; }
     }
-
-    /* Mobile : logo en dessous */
-   @media (max-width: 600px) {
-    .hero-highlight-with-logo {
-      flex-direction: column;
-      text-align: left;
-    }
-
-    .hero-highlight-logo img {
-      width: 56px;
-    }
-  }
-
-        @media (max-width: 880px) {
-    header {
-      flex-direction: column;
-      align-items: center;
-    }
-
-    .contact-block {
-      flex-direction: column;
-      align-items: center;
-      text-align: center;
-    }
-
-    .contact-links {
-      justify-content: center;   /* CENTRAGE UNIQUEMENT SUR MOBILE */
-      width: 100%;               /* permet le centrage optimal */
-    }
-  }
-    
   </style>
 </head>
 
@@ -459,46 +389,43 @@
   </div>
 </header>
 
-   <div class="header-links">
-      <a href="https://www.jeremyheyob.fr/">Accueil</a>
-      <a href="https://www.agence.immo/professionnels/jeremy-heyob-453" target="_blank" rel="noopener">Mes biens</a>
-      <a href="https://www.jeremyheyob.fr/avis-de-valeur.html">Estimation</a>
-      <a href="https://www.immodvisor.com/pro/agencimmocom-jeremy-heyob-saint-priest-69800-53519.html" target="_blank" rel="noopener">Avis vérifiés</a>
-      <a href="https://www.jeremyheyob.fr/honoraires.html">Mes honoraires</a>
-      <a href="https://www.jeremyheyob.fr/biens-avant-premiere.html" class="active">Biens en avant-première</a>
-      <a href="https://www.jeremyheyob.fr/un-cran-au-dessus.html">Guide vendeur</a>
-   </div>
+<div class="header-links">
+  <a href="https://www.jeremyheyob.fr/">Accueil</a>
+  <a href="https://www.agence.immo/professionnels/jeremy-heyob-453" target="_blank" rel="noopener">Mes biens</a>
+  <a href="https://www.jeremyheyob.fr/avis-de-valeur.html">Estimation</a>
+  <a href="https://www.immodvisor.com/pro/agencimmocom-jeremy-heyob-saint-priest-69800-53519.html" target="_blank" rel="noopener">Avis vérifiés</a>
+  <a href="https://www.jeremyheyob.fr/honoraires.html">Mes honoraires</a>
+  <a href="https://www.jeremyheyob.fr/biens-avant-premiere.html" class="active">Biens en avant-première</a>
+  <a href="https://www.jeremyheyob.fr/un-cran-au-dessus.html">Guide vendeur</a>
+</div>
 
-    <div class="btn-retour-wrap">
-      <a href="https://www.jeremyheyob.fr" class="btn-retour">← Retour</a>
+<div class="btn-retour-wrap">
+  <a href="https://www.jeremyheyob.fr" class="btn-retour">← Retour</a>
+</div>
+
+<section class="hero">
+  <div class="hero-text">
+    <div class="pill">ESPACE ACQUÉREUR</div>
+    <h1>Recevez mes nouveaux biens avant tout le monde</h1>
+    <p>
+      Vous recevez un SMS en priorité dès qu’un bien correspond à vos critères,
+      avant la diffusion sur les sites immobiliers.
+    </p>
+
+    <div class="hero-highlight">
+      <strong>Pourquoi vous inscrire ?</strong><br><br>
+      • Vous passez <strong>avant tout le monde</strong> : notification dès qu’un bien rentre dans vos critères.<br><br>
+      • Vous gagnez du temps : vous évitez de courir après les annonces déjà vues par des dizaines d’acquéreurs.<br><br>
+      • C’est simple : cette inscription me permet de <strong>vous contacter en priorité</strong>, avant même la mise en ligne publique.<br><br>
+      • Si besoin, je peux aussi vous mettre en relation <strong>gratuitement</strong> avec un courtier pour valider ou optimiser votre budget.
     </div>
 
- <!-- HERO INFO -->
-  <section class="hero">
-    <div class="hero-text">
-      <div class="pill">ESPACE ACQUÉREUR</div>
-      <h1>Recevez mes nouveaux biens avant tout le monde</h1>
-      <p>
-        Vous recevez un SMS en priorité dès qu’un bien correspond à vos critères,
-        avant la diffusion sur les sites immobiliers.
-      </p>
-    <div class="hero-highlight hero-highlight-with-logo">
-      <div class="hero-highlight-text">
-        <strong>Pourquoi vous inscrire ?</strong><br><br>
-        • Vous passez <strong>avant tout le monde</strong> : notification dès qu’un bien rentre dans vos critères.<br><br>
-        • Vous gagnez du temps : vous évitez de courir après les annonces déjà vues par des dizaines d’acquéreurs.<br><br>
-        • C’est simple : cette inscription me permet de <strong>vous contacter en priorité</strong>, avant même la mise en ligne publique.<br><br>
-        • Si besoin, je peux aussi vous mettre en relation <strong>gratuitement</strong> avec un courtier pour valider ou optimiser votre budget.
-      </div>
-      
+    <div class="hero-meta">
+      <span>SMS prioritaire</span>
+      <span>Critères précis</span>
+      <span>Gratuit</span>
     </div>
-
-      <div class="hero-meta">
-        <span>SMS prioritaire</span>
-        <span>Critères précis</span>
-        <span>Gratuit</span>
-      </div>
-    </div>
+  </div>
 </section>
 
 <section class="card">
@@ -572,8 +499,8 @@
         class="textarea-custom"
         placeholder="Informations complémentaires (secteur, étage, extérieur, stationnement, etc.)"></textarea>
     </div>
-    
-    <button class="btn" onclick="sendMail()">Valider mon inscription</button>
+
+    <button class="btn" type="button" onclick="sendMail()">Valider mon inscription</button>
 
     <div class="success" id="success">
       ✅ Inscription validée. Vous serez contacté dès qu’un bien correspondra à votre recherche.
@@ -581,10 +508,8 @@
   </div>
 </section>
 
-    <section class="social-block" aria-label="Réseaux sociaux">
+<section class="social-block" aria-label="Réseaux sociaux">
   <div class="social-icons">
-
-    <!-- Google -->
     <a href="https://goo.gl/maps/wjfc1aGFBrSLd3tV6" target="_blank" rel="noopener" aria-label="Google">
       <svg viewBox="0 0 24 24" fill="none" stroke="#7a5a29" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
         <path d="M12 21s7-4.5 7-11a7 7 0 1 0-14 0c0 6.5 7 11 7 11z"></path>
@@ -592,7 +517,6 @@
       </svg>
     </a>
 
-    <!-- PagesJaunes -->
     <a href="https://www.pagesjaunes.fr/pros/62191780" target="_blank" rel="noopener" aria-label="Pages Jaunes">
       <svg viewBox="0 0 24 24" fill="none" stroke="#7a5a29" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
         <path d="M6 3h9a3 3 0 0 1 3 3v12a3 3 0 0 1-3 3H6a3 3 0 0 1-3-3V6a3 3 0 0 1 3-3z"></path>
@@ -602,14 +526,12 @@
       </svg>
     </a>
 
-    <!-- Facebook -->
     <a href="https://www.facebook.com/jeremyheyobpro" target="_blank" rel="noopener" aria-label="Facebook">
       <svg viewBox="0 0 24 24" fill="none" stroke="#7a5a29" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
         <path d="M14 8h3V5h-3a4 4 0 0 0-4 4v3H7v3h3v6h3v-6h3l1-3h-4V9a1 1 0 0 1 1-1z"></path>
       </svg>
     </a>
 
-    <!-- LinkedIn -->
     <a href="https://www.linkedin.com/company/jérémy-heyob/" target="_blank" rel="noopener" aria-label="LinkedIn">
       <svg viewBox="0 0 24 24" fill="none" stroke="#7a5a29" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
         <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4V9h4v2"></path>
@@ -618,7 +540,6 @@
       </svg>
     </a>
 
-    <!-- Instagram -->
     <a href="https://www.instagram.com/jeremyheyob/" target="_blank" rel="noopener" aria-label="Instagram">
       <svg viewBox="0 0 24 24" fill="none" stroke="#7a5a29" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
         <rect x="3" y="3" width="18" height="18" rx="5" ry="5"></rect>
@@ -627,7 +548,6 @@
       </svg>
     </a>
 
-    <!-- YouTube -->
     <a href="https://www.youtube.com/channel/UCpE0arbirH2tkw2THT_Ef9Q" target="_blank" rel="noopener" aria-label="YouTube">
       <svg viewBox="0 0 24 24" fill="none" stroke="#7a5a29" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
         <path d="M22 12s0-4-1-5-4-1-9-1-8 0-9 1-1 5-1 5 0 4 1 5 4 1 9 1 8 0 9-1 1-5 1-5z"></path>
@@ -635,17 +555,15 @@
       </svg>
     </a>
 
-    <!-- TikTok -->
     <a href="https://www.tiktok.com/@jeremyheyob" target="_blank" rel="noopener" aria-label="TikTok">
       <svg viewBox="0 0 24 24" fill="none" stroke="#7a5a29" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
         <path d="M14 3v10a4 4 0 1 1-4-4"></path>
         <path d="M14 7a6 6 0 0 0 6 2"></path>
       </svg>
     </a>
-
   </div>
 </section>
-  
+
 <section class="contact-block">
   <div class="contact-photo">
     <img src="/images/photo.webp" alt="Photo de Jérémy Heyob">
@@ -653,12 +571,10 @@
 
   <div class="contact-text">
     <h3>Une question sur votre projet d’achat ?</h3>
-
     <p>
       Je vous accompagne pour définir un budget réaliste, sécuriser votre financement et identifier les meilleurs taux du moment,
       afin d’aborder votre achat avec sérénité et méthode.
     </p>
-
     <div class="contact-links">
       <a href="mailto:contact@jeremyheyob.fr">✉️ Email</a>
       <a href="sms:+33648145565">💬 SMS</a>
@@ -677,97 +593,120 @@
 </div>
 
 <script>
-function sendMail() {
+  // ✅ Supprime la surbrillance automatiquement dès que le champ devient valide
+  document.addEventListener("input", function (e) {
+    const el = e.target;
+    if (!el || !el.classList) return;
 
-  const prenom = document.getElementById("prenom");
-  const nom = document.getElementById("nom");
-  const tel = document.getElementById("tel");
-  const email = document.getElementById("email");
-  const ville = document.getElementById("ville");
-  const typeBien = document.getElementById("typeBien");
-  const typologie = document.getElementById("typologie");
-  const budget = document.getElementById("budget");
-  const banque = document.getElementById("banque");
-  const courtier = document.getElementById("courtier");
-  const statut = document.getElementById("statut");
-  const venteAvantAchat = document.getElementById("venteAvantAchat");
-  const commentaire = document.getElementById("commentaire");
-
-  const success = document.getElementById("success");
-
-  // ✅ reset surbrillance
-  const fields = [prenom, nom, tel, email, ville, budget, typeBien, typologie, banque, courtier, statut, venteAvantAchat];
-  fields.forEach(f => f.classList.remove("field-error"));
-  success.style.display = "none";
-
-  // ✅ validation avec surbrillance
-  let hasError = false;
-
-  function markIfEmpty(el) {
-    if (!el.value || !el.value.trim()) {
-      el.classList.add("field-error");
-      hasError = true;
+    // INPUT (texte)
+    if (el.tagName === "INPUT") {
+      const ok = !!el.value && !!el.value.trim();
+      if (ok) el.classList.remove("field-error");
     }
+
+    // TEXTAREA (commentaire facultatif -> on enlève si l'utilisateur écrit, mais ce n'est pas requis)
+    if (el.tagName === "TEXTAREA") {
+      if (el.value && el.value.trim()) el.classList.remove("field-error");
+    }
+  });
+
+  // SELECT -> l'événement utile est "change"
+  document.addEventListener("change", function (e) {
+    const el = e.target;
+    if (!el || !el.classList) return;
+
+    if (el.tagName === "SELECT") {
+      if (el.value) el.classList.remove("field-error");
+    }
+  });
+
+  function sendMail() {
+    const prenom = document.getElementById("prenom");
+    const nom = document.getElementById("nom");
+    const tel = document.getElementById("tel");
+    const email = document.getElementById("email");
+    const ville = document.getElementById("ville");
+    const typeBien = document.getElementById("typeBien");
+    const typologie = document.getElementById("typologie");
+    const budget = document.getElementById("budget");
+    const banque = document.getElementById("banque");
+    const courtier = document.getElementById("courtier");
+    const statut = document.getElementById("statut");
+    const venteAvantAchat = document.getElementById("venteAvantAchat");
+    const commentaire = document.getElementById("commentaire");
+    const success = document.getElementById("success");
+
+    // champs requis (commentaire volontairement absent)
+    const required = [prenom, nom, tel, email, ville, budget, typeBien, typologie, banque, courtier, statut, venteAvantAchat];
+
+    // reset
+    required.forEach(f => f.classList.remove("field-error"));
+    success.style.display = "none";
+
+    // validation
+    let hasError = false;
+
+    required.forEach(field => {
+      if (field.tagName === "SELECT") {
+        if (!field.value) {
+          field.classList.add("field-error");
+          hasError = true;
+        }
+      } else {
+        if (!field.value || !field.value.trim()) {
+          field.classList.add("field-error");
+          hasError = true;
+        }
+      }
+    });
+
+    if (hasError) {
+      const firstError = document.querySelector(".field-error");
+      if (firstError) {
+        firstError.focus();
+        firstError.scrollIntoView({ behavior: "smooth", block: "center" });
+      }
+      return;
+    }
+
+    const subject = encodeURIComponent("Inscription acquéreur – Biens en avant-première (SMS)");
+
+    const body = encodeURIComponent(
+      "Bonjour,\n\n" +
+      "Je souhaite m’inscrire pour recevoir par SMS les nouveaux biens en avant-première.\n\n" +
+      "Prénom : " + prenom.value + "\n" +
+      "Nom : " + nom.value + "\n" +
+      "Téléphone : " + tel.value + "\n" +
+      "Email : " + email.value + "\n\n" +
+      "Ville recherchée : " + ville.value + "\n" +
+      "Maison ou appartement : " + typeBien.value + "\n" +
+      "Typologie : " + typologie.value + "\n" +
+      "Budget maximum : " + budget.value + "\n\n" +
+      "Déjà vu la banque : " + banque.value + "\n" +
+      "Souhaite mise en relation courtier (gratuit) : " + courtier.value + "\n\n" +
+      "Statut : " + statut.value + "\n" +
+      "Besoin de vendre pour acheter : " + venteAvantAchat.value + "\n\n" +
+      "Commentaire :\n" + (commentaire.value && commentaire.value.trim() ? commentaire.value : "—") + "\n\n" +
+      "Merci.\n"
+    );
+
+    // succès UI
+    success.style.display = "block";
+
+    // ouverture mail
+    window.location.href =
+      "mailto:contact@jeremyheyob.fr?subject=" + subject + "&body=" + body;
   }
-
-  markIfEmpty(prenom);
-  markIfEmpty(nom);
-  markIfEmpty(tel);
-  markIfEmpty(email);
-  markIfEmpty(ville);
-  markIfEmpty(budget);
-
-  if (!typeBien.value) { typeBien.classList.add("field-error"); hasError = true; }
-  if (!typologie.value) { typologie.classList.add("field-error"); hasError = true; }
-  if (!banque.value) { banque.classList.add("field-error"); hasError = true; }
-  if (!courtier.value) { courtier.classList.add("field-error"); hasError = true; }
-  if (!statut.value) { statut.classList.add("field-error"); hasError = true; }
-  if (!venteAvantAchat.value) { venteAvantAchat.classList.add("field-error"); hasError = true; }
-
-  if (hasError) {
-    // focus sur le premier champ en erreur
-    const firstError = document.querySelector(".field-error");
-    if (firstError) firstError.focus();
-    return;
-  }
-
-  const subject = encodeURIComponent("Inscription acquéreur – Biens en avant-première (SMS)");
-
-  const body = encodeURIComponent(
-    "Bonjour,\n\n" +
-    "Je souhaite m’inscrire pour recevoir par SMS les nouveaux biens en avant-première.\n\n" +
-    "Prénom : " + prenom.value + "\n" +
-    "Nom : " + nom.value + "\n" +
-    "Téléphone : " + tel.value + "\n" +
-    "Email : " + email.value + "\n\n" +
-    "Ville recherchée : " + ville.value + "\n" +
-    "Maison ou appartement : " + typeBien.value + "\n" +
-    "Typologie : " + typologie.value + "\n" +
-    "Budget maximum : " + budget.value + "\n\n" +
-    "Déjà vu la banque : " + banque.value + "\n" +
-    "Souhaite mise en relation courtier (gratuit) : " + courtier.value + "\n\n" +
-    "Statut : " + statut.value + "\n" +
-    "Besoin de vendre pour acheter : " + venteAvantAchat.value + "\n\n" +
-    "Commentaire :\n" + (commentaire.value ? commentaire.value : "—") + "\n\n" +
-    "Merci.\n"
-  );
-
-  // ✅ message de confirmation sur la page (pas d'alert)
-  success.style.display = "block";
-
-  // ouverture du mail
-  window.location.href =
-    "mailto:contact@jeremyheyob.fr?subject=" + subject + "&body=" + body;
-}
 </script>
-  
+
 <script>
-document.addEventListener("input", function (e) {
-  if (e.target.classList.contains("textarea-custom")) {
-    e.target.style.height = "auto";
-    e.target.style.height = e.target.scrollHeight + "px";
-  }
-});
+  // Auto-resize textarea
+  document.addEventListener("input", function (e) {
+    if (e.target.classList && e.target.classList.contains("textarea-custom")) {
+      e.target.style.height = "auto";
+      e.target.style.height = e.target.scrollHeight + "px";
+    }
+  });
 </script>
 
 </body>
