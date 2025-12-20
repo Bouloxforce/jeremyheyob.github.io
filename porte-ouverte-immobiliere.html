@@ -726,7 +726,10 @@ ${payload.commentaire || "—"}`
         if (oldCreneaux[index].etat !== "disponible")
           throw new Error("Créneau déjà réservé");
 
-        const newCreneaux = oldCreneaux.map(c => ({ ...c }));
+        const newCreneaux = oldCreneaux.map(c => ({
+          id: c.id,
+          etat: c.etat
+        }));
         newCreneaux[index].etat = "pris";
 
         if (index <= 3 && newCreneaux[index + 1]) {
