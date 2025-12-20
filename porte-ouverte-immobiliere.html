@@ -744,10 +744,10 @@ ${payload.commentaire || "—"}`
       success.style.display = "block";
       ouvrirMail(`Samedi ${creneauChoisi}`, payload);
 
-      } catch (e) {
-        console.error("Transaction Firestore rejetée:", e);
-        alert("Erreur Firestore: " + (e?.code || e?.message || e));
-      }
+    } catch (e) {
+      console.error("Transaction Firestore rejetée:", e);
+      alert("Erreur Firestore: " + (e?.code || e?.message || e));
+    }
     } finally {
       sending = false;
       lockSendButton(false);
