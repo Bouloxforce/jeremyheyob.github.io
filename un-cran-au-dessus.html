@@ -44,7 +44,6 @@
       padding: 26px 18px 60px;
     }
 
-    /* HEADER */
     header {
       display: flex;
       align-items: center;
@@ -61,10 +60,7 @@
 
     .logo { max-width: 140px; }
 
-    .header-center {
-      flex: 1;
-      text-align: center;
-    }
+    .header-center { flex: 1; text-align: center; }
 
     .tagline-main {
       font-size: 13px;
@@ -84,7 +80,6 @@
       font-weight: 900;
     }
 
-    /* BLOC INFORMATIF */
     .info-block {
       max-width: 1113px;
       margin: 0 auto 30px;
@@ -110,10 +105,7 @@
       margin-bottom: 10px;
     }
 
-    .info-block h2 {
-      margin: 8px 0 10px;
-      font-size: 22px;
-    }
+    .info-block h2 { margin: 8px 0 10px; font-size: 22px; }
 
     .info-block p {
       margin: 0;
@@ -134,23 +126,6 @@
       line-height: 1.45;
     }
 
-    /* (Ancien style bouton générique, conservé) */
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 8px;
-      padding: 14px 24px;
-      border-radius: 999px;
-      background: linear-gradient(135deg, #fbe4b9, #f3c98b);
-      color: #7a5a29;
-      font-size: 15px;
-      font-weight: 700;
-      text-decoration: none;
-      margin-top: 10px;
-    }
-
-    /* PUCE META */
     .hero-meta {
       margin-top: 14px;
       display: flex;
@@ -175,7 +150,6 @@
       color: var(--text-soft);
     }
 
-    /* CONTACT */
     .contact-block {
       display: flex;
       gap: 18px;
@@ -206,10 +180,7 @@
       display: block;
     }
 
-    .contact-text h3 {
-      margin: 0 0 6px;
-      font-size: 17px;
-    }
+    .contact-text h3 { margin: 0 0 6px; font-size: 17px; }
 
     .contact-text p {
       margin: 0;
@@ -225,14 +196,8 @@
       font-size: 13px;
     }
 
-    .contact-links a {
-      color: var(--accent);
-      text-decoration: none;
-    }
-
-    .contact-links a:hover {
-      text-decoration: underline;
-    }
+    .contact-links a { color: var(--accent); text-decoration: none; }
+    .contact-links a:hover { text-decoration: underline; }
 
     .social-block {
       width: fit-content;
@@ -264,15 +229,8 @@
       text-decoration: none;
     }
 
-    .social-icons a:hover {
-      transform: translateY(-1px);
-      filter: brightness(1.02);
-    }
-
-    .social-icons svg {
-      width: 20px;
-      height: 20px;
-    }
+    .social-icons a:hover { transform: translateY(-1px); filter: brightness(1.02); }
+    .social-icons svg { width: 20px; height: 20px; }
 
     .header-links {
       display: flex;
@@ -280,6 +238,7 @@
       gap: 18px;
       font-size: 14px;
       margin: 0 auto 24px;
+      flex-wrap: wrap;
     }
 
     .header-links a {
@@ -288,9 +247,7 @@
       position: relative;
     }
 
-    .header-links a:hover {
-      color: var(--accent);
-    }
+    .header-links a:hover { color: var(--accent); }
 
     .header-links a.active::after {
       content: "";
@@ -316,7 +273,6 @@
       background: rgba(198,169,119,0.10);
     }
 
-    /* FOOTER */
     .legal-footer {
       margin-top: 40px;
       padding: 18px;
@@ -326,7 +282,6 @@
       opacity: 0.75;
     }
 
-    /* === FORMULAIRE "VOS INFORMATIONS" === */
     .card {
       max-width: 800px;
       margin: 0 auto 30px;
@@ -364,7 +319,6 @@
 
     .full { grid-column: 1 / -1; }
 
-    /* ✅ IMPORTANT : bouton du formulaire UNIQUEMENT */
     .card .btn {
       grid-column: 1 / -1;
       margin-top: 14px;
@@ -380,20 +334,6 @@
       display: inline-flex;
       align-items: center;
       justify-content: center;
-    }
-
-    .textarea-custom {
-      width: 100%;
-      min-height: 120px;
-      padding: 10px 12px;
-      border-radius: 12px;
-      margin-top: 4px;
-      border: 1px solid var(--border-soft);
-      background: #fafafa;
-      font-size: 14px;
-      font-family: inherit;
-      resize: none;
-      overflow: hidden;
     }
 
     .field-error {
@@ -426,7 +366,6 @@
 <body>
   <div class="page">
 
-    <!-- HEADER -->
     <header>
       <div class="header-left">
         <img src="/images/logo.webp" alt="Logo Jérémy Heyob" class="logo">
@@ -452,7 +391,6 @@
       <a href="https://www.jeremyheyob.fr" class="btn-retour">← Retour</a>
     </div>
 
-    <!-- BLOC INFORMATIF -->
     <section class="info-block">
       <span class="info-pill">ESPACE VENDEUR</span>
       <h2>Un cran au-dessus dans la préparation de votre vente.</h2>
@@ -474,7 +412,6 @@
       </div>
     </section>
 
-    <!-- VOS INFORMATIONS -->
     <section class="card">
       <h2 class="card-title">Vos informations</h2>
 
@@ -494,7 +431,6 @@
 
     <section class="social-block" aria-label="Réseaux sociaux">
       <div class="social-icons">
-        <!-- Google -->
         <a href="https://goo.gl/maps/wjfc1aGFBrSLd3tV6" target="_blank" rel="noopener" aria-label="Google">
           <svg viewBox="0 0 24 24" fill="none" stroke="#7a5a29" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
             <path d="M12 21s7-4.5 7-11a7 7 0 1 0-14 0c0 6.5 7 11 7 11z"></path>
@@ -502,7 +438,6 @@
           </svg>
         </a>
 
-        <!-- PagesJaunes -->
         <a href="https://www.pagesjaunes.fr/pros/62191780" target="_blank" rel="noopener" aria-label="Pages Jaunes">
           <svg viewBox="0 0 24 24" fill="none" stroke="#7a5a29" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
             <path d="M6 3h9a3 3 0 0 1 3 3v12a3 3 0 0 1-3 3H6a3 3 0 0 1-3-3V6a3 3 0 0 1 3-3z"></path>
@@ -512,14 +447,12 @@
           </svg>
         </a>
 
-        <!-- Facebook -->
         <a href="https://www.facebook.com/jeremyheyobpro" target="_blank" rel="noopener" aria-label="Facebook">
           <svg viewBox="0 0 24 24" fill="none" stroke="#7a5a29" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
             <path d="M14 8h3V5h-3a4 4 0 0 0-4 4v3H7v3h3v6h3v-6h3l1-3h-4V9a1 1 0 0 1 1-1z"></path>
           </svg>
         </a>
 
-        <!-- LinkedIn -->
         <a href="https://www.linkedin.com/company/jérémy-heyob/" target="_blank" rel="noopener" aria-label="LinkedIn">
           <svg viewBox="0 0 24 24" fill="none" stroke="#7a5a29" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
             <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4V9h4v2"></path>
@@ -528,7 +461,6 @@
           </svg>
         </a>
 
-        <!-- Instagram -->
         <a href="https://www.instagram.com/jeremyheyob/" target="_blank" rel="noopener" aria-label="Instagram">
           <svg viewBox="0 0 24 24" fill="none" stroke="#7a5a29" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
             <rect x="3" y="3" width="18" height="18" rx="5" ry="5"></rect>
@@ -537,7 +469,6 @@
           </svg>
         </a>
 
-        <!-- YouTube -->
         <a href="https://www.youtube.com/channel/UCpE0arbirH2tkw2THT_Ef9Q" target="_blank" rel="noopener" aria-label="YouTube">
           <svg viewBox="0 0 24 24" fill="none" stroke="#7a5a29" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
             <path d="M22 12s0-4-1-5-4-1-9-1-8 0-9 1-1 5-1 5 0 4 1 5 4 1 9 1 8 0 9-1 1-5 1-5z"></path>
@@ -545,7 +476,6 @@
           </svg>
         </a>
 
-        <!-- TikTok -->
         <a href="https://www.tiktok.com/@jeremyheyob" target="_blank" rel="noopener" aria-label="TikTok">
           <svg viewBox="0 0 24 24" fill="none" stroke="#7a5a29" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
             <path d="M14 3v10a4 4 0 1 1-4-4"></path>
@@ -555,7 +485,6 @@
       </div>
     </section>
 
-    <!-- CONTACT -->
     <section class="contact-block">
       <div class="contact-photo">
         <img src="/images/photo.webp" alt="Photo de Jérémy Heyob">
@@ -577,7 +506,6 @@
       </div>
     </section>
 
-    <!-- FOOTER -->
     <footer class="legal-footer">
       Les photos et documents présentés sur cette page sont la propriété exclusive de
       <strong>Jérémy HEYOB Immobilier</strong>.<br>
@@ -586,51 +514,65 @@
 
   </div>
 
-  <!-- JS -->
   <script>
-  function sendMail() {
-    const prenom = document.getElementById("prenom");
-    const nom = document.getElementById("nom");
-    const tel = document.getElementById("tel");
-    const email = document.getElementById("email");
-    const success = document.getElementById("success");
+    // Retire automatiquement la surbrillance dès que le champ devient valide
+    document.addEventListener("input", function (e) {
+      const el = e.target;
+      if (!el || !el.classList) return;
 
-    const fields = [prenom, nom, tel, email];
+      // On gère seulement les champs requis de cette page (INPUT)
+      if (el.tagName !== "INPUT") return;
 
-    success.style.display = "none";
-    let hasError = false;
-
-    fields.forEach(field => {
-      field.classList.remove("field-error");
-
-      if (!field.value || !field.value.trim()) {
-        field.classList.add("field-error");
-        hasError = true;
-      }
+      const ok = !!el.value && !!el.value.trim();
+      if (ok) el.classList.remove("field-error");
     });
 
-    if (hasError) {
-      const firstError = document.querySelector(".field-error");
-      if (firstError) firstError.focus();
-      return;
+    function sendMail() {
+      const prenom = document.getElementById("prenom");
+      const nom = document.getElementById("nom");
+      const tel = document.getElementById("tel");
+      const email = document.getElementById("email");
+      const success = document.getElementById("success");
+
+      const fields = [prenom, nom, tel, email];
+
+      success.style.display = "none";
+      let hasError = false;
+
+      fields.forEach(field => {
+        field.classList.remove("field-error");
+
+        if (!field.value || !field.value.trim()) {
+          field.classList.add("field-error");
+          hasError = true;
+        }
+      });
+
+      if (hasError) {
+        const firstError = document.querySelector(".field-error");
+        if (firstError) {
+          firstError.focus();
+          firstError.scrollIntoView({ behavior: "smooth", block: "center" });
+        }
+        return;
+      }
+
+      success.style.display = "block";
+
+      const subject = encodeURIComponent("Demande du guide vendeur – Un cran au-dessus");
+      const body = encodeURIComponent(
+        "Bonjour,\n\n" +
+        "Je souhaite recevoir le guide vendeur « Un cran au-dessus ».\n\n" +
+        "Nom : " + prenom.value + " " + nom.value + "\n" +
+        "Téléphone : " + tel.value + "\n" +
+        "Email : " + email.value + "\n\n" +
+        "Merci.\n"
+      );
+
+      window.location.href =
+        "mailto:contact@jeremyheyob.fr?subject=" + subject + "&body=" + body;
     }
-
-    success.style.display = "block";
-
-    const subject = encodeURIComponent("Demande du guide vendeur – Un cran au-dessus");
-    const body = encodeURIComponent(
-      "Bonjour,\n\n" +
-      "Je souhaite recevoir le guide vendeur « Un cran au-dessus ».\n\n" +
-      "Nom : " + prenom.value + " " + nom.value + "\n" +
-      "Téléphone : " + tel.value + "\n" +
-      "Email : " + email.value + "\n\n" +
-      "Merci.\n"
-    );
-
-    window.location.href =
-      "mailto:contact@jeremyheyob.fr?subject=" + subject + "&body=" + body;
-  }
-</script>
+  </script>
 
 </body>
 </html>
