@@ -9,7 +9,7 @@
   <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>Biens en avant-première | Inscription acquéreur | Jérémy Heyob Immobilier</title>
+  <title>Avis de valeur immobilier | Jérémy Heyob Immobilier</title>
   <meta name="description" content="Jérémy Heyob, négociateur en immobilier à Saint-Priest. Spécialisé dans les biens récents ou rénovés. Estimation, suivi vendeur avec Méthode APA (Avant / Pendant / Après diffusion) et accès aux biens en avant-première.">
 
   <link rel="canonical" href="https://www.jeremyheyob.fr/">
@@ -236,38 +236,6 @@
       border-radius: 2px;
     }
 
-    /* ✅ Surbrillance champs manquants / invalides */
-    .field-error {
-      border: 2px solid #191919 !important;
-      background: #ffffff !important;
-      box-shadow: 0 0 0 4px rgba(25,25,25,0.12) !important;
-    }
-
-    /* ✅ Micro-messages (discrets) */
-    .field-msg {
-      display: none;
-      margin-top: 6px;
-      font-size: 12px;
-      color: var(--text-soft);
-      line-height: 1.35;
-    }
-    .field-msg.is-visible {
-      display: block;
-    }
-
-    .success {
-      display: none;
-      margin-top: 16px;
-      padding: 14px 16px;
-      border-radius: 14px;
-      background: #ffffff;
-      border: 1px dashed var(--border-soft);
-      font-size: 13px;
-      color: #4A4A4A;
-      line-height: 1.5;
-      grid-column: 1 / -1;
-    }
-
     .textarea-custom {
       width: 100%;
       min-height: 120px;
@@ -282,6 +250,130 @@
       overflow: hidden;
     }
 
+    .field-error {
+      border: 2px solid #191919 !important;
+      background: #ffffff !important;
+      box-shadow: 0 0 0 4px rgba(25,25,25,0.12) !important;
+    }
+
+    /* Micro-messages discrets */
+    .field-msg {
+      display: none;
+      margin-top: 6px;
+      font-size: 12px;
+      color: var(--text-soft);
+      line-height: 1.35;
+    }
+    .field-msg.is-visible { display: block; }
+
+    .success {
+      display: none;
+      margin-top: 16px;
+      padding: 14px 16px;
+      border-radius: 14px;
+      background: #ffffff;
+      border: 1px dashed var(--border-soft);
+      font-size: 13px;
+      color: #4A4A4A;
+      line-height: 1.5;
+      grid-column: 1 / -1;
+    }
+
+    .social-block {
+      width: fit-content;
+      margin: 0 auto 8px;
+      background: #ffffff;
+      border-radius: 20px;
+      border: 1px solid #e5e7eb;
+      box-shadow: 0 18px 40px rgba(25,25,25,0.08);
+      padding: 14px 16px;
+    }
+
+    .social-icons {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .social-icons a {
+      width: 42px;
+      height: 42px;
+      border-radius: 14px;
+      display: grid;
+      place-items: center;
+      background: rgba(198, 169, 119, 0.16);
+      border: 1px solid rgba(198,169,119,0.25);
+      transition: transform 0.15s ease, filter 0.15s ease;
+      text-decoration: none;
+    }
+
+    .social-icons a:hover {
+      transform: translateY(-1px);
+      filter: brightness(1.02);
+    }
+
+    .social-icons svg {
+      width: 20px;
+      height: 20px;
+    }
+
+    .contact-block {
+      display: flex;
+      gap: 18px;
+      align-items: center;
+      background: #ffffff;
+      border-radius: 20px;
+      padding: 16px 18px;
+      border: 1px solid var(--border-soft);
+      box-shadow: 0 18px 40px rgba(25, 25, 25, 0.08);
+      max-width: 960px;
+      margin: 16px auto 0;
+    }
+
+    .contact-photo {
+      width: 90px;
+      height: 90px;
+      border-radius: 50%;
+      overflow: hidden;
+      border: 2px solid #e5e7eb;
+      flex-shrink: 0;
+    }
+
+    .contact-photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: top center;
+      display: block;
+    }
+
+    .contact-text h3 {
+      margin: 0 0 4px;
+      font-size: 17px;
+    }
+
+    .contact-text p {
+      margin: 0;
+      font-size: 13px;
+      color: var(--text-soft);
+    }
+
+    .contact-links {
+      margin-top: 8px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      font-size: 13px;
+    }
+
+    .contact-links a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+    .contact-links a:hover { text-decoration: underline; }
+
     .legal-footer {
       margin-top: 40px;
       padding: 18px;
@@ -291,9 +383,116 @@
       opacity: 0.75;
     }
 
-    @media (max-width: 880px) {
-      header { flex-direction: column; align-items: center; }
+    .hero-highlight-with-logo {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
     }
+
+    .hero-highlight-text { flex: 1; }
+
+    .hero-highlight-logo img {
+      width: 180px;
+      height: auto;
+      opacity: 0.8;
+      margin-left: -250px;
+    }
+
+    @media (max-width: 880px) {
+
+  /* Header */
+  header {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .header-center {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 10px 0;
+    margin-top: -40px; /* remonte le texte */
+    margin-bottom: 15px;
+  }
+
+  .tagline-main,
+  .tagline-sub {
+    text-align: center;
+  }
+
+  /* Menu */
+  .header-links {
+    flex-wrap: wrap;
+    row-gap: 10px;
+    column-gap: 14px;
+    padding: 0 10px;
+  }
+
+  .header-links a {
+    position: relative;
+    padding-left: 16px;
+  }
+
+.header-links a:not(:first-child)::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 1px;
+  height: 14px;
+  background: rgba(0, 0, 0, 0.15);
+}
+
+
+  /* Grilles */
+  .actions-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .apa-content {
+    grid-template-columns: 1fr;
+  }
+
+  /* Réseaux sociaux */
+  .social-icons {
+    flex-wrap: nowrap;
+    justify-content: center;
+  }
+
+  .social-icons a {
+    width: 34px;
+    height: 34px;
+    border-radius: 10px;
+    flex-shrink: 0;
+  }
+
+  .social-icons svg {
+    width: 16px;
+    height: 16px;
+  }
+
+  .social-block {
+    padding: 10px 12px;
+    justify-content: center;
+    text-align: center;
+  }
+
+  /* Contact */
+  .contact-block {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .contact-links {
+    justify-content: center;
+    width: 100%;
+  }
+}
+    
   </style>
 </head>
 
@@ -304,6 +503,7 @@
   <div class="header-left">
     <img src="/images/logo.webp" alt="Logo Jérémy Heyob" class="logo">
   </div>
+
   <div class="header-center">
     <div class="tagline-main">VOS PROJETS IMMOBILIERS N'ONT JAMAIS ÉTÉ AUSSI SIMPLES !</div>
     <div class="tagline-sub"><strong>Jérémy HEYOB</strong></div>
@@ -313,10 +513,10 @@
 <div class="header-links">
   <a href="https://www.jeremyheyob.fr/">Accueil</a>
   <a href="https://www.agence.immo/professionnels/jeremy-heyob-453" target="_blank" rel="noopener">Mes biens</a>
-  <a href="https://www.jeremyheyob.fr/avis-de-valeur.html">Estimation</a>
+  <a href="https://www.jeremyheyob.fr/avis-de-valeur.html" class="active">Estimation</a>
   <a href="https://www.immodvisor.com/pro/agencimmocom-jeremy-heyob-saint-priest-69800-53519.html" target="_blank" rel="noopener">Avis vérifiés</a>
   <a href="https://www.jeremyheyob.fr/honoraires.html">Mes honoraires</a>
-  <a href="https://www.jeremyheyob.fr/biens-avant-premiere.html" class="active">Biens en avant-première</a>
+  <a href="https://www.jeremyheyob.fr/biens-avant-premiere.html">Biens en avant-première</a>
   <a href="https://www.jeremyheyob.fr/un-cran-au-dessus.html">Guide vendeur</a>
 </div>
 
@@ -326,42 +526,42 @@
 
 <section class="hero">
   <div class="hero-text">
-    <div class="pill">ESPACE ACQUÉREUR</div>
-    <h1>Recevez mes nouveaux biens avant tout le monde</h1>
+    <div class="pill">ESPACE VENDEUR</div>
+    <h1>Demander un avis de valeur précis</h1>
     <p>
-      Vous recevez un SMS en priorité dès qu’un bien correspond à vos critères,
-      avant la diffusion sur les sites immobiliers.
+      Cette page vous permet de programmer un rendez-vous pour effectuer un avis de valeur clair et structuré,
+      afin d’aborder votre projet de vente avec méthode, lucidité et cohérence.
     </p>
 
-    <div class="hero-highlight">
-      <strong>Pourquoi vous inscrire ?</strong><br><br>
-      • Vous passez <strong>avant tout le monde</strong> : notification dès qu’un bien rentre dans vos critères.<br><br>
-      • Vous gagnez du temps : vous évitez de courir après les annonces déjà vues par des dizaines d’acquéreurs.<br><br>
-      • C’est simple : cette inscription me permet de <strong>vous contacter en priorité</strong>, avant même la mise en ligne publique.<br><br>
-      • Si besoin, je peux aussi vous mettre en relation <strong>gratuitement</strong> avec un courtier pour valider ou optimiser votre budget.
+    <div class="hero-highlight hero-highlight-with-logo">
+      <div class="hero-highlight-text">
+        <strong>Information importante :</strong><br><br>
+        • Tous les propriétaires doivent impérativement être présents.<br><br>
+        • L’accompagnement se déroule sur <strong>2 rendez-vous</strong> :
+        <br>1️⃣ Découverte de votre projet et du bien.
+        <br>2️⃣ Présentation claire de l’avis de valeur et de ma méthode de travail.<br><br>
+        • Cet avis de valeur est <strong>gratuit</strong>.
+      </div>
+
+      <div class="hero-highlight-logo">
+        <img src="/images/logo methode apa.webp" alt="Méthode APA">
+      </div>
     </div>
 
     <div class="hero-meta">
-      <span>SMS prioritaire</span>
-      <span>Critères précis</span>
+      <span>Avis personnalisé</span>
+      <span>Méthode claire</span>
       <span>Gratuit</span>
     </div>
   </div>
 </section>
 
 <section class="card">
-  <h2 class="card-title">Vos coordonnées et votre projet</h2>
+  <h2 class="card-title">Vos informations</h2>
 
   <div class="form-grid">
-    <div>
-      <label>Votre prénom</label>
-      <input id="prenom" autocomplete="given-name">
-    </div>
-
-    <div>
-      <label>Votre nom</label>
-      <input id="nom" autocomplete="family-name">
-    </div>
+    <div><label>Votre prénom</label><input id="prenom" autocomplete="given-name"></div>
+    <div><label>Votre nom</label><input id="nom" autocomplete="family-name"></div>
 
     <div>
       <label>Votre téléphone</label>
@@ -375,13 +575,10 @@
       <div class="field-msg" id="msg-email">Email invalide. Exemple : prenom.nom@mail.com</div>
     </div>
 
-    <div class="full">
-      <label>Ville recherchée</label>
-      <input id="ville" placeholder="Ex : Saint-Priest">
-    </div>
+    <div class="full"><label>Adresse du bien</label><input id="adresse" autocomplete="street-address"></div>
 
     <div>
-      <label>Maison ou appartement</label>
+      <label>Type de bien</label>
       <select id="typeBien">
         <option value="">-- Choisir --</option>
         <option>Appartement</option>
@@ -397,45 +594,15 @@
       </select>
     </div>
 
-    <div>
-      <label>Budget maximum</label>
-      <input id="budget" inputmode="numeric" placeholder="Ex : 250 000 €">
-      <div class="field-msg" id="msg-budget">Budget invalide. Exemple : 250000 ou 250 000 €</div>
-    </div>
+    <div><label>Date souhaitée</label><input id="date" type="date"></div>
 
     <div>
-      <label>Avez-vous déjà vu votre banque ?</label>
-      <select id="banque">
+      <label>Créneau souhaité</label>
+      <select id="creneau">
         <option value="">-- Choisir --</option>
-        <option>Oui</option>
-        <option>Non</option>
-      </select>
-    </div>
-
-    <div class="full">
-      <label>Souhaitez-vous être mis en relation gratuitement avec un courtier pour évaluer ou comparer votre budget ?</label>
-      <select id="courtier">
-        <option value="">-- Choisir --</option>
-        <option>Oui</option>
-        <option>Non</option>
-      </select>
-    </div>
-
-    <div>
-      <label>Vous êtes</label>
-      <select id="statut">
-        <option value="">-- Choisir --</option>
-        <option>Locataire</option>
-        <option>Propriétaire</option>
-      </select>
-    </div>
-
-    <div>
-      <label>Avez-vous besoin de vendre pour acheter ?</label>
-      <select id="venteAvantAchat">
-        <option value="">-- Choisir --</option>
-        <option>Oui</option>
-        <option>Non</option>
+        <option>09h - 10h</option><option>10h - 11h</option><option>11h - 12h</option>
+        <option>14h - 15h</option><option>15h - 16h</option><option>16h - 17h</option>
+        <option>17h - 18h</option><option>18h - 19h</option><option>19h - 20h</option>
       </select>
     </div>
 
@@ -444,13 +611,90 @@
       <textarea
         id="commentaire"
         class="textarea-custom"
-        placeholder="Informations complémentaires (secteur, étage, extérieur, stationnement, etc.)"></textarea>
+        placeholder="Informations complémentaires que je devrais connaitre avant notre rendez-vous"></textarea>
     </div>
 
-    <button class="btn" type="button" onclick="sendMail()">Valider mon inscription</button>
+    <button class="btn" type="button" onclick="sendMail()">Valider ma demande</button>
+  </div>
 
-    <div class="success" id="success">
-      ✅ Inscription validée. Vous serez contacté dès qu’un bien correspondra à votre recherche.
+  <div class="success" id="success">
+    ✅ Demande envoyée. Vous recevrez un mail et un sms de confirmation dès que le rendez-vous sera validé.
+  </div>
+</section>
+
+<section class="social-block" aria-label="Réseaux sociaux">
+  <div class="social-icons">
+    <a href="https://goo.gl/maps/wjfc1aGFBrSLd3tV6" target="_blank" rel="noopener" aria-label="Google">
+      <svg viewBox="0 0 24 24" fill="none" stroke="#7a5a29" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M12 21s7-4.5 7-11a7 7 0 1 0-14 0c0 6.5 7 11 7 11z"></path>
+        <circle cx="12" cy="10" r="2.5"></circle>
+      </svg>
+    </a>
+
+    <a href="https://www.pagesjaunes.fr/pros/62191780" target="_blank" rel="noopener" aria-label="Pages Jaunes">
+      <svg viewBox="0 0 24 24" fill="none" stroke="#7a5a29" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M6 3h9a3 3 0 0 1 3 3v12a3 3 0 0 1-3 3H6a3 3 0 0 1-3-3V6a3 3 0 0 1 3-3z"></path>
+        <path d="M8 8h8"></path>
+        <path d="M8 12h8"></path>
+        <path d="M8 16h6"></path>
+      </svg>
+    </a>
+
+    <a href="https://www.facebook.com/jeremyheyobpro" target="_blank" rel="noopener" aria-label="Facebook">
+      <svg viewBox="0 0 24 24" fill="none" stroke="#7a5a29" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M14 8h3V5h-3a4 4 0 0 0-4 4v3H7v3h3v6h3v-6h3l1-3h-4V9a1 1 0 0 1 1-1z"></path>
+      </svg>
+    </a>
+
+    <a href="https://www.linkedin.com/company/jérémy-heyob/" target="_blank" rel="noopener" aria-label="LinkedIn">
+      <svg viewBox="0 0 24 24" fill="none" stroke="#7a5a29" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4V9h4v2"></path>
+        <rect x="2" y="9" width="4" height="12"></rect>
+        <circle cx="4" cy="4" r="2"></circle>
+      </svg>
+    </a>
+
+    <a href="https://www.instagram.com/jeremyheyob/" target="_blank" rel="noopener" aria-label="Instagram">
+      <svg viewBox="0 0 24 24" fill="none" stroke="#7a5a29" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <rect x="3" y="3" width="18" height="18" rx="5" ry="5"></rect>
+        <circle cx="12" cy="12" r="4"></circle>
+        <path d="M17.5 6.5h.01"></path>
+      </svg>
+    </a>
+
+    <a href="https://www.youtube.com/channel/UCpE0arbirH2tkw2THT_Ef9Q" target="_blank" rel="noopener" aria-label="YouTube">
+      <svg viewBox="0 0 24 24" fill="none" stroke="#7a5a29" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M22 12s0-4-1-5-4-1-9-1-8 0-9 1-1 5-1 5 0 4 1 5 4 1 9 1 8 0 9-1 1-5 1-5z"></path>
+        <path d="M10 9l6 3-6 3V9z"></path>
+      </svg>
+    </a>
+
+    <a href="https://www.tiktok.com/@jeremyheyob" target="_blank" rel="noopener" aria-label="TikTok">
+      <svg viewBox="0 0 24 24" fill="none" stroke="#7a5a29" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M14 3v10a4 4 0 1 1-4-4"></path>
+        <path d="M14 7a6 6 0 0 0 6 2"></path>
+      </svg>
+    </a>
+  </div>
+</section>
+
+<section class="contact-block">
+  <div class="contact-photo">
+    <img src="/images/photo.webp" alt="Photo de Jérémy Heyob">
+  </div>
+
+  <div class="contact-text">
+    <h3>Une question sur votre projet de vente ?</h3>
+    <p>
+      Je reste disponible pour répondre à vos interrogations, vous aider à clarifier votre situation et,
+      vous fournir un avis de valeur précis accompagné d’une stratégie de vente claire et structurée.
+    </p>
+
+    <div class="contact-links">
+      <a href="mailto:contact@jeremyheyob.fr">✉️ Email</a>
+      <a href="sms:+33648145565">💬 SMS</a>
+      <a href="tel:+33648145565">📞 Appel</a>
+      <a href="https://www.jeremyheyob.fr" target="_blank">💻 Site</a>
     </div>
   </div>
 </section>
@@ -464,13 +708,9 @@
 </div>
 
 <script>
-  // -----------------------------
-  // Helpers validation (robustes)
-  // -----------------------------
   function normalizeEmail(v) {
     return String(v || "").trim().toLowerCase();
   }
-
   function isEmailValid(v) {
     const email = normalizeEmail(v);
     return /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email);
@@ -483,35 +723,9 @@
     if (s.startsWith("0033")) s = "0" + s.slice(4);
     return s;
   }
-
   function isPhoneFRValid(v) {
     const s = normalizePhoneFR(v);
     return /^0[1-9]\d{8}$/.test(s);
-  }
-
-  function normalizeBudgetNumber(v) {
-    const raw = String(v || "").trim();
-    const noEuro = raw.replace(/€/g, "");
-    const noSpaces = noEuro.replace(/\s/g, "");
-    const cleaned = noSpaces.replace(/[^\d]/g, ""); // on garde uniquement les chiffres
-    const num = parseInt(cleaned, 10);
-    return Number.isFinite(num) ? num : NaN;
-  }
-
-  function formatBudgetEUR(num) {
-    // 250000 -> "250 000 €"
-    const s = String(num);
-    const withSpaces = s.replace(/\B(?=(\d{3})+(?!\d))/g, " ");
-    return withSpaces + " €";
-  }
-
-  function isBudgetValid(v) {
-    const raw = String(v || "").trim();
-    if (!raw) return false;
-    // interdit lettres (sauf symbole €)
-    if (/[A-Za-z]/.test(raw)) return false;
-    const num = normalizeBudgetNumber(raw);
-    return Number.isFinite(num) && num > 0;
   }
 
   function isNonEmptyText(v) {
@@ -524,9 +738,6 @@
     el.classList.toggle("is-visible", !!visible);
   }
 
-  // -----------------------------
-  // Validation live + auto-remove
-  // -----------------------------
   function validateFieldAndToggleError(el) {
     if (!el) return true;
 
@@ -537,52 +748,25 @@
       ok = !!el.value;
     } else {
       const val = el.value;
-
       if (id === "email") ok = isEmailValid(val);
       else if (id === "tel") ok = isPhoneFRValid(val);
-      else if (id === "budget") ok = isBudgetValid(val);
       else ok = isNonEmptyText(val);
     }
 
     el.classList.toggle("field-error", !ok);
 
-    // Micro-messages uniquement sur formats
     if (id === "email") setMsg("msg-email", !!el.value && !isEmailValid(el.value));
     if (id === "tel") setMsg("msg-tel", !!el.value && !isPhoneFRValid(el.value));
-    if (id === "budget") setMsg("msg-budget", !!el.value && !isBudgetValid(el.value));
 
     return ok;
   }
 
-  // Format budget à la sortie du champ (sans gêner la saisie)
-  document.addEventListener("blur", function (e) {
-    const el = e.target;
-    if (!el || el.id !== "budget") return;
-
-    // Si vide, on laisse vide (et le submit gérera l'erreur)
-    if (!el.value || !el.value.trim()) {
-      setMsg("msg-budget", false);
-      el.classList.remove("field-error");
-      return;
-    }
-
-    if (isBudgetValid(el.value)) {
-      const num = normalizeBudgetNumber(el.value);
-      el.value = formatBudgetEUR(num);
-      el.classList.remove("field-error");
-      setMsg("msg-budget", false);
-    } else {
-      el.classList.add("field-error");
-      setMsg("msg-budget", true);
-    }
-  }, true);
-
-  // Live validation sur input (texte)
+  // Live validation input
   document.addEventListener("input", function (e) {
     const el = e.target;
     if (!el || !el.id) return;
 
-    // Auto-resize textarea
+    // Auto-resize textarea + retire l'erreur si on tape
     if (el.classList && el.classList.contains("textarea-custom")) {
       el.style.height = "auto";
       el.style.height = el.scrollHeight + "px";
@@ -590,43 +774,37 @@
       return;
     }
 
-    if (["prenom","nom","ville","email","tel","budget"].includes(el.id)) {
+    if (["prenom","nom","tel","email","adresse","date"].includes(el.id)) {
       validateFieldAndToggleError(el);
     }
   });
 
-  // Validation sur change (select)
+  // Live validation select
   document.addEventListener("change", function (e) {
     const el = e.target;
     if (!el || !el.id) return;
 
-    if (["typeBien","typologie","banque","courtier","statut","venteAvantAchat"].includes(el.id)) {
+    if (["typeBien","typologie","creneau"].includes(el.id)) {
       validateFieldAndToggleError(el);
     }
   });
 
-  // -----------------------------
-  // Submit
-  // -----------------------------
   function sendMail() {
     const prenom = document.getElementById("prenom");
     const nom = document.getElementById("nom");
     const tel = document.getElementById("tel");
     const email = document.getElementById("email");
-    const ville = document.getElementById("ville");
+    const adresse = document.getElementById("adresse");
     const typeBien = document.getElementById("typeBien");
     const typologie = document.getElementById("typologie");
-    const budget = document.getElementById("budget");
-    const banque = document.getElementById("banque");
-    const courtier = document.getElementById("courtier");
-    const statut = document.getElementById("statut");
-    const venteAvantAchat = document.getElementById("venteAvantAchat");
+    const date = document.getElementById("date");
+    const creneau = document.getElementById("creneau");
     const commentaire = document.getElementById("commentaire");
     const success = document.getElementById("success");
 
     success.style.display = "none";
 
-    const required = [prenom, nom, tel, email, ville, typeBien, typologie, budget, banque, courtier, statut, venteAvantAchat];
+    const required = [prenom, nom, tel, email, adresse, typeBien, typologie, date, creneau];
 
     let hasError = false;
     required.forEach(el => {
@@ -645,25 +823,21 @@
 
     success.style.display = "block";
 
-    const subject = encodeURIComponent("Inscription acquéreur – Biens en avant-première (SMS)");
+    const subject = encodeURIComponent("Demande d’avis de valeur immobilier");
     const phoneNormalized = normalizePhoneFR(tel.value);
     const emailNormalized = normalizeEmail(email.value);
 
     const body = encodeURIComponent(
       "Bonjour,\n\n" +
-      "Je souhaite m’inscrire pour recevoir par SMS les nouveaux biens en avant-première.\n\n" +
-      "Prénom : " + prenom.value.trim() + "\n" +
-      "Nom : " + nom.value.trim() + "\n" +
+      "Je souhaite obtenir un avis de valeur pour mon bien immobilier.\n\n" +
+      "Nom : " + prenom.value.trim() + " " + nom.value.trim() + "\n" +
       "Téléphone : " + phoneNormalized + "\n" +
       "Email : " + emailNormalized + "\n\n" +
-      "Ville recherchée : " + ville.value.trim() + "\n" +
-      "Maison ou appartement : " + typeBien.value + "\n" +
-      "Typologie : " + typologie.value + "\n" +
-      "Budget maximum : " + budget.value.trim() + "\n\n" +
-      "Déjà vu la banque : " + banque.value + "\n" +
-      "Souhaite mise en relation courtier (gratuit) : " + courtier.value + "\n\n" +
-      "Statut : " + statut.value + "\n" +
-      "Besoin de vendre pour acheter : " + venteAvantAchat.value + "\n\n" +
+      "Adresse : " + adresse.value.trim() + "\n" +
+      "Type de bien : " + typeBien.value + "\n" +
+      "Typologie : " + typologie.value + "\n\n" +
+      "Date : " + date.value + "\n" +
+      "Créneau : " + creneau.value + "\n\n" +
       "Commentaire :\n" + (commentaire.value && commentaire.value.trim() ? commentaire.value.trim() : "—") + "\n\n" +
       "Merci.\n"
     );
