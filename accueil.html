@@ -601,6 +601,22 @@
       border: 0;
     }
 
+    .header-links a {
+      position: relative;
+      padding-right: 16px;
+    }
+
+    .header-links a:not(:last-child)::after {
+      content: "";
+      position: absolute;
+      right: 0;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 1px;
+      height: 14px;
+      background: rgba(0, 0, 0, 0.15);
+    }
+
     @media (max-width: 880px) {
       header { flex-direction: column; align-items: center; }
       .actions-grid { grid-template-columns: 1fr; }
@@ -622,7 +638,7 @@
         align-items: center;
         padding: 10px 0;
         margin-top: -40px; /* remonte le bloc texte */
-        margin-bottom: 20px;
+        margin-bottom: 15px;
       }
 
       .tagline-main,
