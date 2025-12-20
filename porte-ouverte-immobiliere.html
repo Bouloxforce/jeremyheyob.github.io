@@ -744,8 +744,10 @@ ${payload.commentaire || "—"}`
       success.style.display = "block";
       ouvrirMail(`Samedi ${creneauChoisi}`, payload);
 
-    } catch (e) {
-      alert("Ce créneau vient d’être réservé par quelqu’un d’autre.");
+      } catch (e) {
+        console.error("Transaction Firestore rejetée:", e);
+        alert("Erreur Firestore: " + (e?.code || e?.message || e));
+      }
     } finally {
       sending = false;
       lockSendButton(false);
