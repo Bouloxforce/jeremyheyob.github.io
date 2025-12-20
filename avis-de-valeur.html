@@ -426,7 +426,7 @@
       margin-left: -250px;
     }
 
-    @media (max-width: 880px) {
+        @media (max-width: 880px) {
 
   /* Header */
   header {
@@ -458,21 +458,13 @@
   }
 
   .header-links a {
-    position: relative;
-    padding-left: 16px;
+    font-size: 13px;
+    white-space: nowrap;
   }
-
-.header-links a:not(:first-child)::before {
-  content: "";
-  position: absolute;
-  left: 0;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 1px;
-  height: 14px;
-  background: rgba(0, 0, 0, 0.15);
-}
-
+      
+  .header-links a:not(:last-child)::after {
+    height: 12px;
+  }
 
   /* Grilles */
   .actions-grid {
