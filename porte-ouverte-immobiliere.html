@@ -684,74 +684,85 @@ ${payload.commentaire || "—"}`
 
     window.location.href = `mailto:contact@jeremyheyob.fr?subject=${subject}&body=${body}`;
   }
-
   window.sendMail = async function () {
-    if (sending) return;
-    sending = true;
-    lockSendButton(true);
+  if (sending) return;
+  sending = true;
+  lockSendButton(true);
 
-    try {
-      const payload = {
-        prenom: prenom.value.trim(),
-        nom: nom.value.trim(),
-        tel: tel.value.trim(),
-        email: email.value.trim(),
-        budget: budget.value.trim(),
-        banque: banque.value,
-        courtier: courtier.value,
-        statut: statut.value,
-        venteAvantAchat: venteAvantAchat.value,
-        commentaire: commentaire.value.trim()
-      };
+  // ✅ En module: on récupère les éléments explicitement
+  const prenomEl = document.getElementById("prenom");
+  const nomEl = document.getElementById("nom");
+  const telEl = document.getElementById("tel");
+  const emailEl = document.getElementById("email");
+  const budgetEl = document.getElementById("budget");
+  const banqueEl = document.getElementById("banque");
+  const courtierEl = document.getElementById("courtier");
+  const statutEl = document.getElementById("statut");
+  const venteAvantAchatEl = document.getElementById("venteAvantAchat");
+  const commentaireEl = document.getElementById("commentaire");
 
-      const creneauChoisi = selectCreneau.value;
+  try {
+    const payload = {
+      prenom: prenomEl.value.trim(),
+      nom: nomEl.value.trim(),
+      tel: telEl.value.trim(),
+      email: emailEl.value.trim(),
+      budget: budgetEl.value.trim(),
+      banque: banqueEl.value,
+      courtier: courtierEl.value,
+      statut: statutEl.value,
+      venteAvantAchat: venteAvantAchatEl.value,
+      commentaire: commentaireEl.value.trim()
+    };
 
-      if (creneauChoisi === "AUTRE_CRENEAU") {
-        success.style.display = "block";
-        ouvrirMail("Autre créneau", payload);
-        return;
+    const creneauChoisi = selectCreneau.value;
+
+    if (!creneauChoisi) {
+      alert("Merci de choisir un créneau.");
+      return;
+    }
+
+    if (creneauChoisi === "AUTRE_CRENEAU") {
+      success.style.display = "block";
+      ouvrirMail("Autre créneau", payload);
+      return;
+    }
+
+    await runTransaction(db, async (transaction) => {
+      const snap = await transaction.get(docRef);
+      if (!snap.exists()) throw new Error("Document introuvable");
+
+      const oldCreneaux = snap.data().creneaux;
+
+      const index = oldCreneaux.findIndex(
+        (c) => normalizeId(c.id) === normalizeId(creneauChoisi)
+      );
+
+      if (index === -1) throw new Error("Créneau introuvable");
+      if (oldCreneaux[index].etat !== "disponible") throw new Error("Créneau déjà réservé");
+
+      const newCreneaux = oldCreneaux.map((c) => ({ id: c.id, etat: c.etat }));
+      newCreneaux[index].etat = "pris";
+
+      // ✅ Déblocage jusqu’au dernier : index <= 4
+      if (index <= 4 && newCreneaux[index + 1]) {
+        newCreneaux[index + 1].etat = "disponible";
       }
 
-      await runTransaction(db, async transaction => {
-        const snap = await transaction.get(docRef);
-        if (!snap.exists()) throw new Error("Document introuvable");
+      transaction.update(docRef, { creneaux: newCreneaux });
+    });
 
-        const oldCreneaux = snap.data().creneaux;
+    success.style.display = "block";
+    ouvrirMail(`Samedi ${creneauChoisi}`, payload);
 
-        const index = oldCreneaux.findIndex(
-          c => normalizeId(c.id) === normalizeId(creneauChoisi)
-        );
-
-        if (index === -1) throw new Error("Créneau introuvable");
-        if (oldCreneaux[index].etat !== "disponible")
-          throw new Error("Créneau déjà réservé");
-
-        const newCreneaux = oldCreneaux.map(c => ({
-          id: c.id,
-          etat: c.etat
-        }));
-        newCreneaux[index].etat = "pris";
-
-        if (index <= 3 && newCreneaux[index + 1]) {
-          newCreneaux[index + 1].etat = "disponible";
-        }
-
-        transaction.update(docRef, {
-          creneaux: newCreneaux,
-        });
-      });
-
-      success.style.display = "block";
-      ouvrirMail(`Samedi ${creneauChoisi}`, payload);
-
-    } catch (e) {
-      console.error("Transaction Firestore rejetée:", e);
-      alert("Erreur Firestore: " + (e?.code || e?.message || e));
-    } finally {
-      sending = false;
-      lockSendButton(false);
-    }
-  };
+  } catch (e) {
+    console.error("Transaction Firestore rejetée:", e);
+    alert("Erreur Firestore: " + (e?.code || e?.message || e));
+  } finally {
+    sending = false;
+    lockSendButton(false);
+  }
+};
 </script>
 
 </body>
