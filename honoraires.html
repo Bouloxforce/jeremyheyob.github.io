@@ -504,10 +504,9 @@
     white-space: nowrap;
   }
 
-  .header-links a:not(:first-child)::before {
-    height: 10px;                 /* plus court */
-    width: 1px;                   /* on garde 1px (safe) */
-    background: rgba(0,0,0,0.10); /* plus léger visuellement */
+  .header-links a.active::after {
+    height: 1px;                  /* clé principale */
+    background: rgba(198,169,119,0.75); /* adoucit visuellement */
   }
       
   .header-links a:not(:last-child)::after {
