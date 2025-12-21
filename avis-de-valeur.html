@@ -5,6 +5,9 @@
   <link rel="shortcut icon" href="/images/favicon.ico">
   <meta charset="UTF-8">
 
+  <!-- ✅ iOS/Safari : empêche la détection auto des numéros (liens bleus / soulignés) -->
+  <meta name="format-detection" content="telephone=no,date=no,address=no,email=no">
+
   <!-- SEO (INDEXATION ACTIVÉE) -->
   <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -178,6 +181,7 @@
       background: #fafafa;
       font-size: 14px;
       font-family: inherit;
+      color: var(--text-main);
     }
 
     .full { grid-column: 1 / -1; }
@@ -208,6 +212,7 @@
       background: rgba(198,169,119,0.10);
     }
 
+    /* MENU — IDENTIQUE PAGE ACCUEIL */
     .header-links {
       display: flex;
       justify-content: center;
@@ -218,50 +223,30 @@
     }
 
     .header-links a {
+      position: relative;
       color: var(--text-soft);
       text-decoration: none;
-      position: relative;
+      font-weight: 500;
+      padding-left: 16px;
     }
 
-    /* MENU — IDENTIQUE PAGE ACCUEIL */
+    .header-links a:hover { color: var(--accent); }
 
-.header-links {
-  display: flex;
-  justify-content: center;
-  gap: 18px;
-  font-size: 14px;
-  margin: 0 auto 24px;
-}
+    .header-links a:not(:first-child)::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 1px;
+      height: 14px;
+      background: rgba(0, 0, 0, 0.15);
+    }
 
-.header-links a {
-  position: relative;
-  color: var(--text-soft);
-  text-decoration: none;
-  font-weight: 500;
-  padding-left: 16px;
-}
-
-.header-links a:hover {
-  color: var(--accent);
-}
-
-/* Séparateur entre items */
-.header-links a:not(:first-child)::before {
-  content: "";
-  position: absolute;
-  left: 0;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 1px;
-  height: 14px;
-  background: rgba(0, 0, 0, 0.15);
-}
-
-/* État actif — IDENTIQUE ACCUEIL */
-.header-links a.active {
-  color: var(--text-main);
-  font-weight: 700;
-}
+    .header-links a.active {
+      color: var(--text-main);
+      font-weight: 700;
+    }
 
     .textarea-custom {
       width: 100%;
@@ -275,6 +260,7 @@
       font-family: inherit;
       resize: none;
       overflow: hidden;
+      color: var(--text-main);
     }
 
     .field-error {
@@ -290,6 +276,7 @@
       font-size: 12px;
       color: var(--text-soft);
       line-height: 1.35;
+      text-decoration: none !important;
     }
     .field-msg.is-visible { display: block; }
 
@@ -341,10 +328,7 @@
       filter: brightness(1.02);
     }
 
-    .social-icons svg {
-      width: 20px;
-      height: 20px;
-    }
+    .social-icons svg { width: 20px; height: 20px; }
 
     .contact-block {
       display: flex;
@@ -376,10 +360,7 @@
       display: block;
     }
 
-    .contact-text h3 {
-      margin: 0 0 4px;
-      font-size: 17px;
-    }
+    .contact-text h3 { margin: 0 0 4px; font-size: 17px; }
 
     .contact-text p {
       margin: 0;
@@ -395,11 +376,30 @@
       font-size: 13px;
     }
 
-    .contact-links a {
-      color: var(--accent);
+    /* ✅ Couleur uniforme Email/SMS/Appel (inclut :visited) */
+    .contact-links a,
+    .contact-links a:visited,
+    .contact-links a:hover,
+    .contact-links a:active,
+    .contact-links a:focus {
+      color: var(--accent) !important;
       text-decoration: none;
     }
     .contact-links a:hover { text-decoration: underline; }
+
+    /* ✅ iOS/Safari : neutralise les liens auto “data detectors” (bleu / souligné) */
+    a[x-apple-data-detectors],
+    a[x-apple-data-detectors]:hover,
+    a[x-apple-data-detectors]:active,
+    a[x-apple-data-detectors]:visited {
+      color: inherit !important;
+      text-decoration: none !important;
+      font-size: inherit !important;
+      font-family: inherit !important;
+      font-weight: inherit !important;
+      line-height: inherit !important;
+      cursor: inherit !important;
+    }
 
     .legal-footer {
       margin-top: 40px;
@@ -428,147 +428,128 @@
 
     @media (max-width: 880px) {
 
-  /* Header */
-  header {
-    flex-direction: column;
-    align-items: center;
-  }
+      header {
+        flex-direction: column;
+        align-items: center;
+      }
 
-  .header-center {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    padding: 10px 0;
-    margin-top: -40px;
-    margin-bottom: 15px;
-  }
+      .header-center {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding: 10px 0;
+        margin-top: -40px;
+        margin-bottom: 15px;
+      }
 
-  .tagline-main,
-  .tagline-sub {
-    text-align: center;
-  }
+      .tagline-main,
+      .tagline-sub {
+        text-align: center;
+      }
 
-  /* Menu */
-  .header-links {
-    flex-wrap: wrap;
-    row-gap: 10px;
-    column-gap: 14px;
-    padding: 0 10px;
-  }
+      .header-links {
+        flex-wrap: wrap;
+        row-gap: 10px;
+        column-gap: 14px;
+        padding: 0 10px;
+      }
 
-  .header-links a {
-    font-size: 13px;
-    white-space: nowrap;
-  }
+      .header-links a {
+        font-size: 13px;
+        white-space: nowrap;
+      }
 
-  /* IMPORTANT : aucun trait (underline) sur l'onglet actif */
-  .header-links a.active::after {
-    content: none !important;
-    display: none !important;
-  }
+      .header-links a.active::after {
+        content: none !important;
+        display: none !important;
+      }
 
-  /* ===== HERO HIGHLIGHT : logo au-dessus du texte sur mobile ===== */
-  .hero-highlight-with-logo {
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-  }
+      .hero-highlight-with-logo {
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+      }
 
-  .hero-highlight-logo {
-    order: -1;
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    margin: 0 0 12px 0;
-  }
+      .hero-highlight-logo {
+        order: -1;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        margin: 0 0 12px 0;
+      }
 
-  .hero-highlight-logo img {
-    margin-left: 0 !important;
-    width: 250px;
-    max-width: 70%;
-    height: auto;
-  }
+      .hero-highlight-logo img {
+        margin-left: 0 !important;
+        width: 250px;
+        max-width: 70%;
+        height: auto;
+      }
 
-  .hero-highlight-text {
-    width: 100%;
-  }
+      .hero-highlight-text { width: 100%; }
 
-  /* ===== FORM : 1 colonne sur mobile (corrige iOS date trop large) ===== */
-  .form-grid {
-    grid-template-columns: 1fr;
-    row-gap: 14px;
-    column-gap: 14px;
-  }
+      /* FORM : 1 colonne sur mobile */
+      .form-grid {
+        grid-template-columns: 1fr;
+        row-gap: 14px;
+        column-gap: 14px;
+      }
 
-  /* Les blocs que tu veux forcer en pleine largeur (tel/email/date/creneau) */
-  .full-mobile {
-    grid-column: 1 / -1;
-  }
+      .form-grid > div { min-width: 0 !important; }
 
-  /* Sécurité : aucun item grid ne force une largeur */
-  .form-grid > div {
-    min-width: 0 !important;
-  }
+      .form-grid input,
+      .form-grid select,
+      .form-grid textarea {
+        width: 100% !important;
+        max-width: 100% !important;
+        min-width: 0 !important;
+      }
 
-  /* Tous les champs doivent suivre la largeur de la colonne */
-  .form-grid input,
-  .form-grid select,
-  .form-grid textarea {
-    width: 100% !important;
-    max-width: 100% !important;
-    min-width: 0 !important;
-  }
+      #date,
+      .form-grid input[type="date"] {
+        display: block;
+        width: 100% !important;
+        max-width: 100% !important;
+        min-width: 0 !important;
+        inline-size: 100% !important;
+        max-inline-size: 100% !important;
+        min-inline-size: 0 !important;
+      }
 
-  /* Spécifique DATE iOS : neutralise les tailles implicites */
-  #date,
-  .form-grid input[type="date"] {
-    display: block;
-    width: 100% !important;
-    max-width: 100% !important;
-    min-width: 0 !important;
-    inline-size: 100% !important;
-    max-inline-size: 100% !important;
-    min-inline-size: 0 !important;
-  }
+      .social-icons {
+        flex-wrap: nowrap;
+        justify-content: center;
+      }
 
-  /* Réseaux sociaux */
-  .social-icons {
-    flex-wrap: nowrap;
-    justify-content: center;
-  }
+      .social-icons a {
+        width: 34px;
+        height: 34px;
+        border-radius: 10px;
+        flex-shrink: 0;
+      }
 
-  .social-icons a {
-    width: 34px;
-    height: 34px;
-    border-radius: 10px;
-    flex-shrink: 0;
-  }
+      .social-icons svg {
+        width: 16px;
+        height: 16px;
+      }
 
-  .social-icons svg {
-    width: 16px;
-    height: 16px;
-  }
+      .social-block {
+        padding: 10px 12px;
+        justify-content: center;
+        text-align: center;
+      }
 
-  .social-block {
-    padding: 10px 12px;
-    justify-content: center;
-    text-align: center;
-  }
+      .contact-block {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+      }
 
-  /* Contact */
-  .contact-block {
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-  }
-
-  .contact-links {
-    justify-content: center;
-    width: 100%;
-  }
-}
-    
+      .contact-links {
+        justify-content: center;
+        width: 100%;
+      }
+    }
   </style>
 </head>
 
@@ -642,11 +623,15 @@
     <div>
       <label>Votre téléphone</label>
       <input id="tel" type="tel" inputmode="tel" autocomplete="tel" placeholder="Ex : 06 12 34 56 78">
+      <!-- ✅ message tel -->
+      <div class="field-msg" id="msg-tel">Numéro invalide. Exemple : 06 12 34 56 78</div>
     </div>
 
     <div>
       <label>Votre email</label>
       <input id="email" type="email" inputmode="email" autocomplete="email" placeholder="Ex : prenom.nom@mail.com">
+      <!-- ✅ message email -->
+      <div class="field-msg" id="msg-email">Email invalide. Exemple : prenom.nom@mail.com</div>
     </div>
 
     <div class="full"><label>Adresse du bien</label><input id="adresse" autocomplete="street-address"></div>
@@ -689,10 +674,10 @@
     </div>
 
     <button class="btn" type="button" onclick="sendMail()">Valider ma demande</button>
-  </div>
 
-  <div class="success" id="success">
-    ✅ Demande envoyée. Vous recevrez un mail et un sms de confirmation dès que le rendez-vous sera validé.
+    <div class="success" id="success">
+      ✅ Demande envoyée. Vous recevrez un mail et un sms de confirmation dès que le rendez-vous sera validé.
+    </div>
   </div>
 </section>
 
@@ -811,6 +796,14 @@
     el.classList.toggle("is-visible", !!visible);
   }
 
+  // ✅ UX : on n’affiche les messages tel/email qu’après blur (ou après submit)
+  const touched = Object.create(null);
+  let formSubmitted = false;
+
+  function shouldShowMessagesFor(el) {
+    return formSubmitted || !!touched[el.id];
+  }
+
   function validateFieldAndToggleError(el) {
     if (!el) return true;
 
@@ -826,39 +819,52 @@
       else ok = isNonEmptyText(val);
     }
 
-    el.classList.toggle("field-error", !ok);
+    // Erreur visuelle : seulement après blur ou submit
+    const allowUI = shouldShowMessagesFor(el) || (el.tagName === "SELECT" && formSubmitted);
+    el.classList.toggle("field-error", allowUI ? !ok : false);
 
-    if (id === "email") setMsg("msg-email", !!el.value && !isEmailValid(el.value));
-    if (id === "tel") setMsg("msg-tel", !!el.value && !isPhoneFRValid(el.value));
+    // Messages tel/email : seulement après blur ou submit
+    if (id === "email") setMsg("msg-email", allowUI && !!el.value && !isEmailValid(el.value));
+    if (id === "tel") setMsg("msg-tel", allowUI && !!el.value && !isPhoneFRValid(el.value));
 
     return ok;
   }
 
-  // Live validation input
+  // Blur => "touched" + validation + messages
+  document.addEventListener("blur", function (e) {
+    const el = e.target;
+    if (!el || !el.id) return;
+
+    if (["prenom","nom","tel","email","adresse","date"].includes(el.id) || el.tagName === "SELECT") {
+      touched[el.id] = true;
+      validateFieldAndToggleError(el);
+    }
+  }, true);
+
+  // Input => si déjà touched (ou submit), on valide en live
   document.addEventListener("input", function (e) {
     const el = e.target;
     if (!el || !el.id) return;
 
-    // Auto-resize textarea + retire l'erreur si on tape
     if (el.classList && el.classList.contains("textarea-custom")) {
       el.style.height = "auto";
       el.style.height = el.scrollHeight + "px";
-      el.classList.remove("field-error");
+      if (formSubmitted) el.classList.remove("field-error");
       return;
     }
 
     if (["prenom","nom","tel","email","adresse","date"].includes(el.id)) {
-      validateFieldAndToggleError(el);
+      if (shouldShowMessagesFor(el)) validateFieldAndToggleError(el);
     }
   });
 
-  // Live validation select
   document.addEventListener("change", function (e) {
     const el = e.target;
     if (!el || !el.id) return;
 
     if (["typeBien","typologie","creneau"].includes(el.id)) {
-      validateFieldAndToggleError(el);
+      if (formSubmitted) touched[el.id] = true;
+      if (formSubmitted) validateFieldAndToggleError(el);
     }
   });
 
@@ -876,11 +882,13 @@
     const success = document.getElementById("success");
 
     success.style.display = "none";
+    formSubmitted = true;
 
     const required = [prenom, nom, tel, email, adresse, typeBien, typologie, date, creneau];
 
     let hasError = false;
     required.forEach(el => {
+      touched[el.id] = true;
       const ok = validateFieldAndToggleError(el);
       if (!ok) hasError = true;
     });
