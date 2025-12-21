@@ -4,6 +4,10 @@
   <link rel="icon" type="image/x-icon" href="/images/favicon.ico">
   <link rel="shortcut icon" href="/images/favicon.ico">
   <meta charset="UTF-8">
+
+  <!-- ✅ iOS/Safari : empêche la détection auto (téléphone / email / date / adresse) => pas de bleu/souligné -->
+  <meta name="format-detection" content="telephone=no,date=no,address=no,email=no">
+
   <meta name="robots" content="noindex, nofollow">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -209,7 +213,6 @@
       box-shadow: 0 0 0 4px rgba(25,25,25,0.12) !important;
     }
 
-    /* Micro-messages discrets (si format saisi mais invalide) */
     .field-msg {
       display: none;
       margin-top: 6px;
@@ -218,6 +221,20 @@
       line-height: 1.35;
     }
     .field-msg.is-visible { display: block; }
+
+    /* ✅ iOS/Safari : neutralise les liens auto “data detectors” (bleu / souligné) */
+    a[x-apple-data-detectors],
+    a[x-apple-data-detectors]:hover,
+    a[x-apple-data-detectors]:active,
+    a[x-apple-data-detectors]:visited {
+      color: inherit !important;
+      text-decoration: none !important;
+      font-size: inherit !important;
+      font-family: inherit !important;
+      font-weight: inherit !important;
+      line-height: inherit !important;
+      cursor: inherit !important;
+    }
 
     .success {
       display: none;
@@ -339,67 +356,62 @@
 
     @media (max-width: 880px) {
       header { flex-direction: column; align-items: center; }
+      .contact-block { flex-direction: column; align-items: center; text-align: center; }
+      .contact-links { justify-content: center; width: 100%; }
 
-      .header-center {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        padding: 10px 0;
-        margin-top: -40px;
-        margin-bottom: 15px;
+      /* ✅ mêmes réglages mobile que tes pages “référence” */
+      .header-center{
+        display:flex;
+        flex-direction:column;
+        justify-content:center;
+        align-items:center;
+        padding:10px 0;
+        margin-top:-40px;
+        margin-bottom:15px;
+      }
+      .tagline-main,.tagline-sub{ text-align:center; }
+
+      .social-icons{
+        flex-wrap:nowrap;
+        justify-content:center;
+      }
+      .social-icons a{
+        width:34px;
+        height:34px;
+        border-radius:10px;
+        flex-shrink:0;
+      }
+      .social-icons svg{
+        width:16px;
+        height:16px;
+      }
+      .social-block{
+        padding:10px 12px;
+        justify-content:center;
+        text-align:center;
       }
 
-      .tagline-main,
-      .tagline-sub { text-align: center; }
-
-      /* ✅ FORM : 1 colonne sur mobile (chaque champ sur une seule ligne) */
+      /* ✅ form 1 colonne sur mobile (prénom/nom sur une seule ligne) */
       .form-grid{
-        grid-template-columns: 1fr;
-        row-gap: 14px;
+        grid-template-columns:1fr;
+        row-gap:14px;
+        column-gap:14px;
       }
-
       .form-grid > div{
-        grid-column: 1 / -1;
-        min-width: 0;
+        grid-column:1 / -1;
+        min-width:0 !important;
       }
-
       .form-grid input,
       .form-grid select,
       .form-grid textarea{
-        width: 100%;
-        max-width: 100%;
-        min-width: 0;
+        width:100% !important;
+        max-width:100% !important;
+        min-width:0 !important;
       }
-
       .form-grid .btn{
-        grid-column: 1 / -1;
-        width: 100%;
+        grid-column:1 / -1;
+        width:100%;
       }
-
-      /* ✅ Bloc réseaux sociaux : 1 ligne sur mobile */
-      .social-icons { flex-wrap: nowrap; justify-content: center; }
-
-      .social-icons a {
-        width: 34px;
-        height: 34px;
-        border-radius: 10px;
-        flex-shrink: 0;
-      }
-
-      .social-icons svg {
-        width: 16px;
-        height: 16px;
-      }
-
-      .social-block {
-        padding: 10px 12px;
-        justify-content: center;
-        text-align: center;
-      }
-
-      .contact-block { flex-direction: column; align-items: center; text-align: center; }
-      .contact-links { justify-content: center; width: 100%; }
     }
   </style>
 </head>
@@ -470,11 +482,7 @@
       </select>
     </div>
 
-    <div>
-      <label>Budget maximum</label>
-      <input id="budget" placeholder="Ex : 250 000 €">
-      <div class="field-msg" id="msg-budget">Budget invalide. Exemple : 250 000 €</div>
-    </div>
+    <div><label>Budget maximum</label><input id="budget" placeholder="Ex : 250 000 €"></div>
 
     <div>
       <label>Avez-vous déjà vu votre banque ?</label>
@@ -690,17 +698,6 @@
     return /^0[1-9]\d{8}$/.test(s);
   }
 
-  function normalizeBudget(v) {
-    const raw = String(v || "").trim();
-    return raw.replace(/[^\d]/g, "");
-  }
-  function isBudgetValid(v) {
-    const digits = normalizeBudget(v);
-    if (!digits) return false;
-    const n = parseInt(digits, 10);
-    return Number.isFinite(n) && n >= 1000 && n <= 100000000;
-  }
-
   function isNonEmptyText(v) {
     return !!String(v || "").trim();
   }
@@ -709,14 +706,6 @@
     const el = document.getElementById(id);
     if (!el) return;
     el.classList.toggle("is-visible", !!visible);
-  }
-
-  // ✅ même logique : erreurs seulement après blur ou submit pour tel/email/budget
-  const touched = Object.create(null);
-  let formSubmitted = false;
-
-  function shouldShowUI(el) {
-    return formSubmitted || !!touched[el.id];
   }
 
   function validateFieldAndToggleError(el) {
@@ -731,31 +720,16 @@
       const val = el.value;
       if (id === "email") ok = isEmailValid(val);
       else if (id === "tel") ok = isPhoneFRValid(val);
-      else if (id === "budget") ok = isBudgetValid(val);
       else ok = isNonEmptyText(val);
     }
 
-    const allowUI = (id === "tel" || id === "email" || id === "budget") ? shouldShowUI(el) : true;
+    el.classList.toggle("field-error", !ok);
 
-    el.classList.toggle("field-error", allowUI ? !ok : false);
-
-    if (id === "email") setMsg("msg-email", allowUI && !!el.value && !isEmailValid(el.value));
-    if (id === "tel") setMsg("msg-tel", allowUI && !!el.value && !isPhoneFRValid(el.value));
-    if (id === "budget") setMsg("msg-budget", allowUI && !!el.value && !isBudgetValid(el.value));
+    if (id === "email") setMsg("msg-email", !!el.value && !isEmailValid(el.value));
+    if (id === "tel") setMsg("msg-tel", !!el.value && !isPhoneFRValid(el.value));
 
     return ok;
   }
-
-  // Blur => touched + validation (tel/email/budget)
-  document.addEventListener("blur", (e) => {
-    const el = e.target;
-    if (!el || !el.id) return;
-
-    if (["tel","email","budget"].includes(el.id)) {
-      touched[el.id] = true;
-      validateFieldAndToggleError(el);
-    }
-  }, true);
 
   // Live remove + validation
   document.addEventListener("input", (e) => {
@@ -770,12 +744,7 @@
       return;
     }
 
-    if (["prenom","nom"].includes(el.id)) {
-      validateFieldAndToggleError(el);
-      return;
-    }
-
-    if (["tel","email","budget"].includes(el.id) && shouldShowUI(el)) {
+    if (["prenom","nom","tel","email","budget"].includes(el.id)) {
       validateFieldAndToggleError(el);
     }
   });
@@ -889,7 +858,6 @@ ${payload.commentaire || "—"}`
     if (sending) return;
 
     success.style.display = "none";
-    formSubmitted = true;
 
     // Champs requis (commentaire facultatif)
     const required = [
@@ -903,7 +871,6 @@ ${payload.commentaire || "—"}`
     // Validation + surbrillance
     let hasError = false;
     required.forEach(el => {
-      if (el && el.id && ["tel","email","budget"].includes(el.id)) touched[el.id] = true;
       const ok = validateFieldAndToggleError(el);
       if (!ok) hasError = true;
     });
