@@ -305,51 +305,91 @@
     }
 
     .contact-block .contact-links a:hover { text-decoration: underline; }
+       @media (max-width: 880px) {
 
-    @media (max-width: 1024px) {
-      .layout { grid-template-columns: 1fr; }
-    }
+  /* Header */
+  header {
+    flex-direction: column;
+    align-items: center;
+  }
 
-    @media (max-width: 768px) {
-      .page { padding: 16px 12px 40px; }
+  .header-center {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 10px 0;
+    margin-top: -40px; /* remonte le texte */
+    margin-bottom: 15px;
+  }
 
-      header {
-        flex-direction: column;
-        padding: 14px;
-        border-radius: 22px;
-      }
+  .tagline-main,
+  .tagline-sub {
+    text-align: center;
+  }
 
-      .carousel { height: auto; aspect-ratio: unset; }
-      .carousel img { height: 100%; }
+  /* Menu */
+  .header-links {
+    flex-wrap: wrap;
+    row-gap: 10px;
+    column-gap: 14px;
+    padding: 0 10px;
+  }
 
-      .grid-two { grid-template-columns: 1fr; font-size: 13px; }
+  .header-links a {
+    font-size: 13px;
+    white-space: nowrap;
+  }
 
-      .form-grid { grid-template-columns: 1fr; }
-      .form-grid > div { min-width: 0; }
+  .header-links a:not(:last-child)::after {
+    height: 12px;
+  }
 
-      label { white-space: normal; display: block; }
+  /* Grilles */
+  .actions-grid {
+    grid-template-columns: 1fr;
+  }
 
-      input, select, textarea { width: 100%; max-width: 100%; }
+  .apa-content {
+    grid-template-columns: 1fr;
+  }
 
-      .btn { font-size: 14px; grid-column: 1 / -1; }
+  /* Réseaux sociaux */
+  .social-icons {
+    flex-wrap: nowrap;
+    justify-content: center;
+  }
 
-      .contact-block {
-        flex-direction: column;
-        align-items: center;
-        text-align: center;
-      }
+  .social-icons a {
+    width: 34px;
+    height: 34px;
+    border-radius: 10px;
+    flex-shrink: 0;
+  }
 
-      .contact-block .contact-links {
-        justify-content: center;
-        width: 100%;
-      }
-    }
+  .social-icons svg {
+    width: 16px;
+    height: 16px;
+  }
 
-    @media (max-width: 480px) {
-      .carousel { aspect-ratio: unset; }
-      .lightbox-prev, .lightbox-next { font-size: 32px; }
-      .lightbox-close { font-size: 40px; }
-    }
+  .social-block {
+    padding: 10px 12px;
+    justify-content: center;
+    text-align: center;
+  }
+
+  /* Contact */
+  .contact-block {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .contact-links {
+    justify-content: center;
+    width: 100%;
+  }
+}
   </style>
 
   <script>
