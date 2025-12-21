@@ -306,50 +306,91 @@
 
     .contact-block .contact-links a:hover { text-decoration: underline; }
 
-    @media (max-width: 1024px) {
-      .layout { grid-template-columns: 1fr; }
-    }
+       @media (max-width: 880px) {
 
-    @media (max-width: 768px) {
-      .page { padding: 16px 12px 40px; }
+  /* Header */
+  header {
+    flex-direction: column;
+    align-items: center;
+  }
 
-      header {
-        flex-direction: column;
-        padding: 14px;
-        border-radius: 22px;
-      }
+  .header-center {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 10px 0;
+    margin-top: -40px; /* remonte le texte */
+    margin-bottom: 15px;
+  }
 
-      .carousel { height: auto; aspect-ratio: unset; }
-      .carousel img { height: 100%; }
+  .tagline-main,
+  .tagline-sub {
+    text-align: center;
+  }
 
-      .grid-two { grid-template-columns: 1fr; font-size: 13px; }
+  /* Menu */
+  .header-links {
+    flex-wrap: wrap;
+    row-gap: 10px;
+    column-gap: 14px;
+    padding: 0 10px;
+  }
 
-      .form-grid { grid-template-columns: 1fr; }
-      .form-grid > div { min-width: 0; }
+  .header-links a {
+    font-size: 13px;
+    white-space: nowrap;
+  }
 
-      label { white-space: normal; display: block; }
+  .header-links a:not(:last-child)::after {
+    height: 12px;
+  }
 
-      input, select, textarea { width: 100%; max-width: 100%; }
+  /* Grilles */
+  .actions-grid {
+    grid-template-columns: 1fr;
+  }
 
-      .btn { font-size: 14px; grid-column: 1 / -1; }
+  .apa-content {
+    grid-template-columns: 1fr;
+  }
 
-      .contact-block {
-        flex-direction: column;
-        align-items: center;
-        text-align: center;
-      }
+  /* Réseaux sociaux */
+  .social-icons {
+    flex-wrap: nowrap;
+    justify-content: center;
+  }
 
-      .contact-block .contact-links {
-        justify-content: center;
-        width: 100%;
-      }
-    }
+  .social-icons a {
+    width: 34px;
+    height: 34px;
+    border-radius: 10px;
+    flex-shrink: 0;
+  }
 
-    @media (max-width: 480px) {
-      .carousel { aspect-ratio: unset; }
-      .lightbox-prev, .lightbox-next { font-size: 32px; }
-      .lightbox-close { font-size: 40px; }
-    }
+  .social-icons svg {
+    width: 16px;
+    height: 16px;
+  }
+
+  .social-block {
+    padding: 10px 12px;
+    justify-content: center;
+    text-align: center;
+  }
+
+  /* Contact */
+  .contact-block {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .contact-links {
+    justify-content: center;
+    width: 100%;
+  }
+}
   </style>
 
   <script>
