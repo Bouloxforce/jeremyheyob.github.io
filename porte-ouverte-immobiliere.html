@@ -339,6 +339,40 @@
 
     @media (max-width: 880px) {
       header { flex-direction: column; align-items: center; }
+
+      .header-center {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding: 10px 0;
+        margin-top: -40px;
+        margin-bottom: 15px;
+      }
+
+      .tagline-main,
+      .tagline-sub { text-align: center; }
+
+      .social-icons { flex-wrap: nowrap; justify-content: center; }
+
+      .social-icons a {
+        width: 34px;
+        height: 34px;
+        border-radius: 10px;
+        flex-shrink: 0;
+      }
+
+      .social-icons svg {
+        width: 16px;
+        height: 16px;
+      }
+
+      .social-block {
+        padding: 10px 12px;
+        justify-content: center;
+        text-align: center;
+      }
+
       .contact-block { flex-direction: column; align-items: center; text-align: center; }
       .contact-links { justify-content: center; width: 100%; }
     }
@@ -411,7 +445,11 @@
       </select>
     </div>
 
-    <div><label>Budget maximum</label><input id="budget" placeholder="Ex : 250 000 €"></div>
+    <div>
+      <label>Budget maximum</label>
+      <input id="budget" placeholder="Ex : 250 000 €">
+      <div class="field-msg" id="msg-budget">Budget invalide. Exemple : 250 000 €</div>
+    </div>
 
     <div>
       <label>Avez-vous déjà vu votre banque ?</label>
@@ -627,6 +665,17 @@
     return /^0[1-9]\d{8}$/.test(s);
   }
 
+  function normalizeBudget(v) {
+    const raw = String(v || "").trim();
+    return raw.replace(/[^\d]/g, "");
+  }
+  function isBudgetValid(v) {
+    const digits = normalizeBudget(v);
+    if (!digits) return false;
+    const n = parseInt(digits, 10);
+    return Number.isFinite(n) && n >= 1000 && n <= 100000000;
+  }
+
   function isNonEmptyText(v) {
     return !!String(v || "").trim();
   }
@@ -635,6 +684,14 @@
     const el = document.getElementById(id);
     if (!el) return;
     el.classList.toggle("is-visible", !!visible);
+  }
+
+  // ✅ même logique : erreurs seulement après blur ou submit pour tel/email/budget
+  const touched = Object.create(null);
+  let formSubmitted = false;
+
+  function shouldShowUI(el) {
+    return formSubmitted || !!touched[el.id];
   }
 
   function validateFieldAndToggleError(el) {
@@ -649,16 +706,31 @@
       const val = el.value;
       if (id === "email") ok = isEmailValid(val);
       else if (id === "tel") ok = isPhoneFRValid(val);
+      else if (id === "budget") ok = isBudgetValid(val);
       else ok = isNonEmptyText(val);
     }
 
-    el.classList.toggle("field-error", !ok);
+    const allowUI = (id === "tel" || id === "email" || id === "budget") ? shouldShowUI(el) : true;
 
-    if (id === "email") setMsg("msg-email", !!el.value && !isEmailValid(el.value));
-    if (id === "tel") setMsg("msg-tel", !!el.value && !isPhoneFRValid(el.value));
+    el.classList.toggle("field-error", allowUI ? !ok : false);
+
+    if (id === "email") setMsg("msg-email", allowUI && !!el.value && !isEmailValid(el.value));
+    if (id === "tel") setMsg("msg-tel", allowUI && !!el.value && !isPhoneFRValid(el.value));
+    if (id === "budget") setMsg("msg-budget", allowUI && !!el.value && !isBudgetValid(el.value));
 
     return ok;
   }
+
+  // Blur => touched + validation (tel/email/budget)
+  document.addEventListener("blur", (e) => {
+    const el = e.target;
+    if (!el || !el.id) return;
+
+    if (["tel","email","budget"].includes(el.id)) {
+      touched[el.id] = true;
+      validateFieldAndToggleError(el);
+    }
+  }, true);
 
   // Live remove + validation
   document.addEventListener("input", (e) => {
@@ -673,7 +745,12 @@
       return;
     }
 
-    if (["prenom","nom","tel","email","budget"].includes(el.id)) {
+    if (["prenom","nom"].includes(el.id)) {
+      validateFieldAndToggleError(el);
+      return;
+    }
+
+    if (["tel","email","budget"].includes(el.id) && shouldShowUI(el)) {
       validateFieldAndToggleError(el);
     }
   });
@@ -787,6 +864,7 @@ ${payload.commentaire || "—"}`
     if (sending) return;
 
     success.style.display = "none";
+    formSubmitted = true;
 
     // Champs requis (commentaire facultatif)
     const required = [
@@ -800,6 +878,7 @@ ${payload.commentaire || "—"}`
     // Validation + surbrillance
     let hasError = false;
     required.forEach(el => {
+      if (el && el.id && ["tel","email","budget"].includes(el.id)) touched[el.id] = true;
       const ok = validateFieldAndToggleError(el);
       if (!ok) hasError = true;
     });
