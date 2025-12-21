@@ -408,6 +408,17 @@
       background: #fff;
     }
 
+    /* ✅ AJOUT (pour les 3 champs demandés) : micro-messages discrets */
+    .field-msg {
+      display: none;
+      margin-top: 6px;
+      font-size: 12px;
+      color: var(--text-soft);
+      line-height: 1.35;
+      text-decoration: none !important;
+    }
+    .field-msg.is-visible { display: block; }
+
     /* ===== BLOC CONTACT (comme ta page espace client) ===== */
     .contact-block {
       display: flex;
@@ -611,6 +622,117 @@
       return !hasError;
     }
 
+    /* ✅ AJOUT (pour les 3 champs demandés) : mêmes règles que ta page de référence */
+    function setMsg(id, visible) {
+      const el = document.getElementById(id);
+      if (!el) return;
+      el.classList.toggle("is-visible", !!visible);
+    }
+
+    function normalizeEmail(v) {
+      return String(v || "").trim().toLowerCase();
+    }
+    function isEmailValid(v) {
+      const email = normalizeEmail(v);
+      return /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email);
+    }
+
+    function normalizePhoneFR(v) {
+      let s = String(v || "").trim();
+      s = s.replace(/[\s.\-()]/g, "");
+      if (s.startsWith("+33")) s = "0" + s.slice(3);
+      if (s.startsWith("0033")) s = "0" + s.slice(4);
+      return s;
+    }
+    function isPhoneFRValid(v) {
+      const s = normalizePhoneFR(v);
+      return /^0[1-9]\d{8}$/.test(s);
+    }
+
+    function normalizePrice(v) {
+      const raw = String(v || "").trim();
+      return raw.replace(/[^\d]/g, "");
+    }
+    function isPriceValid(v) {
+      const digits = normalizePrice(v);
+      if (!digits) return false;
+      const n = parseInt(digits, 10);
+      return Number.isFinite(n) && n >= 1000 && n <= 100000000;
+    }
+
+    function validateCvTelephone(showMessages = false) {
+      const tel = document.getElementById("cv_telephone");
+      if (!tel) return true;
+
+      const val = tel.value;
+      const ok = isPhoneFRValid(val);
+
+      // Surbrillance uniquement si showMessages (blur ou submit)
+      tel.classList.toggle("error", showMessages ? !ok : false);
+
+      // Message uniquement si quelque chose a été saisi mais invalide
+      setMsg("msg-cv-telephone", showMessages && !!String(val || "").trim() && !ok);
+
+      return ok;
+    }
+
+    function validateCvEmail(showMessages = false) {
+      const email = document.getElementById("cv_email");
+      if (!email) return true;
+
+      const val = email.value;
+      const ok = isEmailValid(val);
+
+      email.classList.toggle("error", showMessages ? !ok : false);
+      setMsg("msg-cv-email", showMessages && !!String(val || "").trim() && !ok);
+
+      return ok;
+    }
+
+    function validateAvisEstimation(showMessages = false) {
+      const estimation = document.getElementById("avis_estimation");
+      if (!estimation) return true;
+
+      const val = estimation.value;
+      const ok = isPriceValid(val);
+
+      estimation.classList.toggle("error", showMessages ? !ok : false);
+      setMsg("msg-avis-estimation", showMessages && !!String(val || "").trim() && !ok);
+
+      return ok;
+    }
+
+    // ✅ Messages au blur (comme ta référence)
+    document.addEventListener("blur", (e) => {
+      const el = e.target;
+      if (!el || !el.id) return;
+
+      if (el.id === "cv_telephone") validateCvTelephone(true);
+      if (el.id === "cv_email") validateCvEmail(true);
+      if (el.id === "avis_estimation") validateAvisEstimation(true);
+    }, true);
+
+    // ✅ Live remove : pendant la saisie, on retire l'erreur + masque le message
+    document.addEventListener("input", (e) => {
+      const el = e.target;
+      if (!el || !el.id) return;
+
+      if (el.id === "cv_telephone") {
+        el.classList.remove("error");
+        setMsg("msg-cv-telephone", false);
+      }
+
+      if (el.id === "cv_email") {
+        el.classList.remove("error");
+        setMsg("msg-cv-email", false);
+      }
+
+      if (el.id === "avis_estimation") {
+        el.classList.remove("error");
+        setMsg("msg-avis-estimation", false);
+      }
+    });
+
     /* 1) Avis sur la visite (SANS EMAIL) */
     function sendAvisVisite() {
       const bien = "Eliot - Appartement T3";
@@ -624,6 +746,13 @@
 
       const ok = validateRequiredFields([prenom, nom, estimation, plus, moins, offre]);
       if (!ok) return;
+
+      // ✅ AJOUT : même comportement que "Budget maximum" sur l'estimation
+      const okEstimation = validateAvisEstimation(true);
+      if (!okEstimation) {
+        estimation.focus();
+        return;
+      }
 
       const subject = encodeURIComponent("Avis visite - " + bien);
       const body = encodeURIComponent(
@@ -655,6 +784,19 @@
 
       const ok = validateRequiredFields([prenom, nom, tel, email, date, creneau]);
       if (!ok) return;
+
+      // ✅ AJOUT : même comportement que ta référence sur téléphone & email
+      const okTel = validateCvTelephone(true);
+      const okEmail = validateCvEmail(true);
+
+      if (!okTel) {
+        tel.focus();
+        return;
+      }
+      if (!okEmail) {
+        email.focus();
+        return;
+      }
 
       const subject = encodeURIComponent("Demande de contre-visite - " + bien);
       const body = encodeURIComponent(
@@ -810,6 +952,8 @@
               inputmode="numeric"
               pattern="[0-9]*"
               placeholder="Ex : 185000">
+            <!-- ✅ AJOUT : message discret (même logique que budget maximum) -->
+            <div class="field-msg" id="msg-avis-estimation">Estimation invalide. Exemple : 185000</div>
           </div>
 
           <div style="grid-column: 1 / -1;">
@@ -862,8 +1006,21 @@
         <div class="form-grid">
           <div><label>Votre prénom</label><input id="cv_prenom" type="text"></div>
           <div><label>Votre nom</label><input id="cv_nom" type="text"></div>
-          <div><label>Votre téléphone</label><input id="cv_telephone" type="tel"></div>
-          <div><label>Votre email</label><input id="cv_email" type="email"></div>
+
+          <div>
+            <label>Votre téléphone</label>
+            <input id="cv_telephone" type="tel">
+            <!-- ✅ AJOUT : message discret -->
+            <div class="field-msg" id="msg-cv-telephone">Numéro invalide. Exemple : 06 12 34 56 78</div>
+          </div>
+
+          <div>
+            <label>Votre email</label>
+            <input id="cv_email" type="email">
+            <!-- ✅ AJOUT : message discret -->
+            <div class="field-msg" id="msg-cv-email">Email invalide. Exemple : prenom.nom@mail.com</div>
+          </div>
+
           <div><label>Date souhaitée</label><input id="cv_date" type="date"></div>
           <div>
             <label>Créneau souhaité</label>
