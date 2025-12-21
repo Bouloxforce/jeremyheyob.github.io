@@ -440,7 +440,7 @@
     justify-content: center;
     align-items: center;
     padding: 10px 0;
-    margin-top: -40px; /* remonte le texte */
+    margin-top: -40px;
     margin-bottom: 15px;
   }
 
@@ -460,6 +460,76 @@
   .header-links a {
     font-size: 13px;
     white-space: nowrap;
+  }
+
+  /* IMPORTANT : aucun trait (underline) sur l'onglet actif */
+  .header-links a.active::after {
+    content: none !important;
+    display: none !important;
+  }
+
+  /* ===== HERO HIGHLIGHT : logo au-dessus du texte sur mobile ===== */
+  .hero-highlight-with-logo{
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .hero-highlight-logo{
+    order: -1;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin: 0 0 12px 0;
+  }
+
+  .hero-highlight-logo img{
+    margin-left: 0 !important;
+    width: 140px;
+    max-width: 70%;
+    height: auto;
+  }
+
+  .hero-highlight-text{
+    width: 100%;
+  }
+
+  /* ===== FORM : correction iOS/Safari (DATE trop large) ===== */
+  .form-grid{
+    /* Correctif standard Grid : tracks capables de shrink sous la taille intrinsèque */
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    column-gap: 14px;
+    row-gap: 14px;
+  }
+
+  /* Autorise la réduction réelle des colonnes */
+  .form-grid > div{
+    min-width: 0 !important;
+  }
+
+  /* Les champs doivent vraiment pouvoir se réduire */
+  .form-grid input,
+  .form-grid select,
+  .form-grid textarea{
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+  }
+
+  /* Spécifique DATE iOS : neutralise les min-sizes implicites */
+  .form-grid input[type="date"]{
+    display: block;
+    inline-size: 100% !important;
+    max-inline-size: 100% !important;
+    min-inline-size: 0 !important;
+  }
+
+  /* Option “verrouillage” du parent (Safari moderne) */
+  @supports selector(:has(*)) {
+    .form-grid > div:has(#date){
+      min-width: 0 !important;
+      overflow: hidden; /* évite tout débordement visuel */
+    }
   }
 
   /* Réseaux sociaux */
@@ -496,58 +566,6 @@
   .contact-links {
     justify-content: center;
     width: 100%;
-  }
-
-  /* ===== HERO HIGHLIGHT : logo au-dessus du texte sur mobile ===== */
-  .hero-highlight-with-logo {
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    text-align: left; /* mets "center" si tu veux tout centrer */
-  }
-
-  .hero-highlight-logo {
-    order: -1;                 /* met le logo avant le texte */
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    margin: 0 0 12px 0;
-  }
-
-  .hero-highlight-logo img {
-    margin-left: 0 !important; /* annule le -250px */
-    width: 140px;              /* ajuste si besoin */
-    max-width: 70%;
-    height: auto;
-  }
-
-  .hero-highlight-text {
-    width: 100%;
-  }
-
-  /* ===== FIX iOS : Date souhaitée trop large / passe sous Créneau ===== */
-  .form-grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-
-  .form-grid > div {
-    min-width: 0;
-  }
-
-  .form-grid input,
-  .form-grid select,
-  .form-grid textarea {
-    width: 100%;
-    min-width: 0;
-    max-width: 100%;
-    min-inline-size: 0; /* important iOS */
-  }
-
-  #date {
-    width: 100%;
-    max-width: 100%;
-    min-width: 0;
-    min-inline-size: 0;
   }
 }
     
