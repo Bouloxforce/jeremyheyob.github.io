@@ -220,6 +220,7 @@
       font-size: 12px;
       color: var(--text-soft);
       line-height: 1.35;
+      text-decoration: none !important;
     }
     .field-msg.is-visible { display: block; }
 
@@ -356,63 +357,60 @@
     }
 
     @media (max-width: 880px) {
+      /* Header (même fonctionnement mobile) */
       header { flex-direction: column; align-items: center; }
-      .contact-block { flex-direction: column; align-items: center; text-align: center; }
-      .contact-links { justify-content: center; width: 100%; }
 
-      /* ✅ mêmes réglages mobile que tes pages “référence” */
-      .header-center{
-        display:flex;
-        flex-direction:column;
-        justify-content:center;
-        align-items:center;
-        padding:10px 0;
-        margin-top:-40px;
-        margin-bottom:15px;
-      }
-      .tagline-main,.tagline-sub{ text-align:center; }
-
-      .social-icons{
-        flex-wrap:nowrap;
-        justify-content:center;
-      }
-      .social-icons a{
-        width:34px;
-        height:34px;
-        border-radius:10px;
-        flex-shrink:0;
-      }
-      .social-icons svg{
-        width:16px;
-        height:16px;
-      }
-      .social-block{
-        padding:10px 12px;
-        justify-content:center;
-        text-align:center;
+      .header-center {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding: 10px 0;
+        margin-top: -40px;
+        margin-bottom: 15px;
       }
 
-      /* ✅ form 1 colonne sur mobile (prénom/nom sur une seule ligne) */
-      .form-grid{
-        grid-template-columns:1fr;
-        row-gap:14px;
-        column-gap:14px;
+      .tagline-main,
+      .tagline-sub {
+        text-align: center;
       }
-      .form-grid > div{
-        grid-column:1 / -1;
-        min-width:0 !important;
+
+      /* FORM : 1 colonne sur mobile + champs sur une seule ligne (sans débordement) */
+      .form-grid {
+        grid-template-columns: 1fr;
+        row-gap: 14px;
+        column-gap: 14px;
       }
+      .form-grid > div { grid-column: 1 / -1; min-width: 0; }
       .form-grid input,
       .form-grid select,
-      .form-grid textarea{
-        width:100% !important;
-        max-width:100% !important;
-        min-width:0 !important;
+      .form-grid textarea {
+        width: 100% !important;
+        max-width: 100% !important;
+        min-width: 0 !important;
       }
-      .form-grid .btn{
-        grid-column:1 / -1;
-        width:100%;
+      .form-grid .btn { grid-column: 1 / -1; width: 100%; }
+
+      /* Réseaux sociaux (même bloc mobile) */
+      .social-icons {
+        flex-wrap: nowrap;
+        justify-content: center;
       }
+      .social-icons a {
+        width: 34px;
+        height: 34px;
+        border-radius: 10px;
+        flex-shrink: 0;
+      }
+      .social-icons svg { width: 16px; height: 16px; }
+      .social-block {
+        padding: 10px 12px;
+        justify-content: center;
+        text-align: center;
+      }
+
+      .contact-block { flex-direction: column; align-items: center; text-align: center; }
+      .contact-links { justify-content: center; width: 100%; }
     }
   </style>
 </head>
@@ -483,7 +481,11 @@
       </select>
     </div>
 
-    <div><label>Budget maximum</label><input id="budget" placeholder="Ex : 250 000 €"></div>
+    <div>
+      <label>Budget maximum</label>
+      <input id="budget" placeholder="Ex : 250 000 €" inputmode="numeric" autocomplete="off">
+      <div class="field-msg" id="msg-budget">Budget invalide. Exemple : 250 000 €</div>
+    </div>
 
     <div>
       <label>Avez-vous déjà vu votre banque ?</label>
@@ -699,6 +701,17 @@
     return /^0[1-9]\d{8}$/.test(s);
   }
 
+  function normalizeBudget(v) {
+    const raw = String(v || "").trim();
+    return raw.replace(/[^\d]/g, "");
+  }
+  function isBudgetValid(v) {
+    const digits = normalizeBudget(v);
+    if (!digits) return false;
+    const n = parseInt(digits, 10);
+    return Number.isFinite(n) && n >= 1000 && n <= 100000000;
+  }
+
   function isNonEmptyText(v) {
     return !!String(v || "").trim();
   }
@@ -709,7 +722,8 @@
     el.classList.toggle("is-visible", !!visible);
   }
 
-  function validateFieldAndToggleError(el, showMessages = true) {
+  // showMessages = true => messages + surbrillance autorisés (blur ou submit)
+  function validateFieldAndToggleError(el, showMessages = false) {
     if (!el) return true;
 
     const id = el.id;
@@ -717,32 +731,37 @@
 
     if (el.tagName === "SELECT") {
       ok = !!el.value;
-    } else {
-      const val = el.value;
-      if (id === "email") ok = isEmailValid(val);
-      else if (id === "tel") ok = isPhoneFRValid(val);
-      else ok = isNonEmptyText(val);
+      el.classList.toggle("field-error", !ok);
+      return ok;
     }
 
-    el.classList.toggle("field-error", !ok);
+    const val = el.value;
 
-    if (id === "email") setMsg("msg-email", showMessages && !!el.value && !isEmailValid(el.value));
-    if (id === "tel") setMsg("msg-tel", showMessages && !!el.value && !isPhoneFRValid(el.value));
+    if (id === "email") ok = isEmailValid(val);
+    else if (id === "tel") ok = isPhoneFRValid(val);
+    else if (id === "budget") ok = isBudgetValid(val);
+    else ok = isNonEmptyText(val);
+
+    el.classList.toggle("field-error", showMessages ? !ok : false);
+
+    if (id === "email") setMsg("msg-email", showMessages && !!val && !isEmailValid(val));
+    if (id === "tel") setMsg("msg-tel", showMessages && !!val && !isPhoneFRValid(val));
+    if (id === "budget") setMsg("msg-budget", showMessages && !!val && !isBudgetValid(val));
 
     return ok;
   }
 
-  // ✅ Messages tel/email (et erreurs) uniquement au changement de champ (blur) ou au submit
+  // ✅ Messages uniquement quand on quitte le champ (blur) OU au submit
   document.addEventListener("blur", (e) => {
     const el = e.target;
     if (!el || !el.id) return;
 
-    if (["tel","email","budget"].includes(el.id)) {
+    if (["tel","email","budget","prenom","nom"].includes(el.id)) {
       validateFieldAndToggleError(el, true);
     }
   }, true);
 
-  // Saisie : on ne “juge” pas en direct (pas de messages). On nettoie juste l’UI.
+  // Live remove (pendant la saisie) : on retire l'erreur et on masque le message
   document.addEventListener("input", (e) => {
     const el = e.target;
     if (!el || !el.id) return;
@@ -759,20 +778,23 @@
       el.classList.remove("field-error");
       if (el.id === "tel") setMsg("msg-tel", false);
       if (el.id === "email") setMsg("msg-email", false);
+      if (el.id === "budget") setMsg("msg-budget", false);
       return;
     }
 
     if (["prenom","nom"].includes(el.id)) {
-      validateFieldAndToggleError(el, false);
+      el.classList.remove("field-error");
+      return;
     }
   });
 
+  // Selects : validation au changement (comme avant)
   document.addEventListener("change", (e) => {
     const el = e.target;
     if (!el || !el.id) return;
 
     if (["creneau","banque","courtier","statut","venteAvantAchat"].includes(el.id)) {
-      validateFieldAndToggleError(el, false);
+      validateFieldAndToggleError(el, true);
     }
   });
 
@@ -886,7 +908,7 @@ ${payload.commentaire || "—"}`
       statutEl, venteAvantAchatEl
     ];
 
-    // Validation + surbrillance
+    // Validation + surbrillance (messages au submit)
     let hasError = false;
     required.forEach(el => {
       const ok = validateFieldAndToggleError(el, true);
