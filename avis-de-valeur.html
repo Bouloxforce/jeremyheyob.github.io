@@ -429,12 +429,12 @@
     @media (max-width: 880px) {
 
   /* Header */
-  header {
+  header{
     flex-direction: column;
     align-items: center;
   }
 
-  .header-center {
+  .header-center{
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -445,25 +445,25 @@
   }
 
   .tagline-main,
-  .tagline-sub {
+  .tagline-sub{
     text-align: center;
   }
 
   /* Menu */
-  .header-links {
+  .header-links{
     flex-wrap: wrap;
     row-gap: 10px;
     column-gap: 14px;
     padding: 0 10px;
   }
 
-  .header-links a {
+  .header-links a{
     font-size: 13px;
     white-space: nowrap;
   }
 
   /* IMPORTANT : aucun trait (underline) sur l'onglet actif */
-  .header-links a.active::after {
+  .header-links a.active::after{
     content: none !important;
     display: none !important;
   }
@@ -494,86 +494,68 @@
     width: 100%;
   }
 
-  /* ===== FORM : passer en 1 colonne sur mobile (évite les bugs iOS sur input date) ===== */
+  /* ===== FORM : base mobile ===== */
   .form-grid{
-    grid-template-columns: 1fr;
-    row-gap: 14px;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
     column-gap: 14px;
+    row-gap: 14px;
   }
 
-  /* Champs pleine largeur */
-  .form-grid > div,
-  .form-grid .full{
-    grid-column: 1 / -1;
+  .form-grid > div{
     min-width: 0 !important;
   }
 
-  /* ===== FORM : uniformiser la hauteur (iOS inclus) ===== */
   .form-grid input,
-  .form-grid select{
-    width: 100% !important;
-    max-width: 100% !important;
-    min-width: 0 !important;
-
-    height: 48px !important;
-    padding: 0 12px !important;
-    line-height: 48px !important;
-  }
-
-  /* Textarea : ne pas forcer la hauteur */
+  .form-grid select,
   .form-grid textarea{
     width: 100% !important;
     max-width: 100% !important;
     min-width: 0 !important;
-
-    height: auto !important;
-    padding: 10px 12px !important;
-    line-height: 1.4 !important;
+    box-sizing: border-box;
   }
 
-  /* Date iOS : verrouillage + alignement interne */
-  .form-grid input[type="date"]{
-    height: 48px !important;
-    line-height: 48px !important;
-    padding: 0 12px !important;
-  }
-
-  .form-grid input[type="date"]::-webkit-date-and-time-value{
-    line-height: 48px;
+  /* ===== OPTION A : “rentrer” visuellement le champ DATE sur iOS/Safari ===== */
+  #date{
+    width: calc(100% - 14px) !important;     /* réduit la largeur réelle */
+    max-width: calc(100% - 14px) !important;
+    margin-right: 14px !important;           /* évite l'effet “plus long” */
+    min-width: 0 !important;
+    display: block;
+    box-sizing: border-box;
   }
 
   /* Réseaux sociaux */
-  .social-icons {
+  .social-icons{
     flex-wrap: nowrap;
     justify-content: center;
   }
 
-  .social-icons a {
+  .social-icons a{
     width: 34px;
     height: 34px;
     border-radius: 10px;
     flex-shrink: 0;
   }
 
-  .social-icons svg {
+  .social-icons svg{
     width: 16px;
     height: 16px;
   }
 
-  .social-block {
+  .social-block{
     padding: 10px 12px;
     justify-content: center;
     text-align: center;
   }
 
   /* Contact */
-  .contact-block {
+  .contact-block{
     flex-direction: column;
     align-items: center;
     text-align: center;
   }
 
-  .contact-links {
+  .contact-links{
     justify-content: center;
     width: 100%;
   }
