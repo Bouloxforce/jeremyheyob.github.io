@@ -494,22 +494,24 @@
     width: 100%;
   }
 
-  /* ===== GAIN DE LARGEUR UTILE DANS LA CARD (pour éviter la troncature iOS) ===== */
-  .card {
-    padding: 22px 16px; /* au lieu de 26px 28px */
-  }
-
-  /* ===== FORM : 2 colonnes réelles (shrink OK sur iOS/Safari) ===== */
+  /* ===== FORM : 1 colonne sur mobile (corrige iOS date trop large) ===== */
   .form-grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    column-gap: 12px; /* un peu moins que 14px */
+    grid-template-columns: 1fr;
     row-gap: 14px;
+    column-gap: 14px;
   }
 
+  /* Les blocs que tu veux forcer en pleine largeur (tel/email/date/creneau) */
+  .full-mobile {
+    grid-column: 1 / -1;
+  }
+
+  /* Sécurité : aucun item grid ne force une largeur */
   .form-grid > div {
     min-width: 0 !important;
   }
 
+  /* Tous les champs doivent suivre la largeur de la colonne */
   .form-grid input,
   .form-grid select,
   .form-grid textarea {
@@ -518,23 +520,16 @@
     min-width: 0 !important;
   }
 
-  /* ===== iOS/Safari : "dézoomer" l’affichage du champ date (sans casser la grille) ===== */
-  #date{
-    font-size: 12px !important;      /* réduit le texte */
-    padding: 9px 8px !important;     /* réduit la “boîte” interne */
+  /* Spécifique DATE iOS : neutralise les tailles implicites */
+  #date,
+  .form-grid input[type="date"] {
+    display: block;
+    width: 100% !important;
     max-width: 100% !important;
     min-width: 0 !important;
-  }
-
-  /* WebKit (Safari iOS) : cible le rendu interne de la date */
-  #date::-webkit-date-and-time-value{
-    font-size: 12px !important;
-    text-align: left;
-  }
-
-  #date::-webkit-datetime-edit,
-      #date::-webkit-datetime-edit-fields-wrapper{
-  padding: 0 !important;
+    inline-size: 100% !important;
+    max-inline-size: 100% !important;
+    min-inline-size: 0 !important;
   }
 
   /* Réseaux sociaux */
