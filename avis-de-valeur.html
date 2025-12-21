@@ -426,7 +426,7 @@
       margin-left: -250px;
     }
 
-        @media (max-width: 880px) {
+    @media (max-width: 880px) {
 
   /* Header */
   header {
@@ -460,19 +460,6 @@
   .header-links a {
     font-size: 13px;
     white-space: nowrap;
-  }
-      
-  .header-links a:not(:last-child)::after {
-    height: 12px;
-  }
-
-  /* Grilles */
-  .actions-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .apa-content {
-    grid-template-columns: 1fr;
   }
 
   /* Réseaux sociaux */
@@ -511,15 +498,15 @@
     width: 100%;
   }
 
-          /* ===== HERO HIGHLIGHT : logo au-dessus du texte sur mobile ===== */
-  .hero-highlight-with-logo{
+  /* ===== HERO HIGHLIGHT : logo au-dessus du texte sur mobile ===== */
+  .hero-highlight-with-logo {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    text-align: left; /* ou center si tu veux tout centrer */
+    text-align: left; /* mets "center" si tu veux tout centrer */
   }
 
-  .hero-highlight-logo{
+  .hero-highlight-logo {
     order: -1;                 /* met le logo avant le texte */
     width: 100%;
     display: flex;
@@ -527,20 +514,24 @@
     margin: 0 0 12px 0;
   }
 
-  .hero-highlight-logo img{
+  .hero-highlight-logo img {
     margin-left: 0 !important; /* annule le -250px */
     width: 140px;              /* ajuste si besoin */
     max-width: 70%;
     height: auto;
   }
 
-  .hero-highlight-text{
+  .hero-highlight-text {
     width: 100%;
   }
 
-          /* ===== FORM : garder Date et Créneau côte à côte (même largeur) sur mobile ===== */
-  .form-grid > div { 
-    min-width: 0; 
+  /* ===== FIX iOS : Date souhaitée trop large / passe sous Créneau ===== */
+  .form-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .form-grid > div {
+    min-width: 0;
   }
 
   .form-grid input,
@@ -548,13 +539,15 @@
   .form-grid textarea {
     width: 100%;
     min-width: 0;
+    max-width: 100%;
+    min-inline-size: 0; /* important iOS */
   }
 
-  /* iOS : le champ date a souvent un min-width implicite -> on le neutralise */
-  .form-grid input[type="date"]{
-    display: block;
+  #date {
+    width: 100%;
     max-width: 100%;
     min-width: 0;
+    min-inline-size: 0;
   }
 }
     
