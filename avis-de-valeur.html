@@ -429,12 +429,12 @@
     @media (max-width: 880px) {
 
   /* Header */
-  header{
+  header {
     flex-direction: column;
     align-items: center;
   }
 
-  .header-center{
+  .header-center {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -445,37 +445,37 @@
   }
 
   .tagline-main,
-  .tagline-sub{
+  .tagline-sub {
     text-align: center;
   }
 
   /* Menu */
-  .header-links{
+  .header-links {
     flex-wrap: wrap;
     row-gap: 10px;
     column-gap: 14px;
     padding: 0 10px;
   }
 
-  .header-links a{
+  .header-links a {
     font-size: 13px;
     white-space: nowrap;
   }
 
   /* IMPORTANT : aucun trait (underline) sur l'onglet actif */
-  .header-links a.active::after{
+  .header-links a.active::after {
     content: none !important;
     display: none !important;
   }
 
   /* ===== HERO HIGHLIGHT : logo au-dessus du texte sur mobile ===== */
-  .hero-highlight-with-logo{
+  .hero-highlight-with-logo {
     flex-direction: column;
     align-items: center;
     justify-content: center;
   }
 
-  .hero-highlight-logo{
+  .hero-highlight-logo {
     order: -1;
     width: 100%;
     display: flex;
@@ -483,80 +483,87 @@
     margin: 0 0 12px 0;
   }
 
-  .hero-highlight-logo img{
+  .hero-highlight-logo img {
     margin-left: 0 !important;
     width: 140px;
     max-width: 70%;
     height: auto;
   }
 
-  .hero-highlight-text{
+  .hero-highlight-text {
     width: 100%;
   }
 
-  /* ===== FORM : base mobile ===== */
-  .form-grid{
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    column-gap: 14px;
+  /* ===== FORM : 1 colonne sur mobile (corrige iOS date trop large) ===== */
+  .form-grid {
+    grid-template-columns: 1fr;
     row-gap: 14px;
+    column-gap: 14px;
   }
 
-  .form-grid > div{
+  /* Les blocs que tu veux forcer en pleine largeur (tel/email/date/creneau) */
+  .full-mobile {
+    grid-column: 1 / -1;
+  }
+
+  /* Sécurité : aucun item grid ne force une largeur */
+  .form-grid > div {
     min-width: 0 !important;
   }
 
+  /* Tous les champs doivent suivre la largeur de la colonne */
   .form-grid input,
   .form-grid select,
-  .form-grid textarea{
+  .form-grid textarea {
     width: 100% !important;
     max-width: 100% !important;
     min-width: 0 !important;
-    box-sizing: border-box;
   }
 
-  /* ===== OPTION A : “rentrer” visuellement le champ DATE sur iOS/Safari ===== */
-  #date{
-    width: calc(100% - 14px) !important;     /* réduit la largeur réelle */
-    max-width: calc(100% - 14px) !important;
-    margin-right: 25px !important;           /* évite l'effet “plus long” */
-    margin-bottom: 10px
-    min-width: 0 !important;
+  /* Spécifique DATE iOS : neutralise les tailles implicites */
+  #date,
+  .form-grid input[type="date"] {
     display: block;
-    box-sizing: border-box;
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+    inline-size: 100% !important;
+    max-inline-size: 100% !important;
+    min-inline-size: 0 !important;
   }
 
   /* Réseaux sociaux */
-  .social-icons{
+  .social-icons {
     flex-wrap: nowrap;
     justify-content: center;
   }
 
-  .social-icons a{
+  .social-icons a {
     width: 34px;
     height: 34px;
     border-radius: 10px;
     flex-shrink: 0;
   }
 
-  .social-icons svg{
+  .social-icons svg {
     width: 16px;
     height: 16px;
   }
 
-  .social-block{
+  .social-block {
     padding: 10px 12px;
     justify-content: center;
     text-align: center;
   }
 
   /* Contact */
-  .contact-block{
+  .contact-block {
     flex-direction: column;
     align-items: center;
     text-align: center;
   }
 
-  .contact-links{
+  .contact-links {
     justify-content: center;
     width: 100%;
   }
