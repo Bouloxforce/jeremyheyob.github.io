@@ -353,6 +353,30 @@
       .tagline-main,
       .tagline-sub { text-align: center; }
 
+      /* ✅ FORM : 1 colonne sur mobile (chaque champ sur une seule ligne) */
+      .form-grid{
+        grid-template-columns: 1fr;
+        row-gap: 14px;
+      }
+
+      .form-grid > div{
+        grid-column: 1 / -1;
+        min-width: 0;
+      }
+
+      .form-grid input,
+      .form-grid select,
+      .form-grid textarea{
+        width: 100%;
+        max-width: 100%;
+        min-width: 0;
+      }
+
+      .form-grid .btn{
+        grid-column: 1 / -1;
+        width: 100%;
+      }
+
       .social-icons { flex-wrap: nowrap; justify-content: center; }
 
       .social-icons a {
@@ -428,7 +452,7 @@
     <div>
       <label>Votre téléphone</label>
       <input id="tel" type="tel" inputmode="tel" autocomplete="tel" placeholder="Ex : 06 12 34 56 78">
-      <div class="field-msg" id="msg-tel">Numéro invalide. Exemple : 06 12 34 56 78</div>
+      <div class="field-msg" id="msg-tel">Format attendu : 06/07/01… (10 chiffres) ou +33…</div>
     </div>
 
     <div>
