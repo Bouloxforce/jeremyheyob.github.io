@@ -3,9 +3,6 @@
 <head>
   <meta charset="UTF-8">
 
-  <!-- ✅ Stop auto-détection téléphone (iOS/Safari) -->
-  <meta name="format-detection" content="telephone=no">
-
   <!-- SEO (INDEXATION ACTIVÉE) -->
   <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -39,23 +36,6 @@
       background: var(--bg);
       color: var(--text-main);
       min-height: 100vh;
-    }
-
-    /* ✅ “Blindage” : si un navigateur injecte quand même un lien tel: (iOS), on neutralise le style bleu/souligné */
-    a[x-apple-data-detectors],
-    a[x-apple-data-detectors]:hover,
-    a[x-apple-data-detectors]:active,
-    a[x-apple-data-detectors]:visited,
-    a[href^="tel:"],
-    a[href^="tel:"]:hover,
-    a[href^="tel:"]:active,
-    a[href^="tel:"]:visited {
-      color: inherit !important;
-      text-decoration: none !important;
-      font-size: inherit !important;
-      font-family: inherit !important;
-      font-weight: inherit !important;
-      line-height: inherit !important;
     }
 
     .page {
@@ -209,8 +189,23 @@
       font-size: 13px;
     }
 
-    .contact-links a { color: var(--accent); text-decoration: none; }
+    /* ✅ FIX COULEUR UNIFORME : Email / SMS / Appel (y compris :visited) */
+    .contact-links a,
+    .contact-links a:visited,
+    .contact-links a:hover,
+    .contact-links a:active,
+    .contact-links a:focus {
+      color: var(--accent) !important;
+      text-decoration: none;
+    }
+
     .contact-links a:hover { text-decoration: underline; }
+
+    .contact-links a:focus-visible {
+      outline: 2px solid rgba(198,169,119,0.35);
+      outline-offset: 3px;
+      border-radius: 10px;
+    }
 
     .social-block {
       width: fit-content;
@@ -327,6 +322,19 @@
     }
     .field-msg.is-visible { display: block; }
 
+    /* ✅ FIX iOS/Safari : ne jamais souligner/bleuir les numéros “reconnus” */
+    input, textarea, select {
+      -webkit-text-fill-color: inherit;
+      color: inherit;
+    }
+    a, a:visited {
+      color: inherit;
+    }
+    /* Pour certains Safari : neutralise auto-link bleu/underline autour du texte */
+    .field-msg, .contact-text, .contact-links, .card, .page {
+      -webkit-text-size-adjust: 100%;
+    }
+
     .success {
       display: none;
       margin-top: 16px;
@@ -390,7 +398,6 @@
 
     @media (max-width: 880px) {
 
-      /* Header */
       header {
         flex-direction: column;
         align-items: center;
@@ -411,7 +418,6 @@
         text-align: center;
       }
 
-      /* Menu */
       .header-links {
         flex-wrap: wrap;
         row-gap: 10px;
@@ -424,7 +430,6 @@
         white-space: nowrap;
       }
 
-      /* Réseaux sociaux */
       .social-icons {
         flex-wrap: nowrap;
         justify-content: center;
@@ -448,7 +453,6 @@
         text-align: center;
       }
 
-      /* Contact */
       .contact-block {
         flex-direction: column;
         align-items: center;
@@ -471,9 +475,7 @@
         min-width: 0;
       }
 
-      .form-grid input,
-      .form-grid select,
-      .form-grid textarea{
+      .form-grid input{
         width: 100%;
         max-width: 100%;
         min-width: 0;
