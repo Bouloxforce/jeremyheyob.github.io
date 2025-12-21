@@ -511,7 +511,7 @@
 
   /* Réseaux sociaux */
   .social-icons {
-    flex-wrap: nowrap;
+    flex-wrap: wrap;
     justify-content: center;
   }
 
@@ -529,7 +529,7 @@
 
   .social-block {
     padding: 10px 12px;
-    justify-content: center;
+    max-width: 100%;
     text-align: center;
   }
 
@@ -570,6 +570,8 @@
   .form-grid input,
   .form-grid select,
   .form-grid textarea {
+    font-size: 16px;     /* iOS: évite le zoom */
+    display: block;      /* certains navigateurs rendent select “inline” */
     width: 100% !important;
     max-width: 100% !important;
     min-width: 0 !important;
