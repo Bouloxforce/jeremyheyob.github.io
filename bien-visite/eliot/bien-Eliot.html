@@ -557,6 +557,27 @@
   .layout { 
     grid-template-columns: 1fr; 
   }
+       
+  .form-grid > div { min-width: 0 !important; }
+
+  .form-grid input,
+  .form-grid select,
+  .form-grid textarea {
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+  }
+
+  #date,
+  .form-grid input[type="date"] {
+    display: block;
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+    inline-size: 100% !important;
+    max-inline-size: 100% !important;
+    min-inline-size: 0 !important;
+  }
 }
   </style>
 
