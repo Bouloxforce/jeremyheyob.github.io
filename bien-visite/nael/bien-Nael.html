@@ -4,6 +4,10 @@
   <link rel="icon" type="image/x-icon" href="/images/favicon.ico">
   <link rel="shortcut icon" href="/images/favicon.ico">
   <meta charset="UTF-8">
+
+  <!-- ✅ iOS/Safari : empêche la détection auto (téléphone / email / date / adresse) => pas de numéro cliquable "06 ..." -->
+  <meta name="format-detection" content="telephone=no,date=no,address=no,email=no">
+
   <meta name="robots" content="noindex, nofollow, noarchive, nosnippet">
   <title>Naël | Jérémy Heyob Immobilier</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -214,10 +218,36 @@
       background:linear-gradient(to right, transparent, rgba(180,160,120,0.6), transparent);
     }
 
-    /* Surbrillance noire si champ manquant */
+    /* Surbrillance noire si champ manquant / invalide */
     input.error, select.error, textarea.error{
       border:2px solid #191919;
       background:#fff;
+    }
+
+    /* ✅ Micro-messages discrets (si format saisi mais invalide) */
+    .field-msg{
+      display:none;
+      margin-top:6px;
+      font-size:12px;
+      color: var(--text-soft);
+      line-height:1.35;
+      text-decoration:none !important;
+    }
+    .field-msg.is-visible{ display:block; }
+
+    /* ✅ iOS/Safari : neutralise les liens auto “data detectors” (et empêche le clic) */
+    a[x-apple-data-detectors],
+    a[x-apple-data-detectors]:hover,
+    a[x-apple-data-detectors]:active,
+    a[x-apple-data-detectors]:visited{
+      color:inherit !important;
+      text-decoration:none !important;
+      font-size:inherit !important;
+      font-family:inherit !important;
+      font-weight:inherit !important;
+      line-height:inherit !important;
+      cursor:default !important;
+      pointer-events:none !important;
     }
 
     /* Centrer les titres du bloc avis uniquement */
@@ -397,15 +427,28 @@
       /* Contact */
       .contact-block{ flex-direction:column; align-items:center; text-align:center; }
       .contact-block .contact-links{ justify-content:center; width:100%; }
+
+      /* Lightbox boutons un peu moins intrusifs */
+      .lightbox-prev{ left:14px; }
+      .lightbox-next{ right:14px; }
+      .lightbox-close{ right:14px; }
     }
   </style>
 
   <script>
+    /* ================================
+       ✅ Validation générique : surbrillance noire si champ vide
+       ✅ IMPORTANT : ne retire pas l'erreur sur cv_telephone / cv_email / avis_estimation
+       (car ceux-ci sont pilotés par la validation de format)
+    ================================ */
     function validateRequiredFields(fields) {
       let hasError = false;
 
+      const keepErrorIds = new Set(["cv_telephone", "cv_email", "avis_estimation"]);
+
       fields.forEach((f) => {
         if (!f) return;
+        if (keepErrorIds.has(f.id)) return;
         f.classList.remove("error");
       });
 
@@ -420,6 +463,106 @@
       return !hasError;
     }
 
+    /* ================================
+       ✅ Validations (format) : tel / email / estimation
+       - Si invalide => reste en surbrillance noire jusqu’à être valide
+    ================================ */
+    function setMsg(id, visible) {
+      const el = document.getElementById(id);
+      if (!el) return;
+      el.classList.toggle("is-visible", !!visible);
+    }
+
+    function normalizeEmail(v) {
+      return String(v || "").trim().toLowerCase();
+    }
+    function isEmailValid(v) {
+      const email = normalizeEmail(v);
+      return /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email);
+    }
+
+    function normalizePhoneFR(v) {
+      let s = String(v || "").trim();
+      s = s.replace(/[\s.\-()]/g, "");
+      if (s.startsWith("+33")) s = "0" + s.slice(3);
+      if (s.startsWith("0033")) s = "0" + s.slice(4);
+      return s;
+    }
+    function isPhoneFRValid(v) {
+      const s = normalizePhoneFR(v);
+      return /^0[1-9]\d{8}$/.test(s);
+    }
+
+    function normalizePrice(v) {
+      const raw = String(v || "").trim();
+      return raw.replace(/[^\d]/g, "");
+    }
+    function isPriceValid(v) {
+      const digits = normalizePrice(v);
+      if (!digits) return false;
+      const n = parseInt(digits, 10);
+      return Number.isFinite(n) && n >= 1000 && n <= 100000000;
+    }
+
+    function validateCvTelephone(showMessages = false) {
+      const tel = document.getElementById("cv_telephone");
+      if (!tel) return true;
+
+      const val = tel.value;
+      const ok = isPhoneFRValid(val);
+
+      tel.classList.toggle("error", !ok);
+      setMsg("msg-cv-telephone", showMessages && !!String(val || "").trim() && !ok);
+
+      return ok;
+    }
+
+    function validateCvEmail(showMessages = false) {
+      const email = document.getElementById("cv_email");
+      if (!email) return true;
+
+      const val = email.value;
+      const ok = isEmailValid(val);
+
+      email.classList.toggle("error", !ok);
+      setMsg("msg-cv-email", showMessages && !!String(val || "").trim() && !ok);
+
+      return ok;
+    }
+
+    function validateAvisEstimation(showMessages = false) {
+      const estimation = document.getElementById("avis_estimation");
+      if (!estimation) return true;
+
+      const val = estimation.value;
+      const ok = isPriceValid(val);
+
+      estimation.classList.toggle("error", !ok);
+      setMsg("msg-avis-estimation", showMessages && !!String(val || "").trim() && !ok);
+
+      return ok;
+    }
+
+    // ✅ Messages uniquement au blur
+    document.addEventListener("blur", (e) => {
+      const el = e.target;
+      if (!el || !el.id) return;
+
+      if (el.id === "cv_telephone") validateCvTelephone(true);
+      if (el.id === "cv_email") validateCvEmail(true);
+      if (el.id === "avis_estimation") validateAvisEstimation(true);
+    }, true);
+
+    // ✅ Pendant la saisie : re-validation continue (surbrillance reste si invalide)
+    document.addEventListener("input", (e) => {
+      const el = e.target;
+      if (!el || !el.id) return;
+
+      if (el.id === "cv_telephone") validateCvTelephone(false);
+      if (el.id === "cv_email") validateCvEmail(false);
+      if (el.id === "avis_estimation") validateAvisEstimation(false);
+    });
+
     function sendAvisVisite() {
       const bien = "Naël - Appartement T3";
 
@@ -430,8 +573,14 @@
       const moins = document.getElementById("avis_moins");
       const offre = document.getElementById("avis_offre");
 
-      const ok = validateRequiredFields([prenom, nom, estimation, plus, moins, offre]);
-      if (!ok) return;
+      const okRequired = validateRequiredFields([prenom, nom, estimation, plus, moins, offre]);
+      const okEstimation = validateAvisEstimation(true);
+
+      if (!okRequired || !okEstimation) {
+        const firstError = document.querySelector(".error");
+        if (firstError) firstError.focus();
+        return;
+      }
 
       const subject = encodeURIComponent("Avis visite - " + bien);
       const body = encodeURIComponent(
@@ -460,8 +609,15 @@
       const date = document.getElementById("cv_date");
       const creneau = document.getElementById("cv_creneau");
 
-      const ok = validateRequiredFields([prenom, nom, tel, email, date, creneau]);
-      if (!ok) return;
+      const okRequired = validateRequiredFields([prenom, nom, tel, email, date, creneau]);
+      const okTel = validateCvTelephone(true);
+      const okEmail = validateCvEmail(true);
+
+      if (!okRequired || !okTel || !okEmail) {
+        const firstError = document.querySelector(".error");
+        if (firstError) firstError.focus();
+        return;
+      }
 
       const subject = encodeURIComponent("Demande de contre-visite - " + bien);
       const body = encodeURIComponent(
@@ -600,6 +756,7 @@
             <div style="grid-column: 1 / -1;">
               <label>Votre estimation du prix (€)</label>
               <input id="avis_estimation" type="text" inputmode="numeric" pattern="[0-9]*" placeholder="Ex : 220000">
+              <div class="field-msg" id="msg-avis-estimation">Estimation invalide. Exemple : 220000</div>
             </div>
 
             <div style="grid-column: 1 / -1;">
@@ -650,8 +807,19 @@
           <div class="form-grid">
             <div><label>Votre prénom</label><input id="cv_prenom" type="text"></div>
             <div><label>Votre nom</label><input id="cv_nom" type="text"></div>
-            <div><label>Votre téléphone</label><input id="cv_telephone" type="tel"></div>
-            <div><label>Votre email</label><input id="cv_email" type="email"></div>
+
+            <div>
+              <label>Votre téléphone</label>
+              <input id="cv_telephone" type="tel" placeholder="Ex : 06 12 34 56 78">
+              <div class="field-msg" id="msg-cv-telephone">Numéro invalide. Exemple : 06 12 34 56 78</div>
+            </div>
+
+            <div>
+              <label>Votre email</label>
+              <input id="cv_email" type="email" placeholder="Ex : prenom.nom@mail.com">
+              <div class="field-msg" id="msg-cv-email">Email invalide. Exemple : prenom.nom@mail.com</div>
+            </div>
+
             <div><label>Date souhaitée</label><input id="cv_date" type="date"></div>
             <div>
               <label>Créneau souhaité</label>
@@ -774,22 +942,24 @@
   </div>
 
   <script>
-    /* CARROUSEL */
+    /* ===== CARROUSEL ===== */
     let idx = 0;
     const track = document.querySelector('.carousel-track');
     const slides = document.querySelectorAll('.carousel img');
 
-    document.querySelector('.next').onclick = () => {
-      idx = (idx + 1) % slides.length;
-      track.style.transform = `translateX(-${idx * 100}%)`;
-    };
+    const btnNextCarousel = document.querySelector('.carousel-btn.next');
+    const btnPrevCarousel = document.querySelector('.carousel-btn.prev');
 
-    document.querySelector('.prev').onclick = () => {
-      idx = (idx - 1 + slides.length) % slides.length;
+    function goTo(i){
+      if (!track || !slides.length) return;
+      idx = (i + slides.length) % slides.length;
       track.style.transform = `translateX(-${idx * 100}%)`;
-    };
+    }
 
-    /* LIGHTBOX */
+    if (btnNextCarousel) btnNextCarousel.onclick = () => goTo(idx + 1);
+    if (btnPrevCarousel) btnPrevCarousel.onclick = () => goTo(idx - 1);
+
+    /* ===== LIGHTBOX ===== */
     const lightbox = document.getElementById('lightbox');
     const lightboxImg = document.getElementById('lightboxImg');
     const btnClose = document.getElementById('lightboxClose');
@@ -806,31 +976,40 @@
     });
 
     function openLightbox() {
+      if (!slides.length) return;
       lightboxImg.src = slides[currentSlide].src;
       lightbox.classList.add('active');
     }
 
-    btnClose.onclick = () => lightbox.classList.remove('active');
+    if (btnClose) btnClose.onclick = () => lightbox.classList.remove('active');
 
-    lightbox.onclick = (e) => {
-      if (e.target === lightbox) lightbox.classList.remove('active');
-    };
+    if (lightbox) {
+      lightbox.onclick = (e) => {
+        if (e.target === lightbox) lightbox.classList.remove('active');
+      };
+    }
 
-    btnPrev.onclick = () => {
-      currentSlide = (currentSlide - 1 + slides.length) % slides.length;
-      openLightbox();
-    };
+    if (btnPrev) {
+      btnPrev.onclick = () => {
+        if (!slides.length) return;
+        currentSlide = (currentSlide - 1 + slides.length) % slides.length;
+        openLightbox();
+      };
+    }
 
-    btnNext.onclick = () => {
-      currentSlide = (currentSlide + 1) % slides.length;
-      openLightbox();
-    };
+    if (btnNext) {
+      btnNext.onclick = () => {
+        if (!slides.length) return;
+        currentSlide = (currentSlide + 1) % slides.length;
+        openLightbox();
+      };
+    }
 
     document.addEventListener('keydown', (e) => {
-      if (!lightbox.classList.contains('active')) return;
-      if (e.key === 'ArrowRight') btnNext.onclick();
-      if (e.key === 'ArrowLeft') btnPrev.onclick();
-      if (e.key === 'Escape') btnClose.onclick();
+      if (!lightbox || !lightbox.classList.contains('active')) return;
+      if (e.key === 'ArrowRight' && btnNext) btnNext.onclick();
+      if (e.key === 'ArrowLeft' && btnPrev) btnPrev.onclick();
+      if (e.key === 'Escape' && btnClose) btnClose.onclick();
     });
   </script>
 </body>
