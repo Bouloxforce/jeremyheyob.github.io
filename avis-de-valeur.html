@@ -518,16 +518,23 @@
     min-width: 0 !important;
   }
 
-  /* ===== DATE : on “compresse” le rendu pour que "21 déc. 2025" rentre ===== */
-  #date {
-    padding: 10px 8px !important;   /* récupère de la place */
-    font-size: 13px !important;     /* 1px de moins = souvent suffisant */
-    text-align: left;              /* évite le centrage qui coupe des deux côtés */
+  /* ===== iOS/Safari : "dézoomer" l’affichage du champ date (sans casser la grille) ===== */
+  #date{
+    font-size: 12px !important;      /* réduit le texte */
+    padding: 9px 8px !important;     /* réduit la “boîte” interne */
+    max-width: 100% !important;
+    min-width: 0 !important;
   }
 
-  /* Bonus Safari/WebKit : si pris en charge, aligne le texte interne */
-  #date::-webkit-date-and-time-value {
+  /* WebKit (Safari iOS) : cible le rendu interne de la date */
+  #date::-webkit-date-and-time-value{
+    font-size: 12px !important;
     text-align: left;
+  }
+
+  #date::-webkit-datetime-edit,
+      #date::-webkit-datetime-edit-fields-wrapper{
+  padding: 0 !important;
   }
 
   /* Réseaux sociaux */
