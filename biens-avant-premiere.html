@@ -552,8 +552,16 @@
   <div class="form-grid">
     <div><label>Votre prénom</label><input id="prenom"></div>
     <div><label>Votre nom</label><input id="nom"></div>
-    <div><label>Votre téléphone</label><input id="tel"></div>
-    <div><label>Votre email</label><input id="email"></div>
+    <div>
+      <label>Votre téléphone</label>
+      <input id="tel" type="tel" inputmode="tel" autocomplete="tel" placeholder="Ex : 06 12 34 56 78">
+      <div class="field-msg" id="msg-tel"></div>
+    </div>
+    <div>
+      <label>Votre email</label>
+      <input id="email" type="email" inputmode="email" autocomplete="email" placeholder="Ex : prenom.nom@mail.com">
+      <div class="field-msg" id="msg-email">Email invalide. Exemple : prenom.nom@mail.com</div>
+    </div>
 
     <div class="full"><label>Ville recherchée</label><input id="ville"></div>
 
