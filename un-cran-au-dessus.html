@@ -513,13 +513,6 @@
           <div class="field-msg" id="msg-email">Email invalide. Exemple : prenom.nom@mail.com</div>
         </div>
 
-        <!-- ✅ AJOUT : Budget maximum + même comportement -->
-        <div class="full">
-          <label>Budget maximum</label>
-          <input id="budget" placeholder="Ex : 250 000 €" inputmode="numeric" autocomplete="off">
-          <div class="field-msg" id="msg-budget">Budget invalide. Exemple : 250 000 €</div>
-        </div>
-
         <button class="btn" type="button" onclick="sendMail()">Valider ma demande</button>
 
         <div class="success" id="success">
@@ -633,17 +626,6 @@
       return /^0[1-9]\d{8}$/.test(s);
     }
 
-    function normalizeBudget(v) {
-      const raw = String(v || "").trim();
-      return raw.replace(/[^\d]/g, "");
-    }
-    function isBudgetValid(v) {
-      const digits = normalizeBudget(v);
-      if (!digits) return false;
-      const n = parseInt(digits, 10);
-      return Number.isFinite(n) && n >= 1000 && n <= 100000000;
-    }
-
     function isNonEmptyText(v) {
       return !!String(v || "").trim();
     }
@@ -671,7 +653,6 @@
       let ok = true;
       if (id === "email") ok = isEmailValid(val);
       else if (id === "tel") ok = isPhoneFRValid(val);
-      else if (id === "budget") ok = isBudgetValid(val);
       else ok = isNonEmptyText(val);
 
       const allowUI = shouldShowUI(el);
@@ -680,7 +661,6 @@
 
       if (id === "email") setMsg("msg-email", allowUI && !!val && !isEmailValid(val));
       if (id === "tel") setMsg("msg-tel", allowUI && !!val && !isPhoneFRValid(val));
-      if (id === "budget") setMsg("msg-budget", allowUI && !!val && !isBudgetValid(val));
 
       return ok;
     }
@@ -690,7 +670,7 @@
       const el = e.target;
       if (!el || !el.id) return;
 
-      if (["prenom","nom","tel","email","budget"].includes(el.id)) {
+      if (["prenom","nom","tel","email"].includes(el.id)) {
         touched[el.id] = true;
         validateFieldAndToggleError(el);
       }
@@ -701,7 +681,7 @@
       const el = e.target;
       if (!el || !el.id) return;
 
-      if (["prenom","nom","tel","email","budget"].includes(el.id) && shouldShowUI(el)) {
+      if (["prenom","nom","tel","email"].includes(el.id) && shouldShowUI(el)) {
         validateFieldAndToggleError(el);
       }
     });
@@ -711,13 +691,12 @@
       const nom = document.getElementById("nom");
       const tel = document.getElementById("tel");
       const email = document.getElementById("email");
-      const budget = document.getElementById("budget");
       const success = document.getElementById("success");
 
       success.style.display = "none";
       formSubmitted = true;
 
-      const required = [prenom, nom, tel, email, budget];
+      const required = [prenom, nom, tel, email];
 
       let hasError = false;
       required.forEach(el => {
@@ -741,18 +720,12 @@
       const phoneNormalized = normalizePhoneFR(tel.value);
       const emailNormalized = normalizeEmail(email.value);
 
-      const budgetDigits = normalizeBudget(budget.value);
-      const budgetPretty = budgetDigits
-        ? (parseInt(budgetDigits, 10).toLocaleString("fr-FR") + " €")
-        : budget.value.trim();
-
       const body = encodeURIComponent(
         "Bonjour,\n\n" +
         "Je souhaite recevoir le guide vendeur « Un cran au-dessus ».\n\n" +
         "Nom : " + prenom.value.trim() + " " + nom.value.trim() + "\n" +
         "Téléphone : " + phoneNormalized + "\n" +
-        "Email : " + emailNormalized + "\n" +
-        "Budget maximum : " + budgetPretty + "\n\n" +
+        "Email : " + emailNormalized + "\n\n" +
         "Merci.\n"
       );
 
