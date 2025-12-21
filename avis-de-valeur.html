@@ -469,13 +469,13 @@
   }
 
   /* ===== HERO HIGHLIGHT : logo au-dessus du texte sur mobile ===== */
-  .hero-highlight-with-logo {
+  .hero-highlight-with-logo{
     flex-direction: column;
     align-items: center;
     justify-content: center;
   }
 
-  .hero-highlight-logo {
+  .hero-highlight-logo{
     order: -1;
     width: 100%;
     display: flex;
@@ -483,53 +483,63 @@
     margin: 0 0 12px 0;
   }
 
-  .hero-highlight-logo img {
+  .hero-highlight-logo img{
     margin-left: 0 !important;
     width: 140px;
     max-width: 70%;
     height: auto;
   }
 
-  .hero-highlight-text {
+  .hero-highlight-text{
     width: 100%;
   }
 
-  /* ===== FORM : 1 colonne sur mobile (corrige iOS date trop large) ===== */
-  .form-grid {
+  /* ===== FORM : passer en 1 colonne sur mobile (évite les bugs iOS sur input date) ===== */
+  .form-grid{
     grid-template-columns: 1fr;
     row-gap: 14px;
     column-gap: 14px;
   }
 
-  /* Les blocs que tu veux forcer en pleine largeur (tel/email/date/creneau) */
-  .full-mobile {
+  /* Champs pleine largeur */
+  .form-grid > div,
+  .form-grid .full{
     grid-column: 1 / -1;
-  }
-
-  /* Sécurité : aucun item grid ne force une largeur */
-  .form-grid > div {
     min-width: 0 !important;
   }
 
-  /* Tous les champs doivent suivre la largeur de la colonne */
+  /* ===== FORM : uniformiser la hauteur (iOS inclus) ===== */
   .form-grid input,
-  .form-grid select,
-  .form-grid textarea {
+  .form-grid select{
     width: 100% !important;
     max-width: 100% !important;
     min-width: 0 !important;
+
+    height: 48px !important;
+    padding: 0 12px !important;
+    line-height: 48px !important;
   }
 
-  /* Spécifique DATE iOS : neutralise les tailles implicites */
-  #date,
-  .form-grid input[type="date"] {
-    display: block;
+  /* Textarea : ne pas forcer la hauteur */
+  .form-grid textarea{
     width: 100% !important;
     max-width: 100% !important;
     min-width: 0 !important;
-    inline-size: 100% !important;
-    max-inline-size: 100% !important;
-    min-inline-size: 0 !important;
+
+    height: auto !important;
+    padding: 10px 12px !important;
+    line-height: 1.4 !important;
+  }
+
+  /* Date iOS : verrouillage + alignement interne */
+  .form-grid input[type="date"]{
+    height: 48px !important;
+    line-height: 48px !important;
+    padding: 0 12px !important;
+  }
+
+  .form-grid input[type="date"]::-webkit-date-and-time-value{
+    line-height: 48px;
   }
 
   /* Réseaux sociaux */
