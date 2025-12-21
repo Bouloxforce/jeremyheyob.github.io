@@ -4,6 +4,10 @@
   <link rel="icon" type="image/x-icon" href="/images/favicon.ico">
   <link rel="shortcut icon" href="/images/favicon.ico">
   <meta charset="UTF-8">
+
+  <!-- ✅ iOS/Safari : empêche la détection auto (téléphone / email / date / adresse) => pas de numéro cliquable "06 ..." -->
+  <meta name="format-detection" content="telephone=no,date=no,address=no,email=no">
+
   <meta name="robots" content="noindex, nofollow, noarchive, nosnippet">
   <title>Lucas | Jérémy Heyob Immobilier</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -156,7 +160,7 @@
   /* GRID */
   .grid-two {
     display: grid;
-    grid-template-columns: repeat(2,1fr);
+    grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 12px;
     font-size: 14px;
     margin-top: 20px;
@@ -171,18 +175,28 @@
   /* FORMULAIRE */
   .form-grid {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    width: 100%;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
     gap: 14px;
     margin-top: 14px;
+    justify-items: stretch;
   }
+  .form-grid > div { min-width: 0; }
 
-  input, select {
+  input, select, textarea {
     width: 100%;
+    min-width: 0;
+    display: block;
     padding: 10px 12px;
     border-radius: 12px;
     border: 1px solid var(--border-soft);
     background: #fafafa;
     font-size: 14px;
+    font-family: inherit;
+  }
+
+  textarea {
+    resize: vertical;
   }
 
   label { font-size: 13px; margin-bottom: 4px; display: block; }
@@ -198,6 +212,7 @@
     font-weight: 600;
     border: none;
     cursor: pointer;
+    text-align: center;
   }
 
   /* Permet à <a class="btn"> de se comporter comme un bouton */
@@ -353,7 +368,7 @@
     height: 20px;
   }
 
-  /* ===== AJOUTS / MODIFS (comme Eliot) ===== */
+  /* ===== AJOUTS / MODIFS ===== */
 
   /* Séparateur luxe */
   .luxury-divider {
@@ -368,18 +383,7 @@
     );
   }
 
-  /* Textarea (avis + / -) */
-  textarea {
-    width: 100%;
-    padding: 10px 12px;
-    border-radius: 12px;
-    border: 1px solid var(--border-soft);
-    background: #fafafa;
-    font-size: 14px;
-    resize: vertical;
-  }
-
-  /* Surbrillance noire si champ manquant */
+  /* Surbrillance noire si champ manquant / invalide */
   input.error,
   select.error,
   textarea.error {
@@ -387,12 +391,38 @@
     background: #fff;
   }
 
+  /* ✅ Micro-messages discrets (si format saisi mais invalide) */
+  .field-msg{
+    display:none;
+    margin-top:6px;
+    font-size:12px;
+    color: var(--text-soft);
+    line-height:1.35;
+    text-decoration:none !important;
+  }
+  .field-msg.is-visible{ display:block; }
+
+  /* ✅ iOS/Safari : neutralise les liens auto “data detectors” (et empêche le clic) */
+  a[x-apple-data-detectors],
+  a[x-apple-data-detectors]:hover,
+  a[x-apple-data-detectors]:active,
+  a[x-apple-data-detectors]:visited{
+    color:inherit !important;
+    text-decoration:none !important;
+    font-size:inherit !important;
+    font-family:inherit !important;
+    font-weight:inherit !important;
+    line-height:inherit !important;
+    cursor:default !important;
+    pointer-events:none !important;
+  }
+
   /* Centrer les 3 titres du bloc avis uniquement */
   .card-avis-global h2 {
     text-align: center;
   }
 
-  /* ===== BLOC CONTACT PREMIUM (comme Eliot) ===== */
+  /* ===== BLOC CONTACT PREMIUM ===== */
   .contact-block {
     display: flex;
     gap: 18px;
@@ -444,100 +474,116 @@
 
   .contact-block .contact-links a:hover { text-decoration: underline; }
 
-    /* === BOUTONS VALIDATION AVIS & CONTRE-VISITE === */
+  /* === BOUTONS VALIDATION AVIS & CONTRE-VISITE === */
   .card-avis-global .btn {
     display: block;
     width: 100%;
     text-align: center;
-    margin: 20px auto 0; /* marge au-dessus uniquement */
+    margin: 20px auto 0;
+    grid-column: 1 / -1;
   }
 
   /* RESPONSIVE */
-       @media (max-width: 880px) {
+  @media (max-width: 880px) {
 
-  /* Header */
-  header {
-    flex-direction: column;
-    align-items: center;
+    /* Header */
+    header {
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .header-center {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 10px 0;
+      margin-top: -40px;
+      margin-bottom: 15px;
+      text-align: center;
+    }
+
+    .tagline-main,
+    .tagline-sub {
+      text-align: center;
+    }
+
+    /* Réseaux sociaux */
+    .social-icons {
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .social-icons a {
+      width: 34px;
+      height: 34px;
+      border-radius: 10px;
+      flex-shrink: 0;
+    }
+
+    .social-icons svg {
+      width: 16px;
+      height: 16px;
+    }
+
+    .social-block {
+      padding: 10px 12px;
+      max-width: 100%;
+      text-align: center;
+    }
+
+    /* Contact */
+    .contact-block {
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+
+    .contact-links {
+      justify-content: center;
+      width: 100%;
+    }
+
+    .layout {
+      grid-template-columns: 1fr;
+    }
+
+    /* FORM : 1 colonne sur mobile */
+    .form-grid {
+      grid-template-columns: 1fr;
+      row-gap: 14px;
+      column-gap: 14px;
+    }
+
+    .form-grid > div { min-width: 0 !important; }
+
+    .form-grid input,
+    .form-grid select,
+    .form-grid textarea {
+      font-size: 16px;
+      display: block;
+      width: 100% !important;
+      max-width: 100% !important;
+      min-width: 0 !important;
+    }
+
+    .form-grid input[type="date"] {
+      display: block;
+      width: 100% !important;
+      max-width: 100% !important;
+      min-width: 0 !important;
+      inline-size: 100% !important;
+      max-inline-size: 100% !important;
+      min-inline-size: 0 !important;
+    }
+
+    /* Lightbox boutons un peu moins intrusifs */
+    .lightbox-prev { left: 14px; }
+    .lightbox-next { right: 14px; }
+    .lightbox-close { right: 14px; }
   }
 
-  .header-center {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    padding: 10px 0;
-    margin-top: -40px; /* remonte le texte */
-    margin-bottom: 15px;
-  }
-
-  .tagline-main,
-  .tagline-sub {
-    text-align: center;
-  }
-
-  /* Menu */
-  .header-links {
-    flex-wrap: wrap;
-    row-gap: 10px;
-    column-gap: 14px;
-    padding: 0 10px;
-  }
-
-  .header-links a {
-    font-size: 13px;
-    white-space: nowrap;
-  }
-
-  .header-links a:not(:last-child)::after {
-    height: 12px;
-  }
-
-  /* Grilles */
-  .actions-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .apa-content {
-    grid-template-columns: 1fr;
-  }
-
-  /* Réseaux sociaux */
-  .social-icons {
-    flex-wrap: wrap;
-    justify-content: center;
-  }
-
-  .social-icons a {
-    width: 34px;
-    height: 34px;
-    border-radius: 10px;
-    flex-shrink: 0;
-  }
-
-  .social-icons svg {
-    width: 16px;
-    height: 16px;
-  }
-
-  .social-block {
-    padding: 10px 12px;
-    max-width: 100%;
-    text-align: center;
-  }
-
-  /* Contact */
-  .contact-block {
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-  }
-
-  .contact-links {
-    justify-content: center;
-    width: 100%;
-  }
-       
+  /* FOOTER (inchangé visuellement) */
   .legal-footer {
     margin-top: 40px;
     padding: 18px;
@@ -545,51 +591,23 @@
     font-size: 11.5px;
     color: var(--text-soft);
     opacity: 0.8;
-    }
-       
-  .layout { 
-    grid-template-columns: 1fr; 
   }
-       
-  /* FORM : 1 colonne sur mobile */  
-  .form-grid {
-    grid-template-columns: 1fr;
-    row-gap: 14px;
-    column-gap: 14px;
-  }
-       
-  .form-grid > div { min-width: 0 !important; }
-
-  .form-grid input,
-  .form-grid select,
-  .form-grid textarea {
-    font-size: 16px;     /* iOS: évite le zoom */
-    display: block;      /* certains navigateurs rendent select “inline” */
-    width: 100% !important;
-    max-width: 100% !important;
-    min-width: 0 !important;
-  }
-
-  #date,
-  .form-grid input[type="date"] {
-    display: block;
-    width: 100% !important;
-    max-width: 100% !important;
-    min-width: 0 !important;
-    inline-size: 100% !important;
-    max-inline-size: 100% !important;
-    min-inline-size: 0 !important;
-  }
-}
   </style>
 
   <script>
-    /* Validation générique : surbrillance noire si champ vide */
+    /* ================================
+       ✅ Validation générique : surbrillance noire si champ vide
+       ✅ IMPORTANT : ne retire pas l'erreur sur cv_telephone / cv_email / avis_estimation
+       (car ceux-ci sont pilotés par la validation de format)
+    ================================ */
     function validateRequiredFields(fields) {
       let hasError = false;
 
+      const keepErrorIds = new Set(["cv_telephone", "cv_email", "avis_estimation"]);
+
       fields.forEach((f) => {
         if (!f) return;
+        if (keepErrorIds.has(f.id)) return;
         f.classList.remove("error");
       });
 
@@ -604,6 +622,106 @@
       return !hasError;
     }
 
+    /* ================================
+       ✅ Validations (format) : tel / email / estimation
+       - Si invalide => reste en surbrillance noire jusqu’à être valide
+    ================================ */
+    function setMsg(id, visible) {
+      const el = document.getElementById(id);
+      if (!el) return;
+      el.classList.toggle("is-visible", !!visible);
+    }
+
+    function normalizeEmail(v) {
+      return String(v || "").trim().toLowerCase();
+    }
+    function isEmailValid(v) {
+      const email = normalizeEmail(v);
+      return /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email);
+    }
+
+    function normalizePhoneFR(v) {
+      let s = String(v || "").trim();
+      s = s.replace(/[\s.\-()]/g, "");
+      if (s.startsWith("+33")) s = "0" + s.slice(3);
+      if (s.startsWith("0033")) s = "0" + s.slice(4);
+      return s;
+    }
+    function isPhoneFRValid(v) {
+      const s = normalizePhoneFR(v);
+      return /^0[1-9]\d{8}$/.test(s);
+    }
+
+    function normalizePrice(v) {
+      const raw = String(v || "").trim();
+      return raw.replace(/[^\d]/g, "");
+    }
+    function isPriceValid(v) {
+      const digits = normalizePrice(v);
+      if (!digits) return false;
+      const n = parseInt(digits, 10);
+      return Number.isFinite(n) && n >= 1000 && n <= 100000000;
+    }
+
+    function validateCvTelephone(showMessages = false) {
+      const tel = document.getElementById("cv_telephone");
+      if (!tel) return true;
+
+      const val = tel.value;
+      const ok = isPhoneFRValid(val);
+
+      tel.classList.toggle("error", !ok);
+      setMsg("msg-cv-telephone", showMessages && !!String(val || "").trim() && !ok);
+
+      return ok;
+    }
+
+    function validateCvEmail(showMessages = false) {
+      const email = document.getElementById("cv_email");
+      if (!email) return true;
+
+      const val = email.value;
+      const ok = isEmailValid(val);
+
+      email.classList.toggle("error", !ok);
+      setMsg("msg-cv-email", showMessages && !!String(val || "").trim() && !ok);
+
+      return ok;
+    }
+
+    function validateAvisEstimation(showMessages = false) {
+      const estimation = document.getElementById("avis_estimation");
+      if (!estimation) return true;
+
+      const val = estimation.value;
+      const ok = isPriceValid(val);
+
+      estimation.classList.toggle("error", !ok);
+      setMsg("msg-avis-estimation", showMessages && !!String(val || "").trim() && !ok);
+
+      return ok;
+    }
+
+    // ✅ Messages uniquement au blur
+    document.addEventListener("blur", (e) => {
+      const el = e.target;
+      if (!el || !el.id) return;
+
+      if (el.id === "cv_telephone") validateCvTelephone(true);
+      if (el.id === "cv_email") validateCvEmail(true);
+      if (el.id === "avis_estimation") validateAvisEstimation(true);
+    }, true);
+
+    // ✅ Pendant la saisie : re-validation continue (surbrillance reste si invalide)
+    document.addEventListener("input", (e) => {
+      const el = e.target;
+      if (!el || !el.id) return;
+
+      if (el.id === "cv_telephone") validateCvTelephone(false);
+      if (el.id === "cv_email") validateCvEmail(false);
+      if (el.id === "avis_estimation") validateAvisEstimation(false);
+    });
+
     /* 1) Avis sur la visite (SANS EMAIL) */
     function sendAvisVisite() {
       const bien = "Lucas - Appartement T4";
@@ -615,8 +733,14 @@
       const moins = document.getElementById("avis_moins");
       const offre = document.getElementById("avis_offre");
 
-      const ok = validateRequiredFields([prenom, nom, estimation, plus, moins, offre]);
-      if (!ok) return;
+      const okRequired = validateRequiredFields([prenom, nom, estimation, plus, moins, offre]);
+      const okEstimation = validateAvisEstimation(true);
+
+      if (!okRequired || !okEstimation) {
+        const firstError = document.querySelector(".error");
+        if (firstError) firstError.focus();
+        return;
+      }
 
       const subject = encodeURIComponent("Avis visite - " + bien);
       const body = encodeURIComponent(
@@ -646,8 +770,15 @@
       const date = document.getElementById("cv_date");
       const creneau = document.getElementById("cv_creneau");
 
-      const ok = validateRequiredFields([prenom, nom, tel, email, date, creneau]);
-      if (!ok) return;
+      const okRequired = validateRequiredFields([prenom, nom, tel, email, date, creneau]);
+      const okTel = validateCvTelephone(true);
+      const okEmail = validateCvEmail(true);
+
+      if (!okRequired || !okTel || !okEmail) {
+        const firstError = document.querySelector(".error");
+        if (firstError) firstError.focus();
+        return;
+      }
 
       const subject = encodeURIComponent("Demande de contre-visite - " + bien);
       const body = encodeURIComponent(
@@ -673,7 +804,7 @@
 <div class="page">
 
   <header>
-    <img src="/images/logo.webp" class="logo">
+    <img src="/images/logo.webp" class="logo" alt="">
     <div class="header-center">
       <div class="tagline-main">
         VOS PROJETS IMMOBILIERS N'ONT JAMAIS ÉTÉ AUSSI SIMPLES !
@@ -707,13 +838,13 @@
       <div class="carousel">
         <div class="carousel-track">
 
-          <img src="/bien-visite/lucas/photos/lucas 1.webp">
-          <img src="/bien-visite/lucas/photos/lucas 4.webp" loading="lazy">
-          <img src="/bien-visite/lucas/photos/lucas 7.webp" loading="lazy">
-          <img src="/bien-visite/lucas/photos/lucas 3.webp" loading="lazy">
-          <img src="/bien-visite/lucas/photos/lucas 5.webp" loading="lazy">
-          <img src="/bien-visite/lucas/photos/lucas 2.webp" loading="lazy">
-          <img src="/bien-visite/lucas/photos/lucas 6.webp" loading="lazy">
+          <img src="/bien-visite/lucas/photos/lucas 1.webp" alt="">
+          <img src="/bien-visite/lucas/photos/lucas 4.webp" loading="lazy" alt="">
+          <img src="/bien-visite/lucas/photos/lucas 7.webp" loading="lazy" alt="">
+          <img src="/bien-visite/lucas/photos/lucas 3.webp" loading="lazy" alt="">
+          <img src="/bien-visite/lucas/photos/lucas 5.webp" loading="lazy" alt="">
+          <img src="/bien-visite/lucas/photos/lucas 2.webp" loading="lazy" alt="">
+          <img src="/bien-visite/lucas/photos/lucas 6.webp" loading="lazy" alt="">
 
         </div>
 
@@ -782,7 +913,7 @@
 
     </section>
 
-    <!-- PARCOURS AVIS & CONTRE-VISITE (REMPLACE L’ANCIEN BLOC) -->
+    <!-- PARCOURS AVIS & CONTRE-VISITE -->
     <aside class="card card-avis-global">
 
       <!-- SECTION 1 : AVIS SUR LA VISITE -->
@@ -804,6 +935,7 @@
               inputmode="numeric"
               pattern="[0-9]*"
               placeholder="Ex : 270000">
+            <div class="field-msg" id="msg-avis-estimation">Estimation invalide. Exemple : 270000</div>
           </div>
 
           <div style="grid-column: 1 / -1;">
@@ -825,9 +957,9 @@
               <option value="Je souhaite réfléchir">Je souhaite réfléchir</option>
             </select>
           </div>
-        </div>
 
-        <button class="btn" type="button" onclick="sendAvisVisite()">Valider mon avis</button>
+          <button class="btn" type="button" onclick="sendAvisVisite()">Valider mon avis</button>
+        </div>
       </section>
 
       <div class="luxury-divider"></div>
@@ -856,8 +988,19 @@
         <div class="form-grid">
           <div><label>Votre prénom</label><input id="cv_prenom" type="text"></div>
           <div><label>Votre nom</label><input id="cv_nom" type="text"></div>
-          <div><label>Votre téléphone</label><input id="cv_telephone" type="tel"></div>
-          <div><label>Votre email</label><input id="cv_email" type="email"></div>
+
+          <div>
+            <label>Votre téléphone</label>
+            <input id="cv_telephone" type="tel" placeholder="Ex : 06 12 34 56 78">
+            <div class="field-msg" id="msg-cv-telephone">Numéro invalide. Exemple : 06 12 34 56 78</div>
+          </div>
+
+          <div>
+            <label>Votre email</label>
+            <input id="cv_email" type="email" placeholder="Ex : prenom.nom@mail.com">
+            <div class="field-msg" id="msg-cv-email">Email invalide. Exemple : prenom.nom@mail.com</div>
+          </div>
+
           <div><label>Date souhaitée</label><input id="cv_date" type="date"></div>
           <div>
             <label>Créneau souhaité</label>
@@ -874,16 +1017,16 @@
               <option>19:00 - 20:00</option>
             </select>
           </div>
-        </div>
 
-        <button class="btn" type="button" onclick="sendContreVisite()">Valider ma demande</button>
+          <button class="btn" type="button" onclick="sendContreVisite()">Valider ma demande</button>
+        </div>
       </section>
 
     </aside>
 
   </main>
 
-  <!-- ===== RÉSEAUX SOCIAUX (CENTRÉ ÉCRAN) ===== -->
+  <!-- ===== RÉSEAUX SOCIAUX ===== -->
   <div class="social-full">
     <section class="social-block" aria-label="Réseaux sociaux">
       <div class="social-icons">
@@ -951,10 +1094,10 @@
     </section>
   </div>
 
-   <!-- ===== BLOC CONTACT PREMIUM (FIN DE PAGE) ===== -->
+  <!-- ===== BLOC CONTACT PREMIUM ===== -->
   <section class="contact-block" aria-label="Contact Jérémy Heyob">
     <div class="contact-photo">
-      <img src="/images/photo.webp" alt="Jérémy Heyob">
+      <img src="/images/photo.webp" alt="">
     </div>
     <div class="contact-text">
       <h3>Une question sur ce bien ?</h3>
@@ -966,7 +1109,7 @@
       </div>
     </div>
   </section>
-  
+
   <!-- ===== FOOTER LÉGAL ===== -->
   <footer class="legal-footer">
     Les photos et documents présentés sur cette page sont la propriété exclusive de
@@ -990,17 +1133,17 @@ let idx = 0;
 const track = document.querySelector('.carousel-track');
 const slides = document.querySelectorAll('.carousel img');
 
-if (track && slides.length) {
-  document.querySelector('.carousel-btn.next').onclick = () => {
-    idx = (idx + 1) % slides.length;
-    track.style.transform = `translateX(-${idx * 100}%)`;
-  };
+const btnNextCarousel = document.querySelector('.carousel-btn.next');
+const btnPrevCarousel = document.querySelector('.carousel-btn.prev');
 
-  document.querySelector('.carousel-btn.prev').onclick = () => {
-    idx = (idx - 1 + slides.length) % slides.length;
-    track.style.transform = `translateX(-${idx * 100}%)`;
-  };
+function goTo(i){
+  if (!track || !slides.length) return;
+  idx = (i + slides.length) % slides.length;
+  track.style.transform = `translateX(-${idx * 100}%)`;
 }
+
+if (btnNextCarousel) btnNextCarousel.onclick = () => goTo(idx + 1);
+if (btnPrevCarousel) btnPrevCarousel.onclick = () => goTo(idx - 1);
 
 /* ===== LIGHTBOX ===== */
 const lightbox = document.getElementById('lightbox');
@@ -1011,6 +1154,12 @@ const btnNext = document.getElementById('lightboxNext');
 
 let currentSlide = 0;
 
+function openLightbox() {
+  if (!slides.length) return;
+  lightboxImg.src = slides[currentSlide].src;
+  lightbox.classList.add('active');
+}
+
 slides.forEach((img, i) => {
   img.addEventListener('click', () => {
     currentSlide = i;
@@ -1018,32 +1167,35 @@ slides.forEach((img, i) => {
   });
 });
 
-function openLightbox() {
-  lightboxImg.src = slides[currentSlide].src;
-  lightbox.classList.add('active');
+if (btnClose) btnClose.onclick = () => lightbox.classList.remove('active');
+
+if (lightbox) {
+  lightbox.onclick = (e) => {
+    if (e.target === lightbox) lightbox.classList.remove('active');
+  };
 }
 
-btnClose.onclick = () => lightbox.classList.remove('active');
+if (btnPrev) {
+  btnPrev.onclick = () => {
+    if (!slides.length) return;
+    currentSlide = (currentSlide - 1 + slides.length) % slides.length;
+    openLightbox();
+  };
+}
 
-lightbox.onclick = (e) => {
-  if (e.target === lightbox) lightbox.classList.remove('active');
-};
-
-btnPrev.onclick = () => {
-  currentSlide = (currentSlide - 1 + slides.length) % slides.length;
-  openLightbox();
-};
-
-btnNext.onclick = () => {
-  currentSlide = (currentSlide + 1) % slides.length;
-  openLightbox();
-};
+if (btnNext) {
+  btnNext.onclick = () => {
+    if (!slides.length) return;
+    currentSlide = (currentSlide + 1) % slides.length;
+    openLightbox();
+  };
+}
 
 document.addEventListener('keydown', (e) => {
-  if (!lightbox.classList.contains('active')) return;
-  if (e.key === 'ArrowRight') btnNext.onclick();
-  if (e.key === 'ArrowLeft') btnPrev.onclick();
-  if (e.key === 'Escape') btnClose.onclick();
+  if (!lightbox || !lightbox.classList.contains('active')) return;
+  if (e.key === 'ArrowRight' && btnNext) btnNext.onclick();
+  if (e.key === 'ArrowLeft' && btnPrev) btnPrev.onclick();
+  if (e.key === 'Escape' && btnClose) btnClose.onclick();
 });
 </script>
 
