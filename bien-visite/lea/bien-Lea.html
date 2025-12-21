@@ -488,7 +488,7 @@
 
   /* Réseaux sociaux */
   .social-icons {
-    flex-wrap: nowrap;
+    flex-wrap: wrap;
     justify-content: center;
   }
 
@@ -506,7 +506,7 @@
 
   .social-block {
     padding: 10px 12px;
-    justify-content: center;
+    max-width: 100%;
     text-align: center;
   }
 
@@ -520,6 +520,49 @@
   .contact-links {
     justify-content: center;
     width: 100%;
+  }
+       
+  .legal-footer {
+    margin-top: 40px;
+    padding: 18px;
+    text-align: center;
+    font-size: 11.5px;
+    color: var(--text-soft);
+    opacity: 0.8;
+    }
+       
+  .layout { 
+    grid-template-columns: 1fr; 
+  }
+       
+  /* FORM : 1 colonne sur mobile */  
+  .form-grid {
+    grid-template-columns: 1fr;
+    row-gap: 14px;
+    column-gap: 14px;
+  }
+       
+  .form-grid > div { min-width: 0 !important; }
+
+  .form-grid input,
+  .form-grid select,
+  .form-grid textarea {
+    font-size: 16px;     /* iOS: évite le zoom */
+    display: block;      /* certains navigateurs rendent select “inline” */
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+  }
+
+  #date,
+  .form-grid input[type="date"] {
+    display: block;
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+    inline-size: 100% !important;
+    max-inline-size: 100% !important;
+    min-inline-size: 0 !important;
   }
 }
   </style>
