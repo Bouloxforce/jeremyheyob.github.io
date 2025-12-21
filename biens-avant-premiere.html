@@ -5,6 +5,9 @@
   <link rel="shortcut icon" href="/images/favicon.ico">
   <meta charset="UTF-8">
 
+  <!-- ✅ iOS/Safari : empêche la détection auto (téléphone / email / date / adresse) => pas de bleu/souligné -->
+  <meta name="format-detection" content="telephone=no,date=no,address=no,email=no">
+
   <!-- SEO (INDEXATION ACTIVÉE) -->
   <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -181,6 +184,8 @@
       border: 1px solid var(--border-soft);
       background: #fafafa;
       font-size: 14px;
+      font-family: inherit;
+      color: var(--text-main);
     }
 
     .full { grid-column: 1 / -1; }
@@ -205,13 +210,14 @@
       box-shadow: 0 0 0 4px rgba(25,25,25,0.12) !important;
     }
 
-    /* ✅ MESSAGES (TEL / EMAIL) */
+    /* ✅ MESSAGES (TEL / EMAIL / BUDGET) */
     .field-msg {
       display: none;
       margin-top: 6px;
       font-size: 12px;
       color: var(--text-soft);
       line-height: 1.35;
+      text-decoration: none !important;
     }
     .field-msg.is-visible { display: block; }
 
@@ -241,6 +247,7 @@
       font-family: inherit;
       resize: none;
       overflow: hidden;
+      color: var(--text-main);
     }
 
     /* CONTACT BLOCK */
@@ -290,8 +297,30 @@
       font-size: 13px;
     }
 
-    .contact-links a { color: var(--accent); text-decoration: none; }
+    /* ✅ Couleur uniforme Email/SMS/Appel (inclut :visited) */
+    .contact-links a,
+    .contact-links a:visited,
+    .contact-links a:hover,
+    .contact-links a:active,
+    .contact-links a:focus {
+      color: var(--accent) !important;
+      text-decoration: none;
+    }
     .contact-links a:hover { text-decoration: underline; }
+
+    /* ✅ iOS/Safari : neutralise les liens auto “data detectors” (bleu / souligné) */
+    a[x-apple-data-detectors],
+    a[x-apple-data-detectors]:hover,
+    a[x-apple-data-detectors]:active,
+    a[x-apple-data-detectors]:visited {
+      color: inherit !important;
+      text-decoration: none !important;
+      font-size: inherit !important;
+      font-family: inherit !important;
+      font-weight: inherit !important;
+      line-height: inherit !important;
+      cursor: inherit !important;
+    }
 
     /* FOOTER */
     .legal-footer {
@@ -386,11 +415,7 @@
 
     @media (max-width: 880px) {
 
-      /* Header */
-      header {
-        flex-direction: column;
-        align-items: center;
-      }
+      header { flex-direction: column; align-items: center; }
 
       .header-center {
         display: flex;
@@ -403,11 +428,8 @@
       }
 
       .tagline-main,
-      .tagline-sub {
-        text-align: center;
-      }
+      .tagline-sub { text-align: center; }
 
-      /* Menu */
       .header-links {
         flex-wrap: wrap;
         row-gap: 10px;
@@ -420,65 +442,21 @@
         white-space: nowrap;
       }
 
-      /* Réseaux sociaux */
-      .social-icons {
-        flex-wrap: nowrap;
-        justify-content: center;
-      }
+      .social-icons { flex-wrap: nowrap; justify-content: center; }
+      .social-icons a { width: 34px; height: 34px; border-radius: 10px; flex-shrink: 0; }
+      .social-icons svg { width: 16px; height: 16px; }
 
-      .social-icons a {
-        width: 34px;
-        height: 34px;
-        border-radius: 10px;
-        flex-shrink: 0;
-      }
+      .social-block { padding: 10px 12px; justify-content: center; text-align: center; }
 
-      .social-icons svg {
-        width: 16px;
-        height: 16px;
-      }
+      .contact-block { flex-direction: column; align-items: center; text-align: center; }
+      .contact-links { justify-content: center; width: 100%; }
 
-      .social-block {
-        padding: 10px 12px;
-        justify-content: center;
-        text-align: center;
-      }
-
-      /* Contact */
-      .contact-block {
-        flex-direction: column;
-        align-items: center;
-        text-align: center;
-      }
-
-      .contact-links {
-        justify-content: center;
-        width: 100%;
-      }
-
-      /* FORM : 1 colonne sur mobile */
-      .form-grid{
-        grid-template-columns: 1fr;
-        row-gap: 14px;
-      }
-
-      .form-grid > div{
-        grid-column: 1 / -1;
-        min-width: 0;
-      }
-
+      .form-grid{ grid-template-columns: 1fr; row-gap: 14px; }
+      .form-grid > div{ grid-column: 1 / -1; min-width: 0; }
       .form-grid input,
       .form-grid select,
-      .form-grid textarea{
-        width: 100%;
-        max-width: 100%;
-        min-width: 0;
-      }
-
-      .form-grid .btn{
-        grid-column: 1 / -1;
-        width: 100%;
-      }
+      .form-grid textarea{ width: 100%; max-width: 100%; min-width: 0; }
+      .form-grid .btn{ grid-column: 1 / -1; width: 100%; }
     }
   </style>
 </head>
@@ -546,16 +524,19 @@
     <div>
       <label>Votre téléphone</label>
       <input id="tel" type="tel" inputmode="tel" autocomplete="tel" placeholder="Ex : 06 12 34 56 78">
+      <div class="field-msg" id="msg-tel">Numéro invalide. Exemple : 06 12 34 56 78</div>
     </div>
 
     <div>
       <label>Votre email</label>
       <input id="email" type="email" inputmode="email" autocomplete="email" placeholder="Ex : prenom.nom@mail.com">
+      <div class="field-msg" id="msg-email">Email invalide. Exemple : prenom.nom@mail.com</div>
     </div>
 
     <div class="full"><label>Ville recherchée</label><input id="ville" autocomplete="address-level2"></div>
 
-    <div><label>Maison ou appartement</label>
+    <div>
+      <label>Maison ou appartement</label>
       <select id="typeBien">
         <option value="">-- Choisir --</option>
         <option>Appartement</option>
@@ -563,7 +544,8 @@
       </select>
     </div>
 
-    <div><label>Typologie</label>
+    <div>
+      <label>Typologie</label>
       <select id="typologie">
         <option value="">-- Choisir --</option>
         <option>T1</option>
@@ -574,9 +556,14 @@
       </select>
     </div>
 
-    <div><label>Budget maximum</label><input id="budget" placeholder="Ex : 250 000 €"></div>
+    <div>
+      <label>Budget maximum</label>
+      <input id="budget" placeholder="Ex : 250 000 €" inputmode="numeric" autocomplete="off">
+      <div class="field-msg" id="msg-budget">Budget invalide. Exemple : 250 000 €</div>
+    </div>
 
-    <div><label>Avez-vous déjà vu votre banque ?</label>
+    <div>
+      <label>Avez-vous déjà vu votre banque ?</label>
       <select id="banque">
         <option value="">-- Choisir --</option>
         <option>Oui</option>
@@ -584,7 +571,8 @@
       </select>
     </div>
 
-    <div class="full"><label>Souhaitez-vous être mis en relation gratuitement avec un courtier pour évaluer ou comparer votre budget ?</label>
+    <div class="full">
+      <label>Souhaitez-vous être mis en relation gratuitement avec un courtier pour évaluer ou comparer votre budget ?</label>
       <select id="courtier">
         <option value="">-- Choisir --</option>
         <option>Oui</option>
@@ -592,7 +580,8 @@
       </select>
     </div>
 
-    <div><label>Vous êtes</label>
+    <div>
+      <label>Vous êtes</label>
       <select id="statut">
         <option value="">-- Choisir --</option>
         <option>Locataire</option>
@@ -600,7 +589,8 @@
       </select>
     </div>
 
-    <div><label>Avez-vous besoin de vendre pour acheter ?</label>
+    <div>
+      <label>Avez-vous besoin de vendre pour acheter ?</label>
       <select id="venteAvantAchat">
         <option value="">-- Choisir --</option>
         <option>Oui</option>
@@ -728,54 +718,102 @@
     return /^0[1-9]\d{8}$/.test(s);
   }
 
+  // ✅ Budget : accepte "250000", "250 000", "250.000", "250 000 €"...
+  function normalizeBudget(v) {
+    const raw = String(v || "").trim();
+    const digits = raw.replace(/[^\d]/g, ""); // garde uniquement les chiffres
+    return digits;
+  }
+  function isBudgetValid(v) {
+    const digits = normalizeBudget(v);
+    if (!digits) return false;
+    const n = parseInt(digits, 10);
+    // garde-fou : budget raisonnable (1 000€ à 100 000 000€)
+    return Number.isFinite(n) && n >= 1000 && n <= 100000000;
+  }
+
+  function isNonEmptyText(v) {
+    return !!String(v || "").trim();
+  }
+
   function setMsg(id, visible) {
     const el = document.getElementById(id);
     if (!el) return;
     el.classList.toggle("is-visible", !!visible);
   }
 
+  // ✅ UX : messages + style erreur seulement après blur, ou après submit
+  const touched = Object.create(null);
+  let formSubmitted = false;
+
+  function shouldShowUI(el) {
+    return formSubmitted || !!touched[el.id];
+  }
+
   function validateField(el) {
     if (!el) return true;
+
     const id = el.id;
     const val = el.value;
 
     let ok = true;
 
-    if (id === "email") ok = isEmailValid(val);
+    if (el.tagName === "SELECT") ok = !!val;
+    else if (id === "email") ok = isEmailValid(val);
     else if (id === "tel") ok = isPhoneFRValid(val);
-    else if (el.tagName === "SELECT") ok = !!val;
-    else ok = !!String(val || "").trim();
+    else if (id === "budget") ok = isBudgetValid(val);
+    else ok = isNonEmptyText(val);
 
-    el.classList.toggle("field-error", !ok);
+    const allowUI = shouldShowUI(el);
+    el.classList.toggle("field-error", allowUI ? !ok : false);
 
-    if (id === "email") setMsg("msg-email", !!val && !isEmailValid(val));
-    if (id === "tel") setMsg("msg-tel", !!val && !isPhoneFRValid(val));
+    if (id === "email") setMsg("msg-email", allowUI && !!val && !isEmailValid(val));
+    if (id === "tel") setMsg("msg-tel", allowUI && !!val && !isPhoneFRValid(val));
+    if (id === "budget") setMsg("msg-budget", allowUI && !!val && !isBudgetValid(val));
 
     return ok;
   }
 
-  // Live validation : inputs + textarea
+  // Blur => touched + validation
+  document.addEventListener("blur", function (e) {
+    const el = e.target;
+    if (!el || !el.id) return;
+
+    const watch = ["prenom","nom","tel","email","ville","budget"];
+    const watchSelects = ["typeBien","typologie","banque","courtier","statut","venteAvantAchat"];
+
+    if (watch.includes(el.id) || watchSelects.includes(el.id)) {
+      touched[el.id] = true;
+      validateField(el);
+    }
+  }, true);
+
+  // Input => validate seulement si touched ou submit (même logique que ta page avis de valeur)
   document.addEventListener("input", function (e) {
     const el = e.target;
     if (!el || !el.id) return;
 
-    // Validation live sur les champs importants
-    if (["prenom","nom","tel","email","ville","budget","commentaire"].includes(el.id)) {
-      // commentaire facultatif : on ne met pas en erreur si vide
-      if (el.id === "commentaire") {
-        if (el.value && el.value.trim()) el.classList.remove("field-error");
-        return;
-      }
+    // textarea : auto-resize (pas de validation requise car facultatif)
+    if (el.classList && el.classList.contains("textarea-custom")) {
+      el.style.height = "auto";
+      el.style.height = el.scrollHeight + "px";
+      return;
+    }
+
+    const watch = ["prenom","nom","tel","email","ville","budget"];
+    if (watch.includes(el.id) && shouldShowUI(el)) {
       validateField(el);
     }
   });
 
-  // Live validation : selects
+  // Change => selects : validation seulement après submit (ou si déjà touched)
   document.addEventListener("change", function (e) {
     const el = e.target;
     if (!el || !el.id) return;
 
-    if (["typeBien","typologie","banque","courtier","statut","venteAvantAchat"].includes(el.id)) {
+    const watchSelects = ["typeBien","typologie","banque","courtier","statut","venteAvantAchat"];
+    if (watchSelects.includes(el.id) && (formSubmitted || touched[el.id])) {
+      touched[el.id] = true;
       validateField(el);
     }
   });
@@ -797,12 +835,14 @@
     const success = document.getElementById("success");
 
     success.style.display = "none";
+    formSubmitted = true;
 
     // champs requis (commentaire volontairement absent)
     const required = [prenom, nom, tel, email, ville, budget, typeBien, typologie, banque, courtier, statut, venteAvantAchat];
 
     let hasError = false;
     required.forEach(el => {
+      touched[el.id] = true;
       const ok = validateField(el);
       if (!ok) hasError = true;
     });
@@ -820,6 +860,8 @@
 
     const phoneNormalized = normalizePhoneFR(tel.value);
     const emailNormalized = normalizeEmail(email.value);
+    const budgetDigits = normalizeBudget(budget.value);
+    const budgetPretty = budgetDigits ? (parseInt(budgetDigits, 10).toLocaleString("fr-FR") + " €") : budget.value.trim();
 
     const body = encodeURIComponent(
       "Bonjour,\n\n" +
@@ -831,7 +873,7 @@
       "Ville recherchée : " + ville.value.trim() + "\n" +
       "Maison ou appartement : " + typeBien.value + "\n" +
       "Typologie : " + typologie.value + "\n" +
-      "Budget maximum : " + budget.value.trim() + "\n\n" +
+      "Budget maximum : " + budgetPretty + "\n\n" +
       "Déjà vu la banque : " + banque.value + "\n" +
       "Souhaite mise en relation courtier (gratuit) : " + courtier.value + "\n\n" +
       "Statut : " + statut.value + "\n" +
@@ -846,7 +888,7 @@
       "mailto:contact@jeremyheyob.fr?subject=" + subject + "&body=" + body;
   }
 
-  // Auto-resize textarea
+  // Auto-resize textarea (sécurité si contenu collé)
   document.addEventListener("input", function (e) {
     if (e.target.classList && e.target.classList.contains("textarea-custom")) {
       e.target.style.height = "auto";
