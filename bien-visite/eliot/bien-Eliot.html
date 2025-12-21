@@ -404,7 +404,7 @@
       resize: vertical;
     }
 
-    /* Surbrillance noire si champ manquant */
+    /* Surbrillance noire si champ manquant / invalide */
     input.error,
     select.error,
     textarea.error {
@@ -412,7 +412,7 @@
       background: #fff;
     }
 
-    /* ✅ micro-messages discrets (email/tel/estimation) */
+    /* ✅ Micro-messages discrets (email/tel/estimation) */
     .field-msg {
       display: none;
       margin-top: 6px;
@@ -620,12 +620,19 @@
   </style>
 
   <script>
-    /* Validation générique : surbrillance noire si champ vide */
+    /* ================================
+       ✅ Validation générique : surbrillance noire si champ vide
+       ✅ IMPORTANT : ne retire pas l'erreur sur cv_telephone / cv_email / avis_estimation
+       (car ceux-ci sont pilotés par la validation de format)
+    ================================ */
     function validateRequiredFields(fields) {
       let hasError = false;
 
+      const keepErrorIds = new Set(["cv_telephone", "cv_email", "avis_estimation"]);
+
       fields.forEach((f) => {
         if (!f) return;
+        if (keepErrorIds.has(f.id)) return;
         f.classList.remove("error");
       });
 
@@ -641,12 +648,10 @@
     }
 
     /* ================================
-       ✅ AJOUTS : validations (même logique que ta page de référence)
-       - Téléphone / Email : comportements identiques
-       - Estimation : même comportement que "Budget maximum"
+       ✅ AJOUTS : validations (format)
+       - Téléphone / Email / Estimation
        - Si invalide => reste en surbrillance noire jusqu’à être valide
     ================================ */
-
     function setMsg(id, visible) {
       const el = document.getElementById(id);
       if (!el) return;
@@ -691,10 +696,7 @@
       const val = tel.value;
       const ok = isPhoneFRValid(val);
 
-      // ✅ Surbrillance noire tant que invalide
       tel.classList.toggle("error", !ok);
-
-      // ✅ Message uniquement au blur/submit, et uniquement si saisi mais invalide
       setMsg("msg-cv-telephone", showMessages && !!String(val || "").trim() && !ok);
 
       return ok;
@@ -707,10 +709,7 @@
       const val = email.value;
       const ok = isEmailValid(val);
 
-      // ✅ Surbrillance noire tant que invalide
       email.classList.toggle("error", !ok);
-
-      // ✅ Message uniquement au blur/submit, et uniquement si saisi mais invalide
       setMsg("msg-cv-email", showMessages && !!String(val || "").trim() && !ok);
 
       return ok;
@@ -723,10 +722,7 @@
       const val = estimation.value;
       const ok = isPriceValid(val);
 
-      // ✅ Surbrillance noire tant que invalide
       estimation.classList.toggle("error", !ok);
-
-      // ✅ Message uniquement au blur/submit, et uniquement si saisi mais invalide
       setMsg("msg-avis-estimation", showMessages && !!String(val || "").trim() && !ok);
 
       return ok;
@@ -742,10 +738,7 @@
       if (el.id === "avis_estimation") validateAvisEstimation(true);
     }, true);
 
-    // ✅ Pendant la saisie : on re-valide en continu
-    // - si invalide => bordure noire reste
-    // - si valide => bordure noire disparaît
-    // Les messages restent discrets (showMessages=false)
+    // ✅ Pendant la saisie : re-validation continue (surbrillance reste si invalide)
     document.addEventListener("input", (e) => {
       const el = e.target;
       if (!el || !el.id) return;
@@ -766,13 +759,12 @@
       const moins = document.getElementById("avis_moins");
       const offre = document.getElementById("avis_offre");
 
-      const ok = validateRequiredFields([prenom, nom, estimation, plus, moins, offre]);
-      if (!ok) return;
-
-      // ✅ Estimation : même comportement que "Budget maximum"
+      const okRequired = validateRequiredFields([prenom, nom, estimation, plus, moins, offre]);
       const okEstimation = validateAvisEstimation(true);
-      if (!okEstimation) {
-        estimation.focus();
+
+      if (!okRequired || !okEstimation) {
+        const firstError = document.querySelector(".error");
+        if (firstError) firstError.focus();
         return;
       }
 
@@ -804,19 +796,13 @@
       const date = document.getElementById("cv_date");
       const creneau = document.getElementById("cv_creneau");
 
-      const ok = validateRequiredFields([prenom, nom, tel, email, date, creneau]);
-      if (!ok) return;
-
-      // ✅ Téléphone + Email : même comportement que ta référence
+      const okRequired = validateRequiredFields([prenom, nom, tel, email, date, creneau]);
       const okTel = validateCvTelephone(true);
       const okEmail = validateCvEmail(true);
 
-      if (!okTel) {
-        tel.focus();
-        return;
-      }
-      if (!okEmail) {
-        email.focus();
+      if (!okRequired || !okTel || !okEmail) {
+        const firstError = document.querySelector(".error");
+        if (firstError) firstError.focus();
         return;
       }
 
@@ -1030,13 +1016,13 @@
 
           <div>
             <label>Votre téléphone</label>
-            <input id="cv_telephone" type="tel">
+            <input id="cv_telephone" type="tel" placeholder="Ex : 06 12 34 56 78">
             <div class="field-msg" id="msg-cv-telephone">Numéro invalide. Exemple : 06 12 34 56 78</div>
           </div>
 
           <div>
             <label>Votre email</label>
-            <input id="cv_email" type="email">
+            <input id="cv_email" type="email" placeholder="Ex : prenom.nom@mail.com">
             <div class="field-msg" id="msg-cv-email">Email invalide. Exemple : prenom.nom@mail.com</div>
           </div>
 
