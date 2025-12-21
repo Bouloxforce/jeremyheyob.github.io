@@ -463,6 +463,32 @@
     justify-content: center;
     width: 100%;
   }
+  /* FORM : 1 colonne sur mobile */
+  .form-grid{
+    grid-template-columns: 1fr;
+    row-gap: 14px;
+  }
+
+  /* Chaque item de la grille prend toute la ligne */
+  .form-grid > div{
+    grid-column: 1 / -1;
+    min-width: 0;
+  }
+
+  /* Les champs suivent la largeur du conteneur */
+  .form-grid input,
+  .form-grid select,
+  .form-grid textarea{
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+  }
+
+  /* Le bouton garde 100% largeur */
+  .form-grid .btn{
+    grid-column: 1 / -1;
+    width: 100%;
+  }
 }
   </style>
 </head>
