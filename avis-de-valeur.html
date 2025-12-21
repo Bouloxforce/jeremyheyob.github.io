@@ -510,6 +510,33 @@
     justify-content: center;
     width: 100%;
   }
+
+          /* ===== HERO HIGHLIGHT : logo au-dessus du texte sur mobile ===== */
+  .hero-highlight-with-logo{
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: left; /* ou center si tu veux tout centrer */
+  }
+
+  .hero-highlight-logo{
+    order: -1;                 /* met le logo avant le texte */
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin: 0 0 12px 0;
+  }
+
+  .hero-highlight-logo img{
+    margin-left: 0 !important; /* annule le -250px */
+    width: 140px;              /* ajuste si besoin */
+    max-width: 70%;
+    height: auto;
+  }
+
+  .hero-highlight-text{
+    width: 100%;
+  }
 }
     
   </style>
