@@ -3,6 +3,9 @@
 <head>
   <meta charset="UTF-8">
 
+  <!-- ✅ iOS/Safari : empêche la détection auto (téléphone / email / date / adresse) => pas de bleu/souligné -->
+  <meta name="format-detection" content="telephone=no,date=no,address=no,email=no">
+
   <!-- SEO (INDEXATION ACTIVÉE) -->
   <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -59,7 +62,6 @@
     }
 
     .logo { max-width: 140px; }
-
     .header-center { flex: 1; text-align: center; }
 
     .tagline-main {
@@ -178,7 +180,6 @@
     }
 
     .contact-text h3 { margin: 0 0 6px; font-size: 17px; }
-
     .contact-text p { margin: 0; font-size: 13px; color: var(--text-soft); }
 
     .contact-links {
@@ -189,7 +190,7 @@
       font-size: 13px;
     }
 
-    /* ✅ FIX COULEUR UNIFORME : Email / SMS / Appel (y compris :visited) */
+    /* ✅ Couleur uniforme Email / SMS / Appel (y compris :visited) */
     .contact-links a,
     .contact-links a:visited,
     .contact-links a:hover,
@@ -198,7 +199,6 @@
       color: var(--accent) !important;
       text-decoration: none;
     }
-
     .contact-links a:hover { text-decoration: underline; }
 
     .contact-links a:focus-visible {
@@ -286,6 +286,7 @@
       background: #fafafa;
       font-size: 14px;
       font-family: inherit;
+      color: var(--text-main);
     }
 
     .full { grid-column: 1 / -1; }
@@ -319,20 +320,22 @@
       font-size: 12px;
       color: var(--text-soft);
       line-height: 1.35;
+      text-decoration: none !important;
     }
     .field-msg.is-visible { display: block; }
 
-    /* ✅ FIX iOS/Safari : ne jamais souligner/bleuir les numéros “reconnus” */
-    input, textarea, select {
-      -webkit-text-fill-color: inherit;
-      color: inherit;
-    }
-    a, a:visited {
-      color: inherit;
-    }
-    /* Pour certains Safari : neutralise auto-link bleu/underline autour du texte */
-    .field-msg, .contact-text, .contact-links, .card, .page {
-      -webkit-text-size-adjust: 100%;
+    /* ✅ iOS/Safari : neutralise les liens auto “data detectors” (bleu / souligné) */
+    a[x-apple-data-detectors],
+    a[x-apple-data-detectors]:hover,
+    a[x-apple-data-detectors]:active,
+    a[x-apple-data-detectors]:visited {
+      color: inherit !important;
+      text-decoration: none !important;
+      font-size: inherit !important;
+      font-family: inherit !important;
+      font-weight: inherit !important;
+      line-height: inherit !important;
+      cursor: inherit !important;
     }
 
     .success {
@@ -398,10 +401,7 @@
 
     @media (max-width: 880px) {
 
-      header {
-        flex-direction: column;
-        align-items: center;
-      }
+      header { flex-direction: column; align-items: center; }
 
       .header-center {
         display: flex;
@@ -414,9 +414,7 @@
       }
 
       .tagline-main,
-      .tagline-sub {
-        text-align: center;
-      }
+      .tagline-sub { text-align: center; }
 
       .header-links {
         flex-wrap: wrap;
@@ -430,61 +428,19 @@
         white-space: nowrap;
       }
 
-      .social-icons {
-        flex-wrap: nowrap;
-        justify-content: center;
-      }
+      .social-icons { flex-wrap: nowrap; justify-content: center; }
+      .social-icons a { width: 34px; height: 34px; border-radius: 10px; flex-shrink: 0; }
+      .social-icons svg { width: 16px; height: 16px; }
 
-      .social-icons a {
-        width: 34px;
-        height: 34px;
-        border-radius: 10px;
-        flex-shrink: 0;
-      }
+      .social-block { padding: 10px 12px; justify-content: center; text-align: center; }
 
-      .social-icons svg {
-        width: 16px;
-        height: 16px;
-      }
+      .contact-block { flex-direction: column; align-items: center; text-align: center; }
+      .contact-links { justify-content: center; width: 100%; }
 
-      .social-block {
-        padding: 10px 12px;
-        justify-content: center;
-        text-align: center;
-      }
-
-      .contact-block {
-        flex-direction: column;
-        align-items: center;
-        text-align: center;
-      }
-
-      .contact-links {
-        justify-content: center;
-        width: 100%;
-      }
-
-      /* FORM : 1 colonne sur mobile */
-      .form-grid{
-        grid-template-columns: 1fr;
-        row-gap: 14px;
-      }
-
-      .form-grid > div{
-        grid-column: 1 / -1;
-        min-width: 0;
-      }
-
-      .form-grid input{
-        width: 100%;
-        max-width: 100%;
-        min-width: 0;
-      }
-
-      .form-grid .btn{
-        grid-column: 1 / -1;
-        width: 100%;
-      }
+      .form-grid{ grid-template-columns: 1fr; row-gap: 14px; }
+      .form-grid > div{ grid-column: 1 / -1; min-width: 0; }
+      .form-grid input{ width: 100%; max-width: 100%; min-width: 0; }
+      .form-grid .btn{ grid-column: 1 / -1; width: 100%; }
     }
   </style>
 </head>
@@ -555,6 +511,13 @@
           <label>Votre email</label>
           <input id="email" type="email" inputmode="email" autocomplete="email" placeholder="Ex : prenom.nom@mail.com">
           <div class="field-msg" id="msg-email">Email invalide. Exemple : prenom.nom@mail.com</div>
+        </div>
+
+        <!-- ✅ AJOUT : Budget maximum + même comportement -->
+        <div class="full">
+          <label>Budget maximum</label>
+          <input id="budget" placeholder="Ex : 250 000 €" inputmode="numeric" autocomplete="off">
+          <div class="field-msg" id="msg-budget">Budget invalide. Exemple : 250 000 €</div>
         </div>
 
         <button class="btn" type="button" onclick="sendMail()">Valider ma demande</button>
@@ -670,6 +633,17 @@
       return /^0[1-9]\d{8}$/.test(s);
     }
 
+    function normalizeBudget(v) {
+      const raw = String(v || "").trim();
+      return raw.replace(/[^\d]/g, "");
+    }
+    function isBudgetValid(v) {
+      const digits = normalizeBudget(v);
+      if (!digits) return false;
+      const n = parseInt(digits, 10);
+      return Number.isFinite(n) && n >= 1000 && n <= 100000000;
+    }
+
     function isNonEmptyText(v) {
       return !!String(v || "").trim();
     }
@@ -680,31 +654,54 @@
       el.classList.toggle("is-visible", !!visible);
     }
 
+    // ✅ même logique que ta page acquéreur : erreurs seulement après blur ou submit
+    const touched = Object.create(null);
+    let formSubmitted = false;
+
+    function shouldShowUI(el) {
+      return formSubmitted || !!touched[el.id];
+    }
+
     function validateFieldAndToggleError(el) {
       if (!el) return true;
 
       const id = el.id;
-      let ok = true;
-
       const val = el.value;
 
+      let ok = true;
       if (id === "email") ok = isEmailValid(val);
       else if (id === "tel") ok = isPhoneFRValid(val);
+      else if (id === "budget") ok = isBudgetValid(val);
       else ok = isNonEmptyText(val);
 
-      el.classList.toggle("field-error", !ok);
+      const allowUI = shouldShowUI(el);
 
-      if (id === "email") setMsg("msg-email", !!el.value && !isEmailValid(el.value));
-      if (id === "tel") setMsg("msg-tel", !!el.value && !isPhoneFRValid(el.value));
+      el.classList.toggle("field-error", allowUI ? !ok : false);
+
+      if (id === "email") setMsg("msg-email", allowUI && !!val && !isEmailValid(val));
+      if (id === "tel") setMsg("msg-tel", allowUI && !!val && !isPhoneFRValid(val));
+      if (id === "budget") setMsg("msg-budget", allowUI && !!val && !isBudgetValid(val));
 
       return ok;
     }
 
+    // Blur => touched + validation
+    document.addEventListener("blur", function (e) {
+      const el = e.target;
+      if (!el || !el.id) return;
+
+      if (["prenom","nom","tel","email","budget"].includes(el.id)) {
+        touched[el.id] = true;
+        validateFieldAndToggleError(el);
+      }
+    }, true);
+
+    // Input => validate seulement si touched ou submit
     document.addEventListener("input", function (e) {
       const el = e.target;
       if (!el || !el.id) return;
 
-      if (["prenom","nom","tel","email"].includes(el.id)) {
+      if (["prenom","nom","tel","email","budget"].includes(el.id) && shouldShowUI(el)) {
         validateFieldAndToggleError(el);
       }
     });
@@ -714,14 +711,17 @@
       const nom = document.getElementById("nom");
       const tel = document.getElementById("tel");
       const email = document.getElementById("email");
+      const budget = document.getElementById("budget");
       const success = document.getElementById("success");
 
       success.style.display = "none";
+      formSubmitted = true;
 
-      const required = [prenom, nom, tel, email];
+      const required = [prenom, nom, tel, email, budget];
 
       let hasError = false;
       required.forEach(el => {
+        touched[el.id] = true;
         const ok = validateFieldAndToggleError(el);
         if (!ok) hasError = true;
       });
@@ -741,12 +741,18 @@
       const phoneNormalized = normalizePhoneFR(tel.value);
       const emailNormalized = normalizeEmail(email.value);
 
+      const budgetDigits = normalizeBudget(budget.value);
+      const budgetPretty = budgetDigits
+        ? (parseInt(budgetDigits, 10).toLocaleString("fr-FR") + " €")
+        : budget.value.trim();
+
       const body = encodeURIComponent(
         "Bonjour,\n\n" +
         "Je souhaite recevoir le guide vendeur « Un cran au-dessus ».\n\n" +
         "Nom : " + prenom.value.trim() + " " + nom.value.trim() + "\n" +
         "Téléphone : " + phoneNormalized + "\n" +
-        "Email : " + emailNormalized + "\n\n" +
+        "Email : " + emailNormalized + "\n" +
+        "Budget maximum : " + budgetPretty + "\n\n" +
         "Merci.\n"
       );
 
