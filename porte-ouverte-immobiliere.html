@@ -532,7 +532,7 @@
     <button class="btn" id="btnSend" onclick="sendMail()">Envoyer ma demande</button>
 
     <div class="success" id="success">
-      ✅ Demande transmise. Je reviens vers vous par email pour confirmer la disponibilité du créneau avec l'adresse exacte du bien.
+      ✅ Demande transmise. Je reviens vers vous par email et sms pour confirmer la disponibilité du créneau avec l'adresse exacte du bien.
     </div>
   </div>
 </section>
@@ -889,6 +889,8 @@ Vente avant achat : ${payload.venteAvantAchat}
 
 Commentaire :
 ${payload.commentaire || "—"}`
+
+Merci.
     );
 
     window.location.href = `mailto:contact@jeremyheyob.fr?subject=${subject}&body=${body}`;
