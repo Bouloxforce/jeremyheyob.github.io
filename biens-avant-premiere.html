@@ -442,11 +442,11 @@
         white-space: nowrap;
       }
 
-      .social-icons { flex-wrap: nowrap; justify-content: center; }
+      .social-icons { flex-wrap: wrap; justify-content: center; }
       .social-icons a { width: 34px; height: 34px; border-radius: 10px; flex-shrink: 0; }
       .social-icons svg { width: 16px; height: 16px; }
 
-      .social-block { padding: 10px 12px; justify-content: center; text-align: center; }
+      .social-block { padding: 10px 12px; max-width: 100%; text-align: center; }
 
       .contact-block { flex-direction: column; align-items: center; text-align: center; }
       .contact-links { justify-content: center; width: 100%; }
@@ -455,7 +455,7 @@
       .form-grid > div{ grid-column: 1 / -1; min-width: 0; }
       .form-grid input,
       .form-grid select,
-      .form-grid textarea{ width: 100%; max-width: 100%; min-width: 0; }
+      .form-grid textarea{ width: 100%; max-width: 100%; min-width: 0; font-size: 16px; display: block; }
       .form-grid .btn{ grid-column: 1 / -1; width: 100%; }
     }
   </style>
