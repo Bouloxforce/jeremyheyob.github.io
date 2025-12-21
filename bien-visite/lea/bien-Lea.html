@@ -166,12 +166,22 @@
     color: var(--text-soft);
   }
 
-  .form-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 14px;
-    margin-top: 14px;
-  }
+        /* FORMULAIRE */
+    .form-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+      margin-top: 14px;
+    }
+    
+      /* Boutons sur toute la largeur */
+    .form-grid + .btn,
+    .avis-section .btn {
+      width: 100%;
+      display: block;
+      text-align: center;
+      margin: 16px auto 0;
+    }
 
   input, select {
     width: 100%;
@@ -437,9 +447,6 @@
   .contact-block .contact-links a:hover { text-decoration: underline; }
     
      @media (max-width: 880px) {
-  .form-grid{ grid-template-columns: 1fr; }
-  .btn{ grid-column: 1 / -1; width: 100%; }
-  }
     
   /* Header */
   header {
