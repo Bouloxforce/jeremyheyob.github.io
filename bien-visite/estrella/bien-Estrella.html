@@ -8,436 +8,393 @@
   <title>Estrella | Jérémy Heyob Immobilier</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+  <!-- ✅ Preload aligné sur la 1ère photo du carrousel -->
   <link rel="preload" href="/bien-visite/estrella/photos/estrella 9.webp" as="image">
 
   <style>
-    :root {
-      --bg: #FFFBF5;
-      --accent: #C6AA77;
-      --accent-soft: rgba(198,169,119,0.16);
-      --text-main: #191919;
-      --text-soft: #7A7A7A;
-      --border-soft: #e5e7eb;
-      --card-bg: #ffffff;
-      --shadow-soft: 0 20px 50px rgba(25,25,25,0.10);
+    :root{
+      --bg:#FFFBF5;
+      --accent:#C6AA77;
+      --accent-soft:rgba(198,169,119,0.16);
+      --text-main:#191919;
+      --text-soft:#7A7A7A;
+      --border-soft:#e5e7eb;
+      --card-bg:#ffffff;
+      --shadow-soft:0 20px 50px rgba(25,25,25,0.10);
     }
 
-    * { box-sizing: border-box; }
-    body {
-      margin: 0;
-      font-family: -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
-      background: var(--bg);
-      color: var(--text-main);
-      overflow-x: hidden;
+    *{ box-sizing:border-box; }
+
+    body{
+      margin:0;
+      font-family:-apple-system,BlinkMacSystemFont,system-ui,sans-serif;
+      background:var(--bg);
+      color:var(--text-main);
+      overflow-x:hidden;
     }
 
-    .page { max-width: 1100px; margin: 0 auto; padding: 24px 16px 50px; }
+    .page{ max-width:1100px; margin:0 auto; padding:24px 16px 50px; }
 
-    header {
-      display: flex; align-items: center; justify-content: space-between;
-      gap: 18px; max-width: 960px; margin: 16px auto 24px;
-      padding: 8px 28px; background: var(--card-bg); border-radius: 22px;
-      box-shadow: var(--shadow-soft); border: 1px solid rgba(15,23,42,0.04);
+    header{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:18px;
+      max-width:960px;
+      margin:16px auto 24px;
+      padding:8px 28px;
+      background:var(--card-bg);
+      border-radius:22px;
+      box-shadow:var(--shadow-soft);
+      border:1px solid rgba(15,23,42,0.04);
     }
 
-    .logo { max-width: 140px; }
-    .header-center { flex: 1; text-align: center; }
-    .tagline-main { font-size: 13px; letter-spacing: 0.18em; color: var(--text-soft); }
-    .tagline-sub { margin-top: 12px; font-size: 12px; margin-bottom: 8px; text-transform: uppercase; letter-spacing: 0.12em; }
-    .tagline-sub strong { color: var(--text-main); font-weight: 900; }
+    .logo{ max-width:140px; }
+    .header-center{ flex:1; text-align:center; }
+    .tagline-main{ font-size:13px; letter-spacing:0.18em; color:var(--text-soft); }
+    .tagline-sub{ margin-top:12px; margin-bottom:8px; font-size:12px; text-transform:uppercase; letter-spacing:0.12em; }
+    .tagline-sub strong{ color:var(--text-main); font-weight:900; }
 
-    .layout {
-      display: grid; grid-template-columns: 1.2fr 0.8fr;
-      gap: 22px; align-items: start;
+    .layout{
+      display:grid;
+      grid-template-columns:1.2fr 0.8fr;
+      gap:22px;
+      align-items:start;
     }
 
-    .card { background: var(--card-bg); border-radius: 22px;
-      border: 1px solid var(--border-soft); padding: 20px 22px;
-      box-shadow: var(--shadow-soft); }
-
-    .pill {
-      background: var(--accent-soft); color: var(--accent); padding: 5px 12px;
-      border-radius: 999px; font-size: 11px; font-weight: 600;
-      margin-bottom: 10px; display: inline-block;
+    .card{
+      background:var(--card-bg);
+      border-radius:22px;
+      border:1px solid var(--border-soft);
+      padding:20px 22px;
+      box-shadow:var(--shadow-soft);
     }
 
-    h1 { font-size: 26px; margin-bottom: 0; }
-    .subtitle { color: var(--text-soft); margin-top: 4px; }
-
-    .chips { margin-top: 12px; }
-    .chip {
-      padding: 6px 12px; background: rgba(198,169,119,0.10);
-      border-radius: 999px; font-size: 12px; margin-right: 6px;
-      margin-bottom: 6px; display: inline-block;
+    .pill{
+      background:var(--accent-soft);
+      color:var(--accent);
+      padding:5px 12px;
+      border-radius:999px;
+      font-size:11px;
+      font-weight:600;
+      margin-bottom:10px;
+      display:inline-block;
     }
 
-    .carousel { position: relative; width: 100%; overflow: hidden;
-      border-radius: 16px; background: #00000008; margin: 20px 0; }
+    h1{ font-size:26px; margin-bottom:0; }
+    .subtitle{ color:var(--text-soft); margin-top:4px; }
 
-    .carousel-track { display: flex; width: 100%;
-      transition: transform 0.35s ease; }
-
-    .carousel img { flex: 0 0 100%; width: 100%; height: auto;
-      object-fit: cover; background: #00000008; cursor: pointer; }
-
-    .carousel-btn {
-      position: absolute; top: 50%; transform: translateY(-50%);
-      background: rgba(255,255,255,0.75); border: none; font-size: 22px;
-      padding: 6px 12px; border-radius: 999px; cursor: pointer;
+    .chips{ margin-top:12px; }
+    .chip{
+      padding:6px 12px;
+      background:rgba(198,169,119,0.10);
+      border-radius:999px;
+      font-size:12px;
+      margin-right:6px;
+      margin-bottom:6px;
+      display:inline-block;
     }
 
-    .carousel-btn.prev { left: 10px; }
-    .carousel-btn.next { right: 10px; }
+    /* CARROUSEL */
+    .carousel{
+      position:relative;
+      width:100%;
+      overflow:hidden;
+      border-radius:16px;
+      background:#00000008;
+      margin:20px 0;
+    }
+    .carousel-track{
+      display:flex;
+      width:100%;
+      transition:transform 0.35s ease;
+    }
+    .carousel img{
+      flex:0 0 100%;
+      width:100%;
+      height:auto;
+      object-fit:cover;
+      background:#00000008;
+      cursor:pointer;
+    }
+    .carousel-btn{
+      position:absolute;
+      top:50%;
+      transform:translateY(-50%);
+      background:rgba(255,255,255,0.75);
+      border:none;
+      font-size:22px;
+      padding:6px 12px;
+      border-radius:999px;
+      cursor:pointer;
+    }
+    .carousel-btn.prev{ left:10px; }
+    .carousel-btn.next{ right:10px; }
 
-    .grid-two {
-      display: grid; grid-template-columns: repeat(2,1fr);
-      gap: 12px; font-size: 14px; margin-top: 20px;
+    /* INFOS */
+    .grid-two{
+      display:grid;
+      grid-template-columns:repeat(2, minmax(0, 1fr));
+      gap:12px;
+      font-size:14px;
+      margin-top:20px;
+    }
+    .grid-two span{ display:block; font-size:12px; color:var(--text-soft); }
+
+    /* FORM */
+    .form-grid{
+      display:grid;
+      width:100%;
+      grid-template-columns:minmax(0,1fr) minmax(0,1fr);
+      gap:14px;
+      margin-top:14px;
+      justify-items:stretch;
+    }
+    .form-grid > div{ min-width:0; }
+
+    label{ font-size:13px; margin-bottom:4px; display:block; }
+
+    input, select, textarea{
+      width:100%;
+      display:block;
+      min-width:0;
+      max-width:100%;
+      padding:10px 12px;
+      border-radius:12px;
+      border:1px solid var(--border-soft);
+      background:#fafafa;
+      font-size:14px;
+      font-family:inherit;
+    }
+    textarea{ resize:vertical; }
+
+    .btn{
+      background:linear-gradient(135deg,#fbe4b9,#f3c98b);
+      color:#7a5a29;
+      padding:12px 16px;
+      border-radius:999px;
+      font-size:15px;
+      font-weight:600;
+      border:none;
+      cursor:pointer;
+      text-align:center;
     }
 
-    .grid-two span { display: block; font-size: 12px; color: var(--text-soft); }
-
-    .form-grid {
-      display: grid; grid-template-columns: 1fr 1fr;
-      gap: 14px; margin-top: 14px;
+    /* ✅ Bouton dans la grille : pleine largeur */
+    .form-grid .btn{
+      grid-column:1 / -1;
+      width:100%;
+      margin-top:6px;
     }
 
-    input, select {
-      width: 100%; padding: 10px 12px; border-radius: 12px;
-      border: 1px solid var(--border-soft); background: #fafafa;
-      font-size: 14px;
+    a.btn{ display:block; text-decoration:none; }
+
+    .btn-retour{
+      display:inline-block;
+      margin:10px 0 18px;
+      padding:6px 12px;
+      font-size:13px;
+      font-weight:500;
+      color:#7a5a29;
+      text-decoration:none;
+      border-radius:10px;
+      border:1px solid rgba(198,169,119,0.35);
+      background:rgba(198,169,119,0.10);
     }
 
-    label { font-size: 13px; margin-bottom: 4px; display: block; }
-
-    .btn {
-      grid-column: span 2; margin-top: 6px;
-      background: linear-gradient(135deg, #fbe4b9, #f3c98b);
-      color: #7a5a29; padding: 12px 16px; border-radius: 999px;
-      font-size: 15px; font-weight: 600; border: none;
-      cursor: pointer;
-      text-align: center;
-    }
-
-    /* Permet à <a class="btn"> de se comporter comme un bouton */
-    a.btn { display: block; text-decoration: none; }
-
-    .btn-retour { display: inline-block; margin: 10px 0 18px;
-      padding: 6px 12px; font-size: 13px; font-weight: 500;
-      color: #7a5a29; text-decoration: none; border-radius: 10px;
-      border: 1px solid rgba(198,169,119,0.35);
-      background: rgba(198,169,119,0.10); }
-
-    /* FOOTER LEGAL */
-    .legal-footer {
-      margin-top: 40px;
-      padding: 18px;
-      text-align: center;
-      font-size: 11.5px;
-      color: var(--text-soft);
-      opacity: 0.8;
+    /* FOOTER */
+    .legal-footer{
+      margin-top:40px;
+      padding:18px;
+      text-align:center;
+      font-size:11.5px;
+      color:var(--text-soft);
+      opacity:0.8;
     }
 
     /* LIGHTBOX */
-    .lightbox {
-      position: fixed; inset: 0; background: rgba(0,0,0,0.85);
-      display: flex; justify-content: center; align-items: center;
-      z-index: 9999; opacity: 0; pointer-events: none;
-      transition: opacity 0.25s ease;
+    .lightbox{
+      position:fixed; inset:0;
+      background:rgba(0,0,0,0.85);
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      z-index:9999;
+      opacity:0;
+      pointer-events:none;
+      transition:opacity 0.25s ease;
+    }
+    .lightbox.active{ opacity:1; pointer-events:auto; }
+    .lightbox img{
+      max-width:90%;
+      max-height:90vh;
+      border-radius:12px;
+      box-shadow:0 0 40px rgba(0,0,0,0.45);
+    }
+    .lightbox-prev, .lightbox-next{
+      position:absolute;
+      top:50%;
+      transform:translateY(-50%);
+      color:white;
+      font-size:46px;
+      cursor:pointer;
+      padding:18px 24px;
+      background:rgba(0,0,0,0.35);
+      border-radius:999px;
+    }
+    .lightbox-prev{ left:40px; }
+    .lightbox-next{ right:40px; }
+    .lightbox-close{
+      position:absolute;
+      top:30px;
+      right:40px;
+      color:white;
+      font-size:52px;
+      cursor:pointer;
+      padding:8px 16px;
+      background:rgba(0,0,0,0.35);
+      border-radius:999px;
     }
 
-    .lightbox.active { opacity: 1; pointer-events: auto; }
-
-    .lightbox img {
-      max-width: 90%; max-height: 90vh; border-radius: 12px;
-      box-shadow: 0 0 40px rgba(0,0,0,0.45);
+    /* RÉSEAUX SOCIAUX */
+    .social-full{
+      width:100vw;
+      margin-left:calc(-50vw + 50%);
+      display:flex;
+      justify-content:center;
+      margin-top:36px;
     }
-
-    .lightbox-prev, .lightbox-next {
-      position: absolute; top: 50%; transform: translateY(-50%);
-      color: white; font-size: 46px; cursor: pointer;
-      padding: 18px 24px; background: rgba(0,0,0,0.35);
-      border-radius: 999px;
+    .social-block{
+      width:fit-content;
+      margin:0 auto 8px;
+      background:#ffffff;
+      border-radius:20px;
+      border:1px solid #e5e7eb;
+      box-shadow:0 18px 40px rgba(25,25,25,0.08);
+      padding:14px 16px;
     }
-
-    .lightbox-prev { left: 40px; }
-    .lightbox-next { right: 40px; }
-
-    .lightbox-close {
-      position: absolute; top: 30px; right: 40px;
-      color: white; font-size: 52px; cursor: pointer;
-      padding: 8px 16px; background: rgba(0,0,0,0.35);
-      border-radius: 999px;
+    .social-icons{
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+      align-items:center;
+      justify-content:center;
     }
-
-    /* ===== BLOC RÉSEAUX SOCIAUX ===== */
-    .social-full {
-      width: 100vw;
-      margin-left: calc(-50vw + 50%);
-      display: flex;
-      justify-content: center;
-      margin-top: 36px;
+    .social-icons a{
+      width:42px;
+      height:42px;
+      border-radius:14px;
+      display:grid;
+      place-items:center;
+      background:rgba(198, 169, 119, 0.16);
+      border:1px solid rgba(198,169,119,0.25);
+      transition:transform 0.15s ease, filter 0.15s ease;
+      text-decoration:none;
     }
-
-    .social-block {
-      width: fit-content;
-      margin: 0 auto 8px;
-      background: #ffffff;
-      border-radius: 20px;
-      border: 1px solid #e5e7eb;
-      box-shadow: 0 18px 40px rgba(25,25,25,0.08);
-      padding: 14px 16px;
+    .social-icons a:hover{
+      transform:translateY(-1px);
+      filter:brightness(1.02);
     }
-
-    .social-icons {
-      display: flex;
-      gap: 10px;
-      flex-wrap: wrap;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .social-icons a {
-      width: 42px;
-      height: 42px;
-      border-radius: 14px;
-      display: grid;
-      place-items: center;
-      background: rgba(198, 169, 119, 0.16);
-      border: 1px solid rgba(198,169,119,0.25);
-      transition: transform 0.15s ease, filter 0.15s ease;
-      text-decoration: none;
-    }
-
-    .social-icons a:hover {
-      transform: translateY(-1px);
-      filter: brightness(1.02);
-    }
-
-    .social-icons svg {
-      width: 20px;
-      height: 20px;
-    }
-
-    /* ===== AJOUTS (IMPORTÉS D’ELIOT) ===== */
+    .social-icons svg{ width:20px; height:20px; }
 
     /* Séparateur luxe */
-    .luxury-divider {
-      width: 100%;
-      height: 1px;
-      margin: 40px 0;
-      background: linear-gradient(
-        to right,
-        transparent,
-        rgba(180, 160, 120, 0.6),
-        transparent
-      );
-    }
-
-    /* Textarea (avis + / -) */
-    textarea {
-      width: 100%;
-      padding: 10px 12px;
-      border-radius: 12px;
-      border: 1px solid var(--border-soft);
-      background: #fafafa;
-      font-size: 14px;
-      resize: vertical;
+    .luxury-divider{
+      width:100%;
+      height:1px;
+      margin:40px 0;
+      background:linear-gradient(to right, transparent, rgba(180,160,120,0.6), transparent);
     }
 
     /* Surbrillance noire si champ manquant */
-    input.error,
-    select.error,
-    textarea.error {
-      border: 2px solid #191919;
-      background: #fff;
+    input.error, select.error, textarea.error{
+      border:2px solid #191919;
+      background:#fff;
     }
 
     /* Centrer les titres du bloc avis uniquement */
-    .card-avis-global h2 { text-align: center; }
+    .card-avis-global h2{ text-align:center; }
 
-    /* ===== BLOC CONTACT PREMIUM (IMPORTÉ D’ELIOT) ===== */
-    .contact-block {
-      display: flex;
-      gap: 18px;
-      align-items: center;
-      background: #ffffff;
-      border-radius: 20px;
-      padding: 16px 18px;
-      border: 1px solid var(--border-soft);
-      box-shadow: 0 18px 40px rgba(25, 25, 25, 0.08);
-      max-width: 960px;
-      margin: 16px auto 0;
+    /* CONTACT PREMIUM */
+    .contact-block{
+      display:flex;
+      gap:18px;
+      align-items:center;
+      background:#ffffff;
+      border-radius:20px;
+      padding:16px 18px;
+      border:1px solid var(--border-soft);
+      box-shadow:0 18px 40px rgba(25, 25, 25, 0.08);
+      max-width:960px;
+      margin:16px auto 0;
     }
-
-    .contact-block .contact-photo {
-      width: 90px;
-      height: 90px;
-      border-radius: 50%;
-      overflow: hidden;
-      border: 2px solid #e5e7eb;
-      flex-shrink: 0;
+    .contact-block .contact-photo{
+      width:90px;
+      height:90px;
+      border-radius:50%;
+      overflow:hidden;
+      border:2px solid #e5e7eb;
+      flex-shrink:0;
     }
-
-    .contact-block .contact-photo img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      object-position: top center;
-      display: block;
+    .contact-block .contact-photo img{
+      width:100%;
+      height:100%;
+      object-fit:cover;
+      object-position:top center;
+      display:block;
     }
-
-    .contact-text h3 { margin: 0 0 4px; font-size: 17px; }
-    .contact-text p { margin: 0; font-size: 13px; color: var(--text-soft); }
-
-    .contact-block .contact-links {
-      margin-top: 8px;
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      font-size: 13px;
+    .contact-text h3{ margin:0 0 4px; font-size:17px; }
+    .contact-text p{ margin:0; font-size:13px; color:var(--text-soft); }
+    .contact-block .contact-links{
+      margin-top:8px;
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px;
+      font-size:13px;
     }
-
-    .contact-block .contact-links a {
-      color: var(--accent);
-      text-decoration: none;
-      font-size: 13px;
-      font-weight: 500;
+    .contact-block .contact-links a{
+      color:var(--accent);
+      text-decoration:none;
+      font-size:13px;
+      font-weight:500;
     }
+    .contact-block .contact-links a:hover{ text-decoration:underline; }
 
-    .contact-block .contact-links a:hover { text-decoration: underline; }
+    /* ✅ MOBILE */
+    @media (max-width: 880px){
+      header{ flex-direction:column; align-items:center; }
 
-       @media (max-width: 880px) {
+      .header-center{
+        display:flex;
+        flex-direction:column;
+        justify-content:center;
+        align-items:center;
+        padding:10px 0;
+        margin-top:-40px;
+        margin-bottom:15px;
+        text-align:center;
+      }
 
-  /* Header */
-  header {
-    flex-direction: column;
-    align-items: center;
-  }
+      .layout{ grid-template-columns:1fr; }
 
-  .header-center {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    padding: 10px 0;
-    margin-top: -40px; /* remonte le texte */
-    margin-bottom: 15px;
-  }
+      /* 1 colonne : tous les champs prennent 100% */
+      .form-grid{ grid-template-columns:1fr; }
 
-  .tagline-main,
-  .tagline-sub {
-    text-align: center;
-  }
+      /* iOS : évite le zoom */
+      .form-grid input,
+      .form-grid select,
+      .form-grid textarea{ font-size:16px; }
 
-  /* Menu */
-  .header-links {
-    flex-wrap: wrap;
-    row-gap: 10px;
-    column-gap: 14px;
-    padding: 0 10px;
-  }
+      .social-icons{ flex-wrap:wrap; justify-content:center; }
+      .social-icons a{ width:34px; height:34px; border-radius:10px; flex-shrink:0; }
+      .social-icons svg{ width:16px; height:16px; }
+      .social-block{ padding:10px 12px; max-width:100%; text-align:center; }
 
-  .header-links a {
-    font-size: 13px;
-    white-space: nowrap;
-  }
-
-  .header-links a:not(:last-child)::after {
-    height: 12px;
-  }
-
-  /* Grilles */
-  .actions-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .apa-content {
-    grid-template-columns: 1fr;
-  }
-
-  /* Réseaux sociaux */
-  .social-icons {
-    flex-wrap: wrap;
-    justify-content: center;
-  }
-
-  .social-icons a {
-    width: 34px;
-    height: 34px;
-    border-radius: 10px;
-    flex-shrink: 0;
-  }
-
-  .social-icons svg {
-    width: 16px;
-    height: 16px;
-  }
-
-  .social-block {
-    padding: 10px 12px;
-    max-width: 100%;
-    text-align: center;
-  }
-
-  /* Contact */
-  .contact-block {
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-  }
-
-  .contact-links {
-    justify-content: center;
-    width: 100%;
-  }
-       
-  .legal-footer {
-    margin-top: 40px;
-    padding: 18px;
-    text-align: center;
-    font-size: 11.5px;
-    color: var(--text-soft);
-    opacity: 0.8;
+      .contact-block{ flex-direction:column; align-items:center; text-align:center; }
+      .contact-block .contact-links{ justify-content:center; width:100%; }
     }
-       
-  .layout { 
-    grid-template-columns: 1fr; 
-  }
-       
-  /* FORM : 1 colonne sur mobile */  
-  .form-grid {
-    grid-template-columns: 1fr;
-    row-gap: 14px;
-    column-gap: 14px;
-  }
-       
-  .form-grid > div { min-width: 0 !important; }
-
-  .form-grid input,
-  .form-grid select,
-  .form-grid textarea {
-    font-size: 16px;     /* iOS: évite le zoom */
-    display: block;      /* certains navigateurs rendent select “inline” */
-    width: 100% !important;
-    max-width: 100% !important;
-    min-width: 0 !important;
-  }
-
-  #date,
-  .form-grid input[type="date"] {
-    display: block;
-    width: 100% !important;
-    max-width: 100% !important;
-    min-width: 0 !important;
-    inline-size: 100% !important;
-    max-inline-size: 100% !important;
-    min-inline-size: 0 !important;
-  }
-}
   </style>
 
   <script>
-    /* Validation générique : surbrillance noire si champ vide */
     function validateRequiredFields(fields) {
       let hasError = false;
 
@@ -457,7 +414,6 @@
       return !hasError;
     }
 
-    /* 1) Avis sur la visite (SANS EMAIL CLIENT) */
     function sendAvisVisite() {
       const bien = "Estrella - Maison T7";
 
@@ -488,7 +444,6 @@
         "mailto:contact@jeremyheyob.fr?subject=" + subject + "&body=" + body;
     }
 
-    /* 2) Contre-visite (AVEC EMAIL CLIENT) */
     function sendContreVisite() {
       const bien = "Estrella - Maison T7";
 
@@ -523,364 +478,356 @@
 </head>
 
 <body>
-<div class="page">
+  <div class="page">
 
-  <header>
-    <img src="/images/logo.webp" class="logo">
-    <div class="header-center">
-      <div class="tagline-main">VOS PROJETS IMMOBILIERS N'ONT JAMAIS ÉTÉ AUSSI SIMPLES !</div>
-      <div class="tagline-sub"><strong>JÉRÉMY HEYOB</strong></div>
+    <header>
+      <img src="/images/logo.webp" class="logo" alt="">
+      <div class="header-center">
+        <div class="tagline-main">VOS PROJETS IMMOBILIERS N'ONT JAMAIS ÉTÉ AUSSI SIMPLES !</div>
+        <div class="tagline-sub"><strong>JÉRÉMY HEYOB</strong></div>
+      </div>
+    </header>
+
+    <a href="/accueil-visite.html" class="btn-retour">← Retour</a>
+
+    <main class="layout">
+
+      <!-- CARTE GAUCHE : ESTRELLA -->
+      <section class="card">
+        <div class="pill">Informations du bien</div>
+
+        <h1>Estrella</h1>
+        <p class="subtitle">Maison T7 sur 2 niveaux, spacieuse, avec garage et parking.</p>
+
+        <div class="chips">
+          <span class="chip">T7</span>
+          <span class="chip">190 m²</span>
+          <span class="chip">54 m² extérieur</span>
+          <span class="chip">2 niveaux</span>
+          <span class="chip">DPE F-F</span>
+          <span class="chip">Garage + Parking</span>
+        </div>
+
+        <!-- CARROUSEL -->
+        <div class="carousel">
+          <div class="carousel-track">
+            <img src="/bien-visite/estrella/photos/estrella 9.webp" alt="">
+            <img src="/bien-visite/estrella/photos/estrella 7.webp" loading="lazy" alt="">
+            <img src="/bien-visite/estrella/photos/estrella 10.webp" loading="lazy" alt="">
+            <img src="/bien-visite/estrella/photos/estrella 1.webp" loading="lazy" alt="">
+            <img src="/bien-visite/estrella/photos/estrella 4.webp" loading="lazy" alt="">
+            <img src="/bien-visite/estrella/photos/estrella 6.webp" loading="lazy" alt="">
+            <img src="/bien-visite/estrella/photos/estrella 5.webp" loading="lazy" alt="">
+            <img src="/bien-visite/estrella/photos/estrella 2.webp" loading="lazy" alt="">
+            <img src="/bien-visite/estrella/photos/estrella 3.webp" loading="lazy" alt="">
+            <img src="/bien-visite/estrella/photos/estrella 8.webp" loading="lazy" alt="">
+          </div>
+
+          <button class="carousel-btn prev" type="button">‹</button>
+          <button class="carousel-btn next" type="button">›</button>
+        </div>
+
+        <!-- INFOS -->
+        <div class="grid-two">
+          <div><span>Type</span>Maison T7</div>
+          <div><span>Prix</span>220 000 €</div>
+          <div><span>Ville</span>Montrottier</div>
+          <div><span>Secteur</span>Centre</div>
+          <div><span>Année</span>1835</div>
+          <div><span>Étage</span>2 niveaux</div>
+          <div><span>DPE</span>F-F</div>
+          <div><span>Surface</span>190 m² hab. / 430 m² total</div>
+          <div><span>Garage / parking</span>Garage et Parking</div>
+          <div><span>Chauffage</span>Fioul</div>
+          <div><span>Taxe foncière</span>764 €/an + 177 €/an taxe ordures ménagères</div>
+          <div><span>À proximité</span>Écoles, commerces</div>
+          <div><span>Points forts</span>Grandes chambres, grande pièce de vie, suite parentale</div>
+        </div>
+
+        <h2 style="margin-top:20px;">Vidéo de présentation</h2>
+        <a href="https://youtu.be/uS8O_sHm0VI" target="_blank" rel="noopener"
+           style="color:#1a73e8;font-size:15px;text-decoration:underline;">
+          Voir la vidéo de présentation du bien →
+        </a>
+
+        <h2 style="margin-top:28px;">Documents du bien</h2>
+        <ul style="list-style:none;padding:0;margin:12px 0;font-size:15px;">
+          <li><a href="/bien-visite/estrella/documents/estrella-amiante.pdf" target="_blank" rel="noopener">Amiante →</a></li>
+          <li><a href="/bien-visite/estrella/documents/estrella-devis.pdf" target="_blank" rel="noopener">Devis Technic Chauffage →</a></li>
+          <li><a href="/bien-visite/estrella/documents/estrella-devis-2.pdf" target="_blank" rel="noopener">Devis Oriol →</a></li>
+          <li><a href="/bien-visite/estrella/documents/estrella-dpe.pdf" target="_blank" rel="noopener">DPE →</a></li>
+          <li><a href="/bien-visite/estrella/documents/estrella-dpe-projete.pdf" target="_blank" rel="noopener">DPE projeté →</a></li>
+          <li><a href="/bien-visite/estrella/documents/estrella-elec.pdf" target="_blank" rel="noopener">Électricité →</a></li>
+          <li><a href="/bien-visite/estrella/documents/estrella-plomb.pdf" target="_blank" rel="noopener">Plomb →</a></li>
+          <li><a href="/bien-visite/estrella/documents/estrella-projipac.pdf" target="_blank" rel="noopener">Rapport Technic Chauffage →</a></li>
+        </ul>
+      </section>
+
+      <!-- CARTE DROITE -->
+      <aside class="card card-avis-global">
+
+        <section class="avis-section">
+          <h2>Votre avis sur cette visite</h2>
+          <p class="subtitle">
+            Votre retour est essentiel pour me permettre d’avancer efficacement sur ce bien et de mieux comprendre votre recherche.
+          </p>
+
+          <div class="form-grid">
+            <div><label>Votre prénom</label><input id="avis_prenom" type="text"></div>
+            <div><label>Votre nom</label><input id="avis_nom" type="text"></div>
+
+            <div style="grid-column: 1 / -1;">
+              <label>Votre estimation du prix (€)</label>
+              <input id="avis_estimation" type="text" inputmode="numeric" pattern="[0-9]*" placeholder="Ex : 220000">
+            </div>
+
+            <div style="grid-column: 1 / -1;">
+              <label>Points positifs du bien</label>
+              <textarea id="avis_plus" rows="3"></textarea>
+            </div>
+
+            <div style="grid-column: 1 / -1;">
+              <label>Points négatifs du bien</label>
+              <textarea id="avis_moins" rows="3"></textarea>
+            </div>
+
+            <div style="grid-column: 1 / -1;">
+              <label>Souhaitez-vous faire une offre sur ce bien ?</label>
+              <select id="avis_offre">
+                <option value="">-- Choisir --</option>
+                <option value="Oui">Oui</option>
+                <option value="Non">Non</option>
+                <option value="Je souhaite réfléchir">Je souhaite réfléchir</option>
+              </select>
+            </div>
+
+            <button class="btn" type="button" onclick="sendAvisVisite()">Valider mon avis</button>
+          </div>
+        </section>
+
+        <div class="luxury-divider"></div>
+
+        <section class="avis-section">
+          <h2>Votre retour sur mon accompagnement</h2>
+          <p class="subtitle">
+            Votre avis est précieux. Partagez votre expérience et contribuez à renforcer la qualité de mon accompagnement.
+          </p>
+
+          <a class="btn" href="https://g.page/r/CTwjb6DmOEMGEB0/review" target="_blank" rel="noopener">
+            Déposer un avis sur Google
+          </a>
+        </section>
+
+        <div class="luxury-divider"></div>
+
+        <section class="avis-section">
+          <h2>Programmer une contre-visite</h2>
+          <p class="subtitle">
+            Si ce bien suscite votre intérêt, indiquez vos disponibilités afin d’organiser une nouvelle visite dans les meilleures conditions.
+          </p>
+
+          <div class="form-grid">
+            <div><label>Votre prénom</label><input id="cv_prenom" type="text"></div>
+            <div><label>Votre nom</label><input id="cv_nom" type="text"></div>
+            <div><label>Votre téléphone</label><input id="cv_telephone" type="tel"></div>
+            <div><label>Votre email</label><input id="cv_email" type="email"></div>
+            <div><label>Date souhaitée</label><input id="cv_date" type="date"></div>
+            <div>
+              <label>Créneau souhaité</label>
+              <select id="cv_creneau">
+                <option value="">-- Choisir --</option>
+                <option>09:00 - 10:00</option>
+                <option>10:00 - 11:00</option>
+                <option>11:00 - 12:00</option>
+                <option>14:00 - 15:00</option>
+                <option>15:00 - 16:00</option>
+                <option>16:00 - 17:00</option>
+                <option>17:00 - 18:00</option>
+                <option>18:00 - 19:00</option>
+                <option>19:00 - 20:00</option>
+              </select>
+            </div>
+
+            <button class="btn" type="button" onclick="sendContreVisite()">Valider ma demande</button>
+          </div>
+        </section>
+
+      </aside>
+    </main>
+
+    <!-- RÉSEAUX SOCIAUX -->
+    <div class="social-full">
+      <section class="social-block" aria-label="Réseaux sociaux">
+        <div class="social-icons">
+
+          <a href="https://goo.gl/maps/wjfc1aGFBrSLd3tV6" target="_blank" rel="noopener" aria-label="Google">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#7a5a29" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 21s7-4.5 7-11a7 7 0 1 0-14 0c0 6.5 7 11 7 11z"></path>
+              <circle cx="12" cy="10" r="2.5"></circle>
+            </svg>
+          </a>
+
+          <a href="https://www.pagesjaunes.fr/pros/62191780" target="_blank" rel="noopener" aria-label="Pages Jaunes">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#7a5a29" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M6 3h9a3 3 0 0 1 3 3v12a3 3 0 0 1-3 3H6a3 3 0 0 1-3-3V6a3 3 0 0 1 3-3z"></path>
+              <path d="M8 8h8"></path>
+              <path d="M8 12h8"></path>
+              <path d="M8 16h6"></path>
+            </svg>
+          </a>
+
+          <a href="https://www.facebook.com/jeremyheyobpro" target="_blank" rel="noopener" aria-label="Facebook">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#7a5a29" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M14 8h3V5h-3a4 4 0 0 0-4 4v3H7v3h3v6h3v-6h3l1-3h-4V9a1 1 0 0 1 1-1z"></path>
+            </svg>
+          </a>
+
+          <a href="https://www.linkedin.com/company/jérémy-heyob/" target="_blank" rel="noopener" aria-label="LinkedIn">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#7a5a29" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4V9h4v2"></path>
+              <rect x="2" y="9" width="4" height="12"></rect>
+              <circle cx="4" cy="4" r="2"></circle>
+            </svg>
+          </a>
+
+          <a href="https://www.instagram.com/jeremyheyob/" target="_blank" rel="noopener" aria-label="Instagram">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#7a5a29" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="3" y="3" width="18" height="18" rx="5" ry="5"></rect>
+              <circle cx="12" cy="12" r="4"></circle>
+              <path d="M17.5 6.5h.01"></path>
+            </svg>
+          </a>
+
+          <a href="https://www.youtube.com/channel/UCpE0arbirH2tkw2THT_Ef9Q" target="_blank" rel="noopener" aria-label="YouTube">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#7a5a29" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M22 12s0-4-1-5-4-1-9-1-8 0-9 1-1 5-1 5 0 4 1 5 4 1 9 1 8 0 9-1 1-5 1-5z"></path>
+              <path d="M10 9l6 3-6 3V9z"></path>
+            </svg>
+          </a>
+
+          <a href="https://www.tiktok.com/@jeremyheyob" target="_blank" rel="noopener" aria-label="TikTok">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#7a5a29" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M14 3v10a4 4 0 1 1-4-4"></path>
+              <path d="M14 7a6 6 0 0 0 6 2"></path>
+            </svg>
+          </a>
+
+        </div>
+      </section>
     </div>
-  </header>
 
-  <a href="/accueil-visite.html" class="btn-retour">← Retour</a>
-
-  <main class="layout">
-
-    <!-- CARTE GAUCHE : INCHANGÉE (ESTRELLA COMPLET) -->
-    <section class="card">
-      <div class="pill">Informations du bien</div>
-
-      <h1>Estrella</h1>
-      <p class="subtitle">Maison T7 sur 2 niveaux, spacieuse, avec garage et parking.</p>
-
-      <div class="chips">
-        <span class="chip">T7</span>
-        <span class="chip">190 m²</span>
-        <span class="chip">54 m² extérieur</span>
-        <span class="chip">2 niveaux</span>
-        <span class="chip">DPE F-F</span>
-        <span class="chip">Garage + Parking</span>
+    <!-- CONTACT -->
+    <section class="contact-block">
+      <div class="contact-photo">
+        <img src="/images/photo.webp" alt="">
       </div>
 
-      <!-- CARROUSEL -->
-      <div class="carousel">
-        <div class="carousel-track">
-          <img src="/bien-visite/estrella/photos/estrella 9.webp">
-          <img src="/bien-visite/estrella/photos/estrella 7.webp" loading="lazy">
-          <img src="/bien-visite/estrella/photos/estrella 10.webp" loading="lazy">
-          <img src="/bien-visite/estrella/photos/estrella 1.webp" loading="lazy">
-          <img src="/bien-visite/estrella/photos/estrella 4.webp" loading="lazy">
-          <img src="/bien-visite/estrella/photos/estrella 6.webp" loading="lazy">
-          <img src="/bien-visite/estrella/photos/estrella 5.webp" loading="lazy">
-          <img src="/bien-visite/estrella/photos/estrella 2.webp" loading="lazy">
-          <img src="/bien-visite/estrella/photos/estrella 3.webp" loading="lazy">
-          <img src="/bien-visite/estrella/photos/estrella 8.webp" loading="lazy">
+      <div class="contact-text">
+        <h3>Une question sur ce bien ?</h3>
+        <p>
+          Je reste disponible pour vous apporter des précisions,
+          vous envoyer des documents complémentaires ou organiser
+          une contre-visite selon vos disponibilités.
+        </p>
+
+        <div class="contact-links">
+          <a href="mailto:contact@jeremyheyob.fr">✉️ Email</a>
+          <a href="sms:+33648145565">💬 SMS</a>
+          <a href="tel:+33648145565">📞 Appel</a>
         </div>
-
-        <button class="carousel-btn prev" type="button">‹</button>
-        <button class="carousel-btn next" type="button">›</button>
       </div>
-
-      <!-- INFOS -->
-      <div class="grid-two">
-        <div><span>Type</span>Maison T7</div>
-        <div><span>Prix</span>220 000 €</div>
-        <div><span>Ville</span>Montrottier</div>
-        <div><span>Secteur</span>Centre</div>
-        <div><span>Année</span>1835</div>
-        <div><span>Étage</span>2 niveaux</div>
-        <div><span>DPE</span>F-F</div>
-        <div><span>Surface</span>190 m² hab. / 430 m² total</div>
-        <div><span>Garage / parking</span>Garage et Parking</div>
-        <div><span>Chauffage</span>Fioul</div>
-        <div><span>Taxe foncière</span>764 €/an + 177 €/an taxe ordures ménagères</div>
-        <div><span>À proximité</span>Écoles, commerces</div>
-        <div><span>Points forts</span>Grandes chambres, grande pièce de vie, suite parentale</div>
-      </div>
-
-      <!-- VIDEO → LIEN SIMPLE -->
-      <h2 style="margin-top:20px;">Vidéo de présentation</h2>
-      <a href="https://youtu.be/uS8O_sHm0VI"
-         target="_blank"
-         rel="noopener"
-         style="color:#1a73e8;font-size:15px;text-decoration:underline;">
-        Voir la vidéo de présentation du bien →
-      </a>
-
-      <!-- DOCUMENTS -->
-      <h2 style="margin-top:28px;">Documents du bien</h2>
-
-      <ul style="list-style:none;padding:0;margin:12px 0;font-size:15px;">
-        <li><a href="/bien-visite/estrella/documents/estrella-amiante.pdf" target="_blank" rel="noopener">Amiante →</a></li>
-        <li><a href="/bien-visite/estrella/documents/estrella-devis.pdf" target="_blank" rel="noopener">Devis Technic Chauffage →</a></li>
-        <li><a href="/bien-visite/estrella/documents/estrella-devis-2.pdf" target="_blank" rel="noopener">Devis Oriol →</a></li>
-        <li><a href="/bien-visite/estrella/documents/estrella-dpe.pdf" target="_blank" rel="noopener">DPE →</a></li>
-        <li><a href="/bien-visite/estrella/documents/estrella-dpe-projete.pdf" target="_blank" rel="noopener">DPE projeté →</a></li>
-        <li><a href="/bien-visite/estrella/documents/estrella-elec.pdf" target="_blank" rel="noopener">Électricité →</a></li>
-        <li><a href="/bien-visite/estrella/documents/estrella-plomb.pdf" target="_blank" rel="noopener">Plomb →</a></li>
-        <li><a href="/bien-visite/estrella/documents/estrella-projipac.pdf" target="_blank" rel="noopener">Rapport Technic Chauffage →</a></li>
-      </ul>
-
     </section>
 
-    <!-- CARTE DROITE : PARCOURS IMPORTÉ D’ELIOT -->
-    <aside class="card card-avis-global">
+    <footer class="legal-footer">
+      Les photos et documents présentés sur cette page sont la propriété exclusive de <strong>Jérémy HEYOB Immobilier</strong>.<br>
+      Toute reproduction, diffusion ou utilisation est strictement interdite sans autorisation préalable.
+    </footer>
 
-      <!-- SECTION 1 : AVIS SUR LA VISITE -->
-      <section class="avis-section">
-        <h2>Votre avis sur cette visite</h2>
-        <p class="subtitle">
-          Votre retour est essentiel pour me permettre d’avancer efficacement sur ce bien et de mieux comprendre votre recherche.
-        </p>
-
-        <div class="form-grid">
-          <div><label>Votre prénom</label><input id="avis_prenom" type="text"></div>
-          <div><label>Votre nom</label><input id="avis_nom" type="text"></div>
-
-          <div style="grid-column: 1 / -1;">
-            <label>Votre estimation du prix (€)</label>
-            <input
-              id="avis_estimation"
-              type="text"
-              inputmode="numeric"
-              pattern="[0-9]*"
-              placeholder="Ex : 220000">
-          </div>
-
-          <div style="grid-column: 1 / -1;">
-            <label>Points positifs du bien</label>
-            <textarea id="avis_plus" rows="3"></textarea>
-          </div>
-
-          <div style="grid-column: 1 / -1;">
-            <label>Points négatifs du bien</label>
-            <textarea id="avis_moins" rows="3"></textarea>
-          </div>
-
-          <div style="grid-column: 1 / -1;">
-            <label>Souhaitez-vous faire une offre sur ce bien ?</label>
-            <select id="avis_offre">
-              <option value="">-- Choisir --</option>
-              <option value="Oui">Oui</option>
-              <option value="Non">Non</option>
-              <option value="Je souhaite réfléchir">Je souhaite réfléchir</option>
-            </select>
-          </div>
-
-          <button class="btn" type="button" onclick="sendAvisVisite()">Valider mon avis</button>
-        </div>
-      </section>
-
-      <div class="luxury-divider"></div>
-
-      <!-- SECTION 2 : AVIS ACCOMPAGNEMENT -->
-      <section class="avis-section">
-        <h2>Votre retour sur mon accompagnement</h2>
-        <p class="subtitle">
-          Votre avis est précieux. Partagez votre expérience et contribuez à renforcer la qualité de mon accompagnement.
-        </p>
-
-        <a class="btn" href="https://g.page/r/CTwjb6DmOEMGEB0/review" target="_blank" rel="noopener">
-          Déposer un avis sur Google
-        </a>
-      </section>
-
-      <div class="luxury-divider"></div>
-
-      <!-- SECTION 3 : CONTRE-VISITE -->
-      <section class="avis-section">
-        <h2>Programmer une contre-visite</h2>
-        <p class="subtitle">
-          Si ce bien suscite votre intérêt, indiquez vos disponibilités afin d’organiser une nouvelle visite dans les meilleures conditions.
-        </p>
-
-        <div class="form-grid">
-          <div><label>Votre prénom</label><input id="cv_prenom" type="text"></div>
-          <div><label>Votre nom</label><input id="cv_nom" type="text"></div>
-          <div><label>Votre téléphone</label><input id="cv_telephone" type="tel"></div>
-          <div><label>Votre email</label><input id="cv_email" type="email"></div>
-          <div><label>Date souhaitée</label><input id="cv_date" type="date"></div>
-          <div>
-            <label>Créneau souhaité</label>
-            <select id="cv_creneau">
-              <option value="">-- Choisir --</option>
-              <option>09:00 - 10:00</option>
-              <option>10:00 - 11:00</option>
-              <option>11:00 - 12:00</option>
-              <option>14:00 - 15:00</option>
-              <option>15:00 - 16:00</option>
-              <option>16:00 - 17:00</option>
-              <option>17:00 - 18:00</option>
-              <option>18:00 - 19:00</option>
-              <option>19:00 - 20:00</option>
-            </select>
-          </div>
-
-          <button class="btn" type="button" onclick="sendContreVisite()">Valider ma demande</button>
-        </div>
-      </section>
-
-    </aside>
-
-  </main>
-
-  <!-- ===== RÉSEAUX SOCIAUX (CENTRÉ ÉCRAN) ===== -->
-  <div class="social-full">
-    <section class="social-block" aria-label="Réseaux sociaux">
-      <div class="social-icons">
-
-        <!-- Google -->
-        <a href="https://goo.gl/maps/wjfc1aGFBrSLd3tV6" target="_blank" rel="noopener" aria-label="Google">
-          <svg viewBox="0 0 24 24" fill="none" stroke="#7a5a29" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M12 21s7-4.5 7-11a7 7 0 1 0-14 0c0 6.5 7 11 7 11z"></path>
-            <circle cx="12" cy="10" r="2.5"></circle>
-          </svg>
-        </a>
-
-        <!-- PagesJaunes -->
-        <a href="https://www.pagesjaunes.fr/pros/62191780" target="_blank" rel="noopener" aria-label="Pages Jaunes">
-          <svg viewBox="0 0 24 24" fill="none" stroke="#7a5a29" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M6 3h9a3 3 0 0 1 3 3v12a3 3 0 0 1-3 3H6a3 3 0 0 1-3-3V6a3 3 0 0 1 3-3z"></path>
-            <path d="M8 8h8"></path>
-            <path d="M8 12h8"></path>
-            <path d="M8 16h6"></path>
-          </svg>
-        </a>
-
-        <!-- Facebook -->
-        <a href="https://www.facebook.com/jeremyheyobpro" target="_blank" rel="noopener" aria-label="Facebook">
-          <svg viewBox="0 0 24 24" fill="none" stroke="#7a5a29" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M14 8h3V5h-3a4 4 0 0 0-4 4v3H7v3h3v6h3v-6h3l1-3h-4V9a1 1 0 0 1 1-1z"></path>
-          </svg>
-        </a>
-
-        <!-- LinkedIn -->
-        <a href="https://www.linkedin.com/company/jérémy-heyob/" target="_blank" rel="noopener" aria-label="LinkedIn">
-          <svg viewBox="0 0 24 24" fill="none" stroke="#7a5a29" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4V9h4v2"></path>
-            <rect x="2" y="9" width="4" height="12"></rect>
-            <circle cx="4" cy="4" r="2"></circle>
-          </svg>
-        </a>
-
-        <!-- Instagram -->
-        <a href="https://www.instagram.com/jeremyheyob/" target="_blank" rel="noopener" aria-label="Instagram">
-          <svg viewBox="0 0 24 24" fill="none" stroke="#7a5a29" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <rect x="3" y="3" width="18" height="18" rx="5" ry="5"></rect>
-            <circle cx="12" cy="12" r="4"></circle>
-            <path d="M17.5 6.5h.01"></path>
-          </svg>
-        </a>
-
-        <!-- YouTube -->
-        <a href="https://www.youtube.com/channel/UCpE0arbirH2tkw2THT_Ef9Q" target="_blank" rel="noopener" aria-label="YouTube">
-          <svg viewBox="0 0 24 24" fill="none" stroke="#7a5a29" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M22 12s0-4-1-5-4-1-9-1-8 0-9 1-1 5-1 5 0 4 1 5 4 1 9 1 8 0 9-1 1-5 1-5z"></path>
-            <path d="M10 9l6 3-6 3V9z"></path>
-          </svg>
-        </a>
-
-        <!-- TikTok -->
-        <a href="https://www.tiktok.com/@jeremyheyob" target="_blank" rel="noopener" aria-label="TikTok">
-          <svg viewBox="0 0 24 24" fill="none" stroke="#7a5a29" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M14 3v10a4 4 0 1 1-4-4"></path>
-            <path d="M14 7a6 6 0 0 0 6 2"></path>
-          </svg>
-        </a>
-
-      </div>
-    </section>
   </div>
 
-  <!-- ===== BLOC CONTACT PREMIUM (AJOUTÉ) ===== -->
-  <section class="contact-block">
-    <div class="contact-photo">
-      <img src="/images/photo.webp" alt="">
-    </div>
+  <!-- LIGHTBOX -->
+  <div class="lightbox" id="lightbox">
+    <span class="lightbox-close" id="lightboxClose">×</span>
+    <span class="lightbox-prev" id="lightboxPrev">‹</span>
+    <img id="lightboxImg" alt="">
+    <span class="lightbox-next" id="lightboxNext">›</span>
+  </div>
 
-    <div class="contact-text">
-      <h3>Une question sur ce bien ?</h3>
+  <!-- SCRIPT CARROUSEL + LIGHTBOX (après le HTML) -->
+  <script>
+    (function () {
+      const track = document.querySelector(".carousel-track");
+      const slides = document.querySelectorAll(".carousel img");
+      const btnNext = document.querySelector(".carousel-btn.next");
+      const btnPrev = document.querySelector(".carousel-btn.prev");
 
-      <p>
-        Je reste disponible pour vous apporter des précisions,
-        vous envoyer des documents complémentaires ou organiser
-        une contre-visite selon vos disponibilités.
-      </p>
+      let idx = 0;
 
-      <div class="contact-links">
-        <a href="mailto:contact@jeremyheyob.fr">✉️ Email</a>
-        <a href="sms:+33648145565">💬 SMS</a>
-        <a href="tel:+33648145565">📞 Appel</a>
-      </div>
-    </div>
-  </section>
+      function goTo(i) {
+        if (!track || !slides.length) return;
+        idx = (i + slides.length) % slides.length;
+        track.style.transform = `translateX(-${idx * 100}%)`;
+      }
 
-  <!-- FOOTER LÉGAL -->
-  <footer class="legal-footer">
-    Les photos et documents présentés sur cette page sont la propriété exclusive de <strong>Jérémy HEYOB Immobilier</strong>.<br>
-    Toute reproduction, diffusion ou utilisation est strictement interdite sans autorisation préalable.
-  </footer>
+      if (btnNext) btnNext.addEventListener("click", () => goTo(idx + 1));
+      if (btnPrev) btnPrev.addEventListener("click", () => goTo(idx - 1));
 
-</div>
+      /* LIGHTBOX */
+      const lightbox = document.getElementById("lightbox");
+      const lightboxImg = document.getElementById("lightboxImg");
+      const lbClose = document.getElementById("lightboxClose");
+      const lbPrev = document.getElementById("lightboxPrev");
+      const lbNext = document.getElementById("lightboxNext");
 
-<!-- LIGHTBOX -->
-<div class="lightbox" id="lightbox">
-  <span class="lightbox-close" id="lightboxClose">×</span>
-  <span class="lightbox-prev" id="lightboxPrev">‹</span>
-  <img id="lightboxImg" alt="">
-  <span class="lightbox-next" id="lightboxNext">›</span>
-</div>
+      let currentSlide = 0;
 
-<!-- SCRIPT CARROUSEL + LIGHTBOX (PLACÉ APRÈS LE HTML POUR ÉVITER LES NULL) -->
-<script>
-  let idx = 0;
-  const track = document.querySelector('.carousel-track');
-  const slides = document.querySelectorAll('.carousel img');
+      function openLightbox() {
+        if (!lightbox || !lightboxImg || !slides.length) return;
+        lightboxImg.src = slides[currentSlide].src;
+        lightbox.classList.add("active");
+      }
 
-  document.querySelector('.next').onclick = () => {
-    idx = (idx + 1) % slides.length;
-    track.style.transform = `translateX(-${idx * 100}%)`;
-  };
+      function closeLightbox() {
+        if (!lightbox) return;
+        lightbox.classList.remove("active");
+      }
 
-  document.querySelector('.prev').onclick = () => {
-    idx = (idx - 1 + slides.length) % slides.length;
-    track.style.transform = `translateX(-${idx * 100}%)`;
-  };
+      slides.forEach((img, i) => {
+        img.addEventListener("click", () => {
+          currentSlide = i;
+          openLightbox();
+        });
+      });
 
-  const lightbox = document.getElementById('lightbox');
-  const lightboxImg = document.getElementById('lightboxImg');
-  const btnClose = document.getElementById('lightboxClose');
-  const btnPrev = document.getElementById('lightboxPrev');
-  const btnNext = document.getElementById('lightboxNext');
+      if (lbClose) lbClose.addEventListener("click", closeLightbox);
 
-  let currentSlide = 0;
+      if (lightbox) {
+        lightbox.addEventListener("click", (e) => {
+          if (e.target === lightbox) closeLightbox();
+        });
+      }
 
-  slides.forEach((img, i) => {
-    img.addEventListener('click', () => {
-      currentSlide = i;
-      openLightbox();
-    });
-  });
+      if (lbPrev) {
+        lbPrev.addEventListener("click", () => {
+          currentSlide = (currentSlide - 1 + slides.length) % slides.length;
+          openLightbox();
+        });
+      }
 
-  function openLightbox() {
-    lightboxImg.src = slides[currentSlide].src;
-    lightbox.classList.add('active');
-  }
+      if (lbNext) {
+        lbNext.addEventListener("click", () => {
+          currentSlide = (currentSlide + 1) % slides.length;
+          openLightbox();
+        });
+      }
 
-  btnClose.onclick = () => lightbox.classList.remove('active');
-
-  lightbox.onclick = (e) => {
-    if (e.target === lightbox) lightbox.classList.remove('active');
-  };
-
-  btnPrev.onclick = () => {
-    currentSlide = (currentSlide - 1 + slides.length) % slides.length;
-    openLightbox();
-  };
-
-  btnNext.onclick = () => {
-    currentSlide = (currentSlide + 1) % slides.length;
-    openLightbox();
-  };
-
-  document.addEventListener('keydown', (e) => {
-    if (!lightbox.classList.contains('active')) return;
-    if (e.key === 'ArrowRight') btnNext.onclick();
-    if (e.key === 'ArrowLeft') btnPrev.onclick();
-    if (e.key === 'Escape') btnClose.onclick();
-  });
-</script>
-
+      document.addEventListener("keydown", (e) => {
+        if (!lightbox || !lightbox.classList.contains("active")) return;
+        if (e.key === "ArrowRight" && lbNext) lbNext.click();
+        if (e.key === "ArrowLeft" && lbPrev) lbPrev.click();
+        if (e.key === "Escape") closeLightbox();
+      });
+    })();
+  </script>
 </body>
 </html>
