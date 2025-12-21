@@ -198,6 +198,51 @@
       cursor: pointer;
     }
 
+    /* ✅ SURBRILLANCE CHAMPS */
+    .field-error {
+      border: 2px solid #191919 !important;
+      background: #ffffff !important;
+      box-shadow: 0 0 0 4px rgba(25,25,25,0.12) !important;
+    }
+
+    /* ✅ MESSAGES (TEL / EMAIL) */
+    .field-msg {
+      display: none;
+      margin-top: 6px;
+      font-size: 12px;
+      color: var(--text-soft);
+      line-height: 1.35;
+    }
+    .field-msg.is-visible { display: block; }
+
+    /* ✅ SUCCESS */
+    .success {
+      display: none;
+      margin-top: 16px;
+      padding: 14px 16px;
+      border-radius: 14px;
+      background: #ffffff;
+      border: 1px dashed var(--border-soft);
+      font-size: 13px;
+      color: #4A4A4A;
+      line-height: 1.5;
+      grid-column: 1 / -1;
+    }
+
+    .textarea-custom {
+      width: 100%;
+      min-height: 120px;
+      padding: 10px 12px;
+      border-radius: 12px;
+      margin-top: 4px;
+      border: 1px solid var(--border-soft);
+      background: #fafafa;
+      font-size: 14px;
+      font-family: inherit;
+      resize: none;
+      overflow: hidden;
+    }
+
     /* CONTACT BLOCK */
     .contact-block {
       display: flex;
@@ -291,46 +336,41 @@
     .social-icons a:hover { transform: translateY(-1px); filter: brightness(1.02); }
     .social-icons svg { width: 20px; height: 20px; }
 
-        /* MENU — IDENTIQUE PAGE ACCUEIL */
+    /* MENU */
+    .header-links {
+      display: flex;
+      justify-content: center;
+      gap: 18px;
+      font-size: 14px;
+      margin: 0 auto 24px;
+    }
 
-.header-links {
-  display: flex;
-  justify-content: center;
-  gap: 18px;
-  font-size: 14px;
-  margin: 0 auto 24px;
-}
+    .header-links a {
+      position: relative;
+      color: var(--text-soft);
+      text-decoration: none;
+      font-weight: 500;
+      padding-left: 16px;
+    }
 
-.header-links a {
-  position: relative;
-  color: var(--text-soft);
-  text-decoration: none;
-  font-weight: 500;
-  padding-left: 16px;
-}
+    .header-links a:hover { color: var(--accent); }
 
-.header-links a:hover {
-  color: var(--accent);
-}
+    .header-links a:not(:first-child)::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 1px;
+      height: 14px;
+      background: rgba(0, 0, 0, 0.15);
+    }
 
-/* Séparateur entre items */
-.header-links a:not(:first-child)::before {
-  content: "";
-  position: absolute;
-  left: 0;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 1px;
-  height: 14px;
-  background: rgba(0, 0, 0, 0.15);
-}
+    .header-links a.active {
+      color: var(--text-main);
+      font-weight: 700;
+    }
 
-/* État actif — IDENTIQUE ACCUEIL */
-.header-links a.active {
-  color: var(--text-main);
-  font-weight: 700;
-}
-    
     .btn-retour {
       display: inline-block;
       margin: 10px 0 18px;
@@ -344,152 +384,102 @@
       background: rgba(198,169,119,0.10);
     }
 
-    /* ✅ SURBRILLANCE CHAMPS */
-    .field-error {
-      border: 2px solid #191919 !important;
-      background: #ffffff !important;
-      box-shadow: 0 0 0 4px rgba(25,25,25,0.12) !important;
-    }
-
-    /* ✅ SUCCESS */
-    .success {
-      display: none;
-      margin-top: 16px;
-      padding: 14px 16px;
-      border-radius: 14px;
-      background: #ffffff;
-      border: 1px dashed var(--border-soft);
-      font-size: 13px;
-      color: #4A4A4A;
-      line-height: 1.5;
-      grid-column: 1 / -1;
-    }
-
-    .textarea-custom {
-      width: 100%;
-      min-height: 120px;
-      padding: 10px 12px;
-      border-radius: 12px;
-      margin-top: 4px;
-      border: 1px solid var(--border-soft);
-      background: #fafafa;
-      font-size: 14px;
-      font-family: inherit;
-      resize: none;
-      overflow: hidden;
-    }
-
     @media (max-width: 880px) {
 
-  /* Header */
-  header {
-    flex-direction: column;
-    align-items: center;
-  }
+      /* Header */
+      header {
+        flex-direction: column;
+        align-items: center;
+      }
 
-  .header-center {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    padding: 10px 0;
-    margin-top: -40px; /* remonte le texte */
-    margin-bottom: 15px;
-  }
+      .header-center {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding: 10px 0;
+        margin-top: -40px;
+        margin-bottom: 15px;
+      }
 
-  .tagline-main,
-  .tagline-sub {
-    text-align: center;
-  }
+      .tagline-main,
+      .tagline-sub {
+        text-align: center;
+      }
 
-  /* Menu */
-  .header-links {
-    flex-wrap: wrap;
-    row-gap: 10px;
-    column-gap: 14px;
-    padding: 0 10px;
-  }
+      /* Menu */
+      .header-links {
+        flex-wrap: wrap;
+        row-gap: 10px;
+        column-gap: 14px;
+        padding: 0 10px;
+      }
 
-  .header-links a {
-    font-size: 13px;
-    white-space: nowrap;
-  }
-      
-  .header-links a:not(:last-child)::after {
-    height: 12px;
-  }
+      .header-links a {
+        font-size: 13px;
+        white-space: nowrap;
+      }
 
-  /* Grilles */
-  .actions-grid {
-    grid-template-columns: 1fr;
-  }
+      /* Réseaux sociaux */
+      .social-icons {
+        flex-wrap: nowrap;
+        justify-content: center;
+      }
 
-  .apa-content {
-    grid-template-columns: 1fr;
-  }
+      .social-icons a {
+        width: 34px;
+        height: 34px;
+        border-radius: 10px;
+        flex-shrink: 0;
+      }
 
-  /* Réseaux sociaux */
-  .social-icons {
-    flex-wrap: nowrap;
-    justify-content: center;
-  }
+      .social-icons svg {
+        width: 16px;
+        height: 16px;
+      }
 
-  .social-icons a {
-    width: 34px;
-    height: 34px;
-    border-radius: 10px;
-    flex-shrink: 0;
-  }
+      .social-block {
+        padding: 10px 12px;
+        justify-content: center;
+        text-align: center;
+      }
 
-  .social-icons svg {
-    width: 16px;
-    height: 16px;
-  }
+      /* Contact */
+      .contact-block {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+      }
 
-  .social-block {
-    padding: 10px 12px;
-    justify-content: center;
-    text-align: center;
-  }
+      .contact-links {
+        justify-content: center;
+        width: 100%;
+      }
 
-  /* Contact */
-  .contact-block {
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-  }
+      /* FORM : 1 colonne sur mobile */
+      .form-grid{
+        grid-template-columns: 1fr;
+        row-gap: 14px;
+      }
 
-  .contact-links {
-    justify-content: center;
-    width: 100%;
-  }
-  /* FORM : 1 colonne sur mobile */
-  .form-grid{
-    grid-template-columns: 1fr;
-    row-gap: 14px;
-  }
+      .form-grid > div{
+        grid-column: 1 / -1;
+        min-width: 0;
+      }
 
-  /* Chaque item de la grille prend toute la ligne */
-  .form-grid > div{
-    grid-column: 1 / -1;
-    min-width: 0;
-  }
+      .form-grid input,
+      .form-grid select,
+      .form-grid textarea{
+        width: 100%;
+        max-width: 100%;
+        min-width: 0;
+      }
 
-  /* Les champs suivent la largeur du conteneur */
-  .form-grid input,
-  .form-grid select,
-  .form-grid textarea{
-    width: 100%;
-    max-width: 100%;
-    min-width: 0;
-  }
-
-  /* Le bouton garde 100% largeur */
-  .form-grid .btn{
-    grid-column: 1 / -1;
-    width: 100%;
-  }
-}
+      .form-grid .btn{
+        grid-column: 1 / -1;
+        width: 100%;
+      }
+    }
   </style>
 </head>
 
@@ -550,20 +540,22 @@
   <h2 class="card-title">Vos coordonnées et votre projet</h2>
 
   <div class="form-grid">
-    <div><label>Votre prénom</label><input id="prenom"></div>
-    <div><label>Votre nom</label><input id="nom"></div>
+    <div><label>Votre prénom</label><input id="prenom" autocomplete="given-name"></div>
+    <div><label>Votre nom</label><input id="nom" autocomplete="family-name"></div>
+
     <div>
       <label>Votre téléphone</label>
       <input id="tel" type="tel" inputmode="tel" autocomplete="tel" placeholder="Ex : 06 12 34 56 78">
-      <div class="field-msg" id="msg-tel"></div>
+      <div class="field-msg" id="msg-tel">Téléphone invalide. Exemple : 06 12 34 56 78</div>
     </div>
+
     <div>
       <label>Votre email</label>
       <input id="email" type="email" inputmode="email" autocomplete="email" placeholder="Ex : prenom.nom@mail.com">
       <div class="field-msg" id="msg-email">Email invalide. Exemple : prenom.nom@mail.com</div>
     </div>
 
-    <div class="full"><label>Ville recherchée</label><input id="ville"></div>
+    <div class="full"><label>Ville recherchée</label><input id="ville" autocomplete="address-level2"></div>
 
     <div><label>Maison ou appartement</label>
       <select id="typeBien">
@@ -718,30 +710,75 @@
 </div>
 
 <script>
-  // ✅ Supprime la surbrillance automatiquement dès que le champ devient valide
+  function normalizeEmail(v) {
+    return String(v || "").trim().toLowerCase();
+  }
+  function isEmailValid(v) {
+    const email = normalizeEmail(v);
+    return /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email);
+  }
+
+  function normalizePhoneFR(v) {
+    let s = String(v || "").trim();
+    s = s.replace(/[\s.\-()]/g, "");
+    if (s.startsWith("+33")) s = "0" + s.slice(3);
+    if (s.startsWith("0033")) s = "0" + s.slice(4);
+    return s;
+  }
+  function isPhoneFRValid(v) {
+    const s = normalizePhoneFR(v);
+    return /^0[1-9]\d{8}$/.test(s);
+  }
+
+  function setMsg(id, visible) {
+    const el = document.getElementById(id);
+    if (!el) return;
+    el.classList.toggle("is-visible", !!visible);
+  }
+
+  function validateField(el) {
+    if (!el) return true;
+    const id = el.id;
+    const val = el.value;
+
+    let ok = true;
+
+    if (id === "email") ok = isEmailValid(val);
+    else if (id === "tel") ok = isPhoneFRValid(val);
+    else if (el.tagName === "SELECT") ok = !!val;
+    else ok = !!String(val || "").trim();
+
+    el.classList.toggle("field-error", !ok);
+
+    if (id === "email") setMsg("msg-email", !!val && !isEmailValid(val));
+    if (id === "tel") setMsg("msg-tel", !!val && !isPhoneFRValid(val));
+
+    return ok;
+  }
+
+  // Live validation : inputs + textarea
   document.addEventListener("input", function (e) {
     const el = e.target;
-    if (!el || !el.classList) return;
+    if (!el || !el.id) return;
 
-    // INPUT (texte)
-    if (el.tagName === "INPUT") {
-      const ok = !!el.value && !!el.value.trim();
-      if (ok) el.classList.remove("field-error");
-    }
-
-    // TEXTAREA (commentaire facultatif -> on enlève si l'utilisateur écrit, mais ce n'est pas requis)
-    if (el.tagName === "TEXTAREA") {
-      if (el.value && el.value.trim()) el.classList.remove("field-error");
+    // Validation live sur les champs importants
+    if (["prenom","nom","tel","email","ville","budget","commentaire"].includes(el.id)) {
+      // commentaire facultatif : on ne met pas en erreur si vide
+      if (el.id === "commentaire") {
+        if (el.value && el.value.trim()) el.classList.remove("field-error");
+        return;
+      }
+      validateField(el);
     }
   });
 
-  // SELECT -> l'événement utile est "change"
+  // Live validation : selects
   document.addEventListener("change", function (e) {
     const el = e.target;
-    if (!el || !el.classList) return;
+    if (!el || !el.id) return;
 
-    if (el.tagName === "SELECT") {
-      if (el.value) el.classList.remove("field-error");
+    if (["typeBien","typologie","banque","courtier","statut","venteAvantAchat"].includes(el.id)) {
+      validateField(el);
     }
   });
 
@@ -761,28 +798,15 @@
     const commentaire = document.getElementById("commentaire");
     const success = document.getElementById("success");
 
+    success.style.display = "none";
+
     // champs requis (commentaire volontairement absent)
     const required = [prenom, nom, tel, email, ville, budget, typeBien, typologie, banque, courtier, statut, venteAvantAchat];
 
-    // reset
-    required.forEach(f => f.classList.remove("field-error"));
-    success.style.display = "none";
-
-    // validation
     let hasError = false;
-
-    required.forEach(field => {
-      if (field.tagName === "SELECT") {
-        if (!field.value) {
-          field.classList.add("field-error");
-          hasError = true;
-        }
-      } else {
-        if (!field.value || !field.value.trim()) {
-          field.classList.add("field-error");
-          hasError = true;
-        }
-      }
+    required.forEach(el => {
+      const ok = validateField(el);
+      if (!ok) hasError = true;
     });
 
     if (hasError) {
@@ -796,35 +820,34 @@
 
     const subject = encodeURIComponent("Inscription acquéreur – Biens en avant-première (SMS)");
 
+    const phoneNormalized = normalizePhoneFR(tel.value);
+    const emailNormalized = normalizeEmail(email.value);
+
     const body = encodeURIComponent(
       "Bonjour,\n\n" +
       "Je souhaite m’inscrire pour recevoir par SMS les nouveaux biens en avant-première.\n\n" +
-      "Prénom : " + prenom.value + "\n" +
-      "Nom : " + nom.value + "\n" +
-      "Téléphone : " + tel.value + "\n" +
-      "Email : " + email.value + "\n\n" +
-      "Ville recherchée : " + ville.value + "\n" +
+      "Prénom : " + prenom.value.trim() + "\n" +
+      "Nom : " + nom.value.trim() + "\n" +
+      "Téléphone : " + phoneNormalized + "\n" +
+      "Email : " + emailNormalized + "\n\n" +
+      "Ville recherchée : " + ville.value.trim() + "\n" +
       "Maison ou appartement : " + typeBien.value + "\n" +
       "Typologie : " + typologie.value + "\n" +
-      "Budget maximum : " + budget.value + "\n\n" +
+      "Budget maximum : " + budget.value.trim() + "\n\n" +
       "Déjà vu la banque : " + banque.value + "\n" +
       "Souhaite mise en relation courtier (gratuit) : " + courtier.value + "\n\n" +
       "Statut : " + statut.value + "\n" +
       "Besoin de vendre pour acheter : " + venteAvantAchat.value + "\n\n" +
-      "Commentaire :\n" + (commentaire.value && commentaire.value.trim() ? commentaire.value : "—") + "\n\n" +
+      "Commentaire :\n" + (commentaire.value && commentaire.value.trim() ? commentaire.value.trim() : "—") + "\n\n" +
       "Merci.\n"
     );
 
-    // succès UI
     success.style.display = "block";
 
-    // ouverture mail
     window.location.href =
       "mailto:contact@jeremyheyob.fr?subject=" + subject + "&body=" + body;
   }
-</script>
 
-<script>
   // Auto-resize textarea
   document.addEventListener("input", function (e) {
     if (e.target.classList && e.target.classList.contains("textarea-custom")) {
