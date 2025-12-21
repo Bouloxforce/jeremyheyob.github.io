@@ -385,6 +385,8 @@
       .form-grid input,
       .form-grid select,
       .form-grid textarea {
+        font-size: 16px;     /* iOS: évite le zoom */
+        display: block;      /* certains navigateurs rendent select “inline” */
         width: 100% !important;
         max-width: 100% !important;
         min-width: 0 !important;
@@ -393,7 +395,7 @@
 
       /* Réseaux sociaux (même bloc mobile) */
       .social-icons {
-        flex-wrap: nowrap;
+        flex-wrap: wrap;
         justify-content: center;
       }
       .social-icons a {
@@ -405,7 +407,7 @@
       .social-icons svg { width: 16px; height: 16px; }
       .social-block {
         padding: 10px 12px;
-        justify-content: center;
+        max-width: 100%;
         text-align: center;
       }
 
