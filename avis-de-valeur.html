@@ -469,13 +469,13 @@
   }
 
   /* ===== HERO HIGHLIGHT : logo au-dessus du texte sur mobile ===== */
-  .hero-highlight-with-logo{
+  .hero-highlight-with-logo {
     flex-direction: column;
     align-items: center;
     justify-content: center;
   }
 
-  .hero-highlight-logo{
+  .hero-highlight-logo {
     order: -1;
     width: 100%;
     display: flex;
@@ -483,53 +483,51 @@
     margin: 0 0 12px 0;
   }
 
-  .hero-highlight-logo img{
+  .hero-highlight-logo img {
     margin-left: 0 !important;
     width: 140px;
     max-width: 70%;
     height: auto;
   }
 
-  .hero-highlight-text{
+  .hero-highlight-text {
     width: 100%;
   }
 
-  /* ===== FORM : correction iOS/Safari (DATE trop large) ===== */
-  .form-grid{
-    /* Correctif standard Grid : tracks capables de shrink sous la taille intrinsèque */
+  /* ===== GAIN DE LARGEUR UTILE DANS LA CARD (pour éviter la troncature iOS) ===== */
+  .card {
+    padding: 22px 16px; /* au lieu de 26px 28px */
+  }
+
+  /* ===== FORM : 2 colonnes réelles (shrink OK sur iOS/Safari) ===== */
+  .form-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
-    column-gap: 14px;
+    column-gap: 12px; /* un peu moins que 14px */
     row-gap: 14px;
   }
 
-  /* Autorise la réduction réelle des colonnes */
-  .form-grid > div{
+  .form-grid > div {
     min-width: 0 !important;
   }
 
-  /* Les champs doivent vraiment pouvoir se réduire */
   .form-grid input,
   .form-grid select,
-  .form-grid textarea{
+  .form-grid textarea {
     width: 100% !important;
     max-width: 100% !important;
     min-width: 0 !important;
   }
 
-  /* Spécifique DATE iOS : neutralise les min-sizes implicites */
-  .form-grid input[type="date"]{
-    display: block;
-    inline-size: 100% !important;
-    max-inline-size: 100% !important;
-    min-inline-size: 0 !important;
+  /* ===== DATE : on “compresse” le rendu pour que "21 déc. 2025" rentre ===== */
+  #date {
+    padding: 10px 8px !important;   /* récupère de la place */
+    font-size: 13px !important;     /* 1px de moins = souvent suffisant */
+    text-align: left;              /* évite le centrage qui coupe des deux côtés */
   }
 
-  /* Option “verrouillage” du parent (Safari moderne) */
-  @supports selector(:has(*)) {
-    .form-grid > div:has(#date){
-      min-width: 0 !important;
-      overflow: hidden; /* évite tout débordement visuel */
-    }
+  /* Bonus Safari/WebKit : si pris en charge, aligne le texte interne */
+  #date::-webkit-date-and-time-value {
+    text-align: left;
   }
 
   /* Réseaux sociaux */
