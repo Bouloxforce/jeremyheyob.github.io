@@ -537,6 +537,25 @@
   .hero-highlight-text{
     width: 100%;
   }
+
+          /* ===== FORM : garder Date et Créneau côte à côte (même largeur) sur mobile ===== */
+  .form-grid > div { 
+    min-width: 0; 
+  }
+
+  .form-grid input,
+  .form-grid select,
+  .form-grid textarea {
+    width: 100%;
+    min-width: 0;
+  }
+
+  /* iOS : le champ date a souvent un min-width implicite -> on le neutralise */
+  .form-grid input[type="date"]{
+    display: block;
+    max-width: 100%;
+    min-width: 0;
+  }
 }
     
   </style>
