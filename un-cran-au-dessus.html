@@ -149,11 +149,12 @@
       color: var(--text-soft);
     }
 
-    .book-logo-big {
-      width: 500px;
-      height: auto;
-      margin-bottom: 10px;
-      object-position: center;
+    .book-logo-big{
+      display: block;        /* permet à margin auto de fonctionner */
+      margin: 0 auto 10px;   /* centre + marge basse */
+      max-width: 100%;       /* ne dépasse jamais le bloc parent */
+      width: 500px;          /* taille cible sur desktop */
+      height: auto;          /* garde les proportions */
     }
 
     .contact-block {
@@ -448,6 +449,10 @@
       .form-grid > div{ grid-column: 1 / -1; min-width: 0; }
       .form-grid input{ width: 100%; max-width: 100%; min-width: 0; }
       .form-grid .btn{ grid-column: 1 / -1; width: 100%; }
+
+      .book-logo-big{
+        width: min(320px, 100%);
+      }
     }
   </style>
 </head>
