@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://www.jeremyheyob.fr/sitemap.xml
+Sitemap: https://jeremyheyob.github.io/sitemap.xml
