@@ -1,1 +1,33 @@
-
+{
+  "bien": {
+    "nom": "Eliot",
+    "sous_titre": "Suivi de commercialisation"
+  },
+  "dates": {
+    "mandat_signe": "2025-09-19",
+    "diagnostics_recus": "2025-09-18",
+    "mise_en_ligne": "2025-09-22",
+    "derniere_remontee": "2025-12-06"
+  },
+  "diffusion": {
+    "remontee": { "type": "Remontée automatique" }
+  },
+  "stats": {
+    "appels": 6,
+    "visites_effectuees": 3,
+    "visites_programmees": 0,
+    "offres": 0,
+    "vues_leboncoin": 237,
+    "favoris_leboncoin": 8
+  },
+  "liens": {
+    "leboncoin": "https://www.leboncoin.fr/ad/ventes_immobilieres/3075680640"
+  },
+  "analyse": {
+    "commentaire": "Une nouvelle mise en favoris, mais pas de nouvel appel cette semaine. Nous attendons cette dernière semaine avant de faire le point ensemble."
+  },
+  "historique": [
+    { "date": "2025-12-06", "action": "Dernière remontée d’annonce" },
+    { "date": "2025-12-02", "action": "Visite effectuée" }
+  ]
+}
