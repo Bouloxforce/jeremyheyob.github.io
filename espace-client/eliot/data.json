@@ -3,31 +3,77 @@
     "nom": "Eliot",
     "sous_titre": "Suivi de commercialisation"
   },
+
   "dates": {
     "mandat_signe": "2025-09-19",
-    "diagnostics_recus": "2025-09-18",
     "mise_en_ligne": "2025-09-22",
     "derniere_remontee": "2025-12-06"
   },
+
   "diffusion": {
-    "remontee": { "type": "Remontée automatique" }
+    "remontee": {
+      "type": "Remontée automatique",
+      "frequence": "hebdomadaire"
+    }
   },
+
+  "liens": {
+    "agenceimmo": "https://www.agence.immo/annonce/eliot",
+    "leboncoin": "https://www.leboncoin.fr/ad/ventes_immobilieres/3075680640",
+    "seloger": "https://www.seloger.com/annonces/eliot",
+    "bienici": "https://www.bienici.com/annonce/eliot",
+    "logicimmo": "https://www.logic-immo.com/annonce/eliot",
+    "avendrealouer": "https://www.avendrealouer.fr/annonce/eliot",
+    "paruvendu": "https://www.paruvendu.fr/annonce/eliot",
+    "lefigaro": "https://immobilier.lefigaro.fr/annonce/eliot",
+
+    "facebook": "https://www.facebook.com/post/eliot",
+    "linkedin": "https://www.linkedin.com/post/eliot",
+    "instagram": "https://www.instagram.com/p/eliot",
+    "pagesjaunes": "https://www.pagesjaunes.fr/pros/62191780",
+    "google": "https://g.page/jeremyheyob",
+
+    "youtube": "https://www.youtube.com/watch?v=eliot"
+  },
+
   "stats": {
     "appels": 6,
+    "emails": 4,
     "visites_effectuees": 3,
     "visites_programmees": 0,
     "offres": 0,
+
     "vues_leboncoin": 237,
-    "favoris_leboncoin": 8
+    "favoris_leboncoin": 8,
+
+    "evolution": {
+      "contacts_semaine_actuelle": 2,
+      "contacts_semaine_precedente": 4,
+      "vues_semaine_actuelle": 110,
+      "vues_semaine_precedente": 127
+    }
   },
-  "liens": {
-    "leboncoin": "https://www.leboncoin.fr/ad/ventes_immobilieres/3075680640"
-  },
+
   "analyse": {
-    "commentaire": "Une nouvelle mise en favoris, mais pas de nouvel appel cette semaine. Nous attendons cette dernière semaine avant de faire le point ensemble."
+    "commentaire": "Une nouvelle mise en favoris cette semaine, mais aucun nouvel appel. Nous laissons encore quelques jours avant de faire un point stratégique sur le positionnement et les prochaines actions à envisager."
   },
+
   "historique": [
-    { "date": "2025-12-06", "action": "Dernière remontée d’annonce" },
-    { "date": "2025-12-02", "action": "Visite effectuée" }
+    {
+      "date": "2025-12-06",
+      "action": "Remontée automatique de l’annonce"
+    },
+    {
+      "date": "2025-11-28",
+      "action": "Nouvelle visite effectuée"
+    },
+    {
+      "date": "2025-11-15",
+      "action": "Mise à jour des photos de l’annonce"
+    },
+    {
+      "date": "2025-10-22",
+      "action": "Mise en ligne initiale de l’annonce"
+    }
   ]
 }
