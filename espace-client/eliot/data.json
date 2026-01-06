@@ -13,7 +13,7 @@
   "diffusion": {
     "remontee": {
       "type": "Remontée automatique",
-      "frequence": "hebdomadaire"
+      "frequence": "2 fois/semaine"
     }
   },
 
