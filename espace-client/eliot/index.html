@@ -735,6 +735,9 @@
         <li>Visites effectuées : <strong id="stat-visites-effectuees">—</strong></li>
         <li>Visites programmées : <strong id="stat-visites-programmees">—</strong></li>
         <li>Offres reçues : <strong id="stat-offres">—</strong></li>
+
+        <!-- ✅ AJOUT 1 : Jours depuis la dernière remontée -->
+        <li>Jours depuis la dernière remontée : <strong id="jours-depuis-derniere-remontee">—</strong></li>
       </ul>
 
       <div class="luxury-divider"></div>
@@ -743,6 +746,32 @@
       <ul style="list-style:none;padding:0;margin:12px 0 0;font-size:15px;line-height:1.55;">
         <li><strong id="stat-vues-leboncoin">—</strong> vues</li>
         <li><strong id="stat-favoris-leboncoin">—</strong> personnes ont enregistré l’annonce</li>
+      </ul>
+
+      <!-- ✅ AJOUT 2 : Taux de transformation -->
+      <div class="luxury-divider"></div>
+
+      <h2 style="margin-top:0;">Taux de transformation</h2>
+      <ul style="list-style:none;padding:0;margin:12px 0 0;font-size:15px;line-height:1.55;">
+        <li id="ratio-contact-vues">—</li>
+        <li id="ratio-visites-contacts">—</li>
+      </ul>
+
+      <!-- ✅ AJOUT 3 : Évolution dans le temps -->
+      <div class="luxury-divider"></div>
+
+      <h2 style="margin-top:0;">📈 Évolution dans le temps</h2>
+      <p class="subtitle" id="evolution-commentaire" style="white-space:pre-line;">
+        Chargement…
+      </p>
+
+      <!-- ✅ AJOUT 4 : Indicateurs d’alerte -->
+      <div class="luxury-divider"></div>
+
+      <h2 style="margin-top:0;">🎯 Indicateurs d’alerte</h2>
+      <ul id="alertes-list"
+          style="list-style:none;padding:0;margin:12px 0 0;font-size:15px;line-height:1.55;">
+        <li class="subtitle">Chargement…</li>
       </ul>
 
       <div class="luxury-divider"></div>
@@ -930,6 +959,53 @@
       .replaceAll("'", "&#039;");
   }
 
+  /* =========================
+     ✅ AJOUTS DEMANDÉS (stats)
+     - jours depuis dernière remontée
+     - ratios lisibles
+     - évolution dans le temps
+     - alertes automatiques
+  ========================= */
+  function daysSinceISO(iso) {
+    if (!iso) return null;
+    const d = new Date(iso);
+    if (isNaN(d.getTime())) return null;
+    const now = new Date();
+    const diff = now.getTime() - d.getTime();
+    return Math.floor(diff / (1000 * 60 * 60 * 24));
+  }
+
+  function toNumber(v) {
+    const n = Number(v);
+    return Number.isFinite(n) ? n : null;
+  }
+
+  function setLineText(id, text, fallback = "—") {
+    const el = document.getElementById(id);
+    if (!el) return;
+    el.textContent = (text && String(text).trim()) ? String(text) : fallback;
+  }
+
+  function renderAlertes(items) {
+    const ul = document.getElementById("alertes-list");
+    if (!ul) return;
+    ul.innerHTML = "";
+
+    if (!Array.isArray(items) || items.length === 0) {
+      const li = document.createElement("li");
+      li.className = "subtitle";
+      li.textContent = "Aucune alerte détectée.";
+      ul.appendChild(li);
+      return;
+    }
+
+    items.forEach((t) => {
+      const li = document.createElement("li");
+      li.textContent = t;
+      ul.appendChild(li);
+    });
+  }
+
   fetch("data.json", { cache: "no-store" })
     .then((r) => {
       if (!r.ok) throw new Error("data.json introuvable");
@@ -983,6 +1059,118 @@
       // LIEN - Vidéo
       setLink("video-youtube", data.liens?.youtube, "Ouvrir la vidéo →");
 
+      /* =========================
+         ✅ AJOUT 1 : jours depuis dernière remontée
+      ========================= */
+      const jours = daysSinceISO(data.dates?.derniere_remontee);
+      setText("jours-depuis-derniere-remontee", (jours === 0 || jours) ? jours + " jours" : "—", "—");
+
+      /* =========================
+         ✅ AJOUT 2 : taux de transformation (lisible)
+         - contacts = appels + emails
+         - "1 contact tous les X vues"
+         - "1 visite tous les Y contacts"
+      ========================= */
+      const appels = toNumber(data.stats?.appels) || 0;
+      const emails = toNumber(data.stats?.emails) || 0;
+      const contacts = appels + emails;
+
+      const vues = toNumber(data.stats?.vues_leboncoin);
+      const visites = toNumber(data.stats?.visites_effectuees);
+
+      if (contacts > 0 && vues && vues > 0) {
+        const x = Math.round(vues / contacts);
+        setLineText("ratio-contact-vues", "1 contact tous les " + x + " vues");
+      } else {
+        setLineText("ratio-contact-vues", "", "—");
+      }
+
+      if (visites && visites > 0 && contacts > 0) {
+        const y = Math.round(contacts / visites);
+        setLineText("ratio-visites-contacts", "1 visite tous les " + y + " contacts");
+      } else {
+        setLineText("ratio-visites-contacts", "", "—");
+      }
+
+      /* =========================
+         ✅ AJOUT 3 : évolution dans le temps
+         - Optionnel via data.stats.evolution
+         - Sinon message neutre
+         Format attendu (exemple) :
+         "stats": {
+           "evolution": {
+             "contacts_semaine_actuelle": 3,
+             "contacts_semaine_precedente": 5,
+             "vues_semaine_actuelle": 120,
+             "vues_semaine_precedente": 140
+           }
+         }
+      ========================= */
+      const evo = data.stats?.evolution;
+      if (evo && (evo.contacts_semaine_actuelle != null || evo.vues_semaine_actuelle != null)) {
+        const cNow = toNumber(evo.contacts_semaine_actuelle);
+        const cPrev = toNumber(evo.contacts_semaine_precedente);
+        const vNow = toNumber(evo.vues_semaine_actuelle);
+        const vPrev = toNumber(evo.vues_semaine_precedente);
+
+        let lines = [];
+
+        if (cNow != null && cPrev != null) {
+          const diff = cNow - cPrev;
+          if (diff > 0) lines.push("Contacts : hausse de +" + diff + " cette semaine.");
+          else if (diff < 0) lines.push("Contacts : baisse de " + diff + " cette semaine.");
+          else lines.push("Contacts : stable cette semaine.");
+        } else if (cNow != null) {
+          lines.push("Contacts cette semaine : " + cNow + ".");
+        }
+
+        if (vNow != null && vPrev != null) {
+          const diff = vNow - vPrev;
+          if (diff > 0) lines.push("Vues : hausse de +" + diff + " cette semaine.");
+          else if (diff < 0) lines.push("Vues : baisse de " + diff + " cette semaine.");
+          else lines.push("Vues : stable cette semaine.");
+        } else if (vNow != null) {
+          lines.push("Vues cette semaine : " + vNow + ".");
+        }
+
+        setLineText("evolution-commentaire", lines.join("\n"), "Données d’évolution non disponibles.");
+      } else {
+        setLineText("evolution-commentaire", "Données d’évolution non disponibles.", "Données d’évolution non disponibles.");
+      }
+
+      /* =========================
+         ✅ AJOUT 4 : alertes automatiques (objectives)
+         - seuils simples et modifiables
+         - si aucune donnée => aucune alerte
+      ========================= */
+      const alertes = [];
+
+      // Alerte : aucun contact
+      if (contacts === 0) {
+        alertes.push("❗ Aucun contact enregistré (appels + e-mails).");
+      }
+
+      // Alerte : aucune visite
+      if ((toNumber(data.stats?.visites_effectuees) || 0) === 0) {
+        alertes.push("❗ Aucune visite effectuée à ce stade.");
+      }
+
+      // Alerte : aucune offre après X visites (par défaut 5)
+      const seuilOffre = toNumber(data.alertes?.seuil_offre_apres_visites) || 5;
+      const nbVisites = toNumber(data.stats?.visites_effectuees) || 0;
+      const nbOffres = toNumber(data.stats?.offres) || 0;
+      if (nbVisites >= seuilOffre && nbOffres === 0) {
+        alertes.push("⚠️ Aucune offre après " + nbVisites + " visites (seuil : " + seuilOffre + ").");
+      }
+
+      // Alerte : pas de remontée depuis X jours (par défaut 7)
+      const seuilRemontee = toNumber(data.alertes?.seuil_jours_sans_remontee) || 7;
+      if (jours != null && jours >= seuilRemontee) {
+        alertes.push("⚠️ Dernière remontée il y a " + jours + " jours (seuil : " + seuilRemontee + ").");
+      }
+
+      renderAlertes(alertes);
+
       // ANALYSE
       if (data.analyse?.commentaire) {
         setText("analyse-commentaire", data.analyse.commentaire, "");
@@ -1000,6 +1188,16 @@
       if (ul) {
         ul.innerHTML = "<li class='subtitle'>Impossible de charger l’historique.</li>";
       }
+      const evo = document.getElementById("evolution-commentaire");
+      if (evo) evo.textContent = "Données d’évolution non disponibles.";
+      const a = document.getElementById("alertes-list");
+      if (a) a.innerHTML = "<li class='subtitle'>Impossible de charger les alertes.</li>";
+      const j = document.getElementById("jours-depuis-derniere-remontee");
+      if (j) j.textContent = "—";
+      const r1 = document.getElementById("ratio-contact-vues");
+      if (r1) r1.textContent = "—";
+      const r2 = document.getElementById("ratio-visites-contacts");
+      if (r2) r2.textContent = "—";
     });
 </script>
 
