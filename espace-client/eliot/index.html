@@ -654,42 +654,62 @@
         loading="eager"
       >
 
-      <p class="subtitle" style="margin-top:10px;">
-        Lien vers l’annonce Leboncoin :
-        <a id="lien-leboncoin"
-           href="#"
-           target="_blank"
-           rel="noopener"
-           style="color:#1a73e8;text-decoration:underline;">
-          Ouvrir l’annonce →
-        </a>
-      </p>
-
       <div class="luxury-divider"></div>
 
       <h2 style="margin-top:0;">Diffusion de l’annonce</h2>
 
       <p class="subtitle" style="margin-bottom:10px;"><strong>Plateformes immobilières</strong></p>
       <ul style="list-style:none;padding:0;margin:0 0 10px;font-size:15px;line-height:1.55;">
-        <li>Agence.immo</li>
-        <li>Leboncoin</li>
-        <li>SeLoger</li>
-        <li>Bien’ici</li>
-        <li>Logic-Immo</li>
-        <li>À vendre à louer</li>
-        <li>ParuVendu</li>
-        <li>Previsite</li>
-        <li>Les Clefs de Chez Moi</li>
-        <li>Et autres plateformes gratuites</li>
+        <li>Agence.immo :
+          <a id="pf-agenceimmo" href="#" target="_blank" rel="noopener">Ouvrir l’annonce →</a>
+        </li>
+        <li>Leboncoin :
+          <a id="pf-leboncoin" href="#" target="_blank" rel="noopener">Ouvrir l’annonce →</a>
+        </li>
+        <li>SeLoger :
+          <a id="pf-seloger" href="#" target="_blank" rel="noopener">Ouvrir l’annonce →</a>
+        </li>
+        <li>Bien’ici :
+          <a id="pf-bienici" href="#" target="_blank" rel="noopener">Ouvrir l’annonce →</a>
+        </li>
+        <li>Logic-Immo :
+          <a id="pf-logicimmo" href="#" target="_blank" rel="noopener">Ouvrir l’annonce →</a>
+        </li>
+        <li>À vendre à louer :
+          <a id="pf-avendrealouer" href="#" target="_blank" rel="noopener">Ouvrir l’annonce →</a>
+        </li>
+        <li>ParuVendu :
+          <a id="pf-paruvendu" href="#" target="_blank" rel="noopener">Ouvrir l’annonce →</a>
+        </li>
+        <li>Le Figaro :
+          <a id="pf-lefigaro" href="#" target="_blank" rel="noopener">Ouvrir l’annonce →</a>
+        </li>
       </ul>
 
       <p class="subtitle" style="margin:14px 0 10px;"><strong>Réseaux sociaux</strong></p>
+      <ul style="list-style:none;padding:0;margin:0 0 10px;font-size:15px;line-height:1.55;">
+        <li>Facebook :
+          <a id="rs-facebook" href="#" target="_blank" rel="noopener">Ouvrir le post →</a>
+        </li>
+        <li>LinkedIn :
+          <a id="rs-linkedin" href="#" target="_blank" rel="noopener">Ouvrir le post →</a>
+        </li>
+        <li>Instagram :
+          <a id="rs-instagram" href="#" target="_blank" rel="noopener">Ouvrir le post →</a>
+        </li>
+        <li>Pages Jaunes :
+          <a id="rs-pagesjaunes" href="#" target="_blank" rel="noopener">Ouvrir le post →</a>
+        </li>
+        <li>Fiche Google :
+          <a id="rs-google" href="#" target="_blank" rel="noopener">Ouvrir le post →</a>
+        </li>
+      </ul>
+
+      <p class="subtitle" style="margin:14px 0 10px;"><strong>Vidéo de présentation</strong></p>
       <ul style="list-style:none;padding:0;margin:0;font-size:15px;line-height:1.55;">
-        <li>Facebook (publication & story)</li>
-        <li>Instagram (story)</li>
-        <li>LinkedIn</li>
-        <li>YouTube</li>
-        <li>Fiche Google</li>
+        <li>YouTube :
+          <a id="video-youtube" href="#" target="_blank" rel="noopener">Ouvrir la vidéo →</a>
+        </li>
       </ul>
 
     </section>
@@ -701,7 +721,6 @@
       <h2 style="margin-top:6px;">Informations générales</h2>
       <ul style="list-style:none;padding:0;margin:12px 0 0;font-size:15px;line-height:1.55;">
         <li>Mandat signé le : <strong id="date-mandat">—</strong></li>
-        <li>Diagnostics (DPE, Loi Carrez) réceptionnés : <strong id="date-diagnostics">—</strong></li>
         <li>Mise en ligne de l’annonce : <strong id="date-mise-en-ligne">—</strong></li>
         <li>Dernière remontée d’annonce : <strong id="date-derniere-remontee">—</strong></li>
         <li>Fréquence des remontées : <strong id="frequence-remontee">Remontée automatique</strong></li>
@@ -712,6 +731,7 @@
       <h2 style="margin-top:0;">Statistiques & actions</h2>
       <ul style="list-style:none;padding:0;margin:12px 0 0;font-size:15px;line-height:1.55;">
         <li>Nombre d’appels : <strong id="stat-appels">—</strong></li>
+        <li>Nombre d’e-mails : <strong id="stat-emails">—</strong></li>
         <li>Visites effectuées : <strong id="stat-visites-effectuees">—</strong></li>
         <li>Visites programmées : <strong id="stat-visites-programmees">—</strong></li>
         <li>Offres reçues : <strong id="stat-offres">—</strong></li>
@@ -720,9 +740,6 @@
       <div class="luxury-divider"></div>
 
       <h2 style="margin-top:0;">Statistiques Leboncoin</h2>
-      <p class="subtitle" style="margin-top:4px;">
-        (Statistiques remises à zéro)
-      </p>
       <ul style="list-style:none;padding:0;margin:12px 0 0;font-size:15px;line-height:1.55;">
         <li><strong id="stat-vues-leboncoin">—</strong> vues</li>
         <li><strong id="stat-favoris-leboncoin">—</strong> personnes ont enregistré l’annonce</li>
@@ -923,12 +940,8 @@
       if (data.bien?.nom) setText("bien-nom", data.bien.nom);
       if (data.bien?.sous_titre) setText("bien-sous-titre", data.bien.sous_titre, "Suivi de commercialisation");
 
-      // Lien annonce Leboncoin
-      setLink("lien-leboncoin", data.liens?.leboncoin, "Ouvrir l’annonce →");
-
       // DATES
       setText("date-mandat", formatDateISO(data.dates?.mandat_signe));
-      setText("date-diagnostics", formatDateISO(data.dates?.diagnostics_recus));
       setText("date-mise-en-ligne", formatDateISO(data.dates?.mise_en_ligne));
       setText("date-derniere-remontee", formatDateISO(data.dates?.derniere_remontee));
 
@@ -943,11 +956,32 @@
 
       // STATS
       setText("stat-appels", data.stats?.appels);
+      setText("stat-emails", data.stats?.emails);
       setText("stat-visites-effectuees", data.stats?.visites_effectuees);
       setText("stat-visites-programmees", data.stats?.visites_programmees);
       setText("stat-offres", data.stats?.offres);
       setText("stat-vues-leboncoin", data.stats?.vues_leboncoin);
       setText("stat-favoris-leboncoin", data.stats?.favoris_leboncoin);
+
+      // LIENS - Plateformes
+      setLink("pf-agenceimmo", data.liens?.agenceimmo, "Ouvrir l’annonce →");
+      setLink("pf-leboncoin", data.liens?.leboncoin, "Ouvrir l’annonce →");
+      setLink("pf-seloger", data.liens?.seloger, "Ouvrir l’annonce →");
+      setLink("pf-bienici", data.liens?.bienici, "Ouvrir l’annonce →");
+      setLink("pf-logicimmo", data.liens?.logicimmo, "Ouvrir l’annonce →");
+      setLink("pf-avendrealouer", data.liens?.avendrealouer, "Ouvrir l’annonce →");
+      setLink("pf-paruvendu", data.liens?.paruvendu, "Ouvrir l’annonce →");
+      setLink("pf-lefigaro", data.liens?.lefigaro, "Ouvrir l’annonce →");
+
+      // LIENS - Réseaux sociaux (posts)
+      setLink("rs-facebook", data.liens?.facebook, "Ouvrir le post →");
+      setLink("rs-linkedin", data.liens?.linkedin, "Ouvrir le post →");
+      setLink("rs-instagram", data.liens?.instagram, "Ouvrir le post →");
+      setLink("rs-pagesjaunes", data.liens?.pagesjaunes, "Ouvrir le post →");
+      setLink("rs-google", data.liens?.google, "Ouvrir le post →");
+
+      // LIEN - Vidéo
+      setLink("video-youtube", data.liens?.youtube, "Ouvrir la vidéo →");
 
       // ANALYSE
       if (data.analyse?.commentaire) {
