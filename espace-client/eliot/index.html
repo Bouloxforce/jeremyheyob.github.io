@@ -6,150 +6,968 @@
   <link rel="icon" href="/favicon-512.png" sizes="512x512" type="image/png">
   <link rel="apple-touch-icon" href="/favicon-192.png">
   <meta charset="UTF-8">
+
+  <!-- ✅ iOS/Safari : empêche la détection auto (téléphone / email / date / adresse) => pas de bleu/souligné/cliquable -->
   <meta name="format-detection" content="telephone=no,date=no,address=no,email=no">
+
   <meta name="robots" content="noindex, nofollow, noarchive, nosnippet">
+  <title>Eliot | Jérémy Heyob Immobilier</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>Espace vendeur | Jérémy Heyob Immobilier</title>
+  <!-- ✅ 1 seule photo (pas de carrousel) -->
+  <link rel="preload" href="/bien-visite/eliot/photos/eliot 1.webp" as="image">
 
   <style>
-    /* ===== CSS STRICTEMENT IDENTIQUE (inchangé) ===== */
+    /* CSS IDENTIQUE À LA PAGE DE RÉFÉRENCE – NON MODIFIÉ */
+    /* -------------------------------------------------- */
     :root {
-      --bg:#FFFBF5;--accent:#C6AA77;--accent-soft:rgba(198,169,119,0.16);
-      --text-main:#191919;--text-soft:#7A7A7A;
-      --border-soft:#e5e7eb;--card-bg:#ffffff;
-      --shadow-soft:0 20px 50px rgba(25,25,25,0.10);
+      --bg: #FFFBF5;
+      --accent: #C6AA77;
+      --accent-soft: rgba(198,169,119,0.16);
+      --text-main: #191919;
+      --text-soft: #7A7A7A;
+      --border-soft: #e5e7eb;
+      --card-bg: #ffffff;
+      --shadow-soft: 0 20px 50px rgba(25,25,25,0.10);
     }
-    *{box-sizing:border-box}
-    body{margin:0;font-family:-apple-system,BlinkMacSystemFont,system-ui,sans-serif;background:var(--bg);color:var(--text-main)}
-    .page{max-width:1100px;margin:0 auto;padding:24px 16px 50px}
-    header{display:flex;align-items:center;justify-content:space-between;gap:18px;max-width:960px;margin:16px auto 24px;padding:8px 28px;background:var(--card-bg);border-radius:22px;box-shadow:var(--shadow-soft);border:1px solid rgba(15,23,42,0.04)}
-    .logo{max-width:140px}
-    .header-center{text-align:center;flex:1}
-    .tagline-main{font-size:13px;letter-spacing:.18em;color:var(--text-soft)}
-    .tagline-sub{margin-top:12px;font-size:12px;letter-spacing:.12em}
-    .tagline-sub strong{font-weight:900}
-    .layout{display:grid;grid-template-columns:1fr;gap:22px}
-    .card{background:var(--card-bg);border-radius:22px;border:1px solid var(--border-soft);padding:22px;box-shadow:var(--shadow-soft)}
-    .pill{background:var(--accent-soft);color:var(--accent);padding:5px 12px;border-radius:999px;font-size:11px;font-weight:600;margin-bottom:10px;display:inline-block}
-    h1{font-size:26px;margin:0}
-    h2{margin-top:26px}
-    ul{list-style:none;padding:0;margin:12px 0;font-size:15px}
-    ul li{margin-bottom:6px}
-    .luxury-divider{width:100%;height:1px;margin:40px 0;background:linear-gradient(to right,transparent,rgba(180,160,120,.6),transparent)}
-    /* Réseaux sociaux */
-    .social-full{width:100vw;margin-left:calc(-50vw + 50%);display:flex;justify-content:center;margin-top:32px}
-    .social-block{background:#fff;border-radius:20px;border:1px solid #e5e7eb;box-shadow:0 18px 40px rgba(25,25,25,.08);padding:14px 16px}
-    .social-icons{display:flex;gap:10px;flex-wrap:wrap;justify-content:center}
-    .social-icons a{width:42px;height:42px;border-radius:14px;display:grid;place-items:center;background:rgba(198,169,119,.16);border:1px solid rgba(198,169,119,.25)}
-    /* Contact */
-    .contact-block{display:flex;gap:18px;align-items:center;background:#fff;border-radius:20px;padding:16px 18px;border:1px solid var(--border-soft);box-shadow:0 18px 40px rgba(25,25,25,.08);max-width:960px;margin:24px auto 0}
-    .contact-photo{width:90px;height:90px;border-radius:50%;overflow:hidden;border:2px solid #e5e7eb}
-    .contact-photo img{width:100%;height:100%;object-fit:cover}
-    .contact-text p{font-size:13px;color:var(--text-soft)}
-    .contact-links a{color:var(--accent);text-decoration:none;margin-right:12px}
-    footer{text-align:center;font-size:11.5px;color:var(--text-soft);margin-top:40px}
+
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+      background: var(--bg);
+      color: var(--text-main);
+      overflow-x: hidden;
+    }
+
+    .page {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 24px 16px 50px;
+    }
+
+    header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+      max-width: 960px;
+      margin: 16px auto 24px;
+      padding: 8px 28px;
+      background: var(--card-bg);
+      border-radius: 22px;
+      box-shadow: var(--shadow-soft);
+      border: 1px solid rgba(15,23,42,0.04);
+    }
+
+    .logo { max-width: 140px; }
+    .header-center { flex: 1; text-align: center; }
+
+    .tagline-main {
+      font-size: 13px;
+      letter-spacing: 0.18em;
+      color: var(--text-soft);
+    }
+
+    .tagline-sub {
+      margin-top: 12px;
+      margin-bottom: 8px;
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+    }
+
+    .tagline-sub strong {
+      color: var(--text-main);
+      font-weight: 900;
+    }
+
+    .layout {
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 22px;
+      align-items: start;
+    }
+
+    .card {
+      background: var(--card-bg);
+      border-radius: 22px;
+      border: 1px solid var(--border-soft);
+      padding: 20px 22px;
+      box-shadow: var(--shadow-soft);
+    }
+
+    .pill {
+      background: var(--accent-soft);
+      color: var(--accent);
+      padding: 5px 12px;
+      border-radius: 999px;
+      font-size: 11px;
+      font-weight: 600;
+      margin-bottom: 10px;
+      display: inline-block;
+    }
+
+    h1 { font-size: 26px; margin-bottom: 0; }
+    .subtitle { color: var(--text-soft); margin-top: 4px; }
+
+    .chips { margin-top: 12px; }
+    .chip {
+      padding: 6px 12px;
+      background: rgba(198,169,119,0.10);
+      border-radius: 999px;
+      font-size: 12px;
+      margin-right: 6px;
+      margin-bottom: 6px;
+      display: inline-block;
+    }
+
+    /* CARROUSEL */
+    .carousel {
+      position: relative;
+      width: 100%;
+      overflow: hidden;
+      border-radius: 16px;
+      background: #00000008;
+      margin: 20px 0;
+    }
+
+    .carousel-track {
+      display: flex;
+      width: 100%;
+      transition: transform 0.35s ease;
+    }
+
+    .carousel img {
+      flex: 0 0 100%;
+      width: 100%;
+      height: auto;
+      object-fit: cover;
+      background: #00000008;
+      cursor: pointer;
+    }
+
+    .carousel-btn {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: rgba(255,255,255,0.75);
+      border: none;
+      font-size: 22px;
+      padding: 6px 12px;
+      border-radius: 999px;
+      cursor: pointer;
+    }
+
+    .carousel-btn.prev { left: 10px; }
+    .carousel-btn.next { right: 10px; }
+
+    /* GRID */
+    .grid-two {
+      display: grid;
+      grid-template-columns: repeat(2,1fr);
+      gap: 12px;
+      font-size: 14px;
+      margin-top: 20px;
+    }
+
+    .grid-two span {
+      display: block;
+      font-size: 12px;
+      color: var(--text-soft);
+    }
+
+    /* FORMULAIRE */
+    .form-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+      margin-top: 14px;
+    }
+
+    input, select {
+      width: 100%;
+      padding: 10px 12px;
+      border-radius: 12px;
+      border: 1px solid var(--border-soft);
+      background: #fafafa;
+      font-size: 14px;
+    }
+
+    label { font-size: 13px; margin-bottom: 4px; display: block; }
+
+    .btn {
+      grid-column: span 2;
+      margin-top: 6px;
+      background: linear-gradient(135deg, #fbe4b9, #f3c98b);
+      color: #7a5a29;
+      padding: 12px 16px;
+      border-radius: 999px;
+      font-size: 15px;
+      font-weight: 600;
+      border: none;
+      cursor: pointer;
+    }
+
+    .btn-retour {
+      display: inline-block;
+      margin: 10px 0 18px;
+      padding: 6px 12px;
+      font-size: 13px;
+      font-weight: 500;
+      color: #7a5a29;
+      text-decoration: none;
+      border-radius: 10px;
+      border: 1px solid rgba(198,169,119,0.35);
+      background: rgba(198,169,119,0.10);
+    }
+
+    /* CONTACT (ancien bloc) */
+    .contact-card {
+      margin-top: 18px;
+      display: flex;
+      gap: 10px;
+      border-top: 1px solid var(--border-soft);
+      padding-top: 12px;
+    }
+
+    .contact-photo {
+      width: 52px;
+      height: 52px;
+      border-radius: 999px;
+      object-fit: cover;
+      object-position: top center;
+      border: 1px solid #e5e7eb;
+    }
+
+    .contact-links {
+      margin-top: 6px;
+      display: flex;
+      gap: 8px;
+      font-size: 12px;
+    }
+
+    .contact-links a {
+      color: #C6AA77;
+      font-size: 12px;
+      font-weight: 500;
+      text-decoration: none;
+    }
+
+    /* LIGHTBOX */
+    .lightbox {
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.85);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 9999;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.25s ease;
+    }
+
+    .lightbox.active { opacity: 1; pointer-events: auto; }
+
+    .lightbox img {
+      max-width: 90%;
+      max-height: 90vh;
+      border-radius: 12px;
+      box-shadow: 0 0 40px rgba(0,0,0,0.45);
+    }
+
+    .lightbox-prev,
+    .lightbox-next {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      color: white;
+      font-size: 46px;
+      cursor: pointer;
+      padding: 18px 24px;
+      background: rgba(0,0,0,0.35);
+      border-radius: 999px;
+    }
+
+    .lightbox-prev { left: 40px; }
+    .lightbox-next { right: 40px; }
+
+    .lightbox-close {
+      position: absolute;
+      top: 30px;
+      right: 40px;
+      color: white;
+      font-size: 52px;
+      cursor: pointer;
+      padding: 8px 16px;
+      background: rgba(0,0,0,0.35);
+      border-radius: 999px;
+    }
+
+    /* ===== BLOC RÉSEAUX SOCIAUX ===== */
+
+    /* Wrapper full width pour centrage écran */
+    .social-full {
+      width: 100vw;
+      margin-left: calc(-50vw + 50%);
+      display: flex;
+      justify-content: center;
+      margin-top: 32px;
+    }
+
+    /* Bloc visuel */
+    .social-block {
+      width: fit-content;
+      margin: 0 auto 8px;
+      background: #ffffff;
+      border-radius: 20px;
+      border: 1px solid #e5e7eb;
+      box-shadow: 0 18px 40px rgba(25,25,25,0.08);
+      padding: 14px 16px;
+    }
+
+    /* Conteneur icônes */
+    .social-icons {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: center;
+    }
+
+    /* Boutons */
+    .social-icons a {
+      width: 42px;
+      height: 42px;
+      border-radius: 14px;
+      display: grid;
+      place-items: center;
+      background: rgba(198, 169, 119, 0.16);
+      border: 1px solid rgba(198,169,119,0.25);
+      transition: transform 0.15s ease, filter 0.15s ease;
+      text-decoration: none;
+    }
+
+    /* Hover */
+    .social-icons a:hover {
+      transform: translateY(-1px);
+      filter: brightness(1.02);
+    }
+
+    /* Icônes SVG */
+    .social-icons svg {
+      width: 20px;
+      height: 20px;
+    }
+
+    /* ===== AJOUTS / MODIFS DEMANDÉES ===== */
+
+    /* Séparateur luxe */
+    .luxury-divider {
+      width: 100%;
+      height: 1px;
+      margin: 40px 0;
+      background: linear-gradient(
+        to right,
+        transparent,
+        rgba(180, 160, 120, 0.6),
+        transparent
+      );
+    }
+
+    /* Boutons sur toute la largeur */
+    .form-grid + .btn,
+    .avis-section .btn {
+      width: 100%;
+      display: block;
+      text-align: center;
+      margin: 16px auto 0;
+    }
+
+    /* Permet à <a class="btn"> de se comporter comme un bouton */
+    a.btn {
+      display: block;
+      text-decoration: none;
+    }
+
+    /* Centrer les 3 titres du bloc avis uniquement */
+    .card-avis-global h2 {
+      text-align: center;
+    }
+
+    /* Textarea (points + / -) */
+    textarea {
+      width: 100%;
+      padding: 10px 12px;
+      border-radius: 12px;
+      border: 1px solid var(--border-soft);
+      background: #fafafa;
+      font-size: 14px;
+      resize: vertical;
+    }
+
+    /* Surbrillance noire si champ manquant / invalide */
+    input.error,
+    select.error,
+    textarea.error {
+      border: 2px solid #191919;
+      background: #fff;
+    }
+
+    /* ✅ Micro-messages discrets (email/tel/estimation) */
+    .field-msg {
+      display: none;
+      margin-top: 6px;
+      font-size: 12px;
+      color: var(--text-soft);
+      line-height: 1.35;
+      text-decoration: none !important;
+    }
+    .field-msg.is-visible { display: block; }
+
+    /* ✅ iOS/Safari : neutralise les liens auto “data detectors” (et empêche le clic) */
+    a[x-apple-data-detectors],
+    a[x-apple-data-detectors]:hover,
+    a[x-apple-data-detectors]:active,
+    a[x-apple-data-detectors]:visited {
+      color: inherit !important;
+      text-decoration: none !important;
+      font-size: inherit !important;
+      font-family: inherit !important;
+      font-weight: inherit !important;
+      line-height: inherit !important;
+      cursor: default !important;
+      pointer-events: none !important;
+    }
+
+    /* ===== BLOC CONTACT (comme ta page espace client) ===== */
+    .contact-block {
+      display: flex;
+      gap: 18px;
+      align-items: center;
+      background: #ffffff;
+      border-radius: 20px;
+      padding: 16px 18px;
+      border: 1px solid var(--border-soft);
+      box-shadow: 0 18px 40px rgba(25, 25, 25, 0.08);
+      max-width: 960px;
+      margin: 16px auto 0;
+    }
+
+    .contact-block .contact-photo {
+      width: 90px;
+      height: 90px;
+      border-radius: 50%;
+      overflow: hidden;
+      border: 2px solid #e5e7eb;
+      flex-shrink: 0;
+      object-fit: unset;
+    }
+
+    .contact-block .contact-photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: top center;
+      display: block;
+    }
+
+    .contact-text h3 { margin: 0 0 4px; font-size: 17px; }
+    .contact-text p { margin: 0; font-size: 13px; color: var(--text-soft); }
+
+    .contact-block .contact-links {
+      margin-top: 8px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      font-size: 13px;
+    }
+
+    .contact-block .contact-links a {
+      color: var(--accent);
+      text-decoration: none;
+      font-size: 13px;
+      font-weight: 500;
+    }
+
+    .contact-block .contact-links a:hover { text-decoration: underline; }
+
+    @media (max-width: 880px) {
+      /* Header */
+      header {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .header-center {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding: 10px 0;
+        margin-top: -40px; /* remonte le texte */
+        margin-bottom: 15px;
+      }
+
+      .tagline-main,
+      .tagline-sub {
+        text-align: center;
+      }
+
+      /* Menu */
+      .header-links {
+        flex-wrap: wrap;
+        row-gap: 10px;
+        column-gap: 14px;
+        padding: 0 10px;
+      }
+
+      .header-links a {
+        font-size: 13px;
+        white-space: nowrap;
+      }
+
+      .header-links a:not(:last-child)::after {
+        height: 12px;
+      }
+
+      /* Grilles */
+      .actions-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .apa-content {
+        grid-template-columns: 1fr;
+      }
+
+      /* Réseaux sociaux */
+      .social-icons {
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+
+      .social-icons a {
+        width: 34px;
+        height: 34px;
+        border-radius: 10px;
+        flex-shrink: 0;
+      }
+
+      .social-icons svg {
+        width: 16px;
+        height: 16px;
+      }
+
+      .social-block {
+        padding: 10px 12px;
+        max-width: 100%;
+        text-align: center;
+      }
+
+      /* Contact */
+      .contact-block {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+      }
+
+      .contact-links {
+        justify-content: center;
+        width: 100%;
+      }
+
+      .legal-footer {
+        margin-top: 40px;
+        padding: 18px;
+        text-align: center;
+        font-size: 11.5px;
+        color: var(--text-soft);
+        opacity: 0.8;
+      }
+
+      .layout {
+        grid-template-columns: 1fr;
+      }
+
+      /* FORM : 1 colonne sur mobile */
+      .form-grid {
+        grid-template-columns: 1fr;
+        row-gap: 14px;
+        column-gap: 14px;
+      }
+
+      .form-grid > div { min-width: 0 !important; }
+
+      .form-grid input,
+      .form-grid select,
+      .form-grid textarea {
+        font-size: 16px;     /* iOS: évite le zoom */
+        display: block;      /* certains navigateurs rendent select “inline” */
+        width: 100% !important;
+        max-width: 100% !important;
+        min-width: 0 !important;
+      }
+
+      #date,
+      .form-grid input[type="date"] {
+        display: block;
+        width: 100% !important;
+        max-width: 100% !important;
+        min-width: 0 !important;
+        inline-size: 100% !important;
+        max-inline-size: 100% !important;
+        min-inline-size: 0 !important;
+      }
+    }
   </style>
 </head>
 
 <body>
 <div class="page">
 
-<header>
-  <img src="/images/logo.webp" class="logo" alt="">
-  <div class="header-center">
-    <div class="tagline-main">VOS PROJETS IMMOBILIERS N'ONT JAMAIS ÉTÉ AUSSI SIMPLES</div>
-    <div class="tagline-sub"><strong>JÉRÉMY HEYOB</strong></div>
+  <header>
+    <img src="/images/logo.webp" class="logo" alt="">
+    <div class="header-center">
+      <div class="tagline-main">
+        VOS PROJETS IMMOBILIERS N'ONT JAMAIS ÉTÉ AUSSI SIMPLES !
+      </div>
+      <div class="tagline-sub"><strong>JÉRÉMY HEYOB</strong></div>
+    </div>
+  </header>
+
+  <main class="layout">
+
+    <!-- CARTE GAUCHE : PHOTO + IDENTITÉ BIEN (minimal) -->
+    <section class="card">
+      <div class="pill">Espace vendeur</div>
+
+      <h1 id="bien-nom">Eliot</h1>
+      <p class="subtitle" id="bien-sous-titre">Suivi de commercialisation</p>
+
+      <!-- ✅ Photo principale uniquement (pas de carrousel) -->
+      <img
+        id="photo-principale"
+        src="/bien-visite/eliot/photos/eliot 1.webp"
+        alt=""
+        style="width:100%;height:auto;border-radius:16px;background:#00000008;margin:18px 0 6px;display:block;"
+        loading="eager"
+      >
+
+      <p class="subtitle" style="margin-top:10px;">
+        Lien vers l’annonce Leboncoin :
+        <a id="lien-leboncoin"
+           href="#"
+           target="_blank"
+           rel="noopener"
+           style="color:#1a73e8;text-decoration:underline;">
+          Ouvrir l’annonce →
+        </a>
+      </p>
+
+      <div class="luxury-divider"></div>
+
+      <h2 style="margin-top:0;">Diffusion de l’annonce</h2>
+
+      <p class="subtitle" style="margin-bottom:10px;"><strong>Plateformes immobilières</strong></p>
+      <ul style="list-style:none;padding:0;margin:0 0 10px;font-size:15px;line-height:1.55;">
+        <li>Agence.immo</li>
+        <li>Leboncoin</li>
+        <li>SeLoger</li>
+        <li>Bien’ici</li>
+        <li>Logic-Immo</li>
+        <li>À vendre à louer</li>
+        <li>ParuVendu</li>
+        <li>Previsite</li>
+        <li>Les Clefs de Chez Moi</li>
+        <li>Et autres plateformes gratuites</li>
+      </ul>
+
+      <p class="subtitle" style="margin:14px 0 10px;"><strong>Réseaux sociaux</strong></p>
+      <ul style="list-style:none;padding:0;margin:0;font-size:15px;line-height:1.55;">
+        <li>Facebook (publication & story)</li>
+        <li>Instagram (story)</li>
+        <li>LinkedIn</li>
+        <li>YouTube</li>
+        <li>Fiche Google</li>
+      </ul>
+
+    </section>
+
+    <!-- CARTE DROITE : SUIVI CHIFFRÉ + ANALYSE -->
+    <aside class="card">
+      <div class="pill">Tableau de bord</div>
+
+      <h2 style="margin-top:6px;">Informations générales</h2>
+      <ul style="list-style:none;padding:0;margin:12px 0 0;font-size:15px;line-height:1.55;">
+        <li>Mandat signé le : <strong id="date-mandat">—</strong></li>
+        <li>Diagnostics (DPE, Loi Carrez) réceptionnés : <strong id="date-diagnostics">—</strong></li>
+        <li>Mise en ligne de l’annonce : <strong id="date-mise-en-ligne">—</strong></li>
+        <li>Dernière remontée d’annonce : <strong id="date-derniere-remontee">—</strong></li>
+        <li>Fréquence des remontées : <strong id="frequence-remontee">Remontée automatique</strong></li>
+      </ul>
+
+      <div class="luxury-divider"></div>
+
+      <h2 style="margin-top:0;">Statistiques & actions</h2>
+      <ul style="list-style:none;padding:0;margin:12px 0 0;font-size:15px;line-height:1.55;">
+        <li>Nombre d’appels : <strong id="stat-appels">—</strong></li>
+        <li>Visites effectuées : <strong id="stat-visites-effectuees">—</strong></li>
+        <li>Visites programmées : <strong id="stat-visites-programmees">—</strong></li>
+        <li>Offres reçues : <strong id="stat-offres">—</strong></li>
+      </ul>
+
+      <div class="luxury-divider"></div>
+
+      <h2 style="margin-top:0;">Statistiques Leboncoin</h2>
+      <p class="subtitle" style="margin-top:4px;">
+        (Statistiques remises à zéro)
+      </p>
+      <ul style="list-style:none;padding:0;margin:12px 0 0;font-size:15px;line-height:1.55;">
+        <li><strong id="stat-vues-leboncoin">—</strong> vues</li>
+        <li><strong id="stat-favoris-leboncoin">—</strong> personnes ont enregistré l’annonce</li>
+      </ul>
+
+      <div class="luxury-divider"></div>
+
+      <h2 style="margin-top:0;">Mon analyse & perspectives</h2>
+      <p class="subtitle" id="analyse-commentaire" style="white-space:pre-line;">
+        Chargement de l’analyse…
+      </p>
+
+      <div class="luxury-divider"></div>
+
+      <h2 style="margin-top:0;">Historique</h2>
+      <ul id="historique-list"
+          style="list-style:none;padding:0;margin:12px 0 0;font-size:15px;line-height:1.55;">
+        <li class="subtitle">Chargement…</li>
+      </ul>
+
+    </aside>
+
+  </main>
+
+  <!-- ===== RÉSEAUX SOCIAUX (CENTRÉ ÉCRAN) ===== -->
+  <div class="social-full">
+    <section class="social-block" aria-label="Réseaux sociaux">
+      <div class="social-icons">
+
+        <!-- Google -->
+        <a href="https://goo.gl/maps/wjfc1aGFBrSLd3tV6" target="_blank" rel="noopener" aria-label="Google">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#7a5a29" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 21s7-4.5 7-11a7 7 0 1 0-14 0c0 6.5 7 11 7 11z"></path>
+            <circle cx="12" cy="10" r="2.5"></circle>
+          </svg>
+        </a>
+
+        <!-- PagesJaunes -->
+        <a href="https://www.pagesjaunes.fr/pros/62191780" target="_blank" rel="noopener" aria-label="Pages Jaunes">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#7a5a29" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M6 3h9a3 3 0 0 1 3 3v12a3 3 0 0 1-3 3H6a3 3 0 0 1-3-3V6a3 3 0 0 1 3-3z"></path>
+            <path d="M8 8h8"></path>
+            <path d="M8 12h8"></path>
+            <path d="M8 16h6"></path>
+          </svg>
+        </a>
+
+        <!-- Facebook -->
+        <a href="https://www.facebook.com/jeremyheyobpro" target="_blank" rel="noopener" aria-label="Facebook">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#7a5a29" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M14 8h3V5h-3a4 4 0 0 0-4 4v3H7v3h3v6h3v-6h3l1-3h-4V9a1 1 0 0 1 1-1z"></path>
+          </svg>
+        </a>
+
+        <!-- LinkedIn -->
+        <a href="https://www.linkedin.com/company/jérémy-heyob/" target="_blank" rel="noopener" aria-label="LinkedIn">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#7a5a29" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4V9h4v2"></path>
+            <rect x="2" y="9" width="4" height="12"></rect>
+            <circle cx="4" cy="4" r="2"></circle>
+          </svg>
+        </a>
+
+        <!-- Instagram -->
+        <a href="https://www.instagram.com/jeremyheyob/" target="_blank" rel="noopener" aria-label="Instagram">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#7a5a29" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="3" y="3" width="18" height="18" rx="5" ry="5"></rect>
+            <circle cx="12" cy="12" r="4"></circle>
+            <path d="M17.5 6.5h.01"></path>
+          </svg>
+        </a>
+
+        <!-- YouTube -->
+        <a href="https://www.youtube.com/channel/UCpE0arbirH2tkw2THT_Ef9Q" target="_blank" rel="noopener" aria-label="YouTube">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#7a5a29" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M22 12s0-4-1-5-4-1-9-1-8 0-9 1-1 5-1 5 0 4 1 5 4 1 9 1 8 0 9-1 1-5 1-5z"></path>
+            <path d="M10 9l6 3-6 3V9z"></path>
+          </svg>
+        </a>
+
+        <!-- TikTok -->
+        <a href="https://www.tiktok.com/@jeremyheyob" target="_blank" rel="noopener" aria-label="TikTok">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#7a5a29" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M14 3v10a4 4 0 1 1-4-4"></path>
+            <path d="M14 7a6 6 0 0 0 6 2"></path>
+          </svg>
+        </a>
+
+      </div>
+    </section>
   </div>
-</header>
 
-<main class="layout">
+  <!-- ===== BLOC CONTACT (texte adapté vendeur) ===== -->
+  <section class="contact-block">
+    <div class="contact-photo">
+      <img src="/images/photo.webp" alt="Photo de Jérémy Heyob">
+    </div>
 
-<section class="card">
-  <div class="pill">Espace vendeur</div>
-  <h1>Eliot</h1>
+    <div class="contact-text">
+      <h3>Un point sur la vente de votre bien ?</h3>
+      <p>
+        Je reste disponible pour faire le point sur la stratégie, les retours, les prochaines actions,
+        et ajuster le plan de commercialisation si nécessaire.
+      </p>
 
-  <h2>Informations générales</h2>
-  <ul>
-    <li>Mandat signé le : <strong id="date-mandat">—</strong></li>
-    <li>Diagnostics réceptionnés : <strong id="date-diagnostics">—</strong></li>
-    <li>Mise en ligne de l’annonce : <strong id="date-mise-en-ligne">—</strong></li>
-    <li>Dernière remontée d’annonce : <strong id="date-derniere-remontee">—</strong></li>
-  </ul>
-
-  <h2>Statistiques & actions</h2>
-  <ul>
-    <li>Nombre d’appels : <strong id="stat-appels">—</strong></li>
-    <li>Visites effectuées : <strong id="stat-visites">—</strong></li>
-    <li>Visites programmées : <strong id="stat-visites-prevues">—</strong></li>
-    <li>Offres reçues : <strong id="stat-offres">—</strong></li>
-  </ul>
-
-  <h2>Statistiques Leboncoin</h2>
-  <ul>
-    <li><strong id="stat-vues">—</strong> vues</li>
-    <li><strong id="stat-favoris">—</strong> personnes ont enregistré l’annonce</li>
-  </ul>
-
-  <h2>Mon analyse & perspectives</h2>
-  <p id="analyse-commentaire">Chargement de l’analyse…</p>
-</section>
-
-</main>
-
-<div class="social-full">
-  <section class="social-block">
-    <div class="social-icons">
-      <a href="https://www.facebook.com/jeremyheyobpro" target="_blank"></a>
-      <a href="https://www.instagram.com/jeremyheyob/" target="_blank"></a>
-      <a href="https://www.linkedin.com/company/jérémy-heyob/" target="_blank"></a>
-      <a href="https://www.youtube.com/channel/UCpE0arbirH2tkw2THT_Ef9Q" target="_blank"></a>
+      <div class="contact-links">
+        <a href="mailto:contact@jeremyheyob.fr">✉️ Email</a>
+        <a href="sms:+33648145565">💬 SMS</a>
+        <a href="tel:+33648145565">📞 Appel</a>
+      </div>
     </div>
   </section>
-</div>
 
-<section class="contact-block">
-  <div class="contact-photo">
-    <img src="/images/photo.webp" alt="">
-  </div>
-  <div class="contact-text">
-    <p>Je reste disponible pour toute question ou point stratégique concernant la vente de votre bien.</p>
-    <div class="contact-links">
-      <a href="mailto:contact@jeremyheyob.fr">Email</a>
-      <a href="tel:+33648145565">Appel</a>
-    </div>
-  </div>
-</section>
-
-<footer>
-  © Jérémy Heyob Immobilier — Tous droits réservés
-</footer>
+  <footer class="legal-footer">
+    Les informations présentées sur cette page sont destinées exclusivement au suivi vendeur de ce bien par <strong>Jérémy HEYOB Immobilier</strong>.<br>
+    Toute reproduction, diffusion ou utilisation est strictement interdite sans autorisation préalable.
+  </footer>
 
 </div>
 
+<!-- ✅ Script unique : lecture d’un seul data.json -->
 <script>
-fetch("data.json")
-  .then(r => r.json())
-  .then(d => {
-    const f = (id, v) => document.getElementById(id).textContent = v || "—";
-    const df = d => new Date(d).toLocaleDateString("fr-FR");
+  function setText(id, value, fallback = "—") {
+    const el = document.getElementById(id);
+    if (!el) return;
+    const v = (value === 0 || value) ? value : fallback;
+    el.textContent = String(v);
+  }
 
-    f("date-mandat", df(d.dates?.mandat_signe));
-    f("date-diagnostics", df(d.dates?.diagnostics_recus));
-    f("date-mise-en-ligne", df(d.dates?.mise_en_ligne));
-    f("date-derniere-remontee", df(d.dates?.derniere_remontee));
+  function setLink(id, href, labelFallback = "Ouvrir l’annonce →") {
+    const el = document.getElementById(id);
+    if (!el) return;
+    if (href && String(href).trim()) {
+      el.href = href;
+      el.textContent = labelFallback;
+      el.style.pointerEvents = "auto";
+      el.style.opacity = "1";
+    } else {
+      el.href = "#";
+      el.textContent = "Lien non disponible";
+      el.style.pointerEvents = "none";
+      el.style.opacity = "0.7";
+    }
+  }
 
-    f("stat-appels", d.stats?.appels);
-    f("stat-visites", d.stats?.visites_effectuees);
-    f("stat-visites-prevues", d.stats?.visites_programmees);
-    f("stat-offres", d.stats?.offres);
-    f("stat-vues", d.stats?.vues_leboncoin);
-    f("stat-favoris", d.stats?.favoris_leboncoin);
+  function formatDateISO(iso) {
+    if (!iso) return "—";
+    const d = new Date(iso);
+    if (isNaN(d.getTime())) return String(iso); // si tu passes déjà "19/09/2025"
+    return d.toLocaleDateString("fr-FR");
+  }
 
-    f("analyse-commentaire", d.analyse?.commentaire);
-  });
+  function renderHistorique(items) {
+    const ul = document.getElementById("historique-list");
+    if (!ul) return;
+    ul.innerHTML = "";
+
+    if (!Array.isArray(items) || items.length === 0) {
+      const li = document.createElement("li");
+      li.className = "subtitle";
+      li.textContent = "Aucun historique disponible pour le moment.";
+      ul.appendChild(li);
+      return;
+    }
+
+    // Tri décroissant par date (si date ISO)
+    const sorted = items.slice().sort((a, b) => {
+      const da = new Date(a.date || 0).getTime();
+      const db = new Date(b.date || 0).getTime();
+      return (db || 0) - (da || 0);
+    });
+
+    sorted.forEach((e) => {
+      const li = document.createElement("li");
+      const date = e.date ? formatDateISO(e.date) : "—";
+      const action = e.action ? String(e.action) : "";
+      li.innerHTML = "<strong>" + date + "</strong> — " + escapeHTML(action);
+      ul.appendChild(li);
+    });
+  }
+
+  function escapeHTML(s) {
+    return String(s || "")
+      .replaceAll("&", "&amp;")
+      .replaceAll("<", "&lt;")
+      .replaceAll(">", "&gt;")
+      .replaceAll('"', "&quot;")
+      .replaceAll("'", "&#039;");
+  }
+
+  fetch("data.json", { cache: "no-store" })
+    .then((r) => {
+      if (!r.ok) throw new Error("data.json introuvable");
+      return r.json();
+    })
+    .then((data) => {
+      // Titre / sous-titre (optionnel)
+      if (data.bien?.nom) setText("bien-nom", data.bien.nom);
+      if (data.bien?.sous_titre) setText("bien-sous-titre", data.bien.sous_titre, "Suivi de commercialisation");
+
+      // Lien annonce Leboncoin
+      setLink("lien-leboncoin", data.liens?.leboncoin, "Ouvrir l’annonce →");
+
+      // DATES
+      setText("date-mandat", formatDateISO(data.dates?.mandat_signe));
+      setText("date-diagnostics", formatDateISO(data.dates?.diagnostics_recus));
+      setText("date-mise-en-ligne", formatDateISO(data.dates?.mise_en_ligne));
+      setText("date-derniere-remontee", formatDateISO(data.dates?.derniere_remontee));
+
+      // Remontée (texte)
+      if (data.diffusion?.remontee?.type || data.diffusion?.remontee) {
+        const r = data.diffusion.remontee;
+        const txt =
+          (typeof r === "string") ? r :
+          (r.type ? (r.type + (r.frequence ? " (" + r.frequence + ")" : "")) : "Remontée automatique");
+        setText("frequence-remontee", txt, "Remontée automatique");
+      }
+
+      // STATS
+      setText("stat-appels", data.stats?.appels);
+      setText("stat-visites-effectuees", data.stats?.visites_effectuees);
+      setText("stat-visites-programmees", data.stats?.visites_programmees);
+      setText("stat-offres", data.stats?.offres);
+      setText("stat-vues-leboncoin", data.stats?.vues_leboncoin);
+      setText("stat-favoris-leboncoin", data.stats?.favoris_leboncoin);
+
+      // ANALYSE
+      if (data.analyse?.commentaire) {
+        setText("analyse-commentaire", data.analyse.commentaire, "");
+      } else {
+        setText("analyse-commentaire", "Analyse en cours de mise à jour.", "");
+      }
+
+      // HISTORIQUE
+      renderHistorique(data.historique);
+    })
+    .catch((err) => {
+      console.error("Erreur chargement espace client :", err);
+      setText("analyse-commentaire", "Impossible de charger les données de suivi pour le moment.", "");
+      const ul = document.getElementById("historique-list");
+      if (ul) {
+        ul.innerHTML = "<li class='subtitle'>Impossible de charger l’historique.</li>";
+      }
+    });
 </script>
 
 </body>
 </html>
-
