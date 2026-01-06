@@ -1,1 +1,155 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <link rel="icon" href="/favicon.ico" sizes="48x48">
+  <link rel="icon" href="/favicon-192.png" sizes="192x192" type="image/png">
+  <link rel="icon" href="/favicon-512.png" sizes="512x512" type="image/png">
+  <link rel="apple-touch-icon" href="/favicon-192.png">
+  <meta charset="UTF-8">
+  <meta name="format-detection" content="telephone=no,date=no,address=no,email=no">
+  <meta name="robots" content="noindex, nofollow, noarchive, nosnippet">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Espace vendeur | Jérémy Heyob Immobilier</title>
+
+  <style>
+    /* ===== CSS STRICTEMENT IDENTIQUE (inchangé) ===== */
+    :root {
+      --bg:#FFFBF5;--accent:#C6AA77;--accent-soft:rgba(198,169,119,0.16);
+      --text-main:#191919;--text-soft:#7A7A7A;
+      --border-soft:#e5e7eb;--card-bg:#ffffff;
+      --shadow-soft:0 20px 50px rgba(25,25,25,0.10);
+    }
+    *{box-sizing:border-box}
+    body{margin:0;font-family:-apple-system,BlinkMacSystemFont,system-ui,sans-serif;background:var(--bg);color:var(--text-main)}
+    .page{max-width:1100px;margin:0 auto;padding:24px 16px 50px}
+    header{display:flex;align-items:center;justify-content:space-between;gap:18px;max-width:960px;margin:16px auto 24px;padding:8px 28px;background:var(--card-bg);border-radius:22px;box-shadow:var(--shadow-soft);border:1px solid rgba(15,23,42,0.04)}
+    .logo{max-width:140px}
+    .header-center{text-align:center;flex:1}
+    .tagline-main{font-size:13px;letter-spacing:.18em;color:var(--text-soft)}
+    .tagline-sub{margin-top:12px;font-size:12px;letter-spacing:.12em}
+    .tagline-sub strong{font-weight:900}
+    .layout{display:grid;grid-template-columns:1fr;gap:22px}
+    .card{background:var(--card-bg);border-radius:22px;border:1px solid var(--border-soft);padding:22px;box-shadow:var(--shadow-soft)}
+    .pill{background:var(--accent-soft);color:var(--accent);padding:5px 12px;border-radius:999px;font-size:11px;font-weight:600;margin-bottom:10px;display:inline-block}
+    h1{font-size:26px;margin:0}
+    h2{margin-top:26px}
+    ul{list-style:none;padding:0;margin:12px 0;font-size:15px}
+    ul li{margin-bottom:6px}
+    .luxury-divider{width:100%;height:1px;margin:40px 0;background:linear-gradient(to right,transparent,rgba(180,160,120,.6),transparent)}
+    /* Réseaux sociaux */
+    .social-full{width:100vw;margin-left:calc(-50vw + 50%);display:flex;justify-content:center;margin-top:32px}
+    .social-block{background:#fff;border-radius:20px;border:1px solid #e5e7eb;box-shadow:0 18px 40px rgba(25,25,25,.08);padding:14px 16px}
+    .social-icons{display:flex;gap:10px;flex-wrap:wrap;justify-content:center}
+    .social-icons a{width:42px;height:42px;border-radius:14px;display:grid;place-items:center;background:rgba(198,169,119,.16);border:1px solid rgba(198,169,119,.25)}
+    /* Contact */
+    .contact-block{display:flex;gap:18px;align-items:center;background:#fff;border-radius:20px;padding:16px 18px;border:1px solid var(--border-soft);box-shadow:0 18px 40px rgba(25,25,25,.08);max-width:960px;margin:24px auto 0}
+    .contact-photo{width:90px;height:90px;border-radius:50%;overflow:hidden;border:2px solid #e5e7eb}
+    .contact-photo img{width:100%;height:100%;object-fit:cover}
+    .contact-text p{font-size:13px;color:var(--text-soft)}
+    .contact-links a{color:var(--accent);text-decoration:none;margin-right:12px}
+    footer{text-align:center;font-size:11.5px;color:var(--text-soft);margin-top:40px}
+  </style>
+</head>
+
+<body>
+<div class="page">
+
+<header>
+  <img src="/images/logo.webp" class="logo" alt="">
+  <div class="header-center">
+    <div class="tagline-main">VOS PROJETS IMMOBILIERS N'ONT JAMAIS ÉTÉ AUSSI SIMPLES</div>
+    <div class="tagline-sub"><strong>JÉRÉMY HEYOB</strong></div>
+  </div>
+</header>
+
+<main class="layout">
+
+<section class="card">
+  <div class="pill">Espace vendeur</div>
+  <h1>Eliot</h1>
+
+  <h2>Informations générales</h2>
+  <ul>
+    <li>Mandat signé le : <strong id="date-mandat">—</strong></li>
+    <li>Diagnostics réceptionnés : <strong id="date-diagnostics">—</strong></li>
+    <li>Mise en ligne de l’annonce : <strong id="date-mise-en-ligne">—</strong></li>
+    <li>Dernière remontée d’annonce : <strong id="date-derniere-remontee">—</strong></li>
+  </ul>
+
+  <h2>Statistiques & actions</h2>
+  <ul>
+    <li>Nombre d’appels : <strong id="stat-appels">—</strong></li>
+    <li>Visites effectuées : <strong id="stat-visites">—</strong></li>
+    <li>Visites programmées : <strong id="stat-visites-prevues">—</strong></li>
+    <li>Offres reçues : <strong id="stat-offres">—</strong></li>
+  </ul>
+
+  <h2>Statistiques Leboncoin</h2>
+  <ul>
+    <li><strong id="stat-vues">—</strong> vues</li>
+    <li><strong id="stat-favoris">—</strong> personnes ont enregistré l’annonce</li>
+  </ul>
+
+  <h2>Mon analyse & perspectives</h2>
+  <p id="analyse-commentaire">Chargement de l’analyse…</p>
+</section>
+
+</main>
+
+<div class="social-full">
+  <section class="social-block">
+    <div class="social-icons">
+      <a href="https://www.facebook.com/jeremyheyobpro" target="_blank"></a>
+      <a href="https://www.instagram.com/jeremyheyob/" target="_blank"></a>
+      <a href="https://www.linkedin.com/company/jérémy-heyob/" target="_blank"></a>
+      <a href="https://www.youtube.com/channel/UCpE0arbirH2tkw2THT_Ef9Q" target="_blank"></a>
+    </div>
+  </section>
+</div>
+
+<section class="contact-block">
+  <div class="contact-photo">
+    <img src="/images/photo.webp" alt="">
+  </div>
+  <div class="contact-text">
+    <p>Je reste disponible pour toute question ou point stratégique concernant la vente de votre bien.</p>
+    <div class="contact-links">
+      <a href="mailto:contact@jeremyheyob.fr">Email</a>
+      <a href="tel:+33648145565">Appel</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  © Jérémy Heyob Immobilier — Tous droits réservés
+</footer>
+
+</div>
+
+<script>
+fetch("data.json")
+  .then(r => r.json())
+  .then(d => {
+    const f = (id, v) => document.getElementById(id).textContent = v || "—";
+    const df = d => new Date(d).toLocaleDateString("fr-FR");
+
+    f("date-mandat", df(d.dates?.mandat_signe));
+    f("date-diagnostics", df(d.dates?.diagnostics_recus));
+    f("date-mise-en-ligne", df(d.dates?.mise_en_ligne));
+    f("date-derniere-remontee", df(d.dates?.derniere_remontee));
+
+    f("stat-appels", d.stats?.appels);
+    f("stat-visites", d.stats?.visites_effectuees);
+    f("stat-visites-prevues", d.stats?.visites_programmees);
+    f("stat-offres", d.stats?.offres);
+    f("stat-vues", d.stats?.vues_leboncoin);
+    f("stat-favoris", d.stats?.favoris_leboncoin);
+
+    f("analyse-commentaire", d.analyse?.commentaire);
+  });
+</script>
+
+</body>
+</html>
 
