@@ -29,9 +29,9 @@
   },
 
   "stats": {
-    "appels": 6,
+    "nombre_appels": 6,
     "visites_effectuees": 3,
-    "visites_programmees": 0,
+    "nombre_emails": 0,
     "offres": 0,
     "favoris_leboncoin": 8,
     "vues_leboncoin": 237
