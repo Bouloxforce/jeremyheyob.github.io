@@ -1071,15 +1071,17 @@
          - "1 visite tous les Y contacts"
       ========================= */
       const appels = toNumber(data.stats?.appels) || 0;
-      const emails = toNumber(data.stats?.emails) || 0;
-      const contacts = appels + emails;
+      const vues = toNumber(data.stats?.vues_leboncoin);
 
       const vues = toNumber(data.stats?.vues_leboncoin);
       const visites = toNumber(data.stats?.visites_effectuees);
 
-      if (contacts > 0 && vues && vues > 0) {
-        const x = Math.round(vues / contacts);
-        setLineText("ratio-contact-vues", "1 contact tous les " + x + " vues");
+      if (appels > 0 && vues && vues > 0) {
+        const x = Math.round(vues / appels);
+        setLineText(
+          "ratio-contact-vues",
+          "1 contact tous les " + x + " vues"
+        );
       } else {
         setLineText("ratio-contact-vues", "", "—");
       }
