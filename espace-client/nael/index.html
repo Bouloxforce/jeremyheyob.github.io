@@ -1065,29 +1065,34 @@
       setText("jours-depuis-derniere-remontee", (jours === 0 || jours) ? jours + " jours" : "—", "—");
 
       /* =========================
-         ✅ AJOUT 2 : taux de transformation (lisible)
-         - ratio 1 : APPELS uniquement
-         - ratio 2 : CONTACTS = appels + emails (comme avant)
+         ✅ AJOUT 2 : taux de transformation
+         RÈGLE :
+         - CONTACT = APPEL UNIQUEMENT
+         - Emails exclus volontairement
       ========================= */
-      const appels = toNumber(data.stats?.appels) || 0;
-      const emails = toNumber(data.stats?.emails) || 0;
-      const contacts = appels + emails;
 
+      const appels = toNumber(data.stats?.appels) || 0;
       const vues = toNumber(data.stats?.vues_leboncoin);
       const visites = toNumber(data.stats?.visites_effectuees);
 
-      // ✅ Ratio 1 : 1 appel tous les X vues
+      // ✅ 1 appel tous les X vues
       if (appels > 0 && vues != null && vues > 0) {
         const x = Math.round(vues / appels);
-        setLineText("ratio-contact-vues", "1 appel tous les " + x + " vues");
+        setLineText(
+          "ratio-contact-vues",
+          "1 appel tous les " + x + " vues"
+        );
       } else {
         setLineText("ratio-contact-vues", "", "—");
       }
 
-      // ✅ Ratio 2 : 1 visite tous les Y contacts (appels + emails)
-      if (visites != null && visites > 0 && contacts > 0) {
-        const y = Math.round(contacts / visites);
-        setLineText("ratio-visites-contacts", "1 visite tous les " + y + " contacts");
+      // ✅ 1 visite tous les Y appels
+      if (visites != null && visites > 0 && appels > 0) {
+        const y = Math.round(appels / visites);
+        setLineText(
+          "ratio-visites-contacts",
+          "1 visite tous les " + y + " appels"
+        );
       } else {
         setLineText("ratio-visites-contacts", "", "—");
       }
