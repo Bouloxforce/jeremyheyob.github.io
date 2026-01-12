@@ -1093,7 +1093,7 @@
     });
   }
 
-  fetch("./nael_data.json", { cache: "no-store" })
+  fetch("nael_data.json", { cache: "no-store" })
     .then((r) => {
       if (!r.ok) throw new Error("data.json introuvable");
       return r.json();
@@ -1359,17 +1359,18 @@
       // 8️⃣ BAISSE SIGNIFICATIVE DE VISIBILITÉ (7 jours)
       // =========================
 
-      const vuesActuelles = toNumber(evo?.vues_semaine_actuelle);
-      const vuesPrecedentes = toNumber(evo?.vues_semaine_precedente);
+      const vuesActuellesAlerte = toNumber(evo?.vues_semaine_actuelle);
+      const vuesPrecedentesAlerte = toNumber(evo?.vues_semaine_precedente);
 
       const seuilBaissePourcent = toNumber(data.alertes?.seuil_baisse_visibilite_pourcent) || 15;
 
       if (
-        vuesActuelles != null &&
-        vuesPrecedentes != null &&
-        vuesPrecedentes > 0
+        vuesActuellesAlerte != null &&
+        vuesPrecedentesAlerte != null &&
+        vuesPrecedentesAlerte > 0
       ) {
-        const variation = ((vuesActuelles - vuesPrecedentes) / vuesPrecedentes) * 100;
+        const variation =
+          ((vuesActuellesAlerte - vuesPrecedentesAlerte) / vuesPrecedentesAlerte) * 100;
 
         if (variation <= -seuilBaissePourcent) {
           alertes.push(
