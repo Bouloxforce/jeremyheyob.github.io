@@ -501,6 +501,11 @@
       opacity:0.8;
     }
 
+    /* Texte d'analyse important (même niveau que les alertes) */
+    .analysis-highlight {
+      color: var(--text-main);
+    }
+
     @media (max-width: 880px) {
       /* Header */
       header {
@@ -1195,10 +1200,13 @@
         else lines.push("Visites : stable");
       }
 
-        setLineText(
-          "evolution-commentaire",
-          lines.length ? lines.join("\n") : "Données d’évolution non disponibles."
-        );
+      const evoEl = document.getElementById("evolution-commentaire");
+      if (evoEl) {
+        evoEl.textContent = lines.length
+          ? lines.join("\n")
+          : "Données d’évolution non disponibles.";
+        evoEl.classList.add("analysis-highlight");
+      }
 
       } else {
         setLineText("evolution-commentaire", "Données d’évolution non disponibles.");
