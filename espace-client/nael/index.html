@@ -754,6 +754,8 @@
       <ul style="list-style:none;padding:0;margin:12px 0 0;font-size:15px;line-height:1.55;">
         <li id="ratio-contact-vues">—</li>
         <li id="ratio-visites-contacts">—</li>
+        <li id="ratio-offres-visites">—</li>
+        <li id="dernier-visite-delai">—</li>
       </ul>
 
       <!-- ✅ AJOUT 3 : Évolution dans le temps -->
@@ -985,6 +987,23 @@
     el.textContent = (text && String(text).trim()) ? String(text) : fallback;
   }
 
+  function getDerniereDateVisiteDepuisHistorique(historique) {
+    if (!Array.isArray(historique)) return null;
+
+    const visites = historique
+      .filter(e =>
+        e?.date &&
+        typeof e.action === "string" &&
+        e.action.toLowerCase().includes("visite")
+      )
+      .map(e => new Date(e.date))
+      .filter(d => !isNaN(d.getTime()));
+
+    if (visites.length === 0) return null;
+
+    return new Date(Math.max(...visites.map(d => d.getTime())));
+  }
+
   function renderAlertes(items) {
     const ul = document.getElementById("alertes-list");
     if (!ul) return;
@@ -1095,6 +1114,37 @@
         );
       } else {
         setLineText("ratio-visites-contacts", "", "—");
+      }
+      
+
+      // ✅ 1 offre tous les X visites
+      const visites = toNumber(data.stats?.visites_effectuees);
+      const offres = toNumber(data.stats?.offres);
+
+      if (offres != null && offres > 0 && visites != null && visites > 0) {
+        const x = Math.round(visites / offres);
+        setLineText(
+          "ratio-offres-visites",
+          "1 offre tous les " + x + " visites"
+        );
+      } else {
+        setLineText("ratio-offres-visites", "", "—");
+      }
+
+      //✅ Dernière visite (basée sur l’historique)
+      const derniereVisiteDate = getDerniereDateVisiteDepuisHistorique(data.historique);
+
+      if (derniereVisiteDate) {
+        const jours = Math.floor(
+          (Date.now() - derniereVisiteDate.getTime()) / (1000 * 60 * 60 * 24)
+        );
+
+        setLineText(
+          "dernier-visite-delai",
+          "Dernière visite il y a " + jours + " jours"
+        );
+      } else {
+        setLineText("dernier-visite-delai", "", "—");
       }
 
       /* =========================
