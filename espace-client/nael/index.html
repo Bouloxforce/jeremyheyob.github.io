@@ -1214,7 +1214,7 @@
       // =========================
       // ANALYSE STRATÉGIQUE
       // =========================
-      const analysis = buildAnalysis(data);
+      const analysis = data.analysis || { text: "", noAlertes: false };
       
       /* =========================
          ✅ AJOUT 4 : alertes automatiques (objectives)
