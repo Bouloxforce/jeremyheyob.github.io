@@ -13,31 +13,31 @@
 
   "dates": {
     "mandat_signe": "2025-03-27",
-    "mise_en_ligne": "2025-12-11",
+    "mise_en_ligne": "2025-04-13",
     "derniere_remontee": "2026-01-11"
   },
 
   "stats": {
-    "appels": 0,
-    "emails": 0,
-    "visites_effectuees": 0,
+    "appels": 9,
+    "emails": 3,
+    "visites_effectuees": 3,
     "visites_programmees": 0,
     "offres": 0,
-    "vues_leboncoin": 2,
+    "vues_leboncoin": 245,
     "favoris_leboncoin": 0,
 
     "evolution": {
-      "vues_semaine_actuelle": 2,
-      "vues_semaine_precedente": 1,
+      "vues_semaine_actuelle": 245,
+      "vues_semaine_precedente": 234,
 
-      "contacts_semaine_actuelle": 0,
-      "contacts_semaine_precedente": 0,
+      "contacts_semaine_actuelle": 9,
+      "contacts_semaine_precedente": 5,
 
-      "favoris_semaine_actuelle": 0,
-      "favoris_semaine_precedente": 0,
+      "favoris_semaine_actuelle": 6,
+      "favoris_semaine_precedente": 4,
 
-      "visites_semaine_actuelle": 0,
-      "visites_semaine_precedente": 0
+      "visites_semaine_actuelle": 3,
+      "visites_semaine_precedente": 3
     }
   },
 
