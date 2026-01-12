@@ -1,0 +1,30 @@
+name: Analyse hebdomadaire des biens
+
+on:
+  schedule:
+    - cron: "0 7 * * 1" # Tous les lundis à 7h UTC ≈ 8h heure FR max
+  workflow_dispatch:
+
+jobs:
+  generate-analysis:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Récupération du dépôt
+        uses: actions/checkout@v4
+
+      - name: Installation Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Génération des analyses
+        run: node github/scripts/generate_analysis.js
+
+      - name: Commit automatique
+        run: |
+          git config user.name "github-actions"
+          git config user.email "github-actions@github.com"
+          git add github/espace-client/*.json
+          git commit -m "Mise à jour automatique des analyses"
+          git push
