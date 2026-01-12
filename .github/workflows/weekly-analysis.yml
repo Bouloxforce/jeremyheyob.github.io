@@ -12,6 +12,8 @@ jobs:
     steps:
       - name: Checkout dépôt
         uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GH_PUSH_TOKEN }}
 
       - name: Installer Node.js
         uses: actions/setup-node@v4
