@@ -1,3 +1,16 @@
+import fs from "fs";
+import path from "path";
+
+/* =========================
+   CONFIG
+========================= */
+
+const FILE = path.resolve("espace-client/nael/nael_data.json");
+
+/* =========================
+   OUTILS
+========================= */
+
 function hasCompromis(historique) {
   if (!Array.isArray(historique)) return false;
 
@@ -16,45 +29,46 @@ function daysBetween(isoDate) {
   return Math.floor((now - d) / (1000 * 60 * 60 * 24));
 }
 
+/* =========================
+   ANALYSE STRATÉGIQUE
+========================= */
+
 function buildAnalysis(data) {
 
-  /* =========================
-     🔴 PRIORITÉ ABSOLUE : COMPROMIS
-  ========================= */
+  /* 🔴 PRIORITÉ ABSOLUE : COMPROMIS */
   if (hasCompromis(data.historique)) {
     return {
       text:
-        "✍️ Acquéreur trouvé et validé.\n\n" +
+        "✍️ Un acquéreur a été trouvé et validé.\n\n" +
         "La commercialisation du bien est désormais finalisée.",
       proposeRDV: false,
       noAlertes: true
     };
   }
 
-  /* =========================
-     📊 DONNÉES DE BASE
-  ========================= */
   const jours = daysBetween(data.dates?.mise_en_ligne);
-
-  const vues = Number(data.stats?.vues_leboncoin || 0);
-  const appels = Number(data.stats?.appels || 0);
-  const visites = Number(data.stats?.visites_effectuees || 0);
-
-  const statsFaibles =
-    vues < 150 ||
-    appels < 2 ||
-    visites < 1;
 
   if (jours === null) {
     return {
-      text: "Analyse indisponible.",
+      text: "Analyse indisponible à ce stade.",
       proposeRDV: false,
       noAlertes: false
     };
   }
 
+  const vues = Number(data.stats?.vues_leboncoin || 0);
+  const appels = Number(data.stats?.appels || 0);
+  const visites = Number(data.stats?.visites_effectuees || 0);
+
+  /* 🔎 STATISTIQUES INSUFFISANTES – MARCHÉ LOCAL */
+  const statsInsuffisantes =
+    vues < 200 ||
+    appels < 3 ||
+    visites < 2 ||
+    (appels > 0 && vues / appels > 100);
+
   /* =========================
-     🟢 < 21 JOURS
+     🟢 MOINS DE 21 JOURS
   ========================= */
   if (jours < 21) {
     return {
@@ -68,40 +82,39 @@ function buildAnalysis(data) {
   }
 
   /* =========================
-     🟠 ≥ 21 JOURS — PRÉ-ALERTE
+     🟠 ENTRE 21 ET 29 JOURS
+     + STATISTIQUES INSUFFISANTES
   ========================= */
-  if (jours >= 21 && jours < 30 && statsFaibles) {
+  if (jours >= 21 && jours < 30 && statsInsuffisantes) {
     return {
       text:
         "Le bien est en commercialisation depuis " + jours + " jours.\n\n" +
-        "Les indicateurs montrent une dynamique commerciale inférieure aux standards " +
-        "observés sur le marché local. Cette situation nécessite une vigilance particulière.\n\n" +
-        "Nous poursuivons l’analyse afin d’évaluer si des ajustements stratégiques " +
-        "seront nécessaires prochainement.",
+        "Les indicateurs sont en-dessous des standards observés sur le marché local.\n\n" +
+        "Si les chiffres ne s’améliorent pas dans les prochains jours, " +
+        "nous programmerons un rendez-vous afin d’envisager un changement de stratégie.",
       proposeRDV: false,
       noAlertes: false
     };
   }
 
   /* =========================
-     🔴 ≥ 30 JOURS — ACTION
+     🔴 30 JOURS OU PLUS
+     + STATISTIQUES INSUFFISANTES
+     => CHANGEMENT DE STRATÉGIE
   ========================= */
-  if (jours >= 30 && statsFaibles) {
+  if (jours >= 30 && statsInsuffisantes) {
     return {
       text:
-        "Le bien est en commercialisation depuis " + jours + " jours.\n\n" +
-        "Les statistiques confirment une dynamique commerciale insuffisante " +
-        "par rapport au marché local. Afin d’optimiser la vente, un ajustement " +
-        "de la stratégie devient pertinent.\n\n" +
-        "Je vous propose que nous organisions un rendez-vous afin d’analyser " +
-        "ensemble les leviers possibles et définir les actions à mettre en place.",
+        "Après plus de " + jours + " jours de commercialisation, " +
+        "les chiffres confirment que la stratégie actuelle n’est pas adaptée au marché local.\n\n" +
+        "Un changement de stratégie devient indispensable afin de relancer efficacement la vente.",
       proposeRDV: true,
       noAlertes: false
     };
   }
 
   /* =========================
-     🟢 STATS OK APRÈS 21 JOURS
+     🟢 STATISTIQUES COHÉRENTES
   ========================= */
   return {
     text:
@@ -113,32 +126,31 @@ function buildAnalysis(data) {
   };
 }
 
-import fs from "fs";
-import path from "path";
+/* =========================
+   EXÉCUTION
+========================= */
 
-const FILE = path.resolve("espace-client/nael/nael_data.json");
-
-// 1️⃣ Lire le JSON
+// 1️⃣ Lecture du JSON
 const raw = fs.readFileSync(FILE, "utf-8");
 const data = JSON.parse(raw);
 
-// 2️⃣ Générer l’analyse
+// 2️⃣ Génération de l’analyse
 const analysis = buildAnalysis(data);
 
-// 3️⃣ Injecter le résultat dans le JSON
+// 3️⃣ Injection dans le JSON
 data.analysis = {
   text: analysis.text,
-  noAlertes: analysis.noAlertes,
   proposeRDV: analysis.proposeRDV,
+  noAlertes: analysis.noAlertes,
   generatedAt: new Date().toISOString()
 };
 
-// 4️⃣ Réécrire le fichier
+// 4️⃣ Écriture du fichier
 fs.writeFileSync(FILE, JSON.stringify(data, null, 2), "utf-8");
 
-// 5️⃣ Exposer la variable pour GitHub Actions
-if (analysis.proposeRDV) {
-  require("fs").appendFileSync(
+// 5️⃣ Déclencheur GitHub Actions (MAIL)
+if (analysis.proposeRDV === true && process.env.GITHUB_ENV) {
+  fs.appendFileSync(
     process.env.GITHUB_ENV,
     "RDV_RECOMMANDE=true\n"
   );
