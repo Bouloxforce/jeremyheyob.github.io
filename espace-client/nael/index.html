@@ -1022,6 +1022,13 @@
       li.textContent = t;
       ul.appendChild(li);
     });
+    
+    function buildAnalysis(data) {
+      return {
+        text: "Analyse en cours de mise à jour.",
+        noAlertes: false
+      };
+    }
   }
 
   fetch("nael_data.json", { cache: "no-store" })
@@ -1097,7 +1104,7 @@
 
       // ✅ 1 appel tous les X vues
       if (appels > 0 && vues != null && vues > 0) {
-        const x = Math.round(vues / appels);
+        const x = Math.ceil(vues / appels);
         setLineText(
           "ratio-contact-vues",
           "1 appel tous les " + x + " vues"
@@ -1108,7 +1115,7 @@
 
       // ✅ 1 visite tous les Y appels
       if (visites != null && visites > 0 && appels > 0) {
-        const y = Math.round(appels / visites);
+        const y = Math.ceil(appels / visites);
         setLineText(
           "ratio-visites-contacts",
           "1 visite tous les " + y + " appels"
@@ -1121,7 +1128,7 @@
       // ✅ 1 offre tous les X visites
 
       if (offres != null && offres > 0 && visites != null && visites > 0) {
-        const x = Math.round(visites / offres);
+        const x = Math.ceil(visites / offres);
         setLineText(
           "ratio-offres-visites",
           "1 offre tous les " + x + " visites"
@@ -1148,7 +1155,7 @@
       /* =========================
          ✅ AJOUT 3 : évolution dans le temps
       ========================= */
-      const evo = data.stats?.evolution;
+      const evo = data.stats?.evolution || null;
 
       if (evo) {
 
