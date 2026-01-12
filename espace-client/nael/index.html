@@ -505,6 +505,51 @@
       color: var(--text-main);
     }
 
+    /* =========================
+       HISTORIQUE – SCROLL + FONDU
+    ========================= */
+
+    .historique-wrapper {
+      position: relative;
+      margin-top: 12px;
+    }
+
+    .historique-scroll {
+      max-height: 220px;          /* ajuste si besoin */
+      overflow-y: auto;
+      padding-right: 10px;
+    }
+
+    /* Fondu bas */
+    .historique-fade {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 48px;
+      pointer-events: none;
+      background: linear-gradient(
+        to bottom,
+        rgba(255, 251, 245, 0),
+        var(--bg)
+      );
+    }
+
+    /* Scrollbar élégante */
+    .historique-scroll::-webkit-scrollbar {
+      width: 6px;
+    }
+
+    .historique-scroll::-webkit-scrollbar-thumb {
+      background-color: var(--accent);
+      border-radius: 4px;
+    }
+
+    .historique-scroll {
+      scrollbar-width: thin;
+      scrollbar-color: var(--accent) transparent;
+    }
+
     @media (max-width: 880px) {
       /* Header */
       header {
@@ -789,10 +834,16 @@
       <div class="luxury-divider"></div>
 
       <h2 style="margin-top:0;">Historique</h2>
-      <ul id="historique-list"
-          style="list-style:none;padding:0;margin:12px 0 0;font-size:15px;line-height:1.55;">
-        <li class="subtitle">Chargement…</li>
-      </ul>
+
+      <div class="historique-wrapper">
+        <ul id="historique-list"
+            class="historique-scroll"
+            style="list-style:none;padding:0;margin:12px 0 0;font-size:15px;line-height:1.55;">
+          <li class="subtitle">Chargement…</li>
+        </ul>
+
+        <div class="historique-fade"></div>
+      </div>
 
     </aside>
 
@@ -953,6 +1004,17 @@
       li.innerHTML = "<strong>" + date + "</strong> — " + escapeHTML(action);
       ul.appendChild(li);
     });
+    
+    // Masque le fondu si pas de scroll réel
+      const wrapper = document.querySelector(".historique-wrapper");
+      const fade = document.querySelector(".historique-fade");
+
+      if (wrapper && fade) {
+        const scroll = wrapper.querySelector(".historique-scroll");
+        if (scroll.scrollHeight <= scroll.clientHeight) {
+          fade.style.display = "none";
+        }
+      }
   }
 
   function escapeHTML(s) {
