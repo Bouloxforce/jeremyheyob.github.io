@@ -71,5 +71,12 @@
       "date": "2025-03-27",
       "action": "Mandat signé"
     }
-  ]
+  ],
+
+  "analysis": {
+    "text": "Le bien est en commercialisation depuis plusieurs mois.\n\nLes indicateurs observés sont cohérents avec le marché local. La visibilité est au rendez-vous, les contacts sont qualifiés et les visites ont déjà abouti à une offre.\n\nLa stratégie de commercialisation actuelle est maintenue, avec un suivi régulier des retours et des indicateurs.",
+    "noAlertes": false,
+    "proposeRDV": false,
+    "generatedAt": "2026-01-12T14:00:00.000Z"
+  }
 }
