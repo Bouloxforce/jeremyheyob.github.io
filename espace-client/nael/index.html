@@ -1073,40 +1073,326 @@
     return new Date(Math.max(...visites.map(d => d.getTime())));
   }
 
-  function renderAlertes(items) {
-    const ul = document.getElementById("alertes-list");
-    if (!ul) return;
-    ul.innerHTML = "";
-
-    if (!Array.isArray(items) || items.length === 0) {
-      const li = document.createElement("li");
-      li.className = "subtitle";
-      li.textContent = "Aucune alerte détectée.";
-      ul.appendChild(li);
-      return;
-    }
-
-    items.forEach((t) => {
-      const li = document.createElement("li");
-      li.textContent = t;
-      ul.appendChild(li);
-    });
-  }
-
-  fetch("nael_data.json", { cache: "no-store" })
-    .then(r => {
-      console.log("FETCH STATUS:", r.status);
+  fetch("/espace-client/nael_data.json", { cache: "no-store" })
+    .then((r) => {
+      if (!r.ok) throw new Error("data.json introuvable");
       return r.json();
     })
-    .then(data => {
-      console.log("DATA JSON CHARGÉ:", data);
-      console.log("HISTORIQUE:", data.historique);
-      console.log("HISTORIQUE ARRAY ?", Array.isArray(data.historique));
+    .then((data) => {
 
+      const evo = data.stats?.evolution || null;
+
+      // Titre / sous-titre (optionnel)
+      if (data.bien?.nom) setText("bien-nom", data.bien.nom);
+      if (data.bien?.sous_titre) setText("bien-sous-titre", data.bien.sous_titre, "Suivi de commercialisation");
+
+      // DATES
+      setText("date-mandat", formatDateISO(data.dates?.mandat_signe));
+      setText("date-mise-en-ligne", formatDateISO(data.dates?.mise_en_ligne));
+      setText("date-derniere-remontee", formatDateISO(data.dates?.derniere_remontee));
+
+      // Remontée (texte)
+      if (data.diffusion?.remontee?.type || data.diffusion?.remontee) {
+        const r = data.diffusion.remontee;
+        const txt =
+          (typeof r === "string") ? r :
+          (r.type ? (r.type + (r.frequence ? " (" + r.frequence + ")" : "")) : "Remontée automatique");
+        setText("frequence-remontee", txt, "Remontée automatique");
+      }
+
+      // STATS
+      setText("stat-appels", data.stats?.appels);
+      setText("stat-emails", data.stats?.emails);
+      setText("stat-visites-effectuees", data.stats?.visites_effectuees);
+      setText("stat-visites-programmees", data.stats?.visites_programmees);
+      setText("stat-offres", data.stats?.offres);
+      setText("stat-vues-leboncoin", data.stats?.vues_leboncoin);
+      setText("stat-favoris-leboncoin", data.stats?.favoris_leboncoin);
+
+      // LIENS - Plateformes
+      setLink("pf-agenceimmo", data.liens?.agenceimmo, "Ouvrir l’annonce →");
+      setLink("pf-leboncoin", data.liens?.leboncoin, "Ouvrir l’annonce →");
+      setLink("pf-seloger", data.liens?.seloger, "Ouvrir l’annonce →");
+      setLink("pf-bienici", data.liens?.bienici, "Ouvrir l’annonce →");
+      setLink("pf-logicimmo", data.liens?.logicimmo, "Ouvrir l’annonce →");
+      setLink("pf-avendrealouer", data.liens?.avendrealouer, "Ouvrir l’annonce →");
+      setLink("pf-paruvendu", data.liens?.paruvendu, "Ouvrir l’annonce →");
+      setLink("pf-lefigaro", data.liens?.lefigaro, "Ouvrir l’annonce →");
+
+      // LIENS - Réseaux sociaux (posts)
+      setLink("rs-facebook", data.liens?.facebook, "Ouvrir le post →");
+      setLink("rs-linkedin", data.liens?.linkedin, "Ouvrir le post →");
+      setLink("rs-instagram", data.liens?.instagram, "Ouvrir le post →");
+      setLink("rs-pagesjaunes", data.liens?.pagesjaunes, "Ouvrir le post →");
+      setLink("rs-google", data.liens?.google, "Ouvrir le post →");
+
+      // LIEN - Vidéo
+      setLink("video-youtube", data.liens?.youtube, "Ouvrir la vidéo →");
+
+      /* =========================
+         ✅ AJOUT 1 : jours depuis dernière remontée
+      ========================= */
+      const jours = daysSinceISO(data.dates?.derniere_remontee);
+      setText("jours-depuis-derniere-remontee", (jours === 0 || jours) ? jours + " jours" : "—", "—");
+
+      /* =========================
+         ✅ AJOUT 2 : taux de transformation
+         RÈGLE :
+         - CONTACT = APPEL UNIQUEMENT
+         - Emails exclus volontairement
+      ========================= */
+
+      const appels  = toNumber(data.stats?.appels) || 0;
+      const vues = toNumber(data.stats?.vues_leboncoin) || 0;
+      const visites = toNumber(data.stats?.visites_effectuees) || 0;
+      const offres  = toNumber(data.stats?.offres) || 0;
+
+      // ✅ 1 appel tous les X vues
+      if (appels > 0 && vues != null && vues > 0) {
+        const x = Math.ceil(vues / appels);
+        setLineText(
+          "ratio-contact-vues",
+          "1 appel tous les " + x + " vues"
+        );
+      } else {
+        setLineText("ratio-contact-vues", "", "—");
+      }
+
+      // ✅ 1 visite tous les Y appels
+      if (visites != null && visites > 0 && appels > 0) {
+        const y = Math.ceil(appels / visites);
+        setLineText(
+          "ratio-visites-contacts",
+          "1 visite tous les " + y + " appels"
+        );
+      } else {
+        setLineText("ratio-visites-contacts", "", "—");
+      }
+
+
+      // ✅ 1 offre tous les X visites
+
+      if (offres != null && offres > 0 && visites != null && visites > 0) {
+        const x = Math.ceil(visites / offres);
+        setLineText(
+          "ratio-offres-visites",
+          "1 offre tous les " + x + " visites"
+        );
+      } else {
+        setLineText("ratio-offres-visites", "", "—");
+      }
+
+      //✅ Dernière visite (basée sur l’historique)
+      const derniereVisiteDate = getDerniereDateVisiteDepuisHistorique(data.historique);
+
+      if (derniereVisiteDate) {
+        const joursDepuisDerniereVisite = Math.floor(
+          (Date.now() - derniereVisiteDate.getTime()) / (1000 * 60 * 60 * 24)
+        );
+
+        setLineText(
+          "dernier-visite-delai",
+          "Dernière visite il y a " + joursDepuisDerniereVisite + " jours"
+        );
+      } else {
+        setLineText("dernier-visite-delai", "", "—");
+      }
+
+      if (evo) {
+
+        let lines = [];
+
+        const vuesActuelles = toNumber(evo.vues_semaine_actuelle);
+        const vuesPrecedentes = toNumber(evo.vues_semaine_precedente);
+        const contactsActuels = toNumber(evo.contacts_semaine_actuelle);
+        const contactsPrecedents = toNumber(evo.contacts_semaine_precedente);
+        const favActuels = toNumber(evo.favoris_semaine_actuelle);
+        const favPrecedents = toNumber(evo.favoris_semaine_precedente);
+        const visActuelles = toNumber(evo.visites_semaine_actuelle);
+        const visPrecedentes = toNumber(evo.visites_semaine_precedente);
+
+      // CONTACTS
+      if (contactsActuels != null && contactsPrecedents != null) {
+        const diff = contactsActuels - contactsPrecedents;
+        if (diff > 0) lines.push("Contacts : hausse de +" + diff);
+        else if (diff < 0) lines.push("Contacts : baisse de " + Math.abs(diff));
+        else lines.push("Contacts : stable");
+      }
+
+
+      // VUES
+      if (vuesActuelles != null && vuesPrecedentes != null) {
+        const diff = vuesActuelles - vuesPrecedentes;
+        if (diff > 0) lines.push("Vues : hausse de +" + diff);
+        else if (diff < 0) lines.push("Vues : baisse de " + Math.abs(diff));
+        else lines.push("Vues : stable");
+      }
+
+      // FAVORIS
+      if (favActuels != null && favPrecedents != null) {
+        const diff = favActuels - favPrecedents;
+        if (diff > 0) lines.push("Favoris : hausse de +" + diff);
+        else if (diff < 0) lines.push("Favoris : baisse de " + Math.abs(diff));
+        else lines.push("Favoris : stable");
+      }
+
+      // VISITES
+      if (visActuelles != null && visPrecedentes != null) {
+        const diff = visActuelles - visPrecedentes;
+        if (diff > 0) lines.push("Visites : hausse de +" + diff);
+        else if (diff < 0) lines.push("Visites : baisse de " + Math.abs(diff));
+        else lines.push("Visites : stable");
+      }
+
+      const evoEl = document.getElementById("evolution-commentaire");
+      if (evoEl) {
+        evoEl.textContent = lines.length
+          ? lines.join("\n")
+          : "Données d’évolution non disponibles.";
+        evoEl.classList.add("analysis-highlight");
+      }
+
+      } else {
+        setLineText("evolution-commentaire", "Données d’évolution non disponibles.");
+      }
+
+      // =========================
+      // ANALYSE STRATÉGIQUE
+      // =========================
+      const analysis = data.analysis || { text: "", noAlertes: false };
+
+      /* =========================
+         ✅ AJOUT 4 : alertes automatiques (objectives)
+         - seuils simples et modifiables
+         - lisibles pour le client vendeur
+         - basées uniquement sur les données réelles
+      ========================= */
+
+      const alertes = [];
+
+      // =========================
+      // 1️⃣ AUCUN APPEL
+      // =========================
+      if (appels === 0) {
+        alertes.push("❗ Aucun appel enregistré à ce stade.");
+      }
+
+      // =========================
+      // 2️⃣ AUCUNE VISITE
+      // =========================
+      if ((toNumber(data.stats?.visites_effectuees) || 0) === 0) {
+        alertes.push("❗ Aucune visite effectuée à ce stade.");
+      }
+
+      // =========================
+      // 3️⃣ AUCUNE OFFRE APRÈS X VISITES
+      // =========================
+      const seuilOffre = toNumber(data.alertes?.seuil_offre_apres_visites) || 5;
+      const nbVisites = toNumber(data.stats?.visites_effectuees) || 0;
+      const nbOffres = toNumber(data.stats?.offres) || 0;
+
+      if (nbVisites >= seuilOffre && nbOffres === 0) {
+        alertes.push(
+          "⚠️ Aucune offre après " + nbVisites + " visites."
+        );
+      }
+
+      // =========================
+      // 5️⃣ FAIBLE TRANSFORMATION VUES → APPELS
+      // =========================
+      const seuilVuesParAppel = toNumber(data.alertes?.seuil_vues_par_appel) || 100;
+
+      if (appels > 0 && vues > 0 && (vues / appels) > seuilVuesParAppel) {
+        alertes.push(
+          "⚠️ Faible taux de contacts : 1 appel pour " +
+          Math.round(vues / appels) +
+          " vues."
+        );
+      }
+
+      // =========================
+      // 6️⃣ VUES ÉLEVÉES MAIS AUCUN CONTACT
+      // =========================
+      const seuilVuesSansContact = toNumber(data.alertes?.seuil_vues_sans_contact) || 80;
+
+      if (vues >= seuilVuesSansContact && appels === 0) {
+        alertes.push(
+          "⚠️ L’annonce génère des vues mais aucun contact."
+        );
+      }
+
+      // =========================
+      // 7️⃣ FAVORIS SANS PASSAGE À L’ACTION
+      // =========================
+      const seuilFavorisSansContact = toNumber(data.alertes?.seuil_favoris_sans_contact) || 4;
+
+      if (
+        toNumber(data.stats?.favoris_leboncoin) >= seuilFavorisSansContact &&
+        appels <= 1
+      ) {
+        alertes.push(
+          "⚠️ Plusieurs favoris sans passage à l’action."
+        );
+      }
+
+      // =========================
+      // 8️⃣ BAISSE SIGNIFICATIVE DE VISIBILITÉ (7 jours)
+      // =========================
+
+      const vuesActuellesAlerte = toNumber(evo?.vues_semaine_actuelle);
+      const vuesPrecedentesAlerte = toNumber(evo?.vues_semaine_precedente);
+
+      const seuilBaissePourcent = toNumber(data.alertes?.seuil_baisse_visibilite_pourcent) || 15;
+
+      if (
+        vuesActuellesAlerte != null &&
+        vuesPrecedentesAlerte != null &&
+        vuesPrecedentesAlerte > 0
+      ) {
+        const variation =
+          ((vuesActuellesAlerte - vuesPrecedentesAlerte) / vuesPrecedentesAlerte) * 100;
+
+        if (variation <= -seuilBaissePourcent) {
+          alertes.push(
+            "📉 Baisse de visibilité de " +
+            Math.round(Math.abs(variation)) +
+            "% sur les 7 derniers jours."
+          );
+        }
+      }
+
+      // =========================
+      // 9️⃣ LIMITE UX : MAX 3 ALERTES
+      // =========================
+      if (analysis.noAlertes === true) {
+        renderAlertes([]);
+      } else {
+        renderAlertes(alertes.slice(0, 3));
+      }
+
+      // ANALYSE
+      setText("analyse-commentaire", analysis.text, "");
+
+      // HISTORIQUE
       renderHistorique(data.historique);
     })
-    .catch(err => {
-      console.error("FETCH ERROR:", err);
+    .catch((err) => {
+      console.error("Erreur chargement espace client :", err);
+      setText("analyse-commentaire", "Impossible de charger les données de suivi pour le moment.", "");
+      const ul = document.getElementById("historique-list");
+      if (ul) {
+        ul.innerHTML = "<li class='subtitle'>Impossible de charger l’historique.</li>";
+      }
+      const evo = document.getElementById("evolution-commentaire");
+      if (evo) evo.textContent = "Données d’évolution non disponibles.";
+      const a = document.getElementById("alertes-list");
+      if (a) a.innerHTML = "<li class='subtitle'>Impossible de charger les alertes.</li>";
+      const j = document.getElementById("jours-depuis-derniere-remontee");
+      if (j) j.textContent = "—";
+      const r1 = document.getElementById("ratio-contact-vues");
+      if (r1) r1.textContent = "—";
+      const r2 = document.getElementById("ratio-visites-contacts");
+      if (r2) r2.textContent = "—";
     });
 </script>
 
