@@ -5,18 +5,15 @@
       "frequence": "Double remontée hebdomadaire"
     }
   },
-
   "bien": {
     "nom": "Naël",
     "sous_titre": "Suivi de commercialisation"
   },
-
   "dates": {
     "mandat_signe": "2025-03-27",
     "mise_en_ligne": "2025-04-13",
     "derniere_remontee": "2026-01-11"
   },
-
   "stats": {
     "appels": 9,
     "emails": 3,
@@ -25,22 +22,17 @@
     "offres": 0,
     "vues_leboncoin": 245,
     "favoris_leboncoin": 0,
-
     "evolution": {
       "vues_semaine_actuelle": 245,
       "vues_semaine_precedente": 234,
-
       "contacts_semaine_actuelle": 9,
       "contacts_semaine_precedente": 5,
-
       "favoris_semaine_actuelle": 6,
       "favoris_semaine_precedente": 4,
-
       "visites_semaine_actuelle": 0,
       "visites_semaine_precedente": 0
     }
   },
-
   "liens": {
     "agenceimmo": "https://www.agence.immo/achat/appartement-t3-3-pieces-saint-priest-69800-VA33936",
     "leboncoin": "https://www.leboncoin.fr/ad/ventes_immobilieres/3125084359",
@@ -57,7 +49,6 @@
     "pagesjaunes": "",
     "google": ""
   },
-
   "historique": [
     {
       "date": "2025-12-13",
@@ -72,11 +63,10 @@
       "action": "Mandat signé"
     }
   ],
-
   "analysis": {
-    "text": "Le bien est en commercialisation depuis plusieurs mois.\n\nLes indicateurs observés sont cohérents avec le marché local. La visibilité est au rendez-vous, les contacts sont qualifiés et les visites ont déjà abouti à une offre.\n\nLa stratégie de commercialisation actuelle est maintenue, avec un suivi régulier des retours et des indicateurs.",
+    "text": "Le bien est en commercialisation depuis 274 jours.\n\nLes statistiques confirment une performance insuffisante par rapport à la durée de diffusion. Un changement de stratégie est désormais nécessaire.\n\nJe vous propose que nous organisions un rendez-vous afin de définir les actions à mettre en place pour relancer efficacement la vente.",
+    "proposeRDV": true,
     "noAlertes": false,
-    "proposeRDV": false,
-    "generatedAt": "2026-01-12T14:00:00.000Z"
+    "generatedAt": "2026-01-12T21:15:02.969Z"
   }
 }
