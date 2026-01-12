@@ -1022,13 +1022,13 @@
       li.textContent = t;
       ul.appendChild(li);
     });
-    
-    function buildAnalysis(data) {
-      return {
-        text: "Analyse en cours de mise à jour.",
-        noAlertes: false
-      };
-    }
+  }
+
+  function buildAnalysis(data) {
+    return {
+      text: "Analyse en cours de mise à jour.",
+      noAlertes: false
+    };
   }
 
   fetch("nael_data.json", { cache: "no-store" })
