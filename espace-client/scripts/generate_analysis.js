@@ -138,5 +138,8 @@ fs.writeFileSync(FILE, JSON.stringify(data, null, 2), "utf-8");
 
 // 5️⃣ Exposer la variable pour GitHub Actions
 if (analysis.proposeRDV) {
-  console.log("::set-env name=RDV_RECOMMANDE::true");
+  require("fs").appendFileSync(
+    process.env.GITHUB_ENV,
+    "RDV_RECOMMANDE=true\n"
+  );
 }
