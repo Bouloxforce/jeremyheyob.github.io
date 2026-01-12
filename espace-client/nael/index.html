@@ -550,6 +550,24 @@
       scrollbar-color: var(--accent) transparent;
     }
 
+    /* Indice visuel scroll historique */
+    .historique-scroll-hint {
+      position: absolute;
+      bottom: 8px;
+      right: 12px;
+      font-size: 14px;
+      color: var(--accent);
+      opacity: 0.6;
+      pointer-events: none;
+      animation: hint-fade 1.8s ease-in-out infinite;
+    }
+
+@keyframes hint-fade {
+  0%   { opacity: 0.25; transform: translateY(0); }
+  50%  { opacity: 0.7;  transform: translateY(-2px); }
+  100% { opacity: 0.25; transform: translateY(0); }
+}
+
     @media (max-width: 880px) {
       /* Header */
       header {
@@ -979,6 +997,14 @@
   }
 
   function renderHistorique(items) {
+    const hint = document.querySelector(".historique-scroll-hint");
+
+    if (itemsEls.length > MAX_VISIBLE) {
+      if (hint) hint.style.display = "block";
+    } else {
+      if (hint) hint.style.display = "none";
+    }
+
     const ul = document.getElementById("historique-list");
     if (!ul) return;
     ul.innerHTML = "";
