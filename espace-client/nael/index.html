@@ -1172,29 +1172,29 @@
       }
 
 
-        // VUES
-        if (vuesActuelles != null && vuesPrecedentes != null) {
-          const diff = vuesActuelles - vuesPrecedentes;
-          if (diff > 0) lines.push("Vues : hausse de +" + diff);
-          else if (diff < 0) lines.push("Vues : baisse de " + Math.abs(diff));
-          else lines.push("Vues : stable);
-        }
+      // VUES
+      if (vuesActuelles != null && vuesPrecedentes != null) {
+        const diff = vuesActuelles - vuesPrecedentes;
+        if (diff > 0) lines.push("Vues : hausse de +" + diff);
+        else if (diff < 0) lines.push("Vues : baisse de " + Math.abs(diff));
+        else lines.push("Vues : stable);
+      }
 
-        // FAVORIS
-        if (favActuels != null && favPrecedents != null) {
-          const diff = favActuels - favPrecedents;
-          if (diff > 0) lines.push("Favoris : hausse de +" + diff);
-          else if (diff < 0) lines.push("Favoris : baisse de " + Math.abs(diff));
-          else lines.push("Favoris : stable);
-        }
+      // FAVORIS
+      if (favActuels != null && favPrecedents != null) {
+        const diff = favActuels - favPrecedents;
+        if (diff > 0) lines.push("Favoris : hausse de +" + diff);
+        else if (diff < 0) lines.push("Favoris : baisse de " + Math.abs(diff));
+        else lines.push("Favoris : stable);
+      }
 
-        // VISITES
-        if (visActuelles != null && visPrecedentes != null) {
-          const diff = visActuelles - visPrecedentes;
-          if (diff > 0) lines.push("Visites : hausse de +" + diff);
-          else if (diff < 0) lines.push("Visites : baisse de " + Math.abs(diff));
-          else lines.push("Visites : stable);
-        }
+      // VISITES
+      if (visActuelles != null && visPrecedentes != null) {
+        const diff = visActuelles - visPrecedentes;
+        if (diff > 0) lines.push("Visites : hausse de +" + diff);
+        else if (diff < 0) lines.push("Visites : baisse de " + Math.abs(diff));
+        else lines.push("Visites : stable);
+      }
 
         setLineText(
           "evolution-commentaire",
