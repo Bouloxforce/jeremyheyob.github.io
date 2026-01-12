@@ -20,7 +20,7 @@
   "stats": {
     "appels": 9,
     "emails": 3,
-    "visites_effectuees": 3,
+    "visites_effectuees": 0,
     "visites_programmees": 0,
     "offres": 0,
     "vues_leboncoin": 245,
@@ -36,8 +36,8 @@
       "favoris_semaine_actuelle": 6,
       "favoris_semaine_precedente": 4,
 
-      "visites_semaine_actuelle": 3,
-      "visites_semaine_precedente": 3
+      "visites_semaine_actuelle": 0,
+      "visites_semaine_precedente": 0
     }
   },
 
