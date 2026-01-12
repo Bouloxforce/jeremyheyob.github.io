@@ -1091,7 +1091,7 @@
       ========================= */
 
       const appels  = toNumber(data.stats?.appels) || 0;
-      const vues    = toNumber(data.stats?.vues_leboncoin);
+      const vues = toNumber(data.stats?.vues_leboncoin) || 0;
       const visites = toNumber(data.stats?.visites_effectuees) || 0;
       const offres  = toNumber(data.stats?.offres) || 0;
 
