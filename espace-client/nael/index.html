@@ -9,7 +9,7 @@
   <meta name="format-detection" content="telephone=no,date=no,address=no,email=no">
 
   <meta name="robots" content="noindex, nofollow, noarchive, nosnippet">
-  <title>Espace client | Naël | Jérémy Heyob Immobilier</title>
+  <title id="page-title">Espace client | Bien | Jérémy Heyob Immobilier</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <!-- ✅ 1 seule photo (pas de carrousel) -->
@@ -1040,6 +1040,11 @@
       // Titre / sous-titre (optionnel)
       if (data.bien?.nom) setText("bien-nom", data.bien.nom);
       if (data.bien?.sous_titre) setText("bien-sous-titre", data.bien.sous_titre, "Suivi de commercialisation");
+
+      if (data.bien?.nom) {
+        document.title =
+          "Espace client | " + data.bien.nom + " | Jérémy Heyob Immobilier";
+      }
 
       // DATES
       setText("date-mandat", formatDateISO(data.dates?.mandat_signe));
