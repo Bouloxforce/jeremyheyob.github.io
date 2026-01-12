@@ -1,39 +1,114 @@
-const fs = require("fs");
-const path = require("path");
+function hasCompromis(historique) {
+  if (!Array.isArray(historique)) return false;
 
-// 📁 Dossier contenant tous les biens
-const DATA_DIR = path.join(__dirname, "..", "espace-client");
-
-// 🔍 Sélection stricte : *_data.json
-const fichiers = fs.readdirSync(DATA_DIR, { withFileTypes: true })
-  .filter(entry =>
-    entry.isFile() &&
-    entry.name.endsWith("_data.json")
-  )
-  .map(entry => entry.name);
-
-if (fichiers.length === 0) {
-  console.log("Aucun fichier *_data.json trouvé.");
-  process.exit(0);
+  return historique.some(e =>
+    typeof e.action === "string" &&
+    e.action.toLowerCase().includes("compromis")
+  );
 }
 
-fichiers.forEach((filename) => {
-  const filePath = path.join(DATA_DIR, filename);
+function daysBetween(isoDate) {
+  if (!isoDate) return null;
+  const d = new Date(isoDate);
+  if (isNaN(d.getTime())) return null;
 
-  const data = JSON.parse(fs.readFileSync(filePath, "utf-8"));
+  const now = new Date();
+  return Math.floor((now - d) / (1000 * 60 * 60 * 24));
+}
 
-  // Sécurité structure minimale
-  if (!data.stats || !data.dates) {
-    console.log("Structure invalide, fichier ignoré :", filename);
-    return;
+function buildAnalysis(data) {
+
+  /* =========================
+     🔴 PRIORITÉ ABSOLUE : COMPROMIS
+  ========================= */
+  if (hasCompromis(data.historique)) {
+    return {
+      text:
+        "Acquéreur trouvé et validé.\n\n" +
+        "La commercialisation du bien est désormais finalisée.",
+      proposeRDV: false,
+      noAlertes: true
+    };
   }
 
-  // Génération de l’analyse
-  data.analyse = data.analyse || {};
-  data.analyse.commentaire = buildAnalysis(data);
-  data.analyse.genere_le = new Date().toISOString();
+  /* =========================
+     📊 DONNÉES DE BASE
+  ========================= */
+  const jours = daysBetween(data.dates?.mise_en_ligne);
 
-  fs.writeFileSync(filePath, JSON.stringify(data, null, 2));
+  const vues = Number(data.stats?.vues_leboncoin || 0);
+  const appels = Number(data.stats?.appels || 0);
+  const visites = Number(data.stats?.visites_effectuees || 0);
 
-  console.log("Analyse générée pour :", filename);
-});
+  const statsFaibles =
+    vues < 150 ||
+    appels < 2 ||
+    visites < 1;
+
+  if (jours === null) {
+    return {
+      text: "Analyse indisponible.",
+      proposeRDV: false,
+      noAlertes: false
+    };
+  }
+
+  /* =========================
+     🟢 < 21 JOURS
+  ========================= */
+  if (jours < 21) {
+    return {
+      text:
+        "Le bien est en commercialisation depuis " + jours + " jours.\n\n" +
+        "Cette phase correspond à une diffusion normale sur le marché local. " +
+        "La stratégie actuelle est maintenue.",
+      proposeRDV: false,
+      noAlertes: false
+    };
+  }
+
+  /* =========================
+     🟠 ≥ 21 JOURS — PRÉ-ALERTE
+  ========================= */
+  if (jours >= 21 && jours < 30 && statsFaibles) {
+    return {
+      text:
+        "Le bien est en commercialisation depuis " + jours + " jours.\n\n" +
+        "Les indicateurs montrent une dynamique commerciale inférieure aux standards " +
+        "observés sur le marché local. Cette situation nécessite une vigilance particulière.\n\n" +
+        "Nous poursuivons l’analyse afin d’évaluer si des ajustements stratégiques " +
+        "seront nécessaires prochainement.",
+      proposeRDV: false,
+      noAlertes: false
+    };
+  }
+
+  /* =========================
+     🔴 ≥ 30 JOURS — ACTION
+  ========================= */
+  if (jours >= 30 && statsFaibles) {
+    return {
+      text:
+        "Le bien est en commercialisation depuis " + jours + " jours.\n\n" +
+        "Les statistiques confirment une dynamique commerciale insuffisante " +
+        "par rapport au marché local. Afin d’optimiser la vente, un ajustement " +
+        "de la stratégie devient pertinent.\n\n" +
+        "Je vous propose que nous organisions un rendez-vous afin d’analyser " +
+        "ensemble les leviers possibles et définir les actions à mettre en place.",
+      proposeRDV: true,
+      noAlertes: false
+    };
+  }
+
+  /* =========================
+     🟢 STATS OK APRÈS 21 JOURS
+  ========================= */
+  return {
+    text:
+      "Le bien est en commercialisation depuis " + jours + " jours.\n\n" +
+      "Les indicateurs observés sont cohérents avec le marché local. " +
+      "La stratégie actuelle est maintenue.",
+    proposeRDV: false,
+    noAlertes: false
+  };
+}
