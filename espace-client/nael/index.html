@@ -9,7 +9,7 @@
   <meta name="format-detection" content="telephone=no,date=no,address=no,email=no">
 
   <meta name="robots" content="noindex, nofollow, noarchive, nosnippet">
-  <title id="page-title">Espace client | Bien | Jérémy Heyob Immobilier</title>
+  <title>Espace client | Naël | Jérémy Heyob Immobilier</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <!-- ✅ 1 seule photo (pas de carrousel) -->
@@ -645,12 +645,13 @@
     <section class="card">
       <div class="pill">Espace vendeur</div>
 
-      <h1 id="bien-nom">—</h1>
+      <h1 id="bien-nom">Naël</h1>
       <p class="subtitle" id="bien-sous-titre">Suivi de commercialisation</p>
 
       <!-- ✅ Photo principale uniquement (pas de carrousel) -->
       <img
         id="photo-principale"
+        src="/bien-visite/nael/photos/nael 1.webp"
         alt=""
         style="width:100%;height:auto;border-radius:16px;background:#00000008;margin:18px 0 6px;display:block;"
         loading="eager"
@@ -1035,15 +1036,10 @@
     .then((data) => {
 
       const evo = data.stats?.evolution || null;
-      
+
       // Titre / sous-titre (optionnel)
       if (data.bien?.nom) setText("bien-nom", data.bien.nom);
       if (data.bien?.sous_titre) setText("bien-sous-titre", data.bien.sous_titre, "Suivi de commercialisation");
-
-      if (data.bien?.nom) {
-        document.title =
-          "Espace client | " + data.bien.nom + " | Jérémy Heyob Immobilier";
-      }
 
       // DATES
       setText("date-mandat", formatDateISO(data.dates?.mandat_signe));
@@ -1127,7 +1123,7 @@
       } else {
         setLineText("ratio-visites-contacts", "", "—");
       }
-      
+
 
       // ✅ 1 offre tous les X visites
 
@@ -1219,7 +1215,7 @@
       // ANALYSE STRATÉGIQUE
       // =========================
       const analysis = data.analysis || { text: "", noAlertes: false };
-      
+
       /* =========================
          ✅ AJOUT 4 : alertes automatiques (objectives)
          - seuils simples et modifiables
