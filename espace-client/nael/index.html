@@ -1003,14 +1003,6 @@
   }
 
   function renderHistorique(items) {
-    const hint = document.querySelector(".historique-scroll-hint");
-
-    if (itemsEls.length > MAX_VISIBLE) {
-      if (hint) hint.style.display = "block";
-    } else {
-      if (hint) hint.style.display = "none";
-    }
-
     const ul = document.getElementById("historique-list");
     if (!ul) return;
     ul.innerHTML = "";
@@ -1041,13 +1033,12 @@
     const MAX_VISIBLE = 5;
     const itemsEls = ul.querySelectorAll("li");
     const fade = document.querySelector(".historique-fade");
+    const wrapper = ul.closest(".historique-wrapper");
 
     if (itemsEls.length > MAX_VISIBLE) {
-      ul.closest(".historique-wrapper")
-        ?.classList.add("is-scrollable");
-      
-      let height = 0;
+      wrapper?.classList.add("is-scrollable");
 
+      let height = 0;
       for (let i = 0; i < MAX_VISIBLE; i++) {
         height += itemsEls[i].offsetHeight;
       }
@@ -1056,7 +1047,15 @@
       ul.style.overflowY = "auto";
 
       if (fade) fade.style.display = "block";
+
+      // BONUS UX : le hint disparaît dès le premier scroll
+      ul.addEventListener("scroll", () => {
+        wrapper?.classList.remove("is-scrollable");
+      }, { once: true });
+
     } else {
+      wrapper?.classList.remove("is-scrollable");
+
       ul.style.maxHeight = "none";
       ul.style.overflowY = "visible";
 
