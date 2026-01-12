@@ -1145,43 +1145,54 @@
       } else {
         setLineText("dernier-visite-delai", "", "—");
       }
-
       /* =========================
          ✅ AJOUT 3 : évolution dans le temps
-         - Optionnel via data.stats.evolution
-         - Sinon message neutre
       ========================= */
       const evo = data.stats?.evolution;
 
       if (evo) {
 
+        let lines = [];
+
         const vuesActuelles = toNumber(evo.vues_semaine_actuelle);
         const vuesPrecedentes = toNumber(evo.vues_semaine_precedente);
         const contactsActuels = toNumber(evo.contacts_semaine_actuelle);
         const contactsPrecedents = toNumber(evo.contacts_semaine_precedente);
+        const favActuels = toNumber(evo.favoris_semaine_actuelle);
+        const favPrecedents = toNumber(evo.favoris_semaine_precedente);
+        const visActuelles = toNumber(evo.visites_semaine_actuelle);
+        const visPrecedentes = toNumber(evo.visites_semaine_precedente);
 
-        let lines = [];
-
-        // CONTACTS (appels uniquement)
+        // CONTACTS
         if (contactsActuels != null && contactsPrecedents != null) {
           const diff = contactsActuels - contactsPrecedents;
-          if (diff > 0)
-            lines.push("Contacts : hausse de +" + diff + " sur les 7 derniers jours.");
-          else if (diff < 0)
-            lines.push("Contacts : baisse de " + Math.abs(diff) + " sur les 7 derniers jours.");
-          else
-            lines.push("Contacts : stable sur les 7 derniers jours.");
+          if (diff > 0) lines.push("Contacts : hausse de +" + diff + " sur les 7 derniers jours.");
+          else if (diff < 0) lines.push("Contacts : baisse de " + Math.abs(diff) + " sur les 7 derniers jours.");
+          else lines.push("Contacts : stable sur les 7 derniers jours.");
         }
 
         // VUES
         if (vuesActuelles != null && vuesPrecedentes != null) {
           const diff = vuesActuelles - vuesPrecedentes;
-          if (diff > 0)
-            lines.push("Vues : hausse de +" + diff + " sur les 7 derniers jours.");
-          else if (diff < 0)
-            lines.push("Vues : baisse de " + Math.abs(diff) + " sur les 7 derniers jours.");
-          else
-            lines.push("Vues : stable sur les 7 derniers jours.");
+          if (diff > 0) lines.push("Vues : hausse de +" + diff + " sur les 7 derniers jours.");
+          else if (diff < 0) lines.push("Vues : baisse de " + Math.abs(diff) + " sur les 7 derniers jours.");
+          else lines.push("Vues : stable sur les 7 derniers jours.");
+        }
+
+        // FAVORIS
+        if (favActuels != null && favPrecedents != null) {
+          const diff = favActuels - favPrecedents;
+          if (diff > 0) lines.push("Favoris : hausse de +" + diff + " sur les 7 derniers jours.");
+          else if (diff < 0) lines.push("Favoris : baisse de " + Math.abs(diff) + " sur les 7 derniers jours.");
+          else lines.push("Favoris : stable sur les 7 derniers jours.");
+        }
+
+        // VISITES
+        if (visActuelles != null && visPrecedentes != null) {
+          const diff = visActuelles - visPrecedentes;
+          if (diff > 0) lines.push("Visites : hausse de +" + diff + " sur les 7 derniers jours.");
+          else if (diff < 0) lines.push("Visites : baisse de " + Math.abs(diff) + " sur les 7 derniers jours.");
+          else lines.push("Visites : stable sur les 7 derniers jours.");
         }
 
         setLineText(
@@ -1190,38 +1201,7 @@
         );
 
       } else {
-        setLineText(
-          "evolution-commentaire",
-          "Données d’évolution non disponibles."
-        );
-      }
-
-      // FAVORIS
-      const favActuels = toNumber(evo.favoris_semaine_actuelle);
-      const favPrecedents = toNumber(evo.favoris_semaine_precedente);
-
-      if (favActuels != null && favPrecedents != null) {
-        const diff = favActuels - favPrecedents;
-        if (diff > 0)
-          lines.push("Favoris : hausse de +" + diff + " sur les 7 derniers jours.");
-        else if (diff < 0)
-          lines.push("Favoris : baisse de " + Math.abs(diff) + " sur les 7 derniers jours.");
-        else
-          lines.push("Favoris : stable sur les 7 derniers jours.");
-      }
-
-      // VISITES EFFECTUÉES
-      const visActuelles = toNumber(evo.visites_semaine_actuelle);
-      const visPrecedentes = toNumber(evo.visites_semaine_precedente);
-
-      if (visActuelles != null && visPrecedentes != null) {
-        const diff = visActuelles - visPrecedentes;
-        if (diff > 0)
-          lines.push("Visites : hausse de +" + diff + " sur les 7 derniers jours.");
-        else if (diff < 0)
-          lines.push("Visites : baisse de " + Math.abs(diff) + " sur les 7 derniers jours.");
-        else
-          lines.push("Visites : stable sur les 7 derniers jours.");
+        setLineText("evolution-commentaire", "Données d’évolution non disponibles.");
       }
 
       /* =========================
