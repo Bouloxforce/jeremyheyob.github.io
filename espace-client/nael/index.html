@@ -1090,9 +1090,10 @@
          - Emails exclus volontairement
       ========================= */
 
-      const appels = toNumber(data.stats?.appels) || 0;
-      const vues = toNumber(data.stats?.vues_leboncoin);
-      const visites = toNumber(data.stats?.visites_effectuees);
+      const appels  = toNumber(data.stats?.appels) || 0;
+      const vues    = toNumber(data.stats?.vues_leboncoin);
+      const visites = toNumber(data.stats?.visites_effectuees) || 0;
+      const offres  = toNumber(data.stats?.offres) || 0;
 
       // ✅ 1 appel tous les X vues
       if (appels > 0 && vues != null && vues > 0) {
@@ -1118,8 +1119,6 @@
       
 
       // ✅ 1 offre tous les X visites
-      const visites = toNumber(data.stats?.visites_effectuees);
-      const offres = toNumber(data.stats?.offres);
 
       if (offres != null && offres > 0 && visites != null && visites > 0) {
         const x = Math.round(visites / offres);
