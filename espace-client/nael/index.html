@@ -1004,17 +1004,28 @@
       li.innerHTML = "<strong>" + date + "</strong> — " + escapeHTML(action);
       ul.appendChild(li);
     });
-    
-    // Masque le fondu si pas de scroll réel
-      const wrapper = document.querySelector(".historique-wrapper");
-      const fade = document.querySelector(".historique-fade");
+    // ===== LIMITE À 3 HISTORIQUES VISIBLES =====
+    const MAX_VISIBLE = 3;
+    const itemsEls = ul.querySelectorAll("li");
+    const fade = document.querySelector(".historique-fade");
 
-      if (wrapper && fade) {
-        const scroll = wrapper.querySelector(".historique-scroll");
-        if (scroll.scrollHeight <= scroll.clientHeight) {
-          fade.style.display = "none";
-        }
+    if (itemsEls.length > MAX_VISIBLE) {
+      let height = 0;
+
+      for (let i = 0; i < MAX_VISIBLE; i++) {
+        height += itemsEls[i].offsetHeight;
       }
+
+      ul.style.maxHeight = height + "px";
+      ul.style.overflowY = "auto";
+
+      if (fade) fade.style.display = "block";
+    } else {
+      ul.style.maxHeight = "none";
+      ul.style.overflowY = "visible";
+
+      if (fade) fade.style.display = "none";
+    }
   }
 
   function escapeHTML(s) {
