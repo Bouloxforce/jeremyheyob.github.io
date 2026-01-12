@@ -112,3 +112,31 @@ function buildAnalysis(data) {
     noAlertes: false
   };
 }
+
+import fs from "fs";
+import path from "path";
+
+const FILE = path.resolve("espace-client/nael/nael_data.json");
+
+// 1️⃣ Lire le JSON
+const raw = fs.readFileSync(FILE, "utf-8");
+const data = JSON.parse(raw);
+
+// 2️⃣ Générer l’analyse
+const analysis = buildAnalysis(data);
+
+// 3️⃣ Injecter le résultat dans le JSON
+data.analysis = {
+  text: analysis.text,
+  noAlertes: analysis.noAlertes,
+  proposeRDV: analysis.proposeRDV,
+  generatedAt: new Date().toISOString()
+};
+
+// 4️⃣ Réécrire le fichier
+fs.writeFileSync(FILE, JSON.stringify(data, null, 2), "utf-8");
+
+// 5️⃣ Exposer la variable pour GitHub Actions
+if (analysis.proposeRDV) {
+  console.log("::set-env name=RDV_RECOMMANDE::true");
+}
