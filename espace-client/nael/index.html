@@ -30,27 +30,7 @@
     }
 
     * { box-sizing: border-box; }
-    body 
-    <script>
-    (function () {
-      function replaceText(node) {
-        if (node.nodeType === Node.TEXT_NODE) {
-          node.nodeValue = node.nodeValue
-            .replace(/\bNaël\b/g, "Romy")
-            .replace(/\bNael\b/g, "Romy")
-            .replace(/\bnael\b/g, "romy");
-        } else {
-          node.childNodes.forEach(replaceText);
-        }
-      }
-
-  document.addEventListener("DOMContentLoaded", function () {
-    replaceText(document.body);
-  });
-})();
-</script>
-  
-    {
+    body{
       margin: 0;
       font-family: -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
       background: var(--bg);
