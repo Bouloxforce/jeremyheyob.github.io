@@ -28,9 +28,9 @@
 
     "evolution": {
       "vues_semaine_actuelle": 245,
-      "vues_semaine_precedente": 210,
+      "vues_semaine_precedente": 200,
       "contacts_semaine_actuelle": 2,
-      "contacts_semaine_precedente": 1
+      "contacts_semaine_precedente": 0
     }
   },
 
