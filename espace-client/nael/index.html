@@ -9,7 +9,7 @@
   <meta name="format-detection" content="telephone=no,date=no,address=no,email=no">
 
   <meta name="robots" content="noindex, nofollow, noarchive, nosnippet">
-  <title>Espace client | Naël | Jérémy Heyob Immobiliere</title>
+  <title>Espace client | Jérémy Heyob Immobiliere</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <!-- ✅ 1 seule photo (pas de carrousel) -->
@@ -30,7 +30,27 @@
     }
 
     * { box-sizing: border-box; }
-    body {
+    body 
+    <script>
+    (function () {
+      function replaceText(node) {
+        if (node.nodeType === Node.TEXT_NODE) {
+          node.nodeValue = node.nodeValue
+            .replace(/\bNaël\b/g, "Romy")
+            .replace(/\bNael\b/g, "Romy")
+            .replace(/\bnael\b/g, "romy");
+        } else {
+          node.childNodes.forEach(replaceText);
+        }
+      }
+
+  document.addEventListener("DOMContentLoaded", function () {
+    replaceText(document.body);
+  });
+})();
+</script>
+  
+    {
       margin: 0;
       font-family: -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
       background: var(--bg);
