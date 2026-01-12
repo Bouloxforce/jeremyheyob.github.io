@@ -1171,18 +1171,18 @@
 
         if (cNow != null && cPrev != null) {
           const diff = cNow - cPrev;
-          if (diff > 0) lines.push("Contacts : hausse de +" + diff + " cette semaine.");
-          else if (diff < 0) lines.push("Contacts : baisse de " + diff + " cette semaine.");
-          else lines.push("Contacts : stable cette semaine.");
+          if (diff > 0) lines.push("Contacts : hausse de +" + diff + " sur les 7 derniers jours.");
+          else if (diff < 0) lines.push("Contacts : baisse de " + diff + " sur les 7 derniers jours.");
+          else lines.push("Contacts : stable sur les 7 derniers jours.");
         } else if (cNow != null) {
           lines.push("Contacts cette semaine : " + cNow + ".");
         }
 
         if (vNow != null && vPrev != null) {
           const diff = vNow - vPrev;
-          if (diff > 0) lines.push("Vues : hausse de +" + diff + " cette semaine.");
-          else if (diff < 0) lines.push("Vues : baisse de " + diff + " cette semaine.");
-          else lines.push("Vues : stable cette semaine.");
+          if (diff > 0) lines.push("Vues : hausse de +" + diff + " sur les 7 derniers jours.");
+          else if (diff < 0) lines.push("Vues : baisse de " + diff + " sur les 7 derniers jours.");
+          else lines.push("Vues : stable sur les 7 derniers jours.");
         } else if (vNow != null) {
           lines.push("Vues cette semaine : " + vNow + ".");
         }
