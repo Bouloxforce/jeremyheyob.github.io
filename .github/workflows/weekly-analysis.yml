@@ -36,9 +36,10 @@ jobs:
         if: env.RDV_RECOMMANDE == 'true'
         uses: dawidd6/action-send-mail@v3
         with:
-          server_address: smtp.gmail.com
+          server_address: ssl0.ovh.net
           server_port: 465
-          username: ${{ secrets.MAIL_USER }}
+          secure: true
+          username: contact@jeremyheyob.fr
           password: ${{ secrets.MAIL_PASS }}
           subject: "📞 RDV à prévoir – Analyse automatique"
           to: contact@jeremyheyob.fr
@@ -46,3 +47,4 @@ jobs:
           body: |
             Une analyse recommande un rendez-vous client.
             Merci de prendre contact avec le client concerné.
+
