@@ -508,6 +508,30 @@
     /* =========================
        HISTORIQUE – SCROLL + FONDU
     ========================= */
+    /* Indicateur visuel de scroll (hint) */
+    .historique-scroll-hint {
+      position: absolute;
+      bottom: 10px;
+      right: 14px;
+      font-size: 14px;
+      color: var(--accent);
+      opacity: 0.55;
+      pointer-events: none;
+      user-select: none;
+      animation: hint-bounce 1.8s ease-in-out infinite;
+    }
+
+    /* Animation subtile */
+    @keyframes hint-bounce {
+      0%   { opacity: 0.25; transform: translateY(0); }
+      50%  { opacity: 0.75; transform: translateY(-3px); }
+      100% { opacity: 0.25; transform: translateY(0); }
+    }
+
+/* Masqué par défaut (JS décidera) */
+.historique-wrapper:not(.is-scrollable) .historique-scroll-hint {
+  display: none;
+}
 
     .historique-wrapper {
       position: relative;
@@ -549,24 +573,6 @@
       scrollbar-width: thin;
       scrollbar-color: var(--accent) transparent;
     }
-
-    /* Indice visuel scroll historique */
-    .historique-scroll-hint {
-      position: absolute;
-      bottom: 8px;
-      right: 12px;
-      font-size: 14px;
-      color: var(--accent);
-      opacity: 0.6;
-      pointer-events: none;
-      animation: hint-fade 1.8s ease-in-out infinite;
-    }
-
-@keyframes hint-fade {
-  0%   { opacity: 0.25; transform: translateY(0); }
-  50%  { opacity: 0.7;  transform: translateY(-2px); }
-  100% { opacity: 0.25; transform: translateY(0); }
-}
 
     @media (max-width: 880px) {
       /* Header */
