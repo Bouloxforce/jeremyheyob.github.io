@@ -508,23 +508,20 @@
     /* =========================
        HISTORIQUE – SCROLL + FONDU
     ========================= */
+
     .historique-wrapper {
       position: relative;
       margin-top: 12px;
     }
 
     .historique-scroll {
-      overflow-y: hidden; /* par défaut */
-    }
-
-    /* Scroll activé uniquement quand nécessaire */
-    .historique-scroll.is-scrollable {
+      max-height: 220px;          /* ajuste si besoin */
       overflow-y: auto;
+      padding-right: 10px;
     }
 
-    /* Fondu bas (uniquement si scroll actif) */
+    /* Fondu bas */
     .historique-fade {
-      display: none;
       position: absolute;
       bottom: 0;
       left: 0;
@@ -538,8 +535,19 @@
       );
     }
 
-    .historique-fade.is-visible {
-      display: block;
+    /* Scrollbar élégante */
+    .historique-scroll::-webkit-scrollbar {
+      width: 6px;
+    }
+
+    .historique-scroll::-webkit-scrollbar-thumb {
+      background-color: var(--accent);
+      border-radius: 4px;
+    }
+
+    .historique-scroll {
+      scrollbar-width: thin;
+      scrollbar-color: var(--accent) transparent;
     }
 
     @media (max-width: 880px) {
@@ -971,53 +979,42 @@
 
   function renderHistorique(items) {
     const ul = document.getElementById("historique-list");
-    const fade = document.querySelector(".historique-fade");
-
     if (!ul) return;
     ul.innerHTML = "";
 
     if (!Array.isArray(items) || items.length === 0) {
-      ul.innerHTML = "<li class='subtitle'>Aucun historique disponible.</li>";
+      const li = document.createElement("li");
+      li.className = "subtitle";
+      li.textContent = "Aucun historique disponible pour le moment.";
+      ul.appendChild(li);
       return;
     }
 
-    // 🔽 tri décroissant (plus récent en haut)
+    // Tri décroissant par date (si date ISO)
     const sorted = items.slice().sort((a, b) => {
-      return new Date(b.date).getTime() - new Date(a.date).getTime();
+      const da = new Date(a.date || 0).getTime();
+      const db = new Date(b.date || 0).getTime();
+      return (db || 0) - (da || 0);
     });
 
-    sorted.forEach(e => {
+    sorted.forEach((e) => {
       const li = document.createElement("li");
-      li.innerHTML =
-        "<strong>" +
-        formatDateISO(e.date) +
-        "</strong> — " +
-        escapeHTML(e.action);
+      const date = e.date ? formatDateISO(e.date) : "—";
+      const action = e.action ? String(e.action) : "";
+      li.innerHTML = "<strong>" + date + "</strong> — " + escapeHTML(action);
       ul.appendChild(li);
     });
+    
+    // Masque le fondu si pas de scroll réel
+      const wrapper = document.querySelector(".historique-wrapper");
+      const fade = document.querySelector(".historique-fade");
 
-    // 🧠 LOGIQUE MÉTIER
-    const MAX_VISIBLE = 3;
-
-    if (sorted.length > MAX_VISIBLE) {
-      // on calcule la hauteur exacte de 3 items
-      const itemsEls = ul.querySelectorAll("li");
-      let height = 0;
-
-      for (let i = 0; i < MAX_VISIBLE; i++) {
-        height += itemsEls[i].offsetHeight;
+      if (wrapper && fade) {
+        const scroll = wrapper.querySelector(".historique-scroll");
+        if (scroll.scrollHeight <= scroll.clientHeight) {
+          fade.style.display = "none";
+        }
       }
-
-      ul.style.maxHeight = height + "px";
-      ul.classList.add("is-scrollable");
-
-      if (fade) fade.classList.add("is-visible");
-    } else {
-      // moins ou égal à 3 → pas de scroll
-      ul.style.maxHeight = "none";
-      ul.classList.remove("is-scrollable");
-      if (fade) fade.classList.remove("is-visible");
-    }
   }
 
   function escapeHTML(s) {
@@ -1073,7 +1070,27 @@
     return new Date(Math.max(...visites.map(d => d.getTime())));
   }
 
-  fetch("/espace-client/nael/nael_data.json", { cache: "no-store" })
+  function renderAlertes(items) {
+    const ul = document.getElementById("alertes-list");
+    if (!ul) return;
+    ul.innerHTML = "";
+
+    if (!Array.isArray(items) || items.length === 0) {
+      const li = document.createElement("li");
+      li.className = "subtitle";
+      li.textContent = "Aucune alerte détectée.";
+      ul.appendChild(li);
+      return;
+    }
+
+    items.forEach((t) => {
+      const li = document.createElement("li");
+      li.textContent = t;
+      ul.appendChild(li);
+    });
+  }
+
+  fetch("nael_data.json", { cache: "no-store" })
     .then((r) => {
       if (!r.ok) throw new Error("data.json introuvable");
       return r.json();
@@ -1339,18 +1356,17 @@
       // 8️⃣ BAISSE SIGNIFICATIVE DE VISIBILITÉ (7 jours)
       // =========================
 
-      const vuesActuellesAlerte = toNumber(evo?.vues_semaine_actuelle);
-      const vuesPrecedentesAlerte = toNumber(evo?.vues_semaine_precedente);
+      const vuesActuelles = toNumber(evo?.vues_semaine_actuelle);
+      const vuesPrecedentes = toNumber(evo?.vues_semaine_precedente);
 
       const seuilBaissePourcent = toNumber(data.alertes?.seuil_baisse_visibilite_pourcent) || 15;
 
       if (
-        vuesActuellesAlerte != null &&
-        vuesPrecedentesAlerte != null &&
-        vuesPrecedentesAlerte > 0
+        vuesActuelles != null &&
+        vuesPrecedentes != null &&
+        vuesPrecedentes > 0
       ) {
-        const variation =
-          ((vuesActuellesAlerte - vuesPrecedentesAlerte) / vuesPrecedentesAlerte) * 100;
+        const variation = ((vuesActuelles - vuesPrecedentes) / vuesPrecedentes) * 100;
 
         if (variation <= -seuilBaissePourcent) {
           alertes.push(
