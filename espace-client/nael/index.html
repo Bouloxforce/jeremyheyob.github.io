@@ -1208,35 +1208,105 @@
       /* =========================
          ✅ AJOUT 4 : alertes automatiques (objectives)
          - seuils simples et modifiables
-         - si aucune donnée => aucune alerte
+         - lisibles pour le client vendeur
+         - basées uniquement sur les données réelles
       ========================= */
+
       const alertes = [];
 
-      // Alerte : aucun appel
+      // =========================
+      // 1️⃣ AUCUN APPEL
+      // =========================
       if (appels === 0) {
-        alertes.push("❗ Aucun appel enregistré.");
+        alertes.push("❗ Aucun appel enregistré à ce stade.");
       }
 
-      // Alerte : aucune visite
+      // =========================
+      // 2️⃣ AUCUNE VISITE
+      // =========================
       if ((toNumber(data.stats?.visites_effectuees) || 0) === 0) {
         alertes.push("❗ Aucune visite effectuée à ce stade.");
       }
 
-      // Alerte : aucune offre après X visites (par défaut 5)
+      // =========================
+      // 3️⃣ AUCUNE OFFRE APRÈS X VISITES
+      // =========================
       const seuilOffre = toNumber(data.alertes?.seuil_offre_apres_visites) || 5;
       const nbVisites = toNumber(data.stats?.visites_effectuees) || 0;
       const nbOffres = toNumber(data.stats?.offres) || 0;
+
       if (nbVisites >= seuilOffre && nbOffres === 0) {
-        alertes.push("⚠️ Aucune offre après " + nbVisites + " visites (seuil : " + seuilOffre + ").");
+        alertes.push(
+          "⚠️ Aucune offre après " + nbVisites + " visites (seuil : " + seuilOffre + ")."
+        );
       }
 
-      // Alerte : pas de remontée depuis X jours (par défaut 7)
+      // =========================
+      // 4️⃣ PAS DE REMONTÉE RÉCENTE
+      // =========================
       const seuilRemontee = toNumber(data.alertes?.seuil_jours_sans_remontee) || 7;
+
       if (jours != null && jours >= seuilRemontee) {
-        alertes.push("⚠️ Dernière remontée il y a " + jours + " jours (seuil : " + seuilRemontee + ").");
+        alertes.push(
+          "⚠️ Dernière remontée il y a " + jours + " jours (seuil : " + seuilRemontee + ")."
+        );
       }
 
-      renderAlertes(alertes);
+      // =========================
+      // 5️⃣ FAIBLE TRANSFORMATION VUES → APPELS
+      // =========================
+      const seuilVuesParAppel = toNumber(data.alertes?.seuil_vues_par_appel) || 120;
+
+      if (appels > 0 && vues > 0 && (vues / appels) > seuilVuesParAppel) {
+        alertes.push(
+          "⚠️ Faible taux de contacts : 1 appel pour " +
+          Math.round(vues / appels) +
+          " vues."
+        );
+      }
+
+      // =========================
+      // 6️⃣ VUES ÉLEVÉES MAIS AUCUN CONTACT
+      // =========================
+      const seuilVuesSansContact = toNumber(data.alertes?.seuil_vues_sans_contact) || 100;
+
+      if (vues >= seuilVuesSansContact && appels === 0) {
+        alertes.push(
+          "⚠️ L’annonce génère des vues mais aucun contact."
+        );
+      }
+
+      // =========================
+      // 7️⃣ FAVORIS SANS PASSAGE À L’ACTION
+      // =========================
+      const seuilFavorisSansContact = toNumber(data.alertes?.seuil_favoris_sans_contact) || 5;
+
+      if (
+        toNumber(data.stats?.favoris_leboncoin) >= seuilFavorisSansContact &&
+        appels <= 1
+      ) {
+        alertes.push(
+          "⚠️ Plusieurs favoris sans passage à l’action."
+        );
+      }
+
+      // =========================
+      // 8️⃣ BAISSE DE VISIBILITÉ SUR 7 JOURS
+      // =========================
+      if (
+        evo?.vues_semaine_actuelle != null &&
+        evo?.vues_semaine_precedente != null &&
+        evo.vues_semaine_actuelle < evo.vues_semaine_precedente
+      ) {
+        alertes.push(
+          "📉 Baisse de la visibilité sur les 7 derniers jours."
+        );
+      }
+
+      // =========================
+      // 9️⃣ LIMITE UX : MAX 3 ALERTES
+      // =========================
+      renderAlertes(alertes.slice(0, 3));
 
       // ANALYSE
       if (data.analyse?.commentaire) {
