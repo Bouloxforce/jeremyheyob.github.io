@@ -24,7 +24,7 @@ function buildAnalysis(data) {
   if (hasCompromis(data.historique)) {
     return {
       text:
-        "Acquéreur trouvé et validé.\n\n" +
+        "✍️ Acquéreur trouvé et validé.\n\n" +
         "La commercialisation du bien est désormais finalisée.",
       proposeRDV: false,
       noAlertes: true
