@@ -1,0 +1,46 @@
+name: Analyse hebdomadaire biens
+
+on:
+  schedule:
+    - cron: "0 7 * * 1" # Tous les lundis à 07:00
+  workflow_dispatch:
+
+jobs:
+  analyse:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout dépôt
+        uses: actions/checkout@v4
+
+      - name: Installer Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Générer analyses
+        run: |
+          node scripts/generate_analysis.js
+
+      - name: Commit des analyses
+        run: |
+          git config user.name "Analyse automatique"
+          git config user.email "bot@github.com"
+          git add .
+          git diff --cached --quiet || git commit -m "Analyse hebdomadaire automatique"
+          git push
+
+      - name: Notification interne si RDV recommandé
+        if: env.RDV_RECOMMANDE == 'true'
+        uses: dawidd6/action-send-mail@v3
+        with:
+          server_address: smtp.gmail.com
+          server_port: 465
+          username: ${{ secrets.MAIL_USER }}
+          password: ${{ secrets.MAIL_PASS }}
+          subject: "📞 RDV à prévoir – Analyse automatique"
+          to: contact@jeremyheyob.fr
+          from: "Analyse automatique <contact@jeremyheyob.fr>"
+          body: |
+            Une analyse recommande un rendez-vous client.
+            Merci de prendre contact avec le client concerné.
