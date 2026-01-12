@@ -508,20 +508,23 @@
     /* =========================
        HISTORIQUE – SCROLL + FONDU
     ========================= */
-
     .historique-wrapper {
       position: relative;
       margin-top: 12px;
     }
 
     .historique-scroll {
-      max-height: 220px;          /* ajuste si besoin */
-      overflow-y: auto;
-      padding-right: 10px;
+      overflow-y: hidden; /* par défaut */
     }
 
-    /* Fondu bas */
+    /* Scroll activé uniquement quand nécessaire */
+    .historique-scroll.is-scrollable {
+      overflow-y: auto;
+    }
+
+    /* Fondu bas (uniquement si scroll actif) */
     .historique-fade {
+      display: none;
       position: absolute;
       bottom: 0;
       left: 0;
@@ -535,19 +538,8 @@
       );
     }
 
-    /* Scrollbar élégante */
-    .historique-scroll::-webkit-scrollbar {
-      width: 6px;
-    }
-
-    .historique-scroll::-webkit-scrollbar-thumb {
-      background-color: var(--accent);
-      border-radius: 4px;
-    }
-
-    .historique-scroll {
-      scrollbar-width: thin;
-      scrollbar-color: var(--accent) transparent;
+    .historique-fade.is-visible {
+      display: block;
     }
 
     @media (max-width: 880px) {
@@ -979,42 +971,53 @@
 
   function renderHistorique(items) {
     const ul = document.getElementById("historique-list");
+    const fade = document.querySelector(".historique-fade");
+
     if (!ul) return;
     ul.innerHTML = "";
 
     if (!Array.isArray(items) || items.length === 0) {
-      const li = document.createElement("li");
-      li.className = "subtitle";
-      li.textContent = "Aucun historique disponible pour le moment.";
-      ul.appendChild(li);
+      ul.innerHTML = "<li class='subtitle'>Aucun historique disponible.</li>";
       return;
     }
 
-    // Tri décroissant par date (si date ISO)
+    // 🔽 tri décroissant (plus récent en haut)
     const sorted = items.slice().sort((a, b) => {
-      const da = new Date(a.date || 0).getTime();
-      const db = new Date(b.date || 0).getTime();
-      return (db || 0) - (da || 0);
+      return new Date(b.date).getTime() - new Date(a.date).getTime();
     });
 
-    sorted.forEach((e) => {
+    sorted.forEach(e => {
       const li = document.createElement("li");
-      const date = e.date ? formatDateISO(e.date) : "—";
-      const action = e.action ? String(e.action) : "";
-      li.innerHTML = "<strong>" + date + "</strong> — " + escapeHTML(action);
+      li.innerHTML =
+        "<strong>" +
+        formatDateISO(e.date) +
+        "</strong> — " +
+        escapeHTML(e.action);
       ul.appendChild(li);
     });
-    
-    // Masque le fondu si pas de scroll réel
-      const wrapper = document.querySelector(".historique-wrapper");
-      const fade = document.querySelector(".historique-fade");
 
-      if (wrapper && fade) {
-        const scroll = wrapper.querySelector(".historique-scroll");
-        if (scroll.scrollHeight <= scroll.clientHeight) {
-          fade.style.display = "none";
-        }
+    // 🧠 LOGIQUE MÉTIER
+    const MAX_VISIBLE = 3;
+
+    if (sorted.length > MAX_VISIBLE) {
+      // on calcule la hauteur exacte de 3 items
+      const itemsEls = ul.querySelectorAll("li");
+      let height = 0;
+
+      for (let i = 0; i < MAX_VISIBLE; i++) {
+        height += itemsEls[i].offsetHeight;
       }
+
+      ul.style.maxHeight = height + "px";
+      ul.classList.add("is-scrollable");
+
+      if (fade) fade.classList.add("is-visible");
+    } else {
+      // moins ou égal à 3 → pas de scroll
+      ul.style.maxHeight = "none";
+      ul.classList.remove("is-scrollable");
+      if (fade) fade.classList.remove("is-visible");
+    }
   }
 
   function escapeHTML(s) {
