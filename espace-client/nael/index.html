@@ -1205,6 +1205,11 @@
         setLineText("evolution-commentaire", "Données d’évolution non disponibles.");
       }
 
+      // =========================
+      // ANALYSE STRATÉGIQUE
+      // =========================
+      const analysis = buildAnalysis(data);
+      
       /* =========================
          ✅ AJOUT 4 : alertes automatiques (objectives)
          - seuils simples et modifiables
@@ -1307,14 +1312,14 @@
       // =========================
       // 9️⃣ LIMITE UX : MAX 3 ALERTES
       // =========================
-      renderAlertes(alertes.slice(0, 3));
+      if (analysis.noAlertes === true) {
+        renderAlertes([]);
+      } else {
+        renderAlertes(alertes.slice(0, 3));
+      }
 
       // ANALYSE
-      if (data.analyse?.commentaire) {
-        setText("analyse-commentaire", analysis.text, "");
-      } else {
-        setText("analyse-commentaire", "Analyse en cours de mise à jour.", "");
-      }
+      setText("analyse-commentaire", analysis.text, "");
 
       // HISTORIQUE
       renderHistorique(data.historique);
