@@ -20,7 +20,7 @@ jobs:
 
       - name: Générer analyses
         run: |
-          node scripts/generate_analysis.js
+          node espace-client/scripts/generate_analysis.js
 
       - name: Commit des analyses
         run: |
