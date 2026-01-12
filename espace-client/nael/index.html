@@ -843,6 +843,7 @@
         </ul>
 
         <div class="historique-fade"></div>
+        <div class="historique-scroll-hint">↕︎</div>
       </div>
 
     </aside>
@@ -1005,11 +1006,14 @@
       ul.appendChild(li);
     });
     // ===== LIMITE À 3 HISTORIQUES VISIBLES =====
-    const MAX_VISIBLE = 3;
+    const MAX_VISIBLE = 5;
     const itemsEls = ul.querySelectorAll("li");
     const fade = document.querySelector(".historique-fade");
 
     if (itemsEls.length > MAX_VISIBLE) {
+      ul.closest(".historique-wrapper")
+        ?.classList.add("is-scrollable");
+      
       let height = 0;
 
       for (let i = 0; i < MAX_VISIBLE; i++) {
