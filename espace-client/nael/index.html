@@ -1134,13 +1134,13 @@
       const derniereVisiteDate = getDerniereDateVisiteDepuisHistorique(data.historique);
 
       if (derniereVisiteDate) {
-        const jours = Math.floor(
+        const joursDepuisDerniereVisite = Math.floor(
           (Date.now() - derniereVisiteDate.getTime()) / (1000 * 60 * 60 * 24)
         );
 
         setLineText(
           "dernier-visite-delai",
-          "Dernière visite il y a " + jours + " jours"
+          "Dernière visite il y a " + joursDepuisDerniereVisite + " jours"
         );
       } else {
         setLineText("dernier-visite-delai", "", "—");
