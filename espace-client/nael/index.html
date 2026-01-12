@@ -1037,6 +1037,9 @@
       return r.json();
     })
     .then((data) => {
+
+      const evo = data.stats?.evolution || null;
+      
       // Titre / sous-titre (optionnel)
       if (data.bien?.nom) setText("bien-nom", data.bien.nom);
       if (data.bien?.sous_titre) setText("bien-sous-titre", data.bien.sous_titre, "Suivi de commercialisation");
@@ -1152,10 +1155,6 @@
       } else {
         setLineText("dernier-visite-delai", "", "—");
       }
-      /* =========================
-         ✅ AJOUT 3 : évolution dans le temps
-      ========================= */
-      const evo = data.stats?.evolution || null;
 
       if (evo) {
 
