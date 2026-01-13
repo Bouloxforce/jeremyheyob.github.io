@@ -1,3 +1,7 @@
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
 name: Mise à jour taux immobilier
 
 on:
