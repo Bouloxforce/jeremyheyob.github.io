@@ -48,6 +48,14 @@
     "pagesjaunes": "",
     "google": ""
   },
+  "marche": {
+    "taux_credit": {
+      "moyen": 3.35,
+      "duree": "25 ans",
+      "source": "Banque de France",
+      "periode": "2026-01"
+    }
+  },
   "historique": [
     {
       "date": "2025-12-13",
