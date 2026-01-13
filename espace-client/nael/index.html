@@ -788,6 +788,21 @@
 
     <!-- CARTE DROITE : SUIVI CHIFFRÉ + ANALYSE -->
     <aside class="card">
+      <div class="luxury-divider"></div>
+
+      <h2>Taux immobilier (France)</h2>
+      <p class="subtitle">
+        Taux moyen constaté sur 25 ans
+      </p>
+
+      <p style="font-size:42px;font-weight:800;margin:12px 0;">
+        <span id="taux-immo">—</span>%
+      </p>
+
+      <p class="subtitle" id="taux-source">
+        —
+      </p>
+      
       <div class="pill">Tableau de bord</div>
 
       <h2 style="margin-top:6px;">Informations générales</h2>
@@ -1148,6 +1163,17 @@
       return r.json();
     })
     .then((data) => {
+
+      if (data.marche?.taux_credit?.moyen) {
+        setText("taux-immo", data.marche.taux_credit.moyen);
+        setText(
+          "taux-source",
+          "Source : " +
+            data.marche.taux_credit.source +
+            " — " +
+            data.marche.taux_credit.periode
+        );
+      }
 
       const evo = data.stats?.evolution || null;
 
