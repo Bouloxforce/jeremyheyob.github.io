@@ -51,7 +51,7 @@
   "marche": {
     "taux_credit": {
       "moyen": 3.35,
-      "precedent": 3.45,
+      "precedent": 3.33,
       "duree": "25 ans",
       "source": "Banque de France",
       "periode": "2026-01"
