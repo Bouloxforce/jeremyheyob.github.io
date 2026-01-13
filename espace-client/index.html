@@ -1,0 +1,1804 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <link rel="icon" href="/favicon.ico" sizes="any">
+  <link rel="apple-touch-icon" href="/favicon.ico">
+  <meta charset="UTF-8">
+
+  <!-- ✅ iOS/Safari : empêche la détection auto (téléphone / email / date / adresse) => pas de bleu/souligné/cliquable -->
+  <meta name="format-detection" content="telephone=no,date=no,address=no,email=no">
+
+  <meta name="robots" content="noindex, nofollow, noarchive, nosnippet">
+  <title>Espace client | Jérémy Heyob Immobiliere</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- ✅ 1 seule photo (pas de carrousel)  -->
+  <link rel="preload" href="/bien-visite/nael/photos/Nael 1.webp" as="image">
+
+  <style>
+    /* CSS IDENTIQUE À LA PAGE DE RÉFÉRENCE – NON MODIFIÉ */
+    /* -------------------------------------------------- */
+    :root {
+      --bg: #FFFBF5;
+      --accent: #C6AA77;
+      --accent-soft: rgba(198,169,119,0.16);
+      --text-main: #191919;
+      --text-soft: #7A7A7A;
+      --border-soft: #e5e7eb;
+      --card-bg: #ffffff;
+      --shadow-soft: 0 20px 50px rgba(25,25,25,0.10);
+    }
+
+    * { box-sizing: border-box; }
+    body{
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+      background: var(--bg);
+      color: var(--text-main);
+      overflow-x: hidden;
+    }
+
+    .page {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 24px 16px 50px;
+    }
+
+    header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+      max-width: 960px;
+      margin: 16px auto 24px;
+      padding: 8px 28px;
+      background: var(--card-bg);
+      border-radius: 22px;
+      box-shadow: var(--shadow-soft);
+      border: 1px solid rgba(15,23,42,0.04);
+    }
+
+    .logo { max-width: 140px; }
+    .header-center { flex: 1; text-align: center; }
+
+    .tagline-main {
+      font-size: 13px;
+      letter-spacing: 0.18em;
+      color: var(--text-soft);
+    }
+
+    .tagline-sub {
+      margin-top: 12px;
+      margin-bottom: 8px;
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+    }
+
+    .tagline-sub strong {
+      color: var(--text-main);
+      font-weight: 900;
+    }
+
+    .layout {
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 22px;
+      align-items: start;
+    }
+
+    .card {
+      background: var(--card-bg);
+      border-radius: 22px;
+      border: 1px solid var(--border-soft);
+      padding: 20px 22px;
+      box-shadow: var(--shadow-soft);
+    }
+
+    .pill {
+      background: var(--accent-soft);
+      color: var(--accent);
+      padding: 5px 12px;
+      border-radius: 999px;
+      font-size: 11px;
+      font-weight: 600;
+      margin-bottom: 10px;
+      display: inline-block;
+    }
+
+    h1 { font-size: 26px; margin-bottom: 0; }
+    .subtitle { color: var(--text-soft); margin-top: 4px; }
+
+    .chips { margin-top: 12px; }
+    .chip {
+      padding: 6px 12px;
+      background: rgba(198,169,119,0.10);
+      border-radius: 999px;
+      font-size: 12px;
+      margin-right: 6px;
+      margin-bottom: 6px;
+      display: inline-block;
+    }
+
+    /* CARROUSEL */
+    .carousel {
+      position: relative;
+      width: 100%;
+      overflow: hidden;
+      border-radius: 16px;
+      background: #00000008;
+      margin: 20px 0;
+    }
+
+    .carousel-track {
+      display: flex;
+      width: 100%;
+      transition: transform 0.35s ease;
+    }
+
+    .carousel img {
+      flex: 0 0 100%;
+      width: 100%;
+      height: auto;
+      object-fit: cover;
+      background: #00000008;
+      cursor: pointer;
+    }
+
+    .carousel-btn {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: rgba(255,255,255,0.75);
+      border: none;
+      font-size: 22px;
+      padding: 6px 12px;
+      border-radius: 999px;
+      cursor: pointer;
+    }
+
+    .carousel-btn.prev { left: 10px; }
+    .carousel-btn.next { right: 10px; }
+
+    /* GRID */
+    .grid-two {
+      display: grid;
+      grid-template-columns: repeat(2,1fr);
+      gap: 12px;
+      font-size: 14px;
+      margin-top: 20px;
+    }
+
+    .grid-two span {
+      display: block;
+      font-size: 12px;
+      color: var(--text-soft);
+    }
+
+    /* FORMULAIRE */
+    .form-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+      margin-top: 14px;
+    }
+
+    input, select {
+      width: 100%;
+      padding: 10px 12px;
+      border-radius: 12px;
+      border: 1px solid var(--border-soft);
+      background: #fafafa;
+      font-size: 14px;
+    }
+
+    label { font-size: 13px; margin-bottom: 4px; display: block; }
+
+    .btn {
+      grid-column: span 2;
+      margin-top: 6px;
+      background: linear-gradient(135deg, #fbe4b9, #f3c98b);
+      color: #7a5a29;
+      padding: 12px 16px;
+      border-radius: 999px;
+      font-size: 15px;
+      font-weight: 600;
+      border: none;
+      cursor: pointer;
+    }
+
+    .btn-retour {
+      display: inline-block;
+      margin: 10px 0 18px;
+      padding: 6px 12px;
+      font-size: 13px;
+      font-weight: 500;
+      color: #7a5a29;
+      text-decoration: none;
+      border-radius: 10px;
+      border: 1px solid rgba(198,169,119,0.35);
+      background: rgba(198,169,119,0.10);
+    }
+
+    /* CONTACT (ancien bloc) */
+    .contact-card {
+      margin-top: 18px;
+      display: flex;
+      gap: 10px;
+      border-top: 1px solid var(--border-soft);
+      padding-top: 12px;
+    }
+
+    .contact-photo {
+      width: 52px;
+      height: 52px;
+      border-radius: 999px;
+      object-fit: cover;
+      object-position: top center;
+      border: 1px solid #e5e7eb;
+    }
+
+    .contact-links {
+      margin-top: 6px;
+      display: flex;
+      gap: 8px;
+      font-size: 12px;
+    }
+
+    .contact-links a {
+      color: #C6AA77;
+      font-size: 12px;
+      font-weight: 500;
+      text-decoration: none;
+    }
+
+    /* LIGHTBOX */
+    .lightbox {
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.85);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 9999;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.25s ease;
+    }
+
+    .lightbox.active { opacity: 1; pointer-events: auto; }
+
+    .lightbox img {
+      max-width: 90%;
+      max-height: 90vh;
+      border-radius: 12px;
+      box-shadow: 0 0 40px rgba(0,0,0,0.45);
+    }
+
+    .lightbox-prev,
+    .lightbox-next {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      color: white;
+      font-size: 46px;
+      cursor: pointer;
+      padding: 18px 24px;
+      background: rgba(0,0,0,0.35);
+      border-radius: 999px;
+    }
+
+    .lightbox-prev { left: 40px; }
+    .lightbox-next { right: 40px; }
+
+    .lightbox-close {
+      position: absolute;
+      top: 30px;
+      right: 40px;
+      color: white;
+      font-size: 52px;
+      cursor: pointer;
+      padding: 8px 16px;
+      background: rgba(0,0,0,0.35);
+      border-radius: 999px;
+    }
+
+    /* ===== BLOC RÉSEAUX SOCIAUX ===== */
+
+    /* Wrapper full width pour centrage écran */
+    .social-full {
+      width: 100vw;
+      margin-left: calc(-50vw + 50%);
+      display: flex;
+      justify-content: center;
+      margin-top: 32px;
+    }
+
+    /* Bloc visuel */
+    .social-block {
+      width: fit-content;
+      margin: 0 auto 8px;
+      background: #ffffff;
+      border-radius: 20px;
+      border: 1px solid #e5e7eb;
+      box-shadow: 0 18px 40px rgba(25,25,25,0.08);
+      padding: 14px 16px;
+    }
+
+    /* Conteneur icônes */
+    .social-icons {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: center;
+    }
+
+    /* Boutons */
+    .social-icons a {
+      width: 42px;
+      height: 42px;
+      border-radius: 14px;
+      display: grid;
+      place-items: center;
+      background: rgba(198, 169, 119, 0.16);
+      border: 1px solid rgba(198,169,119,0.25);
+      transition: transform 0.15s ease, filter 0.15s ease;
+      text-decoration: none;
+    }
+
+    /* Hover */
+    .social-icons a:hover {
+      transform: translateY(-1px);
+      filter: brightness(1.02);
+    }
+
+    /* Icônes SVG */
+    .social-icons svg {
+      width: 20px;
+      height: 20px;
+    }
+
+    /* ===== AJOUTS / MODIFS DEMANDÉES ===== */
+
+    /* Séparateur luxe */
+    .luxury-divider {
+      width: 100%;
+      height: 1px;
+      margin: 40px 0;
+      background: linear-gradient(
+        to right,
+        transparent,
+        rgba(180, 160, 120, 0.6),
+        transparent
+      );
+    }
+
+    /* Boutons sur toute la largeur */
+    .form-grid + .btn,
+    .avis-section .btn {
+      width: 100%;
+      display: block;
+      text-align: center;
+      margin: 16px auto 0;
+    }
+
+    /* Permet à <a class="btn"> de se comporter comme un bouton */
+    a.btn {
+      display: block;
+      text-decoration: none;
+    }
+
+    /* Centrer les 3 titres du bloc avis uniquement */
+    .card-avis-global h2 {
+      text-align: center;
+    }
+
+    /* Textarea (points + / -) */
+    textarea {
+      width: 100%;
+      padding: 10px 12px;
+      border-radius: 12px;
+      border: 1px solid var(--border-soft);
+      background: #fafafa;
+      font-size: 14px;
+      resize: vertical;
+    }
+
+    /* Surbrillance noire si champ manquant / invalide */
+    input.error,
+    select.error,
+    textarea.error {
+      border: 2px solid #191919;
+      background: #fff;
+    }
+
+    /* ✅ Micro-messages discrets (email/tel/estimation) */
+    .field-msg {
+      display: none;
+      margin-top: 6px;
+      font-size: 12px;
+      color: var(--text-soft);
+      line-height: 1.35;
+      text-decoration: none !important;
+    }
+    .field-msg.is-visible { display: block; }
+
+    /* ✅ iOS/Safari : neutralise les liens auto “data detectors” (et empêche le clic) */
+    a[x-apple-data-detectors],
+    a[x-apple-data-detectors]:hover,
+    a[x-apple-data-detectors]:active,
+    a[x-apple-data-detectors]:visited {
+      color: inherit !important;
+      text-decoration: none !important;
+      font-size: inherit !important;
+      font-family: inherit !important;
+      font-weight: inherit !important;
+      line-height: inherit !important;
+      cursor: default !important;
+      pointer-events: none !important;
+    }
+
+    /* ===== BLOC CONTACT (comme ta page espace client) ===== */
+    .contact-block {
+      display: flex;
+      gap: 18px;
+      align-items: center;
+      background: #ffffff;
+      border-radius: 20px;
+      padding: 16px 18px;
+      border: 1px solid var(--border-soft);
+      box-shadow: 0 18px 40px rgba(25, 25, 25, 0.08);
+      max-width: 960px;
+      margin: 16px auto 0;
+    }
+
+    .contact-block .contact-photo {
+      width: 90px;
+      height: 90px;
+      border-radius: 50%;
+      overflow: hidden;
+      border: 2px solid #e5e7eb;
+      flex-shrink: 0;
+      object-fit: unset;
+    }
+
+    .contact-block .contact-photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: top center;
+      display: block;
+    }
+
+    .contact-text h3 { margin: 0 0 4px; font-size: 17px; }
+    .contact-text p { margin: 0; font-size: 13px; color: var(--text-soft); }
+
+    .contact-block .contact-links {
+      margin-top: 8px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      font-size: 13px;
+    }
+
+    .contact-block .contact-links a {
+      color: var(--accent);
+      text-decoration: none;
+      font-size: 13px;
+      font-weight: 500;
+    }
+
+    .contact-block .contact-links a:hover { text-decoration: underline; }
+
+        /* FOOTER */
+    .legal-footer{
+      margin-top:40px;
+      padding:18px;
+      text-align:center;
+      font-size:11.5px;
+      color:var(--text-soft);
+      opacity:0.8;
+    }
+
+    .subtitle.analysis-highlight {
+      color: var(--text-main);
+    }
+
+    /* =========================
+       HISTORIQUE – SCROLL + FONDU
+    ========================= */
+    /* Indicateur visuel de scroll (hint) */
+    .historique-scroll-hint {
+      position: absolute;
+      bottom: 10px;
+      right: 14px;
+      font-size: 14px;
+      color: var(--accent);
+      opacity: 0.55;
+      pointer-events: none;
+      user-select: none;
+      animation: hint-bounce 1.8s ease-in-out infinite;
+    }
+
+    /* Animation subtile */
+    @keyframes hint-bounce {
+      0%   { opacity: 0.25; transform: translateY(0); }
+      50%  { opacity: 0.75; transform: translateY(-3px); }
+      100% { opacity: 0.25; transform: translateY(0); }
+    }
+
+/* Masqué par défaut (JS décidera) */
+.historique-wrapper:not(.is-scrollable) .historique-scroll-hint {
+  display: none;
+}
+
+    .historique-wrapper {
+      position: relative;
+      margin-top: 12px;
+    }
+
+    .historique-scroll {
+      max-height: 220px;          /* ajuste si besoin */
+      overflow-y: auto;
+      padding-right: 10px;
+    }
+
+    /* Fondu bas */
+    .historique-fade {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 48px;
+      pointer-events: none;
+      background: linear-gradient(
+        to bottom,
+        rgba(255, 251, 245, 0),
+        var(--bg)
+      );
+    }
+
+    /* Scrollbar élégante */
+    .historique-scroll::-webkit-scrollbar {
+      width: 6px;
+    }
+
+    .historique-scroll::-webkit-scrollbar-thumb {
+      background-color: var(--accent);
+      border-radius: 4px;
+    }
+
+    .historique-scroll {
+      scrollbar-width: thin;
+      scrollbar-color: var(--accent) transparent;
+    }
+
+    .left-column {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .market-centered {
+      text-align: center;
+    }
+
+    #taux-source {
+      font-size: 11px;
+      opacity: 0.7;
+    }
+
+    .market-description {
+      font-size: 13px;
+    }
+
+    .taux-var-up {
+      color: #b91c1c;
+      font-weight: 600;
+    }
+
+    .taux-var-down {
+      color: #15803d;
+      font-weight: 600;
+    }
+
+    /* =========================
+       GESTION DES LIENS
+    ========================= */
+
+    /* Lien valide non cliqué */
+    a.link:link {
+      color: #2563eb; /* bleu lien */
+      text-decoration: underline;
+    }
+
+    /* Lien déjà visité */
+    a.link:visited {
+      color: #7c3aed; /* violet */
+    }
+
+    /* Hover */
+    a.link:hover {
+      opacity: 0.85;
+    }
+
+    /* Lien NON DISPONIBLE */
+    a.link.is-empty {
+      color: #dc2626; /* rouge */
+      cursor: not-allowed;
+      text-decoration: none;
+      pointer-events: none;
+    }
+
+    /* =========================
+   STRATÉGIE 30–60–90 JOURS
+========================= */
+
+.timeline {
+  margin-top: 26px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 16px;
+  position: relative;
+}
+
+.timeline::before {
+  content: "";
+  position: absolute;
+  top: 28px;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(
+    to right,
+    rgba(198,169,119,0.25),
+    rgba(198,169,119,0.65),
+    rgba(198,169,119,0.25)
+  );
+}
+
+.timeline-step {
+  position: relative;
+  background: #ffffff;
+  border-radius: 18px;
+  border: 1px solid var(--border-soft);
+  padding: 18px 16px;
+  box-shadow: 0 14px 34px rgba(25,25,25,0.08);
+}
+
+.timeline-dot {
+  width: 14px;
+  height: 14px;
+  background: var(--accent);
+  border-radius: 50%;
+  position: absolute;
+  top: -21px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.timeline-days {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  color: var(--accent);
+  text-align: center;
+  margin-bottom: 6px;
+}
+
+.timeline-title {
+  text-align: center;
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+
+.timeline-text {
+  font-size: 13.5px;
+  line-height: 1.55;
+  color: var(--text-soft);
+  text-align: center;
+}
+
+    .timeline-step.is-active {
+  border: 2px solid var(--accent);
+  box-shadow: 0 22px 48px rgba(198,169,119,0.25);
+}
+
+.timeline-step.is-active .timeline-dot {
+  transform: translateX(-50%) scale(1.3);
+}
+
+.timeline-step.is-active .timeline-title {
+  color: var(--text-main);
+}
+
+.timeline-step.is-active .timeline-text {
+  color: #3f3f3f;
+}
+
+    @media (max-width: 880px) {
+      /* Header */
+      header {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .header-center {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding: 10px 0;
+        margin-top: -40px; /* remonte le texte */
+        margin-bottom: 15px;
+      }
+
+      .tagline-main,
+      .tagline-sub {
+        text-align: center;
+      }
+
+      /* Menu */
+      .header-links {
+        flex-wrap: wrap;
+        row-gap: 10px;
+        column-gap: 14px;
+        padding: 0 10px;
+      }
+
+      .header-links a {
+        font-size: 13px;
+        white-space: nowrap;
+      }
+
+      .header-links a:not(:last-child)::after {
+        height: 12px;
+      }
+
+      /* Grilles */
+      .actions-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .apa-content {
+        grid-template-columns: 1fr;
+      }
+
+      /* Réseaux sociaux */
+      .social-icons {
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+
+      .social-icons a {
+        width: 34px;
+        height: 34px;
+        border-radius: 10px;
+        flex-shrink: 0;
+      }
+
+      .social-icons svg {
+        width: 16px;
+        height: 16px;
+      }
+
+      .social-block {
+        padding: 10px 12px;
+        max-width: 100%;
+        text-align: center;
+      }
+
+      /* Contact */
+      .contact-block {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+      }
+
+      .contact-links {
+        justify-content: center;
+        width: 100%;
+      }
+
+      .layout {
+        grid-template-columns: 1fr;
+      }
+
+      /* FORM : 1 colonne sur mobile */
+      .form-grid {
+        grid-template-columns: 1fr;
+        row-gap: 14px;
+        column-gap: 14px;
+      }
+
+      .form-grid > div { min-width: 0 !important; }
+
+      .form-grid input,
+      .form-grid select,
+      .form-grid textarea {
+        font-size: 16px;     /* iOS: évite le zoom */
+        display: block;      /* certains navigateurs rendent select “inline” */
+        width: 100% !important;
+        max-width: 100% !important;
+        min-width: 0 !important;
+      }
+
+      #date,
+      .form-grid input[type="date"] {
+        display: block;
+        width: 100% !important;
+        max-width: 100% !important;
+        min-width: 0 !important;
+        inline-size: 100% !important;
+        max-inline-size: 100% !important;
+        min-inline-size: 0 !important;
+      }
+    }
+  </style>
+</head>
+
+<body>
+<div class="page">
+
+  <header>
+    <img src="/images/logo.webp" class="logo" alt="">
+    <div class="header-center">
+      <div class="tagline-main">
+        VOS PROJETS IMMOBILIERS N'ONT JAMAIS ÉTÉ AUSSI SIMPLES !
+      </div>
+      <div class="tagline-sub"><strong>JÉRÉMY HEYOB</strong></div>
+    </div>
+  </header>
+
+    <main class="layout">
+
+  <!-- ===== COLONNE GAUCHE ===== -->
+  <div class="left-column">
+
+    <!-- ESPACE VENDEUR -->
+    <section class="card">
+      <div class="pill">Espace vendeur</div>
+
+      <h1 id="bien-nom">Naël</h1>
+      <p class="subtitle" id="bien-sous-titre">Suivi de commercialisation</p>
+
+      <img
+        id="photo-principale"
+        src="/bien-visite/nael/photos/Nael 1.webp"
+        alt=""
+        style="width:100%;height:auto;border-radius:16px;background:#00000008;margin:18px 0 6px;display:block;"
+        loading="eager"
+      >
+
+      <div class="luxury-divider"></div>
+
+      <h2 style="margin-top:0;">Diffusion de l’annonce</h2>
+
+      <p class="subtitle" style="margin-bottom:10px;">
+        <strong>Plateformes immobilières</strong>
+      </p>
+      <ul style="list-style:none;padding:0;margin:0 0 10px;font-size:15px;line-height:1.55;">
+        <li>Agence.immo : <a id="pf-agenceimmo" class="link">Ouvrir l’annonce →</a></li>
+        <li>Leboncoin : <a id="pf-leboncoin" class="link">Ouvrir l’annonce →</a></li>
+        <li>SeLoger : <a id="pf-seloger" class="link">Ouvrir l’annonce →</a></li>
+        <li>Bien’ici : <a id="pf-bienici" class="link">Ouvrir l’annonce →</a></li>
+        <li>Logic-Immo : <a id="pf-logicimmo" class="link">Ouvrir l’annonce →</a></li>
+        <li>À vendre à louer : <a id="pf-avendrealouer" class="link">Ouvrir l’annonce →</a></li>
+        <li>ParuVendu : <a id="pf-paruvendu" class="link">Ouvrir l’annonce →</a></li>
+        <li>Le Figaro : <a id="pf-lefigaro" class="link">Ouvrir l’annonce →</a></li>
+      </ul>
+
+      <p class="subtitle" style="margin:14px 0 10px;">
+        <strong>Réseaux sociaux</strong>
+      </p>
+      <ul style="list-style:none;padding:0;margin:0 0 10px;font-size:15px;line-height:1.55;">
+        <li>Facebook : <a id="rs-facebook" class="link">Ouvrir le post →</a></li>
+        <li>LinkedIn : <a id="rs-linkedin" class="link">Ouvrir le post →</a></li>
+        <li>Instagram : <a id="rs-instagram" class="link">Ouvrir le post →</a></li>
+        <li>Pages Jaunes : <a id="rs-pagesjaunes" class="link">Ouvrir le post →</a></li>
+        <li>Fiche Google : <a id="rs-google" class="link">Ouvrir le post →</a></li>
+      </ul>
+
+      <p class="subtitle" style="margin:14px 0 10px;">
+        <strong>Vidéo de présentation</strong>
+      </p>
+      <ul style="list-style:none;padding:0;margin:0;font-size:15px;line-height:1.55;">
+        <li>YouTube : <a id="video-youtube" class="link">Ouvrir la vidéo →</a></li>
+      </ul>
+
+    </section>
+
+    <!-- STRATÉGIE 30-60-90 JOURS -->
+    <section class="card" id="strategie-3090" style="margin-top:22px;">
+      <div class="pill">Stratégie de commercialisation</div>
+
+      <h2>Plan d’action à 30 · 60 · 90 jours</h2>
+
+      <p class="subtitle" id="strategie-intro">
+        —
+      </p>
+
+      <div class="timeline">
+        <!-- Injecté en JS -->
+      </div>
+    </section>
+
+    <!-- CONTEXTE DE MARCHÉ -->
+    <section class="card market-centered" style="margin-top:22px;">
+
+      <div class="pill">Contexte de marché</div>
+
+      <h2>Taux immobilier en France</h2>
+
+      <p class="subtitle">
+        Taux moyen constaté pour les crédits immobiliers sur 25 ans
+      </p>
+
+      <p style="font-size:48px;font-weight:800;margin:16px 0;">
+        <span id="taux-immo">—</span>%
+      </p>
+
+      <p id="taux-variation" class="subtitle" style="display:none;"></p>
+
+      <p class="subtitle" id="taux-source">—</p>
+
+      <div class="luxury-divider"></div>
+
+      <p class="subtitle market-description" style="line-height:1.6;">
+        Les conditions de financement actuelles influencent directement le
+        comportement des acquéreurs, leur capacité d’emprunt et les délais de
+        prise de décision.  
+        Ce contexte est intégré dans la stratégie de commercialisation
+        de votre bien.
+      </p>
+
+    </section>
+
+  </div>
+
+    <!-- CARTE DROITE : SUIVI CHIFFRÉ + ANALYSE -->
+    <aside class="card">
+      
+      <div class="pill">Tableau de bord</div>
+
+      <h2 style="margin-top:6px;">Informations générales</h2>
+      <ul style="list-style:none;padding:0;margin:12px 0 0;font-size:15px;line-height:1.55;">
+        <li>Mandat signé le : <strong id="date-mandat">—</strong></li>
+        <li>Mise en ligne de l’annonce : <strong id="date-mise-en-ligne">—</strong></li>
+        <li>Dernière remontée d’annonce : <strong id="date-derniere-remontee">—</strong></li>
+        <li>Fréquence des remontées : <strong id="frequence-remontee">—</strong></li>
+      </ul>
+
+      <div class="luxury-divider"></div>
+
+      <h2 style="margin-top:0;">Statistiques & actions</h2>
+      <ul style="list-style:none;padding:0;margin:12px 0 0;font-size:15px;line-height:1.55;">
+        <li>Nombre d’appels : <strong id="stat-appels">—</strong></li>
+        <li>Nombre d’e-mails : <strong id="stat-emails">—</strong></li>
+        <li>Visites effectuées : <strong id="stat-visites-effectuees">—</strong></li>
+        <li>Visites programmées : <strong id="stat-visites-programmees">—</strong></li>
+        <li>Offres reçues : <strong id="stat-offres">—</strong></li>
+
+        <!-- ✅ AJOUT 1 : Jours depuis la dernière remontée -->
+        <li>Jours depuis la dernière remontée : <strong id="jours-depuis-derniere-remontee">—</strong></li>
+      </ul>
+
+      <div class="luxury-divider"></div>
+
+      <h2 style="margin-top:0;">Statistiques Leboncoin</h2>
+      <ul style="list-style:none;padding:0;margin:12px 0 0;font-size:15px;line-height:1.55;">
+        <li><strong id="stat-vues-leboncoin">—</strong> vues</li>
+        <li><strong id="stat-favoris-leboncoin">—</strong> personnes ont enregistré l’annonce</li>
+      </ul>
+
+      <!-- ✅ AJOUT 2 : Taux de transformation -->
+      <div class="luxury-divider"></div>
+
+      <h2 style="margin-top:0;">Taux de transformation</h2>
+      <ul style="list-style:none;padding:0;margin:12px 0 0;font-size:15px;line-height:1.55;">
+        <li id="ratio-contact-vues">—</li>
+        <li id="ratio-visites-contacts">—</li>
+        <li id="ratio-offres-visites">—</li>
+        <li id="dernier-visite-delai">—</li>
+      </ul>
+
+      <!-- ✅ AJOUT 3 : Évolution dans le temps -->
+      <div class="luxury-divider"></div>
+
+      <h2 style="margin-top:0;">Évolution dans le temps (7 derniers jours)</h2>
+      <p class="subtitle" id="evolution-commentaire" style="white-space:pre-line;">
+        Chargement…
+      </p>
+
+      <!-- ✅ AJOUT 4 : Indicateurs d’alerte -->
+      <div class="luxury-divider"></div>
+
+      <h2 style="margin-top:0;">🎯 Indicateurs d’alerte</h2>
+      <ul id="alertes-list"
+          style="list-style:none;padding:0;margin:12px 0 0;font-size:15px;line-height:1.55;">
+        <li class="subtitle">Chargement…</li>
+      </ul>
+
+      <div class="luxury-divider"></div>
+
+      <h2 style="margin-top:0;">Mon analyse & perspectives</h2>
+      <p class="subtitle" id="analyse-commentaire" style="white-space:pre-line;">
+        Chargement de l’analyse…
+      </p>
+
+      <div class="luxury-divider"></div>
+
+      <h2 style="margin-top:0;">Historique</h2>
+
+      <div class="historique-wrapper">
+        <ul id="historique-list"
+            class="historique-scroll"
+            style="list-style:none;padding:0;margin:12px 0 0;font-size:15px;line-height:1.55;">
+          <li class="subtitle">Chargement…</li>
+        </ul>
+
+        <div class="historique-fade"></div>
+        <div class="historique-scroll-hint">↕︎</div>
+      </div>
+
+    </aside>
+
+  </main>
+  
+  <!-- ===== RÉSEAUX SOCIAUX (CENTRÉ ÉCRAN) ===== -->
+  <div class="social-full">
+    <section class="social-block" aria-label="Réseaux sociaux">
+      <div class="social-icons">
+
+        <!-- Google -->
+        <a href="https://goo.gl/maps/wjfc1aGFBrSLd3tV6" target="_blank" rel="noopener" aria-label="Google">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#7a5a29" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 21s7-4.5 7-11a7 7 0 1 0-14 0c0 6.5 7 11 7 11z"></path>
+            <circle cx="12" cy="10" r="2.5"></circle>
+          </svg>
+        </a>
+
+        <!-- PagesJaunes -->
+        <a href="https://www.pagesjaunes.fr/pros/62191780" target="_blank" rel="noopener" aria-label="Pages Jaunes">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#7a5a29" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M6 3h9a3 3 0 0 1 3 3v12a3 3 0 0 1-3 3H6a3 3 0 0 1-3-3V6a3 3 0 0 1 3-3z"></path>
+            <path d="M8 8h8"></path>
+            <path d="M8 12h8"></path>
+            <path d="M8 16h6"></path>
+          </svg>
+        </a>
+
+        <!-- Facebook -->
+        <a href="https://www.facebook.com/jeremyheyobpro" target="_blank" rel="noopener" aria-label="Facebook">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#7a5a29" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M14 8h3V5h-3a4 4 0 0 0-4 4v3H7v3h3v6h3v-6h3l1-3h-4V9a1 1 0 0 1 1-1z"></path>
+          </svg>
+        </a>
+
+        <!-- LinkedIn -->
+        <a href="https://www.linkedin.com/company/jérémy-heyob/" target="_blank" rel="noopener" aria-label="LinkedIn">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#7a5a29" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4V9h4v2"></path>
+            <rect x="2" y="9" width="4" height="12"></rect>
+            <circle cx="4" cy="4" r="2"></circle>
+          </svg>
+        </a>
+
+        <!-- Instagram -->
+        <a href="https://www.instagram.com/jeremyheyob/" target="_blank" rel="noopener" aria-label="Instagram">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#7a5a29" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="3" y="3" width="18" height="18" rx="5" ry="5"></rect>
+            <circle cx="12" cy="12" r="4"></circle>
+            <path d="M17.5 6.5h.01"></path>
+          </svg>
+        </a>
+
+        <!-- YouTube -->
+        <a href="https://www.youtube.com/channel/UCpE0arbirH2tkw2THT_Ef9Q" target="_blank" rel="noopener" aria-label="YouTube">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#7a5a29" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M22 12s0-4-1-5-4-1-9-1-8 0-9 1-1 5-1 5 0 4 1 5 4 1 9 1 8 0 9-1 1-5 1-5z"></path>
+            <path d="M10 9l6 3-6 3V9z"></path>
+          </svg>
+        </a>
+
+        <!-- TikTok -->
+        <a href="https://www.tiktok.com/@jeremyheyob" target="_blank" rel="noopener" aria-label="TikTok">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#7a5a29" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M14 3v10a4 4 0 1 1-4-4"></path>
+            <path d="M14 7a6 6 0 0 0 6 2"></path>
+          </svg>
+        </a>
+
+      </div>
+    </section>
+  </div>
+
+  <!-- ===== BLOC CONTACT (texte adapté vendeur) ===== -->
+  <section class="contact-block">
+    <div class="contact-photo">
+      <img src="/images/photo.webp" alt="Photo de Jérémy Heyob">
+    </div>
+
+    <div class="contact-text">
+      <h3>Un point sur la vente de votre bien ?</h3>
+      <p>
+        Je reste disponible pour faire le point sur la stratégie, les retours, les prochaines actions,
+        et ajuster le plan de commercialisation si nécessaire.
+      </p>
+
+      <div class="contact-links">
+        <a href="mailto:contact@jeremyheyob.fr">✉️ Email</a>
+        <a href="sms:+33648145565">💬 SMS</a>
+        <a href="tel:+33648145565">📞 Appel</a>
+      </div>
+    </div>
+  </section>
+
+  <footer class="legal-footer">
+    Les informations présentées sur cette page sont destinées exclusivement au suivi vendeur de ce bien par <strong>Jérémy HEYOB Immobilier</strong>.<br>
+    Toute reproduction, diffusion ou utilisation est strictement interdite sans autorisation préalable.
+  </footer>
+
+</div>
+
+<!-- ✅ Script unique : lecture d’un seul data.json -->
+<script>
+  function setText(id, value, fallback = "—") {
+    const el = document.getElementById(id);
+    if (!el) return;
+    const v = (value === 0 || value) ? value : fallback;
+    el.textContent = String(v);
+  }
+
+  function setLink(id, href, label = "Ouvrir l’annonce →") {
+    const el = document.getElementById(id);
+    if (!el) return;
+
+    el.classList.add("link");
+
+    if (href && String(href).trim()) {
+      el.href = href;
+      el.textContent = label;
+      el.classList.remove("is-empty");
+      el.setAttribute("target", "_blank");
+      el.setAttribute("rel", "noopener");
+    } else {
+      el.removeAttribute("href"); // ⚠️ ESSENTIEL
+      el.textContent = "Lien non disponible";
+      el.classList.add("is-empty");
+    }
+  }
+
+  function formatDateISO(iso) {
+    if (!iso) return "—";
+    const d = new Date(iso);
+    if (isNaN(d.getTime())) return String(iso); // si tu passes déjà "19/09/2025"
+    return d.toLocaleDateString("fr-FR");
+  }
+
+  function renderHistorique(items) {
+    const ul = document.getElementById("historique-list");
+    if (!ul) return;
+    ul.innerHTML = "";
+
+    if (!Array.isArray(items) || items.length === 0) {
+      const li = document.createElement("li");
+      li.className = "subtitle";
+      li.textContent = "Aucun historique disponible pour le moment.";
+      ul.appendChild(li);
+      return;
+    }
+
+    // Tri décroissant par date (si date ISO)
+    const sorted = items.slice().sort((a, b) => {
+      const da = new Date(a.date || 0).getTime();
+      const db = new Date(b.date || 0).getTime();
+      return (db || 0) - (da || 0);
+    });
+
+    sorted.forEach((e) => {
+      const li = document.createElement("li");
+      const date = e.date ? formatDateISO(e.date) : "—";
+      const action = e.action ? String(e.action) : "";
+      li.innerHTML = "<strong>" + date + "</strong> — " + escapeHTML(action);
+      ul.appendChild(li);
+    });
+    // ===== LIMITE À 15 HISTORIQUES VISIBLES =====
+    const MAX_VISIBLE = 15;
+    const itemsEls = ul.querySelectorAll("li");
+    const fade = document.querySelector(".historique-fade");
+    const wrapper = ul.closest(".historique-wrapper");
+
+    if (itemsEls.length > MAX_VISIBLE) {
+      wrapper?.classList.add("is-scrollable");
+
+      let height = 0;
+      for (let i = 0; i < MAX_VISIBLE; i++) {
+        height += itemsEls[i].offsetHeight;
+      }
+
+      ul.style.maxHeight = height + "px";
+      ul.style.overflowY = "auto";
+
+      if (fade) fade.style.display = "block";
+
+      // BONUS UX : le hint disparaît dès le premier scroll
+      ul.addEventListener("scroll", () => {
+        wrapper?.classList.remove("is-scrollable");
+      }, { once: true });
+
+    } else {
+      wrapper?.classList.remove("is-scrollable");
+
+      ul.style.maxHeight = "none";
+      ul.style.overflowY = "visible";
+
+      if (fade) fade.style.display = "none";
+    }
+  }
+
+  function escapeHTML(s) {
+    return String(s || "")
+      .replaceAll("&", "&amp;")
+      .replaceAll("<", "&lt;")
+      .replaceAll(">", "&gt;")
+      .replaceAll('"', "&quot;")
+      .replaceAll("'", "&#039;");
+  }
+
+  /* =========================
+     ✅ AJOUTS DEMANDÉS (stats)
+     - jours depuis dernière remontée
+     - ratios lisibles
+     - évolution dans le temps
+     - alertes automatiques
+  ========================= */
+  function daysSinceISO(iso) {
+    if (!iso) return null;
+    const d = new Date(iso);
+    if (isNaN(d.getTime())) return null;
+    const now = new Date();
+    const diff = now.getTime() - d.getTime();
+    return Math.floor(diff / (1000 * 60 * 60 * 24));
+  }
+
+  function toNumber(v) {
+    const n = Number(v);
+    return Number.isFinite(n) ? n : null;
+  }
+
+  function setLineText(id, text) {
+    const el = document.getElementById(id);
+    if (!el) return;
+
+    if (text && String(text).trim()) {
+      el.textContent = text;
+      el.style.display = "";
+    } else {
+      el.style.display = "none";
+    }
+  }
+
+  function getDerniereDateVisiteDepuisHistorique(historique) {
+    if (!Array.isArray(historique)) return null;
+
+    const visites = historique
+      .filter(e =>
+        e?.date &&
+        typeof e.action === "string" &&
+        e.action.toLowerCase().includes("visite")
+      )
+      .map(e => new Date(e.date))
+      .filter(d => !isNaN(d.getTime()));
+
+    if (visites.length === 0) return null;
+
+    return new Date(Math.max(...visites.map(d => d.getTime())));
+  }
+
+  function renderAlertes(items) {
+    const ul = document.getElementById("alertes-list");
+    if (!ul) return;
+    ul.innerHTML = "";
+
+    if (!Array.isArray(items) || items.length === 0) {
+      const li = document.createElement("li");
+      li.className = "subtitle";
+      li.textContent = "Aucune alerte détectée.";
+      ul.appendChild(li);
+      return;
+    }
+
+    items.forEach((t) => {
+      const li = document.createElement("li");
+      li.textContent = t;
+      ul.appendChild(li);
+    });
+  }
+
+  // =========================
+// 🔥 PHASE ACTIVE (date)
+// =========================
+function getPhaseIndexDepuisDate(dateISO) {
+  if (!dateISO) return null;
+
+  const start = new Date(dateISO);
+  if (isNaN(start.getTime())) return null;
+
+  const diffDays = Math.floor(
+    (Date.now() - start.getTime()) / (1000 * 60 * 60 * 24)
+  );
+
+  // 0–30 jours → phase 1
+  if (diffDays <= 30) return 0;
+
+  // 31–60 jours → phase 2
+  if (diffDays <= 60) return 1;
+
+  // 61–90 jours → phase 3
+  if (diffDays <= 90) return 2;
+
+  return 2;
+}
+
+  fetch("nael_data.json", { cache: "no-store" })
+    .then((r) => {
+      if (!r.ok) throw new Error("data.json introuvable");
+      return r.json();
+    })
+    .then((data) => {
+
+      const tauxActuel = Number(data.marche?.taux_credit?.moyen);
+      const tauxPrecedent = Number(data.marche?.taux_credit?.precedent);
+
+      if (Number.isFinite(tauxActuel)) {
+
+        // Affichage du taux
+        setText("taux-immo", tauxActuel.toFixed(2));
+
+        setText(
+          "taux-source",
+          "Source : " +
+            data.marche.taux_credit.source +
+            " — " +
+            data.marche.taux_credit.periode
+        );
+
+        // ===== VARIATION EN POINTS =====
+        const varEl = document.getElementById("taux-variation");
+
+        if (varEl && Number.isFinite(tauxPrecedent)) {
+
+          const diff = +(tauxActuel - tauxPrecedent).toFixed(2);
+
+          if (diff !== 0) {
+            varEl.style.display = "block";
+            varEl.classList.remove("taux-var-up", "taux-var-down");
+
+            if (diff > 0) {
+              varEl.classList.add("taux-var-up");
+              varEl.textContent = "+" + diff.toFixed(2) + " pt";
+            } else {
+              varEl.classList.add("taux-var-down");
+              varEl.textContent = diff.toFixed(2) + " pt";
+            }
+
+          } else {
+            varEl.style.display = "none";
+          }
+
+        } else if (varEl) {
+          varEl.style.display = "none";
+        }
+      }
+
+      const evo = data.stats?.evolution || null;
+
+      // =========================
+      // STRATÉGIE 30–60–90 JOURS
+      // =========================
+
+      const strategie = data.strategie_3090;
+
+      if (strategie) {
+        setText("strategie-intro", strategie.intro, "");
+
+        const container = document.querySelector(".timeline");
+
+        if (container && Array.isArray(strategie.etapes)) {
+          container.innerHTML = "";
+
+          strategie.etapes.forEach(step => {
+            const div = document.createElement("div");
+            div.className = "timeline-step";
+
+            div.innerHTML = `
+              <div class="timeline-dot"></div>
+              <div class="timeline-days">${escapeHTML(step.jours)}</div>
+              <div class="timeline-title">${escapeHTML(step.titre)}</div>
+              <div class="timeline-text">${escapeHTML(step.strategie)}</div>
+            `;
+
+            container.appendChild(div);
+          });
+        }
+      }
+      
+      // Titre / sous-titre (optionnel)
+      if (data.bien?.nom) setText("bien-nom", data.bien.nom);
+      if (data.bien?.sous_titre) setText("bien-sous-titre", data.bien.sous_titre, "Suivi de commercialisation");
+
+      // DATES
+      setText("date-mandat", formatDateISO(data.dates?.mandat_signe));
+      setText("date-mise-en-ligne", formatDateISO(data.dates?.mise_en_ligne));
+      setText("date-derniere-remontee", formatDateISO(data.dates?.derniere_remontee));
+
+      // Remontée (texte) – robuste (type optionnel)
+      {
+        const r = data.diffusion?.remontee;
+
+        let txt = "—";
+
+        if (typeof r === "string") {
+          txt = r;
+        } else if (r && typeof r === "object") {
+          if (r.frequence) {
+            txt = r.frequence;
+          }
+        }
+
+        setText("frequence-remontee", txt);
+      }
+
+      // STATS
+      setText("stat-appels", data.stats?.appels);
+      setText("stat-emails", data.stats?.emails);
+      setText("stat-visites-effectuees", data.stats?.visites_effectuees);
+      setText("stat-visites-programmees", data.stats?.visites_programmees);
+      setText("stat-offres", data.stats?.offres);
+      setText("stat-vues-leboncoin", data.stats?.vues_leboncoin);
+      setText("stat-favoris-leboncoin", data.stats?.favoris_leboncoin);
+
+      // LIENS - Plateformes
+      setLink("pf-agenceimmo", data.liens?.agenceimmo, "Ouvrir l’annonce →");
+      setLink("pf-leboncoin", data.liens?.leboncoin, "Ouvrir l’annonce →");
+      setLink("pf-seloger", data.liens?.seloger, "Ouvrir l’annonce →");
+      setLink("pf-bienici", data.liens?.bienici, "Ouvrir l’annonce →");
+      setLink("pf-logicimmo", data.liens?.logicimmo, "Ouvrir l’annonce →");
+      setLink("pf-avendrealouer", data.liens?.avendrealouer, "Ouvrir l’annonce →");
+      setLink("pf-paruvendu", data.liens?.paruvendu, "Ouvrir l’annonce →");
+      setLink("pf-lefigaro", data.liens?.lefigaro, "Ouvrir l’annonce →");
+
+      // LIENS - Réseaux sociaux (posts)
+      setLink("rs-facebook", data.liens?.facebook, "Ouvrir le post →");
+      setLink("rs-linkedin", data.liens?.linkedin, "Ouvrir le post →");
+      setLink("rs-instagram", data.liens?.instagram, "Ouvrir le post →");
+      setLink("rs-pagesjaunes", data.liens?.pagesjaunes, "Ouvrir le post →");
+      setLink("rs-google", data.liens?.google, "Ouvrir le post →");
+
+      // LIEN - Vidéo
+      setLink("video-youtube", data.liens?.youtube, "Ouvrir la vidéo →");
+
+      /* =========================
+         ✅ AJOUT 1 : jours depuis dernière remontée
+      ========================= */
+      const jours = daysSinceISO(data.dates?.derniere_remontee);
+      setText("jours-depuis-derniere-remontee", (jours === 0 || jours) ? jours + " jours" : "—", "—");
+
+      /* =========================
+         ✅ AJOUT 2 : taux de transformation
+         RÈGLE :
+         - CONTACT = APPEL UNIQUEMENT
+         - Emails exclus volontairement
+      ========================= */
+
+      const appels  = toNumber(data.stats?.appels) || 0;
+      const vues = toNumber(data.stats?.vues_leboncoin) || 0;
+      const visites = toNumber(data.stats?.visites_effectuees) || 0;
+      const offres  = toNumber(data.stats?.offres) || 0;
+
+      // ✅ 1 appel tous les X vues
+      if (appels > 0 && vues != null && vues > 0) {
+        const x = Math.ceil(vues / appels);
+        setLineText(
+          "ratio-contact-vues",
+          "1 appel tous les " + x + " vues"
+        );
+      } else {
+        setLineText("ratio-contact-vues", "", "—");
+      }
+
+      // ✅ 1 visite tous les Y appels
+      if (visites != null && visites > 0 && appels > 0) {
+        const y = Math.ceil(appels / visites);
+        setLineText(
+          "ratio-visites-contacts",
+          "1 visite tous les " + y + " appels"
+        );
+      } else {
+        setLineText("ratio-visites-contacts", "", "—");
+      }
+
+
+      // ✅ 1 offre tous les X visites
+
+      if (offres != null && offres > 0 && visites != null && visites > 0) {
+        const x = Math.ceil(visites / offres);
+        setLineText(
+          "ratio-offres-visites",
+          "1 offre tous les " + x + " visites"
+        );
+      } else {
+        setLineText("ratio-offres-visites", "", "—");
+      }
+
+      //✅ Dernière visite (basée sur l’historique)
+      const derniereVisiteDate = getDerniereDateVisiteDepuisHistorique(data.historique);
+
+      if (derniereVisiteDate) {
+        const joursDepuisDerniereVisite = Math.floor(
+          (Date.now() - derniereVisiteDate.getTime()) / (1000 * 60 * 60 * 24)
+        );
+
+        setLineText(
+          "dernier-visite-delai",
+          "Dernière visite il y a " + joursDepuisDerniereVisite + " jours"
+        );
+      } else {
+        setLineText("dernier-visite-delai", "", "—");
+      }
+
+      if (evo) {
+
+        let lines = [];
+
+        const vuesActuelles = toNumber(evo.vues_semaine_actuelle);
+        const vuesPrecedentes = toNumber(evo.vues_semaine_precedente);
+        const contactsActuels = toNumber(evo.contacts_semaine_actuelle);
+        const contactsPrecedents = toNumber(evo.contacts_semaine_precedente);
+        const favActuels = toNumber(evo.favoris_semaine_actuelle);
+        const favPrecedents = toNumber(evo.favoris_semaine_precedente);
+        const visActuelles = toNumber(evo.visites_semaine_actuelle);
+        const visPrecedentes = toNumber(evo.visites_semaine_precedente);
+
+      // CONTACTS
+      if (contactsActuels != null && contactsPrecedents != null) {
+        const diff = contactsActuels - contactsPrecedents;
+        if (diff > 0) lines.push("Contacts : hausse de +" + diff);
+        else if (diff < 0) lines.push("Contacts : baisse de " + Math.abs(diff));
+        else lines.push("Contacts : stable");
+      }
+
+
+      // VUES
+      if (vuesActuelles != null && vuesPrecedentes != null) {
+        const diff = vuesActuelles - vuesPrecedentes;
+        if (diff > 0) lines.push("Vues : hausse de +" + diff);
+        else if (diff < 0) lines.push("Vues : baisse de " + Math.abs(diff));
+        else lines.push("Vues : stable");
+      }
+
+      // FAVORIS
+      if (favActuels != null && favPrecedents != null) {
+        const diff = favActuels - favPrecedents;
+        if (diff > 0) lines.push("Favoris : hausse de +" + diff);
+        else if (diff < 0) lines.push("Favoris : baisse de " + Math.abs(diff));
+        else lines.push("Favoris : stable");
+      }
+
+      // VISITES
+      if (visActuelles != null && visPrecedentes != null) {
+        const diff = visActuelles - visPrecedentes;
+        if (diff > 0) lines.push("Visites : hausse de +" + diff);
+        else if (diff < 0) lines.push("Visites : baisse de " + Math.abs(diff));
+        else lines.push("Visites : stable");
+      }
+
+      const evoEl = document.getElementById("evolution-commentaire");
+      if (evoEl) {
+        evoEl.textContent = lines.length
+          ? lines.join("\n")
+          : "Pas de données d’évolution disponibles pour le moment.";
+        evoEl.classList.add("analysis-highlight");
+      }
+
+      } else {
+        setLineText("evolution-commentaire", "Aucune donnée d’évolution pour le moment.");
+      }
+
+      // =========================
+      // ANALYSE STRATÉGIQUE
+      // =========================
+      const analysis = data.analysis || { text: "", noAlertes: false };
+
+      /* =========================
+         ✅ AJOUT 4 : alertes automatiques (objectives)
+         - seuils simples et modifiables
+         - lisibles pour le client vendeur
+         - basées uniquement sur les données réelles
+      ========================= */
+
+      const alertes = [];
+
+      // =========================
+      // 1️⃣ AUCUN APPEL
+      // =========================
+      if (appels === 0) {
+        alertes.push("❗ Aucun appel enregistré à ce stade.");
+      }
+
+      // =========================
+      // 2️⃣ AUCUNE VISITE
+      // =========================
+      if ((toNumber(data.stats?.visites_effectuees) || 0) === 0) {
+        alertes.push("❗ Aucune visite effectuée à ce stade.");
+      }
+
+      // =========================
+      // 3️⃣ AUCUNE OFFRE APRÈS X VISITES
+      // =========================
+      const seuilOffre = toNumber(data.alertes?.seuil_offre_apres_visites) || 5;
+      const nbVisites = toNumber(data.stats?.visites_effectuees) || 0;
+      const nbOffres = toNumber(data.stats?.offres) || 0;
+
+      if (nbVisites >= seuilOffre && nbOffres === 0) {
+        alertes.push(
+          "⚠️ Aucune offre après " + nbVisites + " visites."
+        );
+      }
+
+      // =========================
+      // 5️⃣ FAIBLE TRANSFORMATION VUES → APPELS
+      // =========================
+      const seuilVuesParAppel = toNumber(data.alertes?.seuil_vues_par_appel) || 100;
+
+      if (appels > 0 && vues > 0 && (vues / appels) > seuilVuesParAppel) {
+        alertes.push(
+          "⚠️ Faible taux de contacts : 1 appel pour " +
+          Math.round(vues / appels) +
+          " vues."
+        );
+      }
+
+      // =========================
+      // 6️⃣ VUES ÉLEVÉES MAIS AUCUN CONTACT
+      // =========================
+      const seuilVuesSansContact = toNumber(data.alertes?.seuil_vues_sans_contact) || 80;
+
+      if (vues >= seuilVuesSansContact && appels === 0) {
+        alertes.push(
+          "⚠️ L’annonce génère des vues mais aucun contact."
+        );
+      }
+
+      // =========================
+      // 7️⃣ FAVORIS SANS PASSAGE À L’ACTION
+      // =========================
+      const seuilFavorisSansContact = toNumber(data.alertes?.seuil_favoris_sans_contact) || 4;
+
+      if (
+        toNumber(data.stats?.favoris_leboncoin) >= seuilFavorisSansContact &&
+        appels <= 1
+      ) {
+        alertes.push(
+          "⚠️ Plusieurs favoris sans passage à l’action."
+        );
+      }
+
+      // =========================
+      // 8️⃣ BAISSE SIGNIFICATIVE DE VISIBILITÉ (7 jours)
+      // =========================
+
+      const vuesActuelles = toNumber(evo?.vues_semaine_actuelle);
+      const vuesPrecedentes = toNumber(evo?.vues_semaine_precedente);
+
+      const seuilBaissePourcent = toNumber(data.alertes?.seuil_baisse_visibilite_pourcent) || 15;
+
+      if (
+        vuesActuelles != null &&
+        vuesPrecedentes != null &&
+        vuesPrecedentes > 0
+      ) {
+        const variation = ((vuesActuelles - vuesPrecedentes) / vuesPrecedentes) * 100;
+
+        if (variation <= -seuilBaissePourcent) {
+          alertes.push(
+            "📉 Baisse de visibilité de " +
+            Math.round(Math.abs(variation)) +
+            "% sur les 7 derniers jours."
+          );
+        }
+      }
+
+      // =========================
+      // 9️⃣ LIMITE UX : MAX 3 ALERTES
+      // =========================
+      if (analysis.noAlertes === true) {
+        renderAlertes([]);
+      } else {
+        renderAlertes(alertes.slice(0, 3));
+      }
+
+      // =========================
+      // 📈 PHASE DOMINANTE VIA ALERTES
+      // =========================
+
+      function getPhaseIndexDepuisAlertes(stats) {
+        const appels  = toNumber(stats?.appels) || 0;
+        const visites = toNumber(stats?.visites_effectuees) || 0;
+        const offres  = toNumber(stats?.offres) || 0;
+        const vues    = toNumber(stats?.vues_leboncoin) || 0;
+
+        // Phase 1 – visibilité
+        if (visites === 0) {
+          return 0; // index phase 1
+        }
+
+        // Phase 2 – ajustement
+        if (vues > 100 && appels <= 2) {
+          return 1; // index phase 2
+        }
+
+        // Phase 3 – décision
+        if (visites >= 3 && offres === 0) {
+          return 2; // index phase 3
+        }
+
+        return null;
+      }
+
+      // =========================
+      // 🔥 PHASE FINALE À AFFICHER
+      // =========================
+
+      // Phase selon le temps
+      const phaseDepuisDate = getPhaseIndexDepuisDate(data.dates?.mise_en_ligne);
+
+      // Phase selon les alertes
+      const phaseDepuisAlertes = getPhaseIndexDepuisAlertes(data.stats);
+
+      // Priorité aux alertes
+      const phaseFinale =
+        phaseDepuisAlertes !== null
+          ? phaseDepuisAlertes
+          : phaseDepuisDate;
+
+      // Application visuelle
+      if (phaseFinale !== null) {
+        const steps = document.querySelectorAll(".timeline-step");
+
+        steps.forEach(step => step.classList.remove("is-active"));
+
+        if (steps[phaseFinale]) {
+          steps[phaseFinale].classList.add("is-active");
+        }
+      }
+
+      // ANALYSE
+      setText("analyse-commentaire", analysis.text, "");
+
+      // HISTORIQUE
+      renderHistorique(data.historique);
+    })
+    .catch((err) => {
+      console.error("Erreur chargement espace client :", err);
+      setText("analyse-commentaire", "Aucune analyse & perspectives pour le moment.", "");
+      const ul = document.getElementById("historique-list");
+      if (ul) {
+        ul.innerHTML = "<li class='subtitle'>Historique.</li>";
+      }
+      const evo = document.getElementById("evolution-commentaire");
+      if (evo) evo.textContent = "Aucune évolution dans le temps pour le moment.";
+      const a = document.getElementById("alertes-list");
+      if (a) a.innerHTML = "<li class='subtitle'>Aucune alerte pour le moment.</li>";
+      const j = document.getElementById("jours-depuis-derniere-remontee");
+      if (j) j.textContent = "—";
+      const r1 = document.getElementById("ratio-contact-vues");
+      if (r1) r1.textContent = "—";
+      const r2 = document.getElementById("ratio-visites-contacts");
+      if (r2) r2.textContent = "—";
+    });
+</script>
+
+</body>
+</html>
