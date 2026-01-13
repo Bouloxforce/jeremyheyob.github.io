@@ -1093,10 +1093,16 @@
     return Number.isFinite(n) ? n : null;
   }
 
-  function setLineText(id, text, fallback = "—") {
+  function setLineText(id, text) {
     const el = document.getElementById(id);
     if (!el) return;
-    el.textContent = (text && String(text).trim()) ? String(text) : fallback;
+
+    if (text && String(text).trim()) {
+      el.textContent = text;
+      el.style.display = "";
+    } else {
+      el.style.display = "none";
+    }
   }
 
   function getDerniereDateVisiteDepuisHistorique(historique) {
