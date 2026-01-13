@@ -2,12 +2,8 @@ name: Mise à jour taux immobilier
 
 on:
   schedule:
-    - cron: "0 6 2 * *" # le 2 de chaque mois à 06h
+    - cron: "0 6 2 * *"
   workflow_dispatch:
-
-concurrency:
-  group: pages
-  cancel-in-progress: true
 
 permissions:
   contents: write
@@ -15,7 +11,6 @@ permissions:
 jobs:
   update:
     runs-on: ubuntu-latest
-
     steps:
       - uses: actions/checkout@v4
 
