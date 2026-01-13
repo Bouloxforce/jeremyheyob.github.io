@@ -89,7 +89,7 @@ function buildAnalysis(data) {
         `Le bien est en commercialisation depuis ${jours} jours.\n\n` +
         "Les statistiques confirment une performance insuffisante par rapport " +
         "à la durée de diffusion. Un changement de stratégie est désormais nécessaire.\n\n" +
-        "Je vais vous proposer que nous organisions un rendez-vous afin de définir une nouvelle stratégie " +
+        "Il est désormais nécessaire d'organiser un rendez-vous, afin de définir une nouvelle stratégie " +
         "à mettre en place pour relancer efficacement la vente.",
       proposeRDV: true,
       noAlertes: false
