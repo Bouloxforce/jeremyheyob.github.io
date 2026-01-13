@@ -592,6 +592,16 @@
       font-size: 13px;
     }
 
+    .taux-var-up {
+      color: #15803d;
+      font-weight: 600;
+    }
+
+    .taux-var-down {
+      color: #b91c1c;
+      font-weight: 600;
+    }
+
     @media (max-width: 880px) {
       /* Header */
       header {
@@ -791,6 +801,8 @@
       <p style="font-size:48px;font-weight:800;margin:16px 0;">
         <span id="taux-immo">—</span>%
       </p>
+
+      <p id="taux-variation" class="subtitle" style="display:none;"></p>
 
       <p class="subtitle" id="taux-source">—</p>
 
@@ -1172,8 +1184,14 @@
     })
     .then((data) => {
 
-      if (data.marche?.taux_credit?.moyen) {
-        setText("taux-immo", data.marche.taux_credit.moyen);
+      const tauxActuel = Number(data.marche?.taux_credit?.moyen);
+      const tauxPrecedent = Number(data.marche?.taux_credit?.precedent);
+
+      if (Number.isFinite(tauxActuel)) {
+
+        // Affichage du taux
+        setText("taux-immo", tauxActuel.toFixed(2));
+
         setText(
           "taux-source",
           "Source : " +
@@ -1181,6 +1199,33 @@
             " — " +
             data.marche.taux_credit.periode
         );
+
+        // ===== VARIATION EN POINTS =====
+        const varEl = document.getElementById("taux-variation");
+
+        if (varEl && Number.isFinite(tauxPrecedent)) {
+
+          const diff = +(tauxActuel - tauxPrecedent).toFixed(2);
+
+          if (diff !== 0) {
+            varEl.style.display = "block";
+            varEl.classList.remove("taux-var-up", "taux-var-down");
+
+            if (diff > 0) {
+              varEl.classList.add("taux-var-up");
+              varEl.textContent = "+" + diff.toFixed(2) + " pt";
+            } else {
+              varEl.classList.add("taux-var-down");
+              varEl.textContent = diff.toFixed(2) + " pt";
+            }
+
+          } else {
+            varEl.style.display = "none";
+          }
+
+        } else if (varEl) {
+          varEl.style.display = "none";
+        }
       }
 
       const evo = data.stats?.evolution || null;
