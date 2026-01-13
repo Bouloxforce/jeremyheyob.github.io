@@ -1150,11 +1150,6 @@
     throw new Error("Slug manquant dans l’URL");
   }
 
-  if (!slug) {
-    alert("Aucun bien sélectionné.");
-    throw new Error("Slug manquant dans l’URL");
-  }
-
   const photo = document.getElementById("photo-principale");
   if (photo) {
     photo.src = `/espace-client/${slug}/photos/${slug}-1.webp`;
