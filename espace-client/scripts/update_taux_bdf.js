@@ -7,7 +7,7 @@ const CSV_URL =
   "https://www.banque-france.fr/system/files/2024-12/taux-credits-habitat.csv";
 
 /* =========================
-  RÉCUPÉRATION CSV
+   RÉCUPÉRATION CSV
 ========================= */
 function fetchCSV(url) {
   return new Promise((resolve, reject) => {
@@ -22,22 +22,33 @@ function fetchCSV(url) {
 }
 
 /* =========================
-   EXTRACTION TAUX
+   EXTRACTION TAUX (ROBUSTE)
 ========================= */
 function extractTaux(csv) {
   const lines = csv.split("\n");
 
-  const target = lines.find(l =>
-    l.includes("Crédits à l’habitat") &&
-    l.includes("supérieure à 20 ans")
-  );
+  const target = lines.find(line => {
+    const l = line.toLowerCase();
+    return (
+      l.includes("crédit") &&
+      l.includes("habitat") &&
+      (l.includes("20") || l.includes("plus"))
+    );
+  });
 
   if (!target) return null;
 
   const cols = target.split(";");
-  const taux = parseFloat(cols[cols.length - 1].replace(",", "."));
 
-  return Number.isFinite(taux) ? taux : null;
+  // Recherche du dernier nombre valide (robuste aux changements de colonnes)
+  for (let i = cols.length - 1; i >= 0; i--) {
+    const value = parseFloat(cols[i].replace(",", "."));
+    if (Number.isFinite(value)) {
+      return value;
+    }
+  }
+
+  return null;
 }
 
 /* =========================
@@ -53,8 +64,8 @@ function readPreviousRateFromGit(filePath) {
     const previousData = JSON.parse(previousFile);
     return previousData?.marche?.taux_credit?.moyen ?? null;
 
-  } catch (err) {
-    // Premier run / fichier absent / historique non dispo
+  } catch {
+    // Premier run / fichier absent / historique indisponible
     return null;
   }
 }
@@ -66,19 +77,25 @@ async function run() {
   const csv = await fetchCSV(CSV_URL);
   const taux = extractTaux(csv);
 
+  // 🔒 Sécurité : ne casse pas le workflow si la BDF change
   if (!taux) {
-    console.error("❌ Taux non trouvé");
-    process.exit(1);
+    console.warn("⚠️ Taux non trouvé – aucune mise à jour effectuée");
+    return;
   }
 
   const baseDir = "espace-client";
+
+  if (!fs.existsSync(baseDir)) {
+    console.warn(`⚠️ Dossier "${baseDir}" introuvable`);
+    return;
+  }
+
   const dossiers = fs
     .readdirSync(baseDir, { withFileTypes: true })
     .filter(d => d.isDirectory())
     .map(d => d.name);
 
-  const now = new Date();
-  const periode = now.toISOString().slice(0, 7);
+  const periode = new Date().toISOString().slice(0, 7);
 
   for (const bien of dossiers) {
     const filePath = path.join(baseDir, bien, `${bien}_data.json`);
@@ -86,7 +103,6 @@ async function run() {
 
     const data = JSON.parse(fs.readFileSync(filePath, "utf-8"));
 
-    // 🔑 Lecture du taux précédent depuis Git
     const tauxPrecedent = readPreviousRateFromGit(filePath);
 
     data.marche = data.marche || {};
@@ -103,4 +119,6 @@ async function run() {
   }
 }
 
-run();
+run().catch(err => {
+  console.error("❌ Erreur script taux BDF :", err);
+});
