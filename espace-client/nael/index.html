@@ -1311,12 +1311,12 @@
       if (evoEl) {
         evoEl.textContent = lines.length
           ? lines.join("\n")
-          : "Données d’évolution non disponibles.";
+          : "Pas de données d’évolution disponibles pour le moment.";
         evoEl.classList.add("analysis-highlight");
       }
 
       } else {
-        setLineText("evolution-commentaire", "Données d’évolution non disponibles.");
+        setLineText("evolution-commentaire", "Aucune donnée d’évolution pour le moment.");
       }
 
       // =========================
@@ -1440,15 +1440,15 @@
     })
     .catch((err) => {
       console.error("Erreur chargement espace client :", err);
-      setText("analyse-commentaire", "Impossible de charger les données de suivi pour le moment.", "");
+      setText("analyse-commentaire", "Aucune analyse & perspectives pour le moment.", "");
       const ul = document.getElementById("historique-list");
       if (ul) {
-        ul.innerHTML = "<li class='subtitle'>Impossible de charger l’historique.</li>";
+        ul.innerHTML = "<li class='subtitle'>Historique.</li>";
       }
       const evo = document.getElementById("evolution-commentaire");
-      if (evo) evo.textContent = "Données d’évolution non disponibles.";
+      if (evo) evo.textContent = "Aucune évolution dans le temps pour le moment.";
       const a = document.getElementById("alertes-list");
-      if (a) a.innerHTML = "<li class='subtitle'>Impossible de charger les alertes.</li>";
+      if (a) a.innerHTML = "<li class='subtitle'>Aucune alerte pour le moment.</li>";
       const j = document.getElementById("jours-depuis-derniere-remontee");
       if (j) j.textContent = "—";
       const r1 = document.getElementById("ratio-contact-vues");
