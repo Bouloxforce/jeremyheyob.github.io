@@ -1,0 +1,26 @@
+name: Mise à jour taux immobilier
+
+on:
+  schedule:
+    - cron: "0 6 2 * *" # le 2 de chaque mois à 06h
+  workflow_dispatch:
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - run: node scripts/update_taux_bdf.js
+
+      - name: Commit changes
+        run: |
+          git config user.name "github-actions"
+          git config user.email "actions@github.com"
+          git add .
+          git commit -m "Mise à jour automatique taux immobilier"
+          git push
