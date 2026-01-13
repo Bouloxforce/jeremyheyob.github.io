@@ -12,9 +12,6 @@
   <title>Espace client | Jérémy Heyob Immobiliere</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <!-- ✅ 1 seule photo (pas de carrousel)  -->
-  <link rel="preload" href="/bien-visite/nael/photos/Nael 1.webp" as="image">
-
   <style>
     /* CSS IDENTIQUE À LA PAGE DE RÉFÉRENCE – NON MODIFIÉ */
     /* -------------------------------------------------- */
@@ -863,12 +860,11 @@
       <p class="subtitle" id="bien-sous-titre">Suivi de commercialisation</p>
 
       <img
-        id="photo-principale"
-        src="/bien-visite/nael/photos/Nael 1.webp"
-        alt=""
-        style="width:100%;height:auto;border-radius:16px;background:#00000008;margin:18px 0 6px;display:block;"
-        loading="eager"
-      >
+        <img
+          id="photo-principale"
+          alt=""
+          style="width:100%;height:auto;border-radius:16px;background:#00000008;margin:18px 0 6px;display:block;"
+        >
 
       <div class="luxury-divider"></div>
 
@@ -1143,6 +1139,19 @@
 
 <!-- ✅ Script unique : lecture d’un seul data.json -->
 <script>
+  const pathParts = location.pathname.split("/").filter(Boolean);
+  const slug = pathParts[pathParts.length - 1];
+
+  if (!slug) {
+    alert("Aucun bien sélectionné.");
+    throw new Error("Slug manquant dans l’URL");
+  }
+
+  const photo = document.getElementById("photo-principale");
+  if (photo) {
+    photo.src = `/espace-client/${slug}/photos/${slug}-1.webp`;
+  }
+
   function setText(id, value, fallback = "—") {
     const el = document.getElementById(id);
     if (!el) return;
@@ -1341,7 +1350,7 @@ function getPhaseIndexDepuisDate(dateISO) {
   return 2;
 }
 
-  fetch("nael_data.json", { cache: "no-store" })
+  fetch(`${slug}/${slug}_data.json`, { cache: "no-store" })
     .then((r) => {
       if (!r.ok) throw new Error("data.json introuvable");
       return r.json();
