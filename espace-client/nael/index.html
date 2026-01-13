@@ -1160,13 +1160,21 @@
       setText("date-mise-en-ligne", formatDateISO(data.dates?.mise_en_ligne));
       setText("date-derniere-remontee", formatDateISO(data.dates?.derniere_remontee));
 
-      // Remontée (texte)
-      if (data.diffusion?.remontee?.type || data.diffusion?.remontee) {
-        const r = data.diffusion.remontee;
-        const txt =
-          (typeof r === "string") ? r :
-          (r.frequence ? " (" + r.frequence + ")" : "")));
-        setText("frequence-remontee", txt,);
+      // Remontée (texte) – robuste (type optionnel)
+      {
+        const r = data.diffusion?.remontee;
+
+        let txt = "—";
+
+        if (typeof r === "string") {
+          txt = r;
+        } else if (r && typeof r === "object") {
+          if (r.frequence) {
+            txt = r.frequence;
+          }
+        }
+
+        setText("frequence-remontee", txt);
       }
 
       // STATS
