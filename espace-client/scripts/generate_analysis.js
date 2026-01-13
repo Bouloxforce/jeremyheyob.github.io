@@ -117,6 +117,7 @@ const dossiers = fs.readdirSync(BASE_DIR, { withFileTypes: true })
   .map(d => d.name);
 
 let rdvRecommandeGlobal = false;
+let biensAvecRDV = [];
 
 for (const bien of dossiers) {
   const filePath = path.join(BASE_DIR, bien, `${bien}_data.json`);
@@ -133,9 +134,12 @@ for (const bien of dossiers) {
     generatedAt: new Date().toISOString()
   };
 
-  if (analysis.proposeRDV === true) {
-    rdvRecommandeGlobal = true;
-  }
+   if (analysis.proposeRDV === true) {
+     rdvRecommandeGlobal = true;
+
+     const nomBien = data.bien?.nom || bien;
+     biensAvecRDV.push(nomBien);
+   }
 
   fs.writeFileSync(
     filePath,
@@ -152,4 +156,9 @@ for (const bien of dossiers) {
 
 if (rdvRecommandeGlobal) {
   fs.appendFileSync(process.env.GITHUB_ENV, "RDV_RECOMMANDE=true\n");
+
+  fs.appendFileSync(
+    process.env.GITHUB_ENV,
+    "RDV_BIENS=" + biensAvecRDV.join(", ") + "\n"
+  );
 }
