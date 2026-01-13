@@ -2,6 +2,9 @@ concurrency:
   group: pages
   cancel-in-progress: true
 
+permissions:
+  contents: write
+
 name: Mise à jour taux immobilier
 
 on:
