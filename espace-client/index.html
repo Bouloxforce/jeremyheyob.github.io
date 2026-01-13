@@ -856,15 +856,14 @@
     <section class="card">
       <div class="pill">Espace vendeur</div>
 
-      <h1 id="bien-nom">Naël</h1>
+      <h1 id="bien-nom">—</h1>
       <p class="subtitle" id="bien-sous-titre">Suivi de commercialisation</p>
 
       <img
-        <img
-          id="photo-principale"
-          alt=""
-          style="width:100%;height:auto;border-radius:16px;background:#00000008;margin:18px 0 6px;display:block;"
-        >
+        id="photo-principale"
+        alt=""
+        style="width:100%;height:auto;border-radius:16px;background:#00000008;margin:18px 0 6px;display:block;"
+      >
 
       <div class="luxury-divider"></div>
 
@@ -1140,7 +1139,16 @@
 <!-- ✅ Script unique : lecture d’un seul data.json -->
 <script>
   const pathParts = location.pathname.split("/").filter(Boolean);
-  const slug = pathParts[pathParts.length - 1];
+  let slug = pathParts[pathParts.length - 1];
+
+  if (slug.endsWith(".html")) {
+    slug = pathParts[pathParts.length - 2];
+  }
+
+  if (!slug) {
+    alert("Aucun bien sélectionné.");
+    throw new Error("Slug manquant dans l’URL");
+  }
 
   if (!slug) {
     alert("Aucun bien sélectionné.");
@@ -1150,8 +1158,12 @@
   const photo = document.getElementById("photo-principale");
   if (photo) {
     photo.src = `/espace-client/${slug}/photos/${slug}-1.webp`;
-  }
 
+    photo.onerror = () => {
+      photo.style.display = "none";
+    };
+  }
+  
   function setText(id, value, fallback = "—") {
     const el = document.getElementById(id);
     if (!el) return;
