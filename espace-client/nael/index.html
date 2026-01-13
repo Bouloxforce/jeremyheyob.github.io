@@ -795,7 +795,7 @@
         <li>Mandat signé le : <strong id="date-mandat">—</strong></li>
         <li>Mise en ligne de l’annonce : <strong id="date-mise-en-ligne">—</strong></li>
         <li>Dernière remontée d’annonce : <strong id="date-derniere-remontee">—</strong></li>
-        <li>Fréquence des remontées : <strong id="frequence-remontee">Remontée automatique</strong></li>
+        <li>Fréquence des remontées : <strong id="frequence-remontee">—</strong></li>
       </ul>
 
       <div class="luxury-divider"></div>
@@ -1159,8 +1159,8 @@
         const r = data.diffusion.remontee;
         const txt =
           (typeof r === "string") ? r :
-          (r.type ? (r.type + (r.frequence ? " (" + r.frequence + ")" : "")) : "Remontée automatique");
-        setText("frequence-remontee", txt, "Remontée automatique");
+          (r.frequence ? " (" + r.frequence + ")" : "")));
+        setText("frequence-remontee", txt,);
       }
 
       // STATS
