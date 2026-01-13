@@ -1203,8 +1203,8 @@
       li.innerHTML = "<strong>" + date + "</strong> — " + escapeHTML(action);
       ul.appendChild(li);
     });
-    // ===== LIMITE À 3 HISTORIQUES VISIBLES =====
-    const MAX_VISIBLE = 5;
+    // ===== LIMITE À 15 HISTORIQUES VISIBLES =====
+    const MAX_VISIBLE = 15;
     const itemsEls = ul.querySelectorAll("li");
     const fade = document.querySelector(".historique-fade");
     const wrapper = ul.closest(".historique-wrapper");
