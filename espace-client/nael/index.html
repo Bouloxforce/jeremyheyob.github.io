@@ -713,16 +713,18 @@
     </div>
   </header>
 
-  <main class="layout">
+    <main class="layout">
 
-    <!-- CARTE GAUCHE : PHOTO + IDENTITÉ BIEN (minimal) -->
+  <!-- ===== COLONNE GAUCHE ===== -->
+  <div class="left-column">
+
+    <!-- ESPACE VENDEUR -->
     <section class="card">
       <div class="pill">Espace vendeur</div>
 
       <h1 id="bien-nom">Naël</h1>
       <p class="subtitle" id="bien-sous-titre">Suivi de commercialisation</p>
 
-      <!-- ✅ Photo principale uniquement (pas de carrousel) -->
       <img
         id="photo-principale"
         src="/bien-visite/nael/photos/Nael 1.webp"
@@ -737,91 +739,61 @@
 
       <p class="subtitle" style="margin-bottom:10px;"><strong>Plateformes immobilières</strong></p>
       <ul style="list-style:none;padding:0;margin:0 0 10px;font-size:15px;line-height:1.55;">
-        <li>Agence.immo :
-          <a id="pf-agenceimmo" href="#" target="_blank" rel="noopener">Ouvrir l’annonce →</a>
-        </li>
-        <li>Leboncoin :
-          <a id="pf-leboncoin" href="#" target="_blank" rel="noopener">Ouvrir l’annonce →</a>
-        </li>
-        <li>SeLoger :
-          <a id="pf-seloger" href="#" target="_blank" rel="noopener">Ouvrir l’annonce →</a>
-        </li>
-        <li>Bien’ici :
-          <a id="pf-bienici" href="#" target="_blank" rel="noopener">Ouvrir l’annonce →</a>
-        </li>
-        <li>Logic-Immo :
-          <a id="pf-logicimmo" href="#" target="_blank" rel="noopener">Ouvrir l’annonce →</a>
-        </li>
-        <li>À vendre à louer :
-          <a id="pf-avendrealouer" href="#" target="_blank" rel="noopener">Ouvrir l’annonce →</a>
-        </li>
-        <li>ParuVendu :
-          <a id="pf-paruvendu" href="#" target="_blank" rel="noopener">Ouvrir l’annonce →</a>
-        </li>
-        <li>Le Figaro :
-          <a id="pf-lefigaro" href="#" target="_blank" rel="noopener">Ouvrir l’annonce →</a>
-        </li>
+        <li>Agence.immo : <a id="pf-agenceimmo" href="#" target="_blank" rel="noopener">Ouvrir l’annonce →</a></li>
+        <li>Leboncoin : <a id="pf-leboncoin" href="#" target="_blank" rel="noopener">Ouvrir l’annonce →</a></li>
+        <li>SeLoger : <a id="pf-seloger" href="#" target="_blank" rel="noopener">Ouvrir l’annonce →</a></li>
+        <li>Bien’ici : <a id="pf-bienici" href="#" target="_blank" rel="noopener">Ouvrir l’annonce →</a></li>
+        <li>Logic-Immo : <a id="pf-logicimmo" href="#" target="_blank" rel="noopener">Ouvrir l’annonce →</a></li>
+        <li>À vendre à louer : <a id="pf-avendrealouer" href="#" target="_blank" rel="noopener">Ouvrir l’annonce →</a></li>
+        <li>ParuVendu : <a id="pf-paruvendu" href="#" target="_blank" rel="noopener">Ouvrir l’annonce →</a></li>
+        <li>Le Figaro : <a id="pf-lefigaro" href="#" target="_blank" rel="noopener">Ouvrir l’annonce →</a></li>
       </ul>
 
       <p class="subtitle" style="margin:14px 0 10px;"><strong>Réseaux sociaux</strong></p>
       <ul style="list-style:none;padding:0;margin:0 0 10px;font-size:15px;line-height:1.55;">
-        <li>Facebook :
-          <a id="rs-facebook" href="#" target="_blank" rel="noopener">Ouvrir le post →</a>
-        </li>
-        <li>LinkedIn :
-          <a id="rs-linkedin" href="#" target="_blank" rel="noopener">Ouvrir le post →</a>
-        </li>
-        <li>Instagram :
-          <a id="rs-instagram" href="#" target="_blank" rel="noopener">Ouvrir le post →</a>
-        </li>
-        <li>Pages Jaunes :
-          <a id="rs-pagesjaunes" href="#" target="_blank" rel="noopener">Ouvrir le post →</a>
-        </li>
-        <li>Fiche Google :
-          <a id="rs-google" href="#" target="_blank" rel="noopener">Ouvrir le post →</a>
-        </li>
+        <li>Facebook : <a id="rs-facebook" href="#" target="_blank" rel="noopener">Ouvrir le post →</a></li>
+        <li>LinkedIn : <a id="rs-linkedin" href="#" target="_blank" rel="noopener">Ouvrir le post →</a></li>
+        <li>Instagram : <a id="rs-instagram" href="#" target="_blank" rel="noopener">Ouvrir le post →</a></li>
+        <li>Pages Jaunes : <a id="rs-pagesjaunes" href="#" target="_blank" rel="noopener">Ouvrir le post →</a></li>
+        <li>Fiche Google : <a id="rs-google" href="#" target="_blank" rel="noopener">Ouvrir le post →</a></li>
       </ul>
 
       <p class="subtitle" style="margin:14px 0 10px;"><strong>Vidéo de présentation</strong></p>
       <ul style="list-style:none;padding:0;margin:0;font-size:15px;line-height:1.55;">
-        <li>YouTube :
-          <a id="video-youtube" href="#" target="_blank" rel="noopener">Ouvrir la vidéo →</a>
-        </li>
+        <li>YouTube : <a id="video-youtube" href="#" target="_blank" rel="noopener">Ouvrir la vidéo →</a></li>
       </ul>
     </section>
 
-      <!-- =========================
-         CONTEXTE DE MARCHÉ IMMOBILIER
-      ========================= -->
-    <section class="page">
+    <!-- CONTEXTE DE MARCHÉ -->
+    <section class="card" style="margin-top:22px;">
 
-      <section class="card" style="max-width:960px;margin:32px auto 0;">
+      <div class="pill">Contexte de marché</div>
 
-        <div class="pill">Contexte de marché</div>
+      <h2>Taux immobilier en France</h2>
 
-        <h2>Taux immobilier en France</h2>
+      <p class="subtitle">
+        Taux moyen constaté pour les crédits immobiliers sur 25 ans
+      </p>
 
-        <p class="subtitle">
-          Taux moyen constaté pour les crédits immobiliers sur 25 ans
-        </p>
+      <p style="font-size:48px;font-weight:800;margin:16px 0;">
+        <span id="taux-immo">—</span>%
+      </p>
 
-        <p style="font-size:48px;font-weight:800;margin:16px 0;">
-          <span id="taux-immo">—</span>%
-        </p>
+      <p class="subtitle" id="taux-source">—</p>
 
-        <p class="subtitle" id="taux-source">—</p>
+      <div class="luxury-divider"></div>
 
-        <div class="luxury-divider"></div>
+      <p class="subtitle" style="line-height:1.6;">
+        Les conditions de financement actuelles influencent directement le
+        comportement des acquéreurs, leur capacité d’emprunt et les délais de
+        prise de décision.  
+        Ce contexte est intégré dans la stratégie de commercialisation
+        de votre bien.
+      </p>
 
-        <p class="subtitle" style="line-height:1.6;">
-          Les conditions de financement actuelles influencent directement le
-          comportement des acquéreurs, leur capacité d’emprunt et les délais de
-          prise de décision.  
-          Ce contexte est intégré dans la stratégie de commercialisation
-          de votre bien.
-        </p>
+    </section>
 
-      </section>
+  </div>
 
     <!-- CARTE DROITE : SUIVI CHIFFRÉ + ANALYSE -->
     <aside class="card">
