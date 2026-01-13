@@ -7,7 +7,7 @@ const CSV_URL =
   "https://www.banque-france.fr/system/files/2024-12/taux-credits-habitat.csv";
 
 /* =========================
-   RÉCUPÉRATION CSV
+  RÉCUPÉRATION CSV
 ========================= */
 function fetchCSV(url) {
   return new Promise((resolve, reject) => {
