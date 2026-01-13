@@ -1,7 +1,6 @@
 {
   "diffusion": {
     "remontee": {
-      "type": "Remontée automatique",
       "frequence": "Double remontée hebdomadaire automatique"
     }
   },
