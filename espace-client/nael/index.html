@@ -630,6 +630,75 @@
       pointer-events: none;
     }
 
+    /* =========================
+   STRATÉGIE 30–60–90 JOURS
+========================= */
+
+.timeline {
+  margin-top: 26px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 16px;
+  position: relative;
+}
+
+.timeline::before {
+  content: "";
+  position: absolute;
+  top: 28px;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(
+    to right,
+    rgba(198,169,119,0.25),
+    rgba(198,169,119,0.65),
+    rgba(198,169,119,0.25)
+  );
+}
+
+.timeline-step {
+  position: relative;
+  background: #ffffff;
+  border-radius: 18px;
+  border: 1px solid var(--border-soft);
+  padding: 18px 16px;
+  box-shadow: 0 14px 34px rgba(25,25,25,0.08);
+}
+
+.timeline-dot {
+  width: 14px;
+  height: 14px;
+  background: var(--accent);
+  border-radius: 50%;
+  position: absolute;
+  top: -21px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.timeline-days {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  color: var(--accent);
+  text-align: center;
+  margin-bottom: 6px;
+}
+
+.timeline-title {
+  text-align: center;
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+
+.timeline-text {
+  font-size: 13.5px;
+  line-height: 1.55;
+  color: var(--text-soft);
+  text-align: center;
+}
+
     @media (max-width: 880px) {
       /* Header */
       header {
@@ -820,6 +889,21 @@
         <li>YouTube : <a id="video-youtube" class="link">Ouvrir la vidéo →</a></li>
       </ul>
 
+    </section>
+
+    <!-- STRATÉGIE 30-60-90 JOURS -->
+    <section class="card" id="strategie-3090" style="margin-top:22px;">
+      <div class="pill">Stratégie de commercialisation</div>
+
+      <h2>Plan d’action à 30 · 60 · 90 jours</h2>
+
+      <p class="subtitle" id="strategie-intro">
+        —
+      </p>
+
+      <div class="timeline">
+        <!-- Injecté en JS -->
+      </div>
     </section>
 
     <!-- CONTEXTE DE MARCHÉ -->
@@ -1267,6 +1351,35 @@
       }
 
       const evo = data.stats?.evolution || null;
+
+      // =========================
+      // STRATÉGIE 30–60–90 JOURS
+      // =========================
+
+      const strategie = data.strategie_3090;
+
+      if (strategie) {
+        setText("strategie-intro", strategie.intro, "");
+
+        const container = document.querySelector(".timeline");
+
+        if (container && Array.isArray(strategie.etapes)) {
+          container.innerHTML = "";
+
+          strategie.etapes.forEach(step => {
+            const div = document.createElement("div");
+            div.className = "timeline-step";
+
+            div.innerHTML = `
+              <div class="timeline-dot"></div>
+              <div class="timeline-days">${escapeHTML(step.jours)}</div>
+              <div class="timeline-title">${escapeHTML(step.titre)}</div>
+              <div class="timeline-text">${escapeHTML(step.strategie)}</div>
+            `;
+
+            container.appendChild(div);
+          });
+        }
 
       // Titre / sous-titre (optionnel)
       if (data.bien?.nom) setText("bien-nom", data.bien.nom);
