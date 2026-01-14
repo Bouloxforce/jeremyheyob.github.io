@@ -1927,10 +1927,10 @@ function getPhaseIndexDepuisDate(dateISO) {
     })
     .catch((err) => {
       console.error("Erreur chargement espace client :", err);
-      setText("analyse-commentaire", "Aucune analyse disponibles pour le moment.", "");
+      setText("analyse-commentaire", "Aucune analyse pour le moment.", "");
       const ul = document.getElementById("historique-list");
       if (ul) {
-        ul.innerHTML = "<li class='subtitle'>Historique.</li>";
+        ul.innerHTML = "<li class='subtitle'>Aucun historique pour le moment.</li>";
       }
       const evo = document.getElementById("evolution-commentaire");
       if (evo) evo.textContent = "Aucune évolution dans le temps pour le moment.";
