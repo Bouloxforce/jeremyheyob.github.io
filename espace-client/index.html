@@ -1860,15 +1860,6 @@ function getPhaseIndexDepuisDate(dateISO) {
       }
 
       // =========================
-      // 9️⃣ LIMITE UX : MAX 3 ALERTES
-      // =========================
-      if (analysis.noAlertes === true) {
-        renderAlertes([]);
-      } else {
-        renderAlertes(alertes.slice(0, 3));
-      }
-
-      // =========================
       // 📈 PHASE DOMINANTE VIA ALERTES
       // =========================
 
