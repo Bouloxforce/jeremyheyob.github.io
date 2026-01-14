@@ -24,6 +24,41 @@ function toNumber(v) {
 }
 
 /* ======================================================
+   CUMUL AUTOMATIQUE DES STATS
+====================================================== */
+
+function updateCumul(stats) {
+  if (!stats) return stats;
+
+  const actuel = stats.actuel || {};
+  const cumul = stats.cumul || {};
+  const ajouts = stats.ajouts_manuels || {};
+
+  const keys = new Set([
+    ...Object.keys(actuel),
+    ...Object.keys(cumul),
+    ...Object.keys(ajouts)
+  ]);
+
+  const nouveauCumul = {};
+
+  keys.forEach(key => {
+    const vCumul = Number(cumul[key]) || 0;
+    const vActuel = Number(actuel[key]) || 0;
+    const vAjout  = Number(ajouts[key]) || 0;
+
+    nouveauCumul[key] = vCumul + vActuel + vAjout;
+  });
+
+  // 🔒 Sécurité : on vide les ajouts après intégration
+  stats.ajouts_manuels = {};
+
+  stats.cumul = nouveauCumul;
+
+  return stats;
+}
+
+/* ======================================================
    ANALYSE STRATÉGIQUE
 ====================================================== */
 
@@ -126,6 +161,9 @@ for (const bien of dossiers) {
 
   const raw = fs.readFileSync(filePath, "utf-8");
   const data = JSON.parse(raw);
+
+  // ✅ NOUVEAU : mise à jour automatique des cumulés
+  data.stats = updateCumul(data.stats);
 
   const analysis = buildAnalysis(data);
 
