@@ -17,7 +17,6 @@
   },
 
   "stats": {
-
     "actuel": {
       "appels": 0,
       "emails": 0,
@@ -38,7 +37,7 @@
     }
   },
 
-  "stats_history": []
+  "stats_history": [],
 
   "liens": {
     "agenceimmo": "",
