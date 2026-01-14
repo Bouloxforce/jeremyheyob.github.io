@@ -1632,6 +1632,8 @@ function getPhaseIndexDepuisDate(dateISO) {
       const vuesTotal    = getCumulStat(data, "vues_leboncoin");
       const visitesTotal = getCumulStat(data, "visites_effectuees");
       const offresTotal  = getCumulStat(data, "offres");
+
+      const appelsActuels = toNumber(data.stats?.actuel?.appels) || 0;
       const vuesActuellesAlerte = toNumber(data.stats?.actuel?.vues_leboncoin) || 0;
       const visitesActuelles = toNumber(data.stats?.actuel?.visites_effectuees) || 0;
       const offresActuelles = toNumber(data.stats?.actuel?.offres) || 0;
