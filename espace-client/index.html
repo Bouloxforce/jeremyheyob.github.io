@@ -1252,11 +1252,14 @@
     }
 
     // Tri décroissant par date (si date ISO)
-    const sorted = items.slice().sort((a, b) => {
-      const da = new Date(a.date || 0).getTime();
-      const db = new Date(b.date || 0).getTime();
-      return (db || 0) - (da || 0);
-    });
+    const sorted = items
+      .filter(e => e && e.date && e.action)
+      .slice()
+      .sort((a, b) => {
+        const da = new Date(a.date).getTime();
+        const db = new Date(b.date).getTime();
+        return db - da;
+      });
 
     sorted.forEach((e) => {
       const li = document.createElement("li");
@@ -1299,11 +1302,11 @@
 
   function escapeHTML(s) {
     return String(s || "")
-      .replaceAll("&", "&amp;")
-      .replaceAll("<", "&lt;")
-      .replaceAll(">", "&gt;")
-      .replaceAll('"', "&quot;")
-      .replaceAll("'", "&#039;");
+      .replace(/&/g, "&amp;")
+      .replace(/</g, "&lt;")
+      .replace(/>/g, "&gt;")
+      .replace(/"/g, "&quot;")
+      .replace(/'/g, "&#039;");
   }
 
   /* =========================
@@ -1429,7 +1432,7 @@ function getPhaseIndexDepuisDate(dateISO) {
   
   function calculateEvolutionFromHistory(history) {
     if (!Array.isArray(history) || history.length === 0) {
-      return null;
+      return { empty: true };
     }
 
     const now = new Date();
@@ -1525,7 +1528,10 @@ function render404() {
   `;
 }
 
-  fetch(`./${slug}/${slug}_data.json`, { cache: "no-store" })
+  fetch(`./${encodeURIComponent(slug)}/${encodeURIComponent(slug)}_data.json`, {
+    cache: "no-store"
+  })
+
     .then((r) => {
       if (r.status === 404) {
         render404();
@@ -1538,7 +1544,7 @@ function render404() {
     })
     .then((data) => {
       
-      const evo = calculateEvolutionFromHistory(data.stats_history);
+      const evo = calculateEvolutionFromHistory(data.stats_history || data.stats?.evolution);
       const analysis = data.analysis || {};
       const tauxActuel = Number(data.marche?.taux_credit?.moyen);
       const tauxPrecedent = Number(data.marche?.taux_credit?.precedent);
@@ -1707,7 +1713,7 @@ function render404() {
       const favorisActuels = toNumber(data.stats?.actuel?.favoris_leboncoin) || 0;
 
       // ✅ 1 appel tous les X vues
-      if (appelsTotal > 0 && vuesTotal > 0) {
+      if (isValidStat(appelsTotal) && isValidStat(vuesTotal)) {
         const x = Math.ceil(vuesTotal / appelsTotal);
         setLineText(
           "ratio-contact-vues",
@@ -1718,7 +1724,7 @@ function render404() {
       }
 
       // ✅ 1 visite tous les Y appels
-      if (visitesTotal > 0 && appelsTotal > 0) {
+      if (isValidStat(visitesTotal) && isValidStat(appelsTotal)) {
         const y = Math.ceil(appelsTotal / visitesTotal);
         setLineText(
           "ratio-visites-contacts",
@@ -1730,7 +1736,7 @@ function render404() {
 
       // ✅ 1 offre tous les X visites
 
-      if (offresTotal > 0 && visitesTotal > 0) {
+      if (isValidStat(offresTotal) && isValidStat(visitesTotal)) {
         const x = Math.ceil(visitesTotal / offresTotal);
         setLineText(
           "ratio-offres-visites",
@@ -1805,6 +1811,13 @@ function render404() {
 
       } else {
         setLineText("evolution-commentaire", "Aucune donnée d’évolution pour le moment.");
+      }
+
+      if (evo?.empty) {
+        setLineText(
+          "evolution-commentaire",
+          "Les données d’évolution seront disponibles après une semaine de suivi."
+        );
       }
 
       // =========================
@@ -1941,6 +1954,10 @@ function render404() {
           alertes.push("❗ Aucune visite effectuée à ce stade.");
         }
 
+      }
+
+      function isValidStat(n) {
+        return Number.isFinite(n) && n > 0;
       }
 
       // =========================
