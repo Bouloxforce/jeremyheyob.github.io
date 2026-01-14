@@ -1330,6 +1330,12 @@
     return Number.isFinite(n) ? n : null;
   }
 
+  function getCumulStat(data, key) {
+    const actuel = Number(data?.stats?.actuel?.[key]) || 0;
+    const manuel = Number(data?.stats?.ajouts_manuels?.[key]) || 0;
+    return actuel + manuel;
+  }
+
   function setLineText(id, text) {
     const el = document.getElementById(id);
     if (!el) return;
@@ -1535,13 +1541,13 @@ function getPhaseIndexDepuisDate(dateISO) {
       }
 
       // CUMUL
-      setText("stat-cumul-appels", data.stats?.cumul?.appels);
-      setText("stat-cumul-emails", data.stats?.cumul?.emails);
-      setText("stat-cumul-visites-effectuees", data.stats?.cumul?.visites_effectuees);
-      setText("stat-cumul-offres", data.stats?.cumul?.offres);
+      setText("stat-cumul-appels", getCumulStat(data, "appels"));
+      setText("stat-cumul-emails", getCumulStat(data, "emails"));
+      setText("stat-cumul-visites-effectuees", getCumulStat(data, "visites_effectuees"));
+      setText("stat-cumul-offres", getCumulStat(data, "offres"));
 
-      setText("stat-cumul-vues-leboncoin", data.stats?.cumul?.vues_leboncoin);
-      setText("stat-cumul-favoris-leboncoin", data.stats?.cumul?.favoris_leboncoin);
+      setText("stat-cumul-vues-leboncoin", getCumulStat(data, "vues_leboncoin"));
+      setText("stat-cumul-favoris-leboncoin", getCumulStat(data, "favoris_leboncoin"));
 
       // ACTUEL
       setText("stat-actuel-appels", data.stats?.actuel?.appels);
