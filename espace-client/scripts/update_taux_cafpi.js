@@ -31,7 +31,7 @@ async function run() {
       const duree = cells[0].textContent.trim();
 
       if (/25\s*ans/i.test(duree)) {
-        const tauxMoyenText = cells[1].textContent.trim(); // colonne "taux moyen"
+        const tauxMoyenText = cells[2].textContent.trim(); // colonne "taux moyen"
 
         const match = tauxMoyenText.match(/([0-9]+(?:[.,][0-9]+)?)/);
         if (match) {
