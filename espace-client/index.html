@@ -1046,9 +1046,15 @@
 
       <div class="luxury-divider"></div>
 
-      <h2 style="margin-top:0;">Mon analyse & perspectives</h2>
+      <h2 style="margin-top:0;">Mon analyse</h2>
       <p class="subtitle" id="analyse-commentaire" style="white-space:pre-line;">
         Chargement de l’analyse…
+      </p>
+
+      <p class="subtitle analysis-highlight"
+         id="analyse-empty"
+         style="display:none;">
+        Mon analyse sera disponibles dès que des données seront exploitables.
       </p>
 
       <div class="luxury-divider"></div>
@@ -1675,9 +1681,21 @@ function getPhaseIndexDepuisDate(dateISO) {
       }
 
       // =========================
-      // ANALYSE STRATÉGIQUE
+      // 🧠 ANALYSE
       // =========================
-      const analysis = data.analysis || { text: "", noAlertes: false };
+      const analyseText = (analysis.text || "").trim();
+
+      const analyseEl = document.getElementById("analyse-commentaire");
+      const analyseEmptyEl = document.getElementById("analyse-empty");
+
+      if (analyseText) {
+        analyseEl.textContent = analyseText;
+        analyseEl.style.display = "block";
+        if (analyseEmptyEl) analyseEmptyEl.style.display = "none";
+      } else {
+        analyseEl.style.display = "none";
+        if (analyseEmptyEl) analyseEmptyEl.style.display = "block";
+      }
 
       /* =========================
          ✅ AJOUT 4 : alertes automatiques (objectives)
