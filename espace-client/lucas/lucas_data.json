@@ -17,13 +17,25 @@
   },
 
   "stats": {
-    "appels": 0,
-    "emails": 0,
-    "visites_effectuees": 0,
-    "visites_programmees": 0,
-    "offres": 0,
-    "vues_leboncoin": 0,
-    "favoris_leboncoin": 0,
+    "cumul": {
+      "appels": 0,
+      "emails": 0,
+      "visites_effectuees": 0,
+      "visites_programmees": 0,
+      "offres": 0,
+      "vues_leboncoin": 0,
+      "favoris_leboncoin": 0
+    },
+
+    "actuel": {
+      "appels": 0,
+      "emails": 0,
+      "visites_effectuees": 0,
+      "visites_programmees": 0,
+      "offres": 0,
+      "vues_leboncoin": 0,
+      "favoris_leboncoin": 0
+    },
 
     "evolution": {
       "vues_semaine_actuelle": 0,
