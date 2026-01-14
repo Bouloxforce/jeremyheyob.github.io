@@ -37,6 +37,15 @@
       "favoris_leboncoin": 0
     },
 
+    "ajouts_manuels": {
+      "appels": 0,
+      "emails": 0,
+      "visites_effectuees": 0,
+      "offres": 0,
+      "vues_leboncoin": 0,
+      "favoris_leboncoin": 0
+    },
+
     "evolution": {
       "vues_semaine_actuelle": 0,
       "vues_semaine_precedente": 0,
