@@ -1378,6 +1378,26 @@ function getPhaseIndexDepuisDate(dateISO) {
   return 2;
 }
 
+  function pushEvolution(lines, label, actuel, precedent) {
+    if (
+      actuel == null ||
+      precedent == null ||
+      (actuel === 0 && precedent === 0)
+    ) {
+      return; // ⛔ aucune donnée → on n’affiche rien
+    }
+
+    const diff = actuel - precedent;
+
+    if (diff > 0) {
+      lines.push(`${label} : hausse de +${diff}`);
+    } else if (diff < 0) {
+      lines.push(`${label} : baisse de ${Math.abs(diff)}`);
+    } else {
+      lines.push(`${label} : stable`);
+    }
+  }
+
   fetch(`./${slug}/${slug}_data.json`, { cache: "no-store" })
     .then((r) => {
       if (!r.ok) throw new Error("data.json introuvable");
@@ -1597,7 +1617,7 @@ function getPhaseIndexDepuisDate(dateISO) {
 
       if (evo) {
 
-        let lines = [];
+        const lines = [];
 
         const vuesActuelles = toNumber(evo.vues_semaine_actuelle);
         const vuesPrecedentes = toNumber(evo.vues_semaine_precedente);
@@ -1608,46 +1628,18 @@ function getPhaseIndexDepuisDate(dateISO) {
         const visActuelles = toNumber(evo.visites_semaine_actuelle);
         const visPrecedentes = toNumber(evo.visites_semaine_precedente);
 
-      // CONTACTS
-      if (contactsActuels != null && contactsPrecedents != null) {
-        const diff = contactsActuels - contactsPrecedents;
-        if (diff > 0) lines.push("Contacts : hausse de +" + diff);
-        else if (diff < 0) lines.push("Contacts : baisse de " + Math.abs(diff));
-        else lines.push("Contacts : stable");
-      }
+        pushEvolution(lines, "Contacts", contactsActuels, contactsPrecedents);
+        pushEvolution(lines, "Vues", vuesActuelles, vuesPrecedentes);
+        pushEvolution(lines, "Favoris", favActuels, favPrecedents);
+        pushEvolution(lines, "Visites", visActuelles, visPrecedentes);
 
-
-      // VUES
-      if (vuesActuelles != null && vuesPrecedentes != null) {
-        const diff = vuesActuelles - vuesPrecedentes;
-        if (diff > 0) lines.push("Vues : hausse de +" + diff);
-        else if (diff < 0) lines.push("Vues : baisse de " + Math.abs(diff));
-        else lines.push("Vues : stable");
-      }
-
-      // FAVORIS
-      if (favActuels != null && favPrecedents != null) {
-        const diff = favActuels - favPrecedents;
-        if (diff > 0) lines.push("Favoris : hausse de +" + diff);
-        else if (diff < 0) lines.push("Favoris : baisse de " + Math.abs(diff));
-        else lines.push("Favoris : stable");
-      }
-
-      // VISITES
-      if (visActuelles != null && visPrecedentes != null) {
-        const diff = visActuelles - visPrecedentes;
-        if (diff > 0) lines.push("Visites : hausse de +" + diff);
-        else if (diff < 0) lines.push("Visites : baisse de " + Math.abs(diff));
-        else lines.push("Visites : stable");
-      }
-
-      const evoEl = document.getElementById("evolution-commentaire");
-      if (evoEl) {
-        evoEl.textContent = lines.length
-          ? lines.join("\n")
-          : "Pas de données d’évolution disponibles pour le moment.";
-        evoEl.classList.add("analysis-highlight");
-      }
+        const evoEl = document.getElementById("evolution-commentaire");
+        if (evoEl) {
+          evoEl.textContent = lines.length
+            ? lines.join("\n")
+            : "Pas de données d’évolution disponibles pour le moment.";
+          evoEl.classList.add("analysis-highlight");
+        }
 
       } else {
         setLineText("evolution-commentaire", "Aucune donnée d’évolution pour le moment.");
