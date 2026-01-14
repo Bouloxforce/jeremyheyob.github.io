@@ -45,6 +45,10 @@ jobs:
           to: contact@jeremyheyob.fr
           from: "Analyse automatique <contact@jeremyheyob.fr>"
           body: |
-            Une analyse recommande un rendez-vous client.
-            Merci de prendre contact avec le client concerné.
+            📞 Un rendez-vous est recommandé suite à l’analyse automatique.
+
+            Bien(s) concerné(s) :
+            •  ${{ env.RDV_BIENS }}
+
+            Merci de contacter rapidement le(s) client(s) afin d’ajuster la stratégie.
 
