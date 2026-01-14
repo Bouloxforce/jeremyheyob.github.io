@@ -1164,6 +1164,10 @@
 
 <!-- ✅ Script unique : lecture d’un seul data.json -->
 <script>
+  function getStatCumul(data, key) {
+    return toNumber(data?.stats?.cumul?.[key]) || 0;
+  }
+  
   const params = new URLSearchParams(window.location.search);
   const slug = params.get("bien");
 
@@ -1559,10 +1563,10 @@ function getPhaseIndexDepuisDate(dateISO) {
          - Emails exclus volontairement
       ========================= */
 
-      const appels  = toNumber(data.stats?.appels) || 0;
-      const vues = toNumber(data.stats?.vues_leboncoin) || 0;
-      const visites = toNumber(data.stats?.visites_effectuees) || 0;
-      const offres  = toNumber(data.stats?.offres) || 0;
+      const appels  = toNumber(data.stats?.cumul?.appels) || 0;
+      const vues    = toNumber(data.stats?.cumul?.vues_leboncoin) || 0;
+      const visites = toNumber(data.stats?.cumul?.visites_effectuees) || 0;
+      const offres  = toNumber(data.stats?.cumul?.offres) || 0;
 
       // ✅ 1 appel tous les X vues
       if (appels > 0 && vues != null && vues > 0) {
