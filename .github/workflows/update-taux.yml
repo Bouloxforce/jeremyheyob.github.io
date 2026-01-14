@@ -2,7 +2,7 @@ name: Mise à jour taux immobilier
 
 on:
   schedule:
-    - cron: "0 6 10 * *"
+    - cron: "0 6 10 * *"   # Tous les 10 du mois à 06:00
   workflow_dispatch:
 
 permissions:
@@ -11,14 +11,20 @@ permissions:
 jobs:
   update:
     runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
 
-      - uses: actions/setup-node@v4
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
         with:
           node-version: 20
 
-      - name: Mise à jour taux BDF
+      - name: Install dependencies
+        run: npm install
+
+      - name: Mise à jour taux immobilier
         run: node espace-client/scripts/update_taux_cafpi.js
 
       - name: Commit changes
