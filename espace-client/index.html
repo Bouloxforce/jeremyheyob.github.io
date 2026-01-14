@@ -1734,7 +1734,7 @@ function getPhaseIndexDepuisDate(dateISO) {
       // 1️⃣ AUCUN APPEL
       // =========================
       if (appelsActuels === 0) {
-        alertes.push("❗ Aucun appel enregistré à ce stade.");
+        alertes.push("❗ Aucun appel reçu à ce stade.");
       }
 
       // =========================
@@ -1769,7 +1769,7 @@ function getPhaseIndexDepuisDate(dateISO) {
       ) {
         alertes.push(
           "⚠️ Faible taux de contacts : 1 appel pour " +
-          Math.round(vues / appels) +
+          Math.round(vuesActuellesAlerte / appelsActuels) +
           " vues."
         );
       }
