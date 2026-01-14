@@ -3,19 +3,16 @@
     "nom": "",
     "sous_titre": "Suivi de commercialisation"
   },
-
   "diffusion": {
     "remontee": {
       "frequence": "Double remontée hebdomadaire automatique"
     }
   },
-
   "dates": {
     "mandat_signe": "",
     "mise_en_ligne": "",
     "derniere_remontee": ""
   },
-
   "stats": {
     "actuel": {
       "appels": 0,
@@ -26,19 +23,18 @@
       "vues_leboncoin": 0,
       "favoris_leboncoin": 0
     },
-
-    "ajouts_manuels": {
+    "ajouts_manuels": {},
+    "cumul": {
       "appels": 0,
       "emails": 0,
       "visites_effectuees": 0,
+      "visites_programmees": 0,
       "offres": 0,
       "vues_leboncoin": 0,
       "favoris_leboncoin": 0
     }
   },
-
   "stats_history": [],
-
   "liens": {
     "agenceimmo": "",
     "leboncoin": "",
@@ -55,7 +51,6 @@
     "pagesjaunes": "",
     "google": ""
   },
-
   "marche": {
     "taux_credit": {
       "moyen": null,
@@ -65,7 +60,6 @@
       "periode": ""
     }
   },
-
   "strategie_3090": {
     "intro": "La commercialisation est structurée par paliers afin d’adapter la stratégie au comportement réel des acquéreurs et au contexte de marché.",
     "etapes": [
@@ -86,13 +80,11 @@
       }
     ]
   },
-
   "historique": [],
-
   "analysis": {
-    "text": "",
+    "text": "Analyse indisponible : date de mise en ligne manquante.",
     "proposeRDV": false,
     "noAlertes": false,
-    "generatedAt": null
+    "generatedAt": "2026-01-14T18:37:11.297Z"
   }
 }
