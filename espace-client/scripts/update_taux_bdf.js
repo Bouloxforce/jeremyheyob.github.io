@@ -1,59 +1,74 @@
+/* ======================================================
+   IMPORTS
+====================================================== */
+
 import fs from "fs";
 import https from "https";
 import path from "path";
 import { execSync } from "child_process";
 
-const CSV_URL =
-  "https://www.banque-france.fr/system/files/2024-12/taux-credits-habitat.csv";
+/* ======================================================
+   CONFIGURATION – SOURCE BANQUE DE FRANCE (WEBSTAT)
+====================================================== */
 
-/* =========================
-   RÉCUPÉRATION CSV
-========================= */
-function fetchCSV(url) {
+// Série officielle Banque de France
+// MIR1 – Crédits nouveaux à l’habitat – durée ≥ 20 ans
+const WEBSTAT_URL =
+  "https://api.webstat.banque-france.fr/webstat-fr/v1/data/series/MIR1/MIR1.M.FR.B.A22.A.R.A.2254U6.EUR.N";
+
+/* ======================================================
+   FETCH JSON (ROBUSTE)
+====================================================== */
+
+function fetchJSON(url) {
   return new Promise((resolve, reject) => {
     https
       .get(url, res => {
         let data = "";
+
         res.on("data", chunk => (data += chunk));
-        res.on("end", () => resolve(data));
+        res.on("end", () => {
+          try {
+            resolve(JSON.parse(data));
+          } catch (err) {
+            reject(
+              new Error("❌ Impossible de parser le JSON Webstat")
+            );
+          }
+        });
       })
-      .on("error", reject);
+      .on("error", err => {
+        reject(
+          new Error("❌ Erreur réseau Webstat : " + err.message)
+        );
+      });
   });
 }
 
-/* =========================
-   EXTRACTION TAUX (ROBUSTE)
-========================= */
-function extractTaux(csv) {
-  const lines = csv.split("\n");
+/* ======================================================
+   EXTRACTION DU DERNIER TAUX DISPONIBLE
+====================================================== */
 
-  const target = lines.find(line => {
-    const l = line.toLowerCase();
-    return (
-      l.includes("crédit") &&
-      l.includes("habitat") &&
-      (l.includes("20") || l.includes("plus"))
-    );
-  });
+function extractLatestRateFromWebstat(json) {
+  const observations =
+    json?.series?.[0]?.observations;
 
-  if (!target) return null;
-
-  const cols = target.split(";");
-
-  // Recherche du dernier nombre valide (robuste aux changements de colonnes)
-  for (let i = cols.length - 1; i >= 0; i--) {
-    const value = parseFloat(cols[i].replace(",", "."));
-    if (Number.isFinite(value)) {
-      return value;
-    }
+  if (!Array.isArray(observations) || observations.length === 0) {
+    return null;
   }
 
-  return null;
+  // Dernière observation chronologique
+  const last = observations[observations.length - 1];
+
+  const value = Number(last?.value);
+
+  return Number.isFinite(value) ? value : null;
 }
 
-/* =========================
-   LECTURE TAUX PRÉCÉDENT VIA GIT
-========================= */
+/* ======================================================
+   LECTURE DU TAUX PRÉCÉDENT (GIT)
+====================================================== */
+
 function readPreviousRateFromGit(filePath) {
   try {
     const previousFile = execSync(
@@ -62,26 +77,31 @@ function readPreviousRateFromGit(filePath) {
     );
 
     const previousData = JSON.parse(previousFile);
+
     return previousData?.marche?.taux_credit?.moyen ?? null;
 
   } catch {
-    // Premier run / fichier absent / historique indisponible
+    // Premier run / historique indisponible
     return null;
   }
 }
 
-/* =========================
+/* ======================================================
    MAIN
-========================= */
-async function run() {
-  const csv = await fetchCSV(CSV_URL);
-  const taux = extractTaux(csv);
+====================================================== */
 
-  // 🔒 Sécurité : ne casse pas le workflow si la BDF change
-  if (!taux) {
-    console.warn("⚠️ Taux non trouvé – aucune mise à jour effectuée");
+async function run() {
+  console.log("📊 Récupération du taux Banque de France (Webstat)…");
+
+  const json = await fetchJSON(WEBSTAT_URL);
+  const taux = extractLatestRateFromWebstat(json);
+
+  if (!Number.isFinite(taux)) {
+    console.warn("⚠️ Aucun taux valide trouvé – arrêt sans écriture");
     return;
   }
+
+  console.log(`✔ Taux récupéré : ${taux.toFixed(2)} %`);
 
   const baseDir = "espace-client";
 
@@ -95,13 +115,16 @@ async function run() {
     .filter(d => d.isDirectory())
     .map(d => d.name);
 
-  const periode = new Date().toISOString().slice(0, 7);
+  const periode = new Date().toISOString().slice(0, 7); // YYYY-MM
 
   for (const bien of dossiers) {
     const filePath = path.join(baseDir, bien, `${bien}_data.json`);
+
     if (!fs.existsSync(filePath)) continue;
 
-    const data = JSON.parse(fs.readFileSync(filePath, "utf-8"));
+    const data = JSON.parse(
+      fs.readFileSync(filePath, "utf-8")
+    );
 
     const tauxPrecedent = readPreviousRateFromGit(filePath);
 
@@ -110,15 +133,25 @@ async function run() {
       moyen: taux,
       precedent: tauxPrecedent,
       duree: "25 ans",
-      source: "Banque de France",
+      source: "Banque de France – Webstat (MIR1)",
       periode
     };
 
-    fs.writeFileSync(filePath, JSON.stringify(data, null, 2));
-    console.log(`✔ Taux mis à jour pour ${bien}`);
+    fs.writeFileSync(
+      filePath,
+      JSON.stringify(data, null, 2),
+      "utf-8"
+    );
+
+    console.log(`✔ Taux mis à jour pour : ${bien}`);
   }
 }
 
+/* ======================================================
+   EXECUTION
+====================================================== */
+
 run().catch(err => {
-  console.error("❌ Erreur script taux BDF :", err);
+  console.error("❌ Erreur critique mise à jour taux :", err);
+  process.exit(1);
 });
