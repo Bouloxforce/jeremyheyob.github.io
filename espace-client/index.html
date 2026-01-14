@@ -1803,17 +1803,18 @@ function getPhaseIndexDepuisDate(dateISO) {
       // 8️⃣ BAISSE SIGNIFICATIVE DE VISIBILITÉ (7 jours)
       // =========================
 
-      const vuesActuelles = toNumber(evo?.vues_semaine_actuelle);
-      const vuesPrecedentes = toNumber(evo?.vues_semaine_precedente);
+      const vuesActuellesEvo = toNumber(evo?.vues_semaine_actuelle);
+      const vuesPrecedentesEvo = toNumber(evo?.vues_semaine_precedente);
 
       const seuilBaissePourcent = toNumber(data.alertes?.seuil_baisse_visibilite_pourcent) || 15;
 
       if (
-        vuesActuelles != null &&
-        vuesPrecedentes != null &&
-        vuesPrecedentes > 0
+        vuesActuellesEvo != null &&
+        vuesPrecedentesEvo != null &&
+        vuesPrecedentesEvo > 0
       ) {
-        const variation = ((vuesActuelles - vuesPrecedentes) / vuesPrecedentes) * 100;
+        const variation =
+          ((vuesActuellesEvo - vuesPrecedentesEvo) / vuesPrecedentesEvo) * 100;
 
         if (variation <= -seuilBaissePourcent) {
           alertes.push(
