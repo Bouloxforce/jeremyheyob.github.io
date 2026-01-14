@@ -1221,7 +1221,7 @@
   function formatDateISO(iso) {
     if (!iso) return "—";
     const d = new Date(iso);
-    if (isNaN(d.getTime())) return String(iso); // si tu passes déjà "19/09/2025"
+    if (isNaN(d.getTime())) return "—"; // si tu passes déjà "19/09/2025"
     return d.toLocaleDateString("fr-FR");
   }
 
@@ -1330,11 +1330,6 @@
     return Number.isFinite(n) ? n : null;
   }
 
-  function toNumber(v) {
-    const n = Number(v);
-    return Number.isFinite(n) ? n : null;
-  }
-
   function isValidStat(n) {
     return Number.isFinite(n) && n > 0;
   }
@@ -1418,6 +1413,30 @@ function getPhaseIndexDepuisDate(dateISO) {
 
   return 2;
 }
+
+      // =========================
+      // 📈 PHASE DOMINANTE VIA ALERTES
+      // =========================
+
+      function getPhaseIndexDepuisAlertes(data) {
+        if (!data) return null;
+
+        const appelsTotal  = getCumulStat(data, "appels");
+        const vuesTotal    = getCumulStat(data, "vues_leboncoin");
+        const visitesTotal = getCumulStat(data, "visites_effectuees");
+        const offresTotal  = getCumulStat(data, "offres");
+
+        // Phase 1 – Lancement : pas encore de visites
+        if (visitesTotal === 0) return 0;
+
+        // Phase 2 – Ajustement : visibilité mais peu de contacts
+        if (vuesTotal > 100 && appelsTotal <= 2) return 1;
+
+        // Phase 3 – Décision : visites sans offre
+        if (visitesTotal >= 3 && offresTotal === 0) return 2;
+
+        return null;
+      }
 
   function pushEvolution(lines, label, actuel, precedent) {
     if (
@@ -1990,30 +2009,6 @@ function render404() {
       }
 
       // =========================
-      // 📈 PHASE DOMINANTE VIA ALERTES
-      // =========================
-
-      function getPhaseIndexDepuisAlertes(data) {
-        if (!data) return null;
-
-        const appelsTotal  = getCumulStat(data, "appels");
-        const vuesTotal    = getCumulStat(data, "vues_leboncoin");
-        const visitesTotal = getCumulStat(data, "visites_effectuees");
-        const offresTotal  = getCumulStat(data, "offres");
-
-        // Phase 1 – Lancement : pas encore de visites
-        if (visitesTotal === 0) return 0;
-
-        // Phase 2 – Ajustement : visibilité mais peu de contacts
-        if (vuesTotal > 100 && appelsTotal <= 2) return 1;
-
-        // Phase 3 – Décision : visites sans offre
-        if (visitesTotal >= 3 && offresTotal === 0) return 2;
-
-        return null;
-      }
-
-      // =========================
       // 🔥 PHASE FINALE À AFFICHER
       // =========================
 
@@ -2039,9 +2034,6 @@ function render404() {
           steps[phaseFinale].classList.add("is-active");
         }
       }
-
-      // ANALYSE
-      setText("analyse-commentaire", analysis.text, "");
 
       // HISTORIQUE
       renderHistorique(data.historique);
