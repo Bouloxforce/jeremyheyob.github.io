@@ -53,8 +53,8 @@
   },
   "marche": {
     "taux_credit": {
-      "moyen": null,
-      "precedent": null,
+      "moyen": "",
+      "precedent": "",
       "duree": "25 ans",
       "source": "Banque de France",
       "periode": ""
