@@ -53,11 +53,11 @@
   },
   "marche": {
     "taux_credit": {
-      "moyen": "",
-      "precedent": "",
+      "moyen": 4.00,
+      "precedent": 3.50,
       "duree": "25 ans",
       "source": "Banque de France",
-      "periode": ""
+      "periode": "01 -2026"
     }
   },
   "strategie_3090": {
