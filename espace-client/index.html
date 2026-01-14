@@ -1464,13 +1464,80 @@ function getPhaseIndexDepuisDate(dateISO) {
     };
   }
 
+function render404() {
+  document.title = "404 – Bien introuvable | Jérémy Heyob Immobilier";
+
+  document.body.innerHTML = `
+    <div style="
+      min-height:100vh;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      background:#FFFBF5;
+      color:#191919;
+      font-family:-apple-system,BlinkMacSystemFont,system-ui,sans-serif;
+      padding:24px;
+      text-align:center;
+    ">
+      <div style="
+        background:#ffffff;
+        border-radius:24px;
+        box-shadow:0 20px 50px rgba(25,25,25,0.12);
+        padding:40px 32px;
+        max-width:520px;
+        width:100%;
+      ">
+        <div style="
+          font-size:64px;
+          font-weight:900;
+          color:#C6AA77;
+          margin-bottom:12px;
+        ">404</div>
+
+        <h1 style="margin:0 0 12px;font-size:22px;">
+          Bien introuvable
+        </h1>
+
+        <p style="
+          color:#7A7A7A;
+          font-size:15px;
+          line-height:1.6;
+          margin-bottom:28px;
+        ">
+          Le bien demandé n’existe pas ou n’est plus accessible.<br>
+          Merci de vérifier le lien transmis.
+        </p>
+
+        <a href="/"
+           style="
+             display:inline-block;
+             padding:12px 22px;
+             border-radius:999px;
+             background:linear-gradient(135deg,#fbe4b9,#f3c98b);
+             color:#7a5a29;
+             font-weight:600;
+             text-decoration:none;
+           ">
+          Retour au site
+        </a>
+      </div>
+    </div>
+  `;
+}
+
   fetch(`./${slug}/${slug}_data.json`, { cache: "no-store" })
     .then((r) => {
-      if (!r.ok) throw new Error("data.json introuvable");
+      if (r.status === 404) {
+        render404();
+        throw new Error("404");
+      }
+      if (!r.ok) {
+        throw new Error("Erreur chargement data.json");
+      }
       return r.json();
     })
     .then((data) => {
-
+      
       const evo = calculateEvolutionFromHistory(data.stats_history);
       const analysis = data.analysis || {};
       const tauxActuel = Number(data.marche?.taux_credit?.moyen);
@@ -1943,24 +2010,12 @@ function getPhaseIndexDepuisDate(dateISO) {
       // HISTORIQUE
       renderHistorique(data.historique);
     })
+
     .catch((err) => {
       console.error("Erreur chargement espace client :", err);
-      setText("analyse-commentaire", "Aucune analyse pour le moment.", "");
-      const ul = document.getElementById("historique-list");
-      if (ul) {
-        ul.innerHTML = "<li class='subtitle'>Aucun historique pour le moment.</li>";
-      }
-      const evo = document.getElementById("evolution-commentaire");
-      if (evo) evo.textContent = "Aucune évolution dans le temps pour le moment.";
-      const a = document.getElementById("alertes-list");
-      if (a) a.innerHTML = "<li class='subtitle'>Aucune alerte pour le moment.</li>";
-      const j = document.getElementById("jours-depuis-derniere-remontee");
-      if (j) j.textContent = "—";
-      const r1 = document.getElementById("ratio-contact-vues");
-      if (r1) r1.textContent = "—";
-      const r2 = document.getElementById("ratio-visites-contacts");
-      if (r2) r2.textContent = "—";
+      render404();
     });
+  
 </script>
 
 </body>
