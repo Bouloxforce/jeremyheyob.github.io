@@ -11,9 +11,9 @@
   },
 
   "dates": {
-    "mandat_signe": "",
-    "mise_en_ligne": "",
-    "derniere_remontee": ""
+    "mandat_signe": "null",
+    "mise_en_ligne": "null",
+    "derniere_remontee": "null"
   },
 
   "stats": {
