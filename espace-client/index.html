@@ -1352,7 +1352,7 @@ function getPhaseIndexDepuisDate(dateISO) {
   return 2;
 }
 
-  fetch(`${slug}/${slug}_data.json`, { cache: "no-store" })
+  fetch(`./${slug}/${slug}_data.json`, { cache: "no-store" })
     .then((r) => {
       if (!r.ok) throw new Error("data.json introuvable");
       return r.json();
