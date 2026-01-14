@@ -1023,6 +1023,10 @@
         <li id="dernier-visite-delai">—</li>
       </ul>
 
+      <p class="subtitle" id="ratio-empty" style="display:none;">
+        Pas de taux de transformation disponibles pour le moment.
+      </p>
+
       <!-- ✅ AJOUT 3 : Évolution dans le temps -->
       <div class="luxury-divider"></div>
 
@@ -1617,6 +1621,27 @@ function getPhaseIndexDepuisDate(dateISO) {
         );
       } else {
         setLineText("dernier-visite-delai", "", "—");
+      }
+
+      // =========================
+      // 🧮 FALLBACK TAUX DE TRANSFORMATION
+      // =========================
+      const ratioIds = [
+        "ratio-contact-vues",
+        "ratio-visites-contacts",
+        "ratio-offres-visites",
+        "dernier-visite-delai"
+      ];
+
+      const hasRatio = ratioIds.some(id => {
+        const el = document.getElementById(id);
+        return el && el.style.display !== "none" && el.textContent.trim() !== "—";
+      });
+
+      const ratioEmpty = document.getElementById("ratio-empty");
+
+      if (ratioEmpty) {
+        ratioEmpty.style.display = hasRatio ? "none" : "block";
       }
 
       if (evo) {
