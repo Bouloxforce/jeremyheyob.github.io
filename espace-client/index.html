@@ -1179,9 +1179,9 @@
   const params = new URLSearchParams(window.location.search);
   const slug = params.get("bien");
 
-  if (!slug) {
-    alert("Aucun bien sélectionné.");
-    throw new Error("Paramètre ?bien manquant dans l’URL");
+  if (!slug || !/^[a-z0-9-_]+$/i.test(slug)) {
+    render404();
+    return;
   }
 
   const photo = document.getElementById("photo-principale");
@@ -1328,6 +1328,15 @@
   function toNumber(v) {
     const n = Number(v);
     return Number.isFinite(n) ? n : null;
+  }
+
+  function toNumber(v) {
+    const n = Number(v);
+    return Number.isFinite(n) ? n : null;
+  }
+
+  function isValidStat(n) {
+    return Number.isFinite(n) && n > 0;
   }
 
   function getCumulStat(data, key) {
@@ -1783,40 +1792,54 @@ function render404() {
         ratioEmpty.style.display = hasRatio ? "none" : "block";
       }
 
-      if (evo) {
-
-        const lines = [];
-
-        const vuesActuelles = toNumber(evo.vues_semaine_actuelle);
-        const vuesPrecedentes = toNumber(evo.vues_semaine_precedente);
-        const contactsActuels = toNumber(evo.contacts_semaine_actuelle);
-        const contactsPrecedents = toNumber(evo.contacts_semaine_precedente);
-        const favActuels = toNumber(evo.favoris_semaine_actuelle);
-        const favPrecedents = toNumber(evo.favoris_semaine_precedente);
-        const visActuelles = toNumber(evo.visites_semaine_actuelle);
-        const visPrecedentes = toNumber(evo.visites_semaine_precedente);
-
-        pushEvolution(lines, "Contacts", contactsActuels, contactsPrecedents);
-        pushEvolution(lines, "Vues", vuesActuelles, vuesPrecedentes);
-        pushEvolution(lines, "Favoris", favActuels, favPrecedents);
-        pushEvolution(lines, "Visites", visActuelles, visPrecedentes);
-
-        const evoEl = document.getElementById("evolution-commentaire");
-        if (evoEl) {
-          evoEl.textContent = lines.length
-            ? lines.join("\n")
-            : "Pas de données d’évolution disponibles pour le moment.";
-          evoEl.classList.add("analysis-highlight");
-        }
-
-      } else {
-        setLineText("evolution-commentaire", "Aucune donnée d’évolution pour le moment.");
-      }
+      // =========================
+      // 📈 ÉVOLUTION DANS LE TEMPS (BLOC UNIQUE)
+      // =========================
 
       if (evo?.empty) {
+
         setLineText(
           "evolution-commentaire",
           "Les données d’évolution seront disponibles après une semaine de suivi."
+        );
+
+      } else if (evo) {
+
+        const lines = [];
+
+        pushEvolution(
+          lines,
+          "Contacts",
+          toNumber(evo.contacts_semaine_actuelle),
+          toNumber(evo.contacts_semaine_precedente)
+        );
+
+        pushEvolution(
+          lines,
+          "Vues",
+          toNumber(evo.vues_semaine_actuelle),
+          toNumber(evo.vues_semaine_precedente)
+        );
+
+        pushEvolution(
+          lines,
+          "Favoris",
+          toNumber(evo.favoris_semaine_actuelle),
+          toNumber(evo.favoris_semaine_precedente)
+        );
+
+        pushEvolution(
+          lines,
+          "Visites",
+          toNumber(evo.visites_semaine_actuelle),
+          toNumber(evo.visites_semaine_precedente)
+        );
+
+        setLineText(
+          "evolution-commentaire",
+          lines.length
+            ? lines.join("\n")
+            : "Pas de données d’évolution disponibles pour le moment."
         );
       }
 
@@ -1954,10 +1977,6 @@ function render404() {
           alertes.push("❗ Aucune visite effectuée à ce stade.");
         }
 
-      }
-
-      function isValidStat(n) {
-        return Number.isFinite(n) && n > 0;
       }
 
       // =========================
