@@ -14,7 +14,7 @@ import { execSync } from "child_process";
 // Série officielle Banque de France
 // MIR1 – Crédits nouveaux à l’habitat – durée ≥ 20 ans
 const WEBSTAT_URL =
-  "https://api.webstat.banque-france.fr/webstat-fr/v1/data/series/MIR1/MIR1.M.FR.B.A22.A.R.A.2254U6.EUR.N";
+  "https://api.webstat.banque-france.fr/webstat-fr/v1/data/observations/MIR1/MIR1.M.FR.B.A22.A.R.A.2254U6.EUR.N";
 
 /* ======================================================
    FETCH JSON (ROBUSTE)
