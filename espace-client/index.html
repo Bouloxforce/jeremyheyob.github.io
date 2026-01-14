@@ -1175,9 +1175,6 @@
 
 <!-- ✅ Script unique : lecture d’un seul data.json -->
 <script>
-  function getStatCumul(data, key) {
-    return toNumber(data?.stats?.cumul?.[key]) || 0;
-  }
   
   const params = new URLSearchParams(window.location.search);
   const slug = params.get("bien");
@@ -1429,6 +1426,43 @@ function getPhaseIndexDepuisDate(dateISO) {
       lines.push(`${label} : stable`);
     }
   }
+  
+  function calculateEvolutionFromHistory(history) {
+    if (!Array.isArray(history) || history.length === 0) {
+      return null;
+    }
+
+    const now = new Date();
+
+    const startCurrent = new Date(now);
+    startCurrent.setDate(now.getDate() - 6);
+
+    const startPrevious = new Date(now);
+    startPrevious.setDate(now.getDate() - 13);
+
+    const endPrevious = new Date(now);
+    endPrevious.setDate(now.getDate() - 7);
+
+    function sum(key, from, to) {
+      return history
+        .filter(e => {
+          const d = new Date(e.date);
+          return d >= from && d <= to;
+        })
+        .reduce((s, e) => s + (Number(e[key]) || 0), 0);
+    }
+
+    return {
+      vues_semaine_actuelle: sum("vues_leboncoin", startCurrent, now),
+      vues_semaine_precedente: sum("vues_leboncoin", startPrevious, endPrevious),
+      contacts_semaine_actuelle: sum("contacts", startCurrent, now),
+      contacts_semaine_precedente: sum("contacts", startPrevious, endPrevious),
+      favoris_semaine_actuelle: sum("favoris_leboncoin", startCurrent, now),
+      favoris_semaine_precedente: sum("favoris_leboncoin", startPrevious, endPrevious),
+      visites_semaine_actuelle: sum("visites", startCurrent, now),
+      visites_semaine_precedente: sum("visites", startPrevious, endPrevious)
+    };
+  }
 
   fetch(`./${slug}/${slug}_data.json`, { cache: "no-store" })
     .then((r) => {
@@ -1437,6 +1471,7 @@ function getPhaseIndexDepuisDate(dateISO) {
     })
     .then((data) => {
 
+      const evo = calculateEvolutionFromHistory(data.stats_history);
       const analysis = data.analysis || {};
       const tauxActuel = Number(data.marche?.taux_credit?.moyen);
       const tauxPrecedent = Number(data.marche?.taux_credit?.precedent);
@@ -1481,8 +1516,6 @@ function getPhaseIndexDepuisDate(dateISO) {
           varEl.style.display = "none";
         }
       }
-
-      const evo = data.stats?.evolution || null;
 
       // =========================
       // STRATÉGIE 30–60–90 JOURS
@@ -1595,16 +1628,16 @@ function getPhaseIndexDepuisDate(dateISO) {
       // =========================
       // 🔴 DONNÉES ACTUELLES (BASE DES ALERTES)
       // =========================
-      const appelsActuels  = toNumber(data.stats?.actuel?.appels) || 0;
-      const vuesActuellesAlerte = toNumber(data.stats?.actuel?.vues_leboncoin) || 0;
+      const appelsTotal = getCumulStat(data, "appels");
+      const vuesTotal   = getCumulStat(data, "vues_leboncoin");
       const visitesActuelles = toNumber(data.stats?.actuel?.visites_effectuees) || 0;
       const offresActuelles = toNumber(data.stats?.actuel?.offres) || 0;
       const favorisActuels = toNumber(data.stats?.actuel?.favoris_leboncoin) || 0;
 
-      const appels  = toNumber(data.stats?.cumul?.appels) || 0;
-      const vues    = toNumber(data.stats?.cumul?.vues_leboncoin) || 0;
-      const visites = toNumber(data.stats?.cumul?.visites_effectuees) || 0;
-      const offres  = toNumber(data.stats?.cumul?.offres) || 0;
+      const appels  = getCumulStat(data, "appels");
+      const vues    = getCumulStat(data, "vues_leboncoin");
+      const visites = getCumulStat(data, "visites_effectuees");
+      const offres  = getCumulStat(data, "offres");
 
       // ✅ 1 appel tous les X vues
       if (appels > 0 && vues != null && vues > 0) {
@@ -1769,11 +1802,11 @@ function getPhaseIndexDepuisDate(dateISO) {
       if (
         appelsActuels > 0 &&
         vuesActuellesAlerte > 0 &&
-        (vuesActuellesAlerte / appelsActuels) > seuilVuesParAppel
+        (vuesTotal / appelsTotal) > seuilVuesParAppel
       ) {
         alertes.push(
           "⚠️ Faible taux de contacts : 1 appel pour " +
-          Math.round(vuesActuellesAlerte / appelsActuels) +
+          Math.round(vuesTotal / appelsTotal) +
           " vues."
         );
       }
