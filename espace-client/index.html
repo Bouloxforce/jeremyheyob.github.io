@@ -1628,20 +1628,18 @@ function getPhaseIndexDepuisDate(dateISO) {
       // =========================
       // 🔴 DONNÉES ACTUELLES (BASE DES ALERTES)
       // =========================
-      const appelsTotal = getCumulStat(data, "appels");
-      const vuesTotal   = getCumulStat(data, "vues_leboncoin");
+      const appelsTotal  = getCumulStat(data, "appels");
+      const vuesTotal    = getCumulStat(data, "vues_leboncoin");
+      const visitesTotal = getCumulStat(data, "visites_effectuees");
+      const offresTotal  = getCumulStat(data, "offres");
+      const vuesActuellesAlerte = toNumber(data.stats?.actuel?.vues_leboncoin) || 0;
       const visitesActuelles = toNumber(data.stats?.actuel?.visites_effectuees) || 0;
       const offresActuelles = toNumber(data.stats?.actuel?.offres) || 0;
       const favorisActuels = toNumber(data.stats?.actuel?.favoris_leboncoin) || 0;
 
-      const appels  = getCumulStat(data, "appels");
-      const vues    = getCumulStat(data, "vues_leboncoin");
-      const visites = getCumulStat(data, "visites_effectuees");
-      const offres  = getCumulStat(data, "offres");
-
       // ✅ 1 appel tous les X vues
-      if (appels > 0 && vues != null && vues > 0) {
-        const x = Math.ceil(vues / appels);
+      if (appelsTotal > 0 && vuesTotal > 0) {
+        const x = Math.ceil(vuesTotal / appelsTotal);
         setLineText(
           "ratio-contact-vues",
           "1 appel tous les " + x + " vues"
@@ -1651,8 +1649,8 @@ function getPhaseIndexDepuisDate(dateISO) {
       }
 
       // ✅ 1 visite tous les Y appels
-      if (visites != null && visites > 0 && appels > 0) {
-        const y = Math.ceil(appels / visites);
+      if (visitesTotal > 0 && appelsTotal > 0) {
+        const y = Math.ceil(appelsTotal / visitesTotal);
         setLineText(
           "ratio-visites-contacts",
           "1 visite tous les " + y + " appels"
@@ -1661,11 +1659,10 @@ function getPhaseIndexDepuisDate(dateISO) {
         setLineText("ratio-visites-contacts", "", "—");
       }
 
-
       // ✅ 1 offre tous les X visites
 
-      if (offres != null && offres > 0 && visites != null && visites > 0) {
-        const x = Math.ceil(visites / offres);
+      if (offresTotal > 0 && visitesTotal > 0) {
+        const x = Math.ceil(visitesTotal / offresTotal);
         setLineText(
           "ratio-offres-visites",
           "1 offre tous les " + x + " visites"
@@ -1875,22 +1872,22 @@ function getPhaseIndexDepuisDate(dateISO) {
       // 📈 PHASE DOMINANTE VIA ALERTES
       // =========================
 
-      function getPhaseIndexDepuisAlertes(statsActuel) {
-        if (!statsActuel) return null;
+      function getPhaseIndexDepuisAlertes(data) {
+        if (!data) return null;
 
-        const appels  = Number(statsActuel.appels) || 0;
-        const visites = Number(statsActuel.visites_effectuees) || 0;
-        const offres  = Number(statsActuel.offres) || 0;
-        const vues    = Number(statsActuel.vues_leboncoin) || 0;
+        const appelsTotal  = getCumulStat(data, "appels");
+        const vuesTotal    = getCumulStat(data, "vues_leboncoin");
+        const visitesTotal = getCumulStat(data, "visites_effectuees");
+        const offresTotal  = getCumulStat(data, "offres");
 
         // Phase 1 – Lancement : pas encore de visites
-        if (visites === 0) return 0;
+        if (visitesTotal === 0) return 0;
 
         // Phase 2 – Ajustement : visibilité mais peu de contacts
-        if (vues > 100 && appels <= 2) return 1;
+        if (vuesTotal > 100 && appelsTotal <= 2) return 1;
 
         // Phase 3 – Décision : visites sans offre
-        if (visites >= 3 && offres === 0) return 2;
+        if (visitesTotal >= 3 && offresTotal === 0) return 2;
 
         return null;
       }
@@ -1903,7 +1900,7 @@ function getPhaseIndexDepuisDate(dateISO) {
       const phaseDepuisDate = getPhaseIndexDepuisDate(data.dates?.mise_en_ligne);
 
       // Phase selon les alertes
-      const phaseDepuisAlertes = getPhaseIndexDepuisAlertes(data.stats?.actuel);
+      const phaseDepuisAlertes = getPhaseIndexDepuisAlertes(data);
 
       // Priorité aux alertes
       const phaseFinale =
