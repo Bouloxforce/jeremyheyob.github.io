@@ -53,11 +53,11 @@
   },
   "marche": {
     "taux_credit": {
-      "moyen": null,
-      "precedent": null,
+      "moyen": 3.35,
+      "precedent": 3.1,
       "duree": "25 ans",
-      "source": "Banque de France",
-      "periode": ""
+      "source": "CAFPI – baromètre (taux moyen)",
+      "periode": "2026-01"
     }
   },
   "strategie_3090": {
@@ -82,9 +82,9 @@
   },
   "historique": [],
   "analysis": {
-    "text": "Analyse indisponible : date de mise en ligne manquante.",
+    "text": "Le bien est en commercialisation depuis 11 jours.\n\nCette phase correspond à une période normale d’exposition. La stratégie actuelle est maintenue et les indicateurs seront suivis attentivement.",
     "proposeRDV": false,
     "noAlertes": false,
-    "generatedAt": "2026-01-14T18:58:51.902Z"
+    "generatedAt": "2026-01-14T18:58:51.907Z"
   }
 }
