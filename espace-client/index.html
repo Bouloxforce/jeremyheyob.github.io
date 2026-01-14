@@ -1860,6 +1860,31 @@ function getPhaseIndexDepuisDate(dateISO) {
       }
 
       // =========================
+      // 🧠 FORÇAGE DES ALERTES EXISTANTES
+      // =========================
+      if (alertes.length === 0) {
+
+        if (appelsActuels === 0) {
+          alertes.push("❗ Aucun appel reçu à ce stade.");
+        }
+
+        if (visitesActuelles === 0) {
+          alertes.push("❗ Aucune visite effectuée à ce stade.");
+        }
+
+      }
+
+      // =========================
+      // 9️⃣ MAX 9 alertes
+      // =========================
+      
+      if (analysis.noAlertes === true) {
+        renderAlertes([]);
+      } else {
+        renderAlertes(alertes.slice(0, 3));
+      }
+
+      // =========================
       // 📈 PHASE DOMINANTE VIA ALERTES
       // =========================
 
