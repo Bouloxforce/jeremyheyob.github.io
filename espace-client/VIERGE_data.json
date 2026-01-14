@@ -17,15 +17,6 @@
   },
 
   "stats": {
-    "cumul": {
-      "appels": 0,
-      "emails": 0,
-      "visites_effectuees": 0,
-      "visites_programmees": 0,
-      "offres": 0,
-      "vues_leboncoin": 0,
-      "favoris_leboncoin": 0
-    },
 
     "actuel": {
       "appels": 0,
