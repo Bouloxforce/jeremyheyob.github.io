@@ -1,6 +1,6 @@
 {
   "bien": {
-    "nom": "",
+    "nom": "Naël",
     "sous_titre": "Suivi de commercialisation"
   },
   "diffusion": {
@@ -9,9 +9,9 @@
     }
   },
   "dates": {
-    "mandat_signe": "",
-    "mise_en_ligne": "",
-    "derniere_remontee": ""
+    "mandat_signe": "2026/01/01",
+    "mise_en_ligne": "2026/01/03",
+    "derniere_remontee": "2026/01/12"
   },
   "stats": {
     "actuel": {
@@ -20,8 +20,8 @@
       "visites_effectuees": 0,
       "visites_programmees": 0,
       "offres": 0,
-      "vues_leboncoin": 0,
-      "favoris_leboncoin": 0
+      "vues_leboncoin": 84,
+      "favoris_leboncoin": 3
     },
     "ajouts_manuels": {},
     "cumul": {
