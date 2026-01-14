@@ -1774,6 +1774,16 @@ function render404() {
         setLineText("ratio-offres-visites", "", "—");
       }
 
+      /* =========================
+         🔒 SEUILS MÉTIER FIXES
+      ========================= */
+
+      const SEUIL_OFFRE_APRES_VISITES = 5;
+      const SEUIL_VUES_PAR_APPEL = 100;
+      const SEUIL_VUES_SANS_CONTACT = 80;
+      const SEUIL_FAVORIS_SANS_CONTACT = 4;
+      const SEUIL_BAISSE_VISIBILITE_POURCENT = 15;
+
       //✅ Dernière visite (basée sur l’historique)
       const derniereVisiteDate = getDerniereDateVisiteDepuisHistorique(data.historique);
 
@@ -1905,7 +1915,7 @@ function render404() {
       // =========================
       // 3️⃣ AUCUNE OFFRE APRÈS X VISITES
       // =========================
-      const seuilOffre = toNumber(data.alertes?.seuil_offre_apres_visites) || 5;
+      const seuilOffre = SEUIL_OFFRE_APRES_VISITES;
       const nbVisites = visitesActuelles;
       const nbOffres = offresActuelles;
 
@@ -1918,7 +1928,7 @@ function render404() {
       // =========================
       // 5️⃣ FAIBLE TRANSFORMATION VUES → APPELS
       // =========================
-      const seuilVuesParAppel = toNumber(data.alertes?.seuil_vues_par_appel) || 100;
+      const seuilVuesParAppel = SEUIL_VUES_PAR_APPEL;
 
       if (
         appelsActuels > 0 &&
@@ -1935,7 +1945,7 @@ function render404() {
       // =========================
       // 6️⃣ VUES ÉLEVÉES MAIS AUCUN CONTACT
       // =========================
-      const seuilVuesSansContact = toNumber(data.alertes?.seuil_vues_sans_contact) || 80;
+      const seuilVuesSansContact = SEUIL_VUES_SANS_CONTACT;
 
       if (vuesActuellesAlerte >= seuilVuesSansContact && appelsActuels === 0) {
         alertes.push(
@@ -1946,7 +1956,7 @@ function render404() {
       // =========================
       // 7️⃣ FAVORIS SANS PASSAGE À L’ACTION
       // =========================
-      const seuilFavorisSansContact = toNumber(data.alertes?.seuil_favoris_sans_contact) || 4;
+      const seuilFavorisSansContact = SEUIL_FAVORIS_SANS_CONTACT;
 
       if (
         favorisActuels >= seuilFavorisSansContact &&
@@ -1964,7 +1974,7 @@ function render404() {
       const vuesActuellesEvo = toNumber(evo?.vues_semaine_actuelle);
       const vuesPrecedentesEvo = toNumber(evo?.vues_semaine_precedente);
 
-      const seuilBaissePourcent = toNumber(data.alertes?.seuil_baisse_visibilite_pourcent) || 15;
+      const seuilBaissePourcent = SEUIL_BAISSE_VISIBILITE_POURCENT;
 
       if (
         vuesActuellesEvo != null &&
