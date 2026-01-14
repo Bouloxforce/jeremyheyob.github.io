@@ -3,19 +3,16 @@
     "nom": "Lucas",
     "sous_titre": "Suivi de commercialisation"
   },
-
   "diffusion": {
     "remontee": {
       "frequence": "Double remontée hebdomadaire automatique"
     }
   },
-
   "dates": {
     "mandat_signe": "2026-01-10",
     "mise_en_ligne": "2026-01-13",
     "derniere_remontee": "2026-01-14"
   },
-
   "stats": {
     "appels": 1,
     "emails": 1,
@@ -25,7 +22,6 @@
     "vues_leboncoin": 177,
     "favoris_leboncoin": 5
   },
-
   "evolution": {
     "vues_semaine_actuelle": 0,
     "vues_semaine_precedente": 0,
@@ -36,7 +32,6 @@
     "visites_semaine_actuelle": 0,
     "visites_semaine_precedente": 0
   },
-
   "liens": {
     "agenceimmo": "https://www.agence.immo/achat/appartement-t3-3-pieces-saint-priest-69800-VA33936",
     "leboncoin": "https://www.leboncoin.fr/ad/ventes_immobilieres/3125084359",
@@ -46,16 +41,13 @@
     "avendrealouer": "https://www.avendrealouer.fr/vente/saint-priest-69/b-appartement/3-pieces/loc-101-33742",
     "paruvendu": "https://www.paruvendu.fr/immobilier/vente/appartement/1287793576A1KIVHAP000",
     "lefigaro": "https://immobilier.lefigaro.fr/annonces/annonce-95658047.html",
-
     "youtube": "https://youtu.be/BcZKUKU0p-U",
-
     "facebook": "https://www.facebook.com/jeremyheyobpro/posts/pfbid023FFyecwmtFKeHhU8t6UQ5myksSJAzd5CQ4AbeoDCR4kpx472X8qCbefqRXvWTiARl",
     "instagram": "https://www.instagram.com/p/DOVhsdIiGkK/",
     "linkedin": "https://www.linkedin.com/posts/j%C3%A9r%C3%A9my-heyob_d%C3%A9couvrez-na%C3%ABl-un-superbe-appartement-t3-activity-7370750207174709249-i8yL",
     "pagesjaunes": "https://www.pagesjaunes.fr/pros/62191780#publications/pid-68bea33b98400b7a9bb2b3de",
     "google": "https://share.google/0duAEX0Pj0c7MYpXz"
   },
-
   "marche": {
     "taux_credit": {
       "moyen": 3.35,
@@ -65,7 +57,6 @@
       "periode": "2026-01"
     }
   },
-
   "strategie_3090": {
     "intro": "La commercialisation est structurée par paliers afin d’adapter la stratégie au comportement réel des acquéreurs et au contexte de marché.",
     "etapes": [
@@ -86,7 +77,6 @@
       }
     ]
   },
-
   "historique": [
     {
       "date": "2026-01-10",
@@ -100,5 +90,11 @@
       "date": "2026-01-14",
       "action": "Remontée de l’annonce"
     }
-  ]
+  ],
+  "analysis": {
+    "text": "Le bien est en commercialisation depuis 1 jours.\n\nCette phase correspond à une période normale d’exposition. La stratégie actuelle est maintenue et les indicateurs seront suivis attentivement.",
+    "proposeRDV": false,
+    "noAlertes": false,
+    "generatedAt": "2026-01-14T00:25:16.238Z"
+  }
 }
