@@ -1138,22 +1138,17 @@
 
 <!-- ✅ Script unique : lecture d’un seul data.json -->
 <script>
-  const pathParts = location.pathname.split("/").filter(Boolean);
-  let slug = pathParts[pathParts.length - 1];
-
-  if (slug.endsWith(".html")) {
-    slug = pathParts[pathParts.length - 2];
-  }
+  const params = new URLSearchParams(window.location.search);
+  const slug = params.get("bien");
 
   if (!slug) {
     alert("Aucun bien sélectionné.");
-    throw new Error("Slug manquant dans l’URL");
+    throw new Error("Paramètre ?bien manquant dans l’URL");
   }
 
   const photo = document.getElementById("photo-principale");
   if (photo) {
-    photo.src = `/espace-client/${slug}/photos/${slug}-1.webp`;
-
+    photo.src = `./${slug}/photos/${slug}-1.webp`;
     photo.onerror = () => {
       photo.style.display = "none";
     };
