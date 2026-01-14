@@ -1588,6 +1588,15 @@ function getPhaseIndexDepuisDate(dateISO) {
          - Emails exclus volontairement
       ========================= */
 
+      // =========================
+      // 🔴 DONNÉES ACTUELLES (BASE DES ALERTES)
+      // =========================
+      const appelsActuels  = toNumber(data.stats?.actuel?.appels) || 0;
+      const vuesActuellesAlerte = toNumber(data.stats?.actuel?.vues_leboncoin) || 0;
+      const visitesActuelles = toNumber(data.stats?.actuel?.visites_effectuees) || 0;
+      const offresActuelles = toNumber(data.stats?.actuel?.offres) || 0;
+      const favorisActuels = toNumber(data.stats?.actuel?.favoris_leboncoin) || 0;
+
       const appels  = toNumber(data.stats?.cumul?.appels) || 0;
       const vues    = toNumber(data.stats?.cumul?.vues_leboncoin) || 0;
       const visites = toNumber(data.stats?.cumul?.visites_effectuees) || 0;
@@ -1724,14 +1733,14 @@ function getPhaseIndexDepuisDate(dateISO) {
       // =========================
       // 1️⃣ AUCUN APPEL
       // =========================
-      if (appels === 0) {
+      if (appelsActuels === 0) {
         alertes.push("❗ Aucun appel enregistré à ce stade.");
       }
 
       // =========================
       // 2️⃣ AUCUNE VISITE
       // =========================
-      if ((toNumber(data.stats?.visites_effectuees) || 0) === 0) {
+      if (visitesActuelles === 0) {
         alertes.push("❗ Aucune visite effectuée à ce stade.");
       }
 
@@ -1739,8 +1748,8 @@ function getPhaseIndexDepuisDate(dateISO) {
       // 3️⃣ AUCUNE OFFRE APRÈS X VISITES
       // =========================
       const seuilOffre = toNumber(data.alertes?.seuil_offre_apres_visites) || 5;
-      const nbVisites = toNumber(data.stats?.visites_effectuees) || 0;
-      const nbOffres = toNumber(data.stats?.offres) || 0;
+      const nbVisites = visitesActuelles;
+      const nbOffres = offresActuelles;
 
       if (nbVisites >= seuilOffre && nbOffres === 0) {
         alertes.push(
@@ -1753,7 +1762,11 @@ function getPhaseIndexDepuisDate(dateISO) {
       // =========================
       const seuilVuesParAppel = toNumber(data.alertes?.seuil_vues_par_appel) || 100;
 
-      if (appels > 0 && vues > 0 && (vues / appels) > seuilVuesParAppel) {
+      if (
+        appelsActuels > 0 &&
+        vuesActuellesAlerte > 0 &&
+        (vuesActuellesAlerte / appelsActuels) > seuilVuesParAppel
+      ) {
         alertes.push(
           "⚠️ Faible taux de contacts : 1 appel pour " +
           Math.round(vues / appels) +
@@ -1766,7 +1779,7 @@ function getPhaseIndexDepuisDate(dateISO) {
       // =========================
       const seuilVuesSansContact = toNumber(data.alertes?.seuil_vues_sans_contact) || 80;
 
-      if (vues >= seuilVuesSansContact && appels === 0) {
+      if (vuesActuellesAlerte >= seuilVuesSansContact && appelsActuels === 0) {
         alertes.push(
           "⚠️ L’annonce génère des vues mais aucun contact."
         );
@@ -1778,8 +1791,8 @@ function getPhaseIndexDepuisDate(dateISO) {
       const seuilFavorisSansContact = toNumber(data.alertes?.seuil_favoris_sans_contact) || 4;
 
       if (
-        toNumber(data.stats?.favoris_leboncoin) >= seuilFavorisSansContact &&
-        appels <= 1
+        favorisActuels >= seuilFavorisSansContact &&
+        appelsActuels <= 1
       ) {
         alertes.push(
           "⚠️ Plusieurs favoris sans passage à l’action."
@@ -1824,26 +1837,22 @@ function getPhaseIndexDepuisDate(dateISO) {
       // 📈 PHASE DOMINANTE VIA ALERTES
       // =========================
 
-      function getPhaseIndexDepuisAlertes(stats) {
-        const appels  = toNumber(stats?.appels) || 0;
-        const visites = toNumber(stats?.visites_effectuees) || 0;
-        const offres  = toNumber(stats?.offres) || 0;
-        const vues    = toNumber(stats?.vues_leboncoin) || 0;
+      function getPhaseIndexDepuisAlertes(statsActuel) {
+        if (!statsActuel) return null;
 
-        // Phase 1 – visibilité
-        if (visites === 0) {
-          return 0; // index phase 1
-        }
+        const appels  = Number(statsActuel.appels) || 0;
+        const visites = Number(statsActuel.visites_effectuees) || 0;
+        const offres  = Number(statsActuel.offres) || 0;
+        const vues    = Number(statsActuel.vues_leboncoin) || 0;
 
-        // Phase 2 – ajustement
-        if (vues > 100 && appels <= 2) {
-          return 1; // index phase 2
-        }
+        // Phase 1 – Lancement : pas encore de visites
+        if (visites === 0) return 0;
 
-        // Phase 3 – décision
-        if (visites >= 3 && offres === 0) {
-          return 2; // index phase 3
-        }
+        // Phase 2 – Ajustement : visibilité mais peu de contacts
+        if (vues > 100 && appels <= 2) return 1;
+
+        // Phase 3 – Décision : visites sans offre
+        if (visites >= 3 && offres === 0) return 2;
 
         return null;
       }
@@ -1856,7 +1865,7 @@ function getPhaseIndexDepuisDate(dateISO) {
       const phaseDepuisDate = getPhaseIndexDepuisDate(data.dates?.mise_en_ligne);
 
       // Phase selon les alertes
-      const phaseDepuisAlertes = getPhaseIndexDepuisAlertes(data.stats);
+      const phaseDepuisAlertes = getPhaseIndexDepuisAlertes(data.stats?.actuel);
 
       // Priorité aux alertes
       const phaseFinale =
