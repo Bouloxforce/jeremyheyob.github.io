@@ -1232,8 +1232,8 @@
       li.innerHTML = "<strong>" + date + "</strong> — " + escapeHTML(action);
       ul.appendChild(li);
     });
-    // ===== LIMITE À 15 HISTORIQUES VISIBLES =====
-    const MAX_VISIBLE = 15;
+    // ===== LIMITE À 10 HISTORIQUES VISIBLES =====
+    const MAX_VISIBLE = 10;
     const itemsEls = ul.querySelectorAll("li");
     const fade = document.querySelector(".historique-fade");
     const wrapper = ul.closest(".historique-wrapper");
