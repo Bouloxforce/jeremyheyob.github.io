@@ -967,22 +967,27 @@
       <div class="luxury-divider"></div>
 
       <h2 style="margin-top:0;">Statistiques</h2>
+
       <p class="subtitle" style="margin-top:4px;margin-bottom:10px;font-weight:700;color:#191919;">
         Données cumulées
       </p>
       <ul style="list-style:none;padding:0;margin:12px 0 0;font-size:15px;line-height:1.55;">
-        <li>Nombre d’appels : <strong id="stat-appels">—</strong></li>
-        <li>Nombre d’e-mails : <strong id="stat-emails">—</strong></li>
-        <li>Visites effectuées : <strong id="stat-visites-effectuees">—</strong></li>
-        <li>Offres reçues : <strong id="stat-offres">—</strong></li>
+        <li>Nombre d’appels : <strong id="stat-cumul-appels">—</strong></li>
+        <li>Nombre d’e-mails : <strong id="stat-cumul-emails">—</strong></li>
+        <li>Visites effectuées : <strong id="stat-cumul-visites-effectuees">—</strong></li>
+        <li>Offres reçues : <strong id="stat-cumul-offres">—</strong></li>
+      </ul>
+
       <p class="subtitle" style="margin-top:16px;margin-bottom:10px;font-weight:700;color:#191919;">
         Données actuelles
       </p>
-        <li>Nombre d’appels : <strong id="stat-appels">—</strong></li>
-        <li>Nombre d’e-mails : <strong id="stat-emails">—</strong></li>
-        <li>Visites effectuées : <strong id="stat-visites-effectuees">—</strong></li>
-        <li>Visites programmées : <strong id="stat-visites-programmees">—</strong></li>
-        <li>Offres reçues : <strong id="stat-offres">—</strong></li>
+      <ul style="list-style:none;padding:0;margin:12px 0 0;font-size:15px;line-height:1.55;">
+        <li>Nombre d’appels : <strong id="stat-actuel-appels">—</strong></li>
+        <li>Nombre d’e-mails : <strong id="stat-actuel-emails">—</strong></li>
+        <li>Visites effectuées : <strong id="stat-actuel-visites-effectuees">—</strong></li>
+        <li>Visites programmées : <strong id="stat-actuel-visites-programmees">—</strong></li>
+        <li>Offres reçues : <strong id="stat-actuel-offres">—</strong></li>
+      </ul>
 
         <!-- ✅ AJOUT 1 : Jours depuis la dernière remontée -->
         <li>Jours depuis la dernière remontée : <strong id="jours-depuis-derniere-remontee">—</strong></li>
@@ -991,17 +996,21 @@
       <div class="luxury-divider"></div>
 
       <h2 style="margin-top:0;">Statistiques Leboncoin</h2>
-      <ul style="list-style:none;padding:0;margin:12px 0 0;font-size:15px;line-height:1.55;">
+
       <p class="subtitle" style="margin-top:4px;margin-bottom:10px;font-weight:700;color:#191919;">
         Données cumulées
       </p>
-        <li><strong id="stat-vues-leboncoin">—</strong> vues</li>
-        <li><strong id="stat-favoris-leboncoin">—</strong> personnes ont enregistré l’annonce</li>
+      <ul style="list-style:none;padding:0;margin:12px 0 0;font-size:15px;line-height:1.55;">
+        <li><strong id="stat-cumul-vues-leboncoin">—</strong> vues</li>
+        <li><strong id="stat-cumul-favoris-leboncoin">—</strong> personnes ont enregistré l’annonce</li>
+      </ul>
+
       <p class="subtitle" style="margin-top:16px;margin-bottom:10px;font-weight:700;color:#191919;">
         Données actuelles
       </p>
-        <li><strong id="stat-vues-leboncoin">—</strong> vues</li>
-        <li><strong id="stat-favoris-leboncoin">—</strong> personnes ont enregistré l’annonce</li>
+      <ul style="list-style:none;padding:0;margin:12px 0 0;font-size:15px;line-height:1.55;">
+        <li><strong id="stat-actuel-vues-leboncoin">—</strong> vues</li>
+        <li><strong id="stat-actuel-favoris-leboncoin">—</strong> personnes ont enregistré l’annonce</li>
       </ul>
 
       <!-- ✅ AJOUT 2 : Taux de transformation -->
@@ -1479,14 +1488,24 @@ function getPhaseIndexDepuisDate(dateISO) {
         setText("frequence-remontee", txt);
       }
 
-      // STATS
-      setText("stat-appels", data.stats?.appels);
-      setText("stat-emails", data.stats?.emails);
-      setText("stat-visites-effectuees", data.stats?.visites_effectuees);
-      setText("stat-visites-programmees", data.stats?.visites_programmees);
-      setText("stat-offres", data.stats?.offres);
-      setText("stat-vues-leboncoin", data.stats?.vues_leboncoin);
-      setText("stat-favoris-leboncoin", data.stats?.favoris_leboncoin);
+      // CUMUL
+      setText("stat-cumul-appels", data.stats?.cumul?.appels);
+      setText("stat-cumul-emails", data.stats?.cumul?.emails);
+      setText("stat-cumul-visites-effectuees", data.stats?.cumul?.visites_effectuees);
+      setText("stat-cumul-offres", data.stats?.cumul?.offres);
+
+      setText("stat-cumul-vues-leboncoin", data.stats?.cumul?.vues_leboncoin);
+      setText("stat-cumul-favoris-leboncoin", data.stats?.cumul?.favoris_leboncoin);
+
+      // ACTUEL
+      setText("stat-actuel-appels", data.stats?.actuel?.appels);
+      setText("stat-actuel-emails", data.stats?.actuel?.emails);
+      setText("stat-actuel-visites-effectuees", data.stats?.actuel?.visites_effectuees);
+      setText("stat-actuel-visites-programmees", data.stats?.actuel?.visites_programmees);
+      setText("stat-actuel-offres", data.stats?.actuel?.offres);
+
+      setText("stat-actuel-vues-leboncoin", data.stats?.actuel?.vues_leboncoin);
+      setText("stat-actuel-favoris-leboncoin", data.stats?.actuel?.favoris_leboncoin);
 
       // LIENS - Plateformes
       setLink("pf-agenceimmo", data.liens?.agenceimmo, "Ouvrir l’annonce →");
