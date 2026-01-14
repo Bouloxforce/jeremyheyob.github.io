@@ -1559,8 +1559,6 @@ function render404() {
     cache: "no-store"
   })
 
-    console.log("DEBUG WEBSTAT RAW:", JSON.stringify(json).slice(0, 500));
-
     .then((r) => {
       if (r.status === 404) {
         render404();
