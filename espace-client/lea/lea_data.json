@@ -1,0 +1,96 @@
+{
+  "bien": {
+    "nom": "",
+    "sous_titre": "Suivi de commercialisation"
+  },
+
+  "diffusion": {
+    "remontee": {
+      "frequence": ""
+    }
+  },
+
+  "dates": {
+    "mandat_signe": "",
+    "mise_en_ligne": "",
+    "derniere_remontee": ""
+  },
+
+  "stats": {
+    "appels": 0,
+    "emails": 0,
+    "visites_effectuees": 0,
+    "visites_programmees": 0,
+    "offres": 0,
+    "vues_leboncoin": 0,
+    "favoris_leboncoin": 0,
+
+    "evolution": {
+      "vues_semaine_actuelle": 0,
+      "vues_semaine_precedente": 0,
+      "contacts_semaine_actuelle": 0,
+      "contacts_semaine_precedente": 0,
+      "favoris_semaine_actuelle": 0,
+      "favoris_semaine_precedente": 0,
+      "visites_semaine_actuelle": 0,
+      "visites_semaine_precedente": 0
+    }
+  },
+
+  "liens": {
+    "agenceimmo": "",
+    "leboncoin": "",
+    "seloger": "",
+    "bienici": "",
+    "logicimmo": "",
+    "avendrealouer": "",
+    "paruvendu": "",
+    "lefigaro": "",
+    "youtube": "",
+    "facebook": "",
+    "instagram": "",
+    "linkedin": "",
+    "pagesjaunes": "",
+    "google": ""
+  },
+
+  "marche": {
+    "taux_credit": {
+      "moyen": null,
+      "precedent": null,
+      "duree": "25 ans",
+      "source": "Banque de France",
+      "periode": ""
+    }
+  },
+
+  "strategie_3090": {
+    "intro": "La commercialisation est structurée par paliers afin d’adapter la stratégie au comportement réel des acquéreurs et au contexte de marché.",
+    "etapes": [
+      {
+        "jours": "0–30 jours",
+        "titre": "Phase de lancement",
+        "strategie": "Mise en visibilité maximale du bien, diffusion multicanale et analyse des premiers retours acquéreurs."
+      },
+      {
+        "jours": "31–60 jours",
+        "titre": "Phase d’ajustement",
+        "strategie": "Optimisation de la stratégie de diffusion et ajustements ciblés selon les indicateurs de performance."
+      },
+      {
+        "jours": "61–90 jours",
+        "titre": "Phase de décision",
+        "strategie": "Alignement stratégique du positionnement afin de favoriser le passage à l’offre dans un marché plus sélectif."
+      }
+    ]
+  },
+
+  "historique": [],
+
+  "analysis": {
+    "text": "",
+    "proposeRDV": false,
+    "noAlertes": false,
+    "generatedAt": null
+  }
+}
