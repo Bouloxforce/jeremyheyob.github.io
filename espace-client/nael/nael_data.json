@@ -53,11 +53,11 @@
   },
   "marche": {
     "taux_credit": {
-      "moyen": "4.00",
-      "precedent": "3.50",
+      "moyen": 3.1,
+      "precedent": "4.00",
       "duree": "25 ans",
-      "source": "Banque de France",
-      "periode": "01 -2026"
+      "source": "CAFPI – baromètre (taux moyen)",
+      "periode": "2026-01"
     }
   },
   "strategie_3090": {
