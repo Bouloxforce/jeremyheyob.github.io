@@ -2,7 +2,7 @@ name: Mise à jour taux immobilier
 
 on:
   schedule:
-    - cron: "0 6 10 * *"   # Tous les 10 du mois à 06:00
+    - cron: "0 6 * * 1"   # Tous les lundi à 06:00
   workflow_dispatch:
 
 permissions:
