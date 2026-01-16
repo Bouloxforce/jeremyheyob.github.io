@@ -1344,7 +1344,12 @@
       });
 
       if (prochainsRDV.length === 0) {
-        block.style.display = "none";
+        const li = document.createElement("li");
+        li.className = "subtitle";
+        li.textContent = "Aucun rendez-vous programmé à ce stade.";
+        ul.appendChild(li);
+
+        block.style.display = "block";
         return;
       }
 
