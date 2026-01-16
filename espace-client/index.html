@@ -1555,7 +1555,7 @@ function render404() {
   `;
 }
 
-  fetch(`./${encodeURIComponent(slug)}_data.json`, {
+  fetch(`./biens/${encodeURIComponent(slug)}_data.json`, {
     cache: "no-store"
   })
 
