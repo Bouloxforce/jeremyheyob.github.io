@@ -1,5 +1,8 @@
 name: Analyse automatique biens
 
+permissions:
+  contents: write
+
 on:
   schedule:
     - cron: "*/30 * * * *"   # toutes les 30 minutes
