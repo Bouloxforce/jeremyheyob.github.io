@@ -6,7 +6,14 @@ import fs from "fs";
 import path from "path";
 
 /* ======================================================
-   OUTILS
+   CONSTANTES
+====================================================== */
+
+const BASE_DIR = "espace-client";
+const BIENS_DIR = path.join(BASE_DIR, "biens");
+
+/* ======================================================
+   OUTILS GÉNÉRAUX
 ====================================================== */
 
 function daysBetween(isoDate) {
@@ -21,6 +28,47 @@ function daysBetween(isoDate) {
 function toNumber(v) {
   const n = Number(v);
   return Number.isFinite(n) ? n : 0;
+}
+
+/* ======================================================
+   HISTORIQUE AUTOMATIQUE (DATES → EVENTS)
+====================================================== */
+
+function syncHistoriqueFromDates(data) {
+  if (!data) return;
+
+  data.historique = Array.isArray(data.historique)
+    ? data.historique
+    : [];
+
+  const exists = (action) =>
+    data.historique.some(
+      h => typeof h.action === "string" && h.action === action
+    );
+
+  // ✍️ Mandat signé
+  if (data.dates?.mandat_signe) {
+    const action = "✍️ Mandat signé";
+
+    if (!exists(action)) {
+      data.historique.push({
+        date: data.dates.mandat_signe,
+        action
+      });
+    }
+  }
+
+  // 📢 Mise en ligne
+  if (data.dates?.mise_en_ligne) {
+    const action = "📢 Mise en ligne de l’annonce";
+
+    if (!exists(action)) {
+      data.historique.push({
+        date: data.dates.mise_en_ligne,
+        action
+      });
+    }
+  }
 }
 
 /* ======================================================
@@ -43,9 +91,9 @@ function updateCumul(stats) {
   const nouveauCumul = {};
 
   for (const key of keys) {
-    const vCumul = Number(cumul[key]) || 0;
-    const vActuel = Number(actuel[key]) || 0;
-    const vAjout  = Number(ajouts[key]) || 0;
+    const vCumul = toNumber(cumul[key]);
+    const vActuel = toNumber(actuel[key]);
+    const vAjout = toNumber(ajouts[key]);
 
     nouveauCumul[key] = vCumul + vActuel + vAjout;
   }
@@ -73,9 +121,9 @@ function buildAnalysis(data) {
 
   const mois = Math.max(jours / 30, 1);
 
-  const vues = toNumber(data.stats?.vues_leboncoin);
-  const appels = toNumber(data.stats?.appels);
-  const visites = toNumber(data.stats?.visites_effectuees);
+  const vues = toNumber(data.stats?.cumul?.vues_leboncoin);
+  const appels = toNumber(data.stats?.cumul?.appels);
+  const visites = toNumber(data.stats?.cumul?.visites_effectuees);
 
   const vuesMensuelles = vues / mois;
   const appelsMensuels = appels / mois;
@@ -141,19 +189,17 @@ function buildAnalysis(data) {
    EXÉCUTION PRINCIPALE
 ====================================================== */
 
-const BASE_DIR = "espace-client";
-const BIENS_DIR = path.join(BASE_DIR, "biens");
-
 if (!fs.existsSync(BIENS_DIR)) {
   console.error("❌ Dossier biens introuvable");
   process.exit(1);
 }
 
-const fichiers = fs.readdirSync(BIENS_DIR)
+const fichiers = fs
+  .readdirSync(BIENS_DIR)
   .filter(f => f.endsWith("_data.json"));
 
 let rdvRecommandeGlobal = false;
-let biensAvecRDV = [];
+const biensAvecRDV = [];
 
 for (const fichier of fichiers) {
   const filePath = path.join(BIENS_DIR, fichier);
@@ -161,8 +207,13 @@ for (const fichier of fichiers) {
   const raw = fs.readFileSync(filePath, "utf-8");
   const data = JSON.parse(raw);
 
+  // 🔥 Historique automatique à partir des dates
+  syncHistoriqueFromDates(data);
+
+  // 📊 Cumul stats
   data.stats = updateCumul(data.stats);
 
+  // 🧠 Analyse
   const analysis = buildAnalysis(data);
 
   data.analysis = {
@@ -172,7 +223,9 @@ for (const fichier of fichiers) {
 
   if (analysis.proposeRDV === true) {
     rdvRecommandeGlobal = true;
-    biensAvecRDV.push(data.bien?.nom || fichier.replace("_data.json", ""));
+    biensAvecRDV.push(
+      data.bien?.nom || fichier.replace("_data.json", "")
+    );
   }
 
   fs.writeFileSync(
