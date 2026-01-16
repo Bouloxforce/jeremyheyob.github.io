@@ -3,7 +3,7 @@ import path from "path";
 import { JSDOM } from "jsdom";
 
 const BIEN = "nael";
-const FILE_PATH = path.join("espace-client", `${BIEN}_data.json`);
+const FILE_PATH = path.join("espace-client", "biens", `${BIEN}_data.json`);
 const URL = "https://www.cafpi.fr/credit-immobilier/barometre-taux";
 
 async function run() {
