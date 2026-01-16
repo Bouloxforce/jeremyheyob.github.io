@@ -1,5 +1,5 @@
 /* ======================================================
-IMPORTS
+   IMPORTS
 ====================================================== */
 
 import fs from "fs";
@@ -42,18 +42,16 @@ function updateCumul(stats) {
 
   const nouveauCumul = {};
 
-  keys.forEach(key => {
+  for (const key of keys) {
     const vCumul = Number(cumul[key]) || 0;
     const vActuel = Number(actuel[key]) || 0;
     const vAjout  = Number(ajouts[key]) || 0;
 
     nouveauCumul[key] = vCumul + vActuel + vAjout;
-  });
-
-  // 🔒 Sécurité : on vide les ajouts après intégration
-  stats.ajouts_manuels = {};
+  }
 
   stats.cumul = nouveauCumul;
+  stats.ajouts_manuels = {}; // sécurité
 
   return stats;
 }
@@ -101,31 +99,29 @@ function buildAnalysis(data) {
       text:
         `Le bien est en commercialisation depuis ${jours} jours.\n\n` +
         "Cette phase correspond à une période normale d’exposition. " +
-        "La stratégie actuelle est maintenue et les indicateurs seront suivis attentivement.",
+        "La stratégie actuelle est maintenue.",
       proposeRDV: false,
       noAlertes: false
     };
   }
 
-  if (jours >= 21 && jours < 30 && statsInsuffisantes) {
+  if (jours < 30 && statsInsuffisantes) {
     return {
       text:
         `Le bien est en commercialisation depuis ${jours} jours.\n\n` +
-        "Les indicateurs observés sont insuffisants au regard de la durée de diffusion. " +
-        "Si cette tendance se confirme, un point stratégique sera nécessaire.",
+        "Les indicateurs sont insuffisants au regard de la durée de diffusion. " +
+        "Un point stratégique pourra être envisagé.",
       proposeRDV: false,
       noAlertes: false
     };
   }
 
-  if (jours >= 30 && statsInsuffisantes) {
+  if (statsInsuffisantes) {
     return {
       text:
         `Le bien est en commercialisation depuis ${jours} jours.\n\n` +
-        "Les statistiques confirment une performance insuffisante par rapport " +
-        "à la durée de diffusion. Un changement de stratégie est désormais nécessaire.\n\n" +
-        "Il est désormais nécessaire d'organiser un rendez-vous, afin de définir une nouvelle stratégie " +
-        "à mettre en place pour relancer efficacement la vente.",
+        "Les statistiques confirment une performance insuffisante. " +
+        "Un rendez-vous est nécessaire afin d’ajuster la stratégie commerciale.",
       proposeRDV: true,
       noAlertes: false
     };
@@ -134,7 +130,7 @@ function buildAnalysis(data) {
   return {
     text:
       `Le bien est en commercialisation depuis ${jours} jours.\n\n` +
-      "Les indicateurs observés sont cohérents avec la durée de diffusion. " +
+      "Les indicateurs sont cohérents avec la durée de diffusion. " +
       "La stratégie actuelle est maintenue.",
     proposeRDV: false,
     noAlertes: false
@@ -142,27 +138,29 @@ function buildAnalysis(data) {
 }
 
 /* ======================================================
-   EXÉCUTION RÉELLE (LECTURE + ÉCRITURE)
+   EXÉCUTION PRINCIPALE
 ====================================================== */
 
 const BASE_DIR = "espace-client";
+const BIENS_DIR = path.join(BASE_DIR, "biens");
 
-const dossiers = fs.readdirSync(BASE_DIR, { withFileTypes: true })
-  .filter(d => d.isDirectory())
-  .map(d => d.name);
+if (!fs.existsSync(BIENS_DIR)) {
+  console.error("❌ Dossier biens introuvable");
+  process.exit(1);
+}
+
+const fichiers = fs.readdirSync(BIENS_DIR)
+  .filter(f => f.endsWith("_data.json"));
 
 let rdvRecommandeGlobal = false;
 let biensAvecRDV = [];
 
-for (const bien of dossiers) {
-  const filePath = path.join(BASE_DIR, "bien", `${bien}_data.json`);
-
-  if (!fs.existsSync(filePath)) continue;
+for (const fichier of fichiers) {
+  const filePath = path.join(BIENS_DIR, fichier);
 
   const raw = fs.readFileSync(filePath, "utf-8");
   const data = JSON.parse(raw);
 
-  // ✅ NOUVEAU : mise à jour automatique des cumulés
   data.stats = updateCumul(data.stats);
 
   const analysis = buildAnalysis(data);
@@ -172,12 +170,10 @@ for (const bien of dossiers) {
     generatedAt: new Date().toISOString()
   };
 
-   if (analysis.proposeRDV === true) {
-     rdvRecommandeGlobal = true;
-
-     const nomBien = data.bien?.nom || bien;
-     biensAvecRDV.push(nomBien);
-   }
+  if (analysis.proposeRDV === true) {
+    rdvRecommandeGlobal = true;
+    biensAvecRDV.push(data.bien?.nom || fichier.replace("_data.json", ""));
+  }
 
   fs.writeFileSync(
     filePath,
@@ -185,18 +181,17 @@ for (const bien of dossiers) {
     "utf-8"
   );
 
-  console.log(`✔ Analyse mise à jour : ${bien}`);
+  console.log(`✔ Analyse mise à jour : ${fichier}`);
 }
 
 /* ======================================================
-   FLAG POUR GITHUB ACTIONS (EMAIL)
+   FLAGS POUR GITHUB ACTIONS
 ====================================================== */
 
 if (rdvRecommandeGlobal) {
   fs.appendFileSync(process.env.GITHUB_ENV, "RDV_RECOMMANDE=true\n");
-
   fs.appendFileSync(
     process.env.GITHUB_ENV,
-    "RDV_BIENS=" + biensAvecRDV.join(", ") + "\n"
+    `RDV_BIENS=${biensAvecRDV.join(", ")}\n`
   );
 }
