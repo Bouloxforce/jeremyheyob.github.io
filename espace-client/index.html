@@ -730,13 +730,11 @@
 }
 
 .rdv-header {
-  font-size: 16px;
+  font-size: 22px;            /* même niveau que h2 */
   font-weight: 800;
   color: #191919;
-  margin-bottom: 10px;
-  display: flex;
-  align-items: center;
-  gap: 8px;
+  margin-bottom: 14px;
+  text-align: center;         /* centré */
 }
 
 .rdv-list {
@@ -1402,17 +1400,23 @@
 
       prochainsRDV.forEach(e => {
         const li = document.createElement("li");
+
+        const dateISO = extractDateFromAction(e.action);
+        const dateFormatted = formatDateISO(dateISO);
+
+        // Texte sans la date (on la retire du libellé)
+        const actionClean = escapeHTML(
+          e.action.replace(/\d{2}\/\d{2}\/\d{4}/, "").trim()
+        );
+
         li.innerHTML =
-          "<strong>" +
-          formatDateISO(extractDateFromAction(e.action)) +
+          "📅 <strong>" +
+          dateFormatted +
           "</strong> — " +
-          escapeHTML(e.action);
+          actionClean;
 
         ul.appendChild(li);
       });
-
-      block.style.display = "block";
-    }
 
   function extractDateFromAction(action) {
     if (typeof action !== "string") return null;
