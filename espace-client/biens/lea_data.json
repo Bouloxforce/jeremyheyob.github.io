@@ -9,9 +9,9 @@
     }
   },
   "dates": {
-    "mandat_signe": "02/01/2026",
-    "mise_en_ligne": "04/01/2026",
-    "derniere_remontee": "05/01/2026"
+    "mandat_signe": "2026/01/01",
+    "mise_en_ligne": "2026/01/03",
+    "derniere_remontee": "2026/01/05"
   },
   "stats": {
     "actuel": {
