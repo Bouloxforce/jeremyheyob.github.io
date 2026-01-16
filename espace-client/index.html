@@ -713,6 +713,43 @@
 .timeline-step.is-active .timeline-text {
   color: #3f3f3f;
 }
+    /* =========================
+   BLOC RENDEZ-VOUS – DASHBOARD
+========================= */
+
+.rdv-highlight {
+  background: linear-gradient(
+    135deg,
+    rgba(198,169,119,0.18),
+    rgba(198,169,119,0.06)
+  );
+  border: 1px solid rgba(198,169,119,0.35);
+  border-radius: 18px;
+  padding: 16px 18px;
+  margin: 14px 0 18px;
+}
+
+.rdv-header {
+  font-size: 16px;
+  font-weight: 800;
+  color: #191919;
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.rdv-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  font-size: 15px;
+  line-height: 1.6;
+}
+
+.rdv-list li {
+  padding: 6px 0;
+}
 
     @media (max-width: 880px) {
       /* Header */
@@ -957,15 +994,19 @@
       
       <div class="pill">Tableau de bord</div>
 
-      <div id="rdv-a-venir-block" style="display:none;">
-        <h2 style="margin-top:0;">📅 Rendez-vous à venir</h2>
+      <div id="rdv-a-venir-block" class="rdv-highlight" style="display:none;">
+
+        <div class="rdv-header">
+          📅 Rendez-vous à venir
+        </div>
 
         <ul id="rdv-a-venir-list"
-            style="list-style:none;padding:0;margin:12px 0 0;font-size:15px;line-height:1.55;">
+            class="rdv-list">
         </ul>
 
-        <div class="luxury-divider"></div>
       </div>
+
+<div class="luxury-divider"></div>
 
       <h2 style="margin-top:6px;">Informations générales</h2>
       <ul style="list-style:none;padding:0;margin:12px 0 0;font-size:15px;line-height:1.55;">
