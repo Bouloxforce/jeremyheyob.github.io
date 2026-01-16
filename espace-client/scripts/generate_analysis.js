@@ -155,7 +155,7 @@ let rdvRecommandeGlobal = false;
 let biensAvecRDV = [];
 
 for (const bien of dossiers) {
-  const filePath = path.join(BASE_DIR, bien, `${bien}_data.json`);
+  const filePath = path.join(BASE_DIR, "bien", `${bien}_data.json`);
 
   if (!fs.existsSync(filePath)) continue;
 
