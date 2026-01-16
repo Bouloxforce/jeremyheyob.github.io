@@ -1317,12 +1317,12 @@
 
       ul.innerHTML = "";
 
-      const today = new Date();
-      today.setHours(0, 0, 0, 0);
+      const todayISO = new Date().toISOString().slice(0, 10);
 
       const RDV_KEYWORDS = [
         "rdv",
         "rendez-vous",
+        "rendez vous",
         "visite",
         "signature",
         "compromis",
@@ -1333,12 +1333,13 @@
       const prochainsRDV = historique.filter(e => {
         if (!e?.date || !e?.action) return false;
 
-        const d = new Date(e.date);
-        if (isNaN(d.getTime())) return false;
+        if (e.date < todayISO) return false;
 
-        if (d < today) return false;
+        const action = e.action
+          .toLowerCase()
+          .normalize("NFD")
+          .replace(/[\u0300-\u036f]/g, "");
 
-        const action = e.action.toLowerCase();
         return RDV_KEYWORDS.some(k => action.includes(k));
       });
 
