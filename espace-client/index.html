@@ -995,7 +995,7 @@
       <div id="rdv-a-venir-block" class="rdv-highlight" style="display:none;">
 
         <div class="rdv-header">
-          📅 Rendez-vous à venir
+          Rendez-vous à venir
         </div>
 
         <ul id="rdv-a-venir-list"
@@ -1354,6 +1354,7 @@
 
       if (!block || !ul || !Array.isArray(historique)) return;
 
+      block.style.display = "block";
       ul.innerHTML = "";
 
       const todayISO = new Date().toISOString().slice(0, 10);
