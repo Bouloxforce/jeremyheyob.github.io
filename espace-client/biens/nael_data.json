@@ -28,13 +28,13 @@
   "stats": {
     "ajouts_manuels": {},
     "cumul": {
-      "appels": 3,
-      "emails": 3,
-      "visites_effectuees": 12,
-      "offres": 3,
-      "vues_leboncoin": 369,
-      "favoris_leboncoin": 12,
-      "visites_programmees": 9
+      "appels": 4,
+      "emails": 4,
+      "visites_effectuees": 16,
+      "offres": 4,
+      "vues_leboncoin": 492,
+      "favoris_leboncoin": 16,
+      "visites_programmees": 12
     },
     "actuel": {
       "appels": 1,
@@ -55,7 +55,7 @@
     "text": "Le bien est en commercialisation depuis 15 jours.\n\nCette phase correspond à une période normale d’exposition. La stratégie actuelle est maintenue.",
     "proposeRDV": false,
     "noAlertes": false,
-    "generatedAt": "2026-01-16T12:45:09.325Z"
+    "generatedAt": "2026-01-16T13:37:41.781Z"
   },
   "dates": {
     "mise_en_ligne": "2026-01-01",
