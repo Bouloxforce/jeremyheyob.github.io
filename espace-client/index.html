@@ -1331,9 +1331,14 @@
       ];
 
       const prochainsRDV = historique.filter(e => {
-        if (!e?.date || !e?.action) return false;
+        if (!e?.action) return false;
 
-        if (e.date < todayISO) return false;
+        // 👉 date réelle du rendez-vous extraite du texte
+        const rdvDateISO = extractDateFromAction(e.action);
+        if (!rdvDateISO) return false;
+
+        // 👉 uniquement les RDV aujourd’hui ou futurs
+        if (rdvDateISO < todayISO) return false;
 
         const action = e.action
           .toLowerCase()
@@ -1344,22 +1349,21 @@
       });
 
       if (prochainsRDV.length === 0) {
-        const li = document.createElement("li");
-        li.className = "subtitle";
-        li.textContent = "Aucun rendez-vous programmé.";
-        ul.appendChild(li);
-
+        ul.innerHTML = "<li class='subtitle'>Aucun rendez-vous à venir pour le moment.</li>";
         block.style.display = "block";
         return;
       }
 
-      prochainsRDV.sort((a, b) => new Date(a.date) - new Date(b.date));
+      prochainsRDV.sort((a, b) =>
+        extractDateFromAction(a.action)
+          .localeCompare(extractDateFromAction(b.action))
+      );
 
       prochainsRDV.forEach(e => {
         const li = document.createElement("li");
         li.innerHTML =
           "<strong>" +
-          formatDateISO(e.date) +
+          formatDateISO(extractDateFromAction(e.action)) +
           "</strong> — " +
           escapeHTML(e.action);
 
@@ -1368,6 +1372,16 @@
 
       block.style.display = "block";
     }
+
+  function extractDateFromAction(action) {
+    if (typeof action !== "string") return null;
+
+    const match = action.match(/(\d{2})\/(\d{2})\/(\d{4})/);
+    if (!match) return null;
+
+    const [, d, m, y] = match;
+    return `${y}-${m}-${d}`; // format ISO YYYY-MM-DD
+  }
     
   function escapeHTML(s) {
     return String(s || "")
