@@ -957,6 +957,16 @@
       
       <div class="pill">Tableau de bord</div>
 
+      <div id="rdv-a-venir-block" style="display:none;">
+        <h2 style="margin-top:0;">📅 Rendez-vous à venir</h2>
+
+        <ul id="rdv-a-venir-list"
+            style="list-style:none;padding:0;margin:12px 0 0;font-size:15px;line-height:1.55;">
+        </ul>
+
+        <div class="luxury-divider"></div>
+      </div>
+
       <h2 style="margin-top:6px;">Informations générales</h2>
       <ul style="list-style:none;padding:0;margin:12px 0 0;font-size:15px;line-height:1.55;">
         <li>Mandat signé le : <strong id="date-mandat">—</strong></li>
@@ -1299,6 +1309,60 @@
     }
   }
 
+    function renderRDVAvenir(historique) {
+      const block = document.getElementById("rdv-a-venir-block");
+      const ul = document.getElementById("rdv-a-venir-list");
+
+      if (!block || !ul || !Array.isArray(historique)) return;
+
+      ul.innerHTML = "";
+
+      const today = new Date();
+      today.setHours(0, 0, 0, 0);
+
+      const RDV_KEYWORDS = [
+        "rdv",
+        "rendez-vous",
+        "visite",
+        "signature",
+        "compromis",
+        "expertise",
+        "diagnostic"
+      ];
+
+      const prochainsRDV = historique.filter(e => {
+        if (!e?.date || !e?.action) return false;
+
+        const d = new Date(e.date);
+        if (isNaN(d.getTime())) return false;
+
+        if (d < today) return false;
+
+        const action = e.action.toLowerCase();
+        return RDV_KEYWORDS.some(k => action.includes(k));
+      });
+
+      if (prochainsRDV.length === 0) {
+        block.style.display = "none";
+        return;
+      }
+
+      prochainsRDV.sort((a, b) => new Date(a.date) - new Date(b.date));
+
+      prochainsRDV.forEach(e => {
+        const li = document.createElement("li");
+        li.innerHTML =
+          "<strong>" +
+          formatDateISO(e.date) +
+          "</strong> — " +
+          escapeHTML(e.action);
+
+        ul.appendChild(li);
+      });
+
+      block.style.display = "block";
+    }
+    
   function escapeHTML(s) {
     return String(s || "")
       .replace(/&/g, "&amp;")
@@ -2044,8 +2108,9 @@ function render404() {
         }
       }
 
-      // HISTORIQUE
+      // HISTORIQUE ET RENDEZ-VOUS
       renderHistorique(data.historique);
+      renderRDVAvenir(data.historique);
     })
 
     .catch((err) => {
