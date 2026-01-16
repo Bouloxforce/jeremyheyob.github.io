@@ -1,6 +1,6 @@
 {
   "bien": {
-    "nom": "",
+    "nom": "Léa",
     "sous_titre": "Suivi de commercialisation"
   },
   "diffusion": {
@@ -9,9 +9,9 @@
     }
   },
   "dates": {
-    "mandat_signe": "",
-    "mise_en_ligne": "",
-    "derniere_remontee": ""
+    "mandat_signe": "02/01/2026",
+    "mise_en_ligne": "04/01/2026",
+    "derniere_remontee": "05/01/2026"
   },
   "stats": {
     "actuel": {
