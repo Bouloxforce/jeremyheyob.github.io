@@ -28,13 +28,13 @@
   "stats": {
     "ajouts_manuels": {},
     "cumul": {
-      "appels": 23,
-      "emails": 23,
-      "visites_effectuees": 92,
-      "offres": 23,
-      "vues_leboncoin": 2829,
-      "favoris_leboncoin": 92,
-      "visites_programmees": 69
+      "appels": 0,
+      "emails": 0,
+      "visites_effectuees": 0,
+      "offres": 0,
+      "vues_leboncoin": 0,
+      "favoris_leboncoin": 0,
+      "visites_programmees": 0
     },
     "actuel": {
       "appels": 1,
