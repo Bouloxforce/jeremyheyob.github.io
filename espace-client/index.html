@@ -1341,8 +1341,17 @@
 
       // BONUS UX : le hint disparaît dès le premier scroll
       ul.addEventListener("scroll", () => {
-        wrapper?.classList.remove("is-scrollable");
-      }, { once: true });
+        const isAtBottom =
+          ul.scrollTop + ul.clientHeight >= ul.scrollHeight - 1;
+
+        if (isAtBottom) {
+          wrapper?.classList.remove("is-scrollable");
+          if (fade) fade.style.display = "none";
+        } else {
+          wrapper?.classList.add("is-scrollable");
+          if (fade) fade.style.display = "block";
+        }
+      });
 
     } else {
       wrapper?.classList.remove("is-scrollable");
