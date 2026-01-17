@@ -1407,8 +1407,13 @@
 
         // Texte sans la date (on la retire du libellé)
         const actionClean = escapeHTML(
-          e.action.replace(/\d{2}\/\d{2}\/\d{4}/, "").trim()
-        );
+          e.action
+          // supprime "le " uniquement s’il précède une date
+          .replace(/\ble\s+(?=\d{2}\/\d{2}\/\d{4})/i, "")
+          // supprime ensuite la date
+          .replace(/\d{2}\/\d{2}\/\d{4}/, "")
+          .trim()
+      );
 
         li.innerHTML =
           "📅 <strong>" +
