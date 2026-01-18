@@ -1485,9 +1485,7 @@
   }
 
   function getCumulStat(data, key) {
-    const actuel = Number(data?.stats?.actuel?.[key]) || 0;
-    const manuel = Number(data?.stats?.ajouts_manuels?.[key]) || 0;
-    return actuel + manuel;
+    return Number(data?.stats?.cumul?.[key]) || 0;
   }
 
   function setLineText(id, text) {
