@@ -10,24 +10,20 @@
       "favoris_leboncoin": 1
     }
   },
-
   "bien": {
     "nom": "Naël",
     "sous_titre": "Suivi de commercialisation"
   },
-
   "diffusion": {
     "remontee": {
       "frequence": "Double remontée hebdomadaire automatique"
     }
   },
-
   "dates": {
     "mandat_signe": "2026-01-09",
     "mise_en_ligne": "2026-01-18",
     "derniere_remontee": "2026-01-18"
   },
-
   "liens": {
     "lefigaro": "",
     "youtube": "",
@@ -44,7 +40,6 @@
     "instagram": "",
     "leboncoin": "https://www.leboncoin.fr/ad/instruments_de_musique/3128364821"
   },
-
   "marche": {
     "taux_credit": {
       "precedent": 3.33,
@@ -54,7 +49,6 @@
       "periode": "2026-01"
     }
   },
-
   "stats": {
     "actuel": {
       "appels": 1,
@@ -65,17 +59,15 @@
       "favoris_leboncoin": 1,
       "visites_programmees": 1
     },
-
     "cumul": {
-      "appels": 2,
-      "emails": 2,
-      "visites_effectuees": 2,
-      "offres": 2,
-      "vues_leboncoin": 2,
-      "favoris_leboncoin": 2
+      "appels": 3,
+      "emails": 3,
+      "visites_effectuees": 3,
+      "offres": 3,
+      "vues_leboncoin": 3,
+      "favoris_leboncoin": 3
     }
   },
-
   "stats_weekly_snapshot": {
     "2026-01-13": {
       "appels": 3,
@@ -86,14 +78,12 @@
       "favoris_leboncoin": 2
     }
   },
-
   "analysis": {
     "text": "Le bien est en commercialisation depuis 0 jours.\n\nPhase normale de diffusion.",
     "proposeRDV": false,
     "noAlertes": false,
-    "generatedAt": "2026-01-18T21:59:58.783Z"
+    "generatedAt": "2026-01-18T22:07:42.831Z"
   },
-
   "historique": [
     {
       "date": "2026-01-20",
@@ -104,7 +94,6 @@
       "action": "✍️ Mandat signé"
     }
   ],
-
   "strategie_3090": {
     "intro": "La commercialisation est structurée par paliers afin d’adapter la stratégie au comportement réel des acquéreurs et au contexte de marché.",
     "etapes": [
