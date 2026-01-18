@@ -31,6 +31,20 @@ function toNumber(v) {
 }
 
 /* ======================================================
+   DÉTECTION CHANGEMENT LEBONCOIN (CLÉ UNIQUE)
+====================================================== */
+
+function hasLeboncoinViewsChanged(stats, meta) {
+  const current = toNumber(stats?.actuel?.vues_leboncoin);
+  const previous = toNumber(meta?.previous_stats_actuel?.vues_leboncoin);
+
+  // premier passage → autoriser l'analyse
+  if (!Number.isFinite(previous)) return true;
+
+  return current !== previous;
+}
+
+/* ======================================================
    RÈGLES MÉTIER – STATS
 ====================================================== */
 
@@ -53,7 +67,7 @@ function resetStatsActuel(stats) {
   // visites_programmees volontairement NON reset
 }
 
-// ✅ CUMUL DIFFÉRENTIEL (LA CLÉ)
+// CUMUL DIFFÉRENTIEL (PAS DE DOUBLE COMPTAGE)
 function updateCumulDifferential(stats, meta) {
   if (!stats || !meta) return;
 
@@ -86,7 +100,7 @@ function updateCumulDifferential(stats, meta) {
   });
 }
 
-// Sauvegarde de l’état actuel pour la prochaine exécution
+// Sauvegarde de l’état actuel
 function storePreviousStatsActuel(stats, meta) {
   meta.previous_stats_actuel = {
     appels: toNumber(stats.actuel?.appels),
@@ -178,30 +192,38 @@ for (const fichier of fichiers) {
 
   syncHistoriqueFromDates(data);
 
-  const previous = data._meta.previous_mise_en_ligne || null;
-  const current = data.dates?.mise_en_ligne || null;
-  const changed = hasMiseEnLigneChanged(previous, current);
+  const previousMEL = data._meta.previous_mise_en_ligne || null;
+  const currentMEL = data.dates?.mise_en_ligne || null;
+  const miseEnLigneChanged = hasMiseEnLigneChanged(previousMEL, currentMEL);
 
-  // 🔄 reset uniquement si mise en ligne modifiée
-  if (changed) {
+  // 🔄 reset UNIQUEMENT si mise en ligne modifiée
+  if (miseEnLigneChanged) {
     resetStatsActuel(data.stats);
     data._meta.previous_stats_actuel = {};
   }
 
-  // ➕ CUMUL PAR DIFFÉRENCE
+  // ➕ cumul différentiel (toujours)
   updateCumulDifferential(data.stats, data._meta);
 
-  // 🧠 mémorisation de l’état actuel
+  // 🔍 déclencheur UNIQUE : vues Leboncoin
+  const leboncoinChanged = hasLeboncoinViewsChanged(
+    data.stats,
+    data._meta
+  );
+
+  if (leboncoinChanged) {
+    data.analysis = {
+      ...data.analysis,          // conserve evolution_text
+      ...buildAnalysis(data),
+      generatedAt: new Date().toISOString()
+    };
+  }
+
+  // 🧠 mémorisation état actuel
   storePreviousStatsActuel(data.stats, data._meta);
 
-  data.analysis = {
-    ...data.analysis,
-    ...buildAnalysis(data),
-    generatedAt: new Date().toISOString()
-  };
-
-  data._meta.previous_mise_en_ligne = current;
+  data._meta.previous_mise_en_ligne = currentMEL;
 
   fs.writeFileSync(filePath, JSON.stringify(data, null, 2), "utf-8");
-  console.log(`✔ Analyse mise à jour : ${fichier}`);
+  console.log(`✔ Analyse conditionnelle mise à jour : ${fichier}`);
 }
