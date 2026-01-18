@@ -195,6 +195,7 @@ for (const fichier of fichiers) {
   storePreviousStatsActuel(data.stats, data._meta);
 
   data.analysis = {
+    ...data.analysis,
     ...buildAnalysis(data),
     generatedAt: new Date().toISOString()
   };
