@@ -53,9 +53,9 @@ function resetStatsActuel(stats) {
   // visites_programmees volontairement NON reset
 }
 
-// Cumul = addition permanente
-function updateCumul(stats) {
-  if (!stats) return stats;
+// ✅ CUMUL DIFFÉRENTIEL (LA CLÉ)
+function updateCumulDifferential(stats, meta) {
+  if (!stats || !meta) return;
 
   const KEYS = [
     "appels",
@@ -68,15 +68,34 @@ function updateCumul(stats) {
 
   stats.cumul = stats.cumul || {};
   stats.actuel = stats.actuel || {};
+  meta.previous_stats_actuel = meta.previous_stats_actuel || {};
 
-  KEYS.forEach(k => {
-    if (!Number.isFinite(stats.cumul[k])) {
-      stats.cumul[k] = 0;
+  KEYS.forEach(key => {
+    const current = toNumber(stats.actuel[key]);
+    const previous = toNumber(meta.previous_stats_actuel[key]);
+    const delta = current - previous;
+
+    if (!Number.isFinite(stats.cumul[key])) {
+      stats.cumul[key] = 0;
     }
-    stats.cumul[k] += toNumber(stats.actuel[k]);
-  });
 
-  return stats;
+    // ➕ on ajoute UNIQUEMENT la différence positive
+    if (delta > 0) {
+      stats.cumul[key] += delta;
+    }
+  });
+}
+
+// Sauvegarde de l’état actuel pour la prochaine exécution
+function storePreviousStatsActuel(stats, meta) {
+  meta.previous_stats_actuel = {
+    appels: toNumber(stats.actuel?.appels),
+    emails: toNumber(stats.actuel?.emails),
+    visites_effectuees: toNumber(stats.actuel?.visites_effectuees),
+    offres: toNumber(stats.actuel?.offres),
+    vues_leboncoin: toNumber(stats.actuel?.vues_leboncoin),
+    favoris_leboncoin: toNumber(stats.actuel?.favoris_leboncoin)
+  };
 }
 
 /* ======================================================
@@ -114,6 +133,7 @@ function syncHistoriqueFromDates(data) {
 
 function buildAnalysis(data) {
   const jours = daysBetween(data.dates?.mise_en_ligne);
+
   if (jours === null) {
     return {
       text: "Analyse indisponible : date de mise en ligne manquante.",
@@ -154,26 +174,31 @@ for (const fichier of fichiers) {
   const filePath = path.join(BIENS_DIR, fichier);
   const data = JSON.parse(fs.readFileSync(filePath, "utf-8"));
 
+  data._meta = data._meta || {};
+
   syncHistoriqueFromDates(data);
 
-  const previous = data._meta?.previous_mise_en_ligne || null;
+  const previous = data._meta.previous_mise_en_ligne || null;
   const current = data.dates?.mise_en_ligne || null;
   const changed = hasMiseEnLigneChanged(previous, current);
-
-  // ➕ ajout au cumul
-  updateCumul(data.stats);
 
   // 🔄 reset uniquement si mise en ligne modifiée
   if (changed) {
     resetStatsActuel(data.stats);
+    data._meta.previous_stats_actuel = {};
   }
+
+  // ➕ CUMUL PAR DIFFÉRENCE
+  updateCumulDifferential(data.stats, data._meta);
+
+  // 🧠 mémorisation de l’état actuel
+  storePreviousStatsActuel(data.stats, data._meta);
 
   data.analysis = {
     ...buildAnalysis(data),
     generatedAt: new Date().toISOString()
   };
 
-  data._meta = data._meta || {};
   data._meta.previous_mise_en_ligne = current;
 
   fs.writeFileSync(filePath, JSON.stringify(data, null, 2), "utf-8");
