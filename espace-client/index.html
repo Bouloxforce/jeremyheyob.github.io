@@ -1083,10 +1083,10 @@
         Aucun taux de transformation disponibles pour le moment.
       </p>
 
-      <!-- ✅ AJOUT 3 : Évolution dans le temps -->
+      <!-- ✅ AJOUT 3 : Tendance sur la semaine écoulée -->
       <div class="luxury-divider"></div>
 
-      <h2 style="margin-top:0;">Évolution dans le temps (7 derniers jours)</h2>
+      <h2 style="margin-top:0;">Tendance sur la semaine écoulée</h2>
       <p class="subtitle" id="evolution-commentaire" style="white-space:pre-line;">
         Chargement…
       </p>
@@ -1463,7 +1463,7 @@
      ✅ AJOUTS DEMANDÉS (stats)
      - jours depuis dernière remontée
      - ratios lisibles
-     - évolution dans le temps
+     - Tendance sur la semaine écoulée
      - alertes automatiques
   ========================= */
   function daysSinceISO(iso) {
@@ -1970,7 +1970,7 @@ function render404() {
       }
 
       // =========================
-      // 📈 ÉVOLUTION DANS LE TEMPS (BLOC UNIQUE)
+      // 📈 Tendance sur la semaine écoulée (BLOC UNIQUE)
       // =========================
 
       const evolutionText = (analysis.evolution_text || "").trim();
