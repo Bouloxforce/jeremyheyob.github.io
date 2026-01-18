@@ -5,35 +5,24 @@ import path from "path";
    PARAMÈTRES
 ========================= */
 
-// ⚠️ À adapter si besoin
 const BIENS_DIR = path.join("espace-client", "biens");
 
 /* =========================
    OUTILS
 ========================= */
 
-// Retourne le lundi de la semaine courante (clé snapshot)
 function getWeekKey() {
   const d = new Date();
   d.setHours(0, 0, 0, 0);
-
-  // ramène au lundi
-  const day = d.getDay(); // 0 = dimanche
+  const day = d.getDay();
   const diff = (day === 0 ? -6 : 1) - day;
   d.setDate(d.getDate() + diff);
-
   return d.toISOString().slice(0, 10);
 }
 
-// Conversion sécurisée
 function toNumber(v) {
   const n = Number(v);
   return Number.isFinite(n) ? n : 0;
-}
-
-// Vérifie si toutes les valeurs sont à 0
-function isAllZero(obj) {
-  return Object.values(obj).every(v => v === 0);
 }
 
 /* =========================
@@ -45,74 +34,42 @@ if (!fs.existsSync(BIENS_DIR)) {
   process.exit(1);
 }
 
-const fichiers = fs
-  .readdirSync(BIENS_DIR)
-  .filter(f => f.endsWith("_data.json"));
+const fichiers = fs.readdirSync(BIENS_DIR).filter(f =>
+  f.endsWith("_data.json")
+);
 
 for (const fichier of fichiers) {
   const filePath = path.join(BIENS_DIR, fichier);
-  const raw = fs.readFileSync(filePath, "utf-8");
-  const data = JSON.parse(raw);
+  const data = JSON.parse(fs.readFileSync(filePath, "utf-8"));
 
-  // Sécurité structure
-  data.stats = data.stats || {};
-  data.stats.actuel = data.stats.actuel || {};
   data.stats_weekly_snapshot = data.stats_weekly_snapshot || {};
-  data.analysis = data.analysis || {};
+  data._meta = data._meta || {};
+  data._meta.weekly_cumul_base = data._meta.weekly_cumul_base || {};
 
   const weekKey = getWeekKey();
 
-  // 🔹 SNAPSHOT DE LA SEMAINE ÉCOULÉE
-  const snapshot = {
-    appels: toNumber(data.stats.actuel.appels),
-    emails: toNumber(data.stats.actuel.emails),
-    visites_effectuees: toNumber(data.stats.actuel.visites_effectuees),
-    vues_leboncoin: toNumber(data.stats.actuel.vues_leboncoin),
-    favoris_leboncoin: toNumber(data.stats.actuel.favoris_leboncoin)
-  };
-
-  // Enregistrement figé
-  data.stats_weekly_snapshot[weekKey] = snapshot;
-
-  // 🔹 COMPARAISON AVEC LA SEMAINE PRÉCÉDENTE
-  const weeks = Object.keys(data.stats_weekly_snapshot).sort();
-
-  if (weeks.length < 2) {
-    data.analysis.evolution_text =
-      "Les données d’évolution ne sont pas disponibles pour le moment.";
-  } else {
-    const current = data.stats_weekly_snapshot[weeks[weeks.length - 1]];
-    const previous = data.stats_weekly_snapshot[weeks[weeks.length - 2]];
-
-    if (isAllZero(previous)) {
-      data.analysis.evolution_text =
-        "Les données d’évolution ne sont pas disponibles pour le moment.";
-    } else {
-      const lines = [];
-
-      function compare(label, key) {
-        const diff = current[key] - previous[key];
-        if (diff > 0) lines.push(`${label} : hausse de +${diff}`);
-        else if (diff < 0) lines.push(`${label} : baisse de ${Math.abs(diff)}`);
-        else lines.push(`${label} : stable`);
-      }
-
-      compare("Appels", "appels");
-      compare("Emails", "emails");
-      compare("Visites effectuées", "visites_effectuees");
-      compare("Vues Leboncoin", "vues_leboncoin");
-      compare("Favoris Leboncoin", "favoris_leboncoin");
-
-      data.analysis.evolution_text = lines.join("\n");
-    }
+  if (!data._meta.weekly_cumul_base[weekKey]) {
+    data._meta.weekly_cumul_base[weekKey] = {
+      appels: toNumber(data.stats.cumul.appels),
+      emails: toNumber(data.stats.cumul.emails),
+      visites_effectuees: toNumber(data.stats.cumul.visites_effectuees),
+      offres: toNumber(data.stats.cumul.offres),
+      vues_leboncoin: toNumber(data.stats.cumul.vues_leboncoin),
+      favoris_leboncoin: toNumber(data.stats.cumul.favoris_leboncoin)
+    };
   }
 
-  // Sauvegarde
-  fs.writeFileSync(
-    filePath,
-    JSON.stringify(data, null, 2),
-    "utf-8"
-  );
+  const base = data._meta.weekly_cumul_base[weekKey];
 
+  data.stats_weekly_snapshot[weekKey] = {
+    appels: toNumber(data.stats.cumul.appels) - base.appels,
+    emails: toNumber(data.stats.cumul.emails) - base.emails,
+    visites_effectuees: toNumber(data.stats.cumul.visites_effectuees) - base.visites_effectuees,
+    offres: toNumber(data.stats.cumul.offres) - base.offres,
+    vues_leboncoin: toNumber(data.stats.cumul.vues_leboncoin) - base.vues_leboncoin,
+    favoris_leboncoin: toNumber(data.stats.cumul.favoris_leboncoin) - base.favoris_leboncoin
+  };
+
+  fs.writeFileSync(filePath, JSON.stringify(data, null, 2), "utf-8");
   console.log(`✔ Snapshot hebdomadaire mis à jour : ${fichier}`);
 }
