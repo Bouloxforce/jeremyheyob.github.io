@@ -29,7 +29,7 @@ function toNumber(v) {
 function getWeekKey(date = new Date()) {
   const d = new Date(date);
   d.setHours(0, 0, 0, 0);
-  const day = d.getDay();
+  const day = d.getDay(); // 0 = dimanche, 1 = lundi
   const diff = (day === 0 ? -6 : 1) - day;
   d.setDate(d.getDate() + diff);
   return d.toISOString().slice(0, 10);
@@ -77,14 +77,27 @@ for (const fichier of fichiers) {
   data._meta.weekly_cumul_base = data._meta.weekly_cumul_base || {};
   data.analysis = data.analysis || {};
 
-  const weekKey = getWeekKey();
+  const currentWeekKey = getWeekKey();
 
-  /* =========================
-     BASE DE SEMAINE (CUMUL)
-  ========================= */
+  /* =====================================================
+     1️⃣ NORMALISATION DES CLÉS DE SEMAINE
+     → on supprime tout ce qui n’est PAS un lundi ISO
+  ===================================================== */
 
-  if (!data._meta.weekly_cumul_base[weekKey]) {
-    data._meta.weekly_cumul_base[weekKey] = {
+  Object.keys(data.stats_weekly_snapshot).forEach(key => {
+    const d = new Date(key);
+    if (isNaN(d.getTime()) || d.getDay() !== 1) {
+      delete data.stats_weekly_snapshot[key];
+      delete data._meta.weekly_cumul_base[key];
+    }
+  });
+
+  /* =====================================================
+     2️⃣ BASE DE CUMUL POUR LA SEMAINE COURANTE
+  ===================================================== */
+
+  if (!data._meta.weekly_cumul_base[currentWeekKey]) {
+    data._meta.weekly_cumul_base[currentWeekKey] = {
       appels: toNumber(data.stats.cumul?.appels),
       emails: toNumber(data.stats.cumul?.emails),
       visites_effectuees: toNumber(data.stats.cumul?.visites_effectuees),
@@ -94,13 +107,13 @@ for (const fichier of fichiers) {
     };
   }
 
-  const base = data._meta.weekly_cumul_base[weekKey];
+  const base = data._meta.weekly_cumul_base[currentWeekKey];
 
-  /* =========================
-     SNAPSHOT DE LA SEMAINE
-  ========================= */
+  /* =====================================================
+     3️⃣ SNAPSHOT HEBDOMADAIRE (DIFF DE CUMUL)
+  ===================================================== */
 
-  const snapshot = {
+  data.stats_weekly_snapshot[currentWeekKey] = {
     appels: toNumber(data.stats.cumul?.appels) - base.appels,
     emails: toNumber(data.stats.cumul?.emails) - base.emails,
     visites_effectuees:
@@ -114,32 +127,27 @@ for (const fichier of fichiers) {
       base.favoris_leboncoin
   };
 
-  data.stats_weekly_snapshot[weekKey] = snapshot;
-
-  /* =========================
-     RÉTENTION : N et N-1 UNIQUEMENT
-  ========================= */
+  /* =====================================================
+     4️⃣ RÉTENTION : N ET N-1 UNIQUEMENT
+  ===================================================== */
 
   const sortedWeeks = Object.keys(data.stats_weekly_snapshot).sort();
 
   while (sortedWeeks.length > 2) {
     const weekToDelete = sortedWeeks.shift();
     delete data.stats_weekly_snapshot[weekToDelete];
-
-    if (data._meta.weekly_cumul_base) {
-      delete data._meta.weekly_cumul_base[weekToDelete];
-    }
+    delete data._meta.weekly_cumul_base[weekToDelete];
   }
 
-  /* =========================
-     ÉVOLUTION (N vs N-1)
-  ========================= */
+  /* =====================================================
+     5️⃣ ÉVOLUTION (N vs N-1)
+  ===================================================== */
 
-  const remainingWeeks = Object.keys(data.stats_weekly_snapshot).sort();
+  const weeks = Object.keys(data.stats_weekly_snapshot).sort();
 
-  if (remainingWeeks.length === 2) {
-    const previousWeek = data.stats_weekly_snapshot[remainingWeeks[0]];
-    const currentWeek = data.stats_weekly_snapshot[remainingWeeks[1]];
+  if (weeks.length === 2) {
+    const previousWeek = data.stats_weekly_snapshot[weeks[0]];
+    const currentWeek = data.stats_weekly_snapshot[weeks[1]];
 
     const evolutionText = buildEvolutionText(
       currentWeek,
@@ -152,5 +160,5 @@ for (const fichier of fichiers) {
   }
 
   fs.writeFileSync(filePath, JSON.stringify(data, null, 2), "utf-8");
-  console.log(`✔ Weekly snapshot + évolution + nettoyage : ${fichier}`);
+  console.log(`✔ Weekly snapshot normalisé + évolution : ${fichier}`);
 }
