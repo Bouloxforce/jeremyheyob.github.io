@@ -25,7 +25,7 @@ function toNumber(v) {
   return Number.isFinite(n) ? n : 0;
 }
 
-// Lundi ISO (YYYY-MM-DD)
+// Retourne le lundi ISO de la semaine courante (YYYY-MM-DD)
 function getWeekKey(date = new Date()) {
   const d = new Date(date);
   d.setHours(0, 0, 0, 0);
@@ -117,16 +117,29 @@ for (const fichier of fichiers) {
   data.stats_weekly_snapshot[weekKey] = snapshot;
 
   /* =========================
+     RÉTENTION : N et N-1 UNIQUEMENT
+  ========================= */
+
+  const sortedWeeks = Object.keys(data.stats_weekly_snapshot).sort();
+
+  while (sortedWeeks.length > 2) {
+    const weekToDelete = sortedWeeks.shift();
+    delete data.stats_weekly_snapshot[weekToDelete];
+
+    if (data._meta.weekly_cumul_base) {
+      delete data._meta.weekly_cumul_base[weekToDelete];
+    }
+  }
+
+  /* =========================
      ÉVOLUTION (N vs N-1)
   ========================= */
 
-  const weeks = Object.keys(data.stats_weekly_snapshot)
-    .sort()
-    .slice(-2);
+  const remainingWeeks = Object.keys(data.stats_weekly_snapshot).sort();
 
-  if (weeks.length === 2) {
-    const previousWeek = data.stats_weekly_snapshot[weeks[0]];
-    const currentWeek = data.stats_weekly_snapshot[weeks[1]];
+  if (remainingWeeks.length === 2) {
+    const previousWeek = data.stats_weekly_snapshot[remainingWeeks[0]];
+    const currentWeek = data.stats_weekly_snapshot[remainingWeeks[1]];
 
     const evolutionText = buildEvolutionText(
       currentWeek,
@@ -139,5 +152,5 @@ for (const fichier of fichiers) {
   }
 
   fs.writeFileSync(filePath, JSON.stringify(data, null, 2), "utf-8");
-  console.log(`✔ Weekly snapshot + évolution : ${fichier}`);
+  console.log(`✔ Weekly snapshot + évolution + nettoyage : ${fichier}`);
 }
