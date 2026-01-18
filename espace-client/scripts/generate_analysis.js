@@ -31,6 +31,67 @@ function toNumber(v) {
 }
 
 /* ======================================================
+   NOUVELLES RÈGLES MÉTIER
+====================================================== */
+
+// Détecte un changement de date de mise en ligne
+function hasMiseEnLigneChanged(previousISO, currentISO) {
+  if (!previousISO || !currentISO) return false;
+  return previousISO !== currentISO;
+}
+
+// Reset TOTAL des stats actuelles (sauf visites_programmees)
+function resetStatsActuel(stats) {
+  if (!stats?.actuel) return;
+
+  stats.actuel.appels = 0;
+  stats.actuel.emails = 0;
+  stats.actuel.visites_effectuees = 0;
+  stats.actuel.offres = 0;
+  stats.actuel.vues_leboncoin = 0;
+  stats.actuel.favoris_leboncoin = 0;
+
+  // volontairement NON reset
+  // stats.actuel.visites_programmees
+}
+
+// Mise à jour du cumul selon la règle finale
+function updateCumul(stats, miseEnLigneChanged) {
+  if (!stats) return stats;
+
+  const KEYS = [
+    "appels",
+    "emails",
+    "visites_effectuees",
+    "offres",
+    "vues_leboncoin",
+    "favoris_leboncoin"
+  ];
+
+  const actuel = stats.actuel || {};
+  const cumul = stats.cumul || {};
+
+  // CAS NORMAL → réplique stricte
+  if (!miseEnLigneChanged) {
+    stats.cumul = {};
+    KEYS.forEach(k => {
+      stats.cumul[k] = toNumber(actuel[k]);
+    });
+    return stats;
+  }
+
+  // NOUVELLE MISE EN LIGNE → cumul historique
+  stats.cumul = {};
+  KEYS.forEach(k => {
+    stats.cumul[k] =
+      toNumber(cumul[k]) +
+      toNumber(actuel[k]);
+  });
+
+  return stats;
+}
+
+/* ======================================================
    HISTORIQUE AUTOMATIQUE (DATES → EVENTS)
 ====================================================== */
 
@@ -69,39 +130,6 @@ function syncHistoriqueFromDates(data) {
       });
     }
   }
-}
-
-/* ======================================================
-   CUMUL AUTOMATIQUE DES STATS
-====================================================== */
-
-function updateCumul(stats) {
-  if (!stats) return stats;
-
-  const actuel = stats.actuel || {};
-  const cumul = stats.cumul || {};
-  const ajouts = stats.ajouts_manuels || {};
-
-  const keys = new Set([
-    ...Object.keys(actuel),
-    ...Object.keys(cumul),
-    ...Object.keys(ajouts)
-  ]);
-
-  const nouveauCumul = {};
-
-  for (const key of keys) {
-    const vCumul = toNumber(cumul[key]);
-    const vActuel = toNumber(actuel[key]);
-    const vAjout = toNumber(ajouts[key]);
-
-    nouveauCumul[key] = vCumul + vActuel + vAjout;
-  }
-
-  stats.cumul = nouveauCumul;
-  stats.ajouts_manuels = {}; // sécurité
-
-  return stats;
 }
 
 /* ======================================================
@@ -210,10 +238,27 @@ for (const fichier of fichiers) {
   // 🔥 Historique automatique à partir des dates
   syncHistoriqueFromDates(data);
 
-  // 📊 Cumul stats
-  data.stats = updateCumul(data.stats);
+  // 🔁 Détection changement mise en ligne
+  const previousMiseEnLigne =
+    data._meta?.previous_mise_en_ligne || null;
 
-  // 🧠 Analyse
+  const currentMiseEnLigne =
+    data.dates?.mise_en_ligne || null;
+
+  const miseEnLigneChanged = hasMiseEnLigneChanged(
+    previousMiseEnLigne,
+    currentMiseEnLigne
+  );
+
+  // 🔄 Reset TOTAL si nouvelle mise en ligne
+  if (miseEnLigneChanged) {
+    resetStatsActuel(data.stats);
+  }
+
+  // 📊 Mise à jour du cumul
+  data.stats = updateCumul(data.stats, miseEnLigneChanged);
+
+  // 🧠 Analyse stratégique
   const analysis = buildAnalysis(data);
 
   data.analysis = {
@@ -228,6 +273,11 @@ for (const fichier of fichiers) {
     );
   }
 
+  // 🧠 Persistance meta
+  data._meta = data._meta || {};
+  data._meta.previous_mise_en_ligne = currentMiseEnLigne;
+
+  // 💾 Sauvegarde
   fs.writeFileSync(
     filePath,
     JSON.stringify(data, null, 2),
