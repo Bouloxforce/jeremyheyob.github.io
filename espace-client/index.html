@@ -1973,7 +1973,14 @@ function render404() {
       // 📈 ÉVOLUTION DANS LE TEMPS (BLOC UNIQUE)
       // =========================
 
-      if (evo?.empty) {
+      const evolutionText = (analysis.evolution_text || "").trim();
+
+      if (evolutionText) {
+
+        // ✅ priorité au texte calculé côté workflow (snapshot hebdo)
+        setLineText("evolution-commentaire", evolutionText);
+
+      } else if (evo?.empty) {
 
         setLineText(
           "evolution-commentaire",
@@ -2017,6 +2024,11 @@ function render404() {
           lines.length
             ? lines.join("\n")
             : "Pas de données d’évolution disponibles pour le moment."
+        );
+      } else {
+        setLineText(
+          "evolution-commentaire",
+          "Les données d’évolution ne sont pas disponibles pour le moment."
         );
       }
 
