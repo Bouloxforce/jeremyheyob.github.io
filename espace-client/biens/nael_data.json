@@ -1,6 +1,6 @@
 {
   "_meta": {
-    "previous_mise_en_ligne": "2026-01-11"
+    "previous_mise_en_ligne": "2026-01-18"
   },
   "bien": {
     "nom": "Naël",
@@ -38,12 +38,12 @@
   },
   "stats": {
     "actuel": {
-      "appels": 6,
-      "emails": 2,
-      "visites_effectuees": 24,
+      "appels": 0,
+      "emails": 0,
+      "visites_effectuees": 0,
       "offres": 0,
-      "vues_leboncoin": 124,
-      "favoris_leboncoin": 24,
+      "vues_leboncoin": 0,
+      "favoris_leboncoin": 0,
       "visites_programmees": 0
     },
     "cumul": {
@@ -52,8 +52,7 @@
       "visites_effectuees": 72,
       "offres": 6,
       "vues_leboncoin": 371,
-      "favoris_leboncoin": 72,
-      "visites_programmees": 0
+      "favoris_leboncoin": 72
     },
     "ajouts_manuels": {}
   },
@@ -68,10 +67,10 @@
     }
   },
   "analysis": {
-    "text": "Le bien est en commercialisation depuis 7 jours.\n\nCette phase correspond à une période normale d’exposition. La stratégie actuelle est maintenue.",
+    "text": "Le bien est en commercialisation depuis 0 jours.\n\nCette phase correspond à une période normale d’exposition. La stratégie actuelle est maintenue.",
     "proposeRDV": false,
     "noAlertes": false,
-    "generatedAt": "2026-01-18T21:19:03.547Z"
+    "generatedAt": "2026-01-18T21:27:09.722Z"
   },
   "historique": [
     {
