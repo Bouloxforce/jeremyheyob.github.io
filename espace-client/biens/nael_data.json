@@ -6,6 +6,11 @@
     "nom": "Naël",
     "sous_titre": "Suivi de commercialisation"
   },
+    "diffusion": {
+    "remontee": {
+      "frequence": "Double remontée hebdomadaire automatique"
+    }
+  },
   "dates": {
     "mandat_signe": "2026-01-09",
     "mise_en_ligne": "2026-01-18",
