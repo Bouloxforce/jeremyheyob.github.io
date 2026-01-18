@@ -2,12 +2,12 @@
   "_meta": {
     "previous_mise_en_ligne": "2026-01-18",
     "previous_stats_actuel": {
-      "appels": 1,
-      "emails": 1,
-      "visites_effectuees": 1,
-      "offres": 1,
-      "vues_leboncoin": 1,
-      "favoris_leboncoin": 1
+      "appels": 11,
+      "emails": 11,
+      "visites_effectuees": 11,
+      "offres": 11,
+      "vues_leboncoin": 11,
+      "favoris_leboncoin": 11
     }
   },
   "bien": {
@@ -60,12 +60,12 @@
       "visites_programmees": 11
     },
     "cumul": {
-      "appels": 3,
-      "emails": 3,
-      "visites_effectuees": 3,
-      "offres": 3,
-      "vues_leboncoin": 3,
-      "favoris_leboncoin": 3
+      "appels": 13,
+      "emails": 13,
+      "visites_effectuees": 13,
+      "offres": 13,
+      "vues_leboncoin": 13,
+      "favoris_leboncoin": 13
     }
   },
   "stats_weekly_snapshot": {
@@ -82,7 +82,7 @@
     "text": "Le bien est en commercialisation depuis 0 jours.\n\nPhase normale de diffusion.",
     "proposeRDV": false,
     "noAlertes": false,
-    "generatedAt": "2026-01-18T22:07:42.831Z"
+    "generatedAt": "2026-01-18T22:11:59.827Z"
   },
   "historique": [
     {

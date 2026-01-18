@@ -84,9 +84,17 @@
     "text": "Analyse indisponible : date de mise en ligne manquante.",
     "proposeRDV": false,
     "noAlertes": false,
-    "generatedAt": "2026-01-18T22:07:42.831Z"
+    "generatedAt": "2026-01-18T22:11:59.827Z"
   },
   "_meta": {
-    "previous_mise_en_ligne": null
+    "previous_mise_en_ligne": null,
+    "previous_stats_actuel": {
+      "appels": 0,
+      "emails": 0,
+      "visites_effectuees": 0,
+      "offres": 0,
+      "vues_leboncoin": 0,
+      "favoris_leboncoin": 0
+    }
   }
 }
