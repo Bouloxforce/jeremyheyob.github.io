@@ -44,11 +44,11 @@ function buildEvolutionText(current, previous) {
     const delta = toNumber(current[key]) - toNumber(previous[key]);
 
     if (delta > 0) {
-      lines.push(`📈 ${label} : +${delta}`);
+      lines.push(`🟢 ${label} : +${delta}`);
     } else if (delta < 0) {
-      lines.push(`📉 ${label} : ${delta}`);
+      lines.push(`🔴 ${label} : ${delta}`);
     } else {
-      lines.push(`➖ ${label} : stable`);
+      lines.push(`⚪️ ${label} : stable`);
     }
   });
 
