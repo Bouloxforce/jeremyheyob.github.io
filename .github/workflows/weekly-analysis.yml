@@ -2,7 +2,8 @@ name: Analyse hebdomadaire biens
 
 on:
   schedule:
-    - cron: "0 7 * * 1" # Tous les lundis à 07:00
+    # Tous les lundis à 14:00 (après mise à jour manuelle Leboncoin)
+    - cron: "0 14 * * 1"
   workflow_dispatch:
 
 jobs:
@@ -20,10 +21,23 @@ jobs:
         with:
           node-version: 20
 
+      # =========================
+      # 🆕 SNAPSHOT HEBDOMADAIRE
+      # =========================
+      - name: Snapshot hebdomadaire des statistiques
+        run: |
+          node espace-client/scripts/update-weekly-stats.js
+
+      # =========================
+      # ANALYSE STRATÉGIQUE
+      # =========================
       - name: Générer analyses
         run: |
           node espace-client/scripts/generate_analysis.js
 
+      # =========================
+      # COMMIT DES MODIFICATIONS
+      # =========================
       - name: Commit des analyses
         run: |
           git config user.name "Analyse automatique"
@@ -32,6 +46,9 @@ jobs:
           git diff --cached --quiet || git commit -m "Analyse hebdomadaire automatique"
           git push
 
+      # =========================
+      # NOTIFICATION SI RDV
+      # =========================
       - name: Notification interne si RDV recommandé
         if: env.RDV_RECOMMANDE == 'true'
         uses: dawidd6/action-send-mail@v3
@@ -51,4 +68,3 @@ jobs:
             •  ${{ env.RDV_BIENS }}
 
             Merci de contacter rapidement le(s) client(s) afin d’ajuster la stratégie.
-
