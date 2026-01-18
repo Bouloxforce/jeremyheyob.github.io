@@ -1,4 +1,19 @@
 {
+  "_meta": {
+    "previous_mise_en_ligne": "2026-01-11"
+  },
+
+  "bien": {
+    "nom": "Naël",
+    "sous_titre": "Suivi de commercialisation"
+  },
+
+  "dates": {
+    "mandat_signe": "2026-01-09",
+    "mise_en_ligne": "2026-01-11",
+    "derniere_remontee": "2026-01-18"
+  },
+
   "liens": {
     "lefigaro": "",
     "youtube": "",
@@ -15,6 +30,7 @@
     "instagram": "",
     "leboncoin": "https://www.leboncoin.fr/ad/instruments_de_musique/3128364821"
   },
+
   "marche": {
     "taux_credit": {
       "precedent": 3.33,
@@ -24,121 +40,74 @@
       "periode": "2026-01"
     }
   },
+
   "stats": {
-    "ajouts_manuels": {},
     "actuel": {
-      "appels": 1,
-      "emails": 1,
-      "visites_effectuees": 4,
-      "offres": 1,
-      "vues_leboncoin": 123,
-      "favoris_leboncoin": 4,
-      "visites_programmees": 3
+      "appels": 6,
+      "emails": 2,
+      "visites_effectuees": 24,
+      "offres": 0,
+      "vues_leboncoin": 124,
+      "favoris_leboncoin": 24,
+      "visites_programmees": 0
     },
+
     "cumul": {
-      "appels": 13,
-      "emails": 13,
-      "visites_effectuees": 52,
-      "offres": 13,
-      "vues_leboncoin": 1599,
-      "favoris_leboncoin": 52,
-      "visites_programmees": 39
+      "appels": 6,
+      "emails": 2,
+      "visites_effectuees": 24,
+      "offres": 6,
+      "vues_leboncoin": 123,
+      "favoris_leboncoin": 24
     }
   },
+
   "stats_weekly_snapshot": {
-    "week_start": "2026-01-06",
-    "week_end": "2026-01-12",
-    "stats": {
+    "2026-01-13": {
       "appels": 3,
       "emails": 3,
       "visites_effectuees": 12,
       "offres": 0,
-      "vues_leboncoin": 369,
-      "favoris_leboncoin": 12
+      "vues_leboncoin": 45,
+      "favoris_leboncoin": 2
     }
   },
+
   "analysis": {
-    "text": "Le bien est en commercialisation depuis 17 jours.\n\nCette phase correspond à une période normale d’exposition. La stratégie actuelle est maintenue.",
+    "text": "Le bien est en commercialisation depuis 0 jour.\n\nUne nouvelle phase de diffusion vient de démarrer. Les indicateurs seront analysés dès que des données exploitables seront disponibles.",
     "proposeRDV": false,
     "noAlertes": false,
-    "generatedAt": "2026-01-18T20:43:56.644Z"
+    "generatedAt": "2026-01-20T09:00:00.000Z"
   },
-  "dates": {
-    "mise_en_ligne": "2026-01-01",
-    "derniere_remontee": "2026-01-15",
-    "mandat_signe": "2026-01-01"
-  },
+
   "historique": [
     {
-      "date": "2026-01-17",
-      "action": "📩 Nouvel email reçu"
-    },
-    {
-      "date": "2026-01-16",
-      "action": "📩 Nouvel email reçu"
-    },
-    {
-      "date": "2026-01-15",
-      "action": "Nouvelle offre d'achat 24/01/2026"
-    },
-    {
-      "date": "2026-01-15",
-      "action": "Signature du compromis le 23/01/2026"
-    },
-    {
-      "date": "2026-01-15",
-      "action": "Nouvelle visite le 18/01/2026"
-    },
-    {
-      "date": "2026-01-15",
-      "action": "📞 Nouvel appel"
-    },
-    {
-      "date": "2026-01-15",
-      "action": "Nouvelle visite le 17/01/2026"
-    },
-    {
-      "date": "2026-01-15",
-      "action": "📞 Nouvel appel"
-    },
-    {
-      "date": "2026-01-15",
-      "action": "📞 Nouvel appel"
-    },
-    {
-      "date": "2026-01-15",
-      "action": "📞 Nouvel appel"
+      "date": "2026-01-20",
+      "action": "📢 Mise en ligne de l’annonce"
     },
     {
       "date": "2026-01-01",
       "action": "✍️ Mandat signé"
-    },
-    {
-      "date": "2026-01-01",
-      "action": "📢 Mise en ligne de l’annonce"
     }
   ],
-  "bien": {
-    "nom": "Naël",
-    "sous_titre": "Suivi de commercialisation"
-  },
+
   "strategie_3090": {
     "intro": "La commercialisation est structurée par paliers afin d’adapter la stratégie au comportement réel des acquéreurs et au contexte de marché.",
     "etapes": [
       {
         "jours": "0–30 jours",
         "titre": "Phase de lancement",
-        "strategie": "Mise en visibilité maximale du bien, diffusion multicanale et analyse des premiers retours acquéreurs."
+        "strategie": "Diffusion maximale du bien, analyse des premières réactions et qualification de la demande."
       },
       {
         "jours": "31–60 jours",
         "titre": "Phase d’ajustement",
-        "strategie": "Optimisation de la stratégie de diffusion et ajustements ciblés selon les indicateurs de performance."
+        "strategie": "Optimisation du positionnement et ajustements ciblés selon les performances observées."
       },
       {
         "jours": "61–90 jours",
         "titre": "Phase de décision",
-        "strategie": "Alignement stratégique du positionnement afin de favoriser le passage à l’offre dans un marché plus sélectif."
+        "strategie": "Alignement stratégique du prix et de la communication afin de favoriser le passage à l’offre."
       }
     ]
   }
