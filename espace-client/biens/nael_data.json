@@ -15,7 +15,6 @@
     "instagram": "",
     "leboncoin": "https://www.leboncoin.fr/ad/instruments_de_musique/3128364821"
   },
-
   "marche": {
     "taux_credit": {
       "precedent": 3.33,
@@ -25,18 +24,18 @@
       "periode": "2026-01"
     }
   },
-
   "stats": {
-    "ajouts_manuels": {
-      "appels": 0,
-      "emails": 0,
-      "visites_effectuees": 0,
-      "offres": 0,
-      "vues_leboncoin": 0,
-      "favoris_leboncoin": 0,
-      "visites_programmees": 0
-    },
+    "ajouts_manuels": {},
     "actuel": {
+      "appels": 1,
+      "emails": 1,
+      "visites_effectuees": 4,
+      "offres": 1,
+      "vues_leboncoin": 123,
+      "favoris_leboncoin": 4,
+      "visites_programmees": 3
+    },
+    "cumul": {
       "appels": 1,
       "emails": 1,
       "visites_effectuees": 4,
@@ -46,7 +45,6 @@
       "visites_programmees": 3
     }
   },
-
   "stats_weekly_snapshot": {
     "week_start": "2026-01-06",
     "week_end": "2026-01-12",
@@ -59,41 +57,71 @@
       "favoris_leboncoin": 12
     }
   },
-
   "analysis": {
     "text": "Le bien est en commercialisation depuis 17 jours.\n\nCette phase correspond à une période normale d’exposition. La stratégie actuelle est maintenue.",
-    "evolution_text": "Les indicateurs sont globalement stables par rapport à la semaine précédente. Aucun signal de décrochage n’est observé à ce stade.",
     "proposeRDV": false,
     "noAlertes": false,
-    "generatedAt": "2026-01-18T15:41:25.329Z"
+    "generatedAt": "2026-01-18T16:02:19.961Z"
   },
-
   "dates": {
     "mise_en_ligne": "2026-01-01",
     "derniere_remontee": "2026-01-15",
     "mandat_signe": "2026-01-01"
   },
-
   "historique": [
-    { "date": "2026-01-17", "action": "📩 Nouvel email reçu" },
-    { "date": "2026-01-16", "action": "📩 Nouvel email reçu" },
-    { "date": "2026-01-15", "action": "Nouvelle offre d'achat 24/01/2026" },
-    { "date": "2026-01-15", "action": "Signature du compromis le 23/01/2026" },
-    { "date": "2026-01-15", "action": "Nouvelle visite le 18/01/2026" },
-    { "date": "2026-01-15", "action": "📞 Nouvel appel" },
-    { "date": "2026-01-15", "action": "Nouvelle visite le 17/01/2026" },
-    { "date": "2026-01-15", "action": "📞 Nouvel appel" },
-    { "date": "2026-01-15", "action": "📞 Nouvel appel" },
-    { "date": "2026-01-15", "action": "📞 Nouvel appel" },
-    { "date": "2026-01-01", "action": "✍️ Mandat signé" },
-    { "date": "2026-01-01", "action": "📢 Mise en ligne de l’annonce" }
+    {
+      "date": "2026-01-17",
+      "action": "📩 Nouvel email reçu"
+    },
+    {
+      "date": "2026-01-16",
+      "action": "📩 Nouvel email reçu"
+    },
+    {
+      "date": "2026-01-15",
+      "action": "Nouvelle offre d'achat 24/01/2026"
+    },
+    {
+      "date": "2026-01-15",
+      "action": "Signature du compromis le 23/01/2026"
+    },
+    {
+      "date": "2026-01-15",
+      "action": "Nouvelle visite le 18/01/2026"
+    },
+    {
+      "date": "2026-01-15",
+      "action": "📞 Nouvel appel"
+    },
+    {
+      "date": "2026-01-15",
+      "action": "Nouvelle visite le 17/01/2026"
+    },
+    {
+      "date": "2026-01-15",
+      "action": "📞 Nouvel appel"
+    },
+    {
+      "date": "2026-01-15",
+      "action": "📞 Nouvel appel"
+    },
+    {
+      "date": "2026-01-15",
+      "action": "📞 Nouvel appel"
+    },
+    {
+      "date": "2026-01-01",
+      "action": "✍️ Mandat signé"
+    },
+    {
+      "date": "2026-01-01",
+      "action": "📢 Mise en ligne de l’annonce"
+    }
   ],
-
   "bien": {
     "nom": "Naël",
     "sous_titre": "Suivi de commercialisation"
   },
-
   "strategie_3090": {
     "intro": "La commercialisation est structurée par paliers afin d’adapter la stratégie au comportement réel des acquéreurs et au contexte de marché.",
     "etapes": [
