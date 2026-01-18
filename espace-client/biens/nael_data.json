@@ -6,7 +6,7 @@
     "nom": "Naël",
     "sous_titre": "Suivi de commercialisation"
   },
-    "diffusion": {
+  "diffusion": {
     "remontee": {
       "frequence": "Double remontée hebdomadaire automatique"
     }
@@ -52,12 +52,12 @@
       "visites_programmees": 1
     },
     "cumul": {
-      "appels": 1,
-      "emails": 1,
-      "visites_effectuees": 1,
-      "offres": 1,
-      "vues_leboncoin": 1,
-      "favoris_leboncoin": 1
+      "appels": 2,
+      "emails": 2,
+      "visites_effectuees": 2,
+      "offres": 2,
+      "vues_leboncoin": 2,
+      "favoris_leboncoin": 2
     }
   },
   "stats_weekly_snapshot": {
@@ -71,10 +71,10 @@
     }
   },
   "analysis": {
-    "text": "Le bien est en commercialisation depuis 0 jours.\n\nCette phase correspond à une période normale d’exposition. La stratégie actuelle est maintenue.",
+    "text": "Le bien est en commercialisation depuis 0 jours.\n\nPhase normale de diffusion.",
     "proposeRDV": false,
     "noAlertes": false,
-    "generatedAt": "2026-01-18T21:45:22.776Z"
+    "generatedAt": "2026-01-18T21:59:58.783Z"
   },
   "historique": [
     {
