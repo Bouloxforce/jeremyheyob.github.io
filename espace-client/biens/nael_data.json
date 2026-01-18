@@ -69,13 +69,21 @@
     }
   },
   "stats_weekly_snapshot": {
+    "2026-01-06": {
+      "appels": 1,
+      "emails": 1,
+      "visites_effectuees": 2,
+      "offres": 0,
+      "vues_leboncoin": 20,
+      "favoris_leboncoin": 1
+    },
     "2026-01-13": {
       "appels": 3,
       "emails": 3,
-      "visites_effectuees": 3,
-      "offres": 3,
-      "vues_leboncoin": 3,
-      "favoris_leboncoin": 3
+      "visites_effectuees": 12,
+      "offres": 0,
+      "vues_leboncoin": 45,
+      "favoris_leboncoin": 2
     }
   },
   "analysis": {
