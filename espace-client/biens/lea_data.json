@@ -93,11 +93,31 @@
     "text": "Le bien est en commercialisation depuis 15 jours.\n\nPhase normale de diffusion.",
     "proposeRDV": false,
     "noAlertes": false,
-    "generatedAt": "2026-01-18T22:11:59.826Z"
+    "generatedAt": "2026-01-18T22:52:40.137Z"
   },
   "_meta": {
     "previous_mise_en_ligne": "2026-01-03",
     "previous_stats_actuel": {
+      "appels": 0,
+      "emails": 0,
+      "visites_effectuees": 0,
+      "offres": 0,
+      "vues_leboncoin": 0,
+      "favoris_leboncoin": 0
+    },
+    "weekly_cumul_base": {
+      "2026-01-12": {
+        "appels": 0,
+        "emails": 0,
+        "visites_effectuees": 0,
+        "offres": 0,
+        "vues_leboncoin": 0,
+        "favoris_leboncoin": 0
+      }
+    }
+  },
+  "stats_weekly_snapshot": {
+    "2026-01-12": {
       "appels": 0,
       "emails": 0,
       "visites_effectuees": 0,
