@@ -7,12 +7,27 @@ import path from "path";
 
 const BIENS_DIR = path.join("espace-client", "biens");
 
+const KEYS = [
+  { key: "appels", label: "Appels" },
+  { key: "emails", label: "Emails" },
+  { key: "visites_effectuees", label: "Visites effectuées" },
+  { key: "offres", label: "Offres" },
+  { key: "vues_leboncoin", label: "Vues Leboncoin" },
+  { key: "favoris_leboncoin", label: "Favoris Leboncoin" }
+];
+
 /* =========================
    OUTILS
 ========================= */
 
-function getWeekKey() {
-  const d = new Date();
+function toNumber(v) {
+  const n = Number(v);
+  return Number.isFinite(n) ? n : 0;
+}
+
+// Lundi ISO (YYYY-MM-DD)
+function getWeekKey(date = new Date()) {
+  const d = new Date(date);
   d.setHours(0, 0, 0, 0);
   const day = d.getDay();
   const diff = (day === 0 ? -6 : 1) - day;
@@ -20,9 +35,24 @@ function getWeekKey() {
   return d.toISOString().slice(0, 10);
 }
 
-function toNumber(v) {
-  const n = Number(v);
-  return Number.isFinite(n) ? n : 0;
+function buildEvolutionText(current, previous) {
+  if (!current || !previous) return null;
+
+  const lines = [];
+
+  KEYS.forEach(({ key, label }) => {
+    const delta = toNumber(current[key]) - toNumber(previous[key]);
+
+    if (delta > 0) {
+      lines.push(`📈 ${label} : +${delta}`);
+    } else if (delta < 0) {
+      lines.push(`📉 ${label} : ${delta}`);
+    } else {
+      lines.push(`➖ ${label} : stable`);
+    }
+  });
+
+  return lines.join("\n");
 }
 
 /* =========================
@@ -45,31 +75,69 @@ for (const fichier of fichiers) {
   data.stats_weekly_snapshot = data.stats_weekly_snapshot || {};
   data._meta = data._meta || {};
   data._meta.weekly_cumul_base = data._meta.weekly_cumul_base || {};
+  data.analysis = data.analysis || {};
 
   const weekKey = getWeekKey();
 
+  /* =========================
+     BASE DE SEMAINE (CUMUL)
+  ========================= */
+
   if (!data._meta.weekly_cumul_base[weekKey]) {
     data._meta.weekly_cumul_base[weekKey] = {
-      appels: toNumber(data.stats.cumul.appels),
-      emails: toNumber(data.stats.cumul.emails),
-      visites_effectuees: toNumber(data.stats.cumul.visites_effectuees),
-      offres: toNumber(data.stats.cumul.offres),
-      vues_leboncoin: toNumber(data.stats.cumul.vues_leboncoin),
-      favoris_leboncoin: toNumber(data.stats.cumul.favoris_leboncoin)
+      appels: toNumber(data.stats.cumul?.appels),
+      emails: toNumber(data.stats.cumul?.emails),
+      visites_effectuees: toNumber(data.stats.cumul?.visites_effectuees),
+      offres: toNumber(data.stats.cumul?.offres),
+      vues_leboncoin: toNumber(data.stats.cumul?.vues_leboncoin),
+      favoris_leboncoin: toNumber(data.stats.cumul?.favoris_leboncoin)
     };
   }
 
   const base = data._meta.weekly_cumul_base[weekKey];
 
-  data.stats_weekly_snapshot[weekKey] = {
-    appels: toNumber(data.stats.cumul.appels) - base.appels,
-    emails: toNumber(data.stats.cumul.emails) - base.emails,
-    visites_effectuees: toNumber(data.stats.cumul.visites_effectuees) - base.visites_effectuees,
-    offres: toNumber(data.stats.cumul.offres) - base.offres,
-    vues_leboncoin: toNumber(data.stats.cumul.vues_leboncoin) - base.vues_leboncoin,
-    favoris_leboncoin: toNumber(data.stats.cumul.favoris_leboncoin) - base.favoris_leboncoin
+  /* =========================
+     SNAPSHOT DE LA SEMAINE
+  ========================= */
+
+  const snapshot = {
+    appels: toNumber(data.stats.cumul?.appels) - base.appels,
+    emails: toNumber(data.stats.cumul?.emails) - base.emails,
+    visites_effectuees:
+      toNumber(data.stats.cumul?.visites_effectuees) -
+      base.visites_effectuees,
+    offres: toNumber(data.stats.cumul?.offres) - base.offres,
+    vues_leboncoin:
+      toNumber(data.stats.cumul?.vues_leboncoin) - base.vues_leboncoin,
+    favoris_leboncoin:
+      toNumber(data.stats.cumul?.favoris_leboncoin) -
+      base.favoris_leboncoin
   };
 
+  data.stats_weekly_snapshot[weekKey] = snapshot;
+
+  /* =========================
+     ÉVOLUTION (N vs N-1)
+  ========================= */
+
+  const weeks = Object.keys(data.stats_weekly_snapshot)
+    .sort()
+    .slice(-2);
+
+  if (weeks.length === 2) {
+    const previousWeek = data.stats_weekly_snapshot[weeks[0]];
+    const currentWeek = data.stats_weekly_snapshot[weeks[1]];
+
+    const evolutionText = buildEvolutionText(
+      currentWeek,
+      previousWeek
+    );
+
+    if (evolutionText) {
+      data.analysis.evolution_text = evolutionText;
+    }
+  }
+
   fs.writeFileSync(filePath, JSON.stringify(data, null, 2), "utf-8");
-  console.log(`✔ Snapshot hebdomadaire mis à jour : ${fichier}`);
+  console.log(`✔ Weekly snapshot + évolution : ${fichier}`);
 }
