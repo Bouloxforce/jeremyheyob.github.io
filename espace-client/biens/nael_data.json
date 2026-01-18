@@ -2,18 +2,15 @@
   "_meta": {
     "previous_mise_en_ligne": "2026-01-11"
   },
-
   "bien": {
     "nom": "Naël",
     "sous_titre": "Suivi de commercialisation"
   },
-
   "dates": {
     "mandat_signe": "2026-01-09",
     "mise_en_ligne": "2026-01-11",
     "derniere_remontee": "2026-01-18"
   },
-
   "liens": {
     "lefigaro": "",
     "youtube": "",
@@ -30,7 +27,6 @@
     "instagram": "",
     "leboncoin": "https://www.leboncoin.fr/ad/instruments_de_musique/3128364821"
   },
-
   "marche": {
     "taux_credit": {
       "precedent": 3.33,
@@ -40,7 +36,6 @@
       "periode": "2026-01"
     }
   },
-
   "stats": {
     "actuel": {
       "appels": 6,
@@ -51,17 +46,17 @@
       "favoris_leboncoin": 24,
       "visites_programmees": 0
     },
-
     "cumul": {
-      "appels": 6,
-      "emails": 2,
-      "visites_effectuees": 24,
+      "appels": 12,
+      "emails": 4,
+      "visites_effectuees": 48,
       "offres": 6,
-      "vues_leboncoin": 123,
-      "favoris_leboncoin": 24
-    }
+      "vues_leboncoin": 247,
+      "favoris_leboncoin": 48,
+      "visites_programmees": 0
+    },
+    "ajouts_manuels": {}
   },
-
   "stats_weekly_snapshot": {
     "2026-01-13": {
       "appels": 3,
@@ -72,14 +67,12 @@
       "favoris_leboncoin": 2
     }
   },
-
   "analysis": {
-    "text": "Le bien est en commercialisation depuis 0 jour.\n\nUne nouvelle phase de diffusion vient de démarrer. Les indicateurs seront analysés dès que des données exploitables seront disponibles.",
+    "text": "Le bien est en commercialisation depuis 7 jours.\n\nCette phase correspond à une période normale d’exposition. La stratégie actuelle est maintenue.",
     "proposeRDV": false,
     "noAlertes": false,
-    "generatedAt": "2026-01-20T09:00:00.000Z"
+    "generatedAt": "2026-01-18T21:18:30.357Z"
   },
-
   "historique": [
     {
       "date": "2026-01-20",
@@ -90,7 +83,6 @@
       "action": "✍️ Mandat signé"
     }
   ],
-
   "strategie_3090": {
     "intro": "La commercialisation est structurée par paliers afin d’adapter la stratégie au comportement réel des acquéreurs et au contexte de marché.",
     "etapes": [
