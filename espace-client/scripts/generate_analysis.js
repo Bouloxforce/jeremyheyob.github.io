@@ -272,7 +272,7 @@ function processBien(filePath) {
     const currKey = weeks[weeks.length - 1];
 
     const prevBase = weeklyBase[prevKey];
-    const currBase = weeklyBase toggleBack = weeklyBase[currKey];
+    const currBase = weeklyBase[currKey];
 
     // Delta semaine précédente = base_courante - base_précédente
     const deltaPrev = computePreviousWeekDelta(prevBase, currBase);
