@@ -1590,9 +1590,11 @@
     items.forEach(msg => {
       const li = document.createElement("li");
       li.textContent = msg;
-      li.style.fontWeight = "700";
-      li.style.color = "#b91c1c"; // rouge vendeur
+
+      // ➜ même rendu que la tendance hebdomadaire
+      li.className = "evo-down";
       li.style.marginBottom = "6px";
+
       ul.appendChild(li);
     });
 
