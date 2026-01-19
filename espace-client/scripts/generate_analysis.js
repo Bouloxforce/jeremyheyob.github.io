@@ -208,14 +208,16 @@ function processBien(filePath) {
   }
 
   /* =========================
-     NORMALISATION DES CUMULS
-  ========================= */
+      CUMUL MÉTIER (SOURCE UNIQUE)
+      = dernière base hebdomadaire
+   ========================= */
 
-  for (const key of STAT_KEYS) {
-    if (toNumber(data.stats.actuel[key]) > toNumber(data.stats.cumul[key])) {
-      data.stats.cumul[key] = toNumber(data.stats.actuel[key]);
-    }
-  }
+   const weeksSorted = Object.keys(data._meta.weekly_cumul_base).sort();
+   const lastWeekKey = weeksSorted[weeksSorted.length - 1];
+
+   if (lastWeekKey) {
+     data.stats.cumul = { ...data._meta.weekly_cumul_base[lastWeekKey] };
+   }
 
   /* =========================
      BASE HEBDOMADAIRE (figée)
