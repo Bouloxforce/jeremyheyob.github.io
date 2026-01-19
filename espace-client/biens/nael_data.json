@@ -83,9 +83,9 @@
   },
   "analysis": {
     "text": "",
-    "evolution_text": "Appels : stable\nEmails : stable\nVisites effectuées : stable\nOffres : stable\nVues Leboncoin : stable\nFavoris Leboncoin : stable",
-    "generatedAt": "2026-01-19T16:11:16.968Z",
-    "noExploitableData": false
+    "evolution_text": "La tendance sur la semaine écoulée sera disponible dès que des données seront exploitables.",
+    "generatedAt": "2026-01-19T16:20:36.746Z",
+    "noExploitableData": true
   },
   "historique": [
     {
@@ -121,5 +121,15 @@
         "strategie": "Poursuite possible de la commercialisation selon votre décision."
       }
     ]
+  },
+  "stats_weekly_snapshot": {
+    "2026-01-19": {
+      "appels": 0,
+      "emails": 0,
+      "visites_effectuees": 0,
+      "offres": 0,
+      "vues_leboncoin": 0,
+      "favoris_leboncoin": 0
+    }
   }
 }
