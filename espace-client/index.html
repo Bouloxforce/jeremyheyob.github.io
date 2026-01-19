@@ -2140,7 +2140,7 @@ function render404() {
       // 🔒 PHASE FINALE — TEMPS UNIQUEMENT
       // =========================
       const phaseFinale = getPhaseIndexDepuisDate(
-        data.dates?.mise_en_ligne
+        data._meta?.mise_en_ligne_initiale || data.dates?.mise_en_ligne
       );
 
       // Application visuelle
