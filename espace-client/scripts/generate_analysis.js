@@ -154,7 +154,7 @@ function processBien(filePath) {
     data._meta.weekly_cumul_base[mondayKey] = {};
     for (const key of STAT_KEYS) {
       data._meta.weekly_cumul_base[mondayKey][key] =
-        toNumber(data.stats.actuel[key]);
+        toNumber(data.stats.actuel?.[key]);
     }
   }
 
