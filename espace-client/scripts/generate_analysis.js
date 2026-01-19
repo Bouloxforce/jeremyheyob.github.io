@@ -138,6 +138,23 @@ function processBien(filePath) {
   data._meta.weekly_cumul_base = data._meta.weekly_cumul_base || {};
   data.analysis = data.analysis || {};
 
+   /* =========================
+      NORMALISATION DES CUMULS
+      (cumul ≥ actuel)
+   ========================= */
+
+   data.stats.actuel = data.stats.actuel || {};
+
+   for (const key of STAT_KEYS) {
+     const actuel = toNumber(data.stats.actuel[key]);
+     const cumul  = toNumber(data.stats.cumul[key]);
+
+     // 🔒 Un cumul ne peut JAMAIS être inférieur à l'actuel
+     if (actuel > cumul) {
+       data.stats.cumul[key] = actuel;
+     }
+   }
+
   /* =========================
      BASE HEBDOMADAIRE
   ========================= */
