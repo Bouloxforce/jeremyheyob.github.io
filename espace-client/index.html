@@ -1538,54 +1538,27 @@
     });
   }
 
-  // =========================
-// 🔥 PHASE ACTIVE (date)
-// =========================
-function getPhaseIndexDepuisDate(dateISO) {
-  if (!dateISO) return null;
+    // =========================
+    // 🔒 PHASE ACTIVE — TEMPS UNIQUEMENT
+    // =========================
+    function getPhaseIndexDepuisDate(dateISO) {
+      if (!dateISO) return null;
 
-  const start = new Date(dateISO);
-  if (isNaN(start.getTime())) return null;
+      const start = new Date(dateISO);
+      if (isNaN(start.getTime())) return null;
 
-  const diffDays = Math.floor(
-    (Date.now() - start.getTime()) / (1000 * 60 * 60 * 24)
-  );
+      const diffDays = Math.floor(
+        (Date.now() - start.getTime()) / (1000 * 60 * 60 * 24)
+      );
 
-  // 0–30 jours → phase 1
-  if (diffDays <= 30) return 0;
+      if (diffDays <= 30) return 0; // 0–30 jours
+      if (diffDays <= 60) return 1; // 31–60 jours
+      if (diffDays <= 90) return 2; // 61–90 jours
 
-  // 31–60 jours → phase 2
-  if (diffDays <= 60) return 1;
+      return 3; // +90 jours
+    }
 
-  // 61–90 jours → phase 3
-  if (diffDays <= 90) return 2;
-
-  return 2;
 }
-
-      // =========================
-      // 📈 PHASE DOMINANTE VIA ALERTES
-      // =========================
-
-      function getPhaseIndexDepuisAlertes(data) {
-        if (!data) return null;
-
-        const appelsTotal  = getCumulStat(data, "appels");
-        const vuesTotal    = getCumulStat(data, "vues_leboncoin");
-        const visitesTotal = getCumulStat(data, "visites_effectuees");
-        const offresTotal  = getCumulStat(data, "offres");
-
-        // Phase 1 – Lancement : pas encore de visites
-        if (visitesTotal === 0) return 0;
-
-        // Phase 2 – Ajustement : visibilité mais peu de contacts
-        if (vuesTotal > 100 && appelsTotal <= 2) return 1;
-
-        // Phase 3 – Décision : visites sans offre
-        if (visitesTotal >= 3 && offresTotal === 0) return 2;
-
-        return null;
-      }
 
   function pushEvolution(lines, label, actuel, precedent) {
     if (
@@ -2180,20 +2153,11 @@ function render404() {
       }
 
       // =========================
-      // 🔥 PHASE FINALE À AFFICHER
+      // 🔒 PHASE FINALE — TEMPS UNIQUEMENT
       // =========================
-
-      // Phase selon le temps
-      const phaseDepuisDate = getPhaseIndexDepuisDate(data.dates?.mise_en_ligne);
-
-      // Phase selon les alertes
-      const phaseDepuisAlertes = getPhaseIndexDepuisAlertes(data);
-
-      // Priorité aux alertes
-      const phaseFinale =
-        phaseDepuisAlertes !== null
-          ? phaseDepuisAlertes
-          : phaseDepuisDate;
+      const phaseFinale = getPhaseIndexDepuisDate(
+        data.dates?.mise_en_ligne
+      );
 
       // Application visuelle
       if (phaseFinale !== null) {
