@@ -1562,6 +1562,30 @@ function getPhaseIndexDepuisDate(dateISO) {
   return 2;
 }
 
+      // =========================
+      // 📈 PHASE DOMINANTE VIA ALERTES
+      // =========================
+
+      function getPhaseIndexDepuisAlertes(data) {
+        if (!data) return null;
+
+        const appelsTotal  = getCumulStat(data, "appels");
+        const vuesTotal    = getCumulStat(data, "vues_leboncoin");
+        const visitesTotal = getCumulStat(data, "visites_effectuees");
+        const offresTotal  = getCumulStat(data, "offres");
+
+        // Phase 1 – Lancement : pas encore de visites
+        if (visitesTotal === 0) return 0;
+
+        // Phase 2 – Ajustement : visibilité mais peu de contacts
+        if (vuesTotal > 100 && appelsTotal <= 2) return 1;
+
+        // Phase 3 – Décision : visites sans offre
+        if (visitesTotal >= 3 && offresTotal === 0) return 2;
+
+        return null;
+      }
+
   function pushEvolution(lines, label, actuel, precedent) {
     if (
       actuel == null ||
@@ -1769,25 +1793,6 @@ function render404() {
 
             container.appendChild(div);
           });
-        }
-      }
-
-      // =========================
-      // 🔒 PHASE ACTIVE – TEMPS UNIQUEMENT
-      // =========================
-      const phaseIndex = getPhaseIndexDepuisDate(
-        data.dates?.mise_en_ligne
-      );
-
-      if (phaseIndex !== null) {
-        const steps = document.querySelectorAll(".timeline-step");
-
-        steps.forEach(step =>
-          step.classList.remove("is-active")
-        );
-
-        if (steps[phaseIndex]) {
-          steps[phaseIndex].classList.add("is-active");
         }
       }
       
@@ -2172,6 +2177,22 @@ function render404() {
       } else {
         renderAlertes(alertes.slice(0, 3));
       }
+
+      // =========================
+      // 🔥 PHASE FINALE À AFFICHER
+      // =========================
+
+      // Phase selon le temps
+      const phaseDepuisDate = getPhaseIndexDepuisDate(data.dates?.mise_en_ligne);
+
+      // Phase selon les alertes
+      const phaseDepuisAlertes = getPhaseIndexDepuisAlertes(data);
+
+      // Priorité aux alertes
+      const phaseFinale =
+        phaseDepuisAlertes !== null
+          ? phaseDepuisAlertes
+          : phaseDepuisDate;
 
       // Application visuelle
       if (phaseFinale !== null) {
