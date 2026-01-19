@@ -89,20 +89,20 @@
       "favoris_leboncoin": 0
     },
     "2026-01-19": {
-      "appels": 0,
-      "emails": 0,
-      "visites_effectuees": 0,
-      "offres": 0,
-      "vues_leboncoin": 0,
-      "favoris_leboncoin": 0
+      "appels": 5,
+      "emails": 4,
+      "visites_effectuees": 1,
+      "offres": 4,
+      "vues_leboncoin": 10,
+      "favoris_leboncoin": 2
     }
   },
   "analysis": {
     "text": "Le bien est en commercialisation depuis 1 jour.\n\nPhase 1 (0–30 jours) : phase de test du marché.",
-    "evolution_text": "Appels : stable\nEmails : stable\nVisites effectuées : stable\nOffres : stable\nVues Leboncoin : stable\nFavoris Leboncoin : stable",
+    "evolution_text": "Appels : +5\nEmails : +4\nVisites effectuées : +1\nOffres : +4\nVues Leboncoin : +10\nFavoris Leboncoin : +2",
     "proposeRDV": false,
     "noAlertes": false,
-    "generatedAt": "2026-01-19T12:43:05.281Z"
+    "generatedAt": "2026-01-19T12:45:17.657Z"
   },
   "historique": [
     {
