@@ -1,7 +1,7 @@
 {
   "_meta": {
     "weekly_cumul_base": {
-      "2026-01-12": {
+      "2026-01-05": {
         "appels": 10,
         "emails": 4,
         "visites_effectuees": 1,
@@ -9,7 +9,7 @@
         "vues_leboncoin": 245,
         "favoris_leboncoin": 5
       },
-      "2026-01-19": {
+      "2026-01-12": {
         "appels": 15,
         "emails": 6,
         "visites_effectuees": 2,
@@ -19,7 +19,7 @@
       }
     },
     "mise_en_ligne_ref": "2025-12-13",
-    "last_weekly_run": "2026-01-19",
+    "last_weekly_run": "2026-01-12",
     "mise_en_ligne_initiale": "2025-10-01"
   },
   "bien": {
@@ -83,8 +83,8 @@
   },
   "analysis": {
     "text": "",
-    "evolution_text": "La tendance sur la semaine écoulée sera disponible dès que des données seront exploitables.",
-    "generatedAt": "2026-01-19T16:20:36.746Z",
+    "evolution_text": "",
+    "generatedAt": "",
     "noExploitableData": true
   },
   "historique": [
@@ -121,15 +121,6 @@
         "strategie": "Poursuite possible de la commercialisation selon votre décision."
       }
     ]
-  },
-  "stats_weekly_snapshot": {
-    "2026-01-19": {
-      "appels": 0,
-      "emails": 0,
-      "visites_effectuees": 0,
-      "offres": 0,
-      "vues_leboncoin": 0,
-      "favoris_leboncoin": 0
     }
   }
 }
