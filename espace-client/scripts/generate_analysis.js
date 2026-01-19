@@ -164,6 +164,7 @@ function processBien(filePath) {
   data._meta ??= {};
   data._meta.weekly_cumul_base ??= {};
   data._meta.last_actuel_snapshot ??= {};
+  data._meta.just_reset ??= false;
   for (const key of STAT_KEYS) {
      data._meta.last_actuel_snapshot[key] ??= 0;
      data.stats.cumul[key] ??= 0;
@@ -188,6 +189,8 @@ function processBien(filePath) {
   }
 
   if (miseEnLigne && data._meta.mise_en_ligne_ref !== miseEnLigne) {
+
+     data._meta.just_reset = true;
 
     for (const key of STAT_KEYS) {
      data._meta.last_actuel_snapshot[key] =
@@ -228,10 +231,13 @@ function processBien(filePath) {
      const actuel = toNumber(data.stats.actuel[key]);
      const prev = toNumber(data._meta.last_actuel_snapshot[key]);
 
-     // 🔹 AVANT RESET → miroir strict
-     if (data._meta.mise_en_ligne_ref === data.dates?.mise_en_ligne) {
+     // 🔹 AVANT RESET → miroir strict (SAUF le jour du reset)
+      if (
+        data._meta.mise_en_ligne_ref === data.dates?.mise_en_ligne &&
+        !data._meta.just_reset
+      ) {
         data.stats.cumul[key] = actuel;
-        data._meta.last_actuel_snapshot[key] = actuel; // 🔑 CRITIQUE
+        data._meta.last_actuel_snapshot[key] = actuel;
         continue;
       }
 
@@ -273,6 +279,7 @@ function processBien(filePath) {
 
   data._meta.last_weekly_run = mondayKey;
   data.analysis.generatedAt = new Date().toISOString();
+  data._meta.just_reset = false;
 
   fs.writeFileSync(
     filePath,
