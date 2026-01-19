@@ -785,6 +785,16 @@
       font-weight: 500;
     }
 
+    /* =========================
+       EMPTY STATES – HARMONISATION
+    ========================= */
+    .empty-state {
+      font-size: 13px;              /* identique aux subtitles vides */
+      line-height: 1.55;
+      color: var(--text-soft);      /* même gris que ratio-empty */
+      font-weight: 400;
+    }
+
     @media (max-width: 880px) {
       /* Header */
       header {
@@ -1117,7 +1127,7 @@
       <div class="luxury-divider"></div>
 
       <h2 style="margin-top:0;">Tendance sur la semaine écoulée</h2>
-      <p class="subtitle" id="evolution-commentaire" style="white-space:pre-line;">
+      <p class="subtitle empty-state" id="evolution-commentaire" style="white-space:pre-line;">
         Chargement…
       </p>
 
@@ -1125,7 +1135,7 @@
       <div class="luxury-divider"></div>
 
       <h2 style="margin-top:0;">🎯 Indicateurs d’alerte</h2>
-      <p class="subtitle" id="alertes-empty" style="display:none;">
+      <p class="subtitle empty-state" id="alertes-empty" style="display:none;">
         Aucun indicateur d’alerte disponible pour le moment.
         Les alertes seront activées dès que suffisamment de données exploitables auront été collectées.
       </p>
