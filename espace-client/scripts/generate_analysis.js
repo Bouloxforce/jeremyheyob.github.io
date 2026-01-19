@@ -5,11 +5,11 @@
  * - Calcul des statistiques hebdomadaires
  * - Conservation UNIQUEMENT de N et N-1
  * - Génération fiable de analysis.evolution_text
- * - Protection contre toute double exécution la même semaine
+ * - Gestion métier des resets (nouvelle mise en ligne)
  *
  * COMPATIBLE :
  * - Node.js 18+
- * - ES Modules ("type": "module")
+ * - ES Modules
  * - GitHub Actions
  */
 
@@ -18,13 +18,11 @@ import path from "path";
 import { fileURLToPath } from "url";
 
 /* =========================
-   RÉSOLUTION DES CHEMINS (ESM)
+   RÉSOLUTION DES CHEMINS
 ========================= */
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
-
-// Dossier contenant les *_data.json
 const BIENS_DIR = path.join(__dirname, "..", "biens");
 
 /* =========================
@@ -32,30 +30,20 @@ const BIENS_DIR = path.join(__dirname, "..", "biens");
 ========================= */
 
 function getParisYMD(date = new Date()) {
-  const fmt = new Intl.DateTimeFormat("fr-CA", {
+  return new Intl.DateTimeFormat("fr-CA", {
     timeZone: "Europe/Paris",
     year: "numeric",
     month: "2-digit",
-    day: "2-digit",
-  });
-  return fmt.format(date); // YYYY-MM-DD
-}
-
-function parseYMDToUTC(ymd) {
-  const [y, m, d] = ymd.split("-").map(Number);
-  return new Date(Date.UTC(y, m - 1, d));
-}
-
-function formatUTCToYMD(date) {
-  return date.toISOString().slice(0, 10);
+    day: "2-digit"
+  }).format(date);
 }
 
 function getMondayKeyParis(todayYMD) {
-  const d = parseYMDToUTC(todayYMD);
-  const day = d.getUTCDay(); // 0 = dimanche
+  const d = new Date(`${todayYMD}T00:00:00Z`);
+  const day = d.getUTCDay();
   const diff = day === 0 ? -6 : 1 - day;
   d.setUTCDate(d.getUTCDate() + diff);
-  return formatUTCToYMD(d);
+  return d.toISOString().slice(0, 10);
 }
 
 /* =========================
@@ -71,10 +59,7 @@ function pruneToNWeeks(obj, keep = 2) {
   const keys = Object.keys(obj)
     .filter(k => /^\d{4}-\d{2}-\d{2}$/.test(k))
     .sort();
-
-  while (keys.length > keep) {
-    delete obj[keys.shift()];
-  }
+  while (keys.length > keep) delete obj[keys.shift()];
 }
 
 /* =========================
@@ -87,7 +72,7 @@ const STAT_KEYS = [
   "visites_effectuees",
   "offres",
   "vues_leboncoin",
-  "favoris_leboncoin",
+  "favoris_leboncoin"
 ];
 
 const LABELS = {
@@ -96,18 +81,18 @@ const LABELS = {
   visites_effectuees: "Visites effectuées",
   offres: "Offres",
   vues_leboncoin: "Vues Leboncoin",
-  favoris_leboncoin: "Favoris Leboncoin",
+  favoris_leboncoin: "Favoris Leboncoin"
 };
 
 /* =========================
    LOGIQUE MÉTIER
 ========================= */
 
-function buildWeeklySnapshot(cumul, base) {
+function buildWeeklySnapshot(actuel, base) {
   const out = {};
   for (const key of STAT_KEYS) {
-    const value = toNumber(cumul[key]) - toNumber(base[key]);
-    out[key] = value < 0 ? 0 : value; // sécurité absolue
+    const diff = toNumber(actuel[key]) - toNumber(base[key]);
+    out[key] = diff > 0 ? diff : 0;
   }
   return out;
 }
@@ -115,9 +100,18 @@ function buildWeeklySnapshot(cumul, base) {
 function buildEvolutionText(snapshot) {
   return STAT_KEYS.map(key => {
     const v = toNumber(snapshot[key]);
-    if (v > 0) return `${LABELS[key]} : +${v}`;
-    return `${LABELS[key]} : stable`;
+    return v > 0
+      ? `${LABELS[key]} : +${v}`
+      : `${LABELS[key]} : stable`;
   }).join("\n");
+}
+
+function hasExploitableWeeklyData(stats_weekly_snapshot) {
+  const weeks = Object.values(stats_weekly_snapshot || {});
+  if (weeks.length < 2) return false;
+  return weeks.some(week =>
+    Object.values(week).some(v => toNumber(v) > 0)
+  );
 }
 
 /* =========================
@@ -127,85 +121,74 @@ function buildEvolutionText(snapshot) {
 function processBien(filePath) {
   const todayYMD = getParisYMD();
   const mondayKey = getMondayKeyParis(todayYMD);
-
   const data = JSON.parse(fs.readFileSync(filePath, "utf-8"));
 
-  /* --- Sécurisation de la structure --- */
-  data.stats = data.stats || {};
-  data.stats.cumul = data.stats.cumul || {};
-  data.stats_weekly_snapshot = data.stats_weekly_snapshot || {};
-  data._meta = data._meta || {};
-  data._meta.weekly_cumul_base = data._meta.weekly_cumul_base || {};
-  data.analysis = data.analysis || {};
-
-   /* =========================
-      RESET SI NOUVELLE MISE EN LIGNE
-   ========================= */
-
-   const miseEnLigne = data.dates?.mise_en_ligne || null;
-
-   // On stocke la date de mise en ligne de référence
-   if (!data._meta.mise_en_ligne_ref) {
-     data._meta.mise_en_ligne_ref = miseEnLigne;
-   }
-
-   if (miseEnLigne && data._meta.mise_en_ligne_ref !== miseEnLigne) {
-
-   /* =========================
-      RESET PARTIEL – NOUVELLE COMMERCIALISATION
-  ========================= */
-
-  // 🔹 Reset des données ACTUELLES uniquement
-  data.stats.actuel = {
-    appels: 0,
-    emails: 0,
-    visites_effectuees: 0,
-    visites_programmees: 0,
-    offres: 0,
-    vues_leboncoin: 0,
-    favoris_leboncoin: 0
-  };
-
-  // 🔹 Reset des snapshots et bases temporelles
-  data.stats_weekly_snapshot = {};
-  data._meta.weekly_cumul_base = {};
-  delete data._meta.last_weekly_run;
-
-  // 🔹 Reset des analyses & alertes
-  data.analysis.evolution_text = "";
-  data.analysis.text = "";
-  data.analysis.generatedAt = null;
-
-  // 🔹 Mise à jour de la référence
-  data._meta.mise_en_ligne_ref = miseEnLigne;
-}
-
-   /* =========================
-      NORMALISATION DES CUMULS
-      (cumul ≥ actuel)
-   ========================= */
-
-   data.stats.actuel = data.stats.actuel || {};
-
-   for (const key of STAT_KEYS) {
-     const actuel = toNumber(data.stats.actuel[key]);
-     const cumul  = toNumber(data.stats.cumul[key]);
-
-     // 🔒 Un cumul ne peut JAMAIS être inférieur à l'actuel
-     if (actuel > cumul) {
-       data.stats.cumul[key] = actuel;
-     }
-   }
+  /* --- Sécurisation --- */
+  data.stats ??= {};
+  data.stats.actuel ??= {};
+  data.stats.cumul ??= {};
+  data.stats_weekly_snapshot ??= {};
+  data.analysis ??= {};
+  data._meta ??= {};
+  data._meta.weekly_cumul_base ??= {};
 
   /* =========================
-     BASE HEBDOMADAIRE
+     RESET PARTIEL – NOUVELLE MISE EN LIGNE
+  ========================= */
+
+  const miseEnLigne = data.dates?.mise_en_ligne || null;
+
+  if (!data._meta.mise_en_ligne_ref) {
+    data._meta.mise_en_ligne_ref = miseEnLigne;
+  }
+
+  if (miseEnLigne && data._meta.mise_en_ligne_ref !== miseEnLigne) {
+
+    // 🔥 Reset DONNÉES ACTUELLES uniquement
+    data.stats.actuel = {
+      appels: 0,
+      emails: 0,
+      visites_effectuees: 0,
+      visites_programmees: 0,
+      offres: 0,
+      vues_leboncoin: 0,
+      favoris_leboncoin: 0
+    };
+
+    // 🔥 Reset temporel & analyse
+    data.stats_weekly_snapshot = {};
+    data._meta.weekly_cumul_base = {};
+    delete data._meta.last_weekly_run;
+
+    data.analysis = {
+      text: "",
+      evolution_text: "",
+      generatedAt: null,
+      noExploitableData: true
+    };
+
+    data._meta.mise_en_ligne_ref = miseEnLigne;
+  }
+
+  /* =========================
+     NORMALISATION DES CUMULS
+  ========================= */
+
+  for (const key of STAT_KEYS) {
+    if (toNumber(data.stats.actuel[key]) > toNumber(data.stats.cumul[key])) {
+      data.stats.cumul[key] = toNumber(data.stats.actuel[key]);
+    }
+  }
+
+  /* =========================
+     BASE HEBDOMADAIRE (figée 1×)
   ========================= */
 
   if (!data._meta.weekly_cumul_base[mondayKey]) {
     data._meta.weekly_cumul_base[mondayKey] = {};
     for (const key of STAT_KEYS) {
       data._meta.weekly_cumul_base[mondayKey][key] =
-        toNumber(data.stats.actuel?.[key]);
+        toNumber(data.stats.actuel[key]);
     }
   }
 
@@ -215,21 +198,25 @@ function processBien(filePath) {
 
   const base = data._meta.weekly_cumul_base[mondayKey];
   const snapshot = buildWeeklySnapshot(data.stats.actuel, base);
-
   data.stats_weekly_snapshot[mondayKey] = snapshot;
-
-  /* =========================
-     RÉTENTION : N / N-1
-  ========================= */
 
   pruneToNWeeks(data._meta.weekly_cumul_base, 2);
   pruneToNWeeks(data.stats_weekly_snapshot, 2);
 
   /* =========================
-     ANALYSE
+     ANALYSE – GARDE DONNÉES
   ========================= */
 
-  data.analysis.evolution_text = buildEvolutionText(snapshot);
+  if (hasExploitableWeeklyData(data.stats_weekly_snapshot)) {
+    data.analysis.evolution_text = buildEvolutionText(snapshot);
+    data.analysis.noExploitableData = false;
+  } else {
+    data.analysis.evolution_text =
+      "Les données sont en cours de collecte.\n" +
+      "Les indicateurs de tendance seront disponibles dès que des données exploitables auront été enregistrées.";
+    data.analysis.noExploitableData = true;
+  }
+
   data._meta.last_weekly_run = mondayKey;
   data.analysis.generatedAt = new Date().toISOString();
 
@@ -245,10 +232,8 @@ if (!fs.existsSync(BIENS_DIR)) {
   process.exit(1);
 }
 
-const files = fs.readdirSync(BIENS_DIR).filter(f => f.endsWith("_data.json"));
-
-files.forEach(file => {
-  processBien(path.join(BIENS_DIR, file));
-});
+fs.readdirSync(BIENS_DIR)
+  .filter(f => f.endsWith("_data.json"))
+  .forEach(f => processBien(path.join(BIENS_DIR, f)));
 
 console.log("✔ Weekly stats N / N-1 générées avec succès");
