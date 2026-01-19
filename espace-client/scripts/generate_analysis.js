@@ -163,6 +163,7 @@ function processBien(filePath) {
   data.analysis ??= {};
   data._meta ??= {};
   data._meta.weekly_cumul_base ??= {};
+  data._meta.last_cumul_applied_week ??= null;
 
   /* =========================
      🔒 DATE DE MISE EN LIGNE INITIALE (IMMUTABLE)
@@ -214,17 +215,39 @@ function processBien(filePath) {
   ensureWeeklyBase(data, mondayKey);
   pruneToNWeeks(data._meta.weekly_cumul_base, 2);
 
-  /* =========================
-     CUMUL MÉTIER (SOURCE UNIQUE)
-     = dernière base hebdomadaire
-  ========================= */
+   /* =========================
+      INCRÉMENT DU CUMUL
+      à partir des bases hebdomadaires
+   ========================= */
 
-  const weeksSorted = Object.keys(data._meta.weekly_cumul_base).sort();
-  const lastWeekKey = weeksSorted[weeksSorted.length - 1];
+   const weeksForCumul = Object.keys(data._meta.weekly_cumul_base).sort();
 
-  if (lastWeekKey) {
-    data.stats.cumul = { ...data._meta.weekly_cumul_base[lastWeekKey] };
-  }
+   if (
+     weeksForCumul.length >= 2 &&
+     data._meta.last_cumul_applied_week !== mondayKey
+   ) {
+
+     const baseN_1 =
+       data._meta.weekly_cumul_base[
+         weeksForCumul[weeksForCumul.length - 2]
+       ];
+
+     const baseN =
+       data._meta.weekly_cumul_base[
+         weeksForCumul[weeksForCumul.length - 1]
+       ];
+
+     for (const key of STAT_KEYS) {
+       const delta =
+         toNumber(baseN[key]) - toNumber(baseN_1[key]);
+
+       if (delta > 0) {
+         data.stats.cumul[key] =
+           toNumber(data.stats.cumul[key]) + delta;
+       }
+     }
+    data._meta.last_cumul_applied_week = mondayKey;
+   }
 
   /* =========================
      ANALYSE – TENDANCE VENDEUR
