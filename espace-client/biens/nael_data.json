@@ -52,11 +52,12 @@
   },
   "marche": {
     "taux_credit": {
-      "precedent": 3.33,
       "moyen": 3.35,
+      "precedent": 3.35,
       "duree": "25 ans",
       "source": "CAFPI – baromètre (taux moyen)",
-      "periode": "2026-01"
+      "periode": "2026-01",
+      "updatedAt": "2026-01-19T06:21:56.512Z"
     }
   },
   "stats": {
