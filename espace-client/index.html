@@ -755,16 +755,6 @@
   text-align: center;
   padding: 12px 0;
 }
-    /* Harmonisation couleur – Tendance hebdomadaire */
-    #evolution-commentaire {
-      color: var(--text-main);
-    }
-
-    /* Harmonisation taille texte – Tendance hebdomadaire */
-    #evolution-commentaire {
-      font-size: 15px;
-      line-height: 1.6;
-    }
 
     /* =========================
        OVERRIDE EMPTY STATE – ÉVOLUTION
@@ -1137,7 +1127,7 @@
       <div class="luxury-divider"></div>
 
       <h2 style="margin-top:0;">Tendance sur la semaine écoulée</h2>
-      <p class="subtitle empty-state" id="evolution-commentaire" style="white-space:pre-line;">
+      <ul style="list-style:none;padding:0;margin:12px 0 0;font-size:15px;line-height:1.55;">
         Chargement…
       </p>
 
@@ -1145,12 +1135,7 @@
       <div class="luxury-divider"></div>
 
       <h2 style="margin-top:0;">🎯 Indicateurs d’alerte</h2>
-      <p class="subtitle empty-state" id="alertes-empty" style="display:none;">
-        Aucun indicateur d’alerte disponible pour le moment.
-        Les alertes seront activées dès que suffisamment de données exploitables auront été collectées.
-      </p>
-      <ul id="alertes-list"
-          style="list-style:none;padding:0;margin:12px 0 0;font-size:15px;line-height:1.55;">
+      <ul style="list-style:none;padding:0;margin:12px 0 0;font-size:15px;line-height:1.55;">
         <li class="subtitle">Chargement…</li>
       </ul>
 
