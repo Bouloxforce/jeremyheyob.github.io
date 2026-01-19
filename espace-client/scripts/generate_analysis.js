@@ -212,8 +212,7 @@ function processBien(filePath) {
     data.analysis.noExploitableData = false;
   } else {
     data.analysis.evolution_text =
-      "Les données sont en cours de collecte.\n" +
-      "Les indicateurs de tendance seront disponibles dès que des données exploitables auront été enregistrées.";
+      "Les indicateurs d'alerte seront disponibles dès que des données seront exploitables.";
     data.analysis.noExploitableData = true;
   }
 
