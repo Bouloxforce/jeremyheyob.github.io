@@ -126,29 +126,6 @@ function computeWeeklyResults(basePrev, baseCurr) {
   return out;
 }
 
-function rebuildCumulFromWeeklyBases(weeklyBase) {
-  const weeks = Object.keys(weeklyBase || {}).sort();
-
-  const cumul = {};
-  for (const key of STAT_KEYS) {
-    cumul[key] = 0;
-  }
-
-  for (let i = 1; i < weeks.length; i++) {
-    const prev = weeklyBase[weeks[i - 1]];
-    const curr = weeklyBase[weeks[i]];
-
-    for (const key of STAT_KEYS) {
-      const delta = toNumber(curr[key]) - toNumber(prev[key]);
-      if (delta > 0) {
-        cumul[key] += delta;
-      }
-    }
-  }
-
-  return cumul;
-}
-
 function buildEvolutionTextFromWeeklyResults(delta) {
   return STAT_KEYS.map(key => {
     const v = toNumber(delta[key]);
@@ -186,6 +163,11 @@ function processBien(filePath) {
   data.analysis ??= {};
   data._meta ??= {};
   data._meta.weekly_cumul_base ??= {};
+  data._meta.last_actuel_snapshot ??= {};
+  for (const key of STAT_KEYS) {
+     data._meta.last_actuel_snapshot[key] ??= 0;
+     data.stats.cumul[key] ??= 0;
+  }
 
   /* =========================
      🔒 DATE DE MISE EN LIGNE INITIALE (IMMUTABLE)
@@ -206,6 +188,11 @@ function processBien(filePath) {
   }
 
   if (miseEnLigne && data._meta.mise_en_ligne_ref !== miseEnLigne) {
+
+    for (const key of STAT_KEYS) {
+     data._meta.last_actuel_snapshot[key] =
+       toNumber(data.stats.actuel[key]);
+   }
 
     data.stats.actuel = {
       appels: 0,
@@ -237,8 +224,27 @@ function processBien(filePath) {
   ensureWeeklyBase(data, mondayKey);
   pruneToNWeeks(data._meta.weekly_cumul_base, 2);
 
-   data.stats.cumul =
-     rebuildCumulFromWeeklyBases(data._meta.weekly_cumul_base);
+   for (const key of STAT_KEYS) {
+     const actuel = toNumber(data.stats.actuel[key]);
+     const prev = toNumber(data._meta.last_actuel_snapshot[key]);
+
+     // 🔹 AVANT RESET → miroir strict
+     if (data._meta.mise_en_ligne_ref === data.dates?.mise_en_ligne) {
+        data.stats.cumul[key] = actuel;
+        data._meta.last_actuel_snapshot[key] = actuel; // 🔑 CRITIQUE
+        continue;
+      }
+
+     // 🔹 APRÈS RESET → ajout du delta uniquement
+     const delta = actuel - prev;
+
+     if (delta > 0) {
+       data.stats.cumul[key] =
+         toNumber(data.stats.cumul[key]) + delta;
+     }
+
+     data._meta.last_actuel_snapshot[key] = actuel;
+   }
 
   /* =========================
      ANALYSE – TENDANCE VENDEUR
