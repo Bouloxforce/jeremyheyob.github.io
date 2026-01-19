@@ -21,12 +21,12 @@
     "mise_en_ligne_ref": "2026-01-06",
     "mise_en_ligne_initiale": "2025-10-01",
     "last_actuel_snapshot": {
-      "appels": 10,
-      "emails": 10,
-      "visites_effectuees": 10,
-      "offres": 10,
-      "vues_leboncoin": 10,
-      "favoris_leboncoin": 10
+      "appels": 35,
+      "emails": 2,
+      "visites_effectuees": 1,
+      "offres": 0,
+      "vues_leboncoin": 280,
+      "favoris_leboncoin": 3
     },
     "just_reset": false,
     "has_had_reset": true,
@@ -83,18 +83,18 @@
       "favoris_leboncoin": 3
     },
     "cumul": {
-      "appels": 11,
+      "appels": 36,
       "emails": 10,
       "visites_effectuees": 10,
       "offres": 10,
-      "vues_leboncoin": 66,
+      "vues_leboncoin": 336,
       "favoris_leboncoin": 12
     }
   },
   "analysis": {
     "text": "",
     "evolution_text": "Appels : +10\nEmails : +10\nVisites effectuées : +10\nOffres : +10\nVues Leboncoin : +10\nFavoris Leboncoin : +10",
-    "generatedAt": "2026-01-19T22:10:54.377Z",
+    "generatedAt": "2026-01-19T22:15:42.449Z",
     "noExploitableData": false
   },
   "historique": [
