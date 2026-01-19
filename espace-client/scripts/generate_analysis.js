@@ -154,7 +154,7 @@ function processBien(filePath) {
     data._meta.weekly_cumul_base[mondayKey] = {};
     for (const key of STAT_KEYS) {
       data._meta.weekly_cumul_base[mondayKey][key] =
-        toNumber(data.stats.cumul[key]);
+        toNumber(data.stats.actuel[key]);
     }
   }
 
@@ -163,7 +163,7 @@ function processBien(filePath) {
   ========================= */
 
   const base = data._meta.weekly_cumul_base[mondayKey];
-  const snapshot = buildWeeklySnapshot(data.stats.cumul, base);
+  const snapshot = buildWeeklySnapshot(data.stats.actuel, base);
 
   data.stats_weekly_snapshot[mondayKey] = snapshot;
 
