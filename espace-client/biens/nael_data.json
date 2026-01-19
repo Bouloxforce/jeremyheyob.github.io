@@ -81,24 +81,6 @@
       "favoris_leboncoin": 7
     }
   },
-  "stats_weekly_snapshot": {
-    "2026-01-12": {
-      "appels": 10,
-      "emails": 4,
-      "visites_effectuees": 1,
-      "offres": 0,
-      "vues_leboncoin": 245,
-      "favoris_leboncoin": 5
-    },
-    "2026-01-19": {
-      "appels": 0,
-      "emails": 0,
-      "visites_effectuees": 0,
-      "offres": 0,
-      "vues_leboncoin": 0,
-      "favoris_leboncoin": 0
-    }
-  },
   "analysis": {
     "text": "",
     "evolution_text": "Appels : stable\nEmails : stable\nVisites effectuées : stable\nOffres : stable\nVues Leboncoin : stable\nFavoris Leboncoin : stable",
