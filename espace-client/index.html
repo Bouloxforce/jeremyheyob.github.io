@@ -2115,30 +2115,7 @@ function render404() {
          INDICATEURS D’ALERTE – GARDE MÉTIER
       ========================= */
 
-      const alertes = [];
-
-      if (analysis?.noExploitableData) {
-
-        renderAlertes([
-          "Les indicateurs seront disponibles dès que des données seront exploitables."
-        ]);
-
-      } else {
-
-        if (data.stats?.actuel?.appels === 0) {
-          alertes.push("Aucun appel reçu à ce stade.");
-        }
-
-        if (data.stats?.actuel?.visites_effectuees === 0) {
-          alertes.push("Aucune visite effectuée à ce stade.");
-        }
-
-        if (alertes.length === 0) {
-          alertes.push("Aucune alerte détectée.");
-        }
-
-        renderAlertes(alertes);
-      }
+      renderAlertes(analysis.alertes);
 
       // =========================
       // 🔒 PHASE FINALE — TEMPS UNIQUEMENT
