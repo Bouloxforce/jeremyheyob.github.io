@@ -8,19 +8,28 @@
         "offres": 0,
         "vues_leboncoin": 0,
         "favoris_leboncoin": 0
+      },
+      "2026-01-19": {
+        "appels": 3,
+        "emails": 1,
+        "visites_effectuees": 0,
+        "offres": 0,
+        "vues_leboncoin": 124,
+        "favoris_leboncoin": 1
       }
     },
     "mise_en_ligne_ref": "2026-01-04",
     "mise_en_ligne_initiale": "2025-10-01",
     "last_actuel_snapshot": {
-      "appels": 0,
-      "emails": 0,
+      "appels": 3,
+      "emails": 1,
       "visites_effectuees": 0,
       "offres": 0,
-      "vues_leboncoin": 0,
-      "favoris_leboncoin": 0
+      "vues_leboncoin": 124,
+      "favoris_leboncoin": 1
     },
-    "last_weekly_run": "2026-01-12"
+    "last_weekly_run": "2026-01-19",
+    "just_reset": false
   },
   "bien": {
     "nom": "Naël",
@@ -73,19 +82,19 @@
       "favoris_leboncoin": 1
     },
     "cumul": {
-      "appels": 0,
-      "emails": 0,
+      "appels": 3,
+      "emails": 1,
       "visites_effectuees": 0,
       "offres": 0,
-      "vues_leboncoin": 0,
-      "favoris_leboncoin": 0
+      "vues_leboncoin": 124,
+      "favoris_leboncoin": 1
     }
   },
   "analysis": {
     "text": "",
-    "evolution_text": "La tendance sur la semaine écoulée sera disponible dès que des données seront exploitables.",
-    "generatedAt": "2026-01-12T21:38:59.487Z",
-    "noExploitableData": true
+    "evolution_text": "Appels : +3\nEmails : +1\nVisites effectuées : stable\nOffres : stable\nVues Leboncoin : +124\nFavoris Leboncoin : +1",
+    "generatedAt": "2026-01-19T21:48:54.383Z",
+    "noExploitableData": false
   },
   "historique": [
     {
