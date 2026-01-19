@@ -2041,11 +2041,8 @@ function render404() {
         );
 
       } else if (evo?.empty) {
-
-        setLineText(
-          "evolution-commentaire",
-          "Les données d’évolution ne sont pas disponibles pour le moment."
-        );
+        document.getElementById("evolution-commentaire").style.display = "none";
+        document.getElementById("evolution-empty").style.display = "block";
 
       } else if (evo) {
 
