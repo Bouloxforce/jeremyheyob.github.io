@@ -212,7 +212,7 @@ function processBien(filePath) {
     data.analysis.noExploitableData = false;
   } else {
     data.analysis.evolution_text =
-      "Les indicateurs d'alerte seront disponibles dès que des données seront exploitables.";
+      "La tendance sur la semaine écoulée sera disponible dès que des données seront exploitables.";
     data.analysis.noExploitableData = true;
   }
 
