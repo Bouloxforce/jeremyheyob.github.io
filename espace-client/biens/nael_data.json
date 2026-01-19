@@ -1,7 +1,7 @@
 {
   "_meta": {
     "weekly_cumul_base": {
-      "2026-01-12": {
+      "2026-01-05": {
         "appels": 10,
         "emails": 4,
         "visites_effectuees": 1,
@@ -9,7 +9,7 @@
         "vues_leboncoin": 234,
         "favoris_leboncoin": 5
       },
-      "2026-01-19": {
+      "2026-01-12": {
         "appels": 10,
         "emails": 4,
         "visites_effectuees": 1,
@@ -18,8 +18,8 @@
         "favoris_leboncoin": 5
       }
     },
-    "mise_en_ligne_ref": "2026-01-01",
-    "last_weekly_run": "2026-01-19",
+    "mise_en_ligne_ref": "2025-12-13",
+    "last_weekly_run": "2026-01-12",
     "mise_en_ligne_initiale": "2025-10-01"
   },
   "bien": {
@@ -33,7 +33,7 @@
   },
   "dates": {
     "mandat_signe": "2026-01-01",
-    "mise_en_ligne": "2026-01-01",
+    "mise_en_ligne": "2025-12-13",
     "derniere_remontee": "2026-01-12"
   },
   "liens": {
@@ -64,13 +64,13 @@
   },
   "stats": {
     "actuel": {
-      "appels": 10,
-      "emails": 4,
-      "visites_effectuees": 1,
+      "appels": 15,
+      "emails": 6,
+      "visites_effectuees": 2,
       "visites_programmees": 0,
       "offres": 0,
-      "vues_leboncoin": 245,
-      "favoris_leboncoin": 5
+      "vues_leboncoin": 305,
+      "favoris_leboncoin": 7
     },
     "cumul": {
       "appels": 10,
@@ -82,7 +82,7 @@
     }
   },
   "stats_weekly_snapshot": {
-    "2026-01-12": {
+    "2026-01-05": {
       "appels": 0,
       "emails": 0,
       "visites_effectuees": 0,
@@ -90,19 +90,19 @@
       "vues_leboncoin": 0,
       "favoris_leboncoin": 0
     },
-    "2026-01-19": {
-      "appels": 0,
-      "emails": 0,
-      "visites_effectuees": 0,
+    "2026-01-12": {
+      "appels": 10,
+      "emails": 4,
+      "visites_effectuees": 1,
       "offres": 0,
-      "vues_leboncoin": 0,
-      "favoris_leboncoin": 0
+      "vues_leboncoin": 245,
+      "favoris_leboncoin": 5
     }
   },
   "analysis": {
     "text": "",
-    "evolution_text": "La tendance sur la semaine écoulée sera disponible dès que des données seront exploitables.",
-    "generatedAt": "2026-01-19T16:05:52.202Z",
+    "evolution_text": "",
+    "generatedAt": "",
     "noExploitableData": true
   },
   "historique": [
