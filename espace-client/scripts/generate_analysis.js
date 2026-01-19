@@ -139,14 +139,6 @@ function processBien(filePath) {
   data.analysis = data.analysis || {};
 
   /* =========================
-     🔒 GARDE-FOU ANTI-RECALCUL
-  ========================= */
-
-  if (data._meta.last_weekly_run === mondayKey) {
-    return;
-  }
-
-  /* =========================
      BASE HEBDOMADAIRE
   ========================= */
 
