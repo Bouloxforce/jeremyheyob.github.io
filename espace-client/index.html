@@ -757,16 +757,6 @@
 }
 
     /* =========================
-       OVERRIDE EMPTY STATE – ÉVOLUTION
-    ========================= */
-    #evolution-commentaire.empty-state {
-      font-size: 13px;
-      line-height: 1.55;
-      color: var(--text-soft);
-      font-weight: 400;
-    }
-
-    /* =========================
        ÉVOLUTION – COULEURS SÉMANTIQUES
     ========================= */
 
@@ -783,16 +773,6 @@
     .evo-stable {
       color: #3f3f3f;        /* gris neutre */
       font-weight: 500;
-    }
-
-    /* =========================
-       EMPTY STATES – HARMONISATION
-    ========================= */
-    .empty-state {
-      font-size: 13px;              /* identique aux subtitles vides */
-      line-height: 1.55;
-      color: var(--text-soft);      /* même gris que ratio-empty */
-      font-weight: 400;
     }
 
     @media (max-width: 880px) {
@@ -1127,7 +1107,9 @@
       <div class="luxury-divider"></div>
 
       <h2 style="margin-top:0;">Tendance sur la semaine écoulée</h2>
-      <ul style="list-style:none;padding:0;margin:12px 0 0;font-size:15px;line-height:1.55;">
+      <p class="subtitle"
+         id="evolution-commentaire"
+         style="white-space:pre-line;">
         Chargement…
       </p>
 
@@ -1135,9 +1117,15 @@
       <div class="luxury-divider"></div>
 
       <h2 style="margin-top:0;">🎯 Indicateurs d’alerte</h2>
-      <ul style="list-style:none;padding:0;margin:12px 0 0;font-size:15px;line-height:1.55;">
-        <li class="subtitle">Chargement…</li>
+      <ul id="alertes-list"
+          style="list-style:none;padding:0;margin:12px 0 0;font-size:15px;line-height:1.55;">
       </ul>
+
+      <p class="subtitle"
+         id="alertes-empty"
+         style="display:none;white-space:pre-line;">
+        Chargement…
+      </p>
 
       <div class="luxury-divider"></div>
 
