@@ -1,14 +1,6 @@
 {
   "_meta": {
     "weekly_cumul_base": {
-      "2026-01-05": {
-        "appels": 0,
-        "emails": 0,
-        "visites_effectuees": 0,
-        "offres": 0,
-        "vues_leboncoin": 0,
-        "favoris_leboncoin": 0
-      },
       "2026-01-12": {
         "appels": 3,
         "emails": 1,
@@ -16,19 +8,27 @@
         "offres": 0,
         "vues_leboncoin": 124,
         "favoris_leboncoin": 1
+      },
+      "2026-01-19": {
+        "appels": 6,
+        "emails": 1,
+        "visites_effectuees": 1,
+        "offres": 0,
+        "vues_leboncoin": 236,
+        "favoris_leboncoin": 2
       }
     },
     "mise_en_ligne_ref": "2026-01-04",
     "mise_en_ligne_initiale": "2025-10-01",
     "last_actuel_snapshot": {
-      "appels": 3,
+      "appels": 6,
       "emails": 1,
-      "visites_effectuees": 0,
+      "visites_effectuees": 1,
       "offres": 0,
-      "vues_leboncoin": 124,
-      "favoris_leboncoin": 1
+      "vues_leboncoin": 236,
+      "favoris_leboncoin": 2
     },
-    "last_weekly_run": "2026-01-12",
+    "last_weekly_run": "2026-01-19",
     "just_reset": false
   },
   "bien": {
@@ -82,18 +82,18 @@
       "favoris_leboncoin": 2
     },
     "cumul": {
-      "appels": 3,
+      "appels": 6,
       "emails": 1,
-      "visites_effectuees": 0,
+      "visites_effectuees": 1,
       "offres": 0,
-      "vues_leboncoin": 124,
-      "favoris_leboncoin": 1
+      "vues_leboncoin": 236,
+      "favoris_leboncoin": 2
     }
   },
   "analysis": {
     "text": "",
-    "evolution_text": "Appels : +3\nEmails : +1\nVisites effectuées : stable\nOffres : stable\nVues Leboncoin : +124\nFavoris Leboncoin : +1",
-    "generatedAt": "2026-01-12T21:48:54.383Z",
+    "evolution_text": "Appels : +3\nEmails : stable\nVisites effectuées : +1\nOffres : stable\nVues Leboncoin : +112\nFavoris Leboncoin : +1",
+    "generatedAt": "2026-01-19T21:53:38.430Z",
     "noExploitableData": false
   },
   "historique": [
