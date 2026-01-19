@@ -2011,7 +2011,10 @@ function render404() {
       if (evolutionText) {
 
         // ✅ priorité au texte calculé côté workflow (snapshot hebdo)
-        setLineText("evolution-commentaire", colorizeEvolutionText(evolutionText);
+        setLineText(
+          "evolution-commentaire",
+          colorizeEvolutionText(evolutionText)
+        );
 
       } else if (evo?.empty) {
 
