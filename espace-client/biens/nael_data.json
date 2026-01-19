@@ -1,7 +1,7 @@
 {
   "_meta": {
     "weekly_cumul_base": {
-      "2026-01-19": {
+      "2026-01-12": {
         "appels": 0,
         "emails": 0,
         "visites_effectuees": 0,
@@ -20,7 +20,7 @@
       "vues_leboncoin": 0,
       "favoris_leboncoin": 0
     },
-    "last_weekly_run": "2026-01-19"
+    "last_weekly_run": "2026-01-12"
   },
   "bien": {
     "nom": "Naël",
@@ -64,13 +64,13 @@
   },
   "stats": {
     "actuel": {
-      "appels": 0,
-      "emails": 0,
+      "appels": 3,
+      "emails": 1,
       "visites_effectuees": 0,
       "visites_programmees": 0,
       "offres": 0,
-      "vues_leboncoin": 0,
-      "favoris_leboncoin": 0
+      "vues_leboncoin": 124,
+      "favoris_leboncoin": 1
     },
     "cumul": {
       "appels": 0,
@@ -84,7 +84,7 @@
   "analysis": {
     "text": "",
     "evolution_text": "La tendance sur la semaine écoulée sera disponible dès que des données seront exploitables.",
-    "generatedAt": "2026-01-19T21:38:59.487Z",
+    "generatedAt": "2026-01-12T21:38:59.487Z",
     "noExploitableData": true
   },
   "historique": [
