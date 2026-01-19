@@ -66,7 +66,7 @@
       "emails": 11,
       "visites_effectuees": 11,
       "offres": 11,
-      "vues_leboncoin": 16,
+      "vues_leboncoin": 67,
       "favoris_leboncoin": 17,
       "visites_programmees": 23
     },
@@ -84,8 +84,8 @@
       "appels": 3,
       "emails": 3,
       "visites_effectuees": 12,
-      "offres": 0,
-      "vues_leboncoin": 45,
+      "offres": 1,
+      "vues_leboncoin": 60,
       "favoris_leboncoin": 2
     },
     "2026-01-12": {
@@ -102,7 +102,7 @@
     "proposeRDV": false,
     "noAlertes": false,
     "generatedAt": "2026-01-19T00:10:58.725Z",
-    "evolution_text": "📈 Appels : +3\n📈 Emails : +3\n📈 Visites effectuées : +12\n➖ Offres : stable\n📈 Vues Leboncoin : +45\n📈 Favoris Leboncoin : +2"
+    "evolution_text": "Appels : +3\nEmails : +3\nVisites effectuées : +12\n➖ Offres : stable\nVues Leboncoin : +45\nFavoris Leboncoin : +2"
   },
   "historique": [
     {
