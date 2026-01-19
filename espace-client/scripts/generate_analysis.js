@@ -208,23 +208,23 @@ function processBien(filePath) {
   }
 
   /* =========================
-      CUMUL MÉTIER (SOURCE UNIQUE)
-      = dernière base hebdomadaire
-   ========================= */
-
-   const weeksSorted = Object.keys(data._meta.weekly_cumul_base).sort();
-   const lastWeekKey = weeksSorted[weeksSorted.length - 1];
-
-   if (lastWeekKey) {
-     data.stats.cumul = { ...data._meta.weekly_cumul_base[lastWeekKey] };
-   }
-
-  /* =========================
      BASE HEBDOMADAIRE (figée)
   ========================= */
 
   ensureWeeklyBase(data, mondayKey);
   pruneToNWeeks(data._meta.weekly_cumul_base, 2);
+
+  /* =========================
+     CUMUL MÉTIER (SOURCE UNIQUE)
+     = dernière base hebdomadaire
+  ========================= */
+
+  const weeksSorted = Object.keys(data._meta.weekly_cumul_base).sort();
+  const lastWeekKey = weeksSorted[weeksSorted.length - 1];
+
+  if (lastWeekKey) {
+    data.stats.cumul = { ...data._meta.weekly_cumul_base[lastWeekKey] };
+  }
 
   /* =========================
      ANALYSE – TENDANCE VENDEUR
@@ -254,7 +254,11 @@ function processBien(filePath) {
   data._meta.last_weekly_run = mondayKey;
   data.analysis.generatedAt = new Date().toISOString();
 
-  fs.writeFileSync(filePath, JSON.stringify(data, null, 2) + "\n", "utf-8");
+  fs.writeFileSync(
+    filePath,
+    JSON.stringify(data, null, 2) + "\n",
+    "utf-8"
+  );
 }
 
 /* =========================
