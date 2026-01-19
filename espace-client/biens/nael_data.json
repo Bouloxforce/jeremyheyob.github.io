@@ -71,12 +71,12 @@
       "favoris_leboncoin": 222
     },
     "cumul": {
-      "appels": 13,
-      "emails": 13,
-      "visites_effectuees": 13,
-      "offres": 13,
-      "vues_leboncoin": 69,
-      "favoris_leboncoin": 19
+      "appels": 30,
+      "emails": 20,
+      "visites_effectuees": 130,
+      "offres": 190,
+      "vues_leboncoin": 1544,
+      "favoris_leboncoin": 222
     }
   },
   "stats_weekly_snapshot": {
@@ -89,20 +89,20 @@
       "favoris_leboncoin": 0
     },
     "2026-01-19": {
-      "appels": 5,
-      "emails": 4,
-      "visites_effectuees": 1,
-      "offres": 4,
-      "vues_leboncoin": 10,
-      "favoris_leboncoin": 2
+      "appels": 15,
+      "emails": 7,
+      "visites_effectuees": 118,
+      "offres": 176,
+      "vues_leboncoin": 1010,
+      "favoris_leboncoin": 202
     }
   },
   "analysis": {
     "text": "Le bien est en commercialisation depuis 1 jour.\n\nPhase 1 (0–30 jours) : phase de test du marché.",
-    "evolution_text": "Appels : +5\nEmails : +4\nVisites effectuées : +1\nOffres : +4\nVues Leboncoin : +10\nFavoris Leboncoin : +2",
+    "evolution_text": "Appels : +15\nEmails : +7\nVisites effectuées : +118\nOffres : +176\nVues Leboncoin : +1010\nFavoris Leboncoin : +202",
     "proposeRDV": false,
     "noAlertes": false,
-    "generatedAt": "2026-01-19T12:45:17.657Z"
+    "generatedAt": "2026-01-19T12:54:24.170Z"
   },
   "historique": [
     {
