@@ -1,7 +1,7 @@
 {
   "_meta": {
     "weekly_cumul_base": {
-      "2026-01-12": {
+      "2026-01-05": {
         "appels": 0,
         "emails": 0,
         "visites_effectuees": 0,
@@ -9,28 +9,28 @@
         "vues_leboncoin": 0,
         "favoris_leboncoin": 0
       },
-      "2026-01-19": {
+      "2026-01-12": {
         "appels": 10,
-        "emails": 10,
-        "visites_effectuees": 10,
-        "offres": 10,
-        "vues_leboncoin": 10,
-        "favoris_leboncoin": 10
+        "emails": 2,
+        "visites_effectuees": 1,
+        "offres": 0,
+        "vues_leboncoin": 9,
+        "favoris_leboncoin": 2
       }
     },
     "mise_en_ligne_ref": "2026-01-06",
     "mise_en_ligne_initiale": "2025-10-01",
     "last_actuel_snapshot": {
-      "appels": 35,
+      "appels": 10,
       "emails": 2,
       "visites_effectuees": 1,
       "offres": 0,
-      "vues_leboncoin": 280,
-      "favoris_leboncoin": 3
+      "vues_leboncoin": 9,
+      "favoris_leboncoin": 2
     },
     "just_reset": false,
     "has_had_reset": true,
-    "last_weekly_run": "2026-01-19"
+    "last_weekly_run": "2026-01-12"
   },
   "bien": {
     "nom": "Naël",
@@ -94,7 +94,7 @@
   "analysis": {
     "text": "",
     "evolution_text": "Appels : +10\nEmails : +10\nVisites effectuées : +10\nOffres : +10\nVues Leboncoin : +10\nFavoris Leboncoin : +10",
-    "generatedAt": "2026-01-19T22:15:42.449Z",
+    "generatedAt": "2026-01-12T22:15:42.449Z",
     "noExploitableData": false
   },
   "historique": [
