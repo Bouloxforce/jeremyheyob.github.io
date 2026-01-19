@@ -7,9 +7,13 @@
  * - Génération fiable de analysis.evolution_text
  * - Gestion métier des resets (nouvelle mise en ligne)
  *
- * MODIF (demande) :
- * - Suppression totale de stats_weekly_snapshot
- * - Tendance basée UNIQUEMENT sur _meta.weekly_cumul_base
+ * LOGIQUE MÉTIER (VALIDÉE) :
+ * - Tendance = résultats de la semaine écoulée (N vs N-1)
+ * - Jamais de valeurs négatives
+ * - Lecture vendeur simple et cohérente
+ *
+ * SOURCE UNIQUE :
+ * - _meta.weekly_cumul_base
  *
  * COMPATIBLE :
  * - Node.js 18+
@@ -89,12 +93,12 @@ const LABELS = {
 };
 
 /* =========================
-   LOGIQUE MÉTIER (sans stats_weekly_snapshot)
+   LOGIQUE MÉTIER
 ========================= */
 
 /**
- * Assure que weekly_cumul_base[mondayKey] existe, et le fige une seule fois.
- * Il représente le cumul "au début de semaine" (lundi).
+ * Base hebdomadaire figée au lundi :
+ * weekly_cumul_base[mondayKey] = cumul au début de la semaine
  */
 function ensureWeeklyBase(data, mondayKey) {
   data._meta.weekly_cumul_base ??= {};
@@ -102,82 +106,45 @@ function ensureWeeklyBase(data, mondayKey) {
   if (!data._meta.weekly_cumul_base[mondayKey]) {
     data._meta.weekly_cumul_base[mondayKey] = {};
     for (const key of STAT_KEYS) {
-      data._meta.weekly_cumul_base[mondayKey][key] = toNumber(data.stats.actuel[key]);
+      data._meta.weekly_cumul_base[mondayKey][key] =
+        toNumber(data.stats.actuel[key]);
     }
   }
 }
 
 /**
- * Calcule le "delta hebdo" pour une semaine donnée :
- * delta = actuel - base_debut_semaine
+ * Résultats de la semaine écoulée :
+ * delta = base semaine N − base semaine N-1
+ * → jamais négatif
  */
-function computeCurrentWeekDelta(actuel, base) {
+function computeWeeklyResults(basePrev, baseCurr) {
   const out = {};
   for (const key of STAT_KEYS) {
-    const diff = toNumber(actuel[key]) - toNumber(base[key]);
-    out[key] = diff;
+    const diff = toNumber(baseCurr[key]) - toNumber(basePrev[key]);
+    out[key] = diff > 0 ? diff : 0;
   }
   return out;
 }
 
-/**
- * Calcule le "delta" de la semaine précédente à partir de deux bases :
- * prevDelta = base_courante - base_precedente
- *
- * Explication :
- * - base_precedente = cumul figé au début de la semaine précédente
- * - base_courante   = cumul figé au début de la semaine courante (= fin de la semaine précédente)
- */
-function computePreviousWeekDelta(prevBase, currBase) {
-  const out = {};
-  for (const key of STAT_KEYS) {
-    out[key] = toNumber(currBase[key]) - toNumber(prevBase[key]);
-  }
-  return out;
-}
-
-/**
- * Produit le texte d'évolution en comparant :
- * diff = deltaSemaineCourante - deltaSemainePrecedente
- *
- * Résultat :
- * - +x si amélioration
- * - -x si baisse
- * - stable sinon
- */
-function buildEvolutionTextFromDeltas(deltaCurr, deltaPrev) {
+function buildEvolutionTextFromWeeklyResults(delta) {
   return STAT_KEYS.map(key => {
-    const d = toNumber(deltaCurr[key]) - toNumber(deltaPrev[key]);
-
-    if (d > 0) return `${LABELS[key]} : +${d}`;
-    if (d < 0) return `${LABELS[key]} : ${d}`; // négatif affiché tel quel
-    return `${LABELS[key]} : stable`;
+    const v = toNumber(delta[key]);
+    return v > 0
+      ? `${LABELS[key]} : +${v}`
+      : `${LABELS[key]} : stable`;
   }).join("\n");
 }
 
-/**
- * Données exploitables si :
- * - on a au moins 2 semaines (N et N-1) de weekly_cumul_base
- * - et si au moins un delta (courant ou précédent) a un mouvement (>0)
- */
-function hasExploitableWeeklyDataFromBases(weeklyBase, actuel) {
+function hasExploitableWeeklyData(weeklyBase) {
   const weeks = Object.keys(weeklyBase || {}).sort();
   if (weeks.length < 2) return false;
 
-  const prevKey = weeks[weeks.length - 2];
-  const currKey = weeks[weeks.length - 1];
+  const prev = weeklyBase[weeks[weeks.length - 2]];
+  const curr = weeklyBase[weeks[weeks.length - 1]];
 
-  const prevBase = weeklyBase[prevKey] || {};
-  const currBase = weeklyBase[currKey] || {};
-
-  const prevDelta = computePreviousWeekDelta(prevBase, currBase);
-  const currDelta = computeCurrentWeekDelta(actuel, currBase);
-
-  const anyMovement =
-    Object.values(prevDelta).some(v => toNumber(v) > 0) ||
-    Object.values(currDelta).some(v => toNumber(v) > 0);
-
-  return anyMovement;
+  return STAT_KEYS.some(
+    key => toNumber(curr[key]) - toNumber(prev[key]) > 0
+  );
 }
 
 /* =========================
@@ -200,6 +167,7 @@ function processBien(filePath) {
   /* =========================
      🔒 DATE DE MISE EN LIGNE INITIALE (IMMUTABLE)
   ========================= */
+
   if (!data._meta.mise_en_ligne_initiale && data.dates?.mise_en_ligne) {
     data._meta.mise_en_ligne_initiale = data.dates.mise_en_ligne;
   }
@@ -215,7 +183,7 @@ function processBien(filePath) {
   }
 
   if (miseEnLigne && data._meta.mise_en_ligne_ref !== miseEnLigne) {
-    // 🔥 Reset DONNÉES ACTUELLES uniquement
+
     data.stats.actuel = {
       appels: 0,
       emails: 0,
@@ -226,7 +194,6 @@ function processBien(filePath) {
       favoris_leboncoin: 0
     };
 
-    // 🔥 Reset temporel & analyse (source unique = weekly_cumul_base)
     data._meta.weekly_cumul_base = {};
     delete data._meta.last_weekly_run;
 
@@ -251,37 +218,31 @@ function processBien(filePath) {
   }
 
   /* =========================
-     BASE HEBDOMADAIRE (figée 1×)
-     SOURCE UNIQUE : weekly_cumul_base
+     BASE HEBDOMADAIRE (figée)
   ========================= */
 
   ensureWeeklyBase(data, mondayKey);
-
-  // On conserve uniquement N et N-1
   pruneToNWeeks(data._meta.weekly_cumul_base, 2);
 
   /* =========================
-     ANALYSE – TENDANCE (depuis weekly_cumul_base)
+     ANALYSE – TENDANCE VENDEUR
   ========================= */
 
   const weeklyBase = data._meta.weekly_cumul_base;
   const weeks = Object.keys(weeklyBase).sort();
 
-  if (weeks.length >= 2 && hasExploitableWeeklyDataFromBases(weeklyBase, data.stats.actuel)) {
-    const prevKey = weeks[weeks.length - 2];
-    const currKey = weeks[weeks.length - 1];
+  if (weeks.length >= 2 && hasExploitableWeeklyData(weeklyBase)) {
 
-    const prevBase = weeklyBase[prevKey];
-    const currBase = weeklyBase[currKey];
+    const prevBase = weeklyBase[weeks[weeks.length - 2]];
+    const currBase = weeklyBase[weeks[weeks.length - 1]];
 
-    // Delta semaine précédente = base_courante - base_précédente
-    const deltaPrev = computePreviousWeekDelta(prevBase, currBase);
+    const delta = computeWeeklyResults(prevBase, currBase);
 
-    // Delta semaine courante (en cours) = actuel - base_courante
-    const deltaCurr = computeCurrentWeekDelta(data.stats.actuel, currBase);
+    data.analysis.evolution_text =
+      buildEvolutionTextFromWeeklyResults(delta);
 
-    data.analysis.evolution_text = buildEvolutionTextFromDeltas(deltaCurr, deltaPrev);
     data.analysis.noExploitableData = false;
+
   } else {
     data.analysis.evolution_text =
       "La tendance sur la semaine écoulée sera disponible dès que des données seront exploitables.";
@@ -307,4 +268,4 @@ fs.readdirSync(BIENS_DIR)
   .filter(f => f.endsWith("_data.json"))
   .forEach(f => processBien(path.join(BIENS_DIR, f)));
 
-console.log("✔ Weekly stats N / N-1 générées avec succès (source unique weekly_cumul_base)");
+console.log("✔ Analyse hebdomadaire générée (logique vendeur – semaine écoulée)");
