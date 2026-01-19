@@ -1,36 +1,26 @@
 {
   "_meta": {
     "weekly_cumul_base": {
+      "2026-01-05": {
+        "appels": 0,
+        "emails": 0,
+        "visites_effectuees": 1,
+        "offres": 0,
+        "vues_leboncoin": 4,
+        "favoris_leboncoin": 0
+      },
       "2026-01-12": {
-        "appels": 21,
-        "emails": 11,
-        "visites_effectuees": 5,
-        "offres": 1,
-        "vues_leboncoin": 948,
-        "favoris_leboncoin": 10
-      },
-      "2026-01-19": {
-        "appels": 22,
-        "emails": 12,
-        "visites_effectuees": 6,
-        "offres": 2,
-        "vues_leboncoin": 1056,
-        "favoris_leboncoin": 11
-      },
-    "weekly_deltas": {
-    "2026-01-19": {
-      "appels": 1,
-      "emails": 1,
-      "visites_effectuees": 1,
-      "offres": 1,
-      "vues_leboncoin": 108,
-      "favoris_leboncoin": 1
-    }
+        "appels": 1,
+        "emails": 0,
+        "visites_effectuees": 0,
+        "offres": 0,
+        "vues_leboncoin": 56,
+        "favoris_leboncoin": 1
+      }
     },
     "mise_en_ligne_ref": "2025-12-13",
-    "last_weekly_run": "2026-01-19",
-    "mise_en_ligne_initiale": "2025-10-01",
-    "last_cumul_applied_week": "2026-01-19"
+    "last_weekly_run": "2026-01-12",
+    "mise_en_ligne_initiale": "2025-10-01"
   },
   "bien": {
     "nom": "Naël",
@@ -83,18 +73,18 @@
       "favoris_leboncoin": 11
     },
     "cumul": {
-      "appels": 22,
-      "emails": 12,
-      "visites_effectuees": 6,
-      "offres": 2,
-      "vues_leboncoin": 1056,
-      "favoris_leboncoin": 11
+      "appels": 1,
+      "emails": 1,
+      "visites_effectuees": 1,
+      "offres": 1,
+      "vues_leboncoin": 108,
+      "favoris_leboncoin": 1
     }
   },
   "analysis": {
     "text": "",
     "evolution_text": "Appels : +1\nEmails : +1\nVisites effectuées : +1\nOffres : +1\nVues Leboncoin : +108\nFavoris Leboncoin : +1",
-    "generatedAt": "2026-01-19T19:37:25.573Z",
+    "generatedAt": "2026-01-12T19:37:25.573Z",
     "noExploitableData": false
   },
   "historique": [
