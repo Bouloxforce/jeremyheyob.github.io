@@ -1,5 +1,8 @@
 name: Analyse sur modification Leboncoin
 
+permissions:
+  contents: write
+
 on:
   push:
     paths:
