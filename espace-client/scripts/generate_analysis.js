@@ -139,6 +139,33 @@ function processBien(filePath) {
   data.analysis = data.analysis || {};
 
    /* =========================
+      RESET SI NOUVELLE MISE EN LIGNE
+   ========================= */
+
+   const miseEnLigne = data.dates?.mise_en_ligne || null;
+
+   // On stocke la date de mise en ligne de référence
+   if (!data._meta.mise_en_ligne_ref) {
+     data._meta.mise_en_ligne_ref = miseEnLigne;
+   }
+
+   // 👉 Si la date change, on considère un nouveau bien
+   if (miseEnLigne && data._meta.mise_en_ligne_ref !== miseEnLigne) {
+
+     // Reset complet des données dérivées
+     data.stats_weekly_snapshot = {};
+     data._meta.weekly_cumul_base = {};
+     delete data._meta.last_weekly_run;
+
+     // Réinitialisation de l'analyse
+     data.analysis.evolution_text = "";
+     data.analysis.generatedAt = null;
+
+     // Mise à jour de la référence
+     data._meta.mise_en_ligne_ref = miseEnLigne;
+   }
+
+   /* =========================
       NORMALISATION DES CUMULS
       (cumul ≥ actuel)
    ========================= */
