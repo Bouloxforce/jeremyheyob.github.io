@@ -1573,27 +1573,31 @@
   function renderAlertes(items) {
     const ul = document.getElementById("alertes-list");
     const empty = document.getElementById("alertes-empty");
-    if (!ul) return;
+    if (!ul || !empty) return;
 
     ul.innerHTML = "";
 
-    // 🔒 Aucun indicateur exploitable
+    // ✅ Aucune alerte détectée
     if (!Array.isArray(items) || items.length === 0) {
-      if (empty) empty.style.display = "block";
       ul.style.display = "none";
+      empty.style.display = "block";
+      empty.textContent =
+        "Aucun indicateur d’alerte détecté à ce stade.";
       return;
     }
 
-    // ✅ Alertes actives
-    if (empty) empty.style.display = "none";
-    ul.style.display = "block";
-
-    items.forEach((t) => {
+    // ✅ Alertes présentes → affichage systématique
+    items.forEach(msg => {
       const li = document.createElement("li");
-      li.className = "subtitle";
-      li.textContent = t;
+      li.textContent = msg;
+      li.style.fontWeight = "700";
+      li.style.color = "#b91c1c"; // rouge vendeur
+      li.style.marginBottom = "6px";
       ul.appendChild(li);
     });
+
+    ul.style.display = "block";
+    empty.style.display = "none";
   }
 
     // =========================
