@@ -1,7 +1,7 @@
 {
   "_meta": {
     "weekly_cumul_base": {
-      "2026-01-12": {
+      "2026-01-05": {
         "appels": 1,
         "emails": 0,
         "visites_effectuees": 0,
@@ -9,17 +9,17 @@
         "vues_leboncoin": 56,
         "favoris_leboncoin": 1
       },
-      "2026-01-19": {
-        "appels": 22,
-        "emails": 12,
-        "visites_effectuees": 6,
-        "offres": 2,
-        "vues_leboncoin": 1056,
-        "favoris_leboncoin": 11
+      "2026-01-12": {
+        "appels": 2,
+        "emails": 1,
+        "visites_effectuees": 0,
+        "offres": 1,
+        "vues_leboncoin": 156,
+        "favoris_leboncoin": 1
       }
     },
     "mise_en_ligne_ref": "2025-12-13",
-    "last_weekly_run": "2026-01-19",
+    "last_weekly_run": "2026-01-12",
     "mise_en_ligne_initiale": "2025-10-01"
   },
   "bien": {
@@ -59,32 +59,32 @@
       "duree": "25 ans",
       "source": "CAFPI – baromètre (taux moyen)",
       "periode": "2026-01",
-      "updatedAt": "2026-01-19T06:21:56.512Z"
+      "updatedAt": "2026-01-12T06:21:56.512Z"
     }
   },
   "stats": {
     "actuel": {
-      "appels": 22,
-      "emails": 12,
+      "appels": 5,
+      "emails": 3,
       "visites_effectuees": 6,
       "visites_programmees": 0,
       "offres": 2,
-      "vues_leboncoin": 1056,
-      "favoris_leboncoin": 11
+      "vues_leboncoin": 236,
+      "favoris_leboncoin": 5
     },
     "cumul": {
-      "appels": 21,
-      "emails": 12,
-      "visites_effectuees": 6,
-      "offres": 2,
-      "vues_leboncoin": 1000,
-      "favoris_leboncoin": 10
+      "appels": 2,
+      "emails": 1,
+      "visites_effectuees": 1,
+      "offres": 0,
+      "vues_leboncoin": 156,
+      "favoris_leboncoin": 1
     }
   },
   "analysis": {
     "text": "",
     "evolution_text": "Appels : +21\nEmails : +12\nVisites effectuées : +6\nOffres : +2\nVues Leboncoin : +1000\nFavoris Leboncoin : +10",
-    "generatedAt": "2026-01-19T20:53:59.531Z",
+    "generatedAt": "2026-01-12T20:53:59.531Z",
     "noExploitableData": false
   },
   "historique": [
