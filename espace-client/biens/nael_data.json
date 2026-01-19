@@ -93,16 +93,16 @@
       "emails": 0,
       "visites_effectuees": 0,
       "offres": 0,
-      "vues_leboncoin": 0,
+      "vues_leboncoin": 78,
       "favoris_leboncoin": 0
     }
   },
   "analysis": {
     "text": "Le bien est en commercialisation depuis 1 jour.\n\nPhase 1 (0–30 jours) : phase de test du marché.",
-    "evolution_text": "Appels : stable\nEmails : stable\nVisites effectuées : stable\nOffres : stable\nVues Leboncoin : stable\nFavoris Leboncoin : stable",
+    "evolution_text": "Appels : stable\nEmails : stable\nVisites effectuées : stable\nOffres : stable\nVues Leboncoin : +78\nFavoris Leboncoin : stable",
     "proposeRDV": false,
     "noAlertes": false,
-    "generatedAt": "2026-01-19T12:35:02.196Z"
+    "generatedAt": "2026-01-19T12:37:14.094Z"
   },
   "historique": [
     {
