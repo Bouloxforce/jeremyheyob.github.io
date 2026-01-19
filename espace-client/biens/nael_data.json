@@ -9,35 +9,31 @@
         "vues_leboncoin": 69,
         "favoris_leboncoin": 19
       },
-      "2026-01-05": {
+      "2026-01-19": {
         "appels": 13,
         "emails": 13,
         "visites_effectuees": 13,
         "offres": 13,
-        "vues_leboncoin": 13,
-        "favoris_leboncoin": 13
+        "vues_leboncoin": 69,
+        "favoris_leboncoin": 19
       }
     },
-    "last_weekly_run": "2026-01-12"
+    "last_weekly_run": "2026-01-19"
   },
-
   "bien": {
     "nom": "Naël",
     "sous_titre": "Suivi de commercialisation"
   },
-
   "diffusion": {
     "remontee": {
       "frequence": "Double remontée hebdomadaire automatique"
     }
   },
-
   "dates": {
     "mandat_signe": "2026-01-01",
     "mise_en_ligne": "2026-01-03",
     "derniere_remontee": "2026-01-18"
   },
-
   "liens": {
     "agenceimmo": "",
     "leboncoin": "https://www.leboncoin.fr/ad/instruments_de_musique/3128364821",
@@ -54,7 +50,6 @@
     "google": "",
     "youtube": ""
   },
-
   "marche": {
     "taux_credit": {
       "moyen": 3.35,
@@ -65,7 +60,6 @@
       "updatedAt": "2026-01-19T06:21:56.512Z"
     }
   },
-
   "stats": {
     "actuel": {
       "appels": 11,
@@ -85,7 +79,6 @@
       "favoris_leboncoin": 19
     }
   },
-
   "stats_weekly_snapshot": {
     "2026-01-12": {
       "appels": 0,
@@ -95,7 +88,7 @@
       "vues_leboncoin": 0,
       "favoris_leboncoin": 0
     },
-    "2026-01-05": {
+    "2026-01-19": {
       "appels": 0,
       "emails": 0,
       "visites_effectuees": 0,
@@ -104,15 +97,13 @@
       "favoris_leboncoin": 0
     }
   },
-
   "analysis": {
     "text": "Le bien est en commercialisation depuis 1 jour.\n\nPhase 1 (0–30 jours) : phase de test du marché.",
     "evolution_text": "Appels : stable\nEmails : stable\nVisites effectuées : stable\nOffres : stable\nVues Leboncoin : stable\nFavoris Leboncoin : stable",
     "proposeRDV": false,
     "noAlertes": false,
-    "generatedAt": "2026-01-19T09:24:35.268Z"
+    "generatedAt": "2026-01-19T11:52:43.662Z"
   },
-
   "historique": [
     {
       "date": "2026-01-20",
@@ -123,7 +114,6 @@
       "action": "✍️ Mandat signé"
     }
   ],
-
   "strategie_3090": {
     "intro": "La commercialisation est structurée par paliers afin d’adapter la stratégie au comportement réel des acquéreurs et au contexte de marché.",
     "etapes": [
