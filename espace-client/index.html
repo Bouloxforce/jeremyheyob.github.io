@@ -1864,6 +1864,21 @@ function render404() {
       setText("stat-cumul-vues-leboncoin", getCumulStat(data, "vues_leboncoin"));
       setText("stat-cumul-favoris-leboncoin", getCumulStat(data, "favoris_leboncoin"));
 
+      // =========================
+      // ✅ NORMALISATION CUMUL ≥ ACTUEL (GARDE-FOU UI)
+      // =========================
+      data.stats = data.stats || {};
+      data.stats.cumul = data.stats.cumul || {};
+      data.stats.actuel = data.stats.actuel || {};
+
+      const KEYS = ["appels","emails","visites_effectuees","offres","vues_leboncoin","favoris_leboncoin"];
+
+      KEYS.forEach(k => {
+        const c = Number(data.stats.cumul?.[k]) || 0;
+        const a = Number(data.stats.actuel?.[k]) || 0;
+        if (a > c) data.stats.cumul[k] = a; // cumul ne doit jamais être < actuel
+      });
+
       // ACTUEL
       setText("stat-actuel-appels", data.stats?.actuel?.appels);
       setText("stat-actuel-emails", data.stats?.actuel?.emails);
@@ -1910,10 +1925,10 @@ function render404() {
       // =========================
       // 🔴 DONNÉES ACTUELLES (BASE DES ALERTES)
       // =========================
-      const appelsTotal  = getCumulStat(data, "appels");
-      const vuesTotal    = getCumulStat(data, "vues_leboncoin");
-      const visitesTotal = getCumulStat(data, "visites_effectuees");
-      const offresTotal  = getCumulStat(data, "offres");
+      const appelsTotal  = toNumber(data.stats?.actuel?.appels) || 0;
+      const vuesTotal    = toNumber(data.stats?.actuel?.vues_leboncoin) || 0;
+      const visitesTotal = toNumber(data.stats?.actuel?.visites_effectuees) || 0;
+      const offresTotal  = toNumber(data.stats?.actuel?.offres) || 0;
 
       const appelsActuels = toNumber(data.stats?.actuel?.appels) || 0;
       const vuesActuellesAlerte = toNumber(data.stats?.actuel?.vues_leboncoin) || 0;
