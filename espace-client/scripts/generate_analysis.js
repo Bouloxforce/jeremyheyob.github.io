@@ -147,6 +147,66 @@ function hasExploitableWeeklyData(weeklyBase) {
   );
 }
 
+function detectAlertes(data) {
+  const a = [];
+
+  const appels = toNumber(data.stats.actuel.appels);
+  const emails = toNumber(data.stats.actuel.emails);
+  const visites = toNumber(data.stats.actuel.visites_effectuees);
+  const offres = toNumber(data.stats.actuel.offres);
+  const vues = toNumber(data.stats.actuel.vues_leboncoin);
+
+  // 🟥 PRIORITÉ 1 — Visites sans offres
+  if (visites >= 3 && offres === 0) {
+    a.push({
+      p: 1,
+      m: "﹗ Visites sans offres"
+    });
+  }
+
+  // 🟧 PRIORITÉ 2 — Contacts sans visites
+  if (appels + emails >= 15 && visites === 0) {
+    a.push({
+      p: 2,
+      m: "﹗ Contacts sans visites"
+    });
+  }
+
+  // 🟨 PRIORITÉ 3 — Vues sans contacts
+  if (vues >= 200 && appels + emails === 0 ) {
+    a.push({
+      p: 3,
+      m: "﹗ Vues sans contacts"
+    });
+  }
+
+  // 🟪 PRIORITÉ 4 — Aucune interaction récente
+  const weeklyBase = data._meta.weekly_cumul_base || {};
+  const weeks = Object.keys(weeklyBase).sort();
+  if (weeks.length >= 2) {
+    const prev = weeklyBase[weeks[weeks.length - 2]];
+    const curr = weeklyBase[weeks[weeks.length - 1]];
+
+    const delta =
+      toNumber(curr.appels) - toNumber(prev.appels) +
+      toNumber(curr.emails) - toNumber(prev.emails) +
+      toNumber(curr.visites_effectuees) - toNumber(prev.visites_effectuees);
+
+    if (delta === 0) {
+      a.push({
+        p: 4,
+        m: "﹗ Aucune interaction récente"
+      });
+    }
+  }
+
+  // ➜ tri par priorité + max 2 alertes
+  return a
+    .sort((x, y) => x.p - y.p)
+    .slice(0, 2)
+    .map(x => x.m);
+}
+
 /* =========================
    TRAITEMENT D’UN BIEN
 ========================= */
@@ -161,6 +221,7 @@ function processBien(filePath) {
   data.stats.actuel ??= {};
   data.stats.cumul ??= {};
   data.analysis ??= {};
+  data.analysis.alertes ??= [];
   data._meta ??= {};
   data._meta.weekly_cumul_base ??= {};
   data._meta.last_actuel_snapshot ??= {};
@@ -276,6 +337,7 @@ function processBien(filePath) {
     data.analysis.noExploitableData = true;
   }
 
+  data.analysis.alertes = detectAlertes(data);
   data._meta.last_weekly_run = mondayKey;
   data.analysis.generatedAt = new Date().toISOString();
   data._meta.just_reset = false;
