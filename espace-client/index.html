@@ -1100,7 +1100,7 @@
       </ul>
 
       <p class="subtitle" id="ratio-empty" style="display:none;">
-        Aucun taux de transformation disponibles pour le moment.
+        Le taux de transformation sera disponibles dès que des données seront exploitables.
       </p>
 
       <!-- ✅ AJOUT 3 : Tendance sur la semaine écoulée -->
@@ -2116,8 +2116,7 @@ function render404() {
       if (analysis?.noExploitableData) {
 
         renderAlertes([
-          "Aucun indicateur d’alerte disponible pour le moment.\n" +
-          "Les alertes seront activées dès que suffisamment de données exploitables auront été collectées."
+          "Les indicateurs seront disponibles dès que des données seront exploitables."
         ]);
 
       } else {
