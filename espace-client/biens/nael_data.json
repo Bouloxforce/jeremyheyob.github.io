@@ -119,18 +119,23 @@
     "etapes": [
       {
         "jours": "0–30 jours",
-        "titre": "Phase de lancement",
-        "strategie": "Diffusion maximale du bien, analyse des premières réactions et qualification de la demande."
+        "titre": "Phase de test du marché",
+        "strategie": "Mise en ligne au prix de positionnement initial afin de tester la réaction réelle du marché. Analyse des vues, contacts, visites et premiers retours acquéreurs pour valider ou invalider le prix et la présentation."
       },
       {
         "jours": "31–60 jours",
-        "titre": "Phase d’ajustement",
-        "strategie": "Optimisation du positionnement et ajustements ciblés selon les performances observées."
+        "titre": "Phase d’ajustement stratégique",
+        "strategie": "Ajustements ciblés en fonction des données observées : prix, accroche, diffusion et communication. Objectif : améliorer l’attractivité et relancer la dynamique commerciale."
       },
       {
         "jours": "61–90 jours",
-        "titre": "Phase de décision",
-        "strategie": "Alignement stratégique du prix et de la communication afin de favoriser le passage à l’offre."
+        "titre": "Phase de derniers ajustements",
+        "strategie": "Optimisation finale du positionnement (prix et stratégie globale) afin de favoriser le passage à l’offre. Phase décisive où le marché a livré suffisamment de signaux pour trancher objectivement."
+      },
+      {
+        "jours": "+ 90 jours",
+        "titre": "Phase de poursuite maîtrisée",
+        "strategie": "Cette phase n’est généralement pas recommandée au regard du fonctionnement du marché, mais vous restez le capitaine du navire et décidez de poursuivre la stratégie avec ces contraintes."
       }
     ]
   }
