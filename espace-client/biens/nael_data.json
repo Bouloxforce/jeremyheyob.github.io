@@ -1,16 +1,14 @@
 {
   "_meta": {
-    "last_weekly_run": "2026-01-19",
-    "previous_mise_en_ligne": "2026-01-18",
-    "previous_stats_actuel": {
-      "appels": 11,
-      "emails": 11,
-      "visites_effectuees": 11,
-      "offres": 11,
-      "vues_leboncoin": 67,
-      "favoris_leboncoin": 17
-    },
     "weekly_cumul_base": {
+      "2026-01-19": {
+        "appels": 13,
+        "emails": 13,
+        "visites_effectuees": 13,
+        "offres": 13,
+        "vues_leboncoin": 69,
+        "favoris_leboncoin": 19
+      },
       "2026-01-12": {
         "appels": 13,
         "emails": 13,
@@ -19,38 +17,44 @@
         "vues_leboncoin": 13,
         "favoris_leboncoin": 13
       }
-    }
+    },
+    "last_weekly_run": "2026-01-19"
   },
+
   "bien": {
     "nom": "Naël",
     "sous_titre": "Suivi de commercialisation"
   },
+
   "diffusion": {
     "remontee": {
       "frequence": "Double remontée hebdomadaire automatique"
     }
   },
+
   "dates": {
     "mandat_signe": "2026-01-09",
     "mise_en_ligne": "2026-01-18",
     "derniere_remontee": "2026-01-18"
   },
+
   "liens": {
-    "lefigaro": "",
-    "youtube": "",
-    "paruvendu": "",
-    "pagesjaunes": "",
-    "bienici": "",
-    "linkedin": "",
-    "seloger": "",
     "agenceimmo": "",
+    "leboncoin": "https://www.leboncoin.fr/ad/instruments_de_musique/3128364821",
+    "seloger": "",
+    "bienici": "",
     "logicimmo": "",
     "avendrealouer": "",
-    "google": "",
+    "paruvendu": "",
+    "lefigaro": "",
     "facebook": "",
     "instagram": "",
-    "leboncoin": "https://www.leboncoin.fr/ad/instruments_de_musique/3128364821"
+    "linkedin": "",
+    "pagesjaunes": "",
+    "google": "",
+    "youtube": ""
   },
+
   "marche": {
     "taux_credit": {
       "moyen": 3.35,
@@ -61,15 +65,16 @@
       "updatedAt": "2026-01-19T06:21:56.512Z"
     }
   },
+
   "stats": {
     "actuel": {
       "appels": 11,
       "emails": 11,
       "visites_effectuees": 11,
+      "visites_programmees": 23,
       "offres": 11,
       "vues_leboncoin": 67,
-      "favoris_leboncoin": 17,
-      "visites_programmees": 23
+      "favoris_leboncoin": 17
     },
     "cumul": {
       "appels": 13,
@@ -80,14 +85,15 @@
       "favoris_leboncoin": 19
     }
   },
+
   "stats_weekly_snapshot": {
     "2026-01-19": {
-      "appels": 3,
-      "emails": 3,
-      "visites_effectuees": 12,
-      "offres": 1,
-      "vues_leboncoin": 60,
-      "favoris_leboncoin": 2
+      "appels": 0,
+      "emails": 0,
+      "visites_effectuees": 0,
+      "offres": 0,
+      "vues_leboncoin": 0,
+      "favoris_leboncoin": 0
     },
     "2026-01-12": {
       "appels": 0,
@@ -98,46 +104,50 @@
       "favoris_leboncoin": 0
     }
   },
+
   "analysis": {
-    "text": "Le bien est en commercialisation depuis 1 jours.\n\nPhase normale de diffusion.",
+    "text": "Le bien est en commercialisation depuis 1 jour.\n\nPhase 1 (0–30 jours) : phase de test du marché.",
+    "evolution_text": "Appels : stable\nEmails : stable\nVisites effectuées : stable\nOffres : stable\nVues Leboncoin : stable\nFavoris Leboncoin : stable",
     "proposeRDV": false,
     "noAlertes": false,
-    "generatedAt": "2026-01-19T09:24:35.268Z",
-    "evolution_text": "Appels : +3\nEmails : +3\nVisites effectuées : +12\n➖ Offres : stable\nVues Leboncoin : +45\nFavoris Leboncoin : +2"
+    "generatedAt": "2026-01-19T09:24:35.268Z"
   },
+
   "historique": [
     {
       "date": "2026-01-20",
       "action": "📢 Mise en ligne de l’annonce"
     },
     {
-      "date": "2026-01-01",
+      "date": "2026-01-09",
       "action": "✍️ Mandat signé"
     }
   ],
+
   "strategie_3090": {
     "intro": "La commercialisation est structurée par paliers afin d’adapter la stratégie au comportement réel des acquéreurs et au contexte de marché.",
     "etapes": [
       {
         "jours": "0–30 jours",
         "titre": "Phase de test du marché",
-        "strategie": "Mise en ligne au prix de positionnement initial afin de tester la réaction réelle du marché. Analyse des vues, contacts, visites et premiers retours acquéreurs pour valider ou invalider le prix et la présentation."
+        "strategie": "Mise en ligne au prix de positionnement initial afin de tester la réaction réelle du marché."
       },
       {
         "jours": "31–60 jours",
         "titre": "Phase d’ajustement stratégique",
-        "strategie": "Ajustements ciblés en fonction des données observées : prix, accroche, diffusion et communication. Objectif : améliorer l’attractivité et relancer la dynamique commerciale."
+        "strategie": "Ajustements ciblés en fonction des données observées."
       },
       {
         "jours": "61–90 jours",
         "titre": "Phase de derniers ajustements",
-        "strategie": "Optimisation finale du positionnement (prix et stratégie globale) afin de favoriser le passage à l’offre. Phase décisive où le marché a livré suffisamment de signaux pour trancher objectivement."
+        "strategie": "Optimisation finale du positionnement afin de favoriser le passage à l’offre."
       },
       {
         "jours": "+ 90 jours",
         "titre": "Phase de poursuite maîtrisée",
-        "strategie": "Cette phase n’est généralement pas recommandée au regard du fonctionnement du marché, mais vous restez le capitaine du navire et décidez de poursuivre la stratégie avec ces contraintes."
+        "strategie": "Poursuite possible de la commercialisation selon votre décision."
       }
     ]
   }
 }
+
