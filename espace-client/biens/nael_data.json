@@ -11,7 +11,8 @@
       }
     },
     "mise_en_ligne_ref": "2026-01-19",
-    "last_weekly_run": "2026-01-19"
+    "last_weekly_run": "2026-01-19",
+    "mise_en_ligne_initiale": "2026-01-19"
   },
   "bien": {
     "nom": "Naël",
@@ -74,18 +75,18 @@
   },
   "stats_weekly_snapshot": {
     "2026-01-19": {
-      "appels": 0,
-      "emails": 0,
+      "appels": 2,
+      "emails": 1,
       "visites_effectuees": 0,
       "offres": 0,
-      "vues_leboncoin": 0,
-      "favoris_leboncoin": 0
+      "vues_leboncoin": 124,
+      "favoris_leboncoin": 5
     }
   },
   "analysis": {
     "text": "",
     "evolution_text": "La tendance sur la semaine écoulée sera disponible dès que des données seront exploitables.",
-    "generatedAt": "2026-01-19T15:11:05.425Z",
+    "generatedAt": "2026-01-19T15:25:17.963Z",
     "noExploitableData": true
   },
   "historique": [
