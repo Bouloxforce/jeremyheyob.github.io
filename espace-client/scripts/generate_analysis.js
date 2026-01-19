@@ -186,7 +186,6 @@ function processBien(filePath) {
   data.analysis ??= {};
   data._meta ??= {};
   data._meta.weekly_cumul_base ??= {};
-  data._meta.last_cumul_applied_week ??= null;
 
   /* =========================
      🔒 DATE DE MISE EN LIGNE INITIALE (IMMUTABLE)
