@@ -1,7 +1,7 @@
 {
   "_meta": {
     "weekly_cumul_base": {
-      "2026-01-12": {
+      "2026-01-05": {
         "appels": 15,
         "emails": 13,
         "visites_effectuees": 12,
@@ -9,7 +9,7 @@
         "vues_leboncoin": 345,
         "favoris_leboncoin": 20
       },
-      "2026-01-19": {
+      "2026-01-12": {
         "appels": 15,
         "emails": 13,
         "visites_effectuees": 12,
@@ -18,7 +18,7 @@
         "favoris_leboncoin": 20
       }
     },
-    "last_weekly_run": "2026-01-19"
+    "last_weekly_run": "2026-01-12"
   },
   "bien": {
     "nom": "Naël",
@@ -80,7 +80,7 @@
     }
   },
   "stats_weekly_snapshot": {
-    "2026-01-12": {
+    "2026-01-05": {
       "appels": 0,
       "emails": 0,
       "visites_effectuees": 0,
@@ -88,7 +88,7 @@
       "vues_leboncoin": 0,
       "favoris_leboncoin": 0
     },
-    "2026-01-19": {
+    "2026-01-12": {
       "appels": 0,
       "emails": 0,
       "visites_effectuees": 0,
@@ -102,7 +102,7 @@
     "evolution_text": "Appels : stable\nEmails : stable\nVisites effectuées : stable\nOffres : stable\nVues Leboncoin : +78\nFavoris Leboncoin : stable",
     "proposeRDV": false,
     "noAlertes": false,
-    "generatedAt": "2026-01-19T12:37:14.094Z"
+    "generatedAt": "2026-01-12T12:37:14.094Z"
   },
   "historique": [
     {
