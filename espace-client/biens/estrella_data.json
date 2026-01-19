@@ -84,7 +84,7 @@
     "text": "Analyse indisponible : date de mise en ligne manquante.",
     "proposeRDV": false,
     "noAlertes": false,
-    "generatedAt": "2026-01-19T12:58:36.967Z",
+    "generatedAt": "2026-01-19T13:07:25.925Z",
     "evolution_text": "Appels : stable\nEmails : stable\nVisites effectuées : stable\nOffres : stable\nVues Leboncoin : stable\nFavoris Leboncoin : stable"
   },
   "_meta": {
@@ -115,7 +115,8 @@
         "favoris_leboncoin": 0
       }
     },
-    "last_weekly_run": "2026-01-19"
+    "last_weekly_run": "2026-01-19",
+    "mise_en_ligne_ref": null
   },
   "stats_weekly_snapshot": {
     "2026-01-12": {

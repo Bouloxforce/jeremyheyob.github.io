@@ -18,7 +18,8 @@
         "favoris_leboncoin": 20
       }
     },
-    "last_weekly_run": "2026-01-19"
+    "last_weekly_run": "2026-01-19",
+    "mise_en_ligne_ref": "2026-01-17"
   },
   "bien": {
     "nom": "Naël",
@@ -102,7 +103,7 @@
     "evolution_text": "Appels : +15\nEmails : +7\nVisites effectuées : +118\nOffres : +176\nVues Leboncoin : +1010\nFavoris Leboncoin : +202",
     "proposeRDV": false,
     "noAlertes": false,
-    "generatedAt": "2026-01-19T12:58:36.969Z"
+    "generatedAt": "2026-01-19T13:07:25.926Z"
   },
   "historique": [
     {
