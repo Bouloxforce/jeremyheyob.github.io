@@ -760,6 +760,25 @@
       color: var(--text-main);
     }
 
+    /* =========================
+       ÉVOLUTION – COULEURS SÉMANTIQUES
+    ========================= */
+
+    .evo-up {
+      color: #15803d;        /* vert pro */
+      font-weight: 600;
+    }
+
+    .evo-down {
+      color: #b91c1c;        /* rouge pro */
+      font-weight: 600;
+    }
+
+    .evo-stable {
+      color: #3f3f3f;        /* gris neutre */
+      font-weight: 500;
+    }
+
     @media (max-width: 880px) {
       /* Header */
       header {
@@ -1498,7 +1517,7 @@
     if (!el) return;
 
     if (text && String(text).trim()) {
-      el.textContent = text;
+      el.innerHTML = text;
       el.style.display = "";
     } else {
       el.style.display = "none";
@@ -1574,14 +1593,20 @@
     const diff = actuel - precedent;
 
     if (diff > 0) {
-      lines.push(`${label} : hausse de +${diff}`);
+      lines.push(
+        `<span class="evo-up">${label} : +${diff}</span>`
+      );
     } else if (diff < 0) {
-      lines.push(`${label} : baisse de ${Math.abs(diff)}`);
+      lines.push(
+        `<span class="evo-down">${label} : ${diff}</span>`
+      );
     } else {
-      lines.push(`${label} : stable`);
+      lines.push(
+        `<span class="evo-stable">${label} : stable</span>`
+      );
     }
   }
-  
+    
   function calculateEvolutionFromHistory(history) {
     if (!Array.isArray(history) || history.length === 0) {
       return { empty: true };
