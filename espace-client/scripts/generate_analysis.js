@@ -149,21 +149,36 @@ function processBien(filePath) {
      data._meta.mise_en_ligne_ref = miseEnLigne;
    }
 
-   // 👉 Si la date change, on considère un nouveau bien
    if (miseEnLigne && data._meta.mise_en_ligne_ref !== miseEnLigne) {
 
-     // Reset complet des données dérivées
-     data.stats_weekly_snapshot = {};
-     data._meta.weekly_cumul_base = {};
-     delete data._meta.last_weekly_run;
+   /* =========================
+      RESET PARTIEL – NOUVELLE COMMERCIALISATION
+  ========================= */
 
-     // Réinitialisation de l'analyse
-     data.analysis.evolution_text = "";
-     data.analysis.generatedAt = null;
+  // 🔹 Reset des données ACTUELLES uniquement
+  data.stats.actuel = {
+    appels: 0,
+    emails: 0,
+    visites_effectuees: 0,
+    visites_programmees: 0,
+    offres: 0,
+    vues_leboncoin: 0,
+    favoris_leboncoin: 0
+  };
 
-     // Mise à jour de la référence
-     data._meta.mise_en_ligne_ref = miseEnLigne;
-   }
+  // 🔹 Reset des snapshots et bases temporelles
+  data.stats_weekly_snapshot = {};
+  data._meta.weekly_cumul_base = {};
+  delete data._meta.last_weekly_run;
+
+  // 🔹 Reset des analyses & alertes
+  data.analysis.evolution_text = "";
+  data.analysis.text = "";
+  data.analysis.generatedAt = null;
+
+  // 🔹 Mise à jour de la référence
+  data._meta.mise_en_ligne_ref = miseEnLigne;
+}
 
    /* =========================
       NORMALISATION DES CUMULS
