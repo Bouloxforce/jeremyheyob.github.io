@@ -16,7 +16,16 @@
         "offres": 2,
         "vues_leboncoin": 1056,
         "favoris_leboncoin": 11
-      }
+      },
+    "weekly_deltas": {
+    "2026-01-19": {
+      "appels": 1,
+      "emails": 1,
+      "visites_effectuees": 1,
+      "offres": 1,
+      "vues_leboncoin": 108,
+      "favoris_leboncoin": 1
+    }
     },
     "mise_en_ligne_ref": "2025-12-13",
     "last_weekly_run": "2026-01-19",
