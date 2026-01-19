@@ -1,14 +1,6 @@
 {
   "_meta": {
     "weekly_cumul_base": {
-      "2026-01-05": {
-        "appels": 1,
-        "emails": 0,
-        "visites_effectuees": 1,
-        "offres": 0,
-        "vues_leboncoin": 89,
-        "favoris_leboncoin": 0
-      },
       "2026-01-12": {
         "appels": 0,
         "emails": 0,
@@ -16,21 +8,29 @@
         "offres": 0,
         "vues_leboncoin": 280,
         "favoris_leboncoin": 0
+      },
+      "2026-01-19": {
+        "appels": 10,
+        "emails": 10,
+        "visites_effectuees": 10,
+        "offres": 5,
+        "vues_leboncoin": 600,
+        "favoris_leboncoin": 76
       }
     },
     "mise_en_ligne_ref": "2026-01-06",
     "mise_en_ligne_initiale": "2025-10-01",
     "last_actuel_snapshot": {
-      "appels": 0,
-      "emails": 0,
-      "visites_effectuees": 3,
-      "offres": 0,
-      "vues_leboncoin": 280,
-      "favoris_leboncoin": 0
+      "appels": 10,
+      "emails": 10,
+      "visites_effectuees": 10,
+      "offres": 5,
+      "vues_leboncoin": 600,
+      "favoris_leboncoin": 76
     },
     "just_reset": false,
     "has_had_reset": true,
-    "last_weekly_run": "2026-01-12"
+    "last_weekly_run": "2026-01-19"
   },
   "bien": {
     "nom": "Naël",
@@ -83,23 +83,20 @@
       "favoris_leboncoin": 76
     },
     "cumul": {
-      "appels": 61,
-      "emails": 10,
-      "visites_effectuees": 16,
-      "offres": 10,
-      "vues_leboncoin": 998,
-      "favoris_leboncoin": 13
+      "appels": 71,
+      "emails": 20,
+      "visites_effectuees": 23,
+      "offres": 15,
+      "vues_leboncoin": 1318,
+      "favoris_leboncoin": 89
     }
   },
   "analysis": {
     "text": "",
-    "evolution_text": "Appels : stable\nEmails : stable\nVisites effectuées : +2\nOffres : stable\nVues Leboncoin : +191\nFavoris Leboncoin : stable",
-    "generatedAt": "2026-01-12T23:13:06.890Z",
+    "evolution_text": "Appels : +10\nEmails : +10\nVisites effectuées : +7\nOffres : +5\nVues Leboncoin : +320\nFavoris Leboncoin : +76",
+    "generatedAt": "2026-01-19T23:19:25.348Z",
     "noExploitableData": false,
-    "alertes": [
-      "❗ Visites sans offres",
-      "❗ Vues sans contacts"
-    ]
+    "alertes": []
   },
   "historique": [
     {
