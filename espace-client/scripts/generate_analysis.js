@@ -132,6 +132,17 @@ function processBien(filePath) {
   data._meta ??= {};
   data._meta.weekly_cumul_base ??= {};
 
+   /* =========================
+      🔒 DATE DE MISE EN LIGNE INITIALE (IMMUTABLE)
+   ========================= */
+
+   if (
+     !data._meta.mise_en_ligne_initiale &&
+     data.dates?.mise_en_ligne
+   ) {
+     data._meta.mise_en_ligne_initiale = data.dates.mise_en_ligne;
+   }
+
   /* =========================
      RESET PARTIEL – NOUVELLE MISE EN LIGNE
   ========================= */
