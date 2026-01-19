@@ -1,14 +1,6 @@
 {
   "_meta": {
     "weekly_cumul_base": {
-      "2026-01-05": {
-        "appels": 10,
-        "emails": 4,
-        "visites_effectuees": 1,
-        "offres": 0,
-        "vues_leboncoin": 234,
-        "favoris_leboncoin": 5
-      },
       "2026-01-12": {
         "appels": 10,
         "emails": 4,
@@ -16,10 +8,18 @@
         "offres": 0,
         "vues_leboncoin": 245,
         "favoris_leboncoin": 5
+      },
+      "2026-01-19": {
+        "appels": 15,
+        "emails": 6,
+        "visites_effectuees": 2,
+        "offres": 0,
+        "vues_leboncoin": 305,
+        "favoris_leboncoin": 7
       }
     },
     "mise_en_ligne_ref": "2025-12-13",
-    "last_weekly_run": "2026-01-12",
+    "last_weekly_run": "2026-01-19",
     "mise_en_ligne_initiale": "2025-10-01"
   },
   "bien": {
@@ -73,23 +73,15 @@
       "favoris_leboncoin": 7
     },
     "cumul": {
-      "appels": 10,
-      "emails": 4,
-      "visites_effectuees": 1,
+      "appels": 15,
+      "emails": 6,
+      "visites_effectuees": 2,
       "offres": 0,
-      "vues_leboncoin": 245,
-      "favoris_leboncoin": 5
+      "vues_leboncoin": 305,
+      "favoris_leboncoin": 7
     }
   },
   "stats_weekly_snapshot": {
-    "2026-01-05": {
-      "appels": 0,
-      "emails": 0,
-      "visites_effectuees": 0,
-      "offres": 0,
-      "vues_leboncoin": 0,
-      "favoris_leboncoin": 0
-    },
     "2026-01-12": {
       "appels": 10,
       "emails": 4,
@@ -97,13 +89,21 @@
       "offres": 0,
       "vues_leboncoin": 245,
       "favoris_leboncoin": 5
+    },
+    "2026-01-19": {
+      "appels": 0,
+      "emails": 0,
+      "visites_effectuees": 0,
+      "offres": 0,
+      "vues_leboncoin": 0,
+      "favoris_leboncoin": 0
     }
   },
   "analysis": {
     "text": "",
-    "evolution_text": "",
-    "generatedAt": "",
-    "noExploitableData": true
+    "evolution_text": "Appels : stable\nEmails : stable\nVisites effectuées : stable\nOffres : stable\nVues Leboncoin : stable\nFavoris Leboncoin : stable",
+    "generatedAt": "2026-01-19T16:11:16.968Z",
+    "noExploitableData": false
   },
   "historique": [
     {
