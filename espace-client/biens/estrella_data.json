@@ -84,7 +84,7 @@
     "text": "Analyse indisponible : date de mise en ligne manquante.",
     "proposeRDV": false,
     "noAlertes": false,
-    "generatedAt": "2026-01-19T20:59:51.046Z",
+    "generatedAt": "2026-01-19T21:34:56.563Z",
     "evolution_text": "La tendance sur la semaine écoulée sera disponible dès que des données seront exploitables.",
     "noExploitableData": true
   },
@@ -118,7 +118,15 @@
     },
     "last_weekly_run": "2026-01-19",
     "mise_en_ligne_ref": null,
-    "last_cumul_applied_week": "2026-01-19"
+    "last_cumul_applied_week": "2026-01-19",
+    "last_actuel_snapshot": {
+      "appels": 0,
+      "emails": 0,
+      "visites_effectuees": 0,
+      "offres": 0,
+      "vues_leboncoin": 0,
+      "favoris_leboncoin": 0
+    }
   },
   "stats_weekly_snapshot": {
     "2026-01-12": {
