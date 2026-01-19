@@ -1125,6 +1125,10 @@
       <div class="luxury-divider"></div>
 
       <h2 style="margin-top:0;">🎯 Indicateurs d’alerte</h2>
+      <p class="subtitle" id="alertes-empty" style="display:none;">
+        Aucun indicateur d’alerte disponible pour le moment.
+        Les alertes seront activées dès que suffisamment de données exploitables auront été collectées.
+      </p>
       <ul id="alertes-list"
           style="list-style:none;padding:0;margin:12px 0 0;font-size:15px;line-height:1.55;">
         <li class="subtitle">Chargement…</li>
@@ -1575,16 +1579,21 @@
 
   function renderAlertes(items) {
     const ul = document.getElementById("alertes-list");
+    const empty = document.getElementById("alertes-empty");
     if (!ul) return;
+
     ul.innerHTML = "";
 
+    // 🔒 Aucun indicateur exploitable
     if (!Array.isArray(items) || items.length === 0) {
-      const li = document.createElement("li");
-      li.className = "subtitle";
-      li.textContent = "Aucune alerte détectée.";
-      ul.appendChild(li);
+      if (empty) empty.style.display = "block";
+      ul.style.display = "none";
       return;
     }
+
+    // ✅ Alertes actives
+    if (empty) empty.style.display = "none";
+    ul.style.display = "block";
 
     items.forEach((t) => {
       const li = document.createElement("li");
