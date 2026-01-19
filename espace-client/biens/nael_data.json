@@ -1,34 +1,26 @@
 {
   "_meta": {
     "weekly_cumul_base": {
-      "2026-01-12": {
-        "appels": 5,
-        "emails": 3,
-        "visites_effectuees": 6,
-        "offres": 2,
-        "vues_leboncoin": 236,
-        "favoris_leboncoin": 5
-      },
       "2026-01-19": {
-        "appels": 7,
-        "emails": 5,
-        "visites_effectuees": 6,
-        "offres": 3,
-        "vues_leboncoin": 345,
-        "favoris_leboncoin": 1
+        "appels": 0,
+        "emails": 0,
+        "visites_effectuees": 0,
+        "offres": 0,
+        "vues_leboncoin": 0,
+        "favoris_leboncoin": 0
       }
     },
-    "mise_en_ligne_ref": "2025-12-13",
-    "last_weekly_run": "2026-01-19",
+    "mise_en_ligne_ref": "2026-01-04",
     "mise_en_ligne_initiale": "2025-10-01",
     "last_actuel_snapshot": {
-      "appels": 7,
-      "emails": 5,
-      "visites_effectuees": 6,
-      "offres": 3,
-      "vues_leboncoin": 345,
-      "favoris_leboncoin": 1
-    }
+      "appels": 0,
+      "emails": 0,
+      "visites_effectuees": 0,
+      "offres": 0,
+      "vues_leboncoin": 0,
+      "favoris_leboncoin": 0
+    },
+    "last_weekly_run": "2026-01-19"
   },
   "bien": {
     "nom": "Naël",
@@ -72,28 +64,28 @@
   },
   "stats": {
     "actuel": {
-      "appels": 7,
-      "emails": 5,
-      "visites_effectuees": 6,
+      "appels": 0,
+      "emails": 0,
+      "visites_effectuees": 0,
       "visites_programmees": 0,
-      "offres": 3,
-      "vues_leboncoin": 345,
-      "favoris_leboncoin": 1
+      "offres": 0,
+      "vues_leboncoin": 0,
+      "favoris_leboncoin": 0
     },
     "cumul": {
-      "appels": 7,
-      "emails": 5,
-      "visites_effectuees": 6,
-      "offres": 3,
-      "vues_leboncoin": 345,
-      "favoris_leboncoin": 1
+      "appels": 0,
+      "emails": 0,
+      "visites_effectuees": 0,
+      "offres": 0,
+      "vues_leboncoin": 0,
+      "favoris_leboncoin": 0
     }
   },
   "analysis": {
     "text": "",
-    "evolution_text": "Appels : +2\nEmails : +2\nVisites effectuées : stable\nOffres : +1\nVues Leboncoin : +109\nFavoris Leboncoin : stable",
-    "generatedAt": "2026-01-19T21:34:56.564Z",
-    "noExploitableData": false
+    "evolution_text": "La tendance sur la semaine écoulée sera disponible dès que des données seront exploitables.",
+    "generatedAt": "2026-01-19T21:38:59.487Z",
+    "noExploitableData": true
   },
   "historique": [
     {
