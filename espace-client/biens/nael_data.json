@@ -10,7 +10,7 @@
         "favoris_leboncoin": 0
       }
     },
-    "mise_en_ligne_ref": "2026-01-18",
+    "mise_en_ligne_ref": "2026-01-19",
     "last_weekly_run": "2026-01-19"
   },
   "bien": {
@@ -84,10 +84,9 @@
   },
   "analysis": {
     "text": "",
-    "evolution_text": "Appels : stable\nEmails : stable\nVisites effectuées : stable\nOffres : stable\nVues Leboncoin : stable\nFavoris Leboncoin : stable",
-    "proposeRDV": false,
-    "noAlertes": false,
-    "generatedAt": "2026-01-19T13:21:17.535Z"
+    "evolution_text": "Les données sont en cours de collecte.\nLes indicateurs de tendance seront disponibles dès que des données exploitables auront été enregistrées.",
+    "generatedAt": "2026-01-19T13:31:48.077Z",
+    "noExploitableData": true
   },
   "historique": [
     {
