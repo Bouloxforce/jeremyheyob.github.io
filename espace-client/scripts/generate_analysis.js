@@ -1,229 +1,159 @@
-/* ======================================================
-   IMPORTS
-====================================================== */
-
 import fs from "fs";
 import path from "path";
 
-/* ======================================================
-   CONSTANTES
-====================================================== */
+/* =========================
+   PARAMÈTRES
+========================= */
 
-const BASE_DIR = "espace-client";
-const BIENS_DIR = path.join(BASE_DIR, "biens");
+const BIENS_DIR = path.join("espace-client", "biens");
 
-/* ======================================================
-   OUTILS GÉNÉRAUX
-====================================================== */
+const KEYS = [
+  { key: "appels", label: "Appels" },
+  { key: "emails", label: "Emails" },
+  { key: "visites_effectuees", label: "Visites effectuées" },
+  { key: "offres", label: "Offres" },
+  { key: "vues_leboncoin", label: "Vues Leboncoin" },
+  { key: "favoris_leboncoin", label: "Favoris Leboncoin" }
+];
 
-function daysBetween(isoDate) {
-  if (!isoDate) return null;
-  const d = new Date(isoDate);
-  if (isNaN(d.getTime())) return null;
-
-  const now = new Date();
-  return Math.floor((now - d) / (1000 * 60 * 60 * 24));
-}
+/* =========================
+   OUTILS
+========================= */
 
 function toNumber(v) {
   const n = Number(v);
   return Number.isFinite(n) ? n : 0;
 }
 
-/* ======================================================
-   DÉTECTION CHANGEMENT LEBONCOIN (CLÉ UNIQUE)
-====================================================== */
-
-function hasLeboncoinViewsChanged(stats, meta) {
-  const current = toNumber(stats?.actuel?.vues_leboncoin);
-  const previous = toNumber(meta?.previous_stats_actuel?.vues_leboncoin);
-
-  // premier passage → autoriser l'analyse
-  if (!Number.isFinite(previous)) return true;
-
-  return current !== previous;
+// Retourne le lundi ISO de la semaine courante (YYYY-MM-DD)
+function getWeekKey(date = new Date()) {
+  const d = new Date(date);
+  d.setHours(0, 0, 0, 0);
+  const day = d.getDay(); // 0 = dimanche, 1 = lundi
+  const diff = (day === 0 ? -6 : 1) - day;
+  d.setDate(d.getDate() + diff);
+  return d.toISOString().slice(0, 10);
 }
 
-/* ======================================================
-   RÈGLES MÉTIER – STATS
-====================================================== */
+/**
+ * IMPORTANT :
+ * - stats_weekly_snapshot[currentWeekKey] = "performance de la semaine"
+ *   (diff entre stats.cumul actuel et la base de cumul du lundi)
+ * - Donc "Tendance sur la semaine écoulée" doit afficher DIRECTEMENT ce snapshot,
+ *   pas (snapshot_N - snapshot_N-1).
+ */
+function buildEvolutionTextFromSnapshot(snapshot) {
+  if (!snapshot) return null;
 
-// Détection changement mise en ligne
-function hasMiseEnLigneChanged(previousISO, currentISO) {
-  if (!previousISO || !currentISO) return false;
-  return previousISO !== currentISO;
-}
+  const lines = [];
 
-// Reset TOTAL des stats actuelles
-function resetStatsActuel(stats) {
-  if (!stats?.actuel) return;
+  KEYS.forEach(({ key, label }) => {
+    const v = toNumber(snapshot[key]);
 
-  stats.actuel.appels = 0;
-  stats.actuel.emails = 0;
-  stats.actuel.visites_effectuees = 0;
-  stats.actuel.offres = 0;
-  stats.actuel.vues_leboncoin = 0;
-  stats.actuel.favoris_leboncoin = 0;
-  // visites_programmees volontairement NON reset
-}
-
-// CUMUL DIFFÉRENTIEL (PAS DE DOUBLE COMPTAGE)
-function updateCumulDifferential(stats, meta) {
-  if (!stats || !meta) return;
-
-  const KEYS = [
-    "appels",
-    "emails",
-    "visites_effectuees",
-    "offres",
-    "vues_leboncoin",
-    "favoris_leboncoin"
-  ];
-
-  stats.cumul = stats.cumul || {};
-  stats.actuel = stats.actuel || {};
-  meta.previous_stats_actuel = meta.previous_stats_actuel || {};
-
-  KEYS.forEach(key => {
-    const current = toNumber(stats.actuel[key]);
-    const previous = toNumber(meta.previous_stats_actuel[key]);
-    const delta = current - previous;
-
-    if (!Number.isFinite(stats.cumul[key])) {
-      stats.cumul[key] = 0;
-    }
-
-    // ➕ on ajoute UNIQUEMENT la différence positive
-    if (delta > 0) {
-      stats.cumul[key] += delta;
+    if (v > 0) {
+      lines.push(`${label} : +${v}`);
+    } else if (v < 0) {
+      lines.push(`${label} : ${v}`);
+    } else {
+      lines.push(`${label} : stable`);
     }
   });
+
+  return lines.join("\n");
 }
 
-// Sauvegarde de l’état actuel
-function storePreviousStatsActuel(stats, meta) {
-  meta.previous_stats_actuel = {
-    appels: toNumber(stats.actuel?.appels),
-    emails: toNumber(stats.actuel?.emails),
-    visites_effectuees: toNumber(stats.actuel?.visites_effectuees),
-    offres: toNumber(stats.actuel?.offres),
-    vues_leboncoin: toNumber(stats.actuel?.vues_leboncoin),
-    favoris_leboncoin: toNumber(stats.actuel?.favoris_leboncoin)
-  };
-}
-
-/* ======================================================
-   HISTORIQUE AUTOMATIQUE
-====================================================== */
-
-function syncHistoriqueFromDates(data) {
-  if (!data) return;
-
-  data.historique = Array.isArray(data.historique)
-    ? data.historique
-    : [];
-
-  const exists = action =>
-    data.historique.some(h => h.action === action);
-
-  if (data.dates?.mandat_signe && !exists("✍️ Mandat signé")) {
-    data.historique.push({
-      date: data.dates.mandat_signe,
-      action: "✍️ Mandat signé"
-    });
-  }
-
-  if (data.dates?.mise_en_ligne && !exists("📢 Mise en ligne de l’annonce")) {
-    data.historique.push({
-      date: data.dates.mise_en_ligne,
-      action: "📢 Mise en ligne de l’annonce"
-    });
-  }
-}
-
-/* ======================================================
-   ANALYSE STRATÉGIQUE
-====================================================== */
-
-function buildAnalysis(data) {
-  const jours = daysBetween(data.dates?.mise_en_ligne);
-
-  if (jours === null) {
-    return {
-      text: "Analyse indisponible : date de mise en ligne manquante.",
-      proposeRDV: false,
-      noAlertes: false
-    };
-  }
-
-  if (jours < 21) {
-    return {
-      text: `Le bien est en commercialisation depuis ${jours} jours.\n\nPhase normale de diffusion.`,
-      proposeRDV: false,
-      noAlertes: false
-    };
-  }
-
-  return {
-    text: `Le bien est en commercialisation depuis ${jours} jours.\n\nAnalyse basée sur les performances cumulées.`,
-    proposeRDV: false,
-    noAlertes: false
-  };
-}
-
-/* ======================================================
+/* =========================
    EXÉCUTION
-====================================================== */
+========================= */
 
 if (!fs.existsSync(BIENS_DIR)) {
   console.error("❌ Dossier biens introuvable");
   process.exit(1);
 }
 
-const fichiers = fs.readdirSync(BIENS_DIR).filter(f =>
-  f.endsWith("_data.json")
-);
+const fichiers = fs.readdirSync(BIENS_DIR).filter(f => f.endsWith("_data.json"));
 
 for (const fichier of fichiers) {
   const filePath = path.join(BIENS_DIR, fichier);
   const data = JSON.parse(fs.readFileSync(filePath, "utf-8"));
 
+  data.stats_weekly_snapshot = data.stats_weekly_snapshot || {};
   data._meta = data._meta || {};
+  data._meta.weekly_cumul_base = data._meta.weekly_cumul_base || {};
+  data.analysis = data.analysis || {};
+  data.stats = data.stats || {};
+  data.stats.cumul = data.stats.cumul || {};
 
-  syncHistoriqueFromDates(data);
+  const currentWeekKey = getWeekKey();
 
-  const previousMEL = data._meta.previous_mise_en_ligne || null;
-  const currentMEL = data.dates?.mise_en_ligne || null;
-  const miseEnLigneChanged = hasMiseEnLigneChanged(previousMEL, currentMEL);
+  /* =====================================================
+     1) NORMALISATION DES CLÉS DE SEMAINE
+     -> on conserve uniquement des lundis ISO
+  ===================================================== */
+  Object.keys(data.stats_weekly_snapshot).forEach(key => {
+    const d = new Date(key);
+    if (isNaN(d.getTime()) || d.getDay() !== 1) {
+      delete data.stats_weekly_snapshot[key];
+      delete data._meta.weekly_cumul_base[key];
+    }
+  });
 
-  // 🔄 reset UNIQUEMENT si mise en ligne modifiée
-  if (miseEnLigneChanged) {
-    resetStatsActuel(data.stats);
-    data._meta.previous_stats_actuel = {};
-  }
-
-  // ➕ cumul différentiel (toujours)
-  updateCumulDifferential(data.stats, data._meta);
-
-  // 🔍 déclencheur UNIQUE : vues Leboncoin
-  const leboncoinChanged = hasLeboncoinViewsChanged(
-    data.stats,
-    data._meta
-  );
-
-  if (leboncoinChanged) {
-    data.analysis = {
-      ...data.analysis,          // conserve evolution_text
-      ...buildAnalysis(data),
-      generatedAt: new Date().toISOString()
+  /* =====================================================
+     2) BASE DE CUMUL POUR LA SEMAINE COURANTE
+     -> stockée une seule fois (le lundi), puis conservée
+  ===================================================== */
+  if (!data._meta.weekly_cumul_base[currentWeekKey]) {
+    data._meta.weekly_cumul_base[currentWeekKey] = {
+      appels: toNumber(data.stats.cumul?.appels),
+      emails: toNumber(data.stats.cumul?.emails),
+      visites_effectuees: toNumber(data.stats.cumul?.visites_effectuees),
+      offres: toNumber(data.stats.cumul?.offres),
+      vues_leboncoin: toNumber(data.stats.cumul?.vues_leboncoin),
+      favoris_leboncoin: toNumber(data.stats.cumul?.favoris_leboncoin)
     };
   }
 
-  // 🧠 mémorisation état actuel
-  storePreviousStatsActuel(data.stats, data._meta);
+  const base = data._meta.weekly_cumul_base[currentWeekKey];
 
-  data._meta.previous_mise_en_ligne = currentMEL;
+  /* =====================================================
+     3) SNAPSHOT HEBDOMADAIRE = DIFF (cumul - base lundi)
+  ===================================================== */
+  data.stats_weekly_snapshot[currentWeekKey] = {
+    appels: toNumber(data.stats.cumul?.appels) - toNumber(base.appels),
+    emails: toNumber(data.stats.cumul?.emails) - toNumber(base.emails),
+    visites_effectuees:
+      toNumber(data.stats.cumul?.visites_effectuees) -
+      toNumber(base.visites_effectuees),
+    offres: toNumber(data.stats.cumul?.offres) - toNumber(base.offres),
+    vues_leboncoin:
+      toNumber(data.stats.cumul?.vues_leboncoin) - toNumber(base.vues_leboncoin),
+    favoris_leboncoin:
+      toNumber(data.stats.cumul?.favoris_leboncoin) -
+      toNumber(base.favoris_leboncoin)
+  };
+
+  /* =====================================================
+     4) RÉTENTION : conserver uniquement N et N-1
+  ===================================================== */
+  const sortedWeeks = Object.keys(data.stats_weekly_snapshot).sort();
+
+  while (sortedWeeks.length > 2) {
+    const weekToDelete = sortedWeeks.shift();
+    delete data.stats_weekly_snapshot[weekToDelete];
+    delete data._meta.weekly_cumul_base[weekToDelete];
+  }
+
+  /* =====================================================
+     5) TENDANCE "SEMAINE ÉCOULÉE" = affichage du snapshot courant
+  ===================================================== */
+  const currentSnapshot = data.stats_weekly_snapshot[currentWeekKey];
+
+  const evolutionText = buildEvolutionTextFromSnapshot(currentSnapshot);
+
+  if (evolutionText) {
+    data.analysis.evolution_text = evolutionText;
+  }
 
   fs.writeFileSync(filePath, JSON.stringify(data, null, 2), "utf-8");
-  console.log(`✔ Analyse conditionnelle mise à jour : ${fichier}`);
+  console.log(`✔ Weekly snapshot + tendance semaine : ${fichier}`);
 }
