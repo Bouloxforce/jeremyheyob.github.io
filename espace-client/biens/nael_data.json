@@ -1,18 +1,18 @@
 {
   "_meta": {
     "weekly_cumul_base": {
-      "2026-01-19": {
-        "appels": 0,
-        "emails": 0,
+      "2026-01-12": {
+        "appels": 2,
+        "emails": 1,
         "visites_effectuees": 0,
         "offres": 0,
-        "vues_leboncoin": 0,
-        "favoris_leboncoin": 0
+        "vues_leboncoin": 124,
+        "favoris_leboncoin": 5
       }
     },
-    "mise_en_ligne_ref": "2026-01-19",
-    "last_weekly_run": "2026-01-19",
-    "mise_en_ligne_initiale": "2026-01-19"
+    "mise_en_ligne_ref": "2026-01-01",
+    "last_weekly_run": "2026-01-01",
+    "mise_en_ligne_initiale": "2026-01-01"
   },
   "bien": {
     "nom": "Naël",
@@ -25,8 +25,8 @@
   },
   "dates": {
     "mandat_signe": "2026-01-01",
-    "mise_en_ligne": "2026-01-19",
-    "derniere_remontee": "2026-01-18"
+    "mise_en_ligne": "2026-01-01",
+    "derniere_remontee": "2026-01-12"
   },
   "liens": {
     "agenceimmo": "",
@@ -56,25 +56,25 @@
   },
   "stats": {
     "actuel": {
-      "appels": 2,
-      "emails": 1,
-      "visites_effectuees": 0,
+      "appels": 10,
+      "emails": 4,
+      "visites_effectuees": 1,
       "visites_programmees": 0,
       "offres": 0,
-      "vues_leboncoin": 124,
+      "vues_leboncoin": 234,
       "favoris_leboncoin": 5
     },
     "cumul": {
-      "appels": 30,
-      "emails": 20,
-      "visites_effectuees": 130,
-      "offres": 190,
-      "vues_leboncoin": 1544,
-      "favoris_leboncoin": 222
+      "appels": 2,
+      "emails": 1,
+      "visites_effectuees": 0,
+      "offres": 0,
+      "vues_leboncoin": 124,
+      "favoris_leboncoin": 5
     }
   },
   "stats_weekly_snapshot": {
-    "2026-01-19": {
+    "2026-01-12": {
       "appels": 2,
       "emails": 1,
       "visites_effectuees": 0,
