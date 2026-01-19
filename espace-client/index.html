@@ -2107,126 +2107,36 @@ function render404() {
          - basées uniquement sur les données réelles
       ========================= */
 
+      /* =========================
+         INDICATEURS D’ALERTE – GARDE MÉTIER
+      ========================= */
+
       const alertes = [];
 
-      // =========================
-      // 1️⃣ AUCUN APPEL
-      // =========================
-      if (appelsActuels === 0) {
-        alertes.push("❗ Aucun appel reçu à ce stade.");
+      // 🔒 Tant que les données ne sont pas exploitables
+      if (analysis?.noExploitableData) {
+
+        renderAlertes([
+          "Aucun indicateur d’alerte disponible pour le moment.\n" +
+          "Les alertes seront activées dès que suffisamment de données exploitables auront été collectées."
+        ]);
+
+        return;
       }
 
-      // =========================
-      // 2️⃣ AUCUNE VISITE
-      // =========================
-      if (visitesActuelles === 0) {
-        alertes.push("❗ Aucune visite effectuée à ce stade.");
-      }
-
-      // =========================
-      // 3️⃣ AUCUNE OFFRE APRÈS X VISITES
-      // =========================
-      const seuilOffre = SEUIL_OFFRE_APRES_VISITES;
-      const nbVisites = visitesActuelles;
-      const nbOffres = offresActuelles;
-
-      if (nbVisites >= seuilOffre && nbOffres === 0) {
-        alertes.push(
-          "⚠️ Aucune offre après " + nbVisites + " visites."
-        );
-      }
-
-      // =========================
-      // 5️⃣ FAIBLE TRANSFORMATION VUES → APPELS
-      // =========================
-      const seuilVuesParAppel = SEUIL_VUES_PAR_APPEL;
-
-      if (
-        appelsActuels > 0 &&
-        vuesActuellesAlerte > 0 &&
-        (vuesTotal / appelsTotal) > seuilVuesParAppel
-      ) {
-        alertes.push(
-          "⚠️ Faible taux de contacts : 1 appel pour " +
-          Math.round(vuesTotal / appelsTotal) +
-          " vues."
-        );
-      }
-
-      // =========================
-      // 6️⃣ VUES ÉLEVÉES MAIS AUCUN CONTACT
-      // =========================
-      const seuilVuesSansContact = SEUIL_VUES_SANS_CONTACT;
-
-      if (vuesActuellesAlerte >= seuilVuesSansContact && appelsActuels === 0) {
-        alertes.push(
-          "⚠️ L’annonce génère des vues mais aucun contact."
-        );
-      }
-
-      // =========================
-      // 7️⃣ FAVORIS SANS PASSAGE À L’ACTION
-      // =========================
-      const seuilFavorisSansContact = SEUIL_FAVORIS_SANS_CONTACT;
-
-      if (
-        favorisActuels >= seuilFavorisSansContact &&
-        appelsActuels <= 1
-      ) {
-        alertes.push(
-          "⚠️ Plusieurs favoris sans passage à l’action."
-        );
-      }
-
-      // =========================
-      // 8️⃣ BAISSE SIGNIFICATIVE DE VISIBILITÉ (7 jours)
-      // =========================
-
-      const vuesActuellesEvo = toNumber(evo?.vues_semaine_actuelle);
-      const vuesPrecedentesEvo = toNumber(evo?.vues_semaine_precedente);
-
-      const seuilBaissePourcent = SEUIL_BAISSE_VISIBILITE_POURCENT;
-
-      if (
-        vuesActuellesEvo != null &&
-        vuesPrecedentesEvo != null &&
-        vuesPrecedentesEvo > 0
-      ) {
-        const variation =
-          ((vuesActuellesEvo - vuesPrecedentesEvo) / vuesPrecedentesEvo) * 100;
-
-        if (variation <= -seuilBaissePourcent) {
-          alertes.push(
-            "📉 Baisse de visibilité de " +
-            Math.round(Math.abs(variation)) +
-            "% sur les 7 derniers jours."
-          );
-        }
-      }
-
-      // =========================
-      // 🧠 FORÇAGE DES ALERTES EXISTANTES
-      // =========================
-      if (alertes.length === 0) {
-
-        if (appelsActuels === 0) {
-          alertes.push("❗ Aucun appel reçu à ce stade.");
+        if (data.stats?.actuel?.appels === 0) {
+          alertes.push("Aucun appel reçu à ce stade.");
         }
 
-        if (visitesActuelles === 0) {
-          alertes.push("❗ Aucune visite effectuée à ce stade.");
+        if (data.stats?.actuel?.visites_effectuees === 0) {
+          alertes.push("Aucune visite effectuée à ce stade.");
         }
 
-      }
+        if (alertes.length === 0) {
+          alertes.push("Aucune alerte détectée.");
+        }
 
-      // =========================
-      // 9️⃣ MAX 9 alertes
-      // =========================
-      
-      if (analysis.noAlertes === true) {
-        renderAlertes([]);
-      } else {
-        renderAlertes(alertes.slice(0, 3));
+        renderAlertes(alertes);
       }
 
       // =========================
