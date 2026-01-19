@@ -2113,7 +2113,6 @@ function render404() {
 
       const alertes = [];
 
-      // 🔒 Tant que les données ne sont pas exploitables
       if (analysis?.noExploitableData) {
 
         renderAlertes([
@@ -2121,8 +2120,7 @@ function render404() {
           "Les alertes seront activées dès que suffisamment de données exploitables auront été collectées."
         ]);
 
-        return;
-      }
+      } else {
 
         if (data.stats?.actuel?.appels === 0) {
           alertes.push("Aucun appel reçu à ce stade.");
