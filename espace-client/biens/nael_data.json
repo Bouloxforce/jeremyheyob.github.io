@@ -55,13 +55,13 @@
   },
   "stats": {
     "actuel": {
-      "appels": 0,
-      "emails": 0,
+      "appels": 2,
+      "emails": 1,
       "visites_effectuees": 0,
       "visites_programmees": 0,
       "offres": 0,
-      "vues_leboncoin": 0,
-      "favoris_leboncoin": 0
+      "vues_leboncoin": 124,
+      "favoris_leboncoin": 5
     },
     "cumul": {
       "appels": 30,
