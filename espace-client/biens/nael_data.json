@@ -8,10 +8,18 @@
         "offres": 0,
         "vues_leboncoin": 124,
         "favoris_leboncoin": 5
+      },
+      "2026-01-19": {
+        "appels": 10,
+        "emails": 4,
+        "visites_effectuees": 1,
+        "offres": 0,
+        "vues_leboncoin": 234,
+        "favoris_leboncoin": 5
       }
     },
     "mise_en_ligne_ref": "2026-01-01",
-    "last_weekly_run": "2026-01-01",
+    "last_weekly_run": "2026-01-19",
     "mise_en_ligne_initiale": "2026-01-01"
   },
   "bien": {
@@ -65,11 +73,11 @@
       "favoris_leboncoin": 5
     },
     "cumul": {
-      "appels": 2,
-      "emails": 1,
-      "visites_effectuees": 0,
+      "appels": 10,
+      "emails": 4,
+      "visites_effectuees": 1,
       "offres": 0,
-      "vues_leboncoin": 124,
+      "vues_leboncoin": 234,
       "favoris_leboncoin": 5
     }
   },
@@ -81,13 +89,21 @@
       "offres": 0,
       "vues_leboncoin": 124,
       "favoris_leboncoin": 5
+    },
+    "2026-01-19": {
+      "appels": 0,
+      "emails": 0,
+      "visites_effectuees": 0,
+      "offres": 0,
+      "vues_leboncoin": 0,
+      "favoris_leboncoin": 0
     }
   },
   "analysis": {
     "text": "",
-    "evolution_text": "La tendance sur la semaine écoulée sera disponible dès que des données seront exploitables.",
-    "generatedAt": "2026-01-19T15:25:17.963Z",
-    "noExploitableData": true
+    "evolution_text": "Appels : stable\nEmails : stable\nVisites effectuées : stable\nOffres : stable\nVues Leboncoin : stable\nFavoris Leboncoin : stable",
+    "generatedAt": "2026-01-19T15:38:21.467Z",
+    "noExploitableData": false
   },
   "historique": [
     {
