@@ -93,7 +93,7 @@
     "text": "Le bien est en commercialisation depuis 15 jours.\n\nPhase normale de diffusion.",
     "proposeRDV": false,
     "noAlertes": false,
-    "generatedAt": "2026-01-19T22:00:14.915Z",
+    "generatedAt": "2026-01-19T22:08:17.774Z",
     "evolution_text": "La tendance sur la semaine écoulée sera disponible dès que des données seront exploitables.",
     "noExploitableData": true
   },
@@ -137,7 +137,8 @@
       "vues_leboncoin": 0,
       "favoris_leboncoin": 0
     },
-    "just_reset": false
+    "just_reset": false,
+    "has_had_reset": false
   },
   "stats_weekly_snapshot": {
     "2026-01-12": {
