@@ -1,159 +1,249 @@
-import fs from "fs";
-import path from "path";
+/**
+ * espace-client/scripts/generate_analysis.js
+ *
+ * Objectif (workflow GitHub Actions):
+ * - Mettre à jour les snapshots hebdo (stats_weekly_snapshot)
+ * - Mettre à jour la base hebdo (_meta.weekly_cumul_base)
+ * - Générer analysis.evolution_text à partir des snapshots (donc cohérent et “vrai”)
+ *
+ * Important:
+ * - Le workflow update-analys.yml exécute UNIQUEMENT ce fichier.
+ * - Donc toute logique “weekly stats” doit être ici (ou être importée ici).
+ */
 
-/* =========================
-   PARAMÈTRES
-========================= */
+const fs = require("fs");
+const path = require("path");
 
-const BIENS_DIR = path.join("espace-client", "biens");
+const BIENS_DIR = path.join(process.cwd(), "espace-client", "biens");
 
-const KEYS = [
-  { key: "appels", label: "Appels" },
-  { key: "emails", label: "Emails" },
-  { key: "visites_effectuees", label: "Visites effectuées" },
-  { key: "offres", label: "Offres" },
-  { key: "vues_leboncoin", label: "Vues Leboncoin" },
-  { key: "favoris_leboncoin", label: "Favoris Leboncoin" }
-];
+// ---------------------------
+// Helpers dates (Europe/Paris)
+// ---------------------------
+function getParisYMD(date = new Date()) {
+  // Renvoie "YYYY-MM-DD" selon le fuseau Europe/Paris
+  const fmt = new Intl.DateTimeFormat("fr-CA", {
+    timeZone: "Europe/Paris",
+    year: "numeric",
+    month: "2-digit",
+    day: "2-digit",
+  });
+  return fmt.format(date); // fr-CA => YYYY-MM-DD
+}
 
-/* =========================
-   OUTILS
-========================= */
+function parseYMDToUTCDate(ymd) {
+  // "YYYY-MM-DD" -> Date UTC à minuit
+  const [y, m, d] = ymd.split("-").map(Number);
+  return new Date(Date.UTC(y, m - 1, d));
+}
 
-function toNumber(v) {
+function formatUTCDateToYMD(d) {
+  const y = d.getUTCFullYear();
+  const m = String(d.getUTCMonth() + 1).padStart(2, "0");
+  const day = String(d.getUTCDate()).padStart(2, "0");
+  return `${y}-${m}-${day}`;
+}
+
+function getMondayKeyParis(todayYMD) {
+  // todayYMD est en “Europe/Paris”, mais on calcule en UTC à partir de ce YMD (stable)
+  const d = parseYMDToUTCDate(todayYMD); // UTC midnight
+  const dow = d.getUTCDay(); // 0=dim,1=lun,...6=sam
+  const offset = dow === 0 ? 6 : dow - 1; // nb jours à enlever pour revenir au lundi
+  d.setUTCDate(d.getUTCDate() - offset);
+  return formatUTCDateToYMD(d);
+}
+
+function addDaysYMD(ymd, days) {
+  const d = parseYMDToUTCDate(ymd);
+  d.setUTCDate(d.getUTCDate() + days);
+  return formatUTCDateToYMD(d);
+}
+
+function toNumberSafe(v) {
   const n = Number(v);
   return Number.isFinite(n) ? n : 0;
 }
 
-// Retourne le lundi ISO de la semaine courante (YYYY-MM-DD)
-function getWeekKey(date = new Date()) {
-  const d = new Date(date);
-  d.setHours(0, 0, 0, 0);
-  const day = d.getDay(); // 0 = dimanche, 1 = lundi
-  const diff = (day === 0 ? -6 : 1) - day;
-  d.setDate(d.getDate() + diff);
-  return d.toISOString().slice(0, 10);
+// ---------------------------
+// Business logic: weekly stats
+// ---------------------------
+const STAT_KEYS = [
+  "appels",
+  "emails",
+  "visites_effectuees",
+  "offres",
+  "vues_leboncoin",
+  "favoris_leboncoin",
+];
+
+function getCumul(data) {
+  const out = {};
+  STAT_KEYS.forEach((k) => {
+    out[k] = toNumberSafe(data?.stats?.cumul?.[k]);
+  });
+  return out;
 }
 
-/**
- * IMPORTANT :
- * - stats_weekly_snapshot[currentWeekKey] = "performance de la semaine"
- *   (diff entre stats.cumul actuel et la base de cumul du lundi)
- * - Donc "Tendance sur la semaine écoulée" doit afficher DIRECTEMENT ce snapshot,
- *   pas (snapshot_N - snapshot_N-1).
- */
-function buildEvolutionTextFromSnapshot(snapshot) {
-  if (!snapshot) return null;
+function ensureObjects(data) {
+  if (!data._meta || typeof data._meta !== "object") data._meta = {};
+  if (!data._meta.weekly_cumul_base || typeof data._meta.weekly_cumul_base !== "object") {
+    data._meta.weekly_cumul_base = {};
+  }
+  if (!data.stats_weekly_snapshot || typeof data.stats_weekly_snapshot !== "object") {
+    data.stats_weekly_snapshot = {};
+  }
+  if (!data.analysis || typeof data.analysis !== "object") data.analysis = {};
+}
 
+function pruneByLastNWeeks(obj, keepWeeks = 8) {
+  const keys = Object.keys(obj || {})
+    .filter((k) => /^\d{4}-\d{2}-\d{2}$/.test(k))
+    .sort(); // asc
+
+  if (keys.length <= keepWeeks) return;
+
+  const toDelete = keys.slice(0, keys.length - keepWeeks);
+  toDelete.forEach((k) => delete obj[k]);
+}
+
+function computeWeeklySnapshot(cumul, base) {
+  const snap = {};
+  STAT_KEYS.forEach((k) => {
+    const v = toNumberSafe(cumul[k]) - toNumberSafe(base[k]);
+    // clamp à 0 pour éviter incohérences si base > cumul (cas rare)
+    snap[k] = v < 0 ? 0 : v;
+  });
+  return snap;
+}
+
+function buildEvolutionTextFromSnapshot(snapshot) {
+  // Format texte “propre” (sans pictogrammes), compatible avec ton front (qui colorise)
+  // Règle:
+  // - Si valeur > 0 : "Label : +N"
+  // - Sinon : "Label : stable"
   const lines = [];
 
-  KEYS.forEach(({ key, label }) => {
-    const v = toNumber(snapshot[key]);
+  const map = [
+    ["Appels", "appels"],
+    ["Emails", "emails"],
+    ["Visites effectuées", "visites_effectuees"],
+    ["Offres", "offres"],
+    ["Vues Leboncoin", "vues_leboncoin"],
+    ["Favoris Leboncoin", "favoris_leboncoin"],
+  ];
 
-    if (v > 0) {
-      lines.push(`${label} : +${v}`);
-    } else if (v < 0) {
-      lines.push(`${label} : ${v}`);
+  for (const [label, key] of map) {
+    const n = toNumberSafe(snapshot?.[key]);
+    if (n > 0) {
+      lines.push(`${label} : +${n}`);
     } else {
       lines.push(`${label} : stable`);
     }
-  });
+  }
 
   return lines.join("\n");
 }
 
-/* =========================
-   EXÉCUTION
-========================= */
+// ---------------------------
+// Analysis (minimal, non-destructif)
+// ---------------------------
+function generateAnalysisText(data, todayYMD) {
+  // Tu peux enrichir ici (sans casser le reste).
+  // On reste simple et non destructif.
+  const mise = data?.dates?.mise_en_ligne;
+  if (!mise || !/^\d{4}-\d{2}-\d{2}$/.test(mise)) return data?.analysis?.text || "";
 
-if (!fs.existsSync(BIENS_DIR)) {
-  console.error("❌ Dossier biens introuvable");
-  process.exit(1);
+  const d0 = parseYMDToUTCDate(mise);
+  const d1 = parseYMDToUTCDate(todayYMD);
+
+  const days = Math.max(0, Math.floor((d1.getTime() - d0.getTime()) / (1000 * 60 * 60 * 24)));
+  // Phrase courte: tu avais déjà un texte de ce type dans ton JSON.
+  const base = `Le bien est en commercialisation depuis ${days} jour${days > 1 ? "s" : ""}.`;
+
+  // Phases 0-30 / 31-60 / 61-90 / +90
+  let phase = "Phase normale de diffusion.";
+  if (days <= 30) phase = "Phase 1 (0–30 jours) : phase de test du marché.";
+  else if (days <= 60) phase = "Phase 2 (31–60 jours) : phase d’ajustement stratégique.";
+  else if (days <= 90) phase = "Phase 3 (61–90 jours) : phase de derniers ajustements.";
+  else phase = "Phase 4 (+90 jours) : phase de poursuite maîtrisée.";
+
+  return `${base}\n\n${phase}`;
 }
 
-const fichiers = fs.readdirSync(BIENS_DIR).filter(f => f.endsWith("_data.json"));
+// ---------------------------
+// Main: iterate all biens
+// ---------------------------
+function listDataFiles(dir) {
+  if (!fs.existsSync(dir)) return [];
+  return fs
+    .readdirSync(dir)
+    .filter((f) => f.endsWith("_data.json"))
+    .map((f) => path.join(dir, f));
+}
 
-for (const fichier of fichiers) {
-  const filePath = path.join(BIENS_DIR, fichier);
-  const data = JSON.parse(fs.readFileSync(filePath, "utf-8"));
+function readJSON(filePath) {
+  const raw = fs.readFileSync(filePath, "utf8");
+  return JSON.parse(raw);
+}
 
-  data.stats_weekly_snapshot = data.stats_weekly_snapshot || {};
-  data._meta = data._meta || {};
-  data._meta.weekly_cumul_base = data._meta.weekly_cumul_base || {};
-  data.analysis = data.analysis || {};
-  data.stats = data.stats || {};
-  data.stats.cumul = data.stats.cumul || {};
+function writeJSON(filePath, obj) {
+  fs.writeFileSync(filePath, JSON.stringify(obj, null, 2) + "\n", "utf8");
+}
 
-  const currentWeekKey = getWeekKey();
+function processBienFile(filePath) {
+  const todayYMD = getParisYMD(new Date());
+  const mondayKey = getMondayKeyParis(todayYMD);
+  const prevMondayKey = addDaysYMD(mondayKey, -7);
 
-  /* =====================================================
-     1) NORMALISATION DES CLÉS DE SEMAINE
-     -> on conserve uniquement des lundis ISO
-  ===================================================== */
-  Object.keys(data.stats_weekly_snapshot).forEach(key => {
-    const d = new Date(key);
-    if (isNaN(d.getTime()) || d.getDay() !== 1) {
-      delete data.stats_weekly_snapshot[key];
-      delete data._meta.weekly_cumul_base[key];
+  const data = readJSON(filePath);
+  ensureObjects(data);
+
+  // 1) Base hebdo: si absente pour la semaine courante, on la fixe = cumul actuel
+  const cumul = getCumul(data);
+
+  if (!data._meta.weekly_cumul_base[mondayKey]) {
+    data._meta.weekly_cumul_base[mondayKey] = { ...cumul };
+  }
+
+  // 2) Snapshot hebdo: cumul - base
+  const base = data._meta.weekly_cumul_base[mondayKey];
+  const snapshot = computeWeeklySnapshot(cumul, base);
+  data.stats_weekly_snapshot[mondayKey] = snapshot;
+
+  // 3) Nettoyage: garder les 8 dernières semaines
+  pruneByLastNWeeks(data._meta.weekly_cumul_base, 8);
+  pruneByLastNWeeks(data.stats_weekly_snapshot, 8);
+
+  // 4) Générer evolution_text basé sur snapshot courant (donc “vrai”)
+  data.analysis.evolution_text = buildEvolutionTextFromSnapshot(snapshot);
+
+  // 5) Générer/mettre à jour un texte d’analyse simple (non destructif)
+  //    (si tu veux garder ton propre texte custom, tu peux commenter cette ligne)
+  data.analysis.text = generateAnalysisText(data, todayYMD);
+
+  // 6) Métadonnées
+  data.analysis.generatedAt = new Date().toISOString();
+
+  // Optionnel: garder trace précédente (si tu en as besoin)
+  // data._meta.previous_week_key = prevMondayKey;
+
+  writeJSON(filePath, data);
+}
+
+function main() {
+  const files = listDataFiles(BIENS_DIR);
+  if (files.length === 0) {
+    console.log("Aucun fichier *_data.json trouvé dans", BIENS_DIR);
+    return;
+  }
+
+  files.forEach((f) => {
+    try {
+      processBienFile(f);
+      console.log("OK:", path.basename(f));
+    } catch (e) {
+      console.error("ERREUR:", path.basename(f), e.message);
     }
   });
-
-  /* =====================================================
-     2) BASE DE CUMUL POUR LA SEMAINE COURANTE
-     -> stockée une seule fois (le lundi), puis conservée
-  ===================================================== */
-  if (!data._meta.weekly_cumul_base[currentWeekKey]) {
-    data._meta.weekly_cumul_base[currentWeekKey] = {
-      appels: toNumber(data.stats.cumul?.appels),
-      emails: toNumber(data.stats.cumul?.emails),
-      visites_effectuees: toNumber(data.stats.cumul?.visites_effectuees),
-      offres: toNumber(data.stats.cumul?.offres),
-      vues_leboncoin: toNumber(data.stats.cumul?.vues_leboncoin),
-      favoris_leboncoin: toNumber(data.stats.cumul?.favoris_leboncoin)
-    };
-  }
-
-  const base = data._meta.weekly_cumul_base[currentWeekKey];
-
-  /* =====================================================
-     3) SNAPSHOT HEBDOMADAIRE = DIFF (cumul - base lundi)
-  ===================================================== */
-  data.stats_weekly_snapshot[currentWeekKey] = {
-    appels: toNumber(data.stats.cumul?.appels) - toNumber(base.appels),
-    emails: toNumber(data.stats.cumul?.emails) - toNumber(base.emails),
-    visites_effectuees:
-      toNumber(data.stats.cumul?.visites_effectuees) -
-      toNumber(base.visites_effectuees),
-    offres: toNumber(data.stats.cumul?.offres) - toNumber(base.offres),
-    vues_leboncoin:
-      toNumber(data.stats.cumul?.vues_leboncoin) - toNumber(base.vues_leboncoin),
-    favoris_leboncoin:
-      toNumber(data.stats.cumul?.favoris_leboncoin) -
-      toNumber(base.favoris_leboncoin)
-  };
-
-  /* =====================================================
-     4) RÉTENTION : conserver uniquement N et N-1
-  ===================================================== */
-  const sortedWeeks = Object.keys(data.stats_weekly_snapshot).sort();
-
-  while (sortedWeeks.length > 2) {
-    const weekToDelete = sortedWeeks.shift();
-    delete data.stats_weekly_snapshot[weekToDelete];
-    delete data._meta.weekly_cumul_base[weekToDelete];
-  }
-
-  /* =====================================================
-     5) TENDANCE "SEMAINE ÉCOULÉE" = affichage du snapshot courant
-  ===================================================== */
-  const currentSnapshot = data.stats_weekly_snapshot[currentWeekKey];
-
-  const evolutionText = buildEvolutionTextFromSnapshot(currentSnapshot);
-
-  if (evolutionText) {
-    data.analysis.evolution_text = evolutionText;
-  }
-
-  fs.writeFileSync(filePath, JSON.stringify(data, null, 2), "utf-8");
-  console.log(`✔ Weekly snapshot + tendance semaine : ${fichier}`);
 }
+
+main();
