@@ -1530,6 +1530,32 @@
     }
   }
 
+  function colorizeEvolutionText(text) {
+    if (!text) return "";
+
+    return text
+      .replace(/📈|➖|📉|🟢|🔴|⚪️/g, "") // supprime TOUS les pictogrammes
+      .split("\n")
+      .map(line => {
+        const clean = line.trim();
+
+        if (/:\s*\+\d+/.test(clean)) {
+          return `<span class="evo-up">${clean}</span>`;
+        }
+
+        if (/stable/i.test(clean)) {
+          return `<span class="evo-stable">${clean}</span>`;
+        }
+
+        if (/:\s*-\d+/.test(clean)) {
+          return `<span class="evo-down">${clean}</span>`;
+        }
+
+        return clean;
+      })
+      .join("\n");
+  }
+
   function getDerniereDateVisiteDepuisHistorique(historique) {
     if (!Array.isArray(historique)) return null;
 
@@ -1985,7 +2011,7 @@ function render404() {
       if (evolutionText) {
 
         // ✅ priorité au texte calculé côté workflow (snapshot hebdo)
-        setLineText("evolution-commentaire", evolutionText);
+        setLineText("evolution-commentaire", colorizeEvolutionText(evolutionText);
 
       } else if (evo?.empty) {
 
