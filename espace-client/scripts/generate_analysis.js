@@ -160,7 +160,7 @@ function detectAlertes(data) {
   if (visites >= 3 && offres === 0) {
     a.push({
       p: 1,
-      m: "﹗ Visites sans offres"
+      m: "❗ Visites sans offres"
     });
   }
 
@@ -168,7 +168,7 @@ function detectAlertes(data) {
   if (appels + emails >= 15 && visites === 0) {
     a.push({
       p: 2,
-      m: "﹗ Contacts sans visites"
+      m: "❗ Contacts sans visites"
     });
   }
 
@@ -176,7 +176,7 @@ function detectAlertes(data) {
   if (vues >= 200 && appels + emails === 0 ) {
     a.push({
       p: 3,
-      m: "﹗ Vues sans contacts"
+      m: "❗ Vues sans contacts"
     });
   }
 
@@ -195,7 +195,7 @@ function detectAlertes(data) {
     if (delta === 0) {
       a.push({
         p: 4,
-        m: "﹗ Aucune interaction récente"
+        m: "❗ Aucune interaction récente"
       });
     }
   }
