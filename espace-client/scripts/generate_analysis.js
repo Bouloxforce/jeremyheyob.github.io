@@ -210,8 +210,8 @@ function processBienFile(filePath) {
   data.stats_weekly_snapshot[mondayKey] = snapshot;
 
   // 3) Nettoyage: garder les 8 dernières semaines
-  pruneByLastNWeeks(data._meta.weekly_cumul_base, 8);
-  pruneByLastNWeeks(data.stats_weekly_snapshot, 8);
+  pruneByLastNWeeks(data._meta.weekly_cumul_base, 2);
+  pruneByLastNWeeks(data.stats_weekly_snapshot, 2);
 
   // 4) Générer evolution_text basé sur snapshot courant (donc “vrai”)
   data.analysis.evolution_text = buildEvolutionTextFromSnapshot(snapshot);
