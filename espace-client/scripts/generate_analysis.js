@@ -5,13 +5,27 @@
  * - Calcul des statistiques hebdomadaires
  * - Conservation UNIQUEMENT de N et N-1
  * - Génération fiable de analysis.evolution_text
- * - Aucune double exécution possible la même semaine
+ * - Protection contre toute double exécution la même semaine
+ *
+ * COMPATIBLE :
+ * - Node.js 18+
+ * - ES Modules ("type": "module")
+ * - GitHub Actions
  */
 
-const fs = require("fs");
-const path = require("path");
+import fs from "fs";
+import path from "path";
+import { fileURLToPath } from "url";
 
-const BIENS_DIR = path.join(process.cwd(), "espace-client", "biens");
+/* =========================
+   RÉSOLUTION DES CHEMINS (ESM)
+========================= */
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
+// Dossier contenant les *_data.json
+const BIENS_DIR = path.join(__dirname, "..", "biens");
 
 /* =========================
    OUTILS DATE (Europe/Paris)
@@ -38,7 +52,7 @@ function formatUTCToYMD(date) {
 
 function getMondayKeyParis(todayYMD) {
   const d = parseYMDToUTC(todayYMD);
-  const day = d.getUTCDay(); // 0=dimanche
+  const day = d.getUTCDay(); // 0 = dimanche
   const diff = day === 0 ? -6 : 1 - day;
   d.setUTCDate(d.getUTCDate() + diff);
   return formatUTCToYMD(d);
@@ -116,7 +130,7 @@ function processBien(filePath) {
 
   const data = JSON.parse(fs.readFileSync(filePath, "utf-8"));
 
-  /* --- Sécurisation structure --- */
+  /* --- Sécurisation de la structure --- */
   data.stats = data.stats || {};
   data.stats.cumul = data.stats.cumul || {};
   data.stats_weekly_snapshot = data.stats_weekly_snapshot || {};
@@ -145,7 +159,7 @@ function processBien(filePath) {
   }
 
   /* =========================
-     SNAPSHOT HEBDO
+     SNAPSHOT HEBDOMADAIRE
   ========================= */
 
   const base = data._meta.weekly_cumul_base[mondayKey];
@@ -154,7 +168,7 @@ function processBien(filePath) {
   data.stats_weekly_snapshot[mondayKey] = snapshot;
 
   /* =========================
-     RÉTENTION N / N-1
+     RÉTENTION : N / N-1
   ========================= */
 
   pruneToNWeeks(data._meta.weekly_cumul_base, 2);
@@ -176,13 +190,14 @@ function processBien(filePath) {
 ========================= */
 
 if (!fs.existsSync(BIENS_DIR)) {
-  console.error("❌ Dossier biens introuvable");
+  console.error("❌ Dossier biens introuvable :", BIENS_DIR);
   process.exit(1);
 }
 
 const files = fs.readdirSync(BIENS_DIR).filter(f => f.endsWith("_data.json"));
-files.forEach(file =>
-  processBien(path.join(BIENS_DIR, file))
-);
+
+files.forEach(file => {
+  processBien(path.join(BIENS_DIR, file));
+});
 
 console.log("✔ Weekly stats N / N-1 générées avec succès");
