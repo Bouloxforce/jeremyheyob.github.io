@@ -22,7 +22,7 @@
     },
     "just_reset": false,
     "has_had_reset": true,
-    "last_vues_leboncoin_snapshot": 1076,
+    "last_vues_leboncoin_snapshot": 0,
     "last_mandat_signe": "2025-04-04",
     "last_mise_en_ligne": "2026-01-17",
     "last_weekly_run": "2026-01-19"
@@ -90,7 +90,7 @@
   "analysis": {
     "text": "La commercialisation se déroule dans de bonnes conditions. Les indicateurs actuels sont cohérents avec le marché. La stratégie en place est maintenue.",
     "evolution_text": "",
-    "generatedAt": "2026-01-20T17:12:17.619Z",
+    "generatedAt": "2026-01-20T17:16:18.446Z",
     "noExploitableData": false,
     "phase_active": "90+",
     "alertes": []
