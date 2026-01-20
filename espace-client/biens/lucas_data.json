@@ -81,10 +81,10 @@
   },
   "historique": [],
   "analysis": {
-    "text": "Analyse indisponible : date de mise en ligne manquante.",
+    "text": "La commercialisation se déroule dans de bonnes conditions. Les indicateurs actuels sont cohérents avec le marché. La stratégie en place est maintenue.",
     "proposeRDV": false,
     "noAlertes": false,
-    "generatedAt": "2026-01-19T23:24:10.937Z",
+    "generatedAt": "2026-01-20T10:03:54.950Z",
     "evolution_text": "La tendance sur la semaine écoulée sera disponible dès que des données seront exploitables.",
     "noExploitableData": true,
     "alertes": [
@@ -131,7 +131,8 @@
       "favoris_leboncoin": 0
     },
     "just_reset": false,
-    "has_had_reset": false
+    "has_had_reset": false,
+    "last_vues_leboncoin_snapshot": 0
   },
   "stats_weekly_snapshot": {
     "2026-01-12": {
