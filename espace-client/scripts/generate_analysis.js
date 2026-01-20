@@ -325,22 +325,9 @@ function processBien(filePath) {
   const mondayKey = getMondayKeyParis(todayYMD);
   const data = JSON.parse(fs.readFileSync(filePath, "utf-8"));
 
-   // =========================
-   // 🔒 DÉCLENCHEUR STRICT
-   // =========================
+   data.dates ??= {};
    data._meta ??= {};
-   data.stats ??= {};
-   data.stats.actuel ??= {};
-
-   const currentVues = toNumber(data.stats.actuel.vues_leboncoin);
-   const lastVues = toNumber(data._meta.last_vues_leboncoin_snapshot);
-
-   // ❌ CAS 3 : autres stats modifiées MAIS vues inchangées → STOP TOTAL
-   if (Number.isFinite(lastVues) && currentVues === lastVues) {
-     return;
-   }
-
-   // 🔒 DÉCLENCHEUR STRICT PASSÉ → on peut écrire
+   data.historique ??= [];
 
    logHistoriqueDateChange(
      data,
@@ -355,6 +342,16 @@ function processBien(filePath) {
      "Annonce mise en ligne",
      todayYMD
    );
+
+   // =========================
+   // 🔒 DÉCLENCHEUR STRICT
+   // =========================
+   data._meta ??= {};
+   data.stats ??= {};
+   data.stats.actuel ??= {};
+
+   const currentVues = toNumber(data.stats.actuel.vues_leboncoin);
+   const lastVues = toNumber(data._meta.last_vues_leboncoin_snapshot);
 
   /* --- Sécurisation --- */
   data.stats ??= {};
