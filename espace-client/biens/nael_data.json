@@ -95,7 +95,16 @@
     "alertes": [],
     "phase_active": "90+"
   },
-  "historique": [],
+   "historique": [
+    {
+      "date": "2026-01-10",
+      "label": "Annonce mise en ligne le 2026-01-10"
+    },
+    {
+      "date": "2025-03-27",
+      "label": "Mandat signé le 2025-03-27"
+    }
+  ],
   "strategie_3090": {
     "intro": "La commercialisation est structurée par paliers afin d’adapter la stratégie au comportement réel des acquéreurs et au contexte de marché.",
     "etapes": [
