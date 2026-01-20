@@ -74,6 +74,7 @@ async function run() {
   } catch (err) {
     console.warn("⚠️ Impossible d’écrire le taux CAFPI, données conservées :", err.message);
   }
+}
 
 // =========================
 // ▶️ Exécution
