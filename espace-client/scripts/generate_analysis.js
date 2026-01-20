@@ -303,30 +303,19 @@ function processBien(filePath) {
   const data = JSON.parse(fs.readFileSync(filePath, "utf-8"));
 
    // =========================
-   // 🔒 Déclencheur unique : vues_leboncoin (stats.actuel)
+   // 🔒 DÉCLENCHEUR STRICT
    // =========================
    data._meta ??= {};
    data.stats ??= {};
    data.stats.actuel ??= {};
 
    const currentVues = toNumber(data.stats.actuel.vues_leboncoin);
+   const lastVues = toNumber(data._meta.last_vues_leboncoin_snapshot);
 
-   // snapshot persistant du dernier "vues_leboncoin" vu par le script
-   if (data._meta.last_vues_leboncoin_snapshot == null) {
-     data._meta.last_vues_leboncoin_snapshot = currentVues;
-     // ✅ Important : on ne génère pas d’analyse lors de la première initialisation
-     // pour éviter des effets de bord. On sort sans écrire.
+   // ❌ CAS 3 : autres stats modifiées MAIS vues inchangées → STOP TOTAL
+   if (Number.isFinite(lastVues) && currentVues === lastVues) {
+     return; // ⛔ aucune écriture fichier → aucun workflow GitHub
    }
-
-   const prevVues = toNumber(data._meta.last_vues_leboncoin_snapshot);
-
-   // ✅ SI vues inchangé : on ne touche à rien (pas d’écriture de fichier)
-   if (currentVues === prevVues) {
-     return;
-   }
-
-   // ✅ vues a changé : on poursuit, et on met à jour le snapshot
-   data._meta.last_vues_leboncoin_snapshot = currentVues;
 
   /* --- Sécurisation --- */
   data.stats ??= {};
@@ -530,6 +519,7 @@ function processBien(filePath) {
   data.analysis.generatedAt = new Date().toISOString();
   data._meta.just_reset = false;
   data.analysis.text = data.analysis.text || "";
+  data._meta.last_vues_leboncoin_snapshot = currentVues;
 
   fs.writeFileSync(
     filePath,
