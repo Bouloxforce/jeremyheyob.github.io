@@ -19,7 +19,7 @@ jobs:
       - name: Setup Node
         uses: actions/setup-node@v4
         with:
-          node-version: 20
+          node-version: 18
 
       - name: Génération analyse conditionnelle
         run: node espace-client/scripts/generate_analysis.js
@@ -53,6 +53,10 @@ jobs:
         env:
           EMAIL_QUEUE_PATH: espace-client/strategic_email_queue.json
 
+      - name: Nettoyer la file email stratégique
+        if: ${{ steps.mailvars.outputs.subject != '' }}
+        run: |
+          rm -f espace-client/strategic_email_queue.json
 
       - name: Commit si modification
         run: |
