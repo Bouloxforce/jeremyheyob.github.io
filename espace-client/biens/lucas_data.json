@@ -85,12 +85,12 @@
   },
 
   "analysis": {
-    "text": "",
-    "evolution_text": "",
-    "generatedAt": null,
+    "text": "Test",
+    "evolution_text": "Test",
+    "generatedAt": "2026-01-20T12:00:00.000Z",
     "noExploitableData": false,
     "alertes": [],
-    "phase_active": null
+    "phase_active": "30"
   },
 
   "historique": [],
