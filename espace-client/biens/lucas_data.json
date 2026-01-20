@@ -87,7 +87,7 @@
   "analysis": {
     "text": "",
     "evolution_text": "Test",
-    "generatedAt": "2026-01-20T12:00:00.000Z",
+    "generatedAt": null,
     "noExploitableData": true,
     "alertes": [],
     "phase_active": null
