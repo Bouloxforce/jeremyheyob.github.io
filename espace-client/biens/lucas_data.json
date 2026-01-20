@@ -1,8 +1,8 @@
 {
   "_meta": {
     "weekly_cumul_base": {},
-    "mise_en_ligne_ref": "2026-01-10",
-    "mise_en_ligne_initiale": "2025-08-02",
+    "mise_en_ligne_ref": null,
+    "mise_en_ligne_initiale": null,
     "last_actuel_snapshot": {
       "appels": 0,
       "emails": 0,
