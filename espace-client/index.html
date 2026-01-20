@@ -1606,26 +1606,6 @@
     empty.style.display = "none";
   }
 
-    // =========================
-    // 🔒 PHASE ACTIVE — TEMPS UNIQUEMENT
-    // =========================
-    function getPhaseIndexDepuisDate(dateISO) {
-      if (!dateISO) return null;
-
-      const start = new Date(dateISO);
-      if (isNaN(start.getTime())) return null;
-
-      const diffDays = Math.floor(
-        (Date.now() - start.getTime()) / (1000 * 60 * 60 * 24)
-      );
-
-      if (diffDays <= 30) return 0; // 0–30 jours
-      if (diffDays <= 60) return 1; // 31–60 jours
-      if (diffDays <= 90) return 2; // 61–90 jours
-
-      return 3; // +90 jours
-    }
-
   function pushEvolution(lines, label, actuel, precedent) {
     if (
       actuel == null ||
@@ -2107,21 +2087,30 @@ function render404() {
       renderAlertes(analysis.alertes);
 
       // =========================
-      // 🔒 PHASE FINALE — TEMPS UNIQUEMENT
+      // ✅ PHASE ACTIVE — SOURCE BACKEND (VÉRITÉ MÉTIER)
       // =========================
-      const phaseFinale = getPhaseIndexDepuisDate(
-        data._meta?.mise_en_ligne_initiale || data.dates?.mise_en_ligne
-      );
+      const activePhase = data.analysis?.phase_active;
 
-      // Application visuelle
-      if (phaseFinale !== null) {
+      if (activePhase) {
         const steps = document.querySelectorAll(".timeline-step");
 
-        steps.forEach(step => step.classList.remove("is-active"));
+        steps.forEach(step => {
+          step.classList.remove("is-active");
 
-        if (steps[phaseFinale]) {
-          steps[phaseFinale].classList.add("is-active");
-        }
+          const label = step
+            .querySelector(".timeline-days")
+            ?.textContent
+            ?.trim();
+
+          if (
+            (activePhase === "30" && label.startsWith("0–30")) ||
+            (activePhase === "60" && label.startsWith("31–60")) ||
+            (activePhase === "90" && label.startsWith("61–90")) ||
+            (activePhase === "90+" && label.startsWith("+ 90"))
+          ) {
+            step.classList.add("is-active");
+          }
+        });
       }
 
       // HISTORIQUE ET RENDEZ-VOUS
