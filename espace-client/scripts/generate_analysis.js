@@ -316,7 +316,6 @@ function processBien(filePath) {
      data._meta.last_vues_leboncoin_snapshot = currentVues;
      // ✅ Important : on ne génère pas d’analyse lors de la première initialisation
      // pour éviter des effets de bord. On sort sans écrire.
-     return;
    }
 
    const prevVues = toNumber(data._meta.last_vues_leboncoin_snapshot);
@@ -429,7 +428,6 @@ function processBien(filePath) {
      ANALYSE – TENDANCE VENDEUR
   ========================= */
 
-  const todayYMD = getParisYMD();
   const miseInitiale = data._meta.mise_en_ligne_initiale || null;
 
   const phaseWin = getPhaseWindow(miseInitiale, todayYMD);
@@ -517,19 +515,6 @@ function processBien(filePath) {
     });
   }
 
-  const weeklyBase = data._meta.weekly_cumul_base;
-  const weeks = Object.keys(weeklyBase).sort();
-
-  if (weeks.length >= 2 && hasExploitableWeeklyData(weeklyBase)) {
-
-    const prevBase = weeklyBase[weeks[weeks.length - 2]];
-    const currBase = weeklyBase[weeks[weeks.length - 1]];
-
-    const delta = computeWeeklyResults(prevBase, currBase);
-
-    data.analysis.evolution_text =
-      buildEvolutionTextFromWeeklyResults(delta);
-
     data.analysis.noExploitableData = false;
 
   } else {
@@ -543,8 +528,6 @@ function processBien(filePath) {
   data.analysis.generatedAt = new Date().toISOString();
   data._meta.just_reset = false;
   data.analysis.text = data.analysis.text || "";
-  data.analysis.alertes = detectAlertes(data);
-  data.analysis.generatedAt = new Date().toISOString();
 
   fs.writeFileSync(
     filePath,
