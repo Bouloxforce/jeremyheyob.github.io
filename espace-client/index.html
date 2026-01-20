@@ -882,38 +882,35 @@
         min-inline-size: 0 !important;
       }
 
+        /* Layout mobile */
       .layout {
         display: flex;
         flex-direction: column;
       }
 
-      /* ORDRE GLOBAL (enfants directs de .layout) */
-
-      .left-column {
-        order: 1;
-        display: flex;
-        flex-direction: column;
-      }
-
-      aside.card {
-        order: 2;
-      }
-
-      /* ORDRE INTERNE À .left-column */
-
-      /* 1️⃣ ESPACE VENDEUR */
+      /* === 1️⃣ ESPACE VENDEUR === */
       .left-column > section.card:first-of-type {
         order: 1;
       }
 
-      /* 2️⃣ STRATÉGIE DE COMMERCIALISATION */
-      #strategie-3090 {
+      /* === 2️⃣ TABLEAU DE BORD === */
+      aside.card {
         order: 2;
       }
 
-      /* 3️⃣ CONTEXTE DE MARCHÉ */
-      .market-centered {
+      /* === 3️⃣ STRATÉGIE === */
+      #strategie-3090 {
         order: 3;
+      }
+
+      /* === 4️⃣ CONTEXTE DE MARCHÉ === */
+      .market-centered {
+        order: 4;
+      }
+
+      /* Important : la colonne gauche ne doit PLUS imposer d’ordre global */
+      .left-column {
+        display: contents;
       }
     }
   </style>
