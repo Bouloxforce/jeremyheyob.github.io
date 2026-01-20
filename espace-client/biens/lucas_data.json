@@ -10,8 +10,8 @@
         "favoris_leboncoin": 6
       }
     },
-    "mise_en_ligne_ref": "2026-01-11",
-    "mise_en_ligne_initiale": "2025-08-26",
+    "mise_en_ligne_ref": "2026-01-10",
+    "mise_en_ligne_initiale": "2025-08-25",
     "last_actuel_snapshot": {
       "appels": 1,
       "emails": 1,
@@ -36,8 +36,8 @@
     }
   },
   "dates": {
-    "mandat_signe": "2025-07-16",
-    "mise_en_ligne": "2026-01-10",
+    "mandat_signe": "2025-07-17",
+    "mise_en_ligne": "2026-01-11",
     "derniere_remontee": null
   },
   "liens": {
