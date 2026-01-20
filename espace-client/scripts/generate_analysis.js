@@ -517,11 +517,13 @@ function processBien(filePath) {
 
     data.analysis.noExploitableData = false;
 
-  } else {
-    data.analysis.evolution_text =
-      "La tendance sur la semaine écoulée sera disponible dès que des données seront exploitables.";
-    data.analysis.noExploitableData = true;
-  }
+  if (!hasExploitableWeeklyData(data._meta.weekly_cumul_base)) {
+     data.analysis.evolution_text =
+       "La tendance sur la semaine écoulée sera disponible dès que des données seront exploitables.";
+     data.analysis.noExploitableData = true;
+   } else {
+     data.analysis.noExploitableData = false;
+   }
 
   data.analysis.alertes = detectAlertes(data);
   data._meta.last_weekly_run = mondayKey;
