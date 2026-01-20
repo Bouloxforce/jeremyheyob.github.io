@@ -1,8 +1,8 @@
 {
   "_meta": {
     "weekly_cumul_base": {},
-    "mise_en_ligne_ref": null,
-    "mise_en_ligne_initiale": null,
+    "mise_en_ligne_ref": "2026-01-10",
+    "mise_en_ligne_initiale": "2025-08-25",
     "last_actuel_snapshot": {
       "appels": 0,
       "emails": 0,
@@ -45,12 +45,12 @@
     "avendrealouer": "https://www.avendrealouer.fr/vente/saint-priest-69/b-appartement/4-pieces/loc-101-33742/fd-3125084365.html",
     "paruvendu": "https://www.paruvendu.fr/immobilier/vente/appartement/1287793577A1KIVHAP000",
     "lefigaro": "https://immobilier.lefigaro.fr/annonces/annonce-95658049.html",
-    "facebook": "",
-    "instagram": "",
-    "linkedin": "",
-    "pagesjaunes": "",
-    "google": "",
-    "youtube": ""
+    "facebook": "🔴",
+    "instagram": "🔴",
+    "linkedin": "🔴",
+    "pagesjaunes": "🔴",
+    "google": "🔴",
+    "youtube": "🔴"
   },
 
   "marche": {
