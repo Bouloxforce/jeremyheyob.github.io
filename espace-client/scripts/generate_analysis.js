@@ -89,12 +89,13 @@ function lastMondayBefore(endISO) {
 }
 
 // Retourne la tranche de phase courante (start/end) basée UNIQUEMENT sur mise_en_ligne_initiale
-function getPhaseWindow(miseEnLigneInitialeISO, todayISO) {
+function getPhaseWindow(miseEnLigneInitialeISO, todayISO, joursArretDiffusion = 0) {
   if (!miseEnLigneInitialeISO) return null;
 
   const start = new Date(`${miseEnLigneInitialeISO}T00:00:00Z`);
   const today = new Date(`${todayISO}T00:00:00Z`);
-  const diffDays = Math.floor((today - start) / (1000 * 60 * 60 * 24));
+  const rawDays = Math.floor((today - start) / (1000 * 60 * 60 * 24));
+  const diffDays = Math.max(0, rawDays - toNumber(joursArretDiffusion));
 
   // bornes de fin "logiques" des phases (0-30,31-60,61-90)
   if (diffDays <= 30) {
@@ -419,7 +420,8 @@ function processBien(filePath) {
 
   const miseInitiale = data._meta.mise_en_ligne_initiale || null;
 
-  const phaseWin = getPhaseWindow(miseInitiale, todayYMD);
+  const joursArret = toNumber(data.jours_arret_diffusion);
+  const phaseWin = getPhaseWindow(miseInitiale, todayYMD, joursArret);
   const strategicMonday = phaseWin ? lastMondayBefore(phaseWin.endISO) : null;
 
   const isStrategicDay = strategicMonday && todayYMD === strategicMonday;
