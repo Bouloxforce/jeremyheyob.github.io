@@ -1089,7 +1089,6 @@
         <li id="ratio-contact-vues">—</li>
         <li id="ratio-visites-contacts">—</li>
         <li id="ratio-offres-visites">—</li>
-        <li id="dernier-visite-delai">—</li>
       </ul>
 
       <p class="subtitle" id="ratio-empty" style="display:none;">
@@ -1994,30 +1993,13 @@ function render404() {
       const SEUIL_FAVORIS_SANS_CONTACT = 4;
       const SEUIL_BAISSE_VISIBILITE_POURCENT = 15;
 
-      //✅ Dernière visite (basée sur l’historique)
-      const derniereVisiteDate = getDerniereDateVisiteDepuisHistorique(data.historique);
-
-      if (derniereVisiteDate) {
-        const joursDepuisDerniereVisite = Math.floor(
-          (Date.now() - derniereVisiteDate.getTime()) / (1000 * 60 * 60 * 24)
-        );
-
-        setLineText(
-          "dernier-visite-delai",
-          "Dernière visite il y a " + joursDepuisDerniereVisite + " jours"
-        );
-      } else {
-        setLineText("dernier-visite-delai", "", "—");
-      }
-
       // =========================
       // 🧮 FALLBACK TAUX DE TRANSFORMATION
       // =========================
       const ratioIds = [
         "ratio-contact-vues",
         "ratio-visites-contacts",
-        "ratio-offres-visites",
-        "dernier-visite-delai"
+        "ratio-offres-visites"
       ];
 
       const hasRatio = ratioIds.some(id => {
