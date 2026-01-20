@@ -357,14 +357,14 @@ function processBien(filePath) {
    logHistoriqueDateChange(
      data,
      "mandat_signe",
-     "Mandat signé",
+     "✍️ Mandat enregistré",
      todayYMD
    );
 
    logHistoriqueDateChange(
      data,
      "mise_en_ligne",
-     "Annonce mise en ligne",
+     "✅ Annonce mise en ligne",
      todayYMD
    );
 
