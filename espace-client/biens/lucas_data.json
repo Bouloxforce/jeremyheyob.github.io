@@ -1,8 +1,8 @@
 {
   "_meta": {
     "weekly_cumul_base": {},
-    "mise_en_ligne_ref": "2026/01/10",
-    "mise_en_ligne_initiale": "2025/08/02",
+    "mise_en_ligne_ref": "2026-01-10",
+    "mise_en_ligne_initiale": "2025-08-02",
     "last_actuel_snapshot": {
       "appels": 0,
       "emails": 0,
@@ -31,8 +31,8 @@
   },
 
   "dates": {
-    "mandat_signe": "2025/07/16",
-    "mise_en_ligne": "2026/01/10",
+    "mandat_signe": "2025-07-16",
+    "mise_en_ligne": "2026-01-10",
     "derniere_remontee": null
   },
 
