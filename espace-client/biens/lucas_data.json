@@ -23,9 +23,7 @@
     "just_reset": false,
     "has_had_reset": false,
     "last_weekly_run": "2026-01-19",
-    "last_vues_leboncoin_snapshot": 72,
-    "last_mandat_signe": "2025-07-16",
-    "last_mise_en_ligne": "2026-01-10"
+    "last_vues_leboncoin_snapshot": 72
   },
   "bien": {
     "nom": "Lucas",
@@ -40,7 +38,7 @@
   "dates": {
     "mandat_signe": "2025-07-16",
     "mise_en_ligne": "2026-01-10",
-    "derniere_remontee": null
+    "derniere_remontee": "2026-01-19"
   },
   "liens": {
     "agenceimmo": "https://www.agence.immo/achat/appartement-t4-4-pieces-saint-priest-69800-VA33938",
@@ -90,27 +88,35 @@
   "analysis": {
     "text": "La commercialisation se déroule dans de bonnes conditions. Les indicateurs actuels sont cohérents avec le marché. La stratégie en place est maintenue.",
     "evolution_text": "",
-    "generatedAt": "2026-01-20T15:38:10.159Z",
+    "generatedAt": "2026-01-20T13:48:53.977Z",
     "noExploitableData": false,
     "alertes": [],
     "phase_active": "90+"
   },
   "historique": [
     {
+      "date": "2026-01-19",
+      "label": "📩 Nouvel email reçu"
+    },
+    {
+      "date": "2026-01-19",
+      "label": "🔃 Remontée automatique de l'annonce"
+    },
+    {
+      "date": "2026-01-16",
+      "label": "🔃 Remontée automatique de l'annonce"
+    },
+    {
+      "date": "2026-01-13",
+      "label": "🔃 Remontée automatique de l'annonce"
+    },
+    {
       "date": "2026-01-10",
-      "label": "Annonce mise en ligne le 2026-01-10"
+      "label": "✅ Annonce mise en ligne le 2026-01-10"
     },
     {
       "date": "2025-07-16",
-      "label": "Mandat signé le 2025-07-16"
-    },
-    {
-      "date": "2026-01-20",
-      "label": "Mandat signé le 2025-07-16"
-    },
-    {
-      "date": "2026-01-20",
-      "label": "Annonce mise en ligne le 2026-01-10"
+      "label": "✍️ Mandat signé le 2025-07-16"
     }
   ],
   "strategie_3090": {
