@@ -313,8 +313,15 @@ function processBien(filePath) {
    const lastVues = toNumber(data._meta.last_vues_leboncoin_snapshot);
 
    // ❌ CAS 3 : autres stats modifiées MAIS vues inchangées → STOP TOTAL
-   if (Number.isFinite(lastVues) && currentVues === lastVues) {
-     return; // ⛔ aucune écriture fichier → aucun workflow GitHub
+   const hasNewWeeklyData =
+     Object.keys(data._meta.weekly_cumul_base || {}).length >= 2;
+
+   if (
+     Number.isFinite(lastVues) &&
+     currentVues === lastVues &&
+     !hasNewWeeklyData
+   ) {
+     return;
    }
 
   /* --- Sécurisation --- */
