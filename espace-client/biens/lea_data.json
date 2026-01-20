@@ -2,30 +2,30 @@
   "_meta": {
     "weekly_cumul_base": {
       "2026-01-19": {
-        "appels": 7,
-        "emails": 7,
-        "visites_effectuees": 5,
+        "appels": 0,
+        "emails": 0,
+        "visites_effectuees": 0,
         "offres": 0,
-        "vues_leboncoin": 1076,
-        "favoris_leboncoin": 19
+        "vues_leboncoin": 0,
+        "favoris_leboncoin": 0
       }
     },
-    "mise_en_ligne_ref": "2025-09-22",
+    "mise_en_ligne_ref": "2026-01-17",
     "mise_en_ligne_initiale": "2025-09-22",
     "last_actuel_snapshot": {
-      "appels": 7,
-      "emails": 7,
-      "visites_effectuees": 5,
+      "appels": 0,
+      "emails": 0,
+      "visites_effectuees": 0,
       "offres": 0,
-      "vues_leboncoin": 1076,
-      "favoris_leboncoin": 19
+      "vues_leboncoin": 0,
+      "favoris_leboncoin": 0
     },
     "just_reset": false,
-    "has_had_reset": false,
-    "last_weekly_run": "2026-01-19",
+    "has_had_reset": true,
     "last_vues_leboncoin_snapshot": 1076,
     "last_mandat_signe": "2025-04-04",
-    "last_mise_en_ligne": "2025-09-22"
+    "last_mise_en_ligne": "2026-01-17",
+    "last_weekly_run": "2026-01-19"
   },
   "bien": {
     "nom": "Léa",
@@ -70,13 +70,13 @@
   },
   "stats": {
     "actuel": {
-      "appels": 7,
-      "emails": 7,
-      "visites_effectuees": 5,
+      "appels": 0,
+      "emails": 0,
+      "visites_effectuees": 0,
       "visites_programmees": 0,
       "offres": 0,
-      "vues_leboncoin": 1076,
-      "favoris_leboncoin": 19
+      "vues_leboncoin": 0,
+      "favoris_leboncoin": 0
     },
     "cumul": {
       "appels": 7,
@@ -88,19 +88,21 @@
     }
   },
   "analysis": {
-    "text": "Les indicateurs actuels nécessitent une surveillance attentive. Un point stratégique sera réalisé au moment prévu dans le plan de commercialisation.",
+    "text": "La commercialisation se déroule dans de bonnes conditions. Les indicateurs actuels sont cohérents avec le marché. La stratégie en place est maintenue.",
     "evolution_text": "",
-    "generatedAt": "2026-01-20T17:05:01.131Z",
+    "generatedAt": "2026-01-20T17:12:17.619Z",
     "noExploitableData": false,
-    "alertes": [
-      "❗ Visites sans offres"
-    ],
-    "phase_active": "90+"
+    "phase_active": "90+",
+    "alertes": []
   },
   "historique": [
     {
       "date": "2025-04-04",
       "label": "✍️ Mandat enregistré"
+    },
+    {
+      "date": "2026-01-20",
+      "label": "✅ Annonce mise en ligne"
     },
     {
       "date": "2026-01-20",
