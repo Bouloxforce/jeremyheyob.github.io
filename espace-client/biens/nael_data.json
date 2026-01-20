@@ -1,14 +1,6 @@
 {
   "_meta": {
     "weekly_cumul_base": {
-      "2026-01-05": {
-        "appels": 0,
-        "emails": 0,
-        "visites_effectuees": 3,
-        "offres": 0,
-        "vues_leboncoin": 280,
-        "favoris_leboncoin": 0
-      },
       "2026-01-12": {
         "appels": 10,
         "emails": 10,
@@ -16,21 +8,30 @@
         "offres": 5,
         "vues_leboncoin": 600,
         "favoris_leboncoin": 76
+      },
+      "2026-01-19": {
+        "appels": 11,
+        "emails": 11,
+        "visites_effectuees": 11,
+        "offres": 6,
+        "vues_leboncoin": 700,
+        "favoris_leboncoin": 86
       }
     },
     "mise_en_ligne_ref": "2026-01-06",
     "mise_en_ligne_initiale": "2025-10-01",
     "last_actuel_snapshot": {
-      "appels": 10,
-      "emails": 10,
-      "visites_effectuees": 10,
-      "offres": 5,
-      "vues_leboncoin": 600,
-      "favoris_leboncoin": 76
+      "appels": 11,
+      "emails": 11,
+      "visites_effectuees": 11,
+      "offres": 6,
+      "vues_leboncoin": 700,
+      "favoris_leboncoin": 86
     },
     "just_reset": false,
     "has_had_reset": true,
-    "last_weekly_run": "2026-01-12"
+    "last_weekly_run": "2026-01-19",
+    "last_vues_leboncoin_snapshot": 700
   },
   "bien": {
     "nom": "Naël",
@@ -83,18 +84,18 @@
       "favoris_leboncoin": 86
     },
     "cumul": {
-      "appels": 71,
-      "emails": 20,
-      "visites_effectuees": 23,
-      "offres": 15,
-      "vues_leboncoin": 1318,
-      "favoris_leboncoin": 89
+      "appels": 72,
+      "emails": 21,
+      "visites_effectuees": 24,
+      "offres": 16,
+      "vues_leboncoin": 1418,
+      "favoris_leboncoin": 99
     }
   },
   "analysis": {
-    "text": "",
+    "text": "La commercialisation se déroule dans de bonnes conditions. Les indicateurs actuels sont cohérents avec le marché. La stratégie en place est maintenue.",
     "evolution_text": "Appels : +10\nEmails : +10\nVisites effectuées : +7\nOffres : +5\nVues Leboncoin : +320\nFavoris Leboncoin : +76",
-    "generatedAt": "2026-01-12T23:24:10.937Z",
+    "generatedAt": "2026-01-20T09:03:31.389Z",
     "noExploitableData": false,
     "alertes": []
   },
