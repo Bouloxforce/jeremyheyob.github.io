@@ -1,20 +1,20 @@
 {
   "_meta": {
     "weekly_cumul_base": {
-      "2026-01-05": {
-        "appels": 11,
-        "emails": 11,
-        "visites_effectuees": 11,
-        "offres": 6,
-        "vues_leboncoin": 701,
-        "favoris_leboncoin": 86
-      },
       "2026-01-12": {
         "appels": 11,
         "emails": 11,
         "visites_effectuees": 11,
         "offres": 6,
         "vues_leboncoin": 702,
+        "favoris_leboncoin": 86
+      },
+      "2026-01-19": {
+        "appels": 11,
+        "emails": 11,
+        "visites_effectuees": 11,
+        "offres": 6,
+        "vues_leboncoin": 703,
         "favoris_leboncoin": 86
       }
     },
@@ -25,13 +25,13 @@
       "emails": 11,
       "visites_effectuees": 11,
       "offres": 6,
-      "vues_leboncoin": 702,
+      "vues_leboncoin": 703,
       "favoris_leboncoin": 86
     },
     "just_reset": false,
     "has_had_reset": true,
-    "last_weekly_run": "2026-01-12",
-    "last_vues_leboncoin_snapshot": 702
+    "last_weekly_run": "2026-01-19",
+    "last_vues_leboncoin_snapshot": 703
   },
   "bien": {
     "nom": "Naël",
@@ -88,16 +88,18 @@
       "emails": 21,
       "visites_effectuees": 24,
       "offres": 16,
-      "vues_leboncoin": 1420,
+      "vues_leboncoin": 1421,
       "favoris_leboncoin": 99
     }
   },
   "analysis": {
     "text": "La commercialisation se déroule dans de bonnes conditions. Les indicateurs actuels sont cohérents avec le marché. La stratégie en place est maintenue.",
     "evolution_text": "Appels : +10\nEmails : +10\nVisites effectuées : +7\nOffres : +5\nVues Leboncoin : +320\nFavoris Leboncoin : +76",
-    "generatedAt": "2026-01-12T09:40:01.179Z",
+    "generatedAt": "2026-01-20T09:49:34.814Z",
     "noExploitableData": false,
-    "alertes": []
+    "alertes": [
+      "❗ Aucune interaction récente"
+    ]
   },
   "historique": [
     {
