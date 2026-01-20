@@ -423,6 +423,7 @@ function processBien(filePath) {
   const joursArret = toNumber(data.jours_arret_diffusion);
   const phaseWin = getPhaseWindow(miseInitiale, todayYMD, joursArret);
   const strategicMonday = phaseWin ? lastMondayBefore(phaseWin.endISO) : null;
+  data.analysis.phase_active = phaseWin?.label || null;
 
   const isStrategicDay = strategicMonday && todayYMD === strategicMonday;
 
