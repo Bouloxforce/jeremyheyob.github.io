@@ -424,9 +424,21 @@ function processBien(filePath) {
 
   const isStrategicDay = strategicMonday && todayYMD === strategicMonday;
 
-  // 🔒 21 premiers jours de la phase/tranche : interdiction totale de "changement de stratégie"
-  const daysInCurrentWindow = phaseWin ? daysBetweenISO(phaseWin.startISO, todayYMD) + 1 : null;
-  const inFirst21Days = Number.isFinite(daysInCurrentWindow) && daysInCurrentWindow <= 21;
+   // 🔒 21 premiers jours de la phase/tranche : interdiction totale de "changement de stratégie"
+   // ➜ on retire les jours d'arrêt de diffusion déclarés manuellement
+
+   const rawDaysInCurrentWindow =
+     phaseWin ? daysBetweenISO(phaseWin.startISO, todayYMD) + 1 : null;
+
+   const stoppedDays = toNumber(data.jours_arret_diffusion);
+
+   const daysInCurrentWindow =
+     Number.isFinite(rawDaysInCurrentWindow)
+       ? Math.max(rawDaysInCurrentWindow - stoppedDays, 0)
+       : null;
+
+   const inFirst21Days =
+     Number.isFinite(daysInCurrentWindow) && daysInCurrentWindow <= 21;
 
   const healthy = isStatsHealthyActuelOnly(data);
 
