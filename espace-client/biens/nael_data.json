@@ -1,20 +1,20 @@
 {
   "_meta": {
     "weekly_cumul_base": {
-      "2026-01-05": {
-        "appels": 15,
-        "emails": 15,
-        "visites_effectuees": 11,
-        "offres": 6,
-        "vues_leboncoin": 710,
-        "favoris_leboncoin": 86
-      },
       "2026-01-12": {
         "appels": 15,
         "emails": 15,
         "visites_effectuees": 11,
         "offres": 6,
         "vues_leboncoin": 715,
+        "favoris_leboncoin": 86
+      },
+      "2026-01-19": {
+        "appels": 15,
+        "emails": 15,
+        "visites_effectuees": 12,
+        "offres": 6,
+        "vues_leboncoin": 718,
         "favoris_leboncoin": 86
       }
     },
@@ -23,15 +23,15 @@
     "last_actuel_snapshot": {
       "appels": 15,
       "emails": 15,
-      "visites_effectuees": 11,
+      "visites_effectuees": 12,
       "offres": 6,
-      "vues_leboncoin": 715,
+      "vues_leboncoin": 718,
       "favoris_leboncoin": 86
     },
     "just_reset": false,
     "has_had_reset": true,
-    "last_weekly_run": "2026-01-12",
-    "last_vues_leboncoin_snapshot": 715
+    "last_weekly_run": "2026-01-19",
+    "last_vues_leboncoin_snapshot": 718
   },
   "bien": {
     "nom": "Naël",
@@ -87,20 +87,19 @@
     "cumul": {
       "appels": 76,
       "emails": 25,
-      "visites_effectuees": 24,
+      "visites_effectuees": 25,
       "offres": 16,
-      "vues_leboncoin": 1433,
+      "vues_leboncoin": 1436,
       "favoris_leboncoin": 99
     }
   },
   "analysis": {
     "text": "La commercialisation se déroule dans de bonnes conditions. Les indicateurs actuels sont cohérents avec le marché. La stratégie en place est maintenue.",
-    "evolution_text": "Appels : stable\nEmails : stable\nVisites effectuées : stable\nOffres : stable\nVues Leboncoin : +5\nFavoris Leboncoin : stable",
-    "generatedAt": "2026-01-12T11:06:55.187Z",
+    "evolution_text": "Appels : stable\nEmails : stable\nVisites effectuées : +1\nOffres : stable\nVues Leboncoin : +3\nFavoris Leboncoin : stable",
+    "generatedAt": "2026-01-20T11:22:29.641Z",
     "noExploitableData": false,
-    "alertes": [
-      "❗ Aucune interaction récente"
-    ]
+    "alertes": [],
+    "phase_active": "60"
   },
   "historique": [
     {
