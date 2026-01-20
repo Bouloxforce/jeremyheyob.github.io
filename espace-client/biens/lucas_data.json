@@ -23,7 +23,9 @@
     "just_reset": false,
     "has_had_reset": false,
     "last_weekly_run": "2026-01-19",
-    "last_vues_leboncoin_snapshot": 72
+    "last_vues_leboncoin_snapshot": 72,
+    "last_mandat_signe": "2025-07-16",
+    "last_mise_en_ligne": "2026-01-10"
   },
   "bien": {
     "nom": "Lucas",
@@ -88,7 +90,7 @@
   "analysis": {
     "text": "La commercialisation se déroule dans de bonnes conditions. Les indicateurs actuels sont cohérents avec le marché. La stratégie en place est maintenue.",
     "evolution_text": "",
-    "generatedAt": "2026-01-20T13:48:53.977Z",
+    "generatedAt": "2026-01-20T15:38:10.159Z",
     "noExploitableData": false,
     "alertes": [],
     "phase_active": "90+"
@@ -101,6 +103,14 @@
     {
       "date": "2025-07-16",
       "label": "Mandat signé le 2025-07-16"
+    },
+    {
+      "date": "2026-01-20",
+      "label": "Mandat signé le 2025-07-16"
+    },
+    {
+      "date": "2026-01-20",
+      "label": "Annonce mise en ligne le 2026-01-10"
     }
   ],
   "strategie_3090": {
