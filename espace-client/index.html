@@ -885,6 +885,34 @@
         max-inline-size: 100% !important;
         min-inline-size: 0 !important;
       }
+
+      /* Passage de la grille à un flux vertical contrôlé */
+      .layout {
+        display: flex;
+        flex-direction: column;
+      }
+
+      /* ORDRE MOBILE — LOGIQUE MÉTIER */
+
+      /* 1️⃣ ESPACE VENDEUR */
+      .left-column > section.card:first-of-type {
+        order: 1;
+      }
+
+      /* 2️⃣ TABLEAU DE BORD */
+      aside.card {
+        order: 2;
+      }
+
+      /* 3️⃣ STRATÉGIE DE COMMERCIALISATION */
+      #strategie-3090 {
+        order: 3;
+      }
+
+      /* 4️⃣ CONTEXTE DE MARCHÉ */
+      .market-centered {
+        order: 4;
+      }
     }
   </style>
 </head>
