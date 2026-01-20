@@ -1,7 +1,7 @@
 {
   "_meta": {
     "weekly_cumul_base": {
-      "2026-01-12": {
+      "2026-01-05": {
         "appels": 11,
         "emails": 11,
         "visites_effectuees": 11,
@@ -9,7 +9,7 @@
         "vues_leboncoin": 703,
         "favoris_leboncoin": 86
       },
-      "2026-01-19": {
+      "2026-01-12": {
         "appels": 11,
         "emails": 11,
         "visites_effectuees": 11,
@@ -30,7 +30,7 @@
     },
     "just_reset": false,
     "has_had_reset": true,
-    "last_weekly_run": "2026-01-19",
+    "last_weekly_run": "2026-01-12",
     "last_vues_leboncoin_snapshot": 704
   },
   "bien": {
@@ -80,7 +80,7 @@
       "visites_effectuees": 11,
       "visites_programmees": 0,
       "offres": 6,
-      "vues_leboncoin": 704,
+      "vues_leboncoin": 705,
       "favoris_leboncoin": 86
     },
     "cumul": {
@@ -95,7 +95,7 @@
   "analysis": {
     "text": "La commercialisation se déroule dans de bonnes conditions. Les indicateurs actuels sont cohérents avec le marché. La stratégie en place est maintenue.",
     "evolution_text": "Appels : +10\nEmails : +10\nVisites effectuées : +7\nOffres : +5\nVues Leboncoin : +320\nFavoris Leboncoin : +76",
-    "generatedAt": "2026-01-20T10:03:54.951Z",
+    "generatedAt": "2026-01-12T10:03:54.951Z",
     "noExploitableData": false,
     "alertes": [
       "❗ Aucune interaction récente"
