@@ -33,6 +33,22 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 const BIENS_DIR = path.join(__dirname, "..", "biens");
 
+const EMAIL_QUEUE_PATH = path.join(__dirname, "..", "strategic_email_queue.json");
+
+function queueStrategicEmail(item) {
+  let arr = [];
+  try {
+    if (fs.existsSync(EMAIL_QUEUE_PATH)) {
+      arr = JSON.parse(fs.readFileSync(EMAIL_QUEUE_PATH, "utf-8")) || [];
+      if (!Array.isArray(arr)) arr = [];
+    }
+  } catch {
+    arr = [];
+  }
+  arr.push(item);
+  fs.writeFileSync(EMAIL_QUEUE_PATH, JSON.stringify(arr, null, 2) + "\n", "utf-8");
+}
+
 /* =========================
    OUTILS DATE (Europe/Paris)
 ========================= */
@@ -52,6 +68,58 @@ function getMondayKeyParis(todayYMD) {
   const diff = day === 0 ? -6 : 1 - day;
   d.setUTCDate(d.getUTCDate() + diff);
   return d.toISOString().slice(0, 10);
+}
+
+function addDaysISO(isoYMD, days) {
+  const d = new Date(`${isoYMD}T00:00:00Z`);
+  d.setUTCDate(d.getUTCDate() + days);
+  return d.toISOString().slice(0, 10);
+}
+
+// Renvoie le dernier lundi STRICTEMENT avant endISO (YYYY-MM-DD)
+function lastMondayBefore(endISO) {
+  const end = new Date(`${endISO}T00:00:00Z`);
+  // reculer d’un jour pour être "avant" la fin
+  end.setUTCDate(end.getUTCDate() - 1);
+
+  const day = end.getUTCDay(); // 0=dim,1=lun...
+  const diff = day === 0 ? 6 : day - 1; // nb de jours à reculer pour tomber sur lundi
+  end.setUTCDate(end.getUTCDate() - diff);
+  return end.toISOString().slice(0, 10);
+}
+
+// Retourne la tranche de phase courante (start/end) basée UNIQUEMENT sur mise_en_ligne_initiale
+function getPhaseWindow(miseEnLigneInitialeISO, todayISO) {
+  if (!miseEnLigneInitialeISO) return null;
+
+  const start = new Date(`${miseEnLigneInitialeISO}T00:00:00Z`);
+  const today = new Date(`${todayISO}T00:00:00Z`);
+  const diffDays = Math.floor((today - start) / (1000 * 60 * 60 * 24));
+
+  // bornes de fin "logiques" des phases (0-30,31-60,61-90)
+  if (diffDays <= 30) {
+    return { label: "30", startISO: miseEnLigneInitialeISO, endISO: addDaysISO(miseEnLigneInitialeISO, 30) };
+  }
+  if (diffDays <= 60) {
+    return { label: "60", startISO: addDaysISO(miseEnLigneInitialeISO, 31), endISO: addDaysISO(miseEnLigneInitialeISO, 60) };
+  }
+  if (diffDays <= 90) {
+    return { label: "90", startISO: addDaysISO(miseEnLigneInitialeISO, 61), endISO: addDaysISO(miseEnLigneInitialeISO, 90) };
+  }
+
+  // 90+ : tranches de 30 jours après J90
+  const daysAfter90 = diffDays - 90;
+  const trancheIndex = Math.ceil(daysAfter90 / 30); // 1,2,3...
+  const trancheEnd = addDaysISO(miseEnLigneInitialeISO, 90 + trancheIndex * 30);
+  const trancheStart = addDaysISO(miseEnLigneInitialeISO, 90 + (trancheIndex - 1) * 30 + 1);
+
+  return { label: "90+", startISO: trancheStart, endISO: trancheEnd };
+}
+
+function daysBetweenISO(aISO, bISO) {
+  const a = new Date(`${aISO}T00:00:00Z`);
+  const b = new Date(`${bISO}T00:00:00Z`);
+  return Math.floor((b - a) / (1000 * 60 * 60 * 24));
 }
 
 /* =========================
@@ -207,6 +275,24 @@ function detectAlertes(data) {
     .map(x => x.m);
 }
 
+function isStatsHealthyActuelOnly(data) {
+  const actuel = data?.stats?.actuel || {};
+  const vues = toNumber(actuel.vues_leboncoin);
+  const appels = toNumber(actuel.appels);
+  const emails = toNumber(actuel.emails);
+  const visites = toNumber(actuel.visites_effectuees);
+  const offres = toNumber(actuel.offres);
+
+  const contacts = appels + emails;
+
+  // Seuils simples (tu peux les ajuster plus tard)
+  if (vues >= 200 && contacts === 0) return false;
+  if (contacts >= 10 && visites === 0) return false;
+  if (visites >= 5 && offres === 0) return false;
+
+  return true;
+}
+
 /* =========================
    TRAITEMENT D’UN BIEN
 ========================= */
@@ -215,6 +301,33 @@ function processBien(filePath) {
   const todayYMD = getParisYMD();
   const mondayKey = getMondayKeyParis(todayYMD);
   const data = JSON.parse(fs.readFileSync(filePath, "utf-8"));
+
+   // =========================
+   // 🔒 Déclencheur unique : vues_leboncoin (stats.actuel)
+   // =========================
+   data._meta ??= {};
+   data.stats ??= {};
+   data.stats.actuel ??= {};
+
+   const currentVues = toNumber(data.stats.actuel.vues_leboncoin);
+
+   // snapshot persistant du dernier "vues_leboncoin" vu par le script
+   if (data._meta.last_vues_leboncoin_snapshot == null) {
+     data._meta.last_vues_leboncoin_snapshot = currentVues;
+     // ✅ Important : on ne génère pas d’analyse lors de la première initialisation
+     // pour éviter des effets de bord. On sort sans écrire.
+     return;
+   }
+
+   const prevVues = toNumber(data._meta.last_vues_leboncoin_snapshot);
+
+   // ✅ SI vues inchangé : on ne touche à rien (pas d’écriture de fichier)
+   if (currentVues === prevVues) {
+     return;
+   }
+
+   // ✅ vues a changé : on poursuit, et on met à jour le snapshot
+   data._meta.last_vues_leboncoin_snapshot = currentVues;
 
   /* --- Sécurisation --- */
   data.stats ??= {};
@@ -316,6 +429,94 @@ function processBien(filePath) {
      ANALYSE – TENDANCE VENDEUR
   ========================= */
 
+  const todayYMD = getParisYMD();
+  const miseInitiale = data._meta.mise_en_ligne_initiale || null;
+
+  const phaseWin = getPhaseWindow(miseInitiale, todayYMD);
+  const strategicMonday = phaseWin ? lastMondayBefore(phaseWin.endISO) : null;
+
+  const isStrategicDay = strategicMonday && todayYMD === strategicMonday;
+
+  // 🔒 21 premiers jours de la phase/tranche : interdiction totale de "changement de stratégie"
+  const daysInCurrentWindow = phaseWin ? daysBetweenISO(phaseWin.startISO, todayYMD) + 1 : null;
+  const inFirst21Days = Number.isFinite(daysInCurrentWindow) && daysInCurrentWindow <= 21;
+
+  const healthy = isStatsHealthyActuelOnly(data);
+
+  data.analysis ??= {};
+  data.analysis.text ??= "";
+
+  if (healthy) {
+    data.analysis.text =
+      "La commercialisation se déroule dans de bonnes conditions. Les indicateurs actuels sont cohérents avec le marché. La stratégie en place est maintenue.";
+  } else {
+    // Cas "non healthy"
+    if (inFirst21Days) {
+      // ✅ Alertes possibles, mais aucune stratégie
+      data.analysis.text =
+        "Les indicateurs actuels nécessitent une surveillance attentive. Une phase d’analyse est en cours afin d’objectiver la suite, sans ajustement de stratégie à ce stade.";
+    } else if (phaseWin?.label === "90+") {
+      // 🔒 En 90+, ton exigence : message uniquement le dernier lundi avant fin de tranche
+      if (isStrategicDay) {
+        data.analysis.text =
+          "La commercialisation est entrée dans une phase prolongée. En l’absence d’évolution significative, un changement de stratégie est nécessaire afin de redéfinir les leviers d’action.";
+      } else {
+        // Hors lundi stratégique : on reste neutre
+        data.analysis.text =
+          "Les indicateurs actuels nécessitent une surveillance attentive. Un point stratégique sera réalisé au moment prévu dans le plan de commercialisation.";
+      }
+    } else {
+      // phases 30 / 60 / 90
+      if (isStrategicDay) {
+        if (phaseWin?.label === "90") {
+          data.analysis.text =
+            "Les résultats actuels indiquent que la stratégie arrive à ses limites. Un changement de stratégie est nécessaire afin d’optimiser la commercialisation dans la phase suivante.";
+        } else {
+          // 30 ou 60
+          data.analysis.text =
+            "Les indicateurs actuels montrent que la commercialisation atteint un palier. Afin d’optimiser la suite, un ajustement de la stratégie est en cours de réflexion pour la prochaine phase.";
+        }
+      } else {
+        // Hors lundi stratégique : analyse neutre (pas de bascule stratégie)
+        data.analysis.text =
+          "Les indicateurs actuels nécessitent une surveillance attentive. Un point d’analyse sera réalisé à l’approche de la prochaine phase.";
+      }
+    }
+  }
+
+  const bienNom = data?.bien?.nom || "Bien sans nom";
+
+  // Un email interne uniquement si :
+  // - stats non healthy
+  // - pas dans les 21 premiers jours de la phase/tranche
+  // - et on est le dernier lundi autorisé
+  const shouldNotify = !healthy && !inFirst21Days && isStrategicDay;
+
+  if (shouldNotify) {
+    // On stocke une file de mails à envoyer (lue par le workflow)
+    data._meta.pending_strategic_email ??= false;
+    data._meta.pending_strategic_email = true;
+
+    // On écrit aussi un petit fichier "queue" global (dans repo) pour le workflow
+    // (voir étape 6 du workflow)
+    queueStrategicEmail({
+      bienNom,
+      phase: phaseWin?.label || "?",
+      todayISO: todayYMD,
+      subject: `Action requise – Changement de stratégie (${bienNom})`,
+      body:
+  `Bonjour Jérémy,
+
+  Un changement de stratégie est à prévoir pour le bien : ${bienNom}
+  Phase : ${phaseWin?.label || "?"}
+  Date : ${todayYMD}
+
+  Merci de contacter le client afin de piloter l’ajustement de la stratégie (sans formuler “rendez-vous nécessaire”).
+
+  — Analyse automatique`
+    });
+  }
+
   const weeklyBase = data._meta.weekly_cumul_base;
   const weeks = Object.keys(weeklyBase).sort();
 
@@ -341,6 +542,9 @@ function processBien(filePath) {
   data._meta.last_weekly_run = mondayKey;
   data.analysis.generatedAt = new Date().toISOString();
   data._meta.just_reset = false;
+  data.analysis.text = data.analysis.text || "";
+  data.analysis.alertes = detectAlertes(data);
+  data.analysis.generatedAt = new Date().toISOString();
 
   fs.writeFileSync(
     filePath,
