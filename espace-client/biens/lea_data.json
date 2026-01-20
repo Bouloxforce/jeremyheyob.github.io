@@ -1,17 +1,8 @@
 {
   "_meta": {
-    "weekly_cumul_base": {
-      "2026-01-19": {
-        "appels": 0,
-        "emails": 0,
-        "visites_effectuees": 0,
-        "offres": 0,
-        "vues_leboncoin": 0,
-        "favoris_leboncoin": 0
-      }
-    },
-    "mise_en_ligne_ref": "🔴YYYY-MM-DD",
-    "mise_en_ligne_initiale": "🔴YYYY-MM-DD",
+    "weekly_cumul_base": {},
+    "mise_en_ligne_ref": null,
+    "mise_en_ligne_initiale": null,
     "last_actuel_snapshot": {
       "appels": 0,
       "emails": 0,
@@ -22,42 +13,46 @@
     },
     "just_reset": false,
     "has_had_reset": false,
-    "last_weekly_run": "2026-01-19",
-    "last_vues_leboncoin_snapshot": 0,
-    "last_mandat_signe": "🔴YYYY-MM-DD",
-    "last_mise_en_ligne": "🔴YYYY-MM-DD"
+    "last_weekly_run": null,
+    "last_vues_leboncoin_snapshot": null
   },
+
   "bien": {
-    "nom": "🔴",
+    "nom": "Léa",
     "sous_titre": "Suivi de commercialisation"
   },
+
   "jours_arret_diffusion": 0,
+
   "diffusion": {
     "remontee": {
       "frequence": "Double remontée hebdomadaire automatique"
     }
   },
+
   "dates": {
-    "mandat_signe": "🔴YYYY-MM-DD",
-    "mise_en_ligne": "🔴YYYY-MM-DD",
+    "mandat_signe": "2025-04-04",
+    "mise_en_ligne": "2025-09-22",
     "derniere_remontee": null
   },
+
   "liens": {
-    "agenceimmo": "🔴",
-    "leboncoin": "🔴",
-    "seloger": "🔴",
-    "bienici": "🔴",
-    "logicimmo": "🔴",
-    "avendrealouer": "🔴",
-    "paruvendu": "🔴",
-    "lefigaro": "🔴",
-    "facebook": "🔴",
-    "instagram": "🔴",
-    "linkedin": "🔴",
-    "pagesjaunes": "🔴",
-    "google": "🔴",
-    "youtube": "🔴"
+    "agenceimmo": "https://www.agence.immo/achat/appartement-t4-4-pieces-saint-priest-69800-VA33999",
+    "leboncoin": "https://www.leboncoin.fr/ad/ventes_immobilieres/3128869810",
+    "seloger": "https://www.seloger.com/annonces/achat/appartement/saint-priest-69/258595321.htm?serp_view=list&search=distributionTypes%3DBuy%26estateTypes%3DApartment%26locations%3DPOCOFR4525%26priceMax%3D250000%26priceMin%3D250000#ln=classified_search_results&m=classified_search_results_classified_classified_detail_M",
+    "bienici": "https://www.bienici.com/annonce/vente/saint-priest/appartement/4pieces/netty-jaujard-appt-33999?q=%2Frecherche%2Fachat%2Fsaint-priest-69800%2F4-pieces-et-plus%3Fprix-max%3D250000",
+    "logicimmo": "https://www.logic-immo.com/detail-vente-258595321.htm?serp_view=list&search=distributionTypes%3DBuy%26estateTypes%3DHouse%2CApartment%26locations%3DPOCOFR4525%26priceMax%3D250000%26priceMin%3D250000%23ln%3Dclassified_search_results&m=classified_search_results_classified_classified_detail_M",
+    "avendrealouer": "https://www.avendrealouer.fr/vente/saint-priest-69/b-appartement/4-pieces/loc-101-33742/fd-3128869810.html",
+    "paruvendu": "https://www.paruvendu.fr/immobilier/vente/appartement/1287965449A1KIVHAP000",
+    "lefigaro": "https://immobilier.lefigaro.fr/annonces/annonce-96039301.html",
+    "facebook": "https://www.facebook.com/jeremyheyobimmobilier/posts/pfbid037Cg7XBi1fuukXu1KuJLtSTAabYPXFCRqLU5Qdpm5kWQt6km5skKrAyuVhw38Lhdzl",
+    "instagram": "https://www.instagram.com/p/DO8A3ZsCFwu/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==",
+    "linkedin": "https://www.linkedin.com/feed/update/urn:li:activity:7376166159546695680",
+    "pagesjaunes": "https://www.pagesjaunes.fr/actualites/details-actu/68d2582cb3ac524f6fd33371",
+    "google": "https://share.google/1J83a3hQ46O0icVXN",
+    "youtube": "https://youtu.be/oDVpOTFooCE"
   },
+
   "marche": {
     "taux_credit": {
       "moyen": null,
@@ -68,15 +63,16 @@
       "updatedAt": null
     }
   },
+
   "stats": {
     "actuel": {
-      "appels": 0,
-      "emails": 0,
-      "visites_effectuees": 0,
+      "appels": 7,
+      "emails": 7,
+      "visites_effectuees": 5,
       "visites_programmees": 0,
       "offres": 0,
-      "vues_leboncoin": 0,
-      "favoris_leboncoin": 0
+      "vues_leboncoin": 1076,
+      "favoris_leboncoin": 19
     },
     "cumul": {
       "appels": 0,
@@ -87,24 +83,18 @@
       "favoris_leboncoin": 0
     }
   },
+
   "analysis": {
-    "text": "La commercialisation se déroule dans de bonnes conditions. Les indicateurs actuels sont cohérents avec le marché. La stratégie en place est maintenue.",
+    "text": "",
     "evolution_text": "",
-    "generatedAt": "2026-01-20T16:49:58.703Z",
-    "noExploitableData": false,
+    "generatedAt": null,
+    "noExploitableData": true,
     "alertes": [],
-    "phase_active": "90+"
+    "phase_active": null
   },
-  "historique": [
-    {
-      "date": "2026-01-20",
-      "label": "Mandat signé le 🔴YYYY-MM-DD"
-    },
-    {
-      "date": "2026-01-20",
-      "label": "Annonce mise en ligne le 🔴YYYY-MM-DD"
-    }
-  ],
+
+  "historique": [],
+
   "strategie_3090": {
     "intro": "La commercialisation est structurée par paliers afin d’adapter la stratégie au comportement réel des acquéreurs et au contexte de marché.",
     "etapes": [
@@ -126,7 +116,7 @@
       {
         "jours": "+ 90 jours",
         "titre": "Phase de poursuite maîtrisée",
-        "strategie": "Poursuite possible de la commercialisation selon votre décision."
+        "strategie": "Poursuite de la commercialisation avec stratégie définie."
       }
     ]
   }
