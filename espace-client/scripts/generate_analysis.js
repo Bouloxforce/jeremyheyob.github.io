@@ -171,18 +171,27 @@ function logHistoriqueDateChange(data, fieldKey, labelPrefix, todayISO) {
   const currentValue = data.dates?.[fieldKey] ?? null;
   const metaKey = `last_${fieldKey}`;
 
+  // ⚠️ IMPORTANT : on distingue "jamais vu" de "déjà connu"
+  const hasAlreadyBeenLogged = Object.prototype.hasOwnProperty.call(
+    data._meta,
+    metaKey
+  );
+
   const lastValue = data._meta[metaKey] ?? null;
 
-  // Aucun changement → on ne fait rien
-  if (!currentValue || currentValue === lastValue) return;
+  // ⛔ Pas de date → rien à faire
+  if (!currentValue) return;
 
-  // Ajout dans l’historique
+  // ⛔ Date identique ET déjà enregistrée → rien
+  if (hasAlreadyBeenLogged && currentValue === lastValue) return;
+
+  // ✅ Première fois OU modification réelle
   data.historique.push({
     date: todayISO,
-    label: `${labelPrefix} le ${currentValue}`
+    label: labelPrefix
   });
 
-  // Mémorisation pour éviter les doublons au prochain run
+  // 🔒 On mémorise la valeur
   data._meta[metaKey] = currentValue;
 }
 
