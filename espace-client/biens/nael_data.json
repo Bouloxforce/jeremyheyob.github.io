@@ -40,7 +40,7 @@
   "dates": {
     "mandat_signe": "2025-03-27",
     "mise_en_ligne": "2026-01-10",
-    "derniere_remontee": null
+    "derniere_remontee": "2026-01-19"
   },
   "liens": {
     "agenceimmo": "https://www.agence.immo/achat/appartement-t3-3-pieces-saint-priest-69800-VA33936",
@@ -70,13 +70,13 @@
   },
   "stats": {
     "actuel": {
-      "appels": 0,
-      "emails": 0,
-      "visites_effectuees": 0,
+      "appels": 2,
+      "emails": 2,
+      "visites_effectuees": 1,
       "visites_programmees": 0,
       "offres": 0,
-      "vues_leboncoin": 0,
-      "favoris_leboncoin": 0
+      "vues_leboncoin": 104,
+      "favoris_leboncoin": 5
     },
     "cumul": {
       "appels": 0,
