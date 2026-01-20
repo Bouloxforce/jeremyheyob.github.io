@@ -24,6 +24,36 @@ jobs:
       - name: Génération analyse conditionnelle
         run: node espace-client/scripts/generate_analysis.js
 
+      - name: Préparer email (si queue présente)
+        id: mailvars
+        run: |
+          if [ -f "espace-client/strategic_email_queue.json" ]; then
+            # on prend le dernier item ajouté
+            SUBJECT=$(node -e "const a=require('./espace-client/strategic_email_queue.json'); const x=a[a.length-1]; console.log(x.subject)")
+            BODY=$(node -e "const a=require('./espace-client/strategic_email_queue.json'); const x=a[a.length-1]; console.log(x.body.replace(/\r?\n/g,'\\n'))")
+            echo "subject=$SUBJECT" >> $GITHUB_OUTPUT
+            echo "body=$BODY" >> $GITHUB_OUTPUT
+          else
+            echo "subject=" >> $GITHUB_OUTPUT
+            echo "body=" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Envoyer email si changement de stratégie requis
+        if: ${{ steps.mailvars.outputs.subject != '' }}
+        uses: dawidd6/action-send-mail@v3
+        with:
+          server_address: ${{ secrets.SMTP_SERVER }}
+          server_port: ${{ secrets.SMTP_PORT }}
+          username: ${{ secrets.SMTP_USERNAME }}
+          password: ${{ secrets.SMTP_PASSWORD }}
+          subject: ${{ steps.mailvars.outputs.subject }}
+          body: ${{ steps.mailvars.outputs.body }}
+          to: ${{ secrets.EMAIL_TO }}
+          from: ${{ secrets.EMAIL_FROM }}
+        env:
+          EMAIL_QUEUE_PATH: espace-client/strategic_email_queue.json
+
+
       - name: Commit si modification
         run: |
           if [[ -n "$(git status --porcelain)" ]]; then
