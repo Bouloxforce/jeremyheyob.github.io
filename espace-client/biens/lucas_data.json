@@ -1,50 +1,54 @@
 {
   "_meta": {
-    "weekly_cumul_base": {},
-    "mise_en_ligne_ref": null,
-    "mise_en_ligne_initiale": null,
+    "weekly_cumul_base": {
+      "2026-01-19": {
+        "appels": 1,
+        "emails": 1,
+        "visites_effectuees": 0,
+        "offres": 0,
+        "vues_leboncoin": 72,
+        "favoris_leboncoin": 6
+      }
+    },
+    "mise_en_ligne_ref": "2026-01-10",
+    "mise_en_ligne_initiale": "2025-08-25",
     "last_actuel_snapshot": {
-      "appels": 0,
-      "emails": 0,
+      "appels": 1,
+      "emails": 1,
       "visites_effectuees": 0,
       "offres": 0,
-      "vues_leboncoin": 0,
-      "favoris_leboncoin": 0
+      "vues_leboncoin": 72,
+      "favoris_leboncoin": 6
     },
     "just_reset": false,
     "has_had_reset": false,
-    "last_weekly_run": null,
-    "last_vues_leboncoin_snapshot": null
+    "last_weekly_run": "2026-01-19",
+    "last_vues_leboncoin_snapshot": 72
   },
-
   "bien": {
     "nom": "Lucas",
     "sous_titre": "Suivi de commercialisation"
   },
-
-  "jours_arret_diffusion": 0,
-
+  "jours_arret_diffusion": 60,
   "diffusion": {
     "remontee": {
       "frequence": "Double remontée hebdomadaire automatique"
     }
   },
-
   "dates": {
     "mandat_signe": "2025-07-16",
     "mise_en_ligne": "2026-01-10",
     "derniere_remontee": null
   },
-
   "liens": {
-    "agenceimmo": "🔴",
-    "leboncoin": "🔴",
-    "seloger": "🔴",
-    "bienici": "🔴",
-    "logicimmo": "🔴",
-    "avendrealouer": "🔴",
-    "paruvendu": "🔴",
-    "lefigaro": "🔴",
+    "agenceimmo": "https://www.agence.immo/achat/appartement-t4-4-pieces-saint-priest-69800-VA33938",
+    "leboncoin": "https://www.leboncoin.fr/ad/ventes_immobilieres/3125084365",
+    "seloger": "https://www.seloger.com/annonces/achat/appartement/saint-priest-69/mi-plaine-manissieux-village/258035381.htm?serp_view=list&search=distributionTypes%3DBuy%26estateTypes%3DHouse%2CApartment%26locations%3DPOCOFR4525%26priceMax%3D290000%26priceMin%3D290000#ln=classified_search_results&m=classified_search_results_classified_classified_detail_M",
+    "bienici": "https://www.bienici.com/annonce/vente/saint-priest/appartement/4pieces/netty-jaujard-appt-33938?q=%2Frecherche%2Fachat%2Fsaint-priest-69800%2F4-pieces-et-plus%3Fprix-max%3D290000",
+    "logicimmo": "https://www.logic-immo.com/detail-vente-258035381.htm?serp_view=list&search=distributionTypes%3DBuy%26estateTypes%3DHouse%2CApartment%26locations%3DPOCOFR4525%26priceMax%3D290000%26priceMin%3D290000%23ln%3Dclassified_search_results&m=classified_search_results_classified_classified_detail_M",
+    "avendrealouer": "https://www.avendrealouer.fr/vente/saint-priest-69/b-appartement/4-pieces/loc-101-33742/fd-3125084365.html",
+    "paruvendu": "https://www.paruvendu.fr/immobilier/vente/appartement/1287793577A1KIVHAP000",
+    "lefigaro": "https://immobilier.lefigaro.fr/annonces/annonce-95658049.html",
     "facebook": "🔴",
     "instagram": "🔴",
     "linkedin": "🔴",
@@ -52,7 +56,6 @@
     "google": "🔴",
     "youtube": "🔴"
   },
-
   "marche": {
     "taux_credit": {
       "moyen": null,
@@ -63,38 +66,34 @@
       "updatedAt": null
     }
   },
-
   "stats": {
     "actuel": {
-      "appels": 0,
-      "emails": 0,
+      "appels": 1,
+      "emails": 1,
       "visites_effectuees": 0,
       "visites_programmees": 0,
       "offres": 0,
-      "vues_leboncoin": 0,
-      "favoris_leboncoin": 0
+      "vues_leboncoin": 72,
+      "favoris_leboncoin": 6
     },
     "cumul": {
-      "appels": 0,
-      "emails": 0,
+      "appels": 1,
+      "emails": 1,
       "visites_effectuees": 0,
       "offres": 0,
-      "vues_leboncoin": 0,
-      "favoris_leboncoin": 0
+      "vues_leboncoin": 72,
+      "favoris_leboncoin": 6
     }
   },
-
   "analysis": {
-    "text": "",
+    "text": "La commercialisation se déroule dans de bonnes conditions. Les indicateurs actuels sont cohérents avec le marché. La stratégie en place est maintenue.",
     "evolution_text": "",
-    "generatedAt": null,
-    "noExploitableData": true,
+    "generatedAt": "2026-01-20T13:48:53.977Z",
+    "noExploitableData": false,
     "alertes": [],
-    "phase_active": null
+    "phase_active": "90+"
   },
-
   "historique": [],
-
   "strategie_3090": {
     "intro": "La commercialisation est structurée par paliers afin d’adapter la stratégie au comportement réel des acquéreurs et au contexte de marché.",
     "etapes": [
@@ -116,7 +115,7 @@
       {
         "jours": "+ 90 jours",
         "titre": "Phase de poursuite maîtrisée",
-        "strategie": "Poursuite possible de la commercialisation selon votre décision."
+        "strategie": "Poursuite de la commercialisation avec stratégie fixée."
       }
     ]
   }
