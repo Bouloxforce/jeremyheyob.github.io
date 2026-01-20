@@ -1365,7 +1365,7 @@
 
     // Tri décroissant par date (si date ISO)
     const sorted = items
-      .filter(e => e && e.date && e.action)
+      .filter(e => e && e.date && e.label)
       .slice()
       .sort((a, b) => {
         const da = new Date(a.date).getTime();
@@ -1376,8 +1376,8 @@
     sorted.forEach((e) => {
       const li = document.createElement("li");
       const date = e.date ? formatDateISO(e.date) : "—";
-      const action = e.action ? String(e.action) : "";
-      li.innerHTML = "<strong>" + date + "</strong> — " + escapeHTML(action);
+      const label = e.label ? String(e.label) : "";
+      li.innerHTML = "<strong>" + date + "</strong> — " + escapeHTML(label);
       ul.appendChild(li);
     });
     // ===== LIMITE À 8 HISTORIQUES VISIBLES =====
