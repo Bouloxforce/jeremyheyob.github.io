@@ -2035,8 +2035,9 @@ function render404() {
         );
 
       } else if (evo?.empty) {
-        const evoEl = document.getElementById("evolution-commentaire");
-        if (evoEl) evoEl.style.display = "none";
+        setLineText(
+          "La tendance sur la semaine écoulée sera disponible dès que des données seront exploitables."
+        );
 
       } else if (evo) {
 
