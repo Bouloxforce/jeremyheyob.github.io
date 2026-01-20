@@ -1,14 +1,6 @@
 {
   "_meta": {
     "weekly_cumul_base": {
-      "2026-01-05": {
-        "appels": 11,
-        "emails": 11,
-        "visites_effectuees": 11,
-        "offres": 6,
-        "vues_leboncoin": 704,
-        "favoris_leboncoin": 86
-      },
       "2026-01-12": {
         "appels": 11,
         "emails": 11,
@@ -16,30 +8,36 @@
         "offres": 6,
         "vues_leboncoin": 705,
         "favoris_leboncoin": 86
+      },
+      "2026-01-19": {
+        "appels": 15,
+        "emails": 15,
+        "visites_effectuees": 11,
+        "offres": 6,
+        "vues_leboncoin": 710,
+        "favoris_leboncoin": 86
       }
     },
     "mise_en_ligne_ref": "2026-01-06",
     "mise_en_ligne_initiale": "2025-10-01",
     "last_actuel_snapshot": {
-      "appels": 11,
-      "emails": 11,
+      "appels": 15,
+      "emails": 15,
       "visites_effectuees": 11,
       "offres": 6,
-      "vues_leboncoin": 705,
+      "vues_leboncoin": 710,
       "favoris_leboncoin": 86
     },
     "just_reset": false,
     "has_had_reset": true,
-    "last_weekly_run": "2026-01-12",
-    "last_vues_leboncoin_snapshot": 705
+    "last_weekly_run": "2026-01-19",
+    "last_vues_leboncoin_snapshot": 710
   },
   "bien": {
     "nom": "Naël",
     "sous_titre": "Suivi de commercialisation"
   },
-  
   "jours_arret_diffusion": 60,
-  
   "diffusion": {
     "remontee": {
       "frequence": "Double remontée hebdomadaire automatique"
@@ -87,22 +85,20 @@
       "favoris_leboncoin": 86
     },
     "cumul": {
-      "appels": 72,
-      "emails": 21,
+      "appels": 76,
+      "emails": 25,
       "visites_effectuees": 24,
       "offres": 16,
-      "vues_leboncoin": 1423,
+      "vues_leboncoin": 1428,
       "favoris_leboncoin": 99
     }
   },
   "analysis": {
     "text": "La commercialisation se déroule dans de bonnes conditions. Les indicateurs actuels sont cohérents avec le marché. La stratégie en place est maintenue.",
-    "evolution_text": "Appels : stable\nEmails : stable\nVisites effectuées : stable\nOffres : stable\nVues Leboncoin : +1\nFavoris Leboncoin : stable",
-    "generatedAt": "2026-01-12T10:15:20.969Z",
+    "evolution_text": "Appels : +4\nEmails : +4\nVisites effectuées : stable\nOffres : stable\nVues Leboncoin : +5\nFavoris Leboncoin : stable",
+    "generatedAt": "2026-01-20T10:40:24.272Z",
     "noExploitableData": false,
-    "alertes": [
-      "❗ Aucune interaction récente"
-    ]
+    "alertes": []
   },
   "historique": [
     {
