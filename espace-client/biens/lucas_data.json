@@ -2,36 +2,34 @@
   "_meta": {
     "weekly_cumul_base": {
       "2026-01-19": {
-        "appels": 0,
-        "emails": 0,
+        "appels": 1,
+        "emails": 1,
         "visites_effectuees": 0,
         "offres": 0,
-        "vues_leboncoin": 0,
-        "favoris_leboncoin": 0
+        "vues_leboncoin": 72,
+        "favoris_leboncoin": 6
       }
     },
     "mise_en_ligne_ref": "2026-01-10",
     "mise_en_ligne_initiale": "2025-08-25",
     "last_actuel_snapshot": {
-      "appels": 0,
-      "emails": 0,
+      "appels": 1,
+      "emails": 1,
       "visites_effectuees": 0,
       "offres": 0,
-      "vues_leboncoin": 0,
-      "favoris_leboncoin": 0
+      "vues_leboncoin": 72,
+      "favoris_leboncoin": 6
     },
     "just_reset": false,
-    "has_had_reset": true,
-    "last_vues_leboncoin_snapshot": 0,
-    "last_mandat_signe": "2025-07-16",
-    "last_mise_en_ligne": "2026-01-10",
-    "last_weekly_run": "2026-01-19"
+    "has_had_reset": false,
+    "last_weekly_run": "2026-01-19",
+    "last_vues_leboncoin_snapshot": 72
   },
   "bien": {
     "nom": "Lucas",
     "sous_titre": "Suivi de commercialisation"
   },
-  "jours_arret_diffusion": 60,
+  "jours_arret_diffusion": 50,
   "diffusion": {
     "remontee": {
       "frequence": "Double remontée hebdomadaire automatique"
@@ -70,13 +68,13 @@
   },
   "stats": {
     "actuel": {
-      "appels": 0,
-      "emails": 0,
+      "appels": 1,
+      "emails": 1,
       "visites_effectuees": 0,
       "visites_programmees": 0,
       "offres": 0,
-      "vues_leboncoin": 0,
-      "favoris_leboncoin": 0
+      "vues_leboncoin": 72,
+      "favoris_leboncoin": 6
     },
     "cumul": {
       "appels": 1,
@@ -90,10 +88,10 @@
   "analysis": {
     "text": "La commercialisation se déroule dans de bonnes conditions. Les indicateurs actuels sont cohérents avec le marché. La stratégie en place est maintenue.",
     "evolution_text": "",
-    "generatedAt": "2026-01-20T15:26:03.755Z",
+    "generatedAt": "2026-01-20T13:48:53.977Z",
     "noExploitableData": false,
-    "phase_active": "90",
-    "alertes": []
+    "alertes": [],
+    "phase_active": "90+"
   },
   "historique": [
     {
