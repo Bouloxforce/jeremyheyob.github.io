@@ -90,7 +90,7 @@
     "generatedAt": "2026-01-20T12:00:00.000Z",
     "noExploitableData": true,
     "alertes": [],
-    "phase_active": ""
+    "phase_active": null
   },
 
   "historique": [],
