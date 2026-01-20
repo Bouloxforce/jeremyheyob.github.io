@@ -504,13 +504,22 @@ function processBien(filePath) {
     });
   }
 
-    data.analysis.noExploitableData = false;
+  data.analysis.noExploitableData = false;
+   // =========================
+   // TENDANCE HEBDOMADAIRE RÉELLE (N vs N-1)
+   // =========================
 
-  if (!hasExploitableWeeklyData(data._meta.weekly_cumul_base)) {
+   const weeks = Object.keys(data._meta.weekly_cumul_base || {}).sort();
+
+   if (weeks.length >= 2) {
+     const prev = data._meta.weekly_cumul_base[weeks[weeks.length - 2]];
+     const curr = data._meta.weekly_cumul_base[weeks[weeks.length - 1]];
+
+     const delta = computeWeeklyResults(prev, curr);
+
      data.analysis.evolution_text =
-       "La tendance sur la semaine écoulée sera disponible dès que des données seront exploitables.";
-     data.analysis.noExploitableData = true;
-   } else {
+       buildEvolutionTextFromWeeklyResults(delta);
+
      data.analysis.noExploitableData = false;
    }
 
