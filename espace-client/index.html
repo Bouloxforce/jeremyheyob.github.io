@@ -2035,8 +2035,8 @@ function render404() {
         );
 
       } else if (evo?.empty) {
-        document.getElementById("evolution-commentaire").style.display = "none";
-        document.getElementById("evolution-empty").style.display = "block";
+        const evoEl = document.getElementById("evolution-commentaire");
+        if (evoEl) evoEl.style.display = "none";
 
       } else if (evo) {
 
