@@ -1376,8 +1376,10 @@
     sorted.forEach((e) => {
       const li = document.createElement("li");
       const date = e.date ? formatDateISO(e.date) : "—";
-      const label = e.label ? String(e.label) : "";
-      li.innerHTML = "<strong>" + date + "</strong> — " + escapeHTML(label);
+      const labelRaw = e.label ? String(e.label) : "";
+      const labelClean = labelRaw.split(" le ")[0];
+      li.innerHTML =
+        "<strong>" + date + "</strong> — " + escapeHTML(labelClean);
       ul.appendChild(li);
     });
     // ===== LIMITE À 8 HISTORIQUES VISIBLES =====
