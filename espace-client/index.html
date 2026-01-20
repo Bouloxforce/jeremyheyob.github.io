@@ -2085,7 +2085,7 @@ function render404() {
       const analyseEmptyEl = document.getElementById("analyse-empty");
 
       if (analyseText) {
-        analyseEl.textContent = analyseText;
+        analyseEl.innerHTML = `<span class="evo-stable">${escapeHTML(analyseText)}</span>`;
         analyseEl.style.display = "block";
         if (analyseEmptyEl) analyseEmptyEl.style.display = "none";
       } else {
