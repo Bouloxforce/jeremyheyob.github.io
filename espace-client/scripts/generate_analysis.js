@@ -139,6 +139,28 @@ function pruneToNWeeks(obj, keep = 2) {
   while (keys.length > keep) delete obj[keys.shift()];
 }
 
+function logHistoriqueDateChange(data, fieldKey, labelPrefix, todayISO) {
+  data._meta ??= {};
+  data.historique ??= [];
+
+  const currentValue = data.dates?.[fieldKey] ?? null;
+  const metaKey = `last_${fieldKey}`;
+
+  const lastValue = data._meta[metaKey] ?? null;
+
+  // Aucun changement → on ne fait rien
+  if (!currentValue || currentValue === lastValue) return;
+
+  // Ajout dans l’historique
+  data.historique.push({
+    date: todayISO,
+    label: `${labelPrefix} le ${currentValue}`
+  });
+
+  // Mémorisation pour éviter les doublons au prochain run
+  data._meta[metaKey] = currentValue;
+}
+
 /* =========================
    CONFIG MÉTRIQUES
 ========================= */
@@ -317,6 +339,22 @@ function processBien(filePath) {
    if (Number.isFinite(lastVues) && currentVues === lastVues) {
      return;
    }
+
+   // 🔒 DÉCLENCHEUR STRICT PASSÉ → on peut écrire
+
+   logHistoriqueDateChange(
+     data,
+     "mandat_signe",
+     "Mandat signé",
+     todayYMD
+   );
+
+   logHistoriqueDateChange(
+     data,
+     "mise_en_ligne",
+     "Annonce mise en ligne",
+     todayYMD
+   );
 
   /* --- Sécurisation --- */
   data.stats ??= {};
