@@ -37,6 +37,9 @@
     "nom": "Naël",
     "sous_titre": "Suivi de commercialisation"
   },
+  
+  "jours_arret_diffusion": 60,
+  
   "diffusion": {
     "remontee": {
       "frequence": "Double remontée hebdomadaire automatique"
