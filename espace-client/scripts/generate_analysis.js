@@ -89,15 +89,27 @@ function addDaysISO(isoYMD, days) {
   return d.toISOString().slice(0, 10);
 }
 
-// Renvoie le dernier lundi STRICTEMENT avant endISO (YYYY-MM-DD)
 function lastMondayBefore(endISO) {
+  if (
+    typeof endISO !== "string" ||
+    !/^\d{4}-\d{2}-\d{2}$/.test(endISO)
+  ) {
+    return null;
+  }
+
   const end = new Date(`${endISO}T00:00:00Z`);
-  // reculer d’un jour pour être "avant" la fin
+
+  if (Number.isNaN(end.getTime())) {
+    return null;
+  }
+
+  // reculer d’un jour pour être strictement avant
   end.setUTCDate(end.getUTCDate() - 1);
 
   const day = end.getUTCDay(); // 0=dim,1=lun...
-  const diff = day === 0 ? 6 : day - 1; // nb de jours à reculer pour tomber sur lundi
+  const diff = day === 0 ? 6 : day - 1;
   end.setUTCDate(end.getUTCDate() - diff);
+
   return end.toISOString().slice(0, 10);
 }
 
