@@ -1,7 +1,7 @@
 {
   "_meta": {
     "weekly_cumul_base": {
-      "2026-01-12": {
+      "2026-01-05": {
         "appels": 11,
         "emails": 11,
         "visites_effectuees": 11,
@@ -9,13 +9,13 @@
         "vues_leboncoin": 701,
         "favoris_leboncoin": 86
       },
-      "2026-01-19": {
-        "appels": 72,
-        "emails": 21,
-        "visites_effectuees": 24,
-        "offres": 16,
-        "vues_leboncoin": 1419,
-        "favoris_leboncoin": 99
+      "2026-01-12": {
+        "appels": 11,
+        "emails": 11,
+        "visites_effectuees": 11,
+        "offres": 6,
+        "vues_leboncoin": 702,
+        "favoris_leboncoin": 86
       }
     },
     "mise_en_ligne_ref": "2026-01-06",
@@ -30,7 +30,7 @@
     },
     "just_reset": false,
     "has_had_reset": true,
-    "last_weekly_run": "2026-01-19",
+    "last_weekly_run": "2026-01-12",
     "last_vues_leboncoin_snapshot": 702
   },
   "bien": {
@@ -80,7 +80,7 @@
       "visites_effectuees": 11,
       "visites_programmees": 0,
       "offres": 6,
-      "vues_leboncoin": 702,
+      "vues_leboncoin": 703,
       "favoris_leboncoin": 86
     },
     "cumul": {
@@ -95,7 +95,7 @@
   "analysis": {
     "text": "La commercialisation se déroule dans de bonnes conditions. Les indicateurs actuels sont cohérents avec le marché. La stratégie en place est maintenue.",
     "evolution_text": "Appels : +10\nEmails : +10\nVisites effectuées : +7\nOffres : +5\nVues Leboncoin : +320\nFavoris Leboncoin : +76",
-    "generatedAt": "2026-01-20T09:40:01.179Z",
+    "generatedAt": "2026-01-12T09:40:01.179Z",
     "noExploitableData": false,
     "alertes": []
   },
