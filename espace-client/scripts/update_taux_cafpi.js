@@ -54,28 +54,32 @@ async function run() {
   // =========================
   // 3️⃣ Mise à jour du JSON
   // =========================
-  const data = JSON.parse(fs.readFileSync(FILE_PATH, "utf-8"));
-  const precedent = Number(data?.marche?.taux_credit?.moyen) || null;
+  try {
+    const data = JSON.parse(fs.readFileSync(FILE_PATH, "utf-8"));
+    const precedent = Number(data?.marche?.taux_credit?.moyen) || null;
 
-  data.marche = data.marche || {};
-  data.marche.taux_credit = {
-    moyen: tauxMoyen25,
-    precedent: precedent,
-    duree: "25 ans",
-    source: "CAFPI – baromètre (taux moyen)",
-    periode: new Date().toISOString().slice(0, 7),
-    updatedAt: new Date().toISOString()
-  };
+    data.marche = data.marche || {};
+    data.marche.taux_credit = {
+      moyen: tauxMoyen25,
+      precedent: precedent,
+      duree: "25 ans",
+      source: "CAFPI – baromètre (taux moyen)",
+      periode: new Date().toISOString().slice(0, 7),
+      updatedAt: new Date().toISOString()
+    };
 
-  fs.writeFileSync(FILE_PATH, JSON.stringify(data, null, 2), "utf-8");
+    fs.writeFileSync(FILE_PATH, JSON.stringify(data, null, 2), "utf-8");
 
-  console.log("✔ Taux moyen CAFPI 25 ans mis à jour :", tauxMoyen25);
-}
+    console.log("✔ Taux CAFPI 25 ans mis à jour :", tauxMoyen25);
+  } catch (err) {
+    console.warn("⚠️ Impossible d’écrire le taux CAFPI, données conservées :", err.message);
+  }
 
 // =========================
 // ▶️ Exécution
 // =========================
 run().catch(err => {
-  console.error("❌ Erreur taux CAFPI :", err.message);
-  process.exit(1);
+  console.warn("⚠️ Taux CAFPI non mis à jour (conservation du dernier taux) :", err.message);
+  // On ne casse PAS la CI : dépendance externe non bloquante
+  process.exit(0);
 });
