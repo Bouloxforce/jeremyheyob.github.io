@@ -87,10 +87,10 @@
   "analysis": {
     "text": "",
     "evolution_text": "",
-    "generatedAt": "",
+    "generatedAt": "2026-01-20T12:00:00.000Z",
     "noExploitableData": true,
     "alertes": [],
-    "phase_active": "30"
+    "phase_active": ""
   },
 
   "historique": [],
