@@ -90,7 +90,7 @@
     "generatedAt": null,
     "noExploitableData": true,
     "alertes": [],
-    "phase_active": "30"
+    "phase_active": null
   },
 
   "historique": [],
