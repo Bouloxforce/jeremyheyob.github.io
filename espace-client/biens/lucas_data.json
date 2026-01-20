@@ -66,13 +66,13 @@
 
   "stats": {
     "actuel": {
-      "appels": 0,
-      "emails": 0,
+      "appels": 1,
+      "emails": 1,
       "visites_effectuees": 0,
       "visites_programmees": 0,
       "offres": 0,
-      "vues_leboncoin": 0,
-      "favoris_leboncoin": 0
+      "vues_leboncoin": 72,
+      "favoris_leboncoin": 6
     },
     "cumul": {
       "appels": 0,
@@ -116,7 +116,7 @@
       {
         "jours": "+ 90 jours",
         "titre": "Phase de poursuite maîtrisée",
-        "strategie": "Poursuite possible de la commercialisation selon votre décision."
+        "strategie": "Poursuite de la commercialisation avec stratégie fixée."
       }
     ]
   }
