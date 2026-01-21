@@ -31,7 +31,7 @@
     "nom": "Naël",
     "sous_titre": "Suivi de commercialisation"
   },
-  "jours_arret_diffusion": 0,
+  "jours_arret_diffusion": 51,
   "diffusion": {
     "remontee": {
       "frequence": "Double remontée hebdomadaire automatique"
@@ -39,7 +39,7 @@
   },
   "dates": {
     "mandat_signe": "2025-03-27",
-    "mise_en_ligne": "2025-04-14",
+    "mise_en_ligne": "2026-01-10",
     "derniere_remontee": null
   },
   "liens": {
