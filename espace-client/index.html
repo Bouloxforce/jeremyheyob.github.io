@@ -1337,7 +1337,7 @@
     return d.toLocaleDateString("fr-FR");
   }
 
-  function renderHistorique(items) {
+  function renderHistorique(items, dates) {
     const ul = document.getElementById("historique-list");
     const wrapper = ul?.closest(".historique-wrapper");
     const fade = document.querySelector(".historique-fade");
@@ -1374,8 +1374,8 @@
         if (db !== da) return db - da;
 
         // 2️⃣ Exception métier UNIQUEMENT
-        const firstMandat = data?.dates?.mandat_signe;
-        const firstMiseEnLigne = data?.dates?.mise_en_ligne;
+        const firstMandat = dates?.mandat_signe;
+        const firstMiseEnLigne = dates?.mise_en_ligne;
 
         const aIsFirstMandat =
           a.label.includes("Mandat") && a.date === firstMandat;
@@ -2168,7 +2168,7 @@ function render404() {
       }
 
       // HISTORIQUE ET RENDEZ-VOUS
-      renderHistorique(data.historique);
+      renderHistorique(data.historique, data.dates);
       renderRDVAvenir(data.historique);
     })
 
