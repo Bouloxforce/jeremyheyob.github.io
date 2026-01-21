@@ -10,53 +10,53 @@
         "favoris_leboncoin": 0
       }
     },
-    "mise_en_ligne_ref": "🔴YYYY-MM-DD",
-    "mise_en_ligne_initiale": "🔴YYYY-MM-DD",
+    "mise_en_ligne_ref": "2026-01-10",
+    "mise_en_ligne_initiale": "2025-04-14",
     "last_actuel_snapshot": {
-      "appels": 0,
-      "emails": 0,
-      "visites_effectuees": 0,
+      "appels": 2,
+      "emails": 2,
+      "visites_effectuees": 1,
       "offres": 0,
-      "vues_leboncoin": 0,
-      "favoris_leboncoin": 0
+      "vues_leboncoin": 104,
+      "favoris_leboncoin": 5
     },
     "just_reset": false,
-    "has_had_reset": false,
-    "last_weekly_run": "2026-01-19",
-    "last_vues_leboncoin_snapshot": 0,
-    "last_mise_en_ligne": "🔴YYYY-MM-DD",
-    "last_mandat_signe": "🔴YYYY-MM-DD"
+    "has_had_reset": true,
+    "last_vues_leboncoin_snapshot": 104,
+    "last_mandat_signe": "2025-03-27",
+    "last_mise_en_ligne": "2026-01-10",
+    "last_weekly_run": "2026-01-19"
   },
   "bien": {
-    "nom": "🔴",
+    "nom": "Naël",
     "sous_titre": "Suivi de commercialisation"
   },
-  "jours_arret_diffusion": 0,
+  "jours_arret_diffusion": 51,
   "diffusion": {
     "remontee": {
       "frequence": "Double remontée hebdomadaire automatique"
     }
   },
   "dates": {
-    "mandat_signe": "🔴YYYY-MM-DD",
-    "mise_en_ligne": "🔴YYYY-MM-DD",
-    "derniere_remontee": null
+    "mandat_signe": "2025-03-27",
+    "mise_en_ligne": "2026-01-10",
+    "derniere_remontee": "2026-01-19"
   },
   "liens": {
-    "agenceimmo": "🔴",
-    "leboncoin": "🔴",
-    "seloger": "🔴",
-    "bienici": "🔴",
-    "logicimmo": "🔴",
-    "avendrealouer": "🔴",
-    "paruvendu": "🔴",
-    "lefigaro": "🔴",
-    "facebook": "🔴",
-    "instagram": "🔴",
-    "linkedin": "🔴",
-    "pagesjaunes": "🔴",
-    "google": "🔴",
-    "youtube": "🔴"
+    "agenceimmo": "https://www.agence.immo/achat/appartement-t3-3-pieces-saint-priest-69800-VA33936",
+    "leboncoin": "https://www.leboncoin.fr/ad/ventes_immobilieres/3125084359",
+    "seloger": "https://www.seloger.com/annonces/achat/appartement/saint-priest-69/revaison/258035379.htm?serp_view=list&search=distributionTypes%3DBuy%26estateTypes%3DHouse%2CApartment%26locations%3DPOCOFR4525%26priceMax%3D210000%26priceMin%3D210000#ln=classified_search_results&m=classified_search_results_classified_classified_detail_M",
+    "bienici": "https://www.bienici.com/annonce/vente/saint-priest/appartement/3pieces/netty-jaujard-appt-33936?q=%2Frecherche%2Fachat%2Fsaint-priest-69800%2F3-pieces-et-plus%3Fprix-min%3D210000%26prix-max%3D210000%26camera%3D13_4.9474426_45.701428_0_0",
+    "logicimmo": "https://www.logic-immo.com/detail-vente-258035379.htm?serp_view=list&search=distributionTypes%3DBuy%26estateTypes%3DHouse%2CApartment%26locations%3DPOCOFR4525%26priceMax%3D210000%26priceMin%3D210000%23ln%3Dclassified_search_results&m=classified_search_results_classified_classified_detail_M",
+    "avendrealouer": "https://www.avendrealouer.fr/vente/saint-priest-69/b-appartement/3-pieces/loc-101-33742/fd-3125084359.html",
+    "paruvendu": "https://www.paruvendu.fr/immobilier/vente/appartement/1287793576A1KIVHAP000",
+    "lefigaro": "https://immobilier.lefigaro.fr/annonces/annonce-95658047.html",
+    "facebook": "https://www.facebook.com/jeremyheyobimmobilier/posts/pfbid0nWYhtXMTBLEBn1iMkK9YUtAvFQJn1VLgDo9Qxo91yuw9yJjhgCmBjfwxziZyobrMl",
+    "instagram": "https://www.instagram.com/p/DQggmwMCH9u/?utm_source=ig_web_copy_link&igsh=MTZ6bDAwcjh4MGZnOA==",
+    "linkedin": "https://www.linkedin.com/feed/update/urn:li:activity:7390307382934798336",
+    "pagesjaunes": "https://www.pagesjaunes.fr/actualites/details-actu/68bea33b98400b7a9bb2b3de",
+    "google": "https://share.google/ioGABUB8aGEF1kNCi",
+    "youtube": "https://youtu.be/BcZKUKU0p-U"
   },
   "marche": {
     "taux_credit": {
@@ -70,38 +70,70 @@
   },
   "stats": {
     "actuel": {
-      "appels": 0,
-      "emails": 0,
-      "visites_effectuees": 0,
+      "appels": 2,
+      "emails": 2,
+      "visites_effectuees": 1,
       "visites_programmees": 0,
       "offres": 0,
-      "vues_leboncoin": 0,
-      "favoris_leboncoin": 0
+      "vues_leboncoin": 104,
+      "favoris_leboncoin": 5
     },
     "cumul": {
-      "appels": 0,
-      "emails": 0,
-      "visites_effectuees": 0,
-      "offres": 0,
-      "vues_leboncoin": 0,
-      "favoris_leboncoin": 0
+      "appels": 26,
+      "emails": 2,
+      "visites_effectuees": 24,
+      "offres": 1,
+      "vues_leboncoin": 1531,
+      "favoris_leboncoin": 49
     }
   },
   "analysis": {
     "text": "La commercialisation se déroule dans de bonnes conditions. Les indicateurs actuels sont cohérents avec le marché. La stratégie en place est maintenue.",
     "evolution_text": "",
-    "generatedAt": "2026-01-21T02:42:46.301Z",
+    "generatedAt": "2026-01-21T02:42:17.808Z",
     "noExploitableData": false,
-    "alertes": [],
-    "phase_active": "90+"
+    "phase_active": "90+",
+    "alertes": []
   },
   "historique": [
     {
-      "date": "2026-01-21",
+      "date": "2026-01-19",
+      "label": "🔃 Remontée automatique de l'annonce"
+    },
+    {
+      "date": "2026-01-19",
+      "label": "📩 Nouvel email reçu"
+    },
+    {
+      "date": "2026-01-14",
+      "label": "❌ Visite annulée"
+    },
+    {
+      "date": "2026-01-14",
+      "label": "🚪 Nouvelle visite programmée le 17-01-2026 à 10h00"
+    },
+    {
+      "date": "2026-01-13",
+      "label": "🔃 Remontée automatique de l'annonce"
+    },
+    {
+      "date": "2026-01-12",
+      "label": "🚪 Nouvelle visite programmée le 16-01-2026 à 16h45"
+    },
+    {
+      "date": "2026-01-12",
+      "label": "📞 Nouvel appel reçu"
+    },
+    {
+      "date": "2026-01-10",
+      "label": "📩 Nouvel email reçu"
+    },
+    {
+      "date": "2026-01-10",
       "label": "✅ Annonce mise en ligne"
     },
     {
-      "date": "2026-01-21",
+      "date": "2025-03-27",
       "label": "✍️ Mandat enregistré"
     }
   ],
