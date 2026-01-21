@@ -168,31 +168,33 @@ function logHistoriqueDateChange(data, fieldKey, labelPrefix, todayISO) {
   data._meta ??= {};
   data.historique ??= [];
 
-  const currentValue = data.dates?.[fieldKey] ?? null;
+  const currentValue = data.dates?.[fieldKey];
   const metaKey = `last_${fieldKey}`;
+  const lastValue = data._meta[metaKey];
 
-  // ⚠️ IMPORTANT : on distingue "jamais vu" de "déjà connu"
-  const hasAlreadyBeenLogged = Object.prototype.hasOwnProperty.call(
-    data._meta,
-    metaKey
-  );
+  // ⛔ BLOQUANT : pas une vraie date ISO
+  if (!isValidISODate(currentValue)) return;
 
-  const lastValue = data._meta[metaKey] ?? null;
+  // 🟢 Première saisie réelle
+  if (!lastValue) {
+    data.historique.push({
+      date: todayISO,
+      label: labelPrefix
+    });
 
-  // ⛔ Pas de date → rien à faire
-  if (!currentValue) return;
+    data._meta[metaKey] = currentValue;
+    return;
+  }
 
-  // ⛔ Date identique ET déjà enregistrée → rien
-  if (hasAlreadyBeenLogged && currentValue === lastValue) return;
+  // 🔁 Changement réel
+  if (currentValue !== lastValue) {
+    data.historique.push({
+      date: todayISO,
+      label: labelPrefix
+    });
 
-  // ✅ Première fois OU modification réelle
-  data.historique.push({
-    date: todayISO,
-    label: labelPrefix
-  });
-
-  // 🔒 On mémorise la valeur
-  data._meta[metaKey] = currentValue;
+    data._meta[metaKey] = currentValue;
+  }
 }
 
 /* =========================
