@@ -60,12 +60,12 @@
   },
   "marche": {
     "taux_credit": {
-      "moyen": null,
-      "precedent": null,
+      "moyen": 3.35,
+      "precedent": 3.33,
       "duree": "25 ans",
       "source": "CAFPI – baromètre (taux moyen)",
-      "periode": null,
-      "updatedAt": null
+      "periode": "2026-01",
+      "updatedAt": "2026-01-21T10:32:40.644Z"
     }
   },
   "stats": {
@@ -99,11 +99,11 @@
   },
   "historique": [
     {
-      "date": "2026-01-21",
+      "date": "2024-04-06",
       "label": "✅ Annonce mise en ligne"
     },
     {
-      "date": "2026-01-21",
+      "date": "2024-03-16",
       "label": "✍️ Mandat enregistré"
     }
   ],
