@@ -1,31 +1,31 @@
 {
   "_meta": {
     "weekly_cumul_base": {
-      "2026-01-12": {
-        "appels": 3,
+      "2026-01-19": {
+        "appels": 0,
         "emails": 0,
-        "visites_effectuees": 3,
-        "offres": 1,
-        "vues_leboncoin": 619,
-        "favoris_leboncoin": 19
+        "visites_effectuees": 0,
+        "offres": 0,
+        "vues_leboncoin": 0,
+        "favoris_leboncoin": 0
       }
     },
-    "mise_en_ligne_ref": "2025-08-02",
+    "mise_en_ligne_ref": "2026-01-10",
     "mise_en_ligne_initiale": "2025-08-02",
     "last_actuel_snapshot": {
-      "appels": 3,
+      "appels": 0,
       "emails": 0,
-      "visites_effectuees": 3,
-      "offres": 1,
-      "vues_leboncoin": 619,
-      "favoris_leboncoin": 19
+      "visites_effectuees": 0,
+      "offres": 0,
+      "vues_leboncoin": 0,
+      "favoris_leboncoin": 0
     },
     "just_reset": false,
-    "has_had_reset": false,
-    "last_weekly_run": "2026-01-19",
+    "has_had_reset": true,
     "last_vues_leboncoin_snapshot": 619,
     "last_mandat_signe": "2025-07-16",
-    "last_mise_en_ligne": "2025-08-02"
+    "last_mise_en_ligne": "2026-01-10",
+    "last_weekly_run": "2026-01-19"
   },
   "bien": {
     "nom": "Lucas",
@@ -70,13 +70,13 @@
   },
   "stats": {
     "actuel": {
-      "appels": 3,
+      "appels": 0,
       "emails": 0,
-      "visites_effectuees": 3,
+      "visites_effectuees": 0,
       "visites_programmees": 0,
-      "offres": 1,
-      "vues_leboncoin": 619,
-      "favoris_leboncoin": 19
+      "offres": 0,
+      "vues_leboncoin": 0,
+      "favoris_leboncoin": 0
     },
     "cumul": {
       "appels": 3,
@@ -90,10 +90,10 @@
   "analysis": {
     "text": "La commercialisation se déroule dans de bonnes conditions. Les indicateurs actuels sont cohérents avec le marché. La stratégie en place est maintenue.",
     "evolution_text": "",
-    "generatedAt": "2026-01-21T01:49:30.581Z",
+    "generatedAt": "2026-01-21T01:53:14.007Z",
     "noExploitableData": false,
-    "alertes": [],
-    "phase_active": "90+"
+    "phase_active": "90+",
+    "alertes": []
   },
   "historique": [
     {
@@ -119,6 +119,10 @@
     {
       "date": "2025-07-16",
       "label": "✍️ Mandat enregistré le 2025-07-16"
+    },
+    {
+      "date": "2026-01-21",
+      "label": "✅ Annonce mise en ligne"
     }
   ],
   "strategie_3090": {
