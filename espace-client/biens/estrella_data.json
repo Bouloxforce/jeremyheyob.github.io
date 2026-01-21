@@ -1,8 +1,17 @@
 {
   "_meta": {
-    "weekly_cumul_base": {},
-    "mise_en_ligne_ref": null,
-    "mise_en_ligne_initiale": null,
+    "weekly_cumul_base": {
+      "2026-01-19": {
+        "appels": 0,
+        "emails": 0,
+        "visites_effectuees": 0,
+        "offres": 0,
+        "vues_leboncoin": 0,
+        "favoris_leboncoin": 0
+      }
+    },
+    "mise_en_ligne_ref": "🔴YYYY-MM-DD",
+    "mise_en_ligne_initiale": "🔴YYYY-MM-DD",
     "last_actuel_snapshot": {
       "appels": 0,
       "emails": 0,
@@ -13,29 +22,24 @@
     },
     "just_reset": false,
     "has_had_reset": false,
-    "last_weekly_run": null,
-    "last_vues_leboncoin_snapshot": null
+    "last_weekly_run": "2026-01-19",
+    "last_vues_leboncoin_snapshot": 0
   },
-
   "bien": {
     "nom": "🔴",
     "sous_titre": "Suivi de commercialisation"
   },
-
   "jours_arret_diffusion": 0,
-
   "diffusion": {
     "remontee": {
       "frequence": "Double remontée hebdomadaire automatique"
     }
   },
-
   "dates": {
     "mandat_signe": "🔴YYYY-MM-DD",
     "mise_en_ligne": "🔴YYYY-MM-DD",
     "derniere_remontee": null
   },
-
   "liens": {
     "agenceimmo": "🔴",
     "leboncoin": "🔴",
@@ -52,7 +56,6 @@
     "google": "🔴",
     "youtube": "🔴"
   },
-
   "marche": {
     "taux_credit": {
       "moyen": null,
@@ -63,7 +66,6 @@
       "updatedAt": null
     }
   },
-
   "stats": {
     "actuel": {
       "appels": 0,
@@ -83,18 +85,15 @@
       "favoris_leboncoin": 0
     }
   },
-
   "analysis": {
-    "text": "",
+    "text": "La commercialisation se déroule dans de bonnes conditions. Les indicateurs actuels sont cohérents avec le marché. La stratégie en place est maintenue.",
     "evolution_text": "",
-    "generatedAt": null,
-    "noExploitableData": true,
+    "generatedAt": "2026-01-21T11:06:01.486Z",
+    "noExploitableData": false,
     "alertes": [],
-    "phase_active": null
+    "phase_active": "90+"
   },
-
   "historique": [],
-
   "strategie_3090": {
     "intro": "La commercialisation est structurée par paliers afin d’adapter la stratégie au comportement réel des acquéreurs et au contexte de marché.",
     "etapes": [
