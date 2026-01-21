@@ -1363,25 +1363,37 @@
       return;
     }
 
-    // Tri décroissant par date (si date ISO)
     const sorted = items
       .filter(e => e && e.date && e.label)
       .slice()
       .sort((a, b) => {
-        // 1️⃣ Date décroissante (plus récent en haut)
-        if (a.date !== b.date) {
-          return new Date(b.date) - new Date(a.date);
-        }
+        const da = new Date(a.date).getTime();
+        const db = new Date(b.date).getTime();
 
-        // 2️⃣ Ordre métier à date égale
-        const priority = (label) => {
-          if (!label) return 99;
-          if (label.startsWith("Annonce mise en ligne")) return 1;
-          if (label.startsWith("Mandat signé")) return 2;
-          return 50;
-        };
+        // 1️⃣ Tri principal : date décroissante
+        if (db !== da) return db - da;
 
-        return priority(a.label) - priority(b.label);
+        // 2️⃣ Exception métier UNIQUEMENT
+        const firstMandat = data?.dates?.mandat_signe;
+        const firstMiseEnLigne = data?.dates?.mise_en_ligne;
+
+        const aIsFirstMandat =
+          a.label.includes("Mandat") && a.date === firstMandat;
+
+        const aIsFirstAnnonce =
+          a.label.includes("Annonce mise en ligne") && a.date === firstMiseEnLigne;
+
+        const bIsFirstMandat =
+          b.label.includes("Mandat") && b.date === firstMandat;
+
+        const bIsFirstAnnonce =
+          b.label.includes("Annonce mise en ligne") && b.date === firstMiseEnLigne;
+
+        // 👉 PRIORITÉ : annonce AVANT mandat (première fois seulement)
+        if (aIsFirstAnnonce && bIsFirstMandat) return -1;
+        if (aIsFirstMandat && bIsFirstAnnonce) return 1;
+
+        return 0;
       });
 
     sorted.forEach((e) => {
