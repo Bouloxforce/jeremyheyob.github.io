@@ -40,7 +40,7 @@
   "dates": {
     "mandat_signe": "2025-03-27",
     "mise_en_ligne": "2026-01-10",
-    "derniere_remontee": null
+    "derniere_remontee": "2026-01-19"
   },
   "liens": {
     "agenceimmo": "https://www.agence.immo/achat/appartement-t3-3-pieces-saint-priest-69800-VA33936",
@@ -70,13 +70,13 @@
   },
   "stats": {
     "actuel": {
-      "appels": 0,
-      "emails": 0,
-      "visites_effectuees": 0,
+      "appels": 2,
+      "emails": 2,
+      "visites_effectuees": 1,
       "visites_programmees": 0,
       "offres": 0,
-      "vues_leboncoin": 0,
-      "favoris_leboncoin": 0
+      "vues_leboncoin": 104,
+      "favoris_leboncoin": 5
     },
     "cumul": {
       "appels": 24,
@@ -97,16 +97,44 @@
   },
   "historique": [
     {
-      "date": "2026-01-21",
+      "date": "2026-01-19",
+      "label": "🔃 Remontée automatique de l'annonce"
+    },
+    {
+      "date": "2026-01-19",
+      "label": "📩 Nouvel email reçu"
+    },
+    {
+      "date": "2026-01-14",
+      "label": "❌ Visite annulée"
+    },
+    {
+      "date": "2026-01-14",
+      "label": "🚪 Nouvelle visite programmée le 17-01-2026 à 10h00"
+    },
+    {
+      "date": "2026-01-13",
+      "label": "🔃 Remontée automatique de l'annonce"
+    },
+    {
+      "date": "2026-01-12",
+      "label": "🚪 Nouvelle visite programmée le 16-01-2026 à 16h45"
+    },
+    {
+      "date": "2026-01-12",
+      "label": "📞 Nouvel appel reçu"
+    },
+    {
+      "date": "2026-01-10",
+      "label": "📩 Nouvel email reçu"
+    },
+    {
+      "date": "2026-01-10",
+      "label": "✅ Annonce mise en ligne"
+    },
+    {
+      "date": "2025-03-27",
       "label": "✍️ Mandat enregistré"
-    },
-    {
-      "date": "2026-01-21",
-      "label": "✅ Annonce mise en ligne"
-    },
-    {
-      "date": "2026-01-21",
-      "label": "✅ Annonce mise en ligne"
     }
   ],
   "strategie_3090": {
