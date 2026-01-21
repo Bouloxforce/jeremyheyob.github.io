@@ -1,41 +1,47 @@
 {
   "_meta": {
-    "weekly_cumul_base": {},
-    "mise_en_ligne_ref": null,
-    "mise_en_ligne_initiale": null,
+    "weekly_cumul_base": {
+      "2026-01-19": {
+        "appels": 3,
+        "emails": 0,
+        "visites_effectuees": 3,
+        "offres": 1,
+        "vues_leboncoin": 619,
+        "favoris_leboncoin": 19
+      }
+    },
+    "mise_en_ligne_ref": "2025-08-02",
+    "mise_en_ligne_initiale": "2025-08-02",
     "last_actuel_snapshot": {
-      "appels": 0,
+      "appels": 3,
       "emails": 0,
-      "visites_effectuees": 0,
-      "offres": 0,
-      "vues_leboncoin": 0,
-      "favoris_leboncoin": 0
+      "visites_effectuees": 3,
+      "offres": 1,
+      "vues_leboncoin": 619,
+      "favoris_leboncoin": 19
     },
     "just_reset": false,
     "has_had_reset": false,
-    "last_weekly_run": null,
-    "last_vues_leboncoin_snapshot": null
+    "last_weekly_run": "2026-01-19",
+    "last_vues_leboncoin_snapshot": 619,
+    "last_mandat_signe": "2025-07-16",
+    "last_mise_en_ligne": "2025-08-02"
   },
-
   "bien": {
     "nom": "Lucas",
     "sous_titre": "Suivi de commercialisation"
   },
-
   "jours_arret_diffusion": 38,
-
   "diffusion": {
     "remontee": {
       "frequence": "Double remontée hebdomadaire automatique"
     }
   },
-
   "dates": {
     "mandat_signe": "2025-07-16",
     "mise_en_ligne": "2025-08-02",
     "derniere_remontee": null
   },
-
   "liens": {
     "agenceimmo": "https://www.agence.immo/achat/appartement-t4-4-pieces-saint-priest-69800-VA33938",
     "leboncoin": "https://www.leboncoin.fr/ad/ventes_immobilieres/3125084365",
@@ -52,7 +58,6 @@
     "google": "https://share.google/I2pbi6KnERS4xEnNN",
     "youtube": "https://youtu.be/2oZQuC-kPks"
   },
-
   "marche": {
     "taux_credit": {
       "moyen": null,
@@ -63,7 +68,6 @@
       "updatedAt": null
     }
   },
-
   "stats": {
     "actuel": {
       "appels": 3,
@@ -75,26 +79,32 @@
       "favoris_leboncoin": 19
     },
     "cumul": {
-      "appels": 0,
+      "appels": 3,
       "emails": 0,
-      "visites_effectuees": 0,
-      "offres": 0,
-      "vues_leboncoin": 0,
-      "favoris_leboncoin": 0
+      "visites_effectuees": 3,
+      "offres": 1,
+      "vues_leboncoin": 619,
+      "favoris_leboncoin": 19
     }
   },
-
   "analysis": {
-    "text": "",
+    "text": "La commercialisation se déroule dans de bonnes conditions. Les indicateurs actuels sont cohérents avec le marché. La stratégie en place est maintenue.",
     "evolution_text": "",
-    "generatedAt": null,
-    "noExploitableData": true,
+    "generatedAt": "2026-01-21T00:17:19.895Z",
+    "noExploitableData": false,
     "alertes": [],
-    "phase_active": null
+    "phase_active": "90+"
   },
-
-  "historique": [],
-
+  "historique": [
+    {
+      "date": "2026-01-21",
+      "label": "✍️ Mandat enregistré"
+    },
+    {
+      "date": "2026-01-21",
+      "label": "✅ Annonce mise en ligne"
+    }
+  ],
   "strategie_3090": {
     "intro": "La commercialisation est structurée par paliers afin d’adapter la stratégie au comportement réel des acquéreurs et au contexte de marché.",
     "etapes": [
