@@ -164,6 +164,17 @@ function pruneToNWeeks(obj, keep = 2) {
   while (keys.length > keep) delete obj[keys.shift()];
 }
 
+function isValidISODate(value) {
+  if (typeof value !== "string") return false;
+  if (!value.trim()) return false;
+
+  // format ISO strict YYYY-MM-DD
+  if (!/^\d{4}-\d{2}-\d{2}$/.test(value)) return false;
+
+  const d = new Date(`${value}T00:00:00Z`);
+  return !Number.isNaN(d.getTime());
+}
+
 function logHistoriqueDateChange(data, fieldKey, labelPrefix, todayISO) {
   data._meta ??= {};
   data.historique ??= [];
@@ -172,8 +183,11 @@ function logHistoriqueDateChange(data, fieldKey, labelPrefix, todayISO) {
   const metaKey = `last_${fieldKey}`;
   const lastValue = data._meta[metaKey];
 
-  // ⛔ BLOQUANT : pas une vraie date ISO
-  if (!isValidISODate(currentValue)) return;
+  // ⛔ Pas une vraie date ISO → on purge la mémoire
+   if (!isValidISODate(currentValue)) {
+     delete data._meta[metaKey];
+     return;
+   }
 
   // 🟢 Première saisie réelle
   if (!lastValue) {
