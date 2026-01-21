@@ -365,15 +365,15 @@ function processBien(filePath) {
 
    logHistoriqueDateChange(
      data,
-     "mandat_signe",
-     "✍️ Mandat enregistré",
-     todayYMD
-   );
-
-   logHistoriqueDateChange(
-     data,
      "mise_en_ligne",
      "✅ Annonce mise en ligne",
+     todayYMD
+   );
+   
+   logHistoriqueDateChange(
+     data,
+     "mandat_signe",
+     "✍️ Mandat enregistré",
      todayYMD
    );
 
