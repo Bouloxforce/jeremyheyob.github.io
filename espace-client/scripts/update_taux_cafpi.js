@@ -2,8 +2,7 @@ import fs from "fs";
 import path from "path";
 import { JSDOM } from "jsdom";
 
-const BIEN = "nael";
-const FILE_PATH = path.join("espace-client", "biens", `${BIEN}_data.json`);
+const BIENS_DIR = path.join("espace-client", "biens");
 const URL = "https://www.cafpi.fr/credit-immobilier/barometre-taux";
 
 async function run() {
@@ -54,25 +53,33 @@ async function run() {
   // =========================
   // 3️⃣ Mise à jour du JSON
   // =========================
-  try {
-    const data = JSON.parse(fs.readFileSync(FILE_PATH, "utf-8"));
-    const precedent = Number(data?.marche?.taux_credit?.moyen) || null;
+  const files = fs
+    .readdirSync(BIENS_DIR)
+    .filter(f => f.endsWith("_data.json"));
 
-    data.marche = data.marche || {};
-    data.marche.taux_credit = {
-      moyen: tauxMoyen25,
-      precedent: precedent,
-      duree: "25 ans",
-      source: "CAFPI – baromètre (taux moyen)",
-      periode: new Date().toISOString().slice(0, 7),
-      updatedAt: new Date().toISOString()
-    };
+  for (const file of files) {
+    const filePath = path.join(BIENS_DIR, file);
 
-    fs.writeFileSync(FILE_PATH, JSON.stringify(data, null, 2), "utf-8");
+    try {
+      const data = JSON.parse(fs.readFileSync(filePath, "utf-8"));
+      const precedent = Number(data?.marche?.taux_credit?.moyen) || null;
 
-    console.log("✔ Taux CAFPI 25 ans mis à jour :", tauxMoyen25);
-  } catch (err) {
-    console.warn("⚠️ Impossible d’écrire le taux CAFPI, données conservées :", err.message);
+      data.marche ??= {};
+      data.marche.taux_credit = {
+        moyen: tauxMoyen25,
+        precedent: precedent,
+        duree: "25 ans",
+        source: "CAFPI – baromètre (taux moyen)",
+        periode: new Date().toISOString().slice(0, 7),
+        updatedAt: new Date().toISOString()
+      };
+
+      fs.writeFileSync(filePath, JSON.stringify(data, null, 2), "utf-8");
+
+      console.log(`✔ Taux CAFPI mis à jour pour ${file}`);
+    } catch (err) {
+      console.warn(`⚠️ Erreur mise à jour ${file} :`, err.message);
+    }
   }
 }
 
