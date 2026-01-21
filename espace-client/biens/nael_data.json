@@ -2,30 +2,30 @@
   "_meta": {
     "weekly_cumul_base": {
       "2026-01-19": {
-        "appels": 24,
+        "appels": 0,
         "emails": 0,
-        "visites_effectuees": 23,
-        "offres": 1,
-        "vues_leboncoin": 1427,
-        "favoris_leboncoin": 44
+        "visites_effectuees": 0,
+        "offres": 0,
+        "vues_leboncoin": 0,
+        "favoris_leboncoin": 0
       }
     },
-    "mise_en_ligne_ref": "2025-04-14",
+    "mise_en_ligne_ref": "2026-01-10",
     "mise_en_ligne_initiale": "2025-04-14",
     "last_actuel_snapshot": {
-      "appels": 24,
+      "appels": 0,
       "emails": 0,
-      "visites_effectuees": 23,
-      "offres": 1,
-      "vues_leboncoin": 1427,
-      "favoris_leboncoin": 44
+      "visites_effectuees": 0,
+      "offres": 0,
+      "vues_leboncoin": 0,
+      "favoris_leboncoin": 0
     },
     "just_reset": false,
-    "has_had_reset": false,
-    "last_weekly_run": "2026-01-19",
+    "has_had_reset": true,
     "last_vues_leboncoin_snapshot": 1427,
     "last_mandat_signe": "2025-03-27",
-    "last_mise_en_ligne": "2025-04-14"
+    "last_mise_en_ligne": "2026-01-10",
+    "last_weekly_run": "2026-01-19"
   },
   "bien": {
     "nom": "Naël",
@@ -70,13 +70,13 @@
   },
   "stats": {
     "actuel": {
-      "appels": 24,
+      "appels": 0,
       "emails": 0,
-      "visites_effectuees": 23,
+      "visites_effectuees": 0,
       "visites_programmees": 0,
-      "offres": 1,
-      "vues_leboncoin": 1427,
-      "favoris_leboncoin": 44
+      "offres": 0,
+      "vues_leboncoin": 0,
+      "favoris_leboncoin": 0
     },
     "cumul": {
       "appels": 24,
@@ -90,15 +90,19 @@
   "analysis": {
     "text": "La commercialisation se déroule dans de bonnes conditions. Les indicateurs actuels sont cohérents avec le marché. La stratégie en place est maintenue.",
     "evolution_text": "",
-    "generatedAt": "2026-01-21T02:14:40.608Z",
+    "generatedAt": "2026-01-21T02:20:07.570Z",
     "noExploitableData": false,
-    "alertes": [],
-    "phase_active": "90+"
+    "phase_active": "90+",
+    "alertes": []
   },
   "historique": [
     {
       "date": "2026-01-21",
       "label": "✍️ Mandat enregistré"
+    },
+    {
+      "date": "2026-01-21",
+      "label": "✅ Annonce mise en ligne"
     },
     {
       "date": "2026-01-21",
