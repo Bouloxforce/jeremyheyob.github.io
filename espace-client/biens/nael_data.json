@@ -13,16 +13,16 @@
     "mise_en_ligne_ref": "2026-01-10",
     "mise_en_ligne_initiale": "2025-04-14",
     "last_actuel_snapshot": {
-      "appels": 0,
-      "emails": 0,
-      "visites_effectuees": 0,
+      "appels": 2,
+      "emails": 2,
+      "visites_effectuees": 1,
       "offres": 0,
-      "vues_leboncoin": 0,
-      "favoris_leboncoin": 0
+      "vues_leboncoin": 104,
+      "favoris_leboncoin": 5
     },
     "just_reset": false,
     "has_had_reset": true,
-    "last_vues_leboncoin_snapshot": 0,
+    "last_vues_leboncoin_snapshot": 104,
     "last_mandat_signe": "2025-03-27",
     "last_mise_en_ligne": "2026-01-10",
     "last_weekly_run": "2026-01-19"
@@ -79,18 +79,18 @@
       "favoris_leboncoin": 5
     },
     "cumul": {
-      "appels": 24,
-      "emails": 0,
-      "visites_effectuees": 23,
+      "appels": 26,
+      "emails": 2,
+      "visites_effectuees": 24,
       "offres": 1,
-      "vues_leboncoin": 1427,
-      "favoris_leboncoin": 44
+      "vues_leboncoin": 1531,
+      "favoris_leboncoin": 49
     }
   },
   "analysis": {
     "text": "La commercialisation se déroule dans de bonnes conditions. Les indicateurs actuels sont cohérents avec le marché. La stratégie en place est maintenue.",
     "evolution_text": "",
-    "generatedAt": "2026-01-21T02:23:33.458Z",
+    "generatedAt": "2026-01-21T02:37:18.124Z",
     "noExploitableData": false,
     "phase_active": "90+",
     "alertes": []
