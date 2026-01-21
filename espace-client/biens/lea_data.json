@@ -31,7 +31,7 @@
     "nom": "Léa",
     "sous_titre": "Suivi de commercialisation"
   },
-  "jours_arret_diffusion": 0,
+  "jours_arret_diffusion": 75,
   "diffusion": {
     "remontee": {
       "frequence": "Double remontée hebdomadaire automatique"
