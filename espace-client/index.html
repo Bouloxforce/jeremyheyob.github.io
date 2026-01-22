@@ -1472,7 +1472,7 @@
         if (!e?.action) return false;
 
         // 👉 date réelle du rendez-vous extraite du texte
-        const rdvDateISO = extractDateFromAction(e.action);
+        const rdvDateISO = extractDateFromAction(e.label);
         if (!rdvDateISO) return false;
 
         // 👉 uniquement les RDV aujourd’hui ou futurs
