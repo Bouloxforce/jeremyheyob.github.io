@@ -808,7 +808,7 @@
       }
 
       /* Grilles */
-      .actions-grid {
+      .s-grid {
         grid-template-columns: 1fr;
       }
 
@@ -989,7 +989,7 @@
     <section class="card" id="strategie-3090" style="margin-top:22px;">
       <div class="pill">Stratégie de commercialisation</div>
 
-      <h2>Plan d’action</h2>
+      <h2>Plan d’</h2>
 
       <p class="subtitle" id="strategie-intro">
         —
@@ -1478,7 +1478,7 @@
         // 👉 uniquement les RDV aujourd’hui ou futurs
         if (rdvDateISO < todayISO) return false;
 
-        const action = e.action
+        const action = e.label
           .toLowerCase()
           .normalize("NFD")
           .replace(/[\u0300-\u036f]/g, "");
@@ -1500,12 +1500,12 @@
       prochainsRDV.forEach(e => {
         const li = document.createElement("li");
 
-        const dateISO = extractDateFromAction(e.action);
+        const dateISO = extractDateFromAction(e.label);
         const dateFormatted = formatDateISO(dateISO);
 
         // Texte sans la date (on la retire du libellé)
         const actionClean = escapeHTML(
-          e.action
+          e.label
           // supprime "le " uniquement s’il précède une date
           .replace(/\ble\s+(?=\d{2}\/\d{2}\/\d{4})/i, "")
           // supprime ensuite la date
@@ -1615,8 +1615,8 @@
     const visites = historique
       .filter(e =>
         e?.date &&
-        typeof e.action === "string" &&
-        e.action.toLowerCase().includes("visite")
+        typeof e.label === "string" &&
+        e.label.toLowerCase().includes("visite")
       )
       .map(e => new Date(e.date))
       .filter(d => !isNaN(d.getTime()));
