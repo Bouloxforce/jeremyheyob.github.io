@@ -13,7 +13,7 @@
     "mise_en_ligne_ref": "2026-01-17",
     "mise_en_ligne_initiale": "2025-09-22",
     "last_actuel_snapshot": {
-      "appels": 0,
+      "appels": 1,
       "emails": 0,
       "visites_effectuees": 0,
       "offres": 0,
@@ -79,7 +79,7 @@
       "favoris_leboncoin": 0
     },
     "cumul": {
-      "appels": 7,
+      "appels": 8,
       "emails": 7,
       "visites_effectuees": 5,
       "offres": 0,
@@ -90,7 +90,7 @@
   "analysis": {
     "text": "La commercialisation se déroule dans de bonnes conditions. Les indicateurs actuels sont cohérents avec le marché. La stratégie en place est maintenue.",
     "evolution_text": "",
-    "generatedAt": "2026-01-22T14:02:44.937Z",
+    "generatedAt": "2026-01-22T16:41:22.550Z",
     "noExploitableData": false,
     "alertes": [],
     "phase_active": "60"
