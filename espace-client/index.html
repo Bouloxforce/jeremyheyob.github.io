@@ -1469,7 +1469,7 @@
       ];
 
       const prochainsRDV = historique.filter(e => {
-        if (!e?.action) return false;
+        if (!e?.label) return false;
 
         // 👉 date réelle du rendez-vous extraite du texte
         const rdvDateISO = extractDateFromAction(e.label);
@@ -1493,8 +1493,8 @@
       }
 
       prochainsRDV.sort((a, b) =>
-        extractDateFromAction(a.action)
-          .localeCompare(extractDateFromAction(b.action))
+        extractDateFromAction(a.label)
+          .localeCompare(extractDateFromAction(b.label))
       );
 
       prochainsRDV.forEach(e => {
