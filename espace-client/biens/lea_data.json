@@ -70,10 +70,10 @@
   },
   "stats": {
     "actuel": {
-      "appels": 0,
+      "appels": 1,
       "emails": 0,
       "visites_effectuees": 0,
-      "visites_programmees": 0,
+      "visites_programmees": 1,
       "offres": 0,
       "vues_leboncoin": 0,
       "favoris_leboncoin": 0
@@ -96,6 +96,10 @@
     "phase_active": "60"
   },
   "historique": [
+    {
+      "date": "2026-22-01",
+      "label": "🚪 Nouvelle visite programmée le 23/01/2025 à 9h00"
+    },
     {
       "date": "2025-04-04",
       "label": "✍️ Mandat enregistré"
