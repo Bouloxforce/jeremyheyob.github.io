@@ -1400,7 +1400,7 @@
       const li = document.createElement("li");
       const date = e.date ? formatDateISO(e.date) : "—";
       const labelRaw = e.label ? String(e.label) : "";
-      const labelClean = labelRaw.split(" le ")[0];
+      const labelClean = labelRaw;
       li.innerHTML =
         "<strong>" + date + "</strong> — " + escapeHTML(labelClean);
       ul.appendChild(li);
