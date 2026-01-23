@@ -94,7 +94,7 @@
   },
   "dates": {
     "mise_en_ligne": "2026-01-17",
-    "derniere_remontee": null,
+    "derniere_remontee": 2026-01-22,
     "mandat_signe": "2025-04-04"
   },
   "stats": {
@@ -121,6 +121,10 @@
     "sous_titre": "Suivi de commercialisation"
   },
   "historique": [
+    {
+      "date": "2026-01-22",
+      "label": "⬆️ Remontée automatique de l'annonce"
+    },
     {
       "date": "2026-01-22",
       "label": "🚪 Nouvelle visite programmée le 23/01/2026 à 9h00"
