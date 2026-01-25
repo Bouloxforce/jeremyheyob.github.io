@@ -1,4 +1,14 @@
 {
+  "slug": "eliot",
+  "statut": "disponible",
+
+  "type": "T3",
+  "surface": 54,
+  "exterieur": 18,
+  "annee": 2018,
+  "etage": "Rez-de-jardin",
+  "photo_couverture": "eliot 1.webp",
+
   "nom": "Eliot",
   "description": "Appartement T3 sécurisé avec nombreux rangements et grand extérieur.",
   "ville": "Saint-Priest",
