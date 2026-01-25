@@ -368,6 +368,13 @@
       height: 20px;
     }
 
+    .empty-message {
+      font-size: 13px;
+      color: var(--text-soft);
+      font-style: italic;
+      padding: 12px 4px 28px;
+    }
+    
         @media (max-width: 880px) {
 
   /* Header */
@@ -627,8 +634,10 @@ async function loadAccueil() {
 
 function renderBiens(biens, containerId, clickable) {
   const container = document.getElementById(containerId);
+
   if (!biens || !biens.length) {
-    container.style.display = 'none';
+    container.innerHTML =
+      `<div class="empty-message">Aucun bien actuellement disponible</div>`;
     return;
   }
 
