@@ -1,0 +1,22 @@
+{
+  "disponibles": [
+    {
+      "slug": "eliot",
+      "nom": "Eliot",
+      "photo": "/espace-visite/eliot/photos/photo-accueil.webp",
+      "tag": "Appartement T3",
+      "ville": "Saint-Priest",
+      "meta": ["T3", "62 m²", "Balcon"]
+    }
+  ],
+  "sous_compromis": [
+    {
+      "slug": "romy",
+      "nom": "Romy",
+      "photo": "/espace-visite/sous-compromis/romy/photos/photo-accueil.webp",
+      "tag": "Appartement T3",
+      "ville": "Saint-Priest",
+      "meta": ["T3", "60 m²"]
+    }
+  ]
+}
