@@ -1,66 +1,287 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8">
-  <meta name="robots" content="noindex, nofollow, noarchive, nosnippet">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="format-detection" content="telephone=no,date=no,address=no,email=no">
-
-  <title id="page-title">Espace visite | Bien | Jérémy Heyob Immobilier</title>
-  <link rel="icon" href="/favicon.ico">
+  <link rel="icon" href="/favicon.ico" sizes="any">
   <link rel="apple-touch-icon" href="/favicon.ico">
+  <meta charset="UTF-8">
+  <meta name="format-detection" content="telephone=no,date=no,address=no,email=no">
+  <meta name="robots" content="noindex, nofollow, noarchive, nosnippet">
+  <title id="page-title">Espace visite | Bien | Jérémy Heyob Immobilier</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link id="preload-image" rel="preload" as="image">
 
-  <style>
-    :root{
-      --bg:#FFFBF5;
-      --accent:#C6AA77;
-      --accent-soft:rgba(198,169,119,0.16);
-      --text-main:#191919;
-      --text-soft:#7A7A7A;
-      --border-soft:#e5e7eb;
-      --card-bg:#fff;
-      --shadow-soft:0 20px 50px rgba(25,25,25,0.10);
-    }
-    *{box-sizing:border-box}
-    body{margin:0;font-family:-apple-system,BlinkMacSystemFont,system-ui,sans-serif;background:var(--bg);color:var(--text-main)}
-    .page{max-width:1100px;margin:0 auto;padding:24px 16px 50px}
-    header{display:flex;align-items:center;justify-content:space-between;max-width:960px;margin:16px auto 24px;padding:8px 28px;background:#fff;border-radius:22px;box-shadow:var(--shadow-soft)}
-    .logo{max-width:140px}
-    .header-center{text-align:center;flex:1}
-    .tagline-main{font-size:13px;letter-spacing:.18em;color:var(--text-soft)}
-    .tagline-sub{margin-top:12px;font-size:12px;text-transform:uppercase}
-    .tagline-sub strong{font-weight:900}
-    .btn-retour{display:inline-block;margin:10px 0 18px;padding:6px 12px;font-size:13px;color:#7a5a29;text-decoration:none;border-radius:10px;border:1px solid rgba(198,169,119,.35);background:rgba(198,169,119,.10)}
-    .layout{display:grid;grid-template-columns:1.2fr .8fr;gap:22px}
-    .card{background:#fff;border-radius:22px;padding:20px;border:1px solid var(--border-soft);box-shadow:var(--shadow-soft)}
-    .pill{background:var(--accent-soft);color:var(--accent);padding:5px 12px;border-radius:999px;font-size:11px;font-weight:600}
-    h1{font-size:26px;margin:10px 0 4px}
-    .subtitle{color:var(--text-soft)}
-    .chips{margin-top:12px}
-    .chip{display:inline-block;margin:0 6px 6px 0;padding:6px 12px;border-radius:999px;background:rgba(198,169,119,.10);font-size:12px}
-    .carousel{margin:20px 0;overflow:hidden;border-radius:16px;position:relative}
-    .carousel-track{display:flex;transition:transform .35s ease}
-    .carousel img{width:100%;flex:0 0 100%;cursor:pointer}
-    .carousel-btn{position:absolute;top:50%;transform:translateY(-50%);background:#fff;border:none;font-size:22px;border-radius:999px;padding:6px 12px;cursor:pointer}
-    .carousel-btn.prev{left:10px}
-    .carousel-btn.next{right:10px}
-    .grid-two{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-top:20px;font-size:14px}
-    .grid-two span{font-size:12px;color:var(--text-soft)}
-    ul{padding-left:18px}
-    .contact-block{display:flex;gap:18px;align-items:center;background:#fff;border-radius:20px;padding:16px;border:1px solid var(--border-soft);box-shadow:0 18px 40px rgba(25,25,25,.08);max-width:960px;margin:30px auto 0}
-    .contact-photo{width:90px;height:90px;border-radius:50%;overflow:hidden;border:2px solid #e5e7eb}
-    .contact-photo img{width:100%;height:100%;object-fit:cover}
-    .legal-footer{text-align:center;font-size:11.5px;color:var(--text-soft);margin-top:40px}
-    .lightbox{position:fixed;inset:0;background:rgba(0,0,0,.85);display:none;align-items:center;justify-content:center;z-index:9999}
-    .lightbox.active{display:flex}
-    .lightbox img{max-width:90%;max-height:90vh;border-radius:12px}
-    @media(max-width:880px){
-      .layout{grid-template-columns:1fr}
-      header{flex-direction:column}
-      .contact-block{flex-direction:column;text-align:center}
-    }
-  </style>
+<style>
+/* ============================
+   CSS STRICTEMENT IDENTIQUE
+   ============================ */
+
+:root {
+  --bg: #FFFBF5;
+  --accent: #C6AA77;
+  --accent-soft: rgba(198,169,119,0.16);
+  --text-main: #191919;
+  --text-soft: #7A7A7A;
+  --border-soft: #e5e7eb;
+  --card-bg: #ffffff;
+  --shadow-soft: 0 20px 50px rgba(25,25,25,0.10);
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+  background: var(--bg);
+  color: var(--text-main);
+  overflow-x: hidden;
+}
+
+.page {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 24px 16px 50px;
+}
+
+header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+  max-width: 960px;
+  margin: 16px auto 24px;
+  padding: 8px 28px;
+  background: var(--card-bg);
+  border-radius: 22px;
+  box-shadow: var(--shadow-soft);
+  border: 1px solid rgba(15,23,42,0.04);
+}
+
+.logo { max-width: 140px; }
+
+.header-center {
+  flex: 1;
+  text-align: center;
+}
+
+.tagline-main {
+  font-size: 13px;
+  letter-spacing: 0.18em;
+  color: var(--text-soft);
+}
+
+.tagline-sub {
+  margin-top: 12px;
+  margin-bottom: 8px;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+}
+
+.tagline-sub strong {
+  color: var(--text-main);
+  font-weight: 900;
+}
+
+.btn-retour {
+  display: inline-block;
+  margin: 10px 0 18px;
+  padding: 6px 12px;
+  font-size: 13px;
+  font-weight: 500;
+  color: #7a5a29;
+  text-decoration: none;
+  border-radius: 10px;
+  border: 1px solid rgba(198,169,119,0.35);
+  background: rgba(198,169,119,0.10);
+}
+
+.layout {
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr;
+  gap: 22px;
+  align-items: start;
+}
+
+.card {
+  background: var(--card-bg);
+  border-radius: 22px;
+  border: 1px solid var(--border-soft);
+  padding: 20px 22px;
+  box-shadow: var(--shadow-soft);
+}
+
+.pill {
+  background: var(--accent-soft);
+  color: var(--accent);
+  padding: 5px 12px;
+  border-radius: 999px;
+  font-size: 11px;
+  font-weight: 600;
+  margin-bottom: 10px;
+  display: inline-block;
+}
+
+h1 { font-size: 26px; margin-bottom: 0; }
+.subtitle { color: var(--text-soft); margin-top: 4px; }
+
+.chips { margin-top: 12px; }
+.chip {
+  padding: 6px 12px;
+  background: rgba(198,169,119,0.10);
+  border-radius: 999px;
+  font-size: 12px;
+  margin-right: 6px;
+  margin-bottom: 6px;
+  display: inline-block;
+}
+
+/* CAROUSEL */
+.carousel {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  border-radius: 16px;
+  background: #00000008;
+  margin: 20px 0;
+}
+
+.carousel-track {
+  display: flex;
+  width: 100%;
+  transition: transform 0.35s ease;
+}
+
+.carousel img {
+  flex: 0 0 100%;
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  cursor: pointer;
+}
+
+.carousel-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(255,255,255,0.75);
+  border: none;
+  font-size: 22px;
+  padding: 6px 12px;
+  border-radius: 999px;
+  cursor: pointer;
+}
+
+.carousel-btn.prev { left: 10px; }
+.carousel-btn.next { right: 10px; }
+
+/* GRID */
+.grid-two {
+  display: grid;
+  grid-template-columns: repeat(2,1fr);
+  gap: 12px;
+  font-size: 14px;
+  margin-top: 20px;
+}
+
+.grid-two span {
+  display: block;
+  font-size: 12px;
+  color: var(--text-soft);
+}
+
+/* LIGHTBOX */
+.lightbox {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.85);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.25s ease;
+}
+
+.lightbox.active {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.lightbox img {
+  max-width: 90%;
+  max-height: 90vh;
+  border-radius: 12px;
+}
+
+.lightbox-prev,
+.lightbox-next {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  color: white;
+  font-size: 46px;
+  cursor: pointer;
+  padding: 18px 24px;
+  background: rgba(0,0,0,0.35);
+  border-radius: 999px;
+}
+
+.lightbox-prev { left: 40px; }
+.lightbox-next { right: 40px; }
+
+.lightbox-close {
+  position: absolute;
+  top: 30px;
+  right: 40px;
+  color: white;
+  font-size: 52px;
+  cursor: pointer;
+}
+
+/* CONTACT */
+.contact-block {
+  display: flex;
+  gap: 18px;
+  align-items: center;
+  background: #ffffff;
+  border-radius: 20px;
+  padding: 16px 18px;
+  border: 1px solid var(--border-soft);
+  box-shadow: 0 18px 40px rgba(25, 25, 25, 0.08);
+  max-width: 960px;
+  margin: 16px auto 0;
+}
+
+.contact-photo {
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 2px solid #e5e7eb;
+}
+
+.contact-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.legal-footer {
+  margin-top: 40px;
+  padding: 18px;
+  text-align: center;
+  font-size: 11.5px;
+  color: var(--text-soft);
+  opacity: 0.8;
+}
+
+@media (max-width: 880px) {
+  .layout { grid-template-columns: 1fr; }
+  header { flex-direction: column; }
+  .contact-block { flex-direction: column; text-align: center; }
+}
+</style>
 </head>
 
 <body>
@@ -77,28 +298,26 @@
 <a href="/espace-visite/accueil.html" class="btn-retour">← Retour</a>
 
 <main class="layout">
-  <section class="card">
-    <span class="pill">Informations du bien</span>
-    <h1 id="bien-nom"></h1>
-    <p class="subtitle" id="bien-subtitle"></p>
-    <div class="chips" id="bien-chips"></div>
 
-    <div class="carousel">
-      <div class="carousel-track" id="carousel-track"></div>
-      <button class="carousel-btn prev">‹</button>
-      <button class="carousel-btn next">›</button>
-    </div>
+<section class="card">
+  <div class="pill">Informations du bien</div>
+  <h1 id="bien-nom"></h1>
+  <p class="subtitle" id="bien-description"></p>
+  <div class="chips" id="bien-chips"></div>
 
-    <div class="grid-two" id="bien-infos"></div>
+  <div class="carousel">
+    <div class="carousel-track" id="carousel-track"></div>
+    <button class="carousel-btn prev">‹</button>
+    <button class="carousel-btn next">›</button>
+  </div>
 
-    <h2>Documents</h2>
-    <ul id="documents-list"></ul>
-  </section>
+  <div class="grid-two" id="bien-infos"></div>
 
-  <section class="card">
-    <h2>Contre-visite</h2>
-    <p class="subtitle">Contactez-moi pour organiser une nouvelle visite.</p>
-  </section>
+  <h2 style="margin-top:20px;">Documents du bien</h2>
+  <ul id="documents-list" style="list-style:none;padding:0;margin:12px 0;"></ul>
+  <p id="no-docs" class="subtitle" style="display:none;">Aucun document disponible pour ce bien.</p>
+</section>
+
 </main>
 
 <section class="contact-block">
@@ -112,67 +331,94 @@
 </section>
 
 <footer class="legal-footer">
-  © Jérémy Heyob Immobilier – Tous droits réservés
+  Les photos et documents présentés sur cette page sont la propriété exclusive de
+  <strong>Jérémy HEYOB Immobilier</strong>.
 </footer>
 
 </div>
 
-<div class="lightbox" id="lightbox"><img id="lightboxImg"></div>
+<div class="lightbox" id="lightbox">
+  <span class="lightbox-close" id="lb-close">×</span>
+  <span class="lightbox-prev" id="lb-prev">‹</span>
+  <img id="lb-img">
+  <span class="lightbox-next" id="lb-next">›</span>
+</div>
 
 <script>
-(async function(){
-  const slug=new URLSearchParams(location.search).get("bien");
-  if(!slug)return;
+let BIEN_NOM = "";
+let idx = 0;
 
-  const paths=[
-    `/espace-visite/biens/${slug}/data.json`,
-    `/espace-visite/sous-compromis/${slug}/data.json`
-  ];
+(async () => {
+  const slug = new URLSearchParams(location.search).get("bien");
+  if (!slug) return;
 
-  let data=null,basePath="";
-  for(const p of paths){
-    const r=await fetch(p);
-    if(r.ok){data=await r.json();basePath=p.replace("/data.json","");break;}
-  }
-  if(!data)return;
+  const base = `/espace-visite/biens/${slug}`;
+  const data = await fetch(`${base}/data.json`).then(r=>r.json());
+  const docs = await fetch(`${base}/documents.json`).then(r=>r.ok?r.json():[]);
 
-  const nom=data.nom||slug;
-  document.getElementById("page-title").textContent=`Espace visite | ${nom}`;
-  document.getElementById("bien-nom").textContent=nom;
-  document.getElementById("bien-subtitle").textContent=data.description||"";
+  BIEN_NOM = data.nom;
+  document.getElementById("page-title").textContent =
+    `Espace visite | ${data.nom} | Jérémy Heyob Immobilier`;
 
-  (data.chips||[]).forEach(c=>{
+  document.getElementById("bien-nom").textContent = data.nom;
+  document.getElementById("bien-description").textContent = data.description || "";
+
+  data.chips.forEach(c=>{
     const s=document.createElement("span");
     s.className="chip";s.textContent=c;
     document.getElementById("bien-chips").appendChild(s);
   });
 
   const track=document.getElementById("carousel-track");
-  (data.photos||[]).forEach((p,i)=>{
+  data.photos.forEach((p,i)=>{
     const img=document.createElement("img");
-    img.src=`${basePath}/photos/${p}`;
+    img.src=`${base}/photos/${p}`;
     if(i===0)document.getElementById("preload-image").href=img.src;
-    img.onclick=()=>{lightboxImg.src=img.src;lightbox.classList.add("active");};
+    img.onclick=()=>openLightbox(i);
     track.appendChild(img);
   });
 
-  Object.entries(data.infos||{}).forEach(([k,v])=>{
+  Object.entries(data.infos).forEach(([k,v])=>{
     const d=document.createElement("div");
     d.innerHTML=`<span>${k}</span>${v}`;
     document.getElementById("bien-infos").appendChild(d);
   });
 
-  const docs=await fetch(`${basePath}/documents.json`).then(r=>r.ok?r.json():[]);
-  docs.forEach(d=>{
-    const li=document.createElement("li");
-    li.innerHTML=`<a href="${basePath}/documents/${d.file}" target="_blank">${d.title}</a>`;
-    document.getElementById("documents-list").appendChild(li);
-  });
-
-  document.querySelector(".next").onclick=()=>track.style.transform=`translateX(-100%)`;
-  document.querySelector(".prev").onclick=()=>track.style.transform=`translateX(0)`;
-  lightbox.onclick=()=>lightbox.classList.remove("active");
+  if(!docs.length){
+    document.getElementById("no-docs").style.display="block";
+  } else {
+    docs.forEach(d=>{
+      const li=document.createElement("li");
+      li.innerHTML=`<a href="${base}/documents/${d.file}" target="_blank">${d.title} →</a>`;
+      document.getElementById("documents-list").appendChild(li);
+    });
+  }
 })();
+
+/* Carousel */
+document.querySelector(".next").onclick=()=>move(1);
+document.querySelector(".prev").onclick=()=>move(-1);
+
+function move(dir){
+  const slides=document.querySelectorAll(".carousel img");
+  idx=(idx+dir+slides.length)%slides.length;
+  document.getElementById("carousel-track").style.transform=`translateX(-${idx*100}%)`;
+}
+
+/* Lightbox */
+const lb=document.getElementById("lightbox");
+const lbImg=document.getElementById("lb-img");
+
+function openLightbox(i){
+  idx=i;
+  lbImg.src=document.querySelectorAll(".carousel img")[idx].src;
+  lb.classList.add("active");
+}
+
+document.getElementById("lb-close").onclick=()=>lb.classList.remove("active");
+document.getElementById("lb-prev").onclick=()=>openLightbox((idx-1+document.querySelectorAll(".carousel img").length)%document.querySelectorAll(".carousel img").length);
+document.getElementById("lb-next").onclick=()=>openLightbox((idx+1)%document.querySelectorAll(".carousel img").length);
 </script>
+
 </body>
 </html>
