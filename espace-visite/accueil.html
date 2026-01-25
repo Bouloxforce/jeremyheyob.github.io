@@ -641,6 +641,8 @@ function renderBiens(biens, containerId, clickable) {
     return;
   }
 
+  container.innerHTML = '';
+
   biens.forEach(bien => {
     const article = document.createElement('article');
     article.className = 'property-card';
@@ -648,7 +650,9 @@ function renderBiens(biens, containerId, clickable) {
     article.innerHTML = `
       <div class="property-cover">
         <img src="${bien.photo}" alt="">
-        <div class="property-tag">${bien.tag || ''}</div>
+        <div class="property-tag">
+          Appartement ${bien.type}${bien.etage ? ' - ' + bien.etage : ''}
+        </div>
       </div>
 
       <div class="property-body">
@@ -656,7 +660,10 @@ function renderBiens(biens, containerId, clickable) {
         <div class="property-location">${bien.ville || ''}</div>
 
         <div class="property-meta">
-          ${(bien.meta || []).map(m => `<span>${m}</span>`).join('')}
+          <span>${bien.type}</span>
+          <span>≈ ${bien.surface} m²</span>
+          ${bien.exterieur ? `<span>Extérieur ≈ ${bien.exterieur} m²</span>` : ''}
+          ${bien.annee ? `<span>Année ${bien.annee}</span>` : ''}
         </div>
 
         ${
@@ -670,6 +677,7 @@ function renderBiens(biens, containerId, clickable) {
         }
       </div>
     `;
+
     container.appendChild(article);
   });
 }
