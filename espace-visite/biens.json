@@ -1,13 +1,4 @@
 {
-  "disponibles": [
-    {
-      "slug": "eliot",
-      "nom": "Eliot",
-      "photo": "/espace-visite/biens/eliot/photos/photo-accueil.webp",
-      "ville": "Saint-Priest",
-      "tag": "Appartement T3",
-      "meta": ["T3", "54 m²", "Extérieur"]
-    }
-  ],
+  "disponibles": [],
   "sous_compromis": []
 }
