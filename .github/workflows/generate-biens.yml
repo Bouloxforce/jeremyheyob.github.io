@@ -1,74 +1,30 @@
-name: Generate biens.json and documents.json
+name: Génération automatique des biens
 
 on:
   push:
     paths:
-      - "espace-visite/**"
+      - "espace-visite/biens/**/data.json"
 
 jobs:
-  generate:
+  build:
     runs-on: ubuntu-latest
 
     steps:
       - name: Checkout repo
         uses: actions/checkout@v4
 
-      - name: Generate JSON
-        run: |
-          node <<'EOF'
-          const fs = require("fs");
-          const path = "espace-visite";
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 18
 
-          const biens = { disponibles: [], sous_compromis: [] };
+      - name: Générer biens.json
+        run: node scripts/generate-biens.js
 
-          function capitalize(s){
-            return s.replace(/[-_]/g," ").replace(/\b\w/g,l=>l.toUpperCase());
-          }
-
-          function processDir(base, target){
-            fs.readdirSync(base,{withFileTypes:true})
-              .filter(d=>d.isDirectory())
-              .forEach(dir=>{
-                const slug=dir.name;
-                const dataPath=`${base}/${slug}/data.json`;
-                if(!fs.existsSync(dataPath))return;
-
-                const data=JSON.parse(fs.readFileSync(dataPath,"utf8"));
-                target.push({
-                  slug,
-                  nom:data.nom||capitalize(slug),
-                  photo:`/${base}/${slug}/photos/photo-accueil.webp`,
-                  tag:(data.chips||[])[0]||"",
-                  ville:data.ville||"",
-                  meta:data.chips||[]
-                });
-
-                const docsDir=`${base}/${slug}/documents`;
-                const docsJson=[];
-                if(fs.existsSync(docsDir)){
-                  fs.readdirSync(docsDir)
-                    .filter(f=>f.endsWith(".pdf"))
-                    .forEach(f=>{
-                      docsJson.push({
-                        file:f,
-                        title:capitalize(f.replace(".pdf",""))
-                      });
-                    });
-                  fs.writeFileSync(`${base}/${slug}/documents.json`,JSON.stringify(docsJson,null,2));
-                }
-              });
-          }
-
-          processDir("espace-visite",biens.disponibles);
-          processDir("espace-visite/sous-compromis",biens.sous_compromis);
-
-          fs.writeFileSync("espace-visite/biens.json",JSON.stringify(biens,null,2));
-          EOF
-
-      - name: Commit generated files
+      - name: Commit auto
         run: |
           git config user.name "github-actions"
           git config user.email "actions@github.com"
-          git add espace-visite/biens.json espace-visite/**/documents.json
-          git commit -m "Auto-generate biens.json and documents.json" || echo "No changes"
+          git add espace-visite/biens.json
+          git commit -m "auto: update biens.json" || echo "No changes"
           git push
