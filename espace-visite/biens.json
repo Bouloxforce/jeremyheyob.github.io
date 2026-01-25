@@ -3,20 +3,11 @@
     {
       "slug": "eliot",
       "nom": "Eliot",
-      "photo": "/espace-visite/eliot/photos/photo-accueil.webp",
-      "tag": "Appartement T3",
+      "photo": "/espace-visite/biens/eliot/photos/photo-accueil.webp",
       "ville": "Saint-Priest",
-      "meta": ["T3", "62 m²", "Balcon"]
+      "tag": "Appartement T3",
+      "meta": ["T3", "54 m²", "Extérieur"]
     }
   ],
-  "sous_compromis": [
-    {
-      "slug": "romy",
-      "nom": "Romy",
-      "photo": "/espace-visite/sous-compromis/romy/photos/photo-accueil.webp",
-      "tag": "Appartement T3",
-      "ville": "Saint-Priest",
-      "meta": ["T3", "60 m²"]
-    }
-  ]
+  "sous_compromis": []
 }
