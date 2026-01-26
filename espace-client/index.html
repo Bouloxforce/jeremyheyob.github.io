@@ -620,6 +620,10 @@
       opacity: 0.85;
     }
 
+    a.link.is-visited {
+      color: #7c3aed !important;
+    }
+
     /* Lien NON DISPONIBLE */
     a.link.is-empty {
       color: #dc2626; /* rouge */
@@ -2011,6 +2015,24 @@ function render404() {
 
       // LIEN - Vidéo
       setLink("video-youtube", data.liens?.youtube, "Ouvrir la vidéo →");
+
+      // 🔒 Forcer l'état "visité" pour la vidéo YouTube (lien externe)
+      const videoLink = document.getElementById("video-youtube");
+
+      if (videoLink && videoLink.href) {
+        const storageKey = "visited_video_" + videoLink.href;
+
+        // Au chargement de la page
+        if (localStorage.getItem(storageKey)) {
+          videoLink.classList.add("is-visited");
+        }
+
+        // Au clic utilisateur
+        videoLink.addEventListener("click", () => {
+          localStorage.setItem(storageKey, "1");
+          videoLink.classList.add("is-visited");
+        });
+      }
 
       /* =========================
          ✅ AJOUT 1 : jours depuis dernière remontée
