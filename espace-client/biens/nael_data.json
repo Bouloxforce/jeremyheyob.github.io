@@ -1,4 +1,5 @@
 {
+  "statut_bien": "en_ligne",
   "marche": {
     "taux_credit": {
       "precedent": 3.35,
