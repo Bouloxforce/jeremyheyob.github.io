@@ -1143,7 +1143,7 @@
   });
 
   const track = document.getElementById('carousel-track');
-  data.photos.forEach(p => {
+  img.src = `/espace-visite/biens/${slug}/photos/${encodeURIComponent(p)}`;
     const img = document.createElement('img');
     img.src = p;
     track.appendChild(img);
@@ -1165,7 +1165,7 @@
   const list = document.getElementById('documents-list');
   documents.forEach(doc => {
     const li = document.createElement('li');
-    li.innerHTML = `<a href="${doc.file}" target="_blank" rel="noopener">${doc.title} →</a>`;
+    li.innerHTML = `<a href="/espace-visite/biens/${slug}/documents/${doc.file}" target="_blank" rel="noopener">${doc.title} →</a>`;
     list.appendChild(li);
   });
 })();
