@@ -747,9 +747,15 @@
       if (el.id === "avis_estimation") validateAvisEstimation(false);
     });
 
+    function getNomBien() {
+      const el = document.getElementById("bien-nom");
+      return el ? el.textContent.trim() : "Bien immobilier";
+    }
+
     /* 1) Avis sur la visite (SANS EMAIL) */
     function sendAvisVisite() {
-      const bien = "Eliot - Appartement T3";
+
+      const bien = getNomBien();
 
       const prenom = document.getElementById("avis_prenom");
       const nom = document.getElementById("avis_nom");
@@ -786,7 +792,8 @@
 
     /* 2) Contre-visite (AVEC EMAIL) */
     function sendContreVisite() {
-      const bien = "Eliot - Appartement T3";
+
+      const bien = getNomBien();
 
       const prenom = document.getElementById("cv_prenom");
       const nom = document.getElementById("cv_nom");
@@ -1104,8 +1111,17 @@
   const slug = params.get('bien');
   if (!slug) return;
 
-  const data = await fetch(`/espace-visite/biens/${slug}/data.json`).then(r => r.json());
-  const documents = await fetch(`/espace-visite/biens/${slug}/documents.json`).then(r => r.json());
+  async function safeFetchJson(url) {
+    const r = await fetch(url);
+    if (!r.ok) return null;
+    return r.json();
+  }
+
+  const data = await safeFetchJson(`/espace-visite/biens/${slug}/data.json`);
+  if (!data) return;
+
+  const documents =
+    (await safeFetchJson(`/espace-visite/biens/${slug}/documents.json`)) || [];
 
   document.getElementById('page-title').textContent =
     `Espace visite | ${data.nom} | Jérémy Heyob Immobilier`;
@@ -1113,7 +1129,10 @@
   document.getElementById('bien-nom').textContent = data.nom;
   document.getElementById('bien-description').textContent = data.description;
 
-  document.getElementById('preload-image').href = data.photos[0];
+  const preload = document.getElementById('preload-image');
+  if (preload && data.photos && data.photos.length > 0) {
+    preload.setAttribute('href', `/espace-visite/biens/${slug}/photos/${data.photos[0]}`);
+  }
 
   const chips = document.getElementById('bien-chips');
   data.chips.forEach(c => {
