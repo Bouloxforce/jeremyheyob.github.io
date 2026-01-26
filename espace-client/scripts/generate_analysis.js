@@ -175,6 +175,27 @@ function isValidISODate(value) {
   return !Number.isNaN(d.getTime());
 }
 
+function getCompromisSignatureISO(historique = []) {
+  for (const h of historique) {
+    if (typeof h.label !== "string") continue;
+
+    const match = h.label.match(
+      /\[(\d{4}-\d{2}-\d{2}T\d{2}:\d{2})\]/
+    );
+
+    if (match) return match[1];
+  }
+  return null;
+}
+
+function getParisNowISO() {
+  const now = new Date();
+  const paris = new Date(
+    now.toLocaleString("en-US", { timeZone: "Europe/Paris" })
+  );
+  return paris.toISOString().slice(0, 16); // YYYY-MM-DDTHH:mm
+}
+
 function logHistoriqueDateChange(data, fieldKey, labelPrefix, todayISO) {
   data._meta ??= {};
   data.historique ??= [];
@@ -182,6 +203,10 @@ function logHistoriqueDateChange(data, fieldKey, labelPrefix, todayISO) {
   const currentValue = data.dates?.[fieldKey];
   const metaKey = `last_${fieldKey}`;
   const lastValue = data._meta[metaKey];
+
+   if (data.dates?.mise_en_ligne) {
+     data.statut_bien = "en_ligne";
+   }
 
   // ⛔ Pas une vraie date ISO → on purge la mémoire
    if (!isValidISODate(currentValue)) {
@@ -209,7 +234,19 @@ function logHistoriqueDateChange(data, fieldKey, labelPrefix, todayISO) {
 
     data._meta[metaKey] = currentValue;
   }
-}
+
+   const isoCompromis = getCompromisSignatureISO(data.historique);
+
+   if (isoCompromis) {
+     const compromisDate = new Date(isoCompromis + ":00");
+     compromisDate.setHours(compromisDate.getHours() + 2);
+
+     const nowParis = new Date(getParisNowISO() + ":00");
+
+     if (nowParis >= compromisDate) {
+       data.statut_bien = "sous_compromis";
+     }
+   }
 
 /* =========================
    CONFIG MÉTRIQUES
