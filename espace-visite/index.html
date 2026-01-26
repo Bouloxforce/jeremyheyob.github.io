@@ -1139,6 +1139,20 @@
 
 <!-- ===================== SCRIPT DYNAMIQUE ===================== -->
 <script>
+
+function safeHref(path) {
+  try {
+    const url = new URL(path, window.location.origin);
+    url.pathname = url.pathname
+      .split('/')
+      .map(segment => encodeURIComponent(segment))
+      .join('/');
+    return url.href;
+  } catch (e) {
+    return path;
+  }
+}
+
 (async () => {
   const params = new URLSearchParams(window.location.search);
   const slug = params.get('bien');
@@ -1193,16 +1207,19 @@
     infos.appendChild(d);
   });
 
-  document.getElementById('bien-video').href = data.video;
+  document.getElementById('bien-video').href = safeHref(data.video);
   document.getElementById('bien-video').textContent = 'Voir la vidéo de présentation →';
 
-  document.getElementById('bien-annonce').href = data.annonce;
+  document.getElementById('bien-annonce').href = safeHref(data.annonce);
   document.getElementById('bien-annonce').textContent = 'Voir l’annonce sur le site →';
 
   const list = document.getElementById('documents-list');
   documents.forEach(doc => {
     const li = document.createElement('li');
-    li.innerHTML = `<a class="link" href="/espace-visite/biens/${slug}/documents/${doc.file}" target="_blank" rel="noopener">${doc.title} →</a>`;
+    const href = safeHref(`/espace-visite/biens/${slug}/documents/${doc.file}`);
+
+    li.innerHTML = `<a class="link" href="${href}" target="_blank" rel="noopener">${doc.title} →</a>`;
+    
     list.appendChild(li);
   });
 })();
@@ -1257,44 +1274,7 @@ function initCarouselAndLightbox() {
     openLightbox();
   };
 }
-</script>
 
-<script>
-/* =====================================================
-   🔒 SAFARI FIX — LIENS VISITÉS (VIDÉO / ANNONCE / DOCS)
-===================================================== */
-
-(function () {
-
-  function markVisitedLinks() {
-    document.querySelectorAll("a.link").forEach(link => {
-      try {
-        const key = "visited_" + link.href;
-        if (localStorage.getItem(key)) {
-          link.classList.add("is-visited");
-        }
-      } catch (e) {}
-    });
-  }
-
-  document.addEventListener("click", function (e) {
-    const link = e.target.closest("a.link");
-    if (!link || !link.href) return;
-
-    try {
-      const key = "visited_" + link.href;
-      localStorage.setItem(key, "1");
-      link.classList.add("is-visited");
-    } catch (e) {}
-  });
-
-  if (document.readyState === "loading") {
-    document.addEventListener("DOMContentLoaded", markVisitedLinks);
-  } else {
-    markVisitedLinks();
-  }
-
-})();
 </script>
 
 </body>
