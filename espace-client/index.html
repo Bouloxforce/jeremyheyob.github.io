@@ -1544,8 +1544,18 @@
       ul.innerHTML = "";
 
       const rdvs = historique
-        .map(e => extractRdvFromLabel(e.label))
-        .filter(Boolean);
+        .map(e => {
+          const rdv = extractRdvFromLabel(e.label);
+          if (!rdv) return null;
+
+          // On recrée une vraie date JS pour le tri
+          const [d, m, y] = rdv.date.split("/");
+          const dateTime = new Date(`${y}-${m}-${d}T${rdv.heure}:00`);
+
+          return { ...rdv, dateTime };
+        })
+        .filter(Boolean)
+        .sort((a, b) => a.dateTime - b.dateTime); // ✅ le plus proche d’abord
 
       if (rdvs.length === 0) {
         block.style.display = "none";
