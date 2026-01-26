@@ -2,7 +2,7 @@
   "statut_bien": "en_ligne",
   "marche": {
     "taux_credit": {
-      "precedent": 3.35,
+      "precedent": 3.33,
       "duree": "25 ans",
       "source": "CAFPI – baromètre (taux moyen)",
       "periode": "2026-01",
