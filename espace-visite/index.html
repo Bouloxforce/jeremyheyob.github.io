@@ -1143,9 +1143,11 @@
   });
 
   const track = document.getElementById('carousel-track');
-  img.src = `/espace-visite/biens/${slug}/photos/${encodeURIComponent(p)}`;
+
+  data.photos.forEach(p => {
     const img = document.createElement('img');
-    img.src = p;
+    img.src = `/espace-visite/biens/${slug}/photos/${encodeURIComponent(p)}`;
+    img.alt = data.nom;
     track.appendChild(img);
   });
 
