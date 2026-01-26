@@ -241,8 +241,8 @@ function logHistoriqueDateChange(data, fieldKey, labelPrefix, todayISO) {
 
      if (nowParis >= compromisDate) {
        data.statut_bien = "sous_compromis";
-     }
    }
+}
 
 /* =========================
    CONFIG MÉTRIQUES
