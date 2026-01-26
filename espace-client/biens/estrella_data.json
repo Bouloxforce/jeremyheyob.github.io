@@ -58,7 +58,7 @@
   },
   "_meta": {
     "last_mandat_signe": "2024-03-16",
-    "last_weekly_run": "2026-01-19",
+    "last_weekly_run": "2026-01-26",
     "weekly_cumul_base": {
       "2026-01-19": {
         "appels": 9,
@@ -66,6 +66,14 @@
         "vues_leboncoin": 5163,
         "emails": 0,
         "visites_effectuees": 6,
+        "favoris_leboncoin": 93
+      },
+      "2026-01-26": {
+        "appels": 9,
+        "emails": 0,
+        "visites_effectuees": 6,
+        "offres": 0,
+        "vues_leboncoin": 5163,
         "favoris_leboncoin": 93
       }
     },
@@ -130,10 +138,11 @@
     "text": "Les indicateurs actuels nécessitent une surveillance attentive. Un point stratégique sera réalisé au moment prévu dans le plan de commercialisation.",
     "noExploitableData": false,
     "phase_active": "90+",
-    "evolution_text": "",
-    "generatedAt": "2026-01-25T13:27:59.348Z",
+    "evolution_text": "Appels : stable\nEmails : stable\nVisites effectuées : stable\nOffres : stable\nVues Leboncoin : stable\nFavoris Leboncoin : stable",
+    "generatedAt": "2026-01-26T07:00:38.594Z",
     "alertes": [
-      "❗ Visites sans offres"
+      "❗ Visites sans offres",
+      "❗ Aucune interaction récente"
     ]
   }
 }
