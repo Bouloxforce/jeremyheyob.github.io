@@ -1147,9 +1147,11 @@
   data.photos.forEach(p => {
     const img = document.createElement('img');
     img.src = `/espace-visite/biens/${slug}/photos/${encodeURIComponent(p)}`;
-    img.alt = data.nom;
     track.appendChild(img);
   });
+
+  // ✅ IMPORTANT : initialise le carrousel APRÈS avoir ajouté les images
+  initCarouselAndLightbox();
 
   const infos = document.getElementById('bien-infos');
   Object.entries(data.infos).forEach(([k, v]) => {
@@ -1217,7 +1219,6 @@ function initCarouselAndLightbox() {
   btnNext.onclick = () => { currentSlide = (currentSlide + 1) % slides.length; openLightbox(); };
 }
 
-initCarouselAndLightbox();
 </script>
 
 </body>
