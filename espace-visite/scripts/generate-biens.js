@@ -1,29 +1,23 @@
-/**
- * Génère automatiquement espace-visite/biens.json
- * à partir des data.json présents dans :
- * espace-visite/biens/*/data.json
- *
- * Exécuté par GitHub Actions (Node 18)
- */
-
 import fs from "fs";
 import path from "path";
 
+// Dossiers
 const BIENS_DIR = "espace-visite/biens";
 const OUTPUT_FILE = "espace-visite/biens.json";
 
+// Structure finale
 const result = {
   disponibles: [],
   sous_compromis: []
 };
 
-// Sécurité : le dossier biens doit exister
+// Sécurité
 if (!fs.existsSync(BIENS_DIR)) {
-  console.error(`❌ Dossier introuvable : ${BIENS_DIR}`);
+  console.error("❌ Dossier espace-visite/biens introuvable");
   process.exit(1);
 }
 
-// Parcours de tous les dossiers de biens
+// Parcours des biens
 const dossiers = fs.readdirSync(BIENS_DIR, { withFileTypes: true })
   .filter(d => d.isDirectory())
   .map(d => d.name);
@@ -31,22 +25,18 @@ const dossiers = fs.readdirSync(BIENS_DIR, { withFileTypes: true })
 for (const slug of dossiers) {
   const dataPath = path.join(BIENS_DIR, slug, "data.json");
 
-  if (!fs.existsSync(dataPath)) {
-    console.warn(`⚠️ data.json manquant pour le bien : ${slug}`);
-    continue;
-  }
+  if (!fs.existsSync(dataPath)) continue;
 
   const data = JSON.parse(fs.readFileSync(dataPath, "utf8"));
 
-  // Champs OBLIGATOIRES
-  if (!data.nom || !data.ville || !data.photos || !data.photos.length) {
-    console.warn(`⚠️ Bien ignoré (champs manquants) : ${slug}`);
+  if (!data.nom || !data.ville || !Array.isArray(data.photos) || !data.photos.length) {
+    console.warn(`⚠️ Bien ignoré (données incomplètes) : ${slug}`);
     continue;
   }
 
   const bien = {
     nom: data.nom,
-    slug: slug,
+    slug,
     ville: data.ville,
     type: data.type || "",
     surface: data.surface || null,
@@ -71,5 +61,3 @@ fs.writeFileSync(
 );
 
 console.log("✅ biens.json généré avec succès");
-console.log(`   → ${result.disponibles.length} bien(s) disponible(s)`);
-console.log(`   → ${result.sous_compromis.length} bien(s) sous compromis`);
