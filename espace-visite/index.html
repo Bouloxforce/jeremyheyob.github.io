@@ -502,6 +502,20 @@
     a.link:visited {
       color: #7c3aed !important; /* violet */
     }
+
+    /* ✅ Liens “documents / vidéo / annonce” */
+    a.link:link {
+      color: #1a73e8 !important;
+      text-decoration: underline;
+    }
+
+    a.link:visited {
+      color: #7c3aed !important; /* violet */
+    }
+
+    a.link:hover {
+      opacity: 0.9;
+    }
     
     @media (max-width: 880px) {
       /* Header */
@@ -875,13 +889,11 @@
 
   <!-- VIDEO -->
   <h2 style="margin-top:20px;">Vidéo de présentation</h2>
-  <a id="bien-video" target="_blank" rel="noopener"
-     style="color:#1a73e8;font-size:15px;text-decoration:underline;"></a>
+  <a id="bien-video" class="link" target="_blank" rel="noopener"></a>
 
   <!-- LIEN ANNONCE -->
   <h2 style="margin-top:20px;">Lien de l’annonce</h2>
-  <a id="bien-annonce" target="_blank" rel="noopener"
-     style="color:#1a73e8;font-size:15px;text-decoration:underline;"></a>
+  <a id="bien-annonce" class="link" target="_blank" rel="noopener"></a>
 
   <!-- DOCUMENTS -->
   <h2 style="margin-top:28px;">Documents du bien</h2>
@@ -1174,7 +1186,7 @@
   const list = document.getElementById('documents-list');
   documents.forEach(doc => {
     const li = document.createElement('li');
-    li.innerHTML = `<a href="/espace-visite/biens/${slug}/documents/${doc.file}" target="_blank" rel="noopener">${doc.title} →</a>`;
+    li.innerHTML = `<a class="link" href="/espace-visite/biens/${slug}/documents/${doc.file}" target="_blank" rel="noopener">${doc.title} →</a>`;
     list.appendChild(li);
   });
 })();
