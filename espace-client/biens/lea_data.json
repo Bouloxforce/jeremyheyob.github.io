@@ -66,7 +66,7 @@
       "offres": 0,
       "vues_leboncoin": 0,
       "favoris_leboncoin": 0,
-      "visites_programmees": 1
+      "visites_programmees": 2
     }
   },
   "analysis": {
@@ -125,6 +125,14 @@
     }
   },
   "historique": [
+    {
+      "date": "2026-01-26",
+      "label": "🚪 Nouvelle visite programmée le 28/01/2026 à 18h00"
+    },
+    {
+      "date": "2026-01-26",
+      "label": "📞 Nouvel appel reçu"
+    },
     {
       "date": "2026-01-26",
       "label": "❌ Visite annulée par le client"
