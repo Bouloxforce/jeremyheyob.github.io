@@ -520,14 +520,16 @@
   <section class="properties-grid" id="biens-disponibles"></section>
 
   <!-- ================= BIENS SOUS COMPROMIS ================= -->
-  <h2 class="section-title">Biens sous compromis</h2>
+  <div id="section-sous-compromis">
+    <h2 class="section-title">Biens sous compromis</h2>
 
-  <p class="section-sub">
-    Ces biens sont actuellement sous compromis. L’accès à leurs informations détaillées
-    est temporairement inaccessible.
-  </p>
+    <p class="section-sub">
+      Ces biens sont actuellement sous compromis. L’accès à leurs informations détaillées
+      est temporairement inaccessible.
+    </p>
 
-  <section class="properties-grid" id="biens-sous-compromis"></section>
+    <section class="properties-grid" id="biens-sous-compromis"></section>
+  </div>
     
      <!-- RÉSEAUX (un seul bloc, logos) -->
     <section class="social-block" aria-label="Réseaux sociaux">
@@ -629,8 +631,12 @@ async function loadAccueil() {
 
   const data = await res.json();
   renderBiens(data.disponibles, 'biens-disponibles', true);
-  renderBiens(data.sous_compromis, 'biens-sous-compromis', false);
-}
+  if (data.sous_compromis && data.sous_compromis.length) {
+    renderBiens(data.sous_compromis, 'biens-sous-compromis', false);
+  } else {
+    const section = document.getElementById('section-sous-compromis');
+    if (section) section.style.display = 'none';
+  }
 
 function renderBiens(biens, containerId, clickable) {
   const container = document.getElementById(containerId);
