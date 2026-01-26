@@ -1393,6 +1393,22 @@
     return d.toLocaleDateString("fr-FR");
   }
 
+  function isRdvStillVisible(dateISO, heure) {
+    if (!dateISO || !heure) return false;
+
+    const start = new Date(`${dateISO}T${heure}:00`);
+    if (isNaN(start.getTime())) return false;
+
+    const end = new Date(start);
+    end.setHours(end.getHours() + 1);
+
+    const now = new Date(
+      new Date().toLocaleString("en-US", { timeZone: "Europe/Paris" })
+    );
+
+    return now < end;
+  }
+
   function renderHistorique(items, dates) {
     const ul = document.getElementById("historique-list");
     const wrapper = ul?.closest(".historique-wrapper");
