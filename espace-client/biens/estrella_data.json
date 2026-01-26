@@ -87,18 +87,18 @@
     "cumul": {
       "appels": 9,
       "offres": 0,
-      "vues_leboncoin": 356,
+      "vues_leboncoin": 0,
       "emails": 0,
       "visites_effectuees": 6,
-      "favoris_leboncoin": 8
+      "favoris_leboncoin": 0
     },
     "actuel": {
       "appels": 9,
       "emails": 0,
       "visites_effectuees": 6,
       "offres": 0,
-      "vues_leboncoin": 356,
-      "favoris_leboncoin": 8,
+      "vues_leboncoin": 0,
+      "favoris_leboncoin": 0,
       "visites_programmees": 0
     }
   },
