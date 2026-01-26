@@ -516,6 +516,10 @@
     a.link:hover {
       opacity: 0.9;
     }
+
+    a.link.is-visited {
+      color: #7c3aed !important; /* violet */
+    }
     
     @media (max-width: 880px) {
       /* Header */
@@ -1232,10 +1236,53 @@ function initCarouselAndLightbox() {
   }
 
   btnClose.onclick = () => lightbox.classList.remove('active');
-  btnPrev.onclick = () => { currentSlide = (currentSlide - 1 + slides.length) % slides.length; openLightbox(); };
-  btnNext.onclick = () => { currentSlide = (currentSlide + 1) % slides.length; openLightbox(); };
+  btnPrev.onclick = () => {
+    currentSlide = (currentSlide - 1 + slides.length) % slides.length;
+    openLightbox();
+  };
+  btnNext.onclick = () => {
+    currentSlide = (currentSlide + 1) % slides.length;
+    openLightbox();
+  };
 }
+</script>
 
+<script>
+/* =====================================================
+   🔒 SAFARI FIX — LIENS VISITÉS (VIDÉO / ANNONCE / DOCS)
+===================================================== */
+
+(function () {
+
+  function markVisitedLinks() {
+    document.querySelectorAll("a.link").forEach(link => {
+      try {
+        const key = "visited_" + link.href;
+        if (localStorage.getItem(key)) {
+          link.classList.add("is-visited");
+        }
+      } catch (e) {}
+    });
+  }
+
+  document.addEventListener("click", function (e) {
+    const link = e.target.closest("a.link");
+    if (!link || !link.href) return;
+
+    try {
+      const key = "visited_" + link.href;
+      localStorage.setItem(key, "1");
+      link.classList.add("is-visited");
+    } catch (e) {}
+  });
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", markVisitedLinks);
+  } else {
+    markVisitedLinks();
+  }
+
+})();
 </script>
 
 </body>
