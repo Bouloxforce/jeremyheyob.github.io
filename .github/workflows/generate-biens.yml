@@ -19,7 +19,7 @@ jobs:
           node-version: 18
 
       - name: Générer biens.json
-        run: node scripts/generate-biens.js
+        run: node espace-client/scripts/generate-biens.js
 
       - name: Commit auto
         run: |
