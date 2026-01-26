@@ -27,6 +27,18 @@
   },
   "historique": [
     {
+      "date": "2026-01-26",
+      "label": "❌ Visite annulée, personne ne reponds pas"
+    },
+    {
+      "date": "2026-01-26",
+      "label": "🚪 Nouvelle visite programmée le 26/01/2026 à 14h00"
+    },
+    {
+      "date": "2026-01-26",
+      "label": "📞 Nouvel appel reçu"
+    },
+    {
       "date": "2026-01-25",
       "label": "⬆️ Remontée automatique de l’annonce"
     },
@@ -93,7 +105,7 @@
       "favoris_leboncoin": 19
     },
     "actuel": {
-      "appels": 1,
+      "appels": 3,
       "emails": 4,
       "visites_effectuees": 1,
       "offres": 0,
