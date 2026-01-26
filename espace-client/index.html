@@ -1556,8 +1556,10 @@
 
       rdvs.forEach(rdv => {
         const li = document.createElement("li");
-        li.textContent =
-          `${rdv.date} — 🚪 Nouvelle visite programmée à ${rdv.heure}`;
+
+        li.innerHTML =
+          `<strong>${rdv.date} —</strong> 🚪 Nouvelle visite programmée à ${rdv.heure}`;
+
         ul.appendChild(li);
       });
     }
