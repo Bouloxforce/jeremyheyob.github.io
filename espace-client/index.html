@@ -9,7 +9,7 @@
   <meta name="format-detection" content="telephone=no,date=no,address=no,email=no">
 
   <meta name="robots" content="noindex, nofollow, noarchive, nosnippet">
-  <title>Espace client | Biens | Jérémy Heyob Immobilier</title>
+  <title id="page-title">Espace client | Bien | Jérémy Heyob Immobilier</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <style>
@@ -1797,6 +1797,12 @@ function render404() {
       return r.json();
     })
     .then((data) => {
+
+      // ✅ Titre dynamique de la page
+      if (data?.bien?.nom) {
+        document.getElementById("page-title").textContent =
+          `Espace client | ${data.bien.nom} | Jérémy Heyob Immobilier`;
+      }
       
       const evo = calculateEvolutionFromHistory(data.stats_history || data.stats?.evolution);
       const analysis = data.analysis || {};
