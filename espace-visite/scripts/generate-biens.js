@@ -45,7 +45,7 @@ for (const slug of dossiers) {
     exterieur: data.exterieur || null,
     annee: data.annee || null,
     etage: data.etage || null,
-    photo: `/espace-visite/biens/${slug}/photos/${data.photos[0]}`
+    photo: `/espace-visite/biens/${slug}/photos/photo-accueil.webp`
   };
 
   if (data.statut === "sous_compromis") {
