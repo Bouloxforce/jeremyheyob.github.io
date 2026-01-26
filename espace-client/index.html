@@ -1038,6 +1038,11 @@
       
       <div class="pill">Tableau de bord</div>
 
+      <div id="statut-bien" class="statut statut-loading">
+        <span class="statut-label">Statut du bien</span>
+        <strong id="statut-texte">—</strong>
+      </div>
+
       <div id="rdv-a-venir-block" class="rdv-highlight" style="display:none;">
 
         <div class="rdv-header">
@@ -2182,7 +2187,34 @@ function render404() {
       console.error("Erreur chargement espace client :", err);
       render404();
     });
-}
+    
+    function renderStatutBien(statut) {
+      const bloc = document.getElementById("statut-bien");
+      const texte = document.getElementById("statut-texte");
+
+      bloc.className = "statut";
+
+      switch (statut) {
+        case "en_ligne":
+          bloc.classList.add("statut-online");
+          texte.textContent = "En ligne";
+          break;
+
+        case "en_pause":
+          bloc.classList.add("statut-pause");
+          texte.textContent = "En pause";
+          break;
+
+        case "sous_compromis":
+          bloc.classList.add("statut-compromis");
+          texte.textContent = "Sous compromis";
+          break;
+
+        default:
+          bloc.classList.add("statut-loading");
+          texte.textContent = "Statut non défini";
+      }
+    }
   
 </script>
 
