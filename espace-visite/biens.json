@@ -1,16 +1,4 @@
 {
-  "disponibles": [
-    {
-      "nom": "Eliot",
-      "slug": "eliot",
-      "ville": "Saint-Priest - Secteur Centre-ville",
-      "type": "T3",
-      "surface": 54,
-      "exterieur": 18,
-      "annee": 2018,
-      "etage": "Rez-de-jardin",
-      "photo": "/espace-visite/biens/eliot/photos/photo-accueil.webp"
-    }
-  ],
+  "disponibles": [],
   "sous_compromis": []
 }
