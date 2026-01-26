@@ -10,8 +10,6 @@
   <title id="page-title">Espace visite | Bien | Jérémy Heyob Immobilier</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <link id="preload-image" rel="preload" as="image">
-
   <style>
     /* CSS IDENTIQUE À LA PAGE DE RÉFÉRENCE – NON MODIFIÉ */
     /* -------------------------------------------------- */
@@ -1181,11 +1179,6 @@ function safeHref(path) {
 
   document.getElementById('bien-nom').textContent = data.nom;
   document.getElementById('bien-description').textContent = data.description;
-
-  const preload = document.getElementById('preload-image');
-  if (preload && data.photos && data.photos.length > 0) {
-    preload.setAttribute('href', `/espace-visite/biens/${slug}/photos/${data.photos[0]}`);
-  }
 
   const chips = document.getElementById('bien-chips');
   data.chips.forEach(c => {
