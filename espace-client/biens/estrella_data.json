@@ -1,5 +1,5 @@
 {
-  "statut_bien": "en_pause"
+  "statut_bien": "en_pause",
   "marche": {
     "taux_credit": {
       "precedent": 3.35,
