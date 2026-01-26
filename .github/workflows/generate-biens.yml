@@ -1,6 +1,7 @@
 name: Génération automatique des biens
 
 on:
+  workflow_dispatch:
   push:
     paths:
       - "espace-visite/biens/**/data.json"
