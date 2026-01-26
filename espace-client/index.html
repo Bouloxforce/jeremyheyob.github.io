@@ -1097,7 +1097,7 @@
       <div id="rdv-a-venir-block" class="rdv-highlight" style="display:none;">
 
         <div class="rdv-header">
-          Rendez-vous à venir
+          📅 Rendez-vous à venir
         </div>
 
         <ul id="rdv-a-venir-list"
@@ -1393,21 +1393,35 @@
     return d.toLocaleDateString("fr-FR");
   }
 
-  function isRdvStillVisible(dateISO, heure) {
-    if (!dateISO || !heure) return false;
+    function extractRdvFromLabel(label) {
+      if (typeof label !== "string") return null;
 
-    const start = new Date(`${dateISO}T${heure}:00`);
-    if (isNaN(start.getTime())) return false;
+      // Exemple attendu :
+      // 🚪 Nouvelle visite programmée le 26/01/2026 à 14h00
+      // 🚪 Nouvelle visite programmée le 26/01/2026 19:00
 
-    const end = new Date(start);
-    end.setHours(end.getHours() + 1);
+      const match = label.match(
+        /le (\d{2})\/(\d{2})\/(\d{4}).*?(\d{2})[:h](\d{2})/
+      );
 
-    const now = new Date(
-      new Date().toLocaleString("en-US", { timeZone: "Europe/Paris" })
-    );
+      if (!match) return null;
 
-    return now < end;
-  }
+      const [, dd, mm, yyyy, hh, min] = match;
+
+      const start = new Date(`${yyyy}-${mm}-${dd}T${hh}:${min}:00`);
+      if (isNaN(start.getTime())) return null;
+
+      const end = new Date(start);
+      end.setHours(end.getHours() + 1);
+
+      const now = new Date(
+        new Date().toLocaleString("en-US", { timeZone: "Europe/Paris" })
+      );
+
+      return now < end
+        ? { date: `${dd}/${mm}/${yyyy}`, heure: `${hh}:${min}` }
+        : null;
+    }
 
   function renderHistorique(items, dates) {
     const ul = document.getElementById("historique-list");
@@ -1522,78 +1536,31 @@
       const block = document.getElementById("rdv-a-venir-block");
       const ul = document.getElementById("rdv-a-venir-list");
 
-      if (!block || !ul || !Array.isArray(historique)) return;
-
-      block.style.display = "block";
-      ul.innerHTML = "";
-
-      const todayISO = new Date().toISOString().slice(0, 10);
-
-      const RDV_KEYWORDS = [
-        "rdv",
-        "rendez-vous",
-        "rendez vous",
-        "visite",
-        "signature",
-        "compromis",
-        "expertise",
-        "diagnostic"
-      ];
-
-      const prochainsRDV = historique.filter(e => {
-        if (!e?.label) return false;
-
-        // 👉 date réelle du rendez-vous extraite du texte
-        const rdvDateISO = extractDateFromAction(e.label);
-        if (!rdvDateISO) return false;
-
-        // 👉 uniquement les RDV aujourd’hui ou futurs
-        if (rdvDateISO < todayISO) return false;
-
-        const action = e.label
-          .toLowerCase()
-          .normalize("NFD")
-          .replace(/[\u0300-\u036f]/g, "");
-
-        return RDV_KEYWORDS.some(k => action.includes(k));
-      });
-
-      if (prochainsRDV.length === 0) {
-        ul.innerHTML = "<li class='subtitle rdv-empty'>Aucun rendez-vous à venir pour le moment.</li>";
-        block.style.display = "block";
+      if (!block || !ul || !Array.isArray(historique)) {
+        if (block) block.style.display = "none";
         return;
       }
 
-      prochainsRDV.sort((a, b) =>
-        extractDateFromAction(a.label)
-          .localeCompare(extractDateFromAction(b.label))
-      );
+      ul.innerHTML = "";
 
-      prochainsRDV.forEach(e => {
+      const rdvs = historique
+        .map(e => extractRdvFromLabel(e.label))
+        .filter(Boolean);
+
+      if (rdvs.length === 0) {
+        block.style.display = "none";
+        return;
+      }
+
+      block.style.display = "block";
+
+      rdvs.forEach(rdv => {
         const li = document.createElement("li");
-
-        const dateISO = extractDateFromAction(e.label);
-        const dateFormatted = formatDateISO(dateISO);
-
-        // Texte sans la date (on la retire du libellé)
-        const actionClean = escapeHTML(
-          e.label
-          // supprime "le " uniquement s’il précède une date
-          .replace(/\ble\s+(?=\d{2}\/\d{2}\/\d{4})/i, "")
-          // supprime ensuite la date
-          .replace(/\d{2}\/\d{2}\/\d{4}/, "")
-          .trim()
-      );
-
-        li.innerHTML =
-          "📅 <strong>" +
-          dateFormatted +
-          "</strong> — " +
-          actionClean;
-
+        li.textContent =
+          `${rdv.date} — 🚪 Nouvelle visite programmée à ${rdv.heure}`;
         ul.appendChild(li);
       });
-  }
+    }
 
   function extractDateFromAction(action) {
     if (typeof action !== "string") return null;
