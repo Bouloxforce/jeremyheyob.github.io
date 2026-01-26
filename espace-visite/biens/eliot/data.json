@@ -2,56 +2,35 @@
   "slug": "eliot",
   "statut": "disponible",
 
+  "nom": "Eliot",
   "type": "T3",
   "surface": 54,
   "exterieur": 18,
   "annee": 2018,
-  "etage": "Rez-de-jardin",
-  "photo_couverture": "eliot 1.webp",
+  "etage": "Rez-de-jardin sur 5",
 
-  "nom": "Eliot",
-  "description": "Appartement T3 sécurisé avec nombreux rangements et grand extérieur.",
+  "prix": 190000,
+  "charges": 156,
+  "taxe_fonciere": 845,
+
   "ville": "Saint-Priest",
-  "tag": "Appartement T3",
+  "secteur": "Centre-ville",
 
-  "chips": [
-    "T3",
-    "54 m²",
-    "18 m² extérieur",
-    "Rez-de-jardin",
-    "DPE C-C"
-  ],
-
-  "meta": [
-    "T3",
-    "54 m²",
-    "Extérieur 18 m²"
-  ],
-
-  "photos": [
-    "eliot 1.webp",
-    "eliot 2.webp",
-    "eliot 3.webp",
-    "eliot 4.webp",
-    "eliot 5.webp"
-  ],
-
-  "infos": {
-    "Type": "Appartement T3",
-    "Prix": "190 000 €",
-    "Ville": "Saint-Priest",
-    "Secteur": "Centre-ville",
-    "Année": "2018",
-    "Étage": "Rez-de-jardin sur 5",
-    "DPE": "C - C",
-    "Surface": "54 m² intérieur / 18 m² extérieur",
-    "Stationnement": "Parking en location possible",
-    "Chauffage": "Gaz collectif",
-    "Charges": "156 €/mois (chauffage, eau chaude, ascenseur, parties communes)",
-    "Taxe foncière": "845 €/an",
-    "À proximité": "Écoles, commerces, Tram T2, C25",
-    "Points forts": "Sécurisé, nombreux rangements, grand extérieur"
+  "dpe": {
+    "energie": "C",
+    "ges": "C"
   },
+
+  "stationnement": "Parking en location possible",
+  "chauffage": "Gaz collectif",
+
+  "points_forts": [
+    "Sécurisé",
+    "Nombreux rangements",
+    "Grand extérieur"
+  ],
+
+  "photos_count": 5,
 
   "video": "https://youtu.be/6Tc7e8RrH_Y",
   "annonce": "https://www.agence.immo/achat/appartement-t3-3-pieces-saint-priest-69800-VA33855"
