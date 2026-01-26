@@ -204,10 +204,6 @@ function logHistoriqueDateChange(data, fieldKey, labelPrefix, todayISO) {
   const metaKey = `last_${fieldKey}`;
   const lastValue = data._meta[metaKey];
 
-   if (data.dates?.mise_en_ligne) {
-     data.statut_bien = "en_ligne";
-   }
-
   // ⛔ Pas une vraie date ISO → on purge la mémoire
    if (!isValidISODate(currentValue)) {
      delete data._meta[metaKey];
