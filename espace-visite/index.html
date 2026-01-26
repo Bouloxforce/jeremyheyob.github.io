@@ -1209,6 +1209,23 @@ function safeHref(path) {
   document.getElementById('bien-video').href = safeHref(data.video);
   document.getElementById('bien-video').textContent = 'Voir la vidéo de présentation →';
 
+  // 🔒 Forcer l'état "visité" pour la vidéo externe
+  const videoLink = document.getElementById('bien-video');
+  if (videoLink && videoLink.href) {
+    const videoKey = 'visited_video_' + videoLink.href;
+
+    // Au chargement : si déjà cliqué
+    if (localStorage.getItem(videoKey)) {
+      videoLink.classList.add('is-visited');
+    }
+
+    // Au clic
+    videoLink.addEventListener('click', () => {
+      localStorage.setItem(videoKey, '1');
+      videoLink.classList.add('is-visited');
+    });
+  }
+
   document.getElementById('bien-annonce').href = safeHref(data.annonce);
   document.getElementById('bien-annonce').textContent = 'Voir l’annonce sur le site →';
 
