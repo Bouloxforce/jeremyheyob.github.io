@@ -1143,10 +1143,16 @@
 function safeHref(path) {
   try {
     const url = new URL(path, window.location.origin);
+
     url.pathname = url.pathname
       .split('/')
-      .map(segment => encodeURIComponent(segment))
+      .map(seg => {
+        // évite le double-encodage : si déjà encodé, on normalise
+        try { seg = decodeURIComponent(seg); } catch (e) {}
+        return encodeURIComponent(seg);
+      })
       .join('/');
+
     return url.href;
   } catch (e) {
     return path;
