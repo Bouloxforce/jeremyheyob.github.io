@@ -1272,7 +1272,7 @@ function buildInfos(data) {
 
 function buildPhotos(slug, count) {
   const photos = [];
-  for (let i = 0; i <= count; i++) {
+  for (let i = 0; i < count; i++) {
     photos.push(`${slug} ${i}.webp`);
   }
   return photos;
