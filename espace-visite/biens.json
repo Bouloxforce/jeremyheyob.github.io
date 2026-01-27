@@ -1,18 +1,6 @@
 {
   "disponibles": [
     {
-      "nom": "Eliot",
-      "slug": "eliot",
-      "ville": "Saint-Priest",
-      "bien_type": "Appartement",
-      "type": "T3",
-      "surface": 54,
-      "exterieur": 18,
-      "annee": 2018,
-      "etage": "Rez-de-jardin",
-      "photo": "/espace-visite/biens/eliot/photos/photo-accueil.webp"
-    },
-    {
       "nom": "Estrella",
       "slug": "estrella",
       "ville": "Montrottier",
@@ -35,6 +23,18 @@
       "annee": 2015,
       "etage": "Rez-de-jardin",
       "photo": "/espace-visite/biens/lea/photos/photo-accueil.webp"
+    },
+    {
+      "nom": "Lucas",
+      "slug": "lucas",
+      "ville": "Saint-Priest",
+      "bien_type": "Appartement",
+      "type": "T4",
+      "surface": 82,
+      "exterieur": 14,
+      "annee": 2018,
+      "etage": "3ème étage sur 5",
+      "photo": "/espace-visite/biens/lucas/photos/photo-accueil.webp"
     }
   ],
   "sous_compromis": []
