@@ -668,7 +668,7 @@ function renderBiens(biens, containerId, clickable) {
 
     article.innerHTML = `
       <div class="property-cover">
-        <img src="${bien.photo}" alt="">
+        <img src="${encodeURI(bien.photo)}" alt="">
         <div class="property-tag">
           Appartement ${bien.type}${bien.etage ? ' - ' + bien.etage : ''}
         </div>
