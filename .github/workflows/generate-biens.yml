@@ -21,7 +21,7 @@ jobs:
           node-version: 18
 
       - name: Générer JSON (biens + documents)
-        run: node scripts/generate-biens.js
+        run: node espace-visite/scripts/generate-biens.js
 
       - name: Commit auto
         run: |
