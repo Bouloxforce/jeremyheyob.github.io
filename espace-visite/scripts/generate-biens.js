@@ -41,6 +41,7 @@ for (const slug of dossiers) {
         ville: data.infos?.Secteur
           ? `${data.ville} - Secteur ${data.infos.Secteur}`
           : data.ville,
+        bien_type: data.bien_type || "Bien",
         type: data.type || "",
         surface: data.surface || null,
         exterieur: data.exterieur || null,
