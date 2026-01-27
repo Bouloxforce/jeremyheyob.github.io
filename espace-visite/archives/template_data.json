@@ -1,0 +1,40 @@
+{
+  "slug": "test",
+  "statut": "disponible",
+
+  "nom": "Test",
+  "bien_type": "Appartement",
+  "type": "T3",
+  "surface": 72,
+  "exterieur": 8,
+  "annee": 2017,
+  "etage": "1er étage",
+
+  "prix": 210000,
+  "charges": "152 €/mois (chauffage, eau chaude, eau froide, entretiens parties communes, ascenseur, charges garage)",
+  "taxe_fonciere": "1152 €",
+
+  "ville": "Saint-Priest",
+  "secteur": "Centre-Ville",
+
+  "dpe": {
+    "energie": "B",
+    "ges": "B"
+  },
+
+  "stationnement": "Garage en sus",
+  "chauffage": "Gaz collectif",
+
+  "proximite": "Écoles, commerces, Tram T2, C25",
+
+  "points_forts": [
+    "Sécurisé",
+    "Traversant",
+    "Garage"
+  ],
+
+  "photos_count": 11,
+
+  "video": "https://youtu.be/iTqbivFXQL4",
+  "annonce": "https://www.agence.immo/achat/appartement-t3-3-pieces-saint-priest-69800-VA33936"
+}
