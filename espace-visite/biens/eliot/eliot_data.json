@@ -12,7 +12,7 @@
 
   "prix": 190000,
   "charges": "156 €/mois (chauffage, eau chaude, ascenseur, parties communes)",
-  "taxe_fonciere": 845 €/an,
+  "taxe_fonciere": "845 €/an",
 
   "ville": "Saint-Priest",
   "secteur": "Centre-ville",
