@@ -10,7 +10,7 @@
   "etage": "Rez-de-jardin sur 5",
 
   "prix": 190000,
-  "Charges": "156 €/mois (chauffage, eau chaude, ascenseur, parties communes)",
+  "charges": "156 €/mois (chauffage, eau chaude, ascenseur, parties communes)",
   "taxe_fonciere": 845,
 
   "ville": "Saint-Priest",
