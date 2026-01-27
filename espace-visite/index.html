@@ -1316,8 +1316,19 @@ function buildInfos(data) {
 
     img.src = `/espace-visite/biens/${slug}/photos/${encodeURIComponent(filename)}`;
     img.dataset.index = i;
-    img.loading = "lazy";
+
+    // ⬇️ CRITIQUE POUR CHROME
+    if (!window.__firstImageSet) {
+      img.loading = "eager";
+      img.fetchPriority = "high";
+      window.__firstImageSet = true;
+    } else {
+      img.loading = "lazy";
+    }
+
     img.decoding = "async";
+    img.width = 1200;
+    img.height = 800;
 
     img.onload = () => {
       images.push(img);
