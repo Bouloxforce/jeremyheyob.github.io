@@ -24,7 +24,7 @@ const dossiers = fs.readdirSync(BIENS_DIR, { withFileTypes: true })
 
 for (const slug of dossiers) {
   const bienDir = path.join(BIENS_DIR, slug);
-  const dataPath = path.join(bienDir, "data.json");
+  const dataPath = path.join(BIENS_DIR, slug, `${slug}_data.json`);
   const documentsDir = path.join(bienDir, "documents");
   const documentsJsonPath = path.join(bienDir, "documents.json");
 
