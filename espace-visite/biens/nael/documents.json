@@ -1,1 +1,58 @@
-[]
+[
+  {
+    "file": "assurance-copropriete.pdf",
+    "title": "Assurance Copropriete"
+  },
+  {
+    "file": "attestation-achievement-travaux.pdf",
+    "title": "Attestation Achievement Travaux"
+  },
+  {
+    "file": "attestation-assurance-dommages-ouvrages.pdf",
+    "title": "Attestation Assurance Dommages Ouvrages"
+  },
+  {
+    "file": "attestation-non-opposition.pdf",
+    "title": "Attestation Non Opposition"
+  },
+  {
+    "file": "carnet-entretien.pdf",
+    "title": "Carnet Entretien"
+  },
+  {
+    "file": "carrez.pdf",
+    "title": "Carrez"
+  },
+  {
+    "file": "daact.pdf",
+    "title": "Daact"
+  },
+  {
+    "file": "dpe.pdf",
+    "title": "Dpe"
+  },
+  {
+    "file": "info-copro.pdf",
+    "title": "Info Copro"
+  },
+  {
+    "file": "plan.pdf",
+    "title": "Plan"
+  },
+  {
+    "file": "pv-ag-2022.pdf",
+    "title": "Pv Ag 2022"
+  },
+  {
+    "file": "pv-ag-2023.pdf",
+    "title": "Pv Ag 2023"
+  },
+  {
+    "file": "pv-ag-2024.pdf",
+    "title": "Pv Ag 2024"
+  },
+  {
+    "file": "reglement-copropriete.pdf",
+    "title": "Reglement Copropriete"
+  }
+]
