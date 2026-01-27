@@ -1282,6 +1282,14 @@ function buildInfos(data) {
 
     const data = await safeFetchJson(`/espace-visite/biens/${slug}/${slug}_data.json`);
 
+    // 🔥 PRELOAD IMAGE PRINCIPALE (CRITIQUE POUR CHROME)
+    const preload = document.createElement("link");
+    preload.rel = "preload";
+    preload.as = "image";
+    preload.href = `/espace-visite/biens/${slug}/photos/${slug} 1.webp`;
+    preload.fetchPriority = "high";
+    document.head.appendChild(preload);
+
     // ❌ data.json manquant ou illisible
     if (!data) {
       render404();
