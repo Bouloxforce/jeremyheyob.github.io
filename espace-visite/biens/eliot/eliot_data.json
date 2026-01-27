@@ -3,6 +3,7 @@
   "statut": "disponible",
 
   "nom": "Eliot",
+  "bien_type": "Appartement",
   "type": "T3",
   "surface": 54,
   "exterieur": 18,
