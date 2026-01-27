@@ -938,7 +938,6 @@ function render404() {
   <div class="pill">Informations du bien</div>
 
   <h1 id="bien-nom"></h1>
-  <p class="subtitle" id="bien-description"></p>
 
   <div class="chips" id="bien-chips"></div>
 
@@ -1229,32 +1228,6 @@ function safeHref(path) {
     }
   }
 
-  function buildDescription(data) {
-  const parts = [];
-
-  if (data.type && data.surface) {
-    parts.push(`Appartement ${data.type} de ${data.surface} m²`);
-  }
-
-  if (data.etage) {
-    parts.push(`situé en ${data.etage.toLowerCase()}`);
-  }
-
-  if (data.exterieur) {
-    parts.push(`avec un extérieur de ${data.exterieur} m²`);
-  }
-
-  if (data.ville) {
-    parts.push(`à ${data.ville}`);
-  }
-
-  if (data.annee) {
-    parts.push(`dans une résidence construite en ${data.annee}`);
-  }
-
-  return parts.length ? parts.join(", ") + "." : "";
-}
-
 function buildChips(data) {
   const chips = [];
 
@@ -1286,6 +1259,7 @@ function buildInfos(data) {
     "Stationnement": data.stationnement,
     "Chauffage": data.chauffage,
     "Charges": `${data.charges} €/mois`,
+    "À proximité": data.proximite || null,
     "Taxe foncière": `${data.taxe_fonciere} €/an`
   };
 
@@ -1329,8 +1303,6 @@ function buildPhotos(slug, count) {
     `Espace visite | ${data.nom} | Jérémy Heyob Immobilier`;
 
   document.getElementById('bien-nom').textContent = data.nom;
-  document.getElementById("bien-description").textContent =
-  buildDescription(data);
 
   const chipsEl = document.getElementById("bien-chips");
 
