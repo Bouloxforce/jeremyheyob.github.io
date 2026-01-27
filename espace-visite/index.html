@@ -1208,7 +1208,6 @@ function safeHref(path) {
     url.pathname = url.pathname
       .split('/')
       .map(seg => {
-        // évite le double-encodage : si déjà encodé, on normalise
         try { seg = decodeURIComponent(seg); } catch (e) {}
         return encodeURIComponent(seg);
       })
@@ -1220,6 +1219,91 @@ function safeHref(path) {
   }
 }
 
+  async function safeFetchJson(url) {
+    try {
+      const r = await fetch(url, { cache: "no-store" });
+      if (!r.ok) return null;
+      return await r.json();
+    } catch (e) {
+      return null;
+    }
+  }
+
+  function buildDescription(data) {
+  const parts = [];
+
+  if (data.type && data.surface) {
+    parts.push(`Appartement ${data.type} de ${data.surface} m²`);
+  }
+
+  if (data.etage) {
+    parts.push(`situé en ${data.etage.toLowerCase()}`);
+  }
+
+  if (data.exterieur) {
+    parts.push(`avec un extérieur de ${data.exterieur} m²`);
+  }
+
+  if (data.ville) {
+    parts.push(`à ${data.ville}`);
+  }
+
+  if (data.annee) {
+    parts.push(`dans une résidence construite en ${data.annee}`);
+  }
+
+  return parts.length ? parts.join(", ") + "." : "";
+}
+
+function buildChips(data) {
+  const chips = [];
+
+  if (data.type) chips.push(data.type);
+  if (data.surface) chips.push(`${data.surface} m²`);
+  if (data.exterieur) chips.push(`${data.exterieur} m² extérieur`);
+  if (data.etage) chips.push(data.etage);
+  if (data.dpe?.energie && data.dpe?.ges) {
+    chips.push(`DPE ${data.dpe.energie}-${data.dpe.ges}`);
+  }
+
+  return chips;
+}
+
+function buildInfos(data) {
+  const infos = {
+    "Type": `Appartement ${data.type}`,
+    "Prix": data.prix
+      ? `${Number(data.prix).toLocaleString("fr-FR")} €`
+      : null,
+    "Ville": data.ville,
+    "Secteur": data.secteur,
+    "Année": data.annee,
+    "Étage": data.etage,
+    "DPE": data.dpe?.energie && data.dpe?.ges
+      ? `${data.dpe.energie} - ${data.dpe.ges}`
+      : null,
+    "Surface": `${data.surface} m² intérieur / ${data.exterieur} m² extérieur`,
+    "Stationnement": data.stationnement,
+    "Chauffage": data.chauffage,
+    "Charges": `${data.charges} €/mois`,
+    "Taxe foncière": `${data.taxe_fonciere} €/an`
+  };
+
+  if (Array.isArray(data.points_forts)) {
+    infos["Points forts"] = data.points_forts.join(", ");
+  }
+
+  return infos;
+}
+
+function buildPhotos(slug, count) {
+  const photos = [];
+  for (let i = 1; i <= count; i++) {
+    photos.push(`${slug} ${i}.webp`);
+  }
+  return photos;
+}
+
 (async () => {
   const params = new URLSearchParams(window.location.search);
   const slug = params.get('bien');
@@ -1229,16 +1313,6 @@ function safeHref(path) {
     render404();
     return;
   }
-
-    async function safeFetchJson(url) {
-      try {
-        const r = await fetch(url, { cache: "no-store" });
-        if (!r.ok) return null;
-        return await r.json();
-      } catch (e) {
-        return null;
-      }
-    }
 
     const data = await safeFetchJson(`/espace-visite/biens/${slug}/data.json`);
 
@@ -1255,20 +1329,23 @@ function safeHref(path) {
     `Espace visite | ${data.nom} | Jérémy Heyob Immobilier`;
 
   document.getElementById('bien-nom').textContent = data.nom;
-  document.getElementById('bien-description').textContent = data.description;
+  document.getElementById("bien-description").textContent =
+  buildDescription(data);
 
-  const chips = document.getElementById('bien-chips');
-  data.chips.forEach(c => {
-    const s = document.createElement('span');
-    s.className = 'chip';
-    s.textContent = c;
-    chips.appendChild(s);
+  const chipsEl = document.getElementById("bien-chips");
+
+  buildChips(data).forEach(c => {
+    const span = document.createElement("span");
+    span.className = "chip";
+    span.textContent = c;
+    chipsEl.appendChild(span);
   });
 
-  const track = document.getElementById('carousel-track');
+  const track = document.getElementById("carousel-track");
+  const photos = buildPhotos(slug, data.photos_count);
 
-  data.photos.forEach(p => {
-    const img = document.createElement('img');
+  photos.forEach(p => {
+    const img = document.createElement("img");
     img.src = `/espace-visite/biens/${slug}/photos/${encodeURIComponent(p)}`;
     track.appendChild(img);
   });
@@ -1276,11 +1353,14 @@ function safeHref(path) {
   // ✅ IMPORTANT : initialise le carrousel APRÈS avoir ajouté les images
   initCarouselAndLightbox();
 
-  const infos = document.getElementById('bien-infos');
-  Object.entries(data.infos).forEach(([k, v]) => {
-    const d = document.createElement('div');
-    d.innerHTML = `<span>${k}</span>${v}`;
-    infos.appendChild(d);
+  const infosEl = document.getElementById("bien-infos");
+  const infos = buildInfos(data);
+
+  Object.entries(infos).forEach(([k, v]) => {
+    if (!v) return;
+    const div = document.createElement("div");
+    div.innerHTML = `<span>${k}</span>${v}`;
+    infosEl.appendChild(div);
   });
 
   document.getElementById('bien-video').href = safeHref(data.video);
