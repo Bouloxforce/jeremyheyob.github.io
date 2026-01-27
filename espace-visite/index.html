@@ -1335,6 +1335,9 @@ function buildInfos(data) {
     img.height = 800;
 
     img.onload = () => {
+
+      if (images.length >= MAX_IMAGES) return;
+      
       images.push(img);
 
       // ✅ afficher immédiatement la première image valide
