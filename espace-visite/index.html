@@ -1307,7 +1307,8 @@ function buildInfos(data) {
 
   const track = document.getElementById("carousel-track");
 
-  let firstImageLoaded = false;
+  let loadedImages = 0;
+  let remainingChecks = data.photos_count + 1;
 
   for (let i = 0; i <= data.photos_count; i++) {
     const filename = `${slug} ${i}.webp`;
@@ -1317,18 +1318,22 @@ function buildInfos(data) {
 
     img.onload = () => {
       track.appendChild(img);
-
-      // Initialisation UNIQUEMENT après la première image valide
-      if (!firstImageLoaded) {
-        firstImageLoaded = true;
-        initCarouselAndLightbox();
-      }
+      loadedImages++;
+      checkCarouselInit();
     };
 
     img.onerror = () => {
-      // Image inexistante → ignorée silencieusement
+      checkCarouselInit();
     };
   }
+
+function checkCarouselInit() {
+  remainingChecks--;
+
+  if (remainingChecks === 0 && loadedImages > 0) {
+    initCarouselAndLightbox();
+  }
+}
 
   const infosEl = document.getElementById("bien-infos");
   const infos = buildInfos(data);
