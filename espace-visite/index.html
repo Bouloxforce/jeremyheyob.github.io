@@ -1258,9 +1258,9 @@ function buildInfos(data) {
     "Surface": `${data.surface} m² intérieur / ${data.exterieur} m² extérieur`,
     "Stationnement": data.stationnement,
     "Chauffage": data.chauffage,
-    "Charges": `${data.charges} €/mois`,
-    "À proximité": data.proximite || null,
+    "Charges": data.charges,
     "Taxe foncière": `${data.taxe_fonciere} €/an`
+    "À proximité": data.proximite || null,
   };
 
   if (Array.isArray(data.points_forts)) {
