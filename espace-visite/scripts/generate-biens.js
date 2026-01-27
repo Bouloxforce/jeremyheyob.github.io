@@ -29,7 +29,7 @@ for (const slug of dossiers) {
 
   const data = JSON.parse(fs.readFileSync(dataPath, "utf8"));
 
-  if (!data.nom || !data.ville || !Array.isArray(data.photos) || !data.photos.length) {
+  if (!data.nom || !data.ville || !data.photos_count || data.photos_count < 1) {
     console.warn(`⚠️ Bien ignoré (données incomplètes) : ${slug}`);
     continue;
   }
