@@ -1297,7 +1297,7 @@ function buildPhotos(slug, count) {
     }
 
   const documents =
-    (await safeFetchJson(`/espace-visite/scripts/list-documents.php?bien=${slug}`)) || [];
+    (await safeFetchJson(`/espace-visite/biens/${slug}/documents.json`)) || [];
 
   document.getElementById('page-title').textContent =
     `Espace visite | ${data.nom} | Jérémy Heyob Immobilier`;
