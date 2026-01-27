@@ -23,39 +23,63 @@ const dossiers = fs.readdirSync(BIENS_DIR, { withFileTypes: true })
   .map(d => d.name);
 
 for (const slug of dossiers) {
-  const dataPath = path.join(BIENS_DIR, slug, "data.json");
+  const bienDir = path.join(BIENS_DIR, slug);
+  const dataPath = path.join(bienDir, "data.json");
+  const documentsDir = path.join(bienDir, "documents");
+  const documentsJsonPath = path.join(bienDir, "documents.json");
 
-  if (!fs.existsSync(dataPath)) continue;
+  // ---------- BIENS.JSON ----------
+  if (fs.existsSync(dataPath)) {
+    const data = JSON.parse(fs.readFileSync(dataPath, "utf8"));
 
-  const data = JSON.parse(fs.readFileSync(dataPath, "utf8"));
+    if (!data.nom || !data.ville || !data.photos_count || data.photos_count < 1) {
+      console.warn(`⚠️ Bien ignoré (données incomplètes) : ${slug}`);
+    } else {
+      const bien = {
+        nom: data.nom,
+        slug,
+        ville: data.infos?.Secteur
+          ? `${data.ville} - Secteur ${data.infos.Secteur}`
+          : data.ville,
+        type: data.type || "",
+        surface: data.surface || null,
+        exterieur: data.exterieur || null,
+        annee: data.annee || null,
+        etage: data.etage || null,
+        photo: `/espace-visite/biens/${slug}/photos/photo-accueil.webp`
+      };
 
-  if (!data.nom || !data.ville || !data.photos_count || data.photos_count < 1) {
-    console.warn(`⚠️ Bien ignoré (données incomplètes) : ${slug}`);
-    continue;
+      if (data.statut === "sous_compromis") {
+        result.sous_compromis.push(bien);
+      } else {
+        result.disponibles.push(bien);
+      }
+    }
   }
 
-  const bien = {
-    nom: data.nom,
-    slug,
-    ville: data.infos?.Secteur
-      ? `${data.ville} - Secteur ${data.infos.Secteur}`
-      : data.ville,
-    type: data.type || "",
-    surface: data.surface || null,
-    exterieur: data.exterieur || null,
-    annee: data.annee || null,
-    etage: data.etage || null,
-    photo: `/espace-visite/biens/${slug}/photos/photo-accueil.webp`
-  };
+  // ---------- DOCUMENTS.JSON ----------
+  if (fs.existsSync(documentsDir)) {
+    const files = fs.readdirSync(documentsDir)
+      .filter(f => f.toLowerCase().endsWith(".pdf"));
 
-  if (data.statut === "sous_compromis") {
-    result.sous_compromis.push(bien);
-  } else {
-    result.disponibles.push(bien);
+    const documents = files.map(file => ({
+      file,
+      title: path.basename(file, path.extname(file))
+        .replace(/[-_]/g, " ")
+        .replace(/\b\w/g, l => l.toUpperCase())
+    }));
+
+    fs.writeFileSync(
+      documentsJsonPath,
+      JSON.stringify(documents, null, 2),
+      "utf8"
+    );
+
+    console.log(`📄 documents.json généré pour ${slug}`);
   }
 }
 
-// Écriture du fichier final
+// Écriture du fichier biens.json
 fs.writeFileSync(
   OUTPUT_FILE,
   JSON.stringify(result, null, 2),
