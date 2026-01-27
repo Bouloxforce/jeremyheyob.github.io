@@ -5,6 +5,7 @@ on:
   push:
     paths:
       - "espace-visite/biens/**/data.json"
+      - "espace-visite/biens/**/documents/**"
 
 jobs:
   build:
@@ -19,13 +20,13 @@ jobs:
         with:
           node-version: 18
 
-      - name: Générer biens.json
-        run: node espace-visite/scripts/generate-biens.js
+      - name: Générer JSON (biens + documents)
+        run: node scripts/generate-biens.js
 
       - name: Commit auto
         run: |
           git config user.name "github-actions"
           git config user.email "actions@github.com"
-          git add espace-visite/biens.json
-          git commit -m "auto: update biens.json" || echo "No changes"
+          git add espace-visite/biens.json espace-visite/biens/**/documents.json
+          git commit -m "auto: update biens & documents" || echo "No changes"
           git push
