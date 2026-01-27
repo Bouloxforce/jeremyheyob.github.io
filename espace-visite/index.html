@@ -1310,6 +1310,10 @@ function buildInfos(data) {
   let checkedCount = 0;
   const totalToCheck = data.photos_count + 1;
 
+  const MAX_IMAGES = 12;
+
+  window.__firstImageSet = false;
+
   for (let i = 0; i <= data.photos_count; i++) {
     const filename = `${slug} ${i}.webp`;
     const img = document.createElement("img");
@@ -1332,6 +1336,18 @@ function buildInfos(data) {
 
     img.onload = () => {
       images.push(img);
+
+      // ✅ afficher immédiatement la première image valide
+      if (images.length === 1) {
+        track.innerHTML = "";
+        track.appendChild(img);
+
+        if (!window.__carouselInitialized) {
+          window.__carouselInitialized = true;
+          initCarouselAndLightbox();
+        }
+      }
+
       checkedCount++;
       if (checkedCount === totalToCheck) finalizeCarousel();
     };
@@ -1345,18 +1361,23 @@ function buildInfos(data) {
   function finalizeCarousel() {
     if (!images.length) return;
 
-    // 🔑 la première photo = index le plus bas existant
     images.sort((a, b) => Number(a.dataset.index) - Number(b.dataset.index));
 
     track.innerHTML = "";
+
     images.forEach((img, index) => {
       if (index === 0) {
-        img.loading = "eager";   // 👈 photo principale prioritaire
+        img.loading = "eager";
         img.fetchPriority = "high";
+      } else {
+        img.loading = "lazy";
       }
       track.appendChild(img);
     });
 
+    if (window.__carouselInitialized) return;
+    window.__carouselInitialized = true;
+    
     initCarouselAndLightbox();
   }
 
