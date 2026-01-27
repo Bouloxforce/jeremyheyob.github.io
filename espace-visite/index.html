@@ -1244,7 +1244,7 @@ function buildChips(data) {
 
 function buildInfos(data) {
   const infos = {
-    "Type": `Appartement ${data.type}`,
+    "Type": `${data.bien_type || "Bien"} ${data.type}`,
     "Prix": data.prix
       ? `${Number(data.prix).toLocaleString("fr-FR")} €`
       : null,
