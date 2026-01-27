@@ -47,7 +47,9 @@
       "annee": 2017,
       "etage": "1er étage",
       "photo": "/espace-visite/biens/nael/photos/photo-accueil.webp"
-    },
+    }
+  ],
+  "sous_compromis": [
     {
       "nom": "Romy",
       "slug": "romy",
@@ -60,6 +62,5 @@
       "etage": "3ème étage",
       "photo": "/espace-visite/biens/romy/photos/photo-accueil.webp"
     }
-  ],
-  "sous_compromis": []
+  ]
 }
