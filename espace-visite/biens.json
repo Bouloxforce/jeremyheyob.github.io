@@ -1,4 +1,16 @@
 {
-  "disponibles": [],
+  "disponibles": [
+    {
+      "nom": "Eliot",
+      "slug": "eliot",
+      "ville": "Saint-Priest",
+      "type": "T3",
+      "surface": 54,
+      "exterieur": 18,
+      "annee": 2018,
+      "etage": "Rez-de-jardin sur 5",
+      "photo": "/espace-visite/biens/eliot/photos/photo-accueil.webp"
+    }
+  ],
   "sous_compromis": []
 }
