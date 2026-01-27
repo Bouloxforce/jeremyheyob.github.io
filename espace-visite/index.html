@@ -1280,7 +1280,7 @@ function buildInfos(data) {
     return;
   }
 
-    const data = await safeFetchJson(`/espace-visite/biens/${slug}/data.json`);
+    const data = await safeFetchJson(`/espace-visite/biens/${slug}/${slug}_data.json`);
 
     // ❌ data.json manquant ou illisible
     if (!data) {
