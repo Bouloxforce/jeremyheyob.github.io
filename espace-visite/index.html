@@ -1270,14 +1270,6 @@ function buildInfos(data) {
   return infos;
 }
 
-function buildPhotos(slug, count) {
-  const photos = [];
-  for (let i = 0; i < count; i++) {
-    photos.push(`${slug} ${i}.webp`);
-  }
-  return photos;
-}
-
 (async () => {
   const params = new URLSearchParams(window.location.search);
   const slug = params.get('bien');
@@ -1314,16 +1306,29 @@ function buildPhotos(slug, count) {
   });
 
   const track = document.getElementById("carousel-track");
-  const photos = buildPhotos(slug, data.photos_count);
 
-  photos.forEach(p => {
+  let firstImageLoaded = false;
+
+  for (let i = 0; i <= data.photos_count; i++) {
+    const filename = `${slug} ${i}.webp`;
     const img = document.createElement("img");
-    img.src = `/espace-visite/biens/${slug}/photos/${encodeURIComponent(p)}`;
-    track.appendChild(img);
-  });
 
-  // ✅ IMPORTANT : initialise le carrousel APRÈS avoir ajouté les images
-  initCarouselAndLightbox();
+    img.src = `/espace-visite/biens/${slug}/photos/${encodeURIComponent(filename)}`;
+
+    img.onload = () => {
+      track.appendChild(img);
+
+      // Initialisation UNIQUEMENT après la première image valide
+      if (!firstImageLoaded) {
+        firstImageLoaded = true;
+        initCarouselAndLightbox();
+      }
+    };
+
+    img.onerror = () => {
+      // Image inexistante → ignorée silencieusement
+    };
+  }
 
   const infosEl = document.getElementById("bien-infos");
   const infos = buildInfos(data);
