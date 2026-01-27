@@ -670,7 +670,7 @@ function renderBiens(biens, containerId, clickable) {
       <div class="property-cover">
         <img src="${encodeURI(bien.photo)}" alt="">
         <div class="property-tag">
-          Appartement ${bien.type}${bien.etage ? ' - ' + bien.etage : ''}
+          ${bien.bien_type || 'Bien'} ${bien.type}${bien.etage ? ' - ' + bien.etage : ''}
         </div>
       </div>
 
