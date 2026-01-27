@@ -3,6 +3,7 @@
   "statut": "disponible",
 
   "nom": "Estrella",
+  "bien_type": "Maison",
   "type": "T7",
   "surface": 190,
   "exterieur": 54,
