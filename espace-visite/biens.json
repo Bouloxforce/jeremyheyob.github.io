@@ -23,6 +23,18 @@
       "annee": 1835,
       "etage": "2 niveaux",
       "photo": "/espace-visite/biens/estrella/photos/photo-accueil.webp"
+    },
+    {
+      "nom": "Léa",
+      "slug": "lea",
+      "ville": "Saint-Priest",
+      "bien_type": "Appartement",
+      "type": "T4",
+      "surface": 74,
+      "exterieur": 110,
+      "annee": 2015,
+      "etage": "Rez-de-jardin",
+      "photo": "/espace-visite/biens/lea/photos/photo-accueil.webp"
     }
   ],
   "sous_compromis": []
