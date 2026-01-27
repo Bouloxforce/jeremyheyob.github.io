@@ -1,0 +1,40 @@
+{
+  "slug": "lea",
+  "statut": "disponible",
+
+  "nom": "Léa",
+  "bien_type": "Appartement",
+  "type": "T4",
+  "surface": 74,
+  "exterieur": 110,
+  "annee": 2015,
+  "etage": "Rez-de-jardin",
+
+  "prix": 250000,
+  "charges": "215 €/mois (chauffage, eau chaude, eau froide, entretiens parties communes, ascenseur, charges garage)",
+  "taxe_fonciere": "923 €",
+
+  "ville": "Saint-Priest",
+  "secteur": "Centre-Ville",
+
+  "dpe": {
+    "energie": "C",
+    "ges": "C"
+  },
+
+  "stationnement": "Garage inclus",
+  "chauffage": "Gaz collectif",
+
+  "proximite": "Écoles, commerces, T2 et C25 tout proche",
+
+  "points_forts": [
+    "Grand extérieur",
+    "Calme",
+    "Garage"
+  ],
+
+  "photos_count": 7,
+
+  "video": "https://youtu.be/rwHFiuMmCNI",
+  "annonce": "https://www.agence.immo/achat/appartement-t4-4-pieces-saint-priest-69800-VA33999"
+}
