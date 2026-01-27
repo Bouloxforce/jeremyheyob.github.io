@@ -1348,17 +1348,6 @@ function buildInfos(data) {
       
       images.push(img);
 
-      // ✅ afficher immédiatement la première image valide
-      if (images.length === 1) {
-        track.innerHTML = "";
-        track.appendChild(img);
-
-        if (!window.__carouselInitialized) {
-          window.__carouselInitialized = true;
-          initCarouselAndLightbox();
-        }
-      }
-
       checkedCount++;
       if (checkedCount === totalToCheck) finalizeCarousel();
     };
@@ -1377,19 +1366,12 @@ function buildInfos(data) {
     track.innerHTML = "";
 
     images.forEach((img, index) => {
-      if (index === 0) {
-        img.loading = "eager";
-        img.fetchPriority = "high";
-      } else {
-        img.loading = "lazy";
-      }
+      img.loading = index === 0 ? "eager" : "lazy";
+      img.fetchPriority = index === 0 ? "high" : "auto";
       track.appendChild(img);
     });
 
-    if (window.__carouselInitialized) return;
-    window.__carouselInitialized = true;
-    
-    initCarouselAndLightbox();
+    initCarouselAndLightbox(); // ✅ UNE SEULE FOIS, AU BON MOMENT
   }
 
 function checkCarouselInit() {
