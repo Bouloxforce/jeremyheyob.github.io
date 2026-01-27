@@ -1306,25 +1306,39 @@ function buildInfos(data) {
   });
 
   const track = document.getElementById("carousel-track");
-
-  let loadedImages = 0;
-  let remainingChecks = data.photos_count + 1;
+  const images = [];
+  let checkedCount = 0;
+  const totalToCheck = data.photos_count + 1;
 
   for (let i = 0; i <= data.photos_count; i++) {
     const filename = `${slug} ${i}.webp`;
     const img = document.createElement("img");
 
     img.src = `/espace-visite/biens/${slug}/photos/${encodeURIComponent(filename)}`;
+    img.dataset.index = i;
 
     img.onload = () => {
-      track.appendChild(img);
-      loadedImages++;
-      checkCarouselInit();
+      images.push(img);
+      checkedCount++;
+      if (checkedCount === totalToCheck) finalizeCarousel();
     };
 
     img.onerror = () => {
-      checkCarouselInit();
+      checkedCount++;
+      if (checkedCount === totalToCheck) finalizeCarousel();
     };
+  }
+
+  function finalizeCarousel() {
+    if (!images.length) return;
+
+    // 🔑 la première photo = index le plus bas existant
+    images.sort((a, b) => Number(a.dataset.index) - Number(b.dataset.index));
+
+    track.innerHTML = "";
+    images.forEach(img => track.appendChild(img));
+
+    initCarouselAndLightbox();
   }
 
 function checkCarouselInit() {
