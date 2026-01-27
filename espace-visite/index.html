@@ -1316,6 +1316,8 @@ function buildInfos(data) {
 
     img.src = `/espace-visite/biens/${slug}/photos/${encodeURIComponent(filename)}`;
     img.dataset.index = i;
+    img.loading = "lazy";
+    img.decoding = "async";
 
     img.onload = () => {
       images.push(img);
@@ -1336,7 +1338,13 @@ function buildInfos(data) {
     images.sort((a, b) => Number(a.dataset.index) - Number(b.dataset.index));
 
     track.innerHTML = "";
-    images.forEach(img => track.appendChild(img));
+    images.forEach((img, index) => {
+      if (index === 0) {
+        img.loading = "eager";   // 👈 photo principale prioritaire
+        img.fetchPriority = "high";
+      }
+      track.appendChild(img);
+    });
 
     initCarouselAndLightbox();
   }
