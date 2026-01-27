@@ -47,6 +47,18 @@
       "annee": 2017,
       "etage": "1er étage",
       "photo": "/espace-visite/biens/nael/photos/photo-accueil.webp"
+    },
+    {
+      "nom": "Romy",
+      "slug": "romy",
+      "ville": "Saint-Priest",
+      "bien_type": "Appartement",
+      "type": "T3",
+      "surface": 60,
+      "exterieur": 8.39,
+      "annee": 2019,
+      "etage": "3ème étage",
+      "photo": "/espace-visite/biens/romy/photos/photo-accueil.webp"
     }
   ],
   "sous_compromis": []
