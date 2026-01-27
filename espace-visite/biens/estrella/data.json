@@ -1,0 +1,39 @@
+{
+  "slug": "estrella",
+  "statut": "disponible",
+
+  "nom": "Estrella",
+  "type": "Maison T7",
+  "surface": 190,
+  "exterieur": 54,
+  "annee": 1835,
+  "etage": "2 niveaux",
+
+  "prix": 220000,
+  "charges": null,
+  "taxe_fonciere": "764 €/an + 177 €/an taxe ordures ménagères",
+
+  "ville": "Montrottier",
+  "secteur": "Centre",
+
+  "dpe": {
+    "energie": "F",
+    "ges": "F"
+  },
+
+  "stationnement": "Garage et parking",
+  "chauffage": "Fioul",
+
+  "proximite": "Écoles, commerces",
+
+  "points_forts": [
+    "Grandes chambres",
+    "Grande pièce de vie",
+    "Suite parentale"
+  ],
+
+  "photos_count": 10,
+
+  "video": "https://youtu.be/uS8O_sHm0VI",
+  "annonce": null
+}
