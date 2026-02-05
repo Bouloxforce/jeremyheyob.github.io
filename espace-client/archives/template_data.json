@@ -32,8 +32,8 @@
   },
 
   "dates": {
-    "mandat_signe": null,
-    "mise_en_ligne": null,
+    "mandat_signe": "🔴YYYY-MM-DD",
+    "mise_en_ligne": "🔴YYYY-MM-DD",
     "derniere_remontee": null
   },
 
