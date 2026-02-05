@@ -441,8 +441,6 @@ function processBien(filePath) {
   data.stats ??= {};
   data.stats.actuel ??= {};
   data.stats.cumul ??= {};
-  data.analysis ??= {};
-  data.analysis.alertes ??= [];
   data._meta ??= {};
   data._meta.weekly_cumul_base ??= {};
   data._meta.last_actuel_snapshot ??= {};
@@ -467,6 +465,12 @@ function processBien(filePath) {
 
   const miseEnLigne = data.dates?.mise_en_ligne || null;
 
+  // ⛔ PAS DE MISE EN LIGNE → PAS D’ANALYSE
+  if (!isValidISODate(miseEnLigne)) {
+    delete data.analysis;
+    return;
+  }
+   
   if (!data._meta.mise_en_ligne_ref) {
     data._meta.mise_en_ligne_ref = miseEnLigne;
   }
@@ -494,12 +498,18 @@ function processBien(filePath) {
     data._meta.weekly_cumul_base = {};
     delete data._meta.last_weekly_run;
 
-    data.analysis = {
-      text: "",
-      evolution_text: "",
-      generatedAt: null,
-      noExploitableData: true
-    };
+    if (isValidISODate(miseEnLigne)) {
+      data.analysis = {
+        text: "",
+        evolution_text: "",
+        generatedAt: null,
+        noExploitableData: true,
+        alertes: [],
+        phase_active: null
+      };
+    } else {
+      delete data.analysis;
+    }
 
     data._meta.mise_en_ligne_ref = miseEnLigne;
   }
