@@ -88,12 +88,12 @@
     }
   },
   "analysis": {
-    "text": "",
+    "text": "La commercialisation se déroule dans de bonnes conditions. Les indicateurs actuels sont cohérents avec le marché. La stratégie en place est maintenue.",
     "evolution_text": "",
-    "generatedAt": null,
-    "noExploitableData": true,
+    "generatedAt": "2026-02-05T12:25:12.400Z",
+    "noExploitableData": false,
     "alertes": [],
-    "phase_active": null
+    "phase_active": "90+"
   },
   "historique": [
     {
