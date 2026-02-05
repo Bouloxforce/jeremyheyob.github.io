@@ -11,8 +11,8 @@
         "favoris_leboncoin": 0
       }
     },
-    "mise_en_ligne_ref": "🔴YYYY-MM-DD",
-    "mise_en_ligne_initiale": "🔴YYYY-MM-DD",
+    "mise_en_ligne_ref": null,
+    "mise_en_ligne_initiale": null,
     "last_actuel_snapshot": {
       "appels": 0,
       "emails": 0,
