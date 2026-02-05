@@ -25,6 +25,18 @@
       "photo": "/espace-visite/biens/lea/photos/photo-accueil.webp"
     },
     {
+      "nom": "Léon",
+      "slug": "leon",
+      "ville": "Saint-Priest",
+      "bien_type": "Appartement",
+      "type": "T4",
+      "surface": 75,
+      "exterieur": 69,
+      "annee": 2019,
+      "etage": "Toit terrasse",
+      "photo": "/espace-visite/biens/leon/photos/photo-accueil.webp"
+    },
+    {
       "nom": "Lucas",
       "slug": "lucas",
       "ville": "Saint-Priest",
