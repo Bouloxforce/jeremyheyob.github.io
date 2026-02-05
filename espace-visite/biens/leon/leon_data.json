@@ -1,0 +1,40 @@
+{
+  "slug": "leon",
+  "statut": "disponible",
+
+  "nom": "Léon",
+  "bien_type": "Appartement",
+  "type": "T4",
+  "surface": 75,
+  "exterieur": 69,
+  "annee": 2019,
+  "etage": "Toit terrasse",
+
+  "prix": 340000,
+  "charges": "100 €/mois (chauffage, eau chaude, eau froide, entretiens parties communes, ascenseur, charges garage)",
+  "taxe_fonciere": "1200 €",
+
+  "ville": "Saint-Priest",
+  "secteur": "Centre-Ville",
+
+  "dpe": {
+    "energie": "C",
+    "ges": "C"
+  },
+
+  "stationnement": "Garage double",
+  "chauffage": "Gaz individuel",
+
+  "proximite": "Écoles, commerces, Tram T2, C25",
+
+  "points_forts": [
+    "Lumineux",
+    "Toit terrasse",
+    "Garage double"
+  ],
+
+  "photos_count": 10,
+
+  "video": "🔴",
+  "annonce": "🔴"
+}
