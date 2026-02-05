@@ -85,15 +85,6 @@
     }
   },
 
-  "analysis": {
-    "text": "",
-    "evolution_text": "",
-    "generatedAt": null,
-    "noExploitableData": true,
-    "alertes": [],
-    "phase_active": null
-  },
-
   "historique": [],
 
   "strategie_3090": {
