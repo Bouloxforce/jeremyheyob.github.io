@@ -1,2 +1,302 @@
-{"analysis":{"generatedAt":"2026-02-08T08:34:02.755Z","noExploitableData":false,"phase_active":"90","evolution_text":"Appels : +2\nEmails : +2\nVisites effectuées : +2\nOffres : stable\nVues Leboncoin : +81\nFavoris Leboncoin : stable","alertes":[],"text":"La commercialisation se déroule dans de bonnes conditions. Les indicateurs actuels sont cohérents avec le marché. La stratégie en place est maintenue."},"stats":{"cumul":{"appels":10,"offres":1,"vues_leboncoin":1206,"emails":15,"visites_effectuees":12,"favoris_leboncoin":22},"actuel":{"appels":3,"emails":7,"visites_effectuees":7,"offres":1,"vues_leboncoin":261,"favoris_leboncoin":13,"visites_programmees":0}},"jours_arret_diffusion":75,"statut_bien":"en_ligne","_meta":{"last_mandat_signe":"2025-04-04","last_weekly_run":"2026-02-02","last_vues_leboncoin_snapshot":130,"has_had_reset":true,"last_mise_en_ligne":"2026-01-17","mise_en_ligne_initiale":"2025-09-22","mise_en_ligne_ref":"2026-01-17","last_actuel_snapshot":{"appels":3,"offres":1,"vues_leboncoin":130,"emails":7,"visites_effectuees":7,"favoris_leboncoin":3},"weekly_cumul_base":{"2026-01-26":{"appels":1,"offres":0,"vues_leboncoin":0,"emails":4,"visites_effectuees":1,"favoris_leboncoin":0},"2026-02-02":{"appels":3,"offres":0,"vues_leboncoin":81,"emails":6,"visites_effectuees":3,"favoris_leboncoin":0}},"just_reset":false},"liens":{"lefigaro":"https:\/\/immobilier.lefigaro.fr\/annonces\/annonce-96039301.html","youtube":"https:\/\/youtu.be\/rwHFiuMmCNI","paruvendu":"https:\/\/www.paruvendu.fr\/immobilier\/vente\/appartement\/1287965449A1KIVHAP000","pagesjaunes":"https:\/\/www.pagesjaunes.fr\/actualites\/details-actu\/6970dfe86e9f51aca7935a54","bienici":"https:\/\/www.bienici.com\/annonce\/vente\/saint-priest\/appartement\/4pieces\/netty-jaujard-appt-33999?q=%2Frecherche%2Fachat%2Fsaint-priest-69800%2F4-pieces-et-plus%3Fprix-max%3D250000","linkedin":"https:\/\/www.linkedin.com\/posts\/jeremyheyobimmobilier_d%C3%A9couvrez-l%C3%A9a-un-superbe-appartement-t4-activity-7419743162664996864-P3zG?utm_source=share&utm_medium=member_desktop&rcm=ACoAACoqsv0BA4ErXmoRlqB1Y2FgHmyLI_gjG78","seloger":"https:\/\/www.seloger.com\/annonces\/achat\/appartement\/saint-priest-69\/258595321.htm?serp_view=list&search=distributionTypes%3DBuy%26estateTypes%3DApartment%26locations%3DPOCOFR4525%26priceMax%3D250000%26priceMin%3D250000#ln=classified_search_results&m=classified_search_results_classified_classified_detail_M","agenceimmo":"https:\/\/www.agence.immo\/achat\/appartement-t4-4-pieces-saint-priest-69800-VA33999","logicimmo":"https:\/\/www.logic-immo.com\/detail-vente-258595321.htm?serp_view=list&search=distributionTypes%3DBuy%26estateTypes%3DHouse%2CApartment%26locations%3DPOCOFR4525%26priceMax%3D250000%26priceMin%3D250000%23ln%3Dclassified_search_results&m=classified_search_results_classified_classified_detail_M","avendrealouer":"https:\/\/www.avendrealouer.fr\/vente\/saint-priest-69\/b-appartement\/4-pieces\/loc-101-33742\/fd-3128869810.html","google":"https:\/\/share.google\/NUaZ6sAw20ZyXUIaO","facebook":"https:\/\/www.facebook.com\/jeremyheyobimmobilier\/posts\/pfbid0xZHwyCFxoQvcLrQLK3AzZBnkzKhn8jjLwJTdeJb3zBvgbQPQzp8v2KiogNi7zihBl","instagram":"https:\/\/www.instagram.com\/p\/DTxpLvdiFEw\/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==","leboncoin":"https:\/\/www.leboncoin.fr\/ad\/ventes_immobilieres\/3128869810"},"historique":[
-{"date":"2026-02-09","label":"🔄 Reporting et mise à jour des statistiques"},{"date":"2026-02-07","label":"⬆️ Remontée automatique de l’annonce"},{"date":"2026-02-05","label":"📄 Nouvelle offre d'achat"},{"date":"2026-02-04","label":"⬆️ Remontée automatique de l’annonce"},{"date":"2026-02-04","label":"📩 Nouvel email reçu"},{"date":"2026-02-03","label":"❌ Visite annulée par le client"},{"date":"2026-02-03","label":"🚪 Nouvelle visite programmée le 05\/02\/2026 14:30"},{"date":"2026-02-03","label":"📞 Nouvel appel reçu"},{"date":"2026-02-02","label":"🔄 Reporting et mise à jour des statistiques"},{"date":"2026-01-31","label":"⬆️ Remontée automatique de l’annonce"},{"date":"2026-01-31","label":"📩 Nouvel email reçu"},{"date":"2026-01-30","label":"🚪 Nouvelle visite programmée le 04\/02\/2026 14:30"},{"date":"2026-01-30","label":"📞 Nouvel appel reçu"},{"date":"2026-01-30","label":"🚪 Nouvelle visite programmée le 04\/02\/2026 15:30"},{"date":"2026-01-30","label":"📞 Nouvel appel reçu"},{"date":"2026-01-30","label":"🚪 Nouvelle visite programmée le 03\/02\/2026 09:30"},{"date":"2026-01-30","label":"📞 Nouvel appel reçu"},{"date":"2026-01-28","label":"⬆️ Remontée automatique de l’annonce"},{"date":"2026-01-28","label":"📩 Nouvel email reçu"},{"date":"2026-01-26","label":"🔄 Reporting et mise à jour des statistiques"},{"date":"2026-01-26","label":"🚪 Nouvelle visite programmée le 28\/01\/2026 19:00"},{"date":"2026-01-26","label":"📞 Nouvel appel reçu"},{"date":"2026-01-26","label":"🚪 Nouvelle visite programmée le 28\/01\/2026 à 18h00"},{"date":"2026-01-26","label":"📞 Nouvel appel reçu"},{"date":"2026-01-26","label":"❌ Visite annulée par le client"},{"date":"2026-01-26","label":"❌ Visite annulée, personne ne reponds pas"},{"date":"2026-01-26","label":"🚪 Nouvelle visite programmée le 26\/01\/2026 à 14h00"},{"date":"2026-01-26","label":"📞 Nouvel appel reçu"},{"date":"2026-01-25","label":"⬆️ Remontée automatique de l’annonce"},{"date":"2026-01-25","label":"📩 Nouvel email reçu"},{"date":"2026-01-24","label":"📩 Nouvel email reçu"},{"date":"2026-01-23","label":"🚪 Nouvelle visite programmée le 26\/01\/2026 à 18h30"},{"date":"2026-01-23","label":"📞 Nouvel appel reçu"},{"date":"2026-01-23","label":"🚪 Nouvelle visite programmée le 26\/01\/2026 à 10h00"},{"date":"2026-01-23","label":"📞 Nouvel appel reçu"},{"date":"2026-01-23","label":"📩 Nouvel email reçu"},{"date":"2026-01-23","label":"📩 Nouvel email reçu"},{"date":"2026-01-22","label":"⬆️ Remontée automatique de l'annonce"},{"date":"2026-01-22","label":"🚪 Nouvelle visite programmée le 23\/01\/2026 à 9h00"},{"date":"2026-01-22","label":"📞 Nouvel appel reçu"},{"date":"2025-04-04","label":"✍️ Mandat enregistré"},{"date":"2026-01-17","label":"✅ Annonce mise en ligne"}],"strategie_3090":{"intro":"La commercialisation est structurée par paliers afin d’adapter la stratégie au comportement réel des acquéreurs et au contexte de marché.","etapes":[{"jours":"0–30 jours","titre":"Phase de test du marché","strategie":"Mise en ligne au prix de positionnement initial afin de tester la réaction réelle du marché."},{"jours":"31–60 jours","titre":"Phase d’ajustement stratégique","strategie":"Ajustements ciblés en fonction des données observées."},{"jours":"61–90 jours","titre":"Phase de derniers ajustements","strategie":"Optimisation finale du positionnement afin de favoriser le passage à l’offre."},{"jours":"+ 90 jours","titre":"Phase de poursuite maîtrisée","strategie":"Poursuite de la commercialisation avec stratégie définie."}]},"diffusion":{"remontee":{"frequence":"Double remontée hebdomadaire automatique"}},"bien":{"nom":"Léa","sous_titre":"Suivi de commercialisation"},"marche":{"taux_credit":{"precedent":3.3300000000000001,"duree":"25 ans","source":"CAFPI – baromètre (taux moyen)","periode":"2026-01","moyen":3.3500000000000001,"updatedAt":"2026-01-26T06:21:18.989Z"}},"dates":{"mandat_signe":"2025-04-04","mise_en_ligne":"2026-01-17","derniere_remontee":"2026-02-07"}}
+{
+  "analysis": {
+    "generatedAt": "2026-02-09T12:18:38.000Z",
+    "noExploitableData": false,
+    "phase_active": "90",
+    "evolution_text": "Appels : stable\nEmails : +1\nVisites effectuées : +4\nOffres : +1\nVues Leboncoin : +180\nFavoris Leboncoin : +13",
+    "alertes": [],
+    "text": "La commercialisation se déroule dans de bonnes conditions. Les indicateurs actuels sont cohérents avec le marché. La stratégie en place est maintenue."
+  },
+  "stats": {
+    "cumul": {
+      "appels": 10,
+      "offres": 1,
+      "vues_leboncoin": 1337,
+      "emails": 15,
+      "visites_effectuees": 12,
+      "favoris_leboncoin": 32
+    },
+    "actuel": {
+      "appels": 3,
+      "emails": 7,
+      "visites_effectuees": 7,
+      "offres": 1,
+      "vues_leboncoin": 261,
+      "favoris_leboncoin": 13,
+      "visites_programmees": 0
+    }
+  },
+  "jours_arret_diffusion": 75,
+  "statut_bien": "en_ligne",
+  "_meta": {
+    "last_mandat_signe": "2025-04-04",
+    "last_weekly_run": "2026-02-09",
+    "last_vues_leboncoin_snapshot": 261,
+    "has_had_reset": true,
+    "last_mise_en_ligne": "2026-01-17",
+    "mise_en_ligne_initiale": "2025-09-22",
+    "mise_en_ligne_ref": "2026-01-17",
+    "last_actuel_snapshot": {
+      "appels": 3,
+      "offres": 1,
+      "vues_leboncoin": 261,
+      "emails": 7,
+      "visites_effectuees": 7,
+      "favoris_leboncoin": 13
+    },
+    "weekly_cumul_base": {
+      "2026-02-02": {
+        "appels": 3,
+        "offres": 0,
+        "vues_leboncoin": 81,
+        "emails": 6,
+        "visites_effectuees": 3,
+        "favoris_leboncoin": 0
+      },
+      "2026-02-09": {
+        "appels": 3,
+        "emails": 7,
+        "visites_effectuees": 7,
+        "offres": 1,
+        "vues_leboncoin": 261,
+        "favoris_leboncoin": 13
+      }
+    },
+    "just_reset": false
+  },
+  "liens": {
+    "lefigaro": "https://immobilier.lefigaro.fr/annonces/annonce-96039301.html",
+    "youtube": "https://youtu.be/rwHFiuMmCNI",
+    "paruvendu": "https://www.paruvendu.fr/immobilier/vente/appartement/1287965449A1KIVHAP000",
+    "pagesjaunes": "https://www.pagesjaunes.fr/actualites/details-actu/6970dfe86e9f51aca7935a54",
+    "bienici": "https://www.bienici.com/annonce/vente/saint-priest/appartement/4pieces/netty-jaujard-appt-33999?q=%2Frecherche%2Fachat%2Fsaint-priest-69800%2F4-pieces-et-plus%3Fprix-max%3D250000",
+    "linkedin": "https://www.linkedin.com/posts/jeremyheyobimmobilier_d%C3%A9couvrez-l%C3%A9a-un-superbe-appartement-t4-activity-7419743162664996864-P3zG?utm_source=share&utm_medium=member_desktop&rcm=ACoAACoqsv0BA4ErXmoRlqB1Y2FgHmyLI_gjG78",
+    "seloger": "https://www.seloger.com/annonces/achat/appartement/saint-priest-69/258595321.htm?serp_view=list&search=distributionTypes%3DBuy%26estateTypes%3DApartment%26locations%3DPOCOFR4525%26priceMax%3D250000%26priceMin%3D250000#ln=classified_search_results&m=classified_search_results_classified_classified_detail_M",
+    "agenceimmo": "https://www.agence.immo/achat/appartement-t4-4-pieces-saint-priest-69800-VA33999",
+    "logicimmo": "https://www.logic-immo.com/detail-vente-258595321.htm?serp_view=list&search=distributionTypes%3DBuy%26estateTypes%3DHouse%2CApartment%26locations%3DPOCOFR4525%26priceMax%3D250000%26priceMin%3D250000%23ln%3Dclassified_search_results&m=classified_search_results_classified_classified_detail_M",
+    "avendrealouer": "https://www.avendrealouer.fr/vente/saint-priest-69/b-appartement/4-pieces/loc-101-33742/fd-3128869810.html",
+    "google": "https://share.google/NUaZ6sAw20ZyXUIaO",
+    "facebook": "https://www.facebook.com/jeremyheyobimmobilier/posts/pfbid0xZHwyCFxoQvcLrQLK3AzZBnkzKhn8jjLwJTdeJb3zBvgbQPQzp8v2KiogNi7zihBl",
+    "instagram": "https://www.instagram.com/p/DTxpLvdiFEw/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==",
+    "leboncoin": "https://www.leboncoin.fr/ad/ventes_immobilieres/3128869810"
+  },
+  "historique": [
+    {
+      "date": "2026-02-09",
+      "label": "🔄 Reporting et mise à jour des statistiques"
+    },
+    {
+      "date": "2026-02-07",
+      "label": "⬆️ Remontée automatique de l’annonce"
+    },
+    {
+      "date": "2026-02-05",
+      "label": "📄 Nouvelle offre d'achat"
+    },
+    {
+      "date": "2026-02-04",
+      "label": "⬆️ Remontée automatique de l’annonce"
+    },
+    {
+      "date": "2026-02-04",
+      "label": "📩 Nouvel email reçu"
+    },
+    {
+      "date": "2026-02-03",
+      "label": "❌ Visite annulée par le client"
+    },
+    {
+      "date": "2026-02-03",
+      "label": "🚪 Nouvelle visite programmée le 05/02/2026 14:30"
+    },
+    {
+      "date": "2026-02-03",
+      "label": "📞 Nouvel appel reçu"
+    },
+    {
+      "date": "2026-02-02",
+      "label": "🔄 Reporting et mise à jour des statistiques"
+    },
+    {
+      "date": "2026-01-31",
+      "label": "⬆️ Remontée automatique de l’annonce"
+    },
+    {
+      "date": "2026-01-31",
+      "label": "📩 Nouvel email reçu"
+    },
+    {
+      "date": "2026-01-30",
+      "label": "🚪 Nouvelle visite programmée le 04/02/2026 14:30"
+    },
+    {
+      "date": "2026-01-30",
+      "label": "📞 Nouvel appel reçu"
+    },
+    {
+      "date": "2026-01-30",
+      "label": "🚪 Nouvelle visite programmée le 04/02/2026 15:30"
+    },
+    {
+      "date": "2026-01-30",
+      "label": "📞 Nouvel appel reçu"
+    },
+    {
+      "date": "2026-01-30",
+      "label": "🚪 Nouvelle visite programmée le 03/02/2026 09:30"
+    },
+    {
+      "date": "2026-01-30",
+      "label": "📞 Nouvel appel reçu"
+    },
+    {
+      "date": "2026-01-28",
+      "label": "⬆️ Remontée automatique de l’annonce"
+    },
+    {
+      "date": "2026-01-28",
+      "label": "📩 Nouvel email reçu"
+    },
+    {
+      "date": "2026-01-26",
+      "label": "🔄 Reporting et mise à jour des statistiques"
+    },
+    {
+      "date": "2026-01-26",
+      "label": "🚪 Nouvelle visite programmée le 28/01/2026 19:00"
+    },
+    {
+      "date": "2026-01-26",
+      "label": "📞 Nouvel appel reçu"
+    },
+    {
+      "date": "2026-01-26",
+      "label": "🚪 Nouvelle visite programmée le 28/01/2026 à 18h00"
+    },
+    {
+      "date": "2026-01-26",
+      "label": "📞 Nouvel appel reçu"
+    },
+    {
+      "date": "2026-01-26",
+      "label": "❌ Visite annulée par le client"
+    },
+    {
+      "date": "2026-01-26",
+      "label": "❌ Visite annulée, personne ne reponds pas"
+    },
+    {
+      "date": "2026-01-26",
+      "label": "🚪 Nouvelle visite programmée le 26/01/2026 à 14h00"
+    },
+    {
+      "date": "2026-01-26",
+      "label": "📞 Nouvel appel reçu"
+    },
+    {
+      "date": "2026-01-25",
+      "label": "⬆️ Remontée automatique de l’annonce"
+    },
+    {
+      "date": "2026-01-25",
+      "label": "📩 Nouvel email reçu"
+    },
+    {
+      "date": "2026-01-24",
+      "label": "📩 Nouvel email reçu"
+    },
+    {
+      "date": "2026-01-23",
+      "label": "🚪 Nouvelle visite programmée le 26/01/2026 à 18h30"
+    },
+    {
+      "date": "2026-01-23",
+      "label": "📞 Nouvel appel reçu"
+    },
+    {
+      "date": "2026-01-23",
+      "label": "🚪 Nouvelle visite programmée le 26/01/2026 à 10h00"
+    },
+    {
+      "date": "2026-01-23",
+      "label": "📞 Nouvel appel reçu"
+    },
+    {
+      "date": "2026-01-23",
+      "label": "📩 Nouvel email reçu"
+    },
+    {
+      "date": "2026-01-23",
+      "label": "📩 Nouvel email reçu"
+    },
+    {
+      "date": "2026-01-22",
+      "label": "⬆️ Remontée automatique de l'annonce"
+    },
+    {
+      "date": "2026-01-22",
+      "label": "🚪 Nouvelle visite programmée le 23/01/2026 à 9h00"
+    },
+    {
+      "date": "2026-01-22",
+      "label": "📞 Nouvel appel reçu"
+    },
+    {
+      "date": "2025-04-04",
+      "label": "✍️ Mandat enregistré"
+    },
+    {
+      "date": "2026-01-17",
+      "label": "✅ Annonce mise en ligne"
+    }
+  ],
+  "strategie_3090": {
+    "intro": "La commercialisation est structurée par paliers afin d’adapter la stratégie au comportement réel des acquéreurs et au contexte de marché.",
+    "etapes": [
+      {
+        "jours": "0–30 jours",
+        "titre": "Phase de test du marché",
+        "strategie": "Mise en ligne au prix de positionnement initial afin de tester la réaction réelle du marché."
+      },
+      {
+        "jours": "31–60 jours",
+        "titre": "Phase d’ajustement stratégique",
+        "strategie": "Ajustements ciblés en fonction des données observées."
+      },
+      {
+        "jours": "61–90 jours",
+        "titre": "Phase de derniers ajustements",
+        "strategie": "Optimisation finale du positionnement afin de favoriser le passage à l’offre."
+      },
+      {
+        "jours": "+ 90 jours",
+        "titre": "Phase de poursuite maîtrisée",
+        "strategie": "Poursuite de la commercialisation avec stratégie définie."
+      }
+    ]
+  },
+  "diffusion": {
+    "remontee": {
+      "frequence": "Double remontée hebdomadaire automatique"
+    }
+  },
+  "bien": {
+    "nom": "Léa",
+    "sous_titre": "Suivi de commercialisation"
+  },
+  "marche": {
+    "taux_credit": {
+      "precedent": 3.33,
+      "duree": "25 ans",
+      "source": "CAFPI – baromètre (taux moyen)",
+      "periode": "2026-01",
+      "moyen": 3.35,
+      "updatedAt": "2026-01-26T06:21:18.989Z"
+    }
+  },
+  "dates": {
+    "mandat_signe": "2025-04-04",
+    "mise_en_ligne": "2026-01-17",
+    "derniere_remontee": "2026-02-07"
+  }
+}
