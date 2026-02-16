@@ -117,7 +117,7 @@
       "label": "✍️ Mandat enregistré"
     }
   ],
-  "statut_bien": null,
+  "statut_bien": "en_pause",
   "bien": {
     "nom": "Léon",
     "sous_titre": "Suivi de commercialisation"
