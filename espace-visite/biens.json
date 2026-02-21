@@ -59,6 +59,18 @@
       "annee": 2017,
       "etage": "1er étage",
       "photo": "/espace-visite/biens/nael/photos/photo-accueil.webp"
+    },
+    {
+      "nom": "Tiago",
+      "slug": "tiago",
+      "ville": "Pont de Cheruy",
+      "bien_type": "Maison",
+      "type": "T4",
+      "surface": 82,
+      "exterieur": 125,
+      "annee": 1998,
+      "etage": "1",
+      "photo": "/espace-visite/biens/tiago/photos/photo-accueil.webp"
     }
   ],
   "sous_compromis": [
