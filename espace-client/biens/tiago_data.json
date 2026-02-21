@@ -1,0 +1,115 @@
+{
+  "statut_bien": null,
+  "_meta": {
+    "weekly_cumul_base": {},
+    "mise_en_ligne_ref": null,
+    "mise_en_ligne_initiale": null,
+    "last_actuel_snapshot": {
+      "appels": 0,
+      "emails": 0,
+      "visites_effectuees": 0,
+      "offres": 0,
+      "vues_leboncoin": 0,
+      "favoris_leboncoin": 0
+    },
+    "just_reset": false,
+    "has_had_reset": false,
+    "last_weekly_run": null,
+    "last_vues_leboncoin_snapshot": null
+  },
+
+  "bien": {
+    "nom": "Tiago",
+    "sous_titre": "Suivi de commercialisation"
+  },
+
+  "jours_arret_diffusion": 0,
+
+  "diffusion": {
+    "remontee": {
+      "frequence": "Double remontée hebdomadaire automatique"
+    }
+  },
+
+  "dates": {
+    "mandat_signe": "2026-02-19",
+    "mise_en_ligne": "2026-02-21",
+    "derniere_remontee": null
+  },
+
+  "liens": {
+    "agenceimmo": "🔴",
+    "leboncoin": "🔴",
+    "seloger": "🔴",
+    "bienici": "🔴",
+    "logicimmo": "🔴",
+    "avendrealouer": "🔴",
+    "paruvendu": "🔴",
+    "lefigaro": "🔴",
+    "facebook": "🔴",
+    "instagram": "🔴",
+    "linkedin": "🔴",
+    "pagesjaunes": "🔴",
+    "google": "🔴",
+    "youtube": "🔴"
+  },
+
+  "marche": {
+    "taux_credit": {
+      "moyen": null,
+      "precedent": null,
+      "duree": "25 ans",
+      "source": "CAFPI – baromètre (taux moyen)",
+      "periode": null,
+      "updatedAt": null
+    }
+  },
+
+  "stats": {
+    "actuel": {
+      "appels": 0,
+      "emails": 0,
+      "visites_effectuees": 0,
+      "visites_programmees": 0,
+      "offres": 0,
+      "vues_leboncoin": 0,
+      "favoris_leboncoin": 0
+    },
+    "cumul": {
+      "appels": 0,
+      "emails": 0,
+      "visites_effectuees": 0,
+      "offres": 0,
+      "vues_leboncoin": 0,
+      "favoris_leboncoin": 0
+    }
+  },
+
+  "historique": [],
+
+  "strategie_3090": {
+    "intro": "",
+    "etapes": [
+      {
+        "jours": "0–30 jours",
+        "titre": "Phase de test du marché",
+        "strategie": "Mise en ligne au prix de positionnement initial afin de tester la réaction réelle du marché."
+      },
+      {
+        "jours": "31–60 jours",
+        "titre": "Phase d’ajustement stratégique",
+        "strategie": "Ajustements ciblés en fonction des données observées."
+      },
+      {
+        "jours": "61–90 jours",
+        "titre": "Phase de derniers ajustements",
+        "strategie": "Optimisation finale du positionnement afin de favoriser le passage à l’offre."
+      },
+      {
+        "jours": "+ 90 jours",
+        "titre": "Phase de poursuite maîtrisée",
+        "strategie": "Poursuite de la commercialisation avec stratégie définie."
+      }
+    ]
+  }
+}
