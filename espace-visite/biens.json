@@ -9,7 +9,7 @@
       "surface": 109,
       "exterieur": 196,
       "annee": 1983,
-      "etage": "1",
+      "etage": "1 niveau",
       "photo": "/espace-visite/biens/alix/photos/photo-accueil.webp"
     },
     {
@@ -81,7 +81,7 @@
       "surface": 82,
       "exterieur": 125,
       "annee": 1998,
-      "etage": "1",
+      "etage": "1 niveau",
       "photo": "/espace-visite/biens/tiago/photos/photo-accueil.webp"
     }
   ],
