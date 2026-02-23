@@ -1,0 +1,40 @@
+{
+  "slug": "elisa",
+  "statut": "disponible",
+
+  "nom": "Elisa",
+  "bien_type": "Maison",
+  "type": "T5",
+  "surface": 111,
+  "exterieur": 473,
+  "annee": 2015,
+  "etage": "Plein pied",
+
+  "prix": 389000,
+  "charges": "130 €/an (portail, espace vert, parking)",
+  "taxe_fonciere": "1776 €",
+
+  "ville": "Charvieu-Chavagneux",
+  "secteur": "Piarday",
+
+  "dpe": {
+    "energie": "C",
+    "ges": "C"
+  },
+
+  "stationnement": "Garage et place de parking",
+  "chauffage": "Gaz",
+
+  "proximite": "Écoles, commerces, Tansports",
+
+  "points_forts": [
+    "Plein pied",
+    "Grand terrain",
+    "Suite parentale"
+  ],
+
+  "photos_count": 11,
+
+  "video": "",
+  "annonce": "https://www.agence.immo/achat/maison-plain-pied-5-pieces-charvieu-chavagneux-38230-VM14000"
+}
