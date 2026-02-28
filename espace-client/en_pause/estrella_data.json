@@ -1,5 +1,5 @@
 {
-  "statut_bien": "en_pause",
+  "statut_bien": "en_ligne",
   "marche": {
     "taux_credit": {
       "precedent": 3.33,
@@ -11,23 +11,23 @@
     }
   },
   "liens": {
-    "lefigaro": "https://immobilier.lefigaro.fr/annonces/annonce-95658053.html",
+    "lefigaro": "https://immobilier.lefigaro.fr/annonces/annonce-89590623.html",
     "youtube": "https://youtu.be/uS8O_sHm0VI",
-    "paruvendu": "https://www.paruvendu.fr/immobilier/vente/maison/1287793580A1KIVHMN000",
+    "paruvendu": "https://www.paruvendu.fr/immobilier/vente/maison/1288850395A1KIVHMN000",
     "pagesjaunes": "https://www.pagesjaunes.fr/actualites/details-actu/66115bd2a1eb47527ae88b6d",
-    "bienici": "https://www.bienici.com/annonce/vente/montrottier/maison/7pieces/netty-jaujard-house-14105?q=%2Frecherche%2Fachat%2Fmontrottier-69770%2F3-pieces-et-plus%3Fprix-min%3D210000%26prix-max%3D220000",
+    "bienici": "https://www.bienici.com/annonce/vente/montrottier/maison/7pieces/netty-jaujard-house-13495?q=%2Frecherche%2Fachat%2Fmontrottier-69770%3Fcamera%3D13_4.4654317_45.8013947_0_0",
     "linkedin": "🔴",
-    "seloger": "https://www.seloger.com/annonces/achat/maison/montrottier-69/258035387.htm?serp_view=list&search=distributionTypes%3DBuy%26estateTypes%3DHouse%2CApartment%26locations%3DAD08FR28824#ln=classified_search_results&m=classified_search_results_classified_classified_detail_M",
-    "agenceimmo": "https://www.agence.immo/achat/maison-maison-de-campagne-7-pieces-montrottier-69770-VM14105",
-    "logicimmo": "https://www.logic-immo.com/detail-vente-258035387.htm?serp_view=list&search=distributionTypes%3DBuy%26estateTypes%3DHouse%2CApartment%26locations%3DAD08FR28824%26priceMax%3D220000%26priceMin%3D210000%23ln%3Dclassified_search_results&m=classified_search_results_classified_classified_detail_M",
+    "seloger": "https://www.seloger.com/annonces/achat/maison/montrottier-69/262080443.htm?serp_view=list&search=distributionTypes%3DBuy%26estateTypes%3DHouse%2CApartment%26locations%3DAD08FR28824&sort_order_ab_test=sort_order_variant&feature_aiEnrichment=true#ln=classified_search_results&m=classified_search_results_classified_classified_detail_M",
+    "agenceimmo": "https://www.agence.immo/achat/maison-maison-de-campagne-7-pieces-montrottier-69770-VM13495",
+    "logicimmo": "https://www.logic-immo.com/detail-vente-262080443.htm?serp_view=list&search=distributionTypes%3DBuy%26estateTypes%3DHouse%2CApartment%26locations%3DAD08FR28824&feature_aiEnrichment=false%23ln%3Dclassified_search_results&m=classified_search_results_classified_classified_detail_M",
     "google": "https://share.google/66MAtYPgbaAO1M6Rp",
     "facebook": "https://www.facebook.com/jeremyheyobimmobilier/posts/pfbid02LqU4kPvT7E8JB25z6PXuysB7x5phREp3N9jnQ9eCiGBn4yskdgvDPmPunnod42pEl",
     "instagram": "https://www.instagram.com/p/C5bEhpkIfSW/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==",
-    "leboncoin": "https://www.leboncoin.fr/ad/ventes_immobilieres/3125084360"
+    "leboncoin": "https://www.leboncoin.fr/ad/ventes_immobilieres/3152500878"
   },
   "dates": {
     "mandat_signe": "2024-03-16",
-    "mise_en_ligne": "2024-04-06",
+    "mise_en_ligne": "2024-02-28",
     "derniere_remontee": "2026-01-22"
   },
   "analysis": {
