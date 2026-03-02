@@ -37,18 +37,6 @@
       "photo": "/espace-visite/biens/estrella/photos/photo-accueil.webp"
     },
     {
-      "nom": "Léa",
-      "slug": "lea",
-      "ville": "Saint-Priest",
-      "bien_type": "Appartement",
-      "type": "T4",
-      "surface": 74,
-      "exterieur": 110,
-      "annee": 2015,
-      "etage": "Rez-de-jardin",
-      "photo": "/espace-visite/biens/lea/photos/photo-accueil.webp"
-    },
-    {
       "nom": "Léon",
       "slug": "leon",
       "ville": "Saint-Priest",
@@ -98,6 +86,18 @@
     }
   ],
   "sous_compromis": [
+    {
+      "nom": "Léa",
+      "slug": "lea",
+      "ville": "Saint-Priest",
+      "bien_type": "Appartement",
+      "type": "T4",
+      "surface": 74,
+      "exterieur": 110,
+      "annee": 2015,
+      "etage": "Rez-de-jardin",
+      "photo": "/espace-visite/biens/lea/photos/photo-accueil.webp"
+    },
     {
       "nom": "Romy",
       "slug": "romy",
