@@ -1,6 +1,18 @@
 {
   "disponibles": [
     {
+      "nom": "Aaron",
+      "slug": "aaron",
+      "ville": "Saint-Priest",
+      "bien_type": "Appartement",
+      "type": "T4",
+      "surface": 82,
+      "exterieur": 7,
+      "annee": 2019,
+      "etage": "1er étage",
+      "photo": "/espace-visite/biens/aaron/photos/photo-accueil.webp"
+    },
+    {
       "nom": "Alix",
       "slug": "alix",
       "ville": "Charvieu-Chavagneux",
