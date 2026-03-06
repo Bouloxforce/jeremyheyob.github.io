@@ -1,0 +1,40 @@
+{
+  "slug": "aaron",
+  "statut": "disponible",
+
+  "nom": "Aaron",
+  "bien_type": "Appartement",
+  "type": "T4",
+  "surface": 82,
+  "exterieur": 7,
+  "annee": 2019,
+  "etage": "1er étage",
+
+  "prix": 210000,
+  "charges": "94 €/mois (eau froide, entretiens parties communes, ascenseur)",
+  "taxe_fonciere": "1057 €",
+
+  "ville": "Saint-Priest",
+  "secteur": "Centre-Ville",
+
+  "dpe": {
+    "energie": "C",
+    "ges": "C"
+  },
+
+  "stationnement": "Garage ou parking en sus",
+  "chauffage": "Gaz individuel",
+
+  "proximite": "Écoles, commerces, Tram T2, C25",
+
+  "points_forts": [
+    "Lumineux",
+    "Calme",
+    "Grande chambres"
+  ],
+
+  "photos_count": 10,
+
+  "video": "",
+  "annonce": ""
+}
