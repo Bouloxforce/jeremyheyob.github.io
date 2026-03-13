@@ -1,0 +1,40 @@
+{
+  "slug": "meline",
+  "statut": "disponible",
+
+  "nom": "Meline",
+  "bien_type": "Appartement",
+  "type": "T5",
+  "surface": 105,
+  "exterieur": 890,
+  "annee": 1983,
+  "etage": "1 étage",
+
+  "prix": 399000,
+  "charges": "150 €/an",
+  "taxe_fonciere": "1391 €",
+
+  "ville": "Chavanoz",
+  "secteur": "Belmont",
+
+  "dpe": {
+    "energie": "D",
+    "ges": "B"
+  },
+
+  "stationnement": "3 places de parking + garage",
+  "chauffage": "Bois + électrique + Pompe à chaleur",
+
+  "proximite": "Écoles, commerces, transports",
+
+  "points_forts": [
+    "Pas de vis-à-vis",
+    "Vue sur champs agricoles",
+    "Grand espace"
+  ],
+
+  "photos_count": 11,
+
+  "video": "",
+  "annonce": ""
+}
