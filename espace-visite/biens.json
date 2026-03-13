@@ -73,6 +73,18 @@
       "photo": "/espace-visite/biens/lucas/photos/photo-accueil.webp"
     },
     {
+      "nom": "Meline",
+      "slug": "meline",
+      "ville": "Chavanoz",
+      "bien_type": "Appartement",
+      "type": "T5",
+      "surface": 105,
+      "exterieur": 890,
+      "annee": 1983,
+      "etage": "1 étage",
+      "photo": "/espace-visite/biens/meline/photos/photo-accueil.webp"
+    },
+    {
       "nom": "Naël",
       "slug": "nael",
       "ville": "Saint-Priest",
