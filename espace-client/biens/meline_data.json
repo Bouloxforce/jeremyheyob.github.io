@@ -38,12 +38,12 @@
   },
 
   "liens": {
-    "agenceimmo": "🔴",
-    "leboncoin": "🔴",
-    "seloger": "🔴",
-    "bienici": "🔴",
-    "logicimmo": "🔴",
-    "paruvendu": "🔴",
+    "agenceimmo": "https://www.agence.immo/achat/maison-traditionnelle-5-pieces-chavanoz-38230-VM14356",
+    "leboncoin": "https://www.leboncoin.fr/ad/ventes_immobilieres/3161597746",
+    "seloger": "https://www.seloger.com/annonces/achat/maison/chavanoz-38/263443833.htm?serp_view=list&search=distributionTypes%3DBuy%26estateTypes%3DHouse%2CApartment%26locations%3DAD08FR14900&sort_order_ab_test=sort_order_variant&feature_aiEnrichment=true#ln=classified_search_results&m=classified_search_results_classified_classified_detail_M",
+    "bienici": "https://www.bienici.com/annonce/vente/chavanoz/maison/5pieces/netty-jaujard-house-14356?q=%2Frecherche%2Fachat%2Fchavanoz-38230",
+    "logicimmo": "https://www.logic-immo.com/detail-vente-263443833.htm?serp_view=list&search=distributionTypes%3DBuy%26estateTypes%3DHouse%2CApartment%26locations%3DAD08FR14900&feature_aiEnrichment=false%23ln%3Dclassified_search_results&m=classified_search_results_classified_classified_detail_M",
+    "paruvendu": "https://www.paruvendu.fr/immobilier/vente/maison/1289143459A1KIVHMN000",
     "lefigaro": "🔴",
     "facebook": "🔴",
     "instagram": "🔴",
