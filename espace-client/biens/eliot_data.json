@@ -50,7 +50,7 @@
     "linkedin": "🔴",
     "pagesjaunes": "🔴",
     "google": "🔴",
-    "youtube": "🔴"
+    "youtube": "https://youtu.be/XKYsXQC-szQ"
   },
 
   "marche": {
@@ -75,12 +75,12 @@
       "favoris_leboncoin": 0
     },
     "cumul": {
-      "appels": 0,
-      "emails": 0,
-      "visites_effectuees": 0,
+      "appels": 6,
+      "emails": 8,
+      "visites_effectuees": 3,
       "offres": 0,
-      "vues_leboncoin": 0,
-      "favoris_leboncoin": 0
+      "vues_leboncoin": 257,
+      "favoris_leboncoin": 9
     }
   },
 
