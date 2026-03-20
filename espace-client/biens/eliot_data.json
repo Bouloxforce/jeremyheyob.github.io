@@ -39,7 +39,7 @@
 
   "liens": {
     "agenceimmo": "🔴",
-    "leboncoin": "🔴",
+    "leboncoin": "https://www.leboncoin.fr/recherche?category=9&locations=Saint-Priest_69800__45.69423_4.93561_5000&square=53-55&real_estate_type=2",
     "seloger": "🔴",
     "bienici": "🔴",
     "logicimmo": "🔴",
