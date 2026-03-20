@@ -25,6 +25,18 @@
       "photo": "/espace-visite/biens/alix/photos/photo-accueil.webp"
     },
     {
+      "nom": "Eliot",
+      "slug": "eliot",
+      "ville": "Saint-Priest",
+      "bien_type": "Appartement",
+      "type": "T3",
+      "surface": 54,
+      "exterieur": 18,
+      "annee": 2018,
+      "etage": "Rez-de-jardin",
+      "photo": "/espace-visite/biens/eliot/photos/photo-accueil.webp"
+    },
+    {
       "nom": "Elisa",
       "slug": "elisa",
       "ville": "Charvieu-Chavagneux",
