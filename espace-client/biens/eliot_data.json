@@ -59,7 +59,7 @@
       "precedent": 3.3900000000000001,
       "duree": "25 ans",
       "source": "CAFPI – baromètre (taux moyen)",
-      "periode": 2026-03,
+      "periode": "2026-03",
       "updatedAt": "2026-03-11T06:42:55.070Z"
     }
   }
@@ -84,7 +84,7 @@
     }
   },
 
-  "historique": [{"date":"2025-07-16","label":"✍️ Mandat enregistré le 2025-09-19"}],
+  "historique": [{"date":"2025-09-19","label":"✍️ Mandat enregistré le 2025-09-19"}],
 
   "strategie_3090": {
     "intro": "",
