@@ -97,18 +97,6 @@
       "photo": "/espace-visite/biens/meline/photos/photo-accueil.webp"
     },
     {
-      "nom": "Naël",
-      "slug": "nael",
-      "ville": "Saint-Priest",
-      "bien_type": "Appartement",
-      "type": "T3",
-      "surface": 72,
-      "exterieur": 8,
-      "annee": 2017,
-      "etage": "1er étage",
-      "photo": "/espace-visite/biens/nael/photos/photo-accueil.webp"
-    },
-    {
       "nom": "Tiago",
       "slug": "tiago",
       "ville": "Pont de Cheruy",
@@ -133,6 +121,18 @@
       "annee": 2015,
       "etage": "Rez-de-jardin",
       "photo": "/espace-visite/biens/lea/photos/photo-accueil.webp"
+    },
+    {
+      "nom": "Naël",
+      "slug": "nael",
+      "ville": "Saint-Priest",
+      "bien_type": "Appartement",
+      "type": "T3",
+      "surface": 72,
+      "exterieur": 8,
+      "annee": 2017,
+      "etage": "1er étage",
+      "photo": "/espace-visite/biens/nael/photos/photo-accueil.webp"
     }
   ]
 }
