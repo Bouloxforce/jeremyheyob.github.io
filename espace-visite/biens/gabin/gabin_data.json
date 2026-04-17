@@ -1,0 +1,40 @@
+{
+  "slug": "gabin",
+  "statut": "disponible",
+
+  "nom": "Gabin",
+  "bien_type": "Appartement",
+  "type": "T4",
+  "surface": 81,
+  "exterieur": 3,
+  "annee": 1964,
+  "etage": "1er étage",
+
+  "prix": 190000,
+  "charges": "225 €/mois (chauffage, entretiens parties communes, ascenseur, charges garage, charges cave)",
+  "taxe_fonciere": "1190 €",
+
+  "ville": "Saint-Priest",
+  "secteur": "Centre-Ville",
+
+  "dpe": {
+    "energie": "D",
+    "ges": "C"
+  },
+
+  "stationnement": "Parking",
+  "chauffage": "Chauffage urbain",
+
+  "proximite": "Écoles, commerces, Tram T2, C25",
+
+  "points_forts": [
+    "Traversant",
+    "Parking",
+    "Cave"
+  ],
+
+  "photos_count": 8,
+
+  "video": "",
+  "annonce": ""
+}
