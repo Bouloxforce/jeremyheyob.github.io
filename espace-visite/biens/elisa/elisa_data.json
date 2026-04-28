@@ -6,7 +6,7 @@
   "bien_type": "Maison",
   "type": "T5",
   "surface": 111,
-  "exterieur": 583,
+  "exterieur": 470,
   "annee": 2015,
   "etage": "Plein pied",
 
@@ -30,7 +30,7 @@
   "points_forts": [
     "Plein pied",
     "Grand terrain plat",
-    "Suite parentale"
+    "Pièce de vie de 48m2"
   ],
 
   "photos_count": 11,
