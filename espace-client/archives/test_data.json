@@ -163,6 +163,7 @@
   },
   "bien": {
     "nom": "Test",
+    "adresse_complete": "12 rue victor hugo 69800 Saint-Priest",
     "sous_titre": "Suivi de commercialisation"
   },
   "marche": {
