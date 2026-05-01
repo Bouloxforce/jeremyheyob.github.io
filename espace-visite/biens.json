@@ -109,6 +109,18 @@
       "photo": "/espace-visite/biens/meline/photos/photo-accueil.webp"
     },
     {
+      "nom": "Nathan",
+      "slug": "nathan",
+      "ville": "Saint-Priest",
+      "bien_type": "Appartement",
+      "type": "T4",
+      "surface": 85,
+      "exterieur": 8,
+      "annee": 2007,
+      "etage": "1er étage",
+      "photo": "/espace-visite/biens/nathan/photos/photo-accueil.webp"
+    },
+    {
       "nom": "Tiago",
       "slug": "tiago",
       "ville": "Pont de Cheruy",
