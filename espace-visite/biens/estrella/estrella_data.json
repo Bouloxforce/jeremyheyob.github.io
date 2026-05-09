@@ -10,7 +10,7 @@
   "annee": 1835,
   "etage": "2 niveaux",
 
-  "prix": 220000,
+  "prix": 250000,
   "charges": null,
   "taxe_fonciere": "764 €/an + 177 €/an taxe ordures ménagères",
 
@@ -18,12 +18,12 @@
   "secteur": "Centre",
 
   "dpe": {
-    "energie": "F",
-    "ges": "F"
+    "energie": "C",
+    "ges": "B"
   },
 
   "stationnement": "Garage et parking",
-  "chauffage": "Fioul",
+  "chauffage": "Pompe à chaleur",
 
   "proximite": "Écoles, commerces",
 
@@ -36,5 +36,5 @@
   "photos_count": 10,
 
   "video": "https://youtu.be/uS8O_sHm0VI",
-  "annonce": "https://www.agence.immo/achat/maison-maison-de-campagne-7-pieces-montrottier-69770-VM13495"
+  "annonce": "https://www.agence.immo/achat/maison-maison-de-campagne-7-pieces-montrottier-69770-VM14892"
 }
