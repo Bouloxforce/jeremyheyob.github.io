@@ -18,17 +18,17 @@
       "appels": 9,
       "offres": 0,
       "vues_leboncoin": 0,
-      "emails": 0,
-      "visites_effectuees": 6,
-      "favoris_leboncoin": 0
+      "emails": 1,
+      "visites_effectuees": 6234,
+      "favoris_leboncoin": 105
     },
     "actuel": {
-      "appels": 9,
-      "emails": 1,
-      "visites_effectuees": 7,
+      "appels": 0,
+      "emails": 0,
+      "visites_effectuees": 0,
       "offres": 0,
-      "vues_leboncoin": 1148,
-      "favoris_leboncoin": 12,
+      "vues_leboncoin": 0,
+      "favoris_leboncoin": 0,
       "visites_programmees": 0
     }
   },
@@ -214,7 +214,7 @@
 
   "dates": {
     "mandat_signe": "2024-03-16",
-    "mise_en_ligne": "2026-02-28",
+    "mise_en_ligne": "2026-05-09",
     "derniere_remontee": "2026-03-23"
   }
 }
