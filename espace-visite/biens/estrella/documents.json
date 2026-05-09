@@ -4,31 +4,11 @@
     "title": "Amiante"
   },
   {
-    "file": "devis-2.pdf",
-    "title": "Devis 2"
-  },
-  {
-    "file": "devis.pdf",
-    "title": "Devis"
-  },
-  {
-    "file": "dpe-projete.pdf",
-    "title": "Dpe Projete"
-  },
-  {
-    "file": "dpe.pdf",
-    "title": "Dpe"
-  },
-  {
     "file": "elec.pdf",
     "title": "Elec"
   },
   {
     "file": "plomb.pdf",
     "title": "Plomb"
-  },
-  {
-    "file": "projipac.pdf",
-    "title": "Projipac"
   }
 ]
