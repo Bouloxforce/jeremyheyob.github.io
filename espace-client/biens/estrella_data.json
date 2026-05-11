@@ -10,9 +10,7 @@
     "generatedAt": "2026-02-02T10:36:08.558Z",
     "text": "Les indicateurs actuels nécessitent une surveillance attentive. Un point stratégique sera réalisé au moment prévu dans le plan de commercialisation."
   },
-
   "jours_arret_diffusion": 270,
-
   "stats": {
     "cumul": {
       "appels": 9,
@@ -32,9 +30,7 @@
       "visites_programmees": 0
     }
   },
-
   "statut_bien": "en_ligne",
-
   "_meta": {
     "last_mandat_signe": "2024-03-16",
     "last_weekly_run": "2026-02-02",
@@ -71,7 +67,6 @@
     "mise_en_ligne_ref": "2024-04-06",
     "just_reset": false
   },
-
   "liens": {
     "lefigaro": "https://immobilier.lefigaro.fr/annonces/annonce-89590623.html",
     "youtube": "https://youtu.be/uS8O_sHm0VI",
@@ -87,7 +82,6 @@
     "instagram": "https://www.instagram.com/p/C5bEhpkIfSW/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==",
     "leboncoin": "https://www.leboncoin.fr/ad/ventes_immobilieres/3195212485"
   },
-
   "historique": [
     {
       "date": "2026-03-23",
@@ -162,7 +156,6 @@
       "label": "✍️ Mandat enregistré"
     }
   ],
-
   "strategie_3090": {
     "intro": "La commercialisation est structurée par paliers afin d’adapter la stratégie au comportement réel des acquéreurs et au contexte de marché.",
     "etapes": [
@@ -188,30 +181,26 @@
       }
     ]
   },
-
   "diffusion": {
     "remontee": {
       "frequence": "Double remontée hebdomadaire automatique"
     }
   },
-
   "bien": {
     "nom": "Estrella",
     "adresse_complete": "12 montée de l'église 69770 Montrottier",
     "sous_titre": "Suivi de commercialisation"
   },
-
   "marche": {
     "taux_credit": {
-      "precedent": 3.35,
+      "moyen": 3.43,
+      "precedent": 3.41,
       "duree": "25 ans",
       "source": "CAFPI – baromètre (taux moyen)",
-      "periode": "2026-03",
-      "moyen": 3.41,
-      "updatedAt": "2026-03-11T06:42:55.070Z"
+      "periode": "2026-05",
+      "updatedAt": "2026-05-11T09:28:56.882Z"
     }
   },
-
   "dates": {
     "mandat_signe": "2024-03-16",
     "mise_en_ligne": "2026-05-09",
