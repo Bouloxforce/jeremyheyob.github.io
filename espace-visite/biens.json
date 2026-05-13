@@ -37,18 +37,6 @@
       "photo": "/espace-visite/biens/eliot/photos/photo-accueil.webp"
     },
     {
-      "nom": "Elisa",
-      "slug": "elisa",
-      "ville": "Charvieu-Chavagneux",
-      "bien_type": "Maison",
-      "type": "T5",
-      "surface": 111,
-      "exterieur": 470,
-      "annee": 2015,
-      "etage": "Plein pied",
-      "photo": "/espace-visite/biens/elisa/photos/photo-accueil.webp"
-    },
-    {
       "nom": "Estrella",
       "slug": "estrella",
       "ville": "Montrottier",
