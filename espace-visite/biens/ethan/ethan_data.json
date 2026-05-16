@@ -1,0 +1,40 @@
+{
+  "slug": "ethan",
+  "statut": "disponible",
+
+  "nom": "Ethan",
+  "bien_type": "Appartement",
+  "type": "T2",
+  "surface": 42,
+  "exterieur": 16,
+  "annee": 2017,
+  "etage": "1er étage",
+
+  "prix": 180000,
+  "charges": "143 €/mois (chauffage, eau chaude, eau froide, entretiens parties communes, ascenseur, charges garage)",
+  "taxe_fonciere": "1152 €",
+
+  "ville": "Saint-Priest",
+  "secteur": "Centre-Ville",
+
+  "dpe": {
+    "energie": "C",
+    "ges": "C"
+  },
+
+  "stationnement": "Garage + places visiteurs",
+  "chauffage": "Gaz collectif",
+
+  "proximite": "Écoles, commerces, Metro, Tramway, C62",
+
+  "points_forts": [
+    "Grand Balcon",
+    "Sans vis à vis",
+    "Calme"
+  ],
+
+  "photos_count": 11,
+
+  "video": "",
+  "annonce": ""
+}
