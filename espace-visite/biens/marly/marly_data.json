@@ -1,0 +1,40 @@
+{
+  "slug": "marly",
+  "statut": "disponible",
+
+  "nom": "Marly",
+  "bien_type": "Appartement",
+  "type": "T3",
+  "surface": 63,
+  "exterieur": 8,
+  "annee": 2017,
+  "etage": "1er étage",
+
+  "prix": 240000,
+  "charges": "123 €/mois (chauffage, eau chaude, eau froide, entretiens parties communes, ascenseur, charges garage)",
+  "taxe_fonciere": "1090 €",
+
+  "ville": "Saint-Priest",
+  "secteur": "Centre-Ville",
+
+  "dpe": {
+    "energie": "C",
+    "ges": "C"
+  },
+
+  "stationnement": "Garage",
+  "chauffage": "Gaz collectif",
+
+  "proximite": "Écoles, commerces, Tram T2, C25",
+
+  "points_forts": [
+    "Sécurisé",
+    "Pas de vis à vis",
+    "Garage"
+  ],
+
+  "photos_count": 11,
+
+  "video": "",
+  "annonce": ""
+}
