@@ -97,6 +97,18 @@
       "photo": "/espace-visite/biens/lucas/photos/photo-accueil.webp"
     },
     {
+      "nom": "Marly",
+      "slug": "marly",
+      "ville": "Saint-Priest",
+      "bien_type": "Appartement",
+      "type": "T3",
+      "surface": 63,
+      "exterieur": 8,
+      "annee": 2017,
+      "etage": "1er étage",
+      "photo": "/espace-visite/biens/marly/photos/photo-accueil.webp"
+    },
+    {
       "nom": "Meline",
       "slug": "meline",
       "ville": "Chavanoz",
