@@ -10,7 +10,7 @@
   "annee": 1964,
   "etage": "1er étage",
 
-  "prix": 190000,
+  "prix": 180000,
   "charges": "225 €/mois (chauffage, entretiens parties communes, ascenseur, charges garage, charges cave)",
   "taxe_fonciere": "1190 €",
 
@@ -25,7 +25,7 @@
   "stationnement": "Parking",
   "chauffage": "Chauffage urbain",
 
-  "proximite": "Écoles, commerces, Tram T2, C25",
+  "proximite": "Écoles, commerces, Tram T2, C25, gare TER",
 
   "points_forts": [
     "Traversant",
