@@ -21,7 +21,7 @@
       "surface": 109,
       "exterieur": 196,
       "annee": 1983,
-      "etage": "1 niveau",
+      "etage": "2 niveaux",
       "photo": "/espace-visite/biens/alix/photos/photo-accueil.webp"
     },
     {
@@ -45,7 +45,7 @@
       "surface": 190,
       "exterieur": 54,
       "annee": 1835,
-      "etage": "2 niveaux",
+      "etage": "3 niveaux",
       "photo": "/espace-visite/biens/estrella/photos/photo-accueil.webp"
     },
     {
@@ -81,7 +81,7 @@
       "surface": 119,
       "exterieur": 375,
       "annee": 2015,
-      "etage": "1 niveau",
+      "etage": "2 niveaux",
       "photo": "/espace-visite/biens/louise/photos/photo-accueil.webp"
     },
     {
@@ -117,7 +117,7 @@
       "surface": 105,
       "exterieur": 890,
       "annee": 1983,
-      "etage": "1 niveau",
+      "etage": "2 niveaux",
       "photo": "/espace-visite/biens/meline/photos/photo-accueil.webp"
     },
     {
@@ -141,7 +141,7 @@
       "surface": 82,
       "exterieur": 125,
       "annee": 1998,
-      "etage": "1 niveau",
+      "etage": "2 niveaux",
       "photo": "/espace-visite/biens/tiago/photos/photo-accueil.webp"
     }
   ],
