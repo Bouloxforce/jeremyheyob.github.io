@@ -5,8 +5,8 @@
   "nom": "Marly",
   "bien_type": "Appartement",
   "type": "T3",
-  "surface": 63,
-  "exterieur": 8,
+  "surface": 62,
+  "exterieur": 9,
   "annee": 2017,
   "etage": "1er étage",
 
@@ -35,6 +35,6 @@
 
   "photos_count": 11,
 
-  "video": "",
+  "video": "https://youtu.be/VxrdTb-iQNw",
   "annonce": ""
 }
