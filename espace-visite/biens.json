@@ -25,6 +25,18 @@
       "photo": "/espace-visite/biens/alix/photos/photo-accueil.webp"
     },
     {
+      "nom": "Blandine",
+      "slug": "blandine",
+      "ville": "Charvieu-Chavagneux",
+      "bien_type": "Maison",
+      "type": "T5",
+      "surface": 127,
+      "exterieur": 459,
+      "annee": 2010,
+      "etage": "2 niveaux",
+      "photo": "/espace-visite/biens/blandine/photos/photo-accueil.webp"
+    },
+    {
       "nom": "Eliot",
       "slug": "eliot",
       "ville": "Saint-Priest",
@@ -83,18 +95,6 @@
       "annee": 2018,
       "etage": "3ème étage",
       "photo": "/espace-visite/biens/lucas/photos/photo-accueil.webp"
-    },
-    {
-      "nom": "Marly",
-      "slug": "marly",
-      "ville": "Saint-Priest",
-      "bien_type": "Appartement",
-      "type": "T3",
-      "surface": 62,
-      "exterieur": 9,
-      "annee": 2017,
-      "etage": "1er étage",
-      "photo": "/espace-visite/biens/marly/photos/photo-accueil.webp"
     },
     {
       "nom": "Meline",
