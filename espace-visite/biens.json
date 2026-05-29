@@ -73,18 +73,6 @@
       "photo": "/espace-visite/biens/gabin/photos/photo-accueil.webp"
     },
     {
-      "nom": "Louise",
-      "slug": "louise",
-      "ville": "Charvieu Chavagneux",
-      "bien_type": "Maison",
-      "type": "T5",
-      "surface": 119,
-      "exterieur": 375,
-      "annee": 2015,
-      "etage": "2 niveaux",
-      "photo": "/espace-visite/biens/louise/photos/photo-accueil.webp"
-    },
-    {
       "nom": "Lucas",
       "slug": "lucas",
       "ville": "Saint-Priest",
@@ -157,6 +145,18 @@
       "annee": 2015,
       "etage": "Rez-de-jardin",
       "photo": "/espace-visite/biens/lea/photos/photo-accueil.webp"
+    },
+    {
+      "nom": "Louise",
+      "slug": "louise",
+      "ville": "Charvieu Chavagneux",
+      "bien_type": "Maison",
+      "type": "T5",
+      "surface": 119,
+      "exterieur": 375,
+      "annee": 2015,
+      "etage": "2 niveaux",
+      "photo": "/espace-visite/biens/louise/photos/photo-accueil.webp"
     },
     {
       "nom": "Naël",
