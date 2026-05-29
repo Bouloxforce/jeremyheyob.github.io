@@ -1,0 +1,40 @@
+{
+  "slug": "blandine",
+  "statut": "disponible",
+
+  "nom": "Blandine",
+  "bien_type": "Maison",
+  "type": "T5",
+  "surface": 127,
+  "exterieur": 459,
+  "annee": 2010,
+  "etage": "2 niveaux",
+
+  "prix": 380000,
+  "charges": ,
+  "taxe_fonciere": "1307 €",
+
+  "ville": "Charvieu-Chavagneux",
+  "secteur": "Charvieu le Haut",
+
+  "dpe": {
+    "energie": "C",
+    "ges": "A"
+  },
+
+  "stationnement": "5 places de parking",
+  "chauffage": "Chauffage au sol + radiateur électrique",
+
+  "proximite": "Écoles, Collège et commerces",
+
+  "points_forts": [
+    "Vue exceptionnelle",
+    "Très calme",
+    "Sans vis à vis"
+  ],
+
+  "photos_count": 11,
+
+  "video": "",
+  "annonce": ""
+}
