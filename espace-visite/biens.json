@@ -97,6 +97,18 @@
       "photo": "/espace-visite/biens/lucas/photos/photo-accueil.webp"
     },
     {
+      "nom": "Maci",
+      "slug": "maci",
+      "ville": "Saint-Priest",
+      "bien_type": "Appartement",
+      "type": "T3",
+      "surface": 62,
+      "exterieur": 9,
+      "annee": 2017,
+      "etage": "1er étage",
+      "photo": "/espace-visite/biens/maci/photos/photo-accueil.webp"
+    },
+    {
       "nom": "Meline",
       "slug": "meline",
       "ville": "Chavanoz",
