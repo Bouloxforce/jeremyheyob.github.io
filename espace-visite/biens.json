@@ -109,18 +109,6 @@
       "photo": "/espace-visite/biens/maci/photos/photo-accueil.webp"
     },
     {
-      "nom": "Meline",
-      "slug": "meline",
-      "ville": "Chavanoz",
-      "bien_type": "Appartement",
-      "type": "T5",
-      "surface": 105,
-      "exterieur": 890,
-      "annee": 1983,
-      "etage": "2 niveaux",
-      "photo": "/espace-visite/biens/meline/photos/photo-accueil.webp"
-    },
-    {
       "nom": "Nathan",
       "slug": "nathan",
       "ville": "Saint-Priest",
