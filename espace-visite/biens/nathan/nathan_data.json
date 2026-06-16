@@ -10,7 +10,7 @@
   "annee": 2007,
   "etage": "1er étage",
 
-  "prix": 290000,
+  "prix": 270000,
   "charges": "315 €/mois (chauffage, eau chaude, eau froide, entretiens parties communes, charges parking, charges cave)",
   "taxe_fonciere": "1152 €",
 
@@ -22,7 +22,7 @@
     "ges": "C"
   },
 
-  "stationnement": "2 parkings",
+  "stationnement": "2 parkings en sus",
   "chauffage": "Gaz collectif",
 
   "proximite": "Village, écoles, commerces, Tram T2, C25",
@@ -35,6 +35,6 @@
 
   "photos_count": 11,
 
-  "video": "https://youtu.be/VgHuIJUDF3w",
+  "video": "https://youtu.be/-tTwypaeYxM",
   "annonce": "https://agence.immo/achat/appartement-t4-4-pieces-saint-priest-69800-VA34315"
 }
