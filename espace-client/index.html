@@ -1383,7 +1383,11 @@
       );
 
       return now < end
-        ? { date: `${dd}/${mm}/${yyyy}`, heure: `${hh}:${min}` }
+        ? {
+            date: `${dd}/${mm}/${yyyy}`,
+            heure: `${hh}:${min}`,
+            label
+          }
         : null;
     }
 
@@ -1529,12 +1533,20 @@
       block.style.display = "block";
 
       rdvs.forEach(rdv => {
+
         const li = document.createElement("li");
 
+        // Supprime simplement le " le 09/07/2026 17:00"
+        const texte = rdv.label.replace(
+          /\s+le\s+\d{2}\/\d{2}\/\d{4}.*$/i,
+          ""
+        );
+
         li.innerHTML =
-          `<strong>${rdv.date} —</strong> 🚪 Nouvelle visite programmée à ${rdv.heure}`;
+          `<strong>${rdv.date} —</strong> ${escapeHTML(texte)} à ${rdv.heure}`;
 
         ul.appendChild(li);
+
       });
     }
 
