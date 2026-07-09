@@ -1,0 +1,40 @@
+{
+  "slug": "titouan",
+  "statut": "disponible",
+
+  "nom": "Titouan",
+  "bien_type": "Appartement",
+  "type": "T4",
+  "surface": 80,
+  "exterieur": 0,
+  "annee": 1967,
+  "etage": "R+1",
+
+  "prix": 150000,
+  "charges": "130 €/mois (entretiens parties communes, espaces vert, charges cave)",
+  "taxe_fonciere": "1056 €",
+
+  "ville": "Saint-Priest",
+  "secteur": "Ménival",
+
+  "dpe": {
+    "energie": "D",
+    "ges": "D"
+  },
+
+  "stationnement": "Nombreuses places",
+  "chauffage": "Gaz individuel",
+
+  "proximite": "Écoles, commerces, Tram T2, C25",
+
+  "points_forts": [
+    "Calme",
+    "Pas de travaux",
+    "Cave"
+  ],
+
+  "photos_count": 30,
+
+  "video": "",
+  "annonce": ""
+}
