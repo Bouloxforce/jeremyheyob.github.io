@@ -25,18 +25,6 @@
       "photo": "/espace-visite/biens/alix/photos/photo-accueil.webp"
     },
     {
-      "nom": "Blandine",
-      "slug": "blandine",
-      "ville": "Charvieu-Chavagneux",
-      "bien_type": "Maison",
-      "type": "T5",
-      "surface": 127,
-      "exterieur": 459,
-      "annee": 2010,
-      "etage": "2 niveaux",
-      "photo": "/espace-visite/biens/blandine/photos/photo-accueil.webp"
-    },
-    {
       "nom": "Eliot",
       "slug": "eliot",
       "ville": "Saint-Priest",
@@ -134,6 +122,18 @@
     }
   ],
   "sous_compromis": [
+    {
+      "nom": "Blandine",
+      "slug": "blandine",
+      "ville": "Charvieu-Chavagneux",
+      "bien_type": "Maison",
+      "type": "T5",
+      "surface": 127,
+      "exterieur": 459,
+      "annee": 2010,
+      "etage": "2 niveaux",
+      "photo": "/espace-visite/biens/blandine/photos/photo-accueil.webp"
+    },
     {
       "nom": "Louise",
       "slug": "louise",
