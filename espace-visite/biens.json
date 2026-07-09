@@ -119,6 +119,18 @@
       "annee": 2007,
       "etage": "1er étage",
       "photo": "/espace-visite/biens/nathan/photos/photo-accueil.webp"
+    },
+    {
+      "nom": "Titouan",
+      "slug": "titouan",
+      "ville": "Saint-Priest",
+      "bien_type": "Appartement",
+      "type": "T4",
+      "surface": 80,
+      "exterieur": null,
+      "annee": 1967,
+      "etage": "R+1",
+      "photo": "/espace-visite/biens/titouan/photos/photo-accueil.webp"
     }
   ],
   "sous_compromis": [
