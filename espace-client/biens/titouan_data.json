@@ -1,5 +1,5 @@
 {
-  "statut_bien": "🔴",
+  "statut_bien": "en_ligne",
   "_meta": {
     "weekly_cumul_base": {},
     "mise_en_ligne_ref": null,
@@ -39,12 +39,12 @@
   },
 
   "liens": {
-    "agenceimmo": "🔴",
+    "agenceimmo": "https://agence.immo/achat/appartement-t4-4-pieces-saint-priest-69800-VA34387",
     "leboncoin": "https://www.leboncoin.fr",
-    "seloger": "🔴",
-    "bienici": "🔴",
-    "logicimmo": "🔴",
-    "paruvendu": "🔴",
+    "seloger": "https://www.seloger.com/annonces/achat/appartement/saint-priest-69/les-marendiers-la-fouillouse/274740201.htm?serp_view=list&search=distributionTypes%3DBuy%26estateTypes%3DHouse%2CApartment%26locations%3DPOCOFR4525%26priceMax%3D150000%26priceMin%3D150000#ln=classified_search_results&m=classified_search_results_classified_classified_detail_M",
+    "bienici": "https://www.bienici.com/annonce/vente/saint-priest/appartement/4pieces/netty-jaujard-appt-34387?q=%2Frecherche%2Fachat%2Fsaint-priest-69800%3Fprix-min%3D149000%26prix-max%3D150000",
+    "logicimmo": "https://www.logic-immo.com/detail-vente-274740201.htm?serp_view=list&search=distributionTypes%3DBuy%26estateTypes%3DHouse%2CApartment%26locations%3DPOCOFR4525%26priceMax%3D151000%26priceMin%3D150000%23ln%3Dclassified_search_results&m=classified_search_results_classified_classified_detail_M",
+    "paruvendu": "https://www.paruvendu.fr/immobilier/vente/appartement/1293100271A1KIVHAP000",
     "lefigaro": "🔴",
     "facebook": "🔴",
     "instagram": "🔴",
