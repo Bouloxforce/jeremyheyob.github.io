@@ -2,7 +2,7 @@
   "analysis": {
     "text": "La commercialisation se déroule dans de bonnes conditions. Les indicateurs actuels sont cohérents avec le marché. La stratégie en place est maintenue.",
     "evolution_text": "",
-    "generatedAt": "2026-08-06T10:11:36.518Z",
+    "generatedAt": "2026-08-06T10:08:29.668Z",
     "noExploitableData": false,
     "alertes": [],
     "phase_active": "90+"
@@ -74,15 +74,11 @@
   "historique": [
     {
       "date": "2025-07-16",
-      "label": "✍️ Mandat enregistré le 2025-07-16"
-    },
-    {
-      "date": "2025-07-16",
       "label": "✍️ Mandat enregistré"
     },
     {
       "date": "2026-01-10",
-      "label": "✅ Annonce mise en ligne le 2026-01-10"
+      "label": "🌐 Annonce mise en ligne"
     },
     {
       "date": "2026-01-13",
