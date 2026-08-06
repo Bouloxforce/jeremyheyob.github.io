@@ -1,8 +1,6 @@
 {
-  "slug": "test",
   "statut": "disponible",
 
-  "nom": "Test",
   "bien_type": "Appartement",
   "type": "T3",
   "surface": 72,
@@ -31,10 +29,5 @@
     "Sécurisé",
     "Traversant",
     "Garage"
-  ],
-
-  "photos_count": 30,
-
-  "video": "",
-  "annonce": ""
+  ]
 }
