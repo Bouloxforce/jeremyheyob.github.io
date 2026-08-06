@@ -424,6 +424,7 @@
     }
   ],
   "statut_bien": "en_ligne",
+  "_comment_statut_bien": "Valeurs possibles : en_ligne | sous_compromis | en_pause | vendu | archive | brouillon"
   "bien": {
     "nom": "Eliot",
     "adresse_complete": "85 avenue Jean Jaurès 69800 Saint-Priest",
