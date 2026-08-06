@@ -288,7 +288,7 @@
     }
   ],
   "statut_bien": "en_ligne",
-  "_comment_statut_bien": "Valeurs possibles : en_ligne | sous_compromis | en_pause | vendu | archive | brouillon"
+  "_comment_statut_bien": "Valeurs possibles : en_ligne | sous_compromis | en_pause"
   "bien": {
     "nom": "Ethan",
     "adresse_complete": "40 8 ème rue 69800 Saint-Priest",
