@@ -4,6 +4,7 @@ import path from "path";
 // Dossiers
 const BIENS_DIR = "espace-visite/biens";
 const OUTPUT_FILE = "espace-visite/biens.json";
+const CLIENT_DIR = "espace-client/biens";
 
 // Structure finale
 const result = {
@@ -32,11 +33,39 @@ for (const slug of dossiers) {
   if (fs.existsSync(dataPath)) {
     const data = JSON.parse(fs.readFileSync(dataPath, "utf8"));
 
-    if (!data.nom || !data.ville || !data.photos_count || data.photos_count < 1) {
-      console.warn(`⚠️ Bien ignoré (données incomplètes) : ${slug}`);
-    } else {
-      const bien = {
-        nom: data.nom,
+const clientPath = path.join(CLIENT_DIR, `${slug}_data.json`);
+
+if (!fs.existsSync(clientPath)) {
+  console.warn(`⚠️ JSON client introuvable : ${slug}`);
+  continue;
+}
+
+const clientData = JSON.parse(
+  fs.readFileSync(clientPath, "utf8")
+);
+
+const photosDir = path.join(bienDir, "photos");
+
+const photos = fs.existsSync(photosDir)
+  ? fs.readdirSync(photosDir).filter(file => {
+
+      const lower = file.toLowerCase();
+
+      if (lower === "photo-accueil.webp") {
+        return false;
+      }
+
+      return /\.(webp|jpg|jpeg|png)$/i.test(file);
+
+    })
+  : [];
+
+if (!clientData?.bien?.nom || !data.ville || photos.length === 0) {
+
+  console.warn(`⚠️ Bien ignoré : ${slug}`);
+
+} else {
+      nom: clientData.bien.nom,
         slug,
         ville: data.infos?.Secteur
           ? `${data.ville} - Secteur ${data.infos.Secteur}`
@@ -47,7 +76,6 @@ for (const slug of dossiers) {
         exterieur: data.exterieur || null,
         annee: data.annee || null,
         etage: data.etage || null,
-        photo: `/espace-visite/biens/${slug}/photos/photo-accueil.webp`
       };
 
       if (data.statut === "sous_compromis") {
@@ -70,6 +98,14 @@ for (const slug of dossiers) {
         .replace(/\b\w/g, l => l.toUpperCase())
     }));
 
+    result.disponibles.sort((a, b) =>
+  a.nom.localeCompare(b.nom, "fr")
+);
+
+result.sous_compromis.sort((a, b) =>
+  a.nom.localeCompare(b.nom, "fr")
+);
+    
     fs.writeFileSync(
       documentsJsonPath,
       JSON.stringify(documents, null, 2),
