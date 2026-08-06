@@ -28,7 +28,7 @@
       "visites_programmees": 2
     }
   },
-  "statut_bien": "en_ligne",
+  "statut_bien": "en_ligne", // en_ligne | sous_compromis | en_pause
   "_meta": {
     "last_vues_leboncoin_snapshot": 214,
     "last_weekly_run": "2026-08-03",
