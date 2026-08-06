@@ -117,6 +117,7 @@
     }
   ],
   "statut_bien": "en_pause",
+  "_comment_statut_bien": "Valeurs possibles : en_ligne | sous_compromis | en_pause"
   "bien": {
     "nom": "Léon",
     "sous_titre": "Suivi de commercialisation"
