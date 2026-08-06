@@ -208,6 +208,7 @@
     }
   ],
   "statut_bien": "en_ligne",
+  "_comment_statut_bien": "Valeurs possibles : en_ligne | sous_compromis | en_pause"
   "bien": {
     "nom": "Maci",
     "adresse_complete": "40 boulevard Edouard Herriot 69800 Saint-Priest",
