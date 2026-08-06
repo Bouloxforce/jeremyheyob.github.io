@@ -25,6 +25,7 @@
     "leboncoin": "https://www.leboncoin.fr/ad/ventes_immobilieres/3223744489"
   },
   "statut_bien": "sous_compromis",
+  "_comment_statut_bien": "Valeurs possibles : en_ligne | sous_compromis | en_pause"
   "jours_arret_diffusion": 0,
   "diffusion": {
     "remontee": {
