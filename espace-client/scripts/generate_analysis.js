@@ -196,7 +196,8 @@ function getParisNowISO() {
   return paris.toISOString().slice(0, 16); // YYYY-MM-DDTHH:mm
 }
 
-function logHistoriqueDateChange(data, fieldKey, labelPrefix, todayISO) {
+function logHistoriqueDateChange(data, fieldKey, labelPrefix) {
+
   data._meta ??= {};
   data.historique ??= [];
 
@@ -204,45 +205,60 @@ function logHistoriqueDateChange(data, fieldKey, labelPrefix, todayISO) {
   const metaKey = `last_${fieldKey}`;
   const lastValue = data._meta[metaKey];
 
-  // ⛔ Pas une vraie date ISO → on purge la mémoire
-   if (!isValidISODate(currentValue)) {
-     delete data._meta[metaKey];
-     return;
-   }
-
-  // 🟢 Première saisie réelle
-  if (!lastValue) {
-    data.historique.push({
-      date: todayISO,
-      label: labelPrefix
-    });
-
-    data._meta[metaKey] = currentValue;
+  // Pas une vraie date
+  if (!isValidISODate(currentValue)) {
+    delete data._meta[metaKey];
     return;
   }
 
-  // 🔁 Changement réel
-  if (currentValue !== lastValue) {
-    data.historique.push({
-      date: todayISO,
-      label: labelPrefix
-    });
+  // Vérifie si l'évènement existe déjà
+  const alreadyExists = data.historique.some(h =>
+    h.label === labelPrefix &&
+    h.date === currentValue
+  );
+
+  // Première saisie
+  if (!lastValue) {
+
+    if (!alreadyExists) {
+      data.historique.push({
+        date: currentValue,
+        label: labelPrefix
+      });
+    }
 
     data._meta[metaKey] = currentValue;
   }
 
-   const isoCompromis = getCompromisSignatureISO(data.historique);
+  // Modification de la date
+  else if (currentValue !== lastValue) {
 
-   if (isoCompromis) {
-     const compromisDate = new Date(isoCompromis + ":00");
-     compromisDate.setHours(compromisDate.getHours() + 2);
+    if (!alreadyExists) {
+      data.historique.push({
+        date: currentValue,
+        label: labelPrefix
+      });
+    }
 
-     const nowParis = new Date(getParisNowISO() + ":00");
+    data._meta[metaKey] = currentValue;
+  }
 
-     if (nowParis >= compromisDate) {
-       data.statut_bien = "sous_compromis";
-     }
-   }
+  // Conserve ton code existant
+  const isoCompromis = getCompromisSignatureISO(data.historique);
+
+  if (isoCompromis) {
+
+    const compromisDate = new Date(isoCompromis + ":00");
+    compromisDate.setHours(compromisDate.getHours() + 2);
+
+    const nowParis = new Date(getParisNowISO() + ":00");
+
+    if (nowParis >= compromisDate) {
+      data.statut_bien = "sous_compromis";
+    }
+
+  }
+
 }
 
 /* =========================
@@ -416,15 +432,13 @@ function processBien(filePath) {
    logHistoriqueDateChange(
      data,
      "mise_en_ligne",
-     "✅ Annonce mise en ligne",
-     todayYMD
+     "🌐 Annonce mise en ligne"
    );
-   
+
    logHistoriqueDateChange(
      data,
      "mandat_signe",
-     "✍️ Mandat enregistré",
-     todayYMD
+     "✍️ Mandat enregistré"
    );
 
    // =========================
