@@ -28,6 +28,7 @@
     }
   },
   "statut_bien": "en_ligne",
+  "_comment_statut_bien": "Valeurs possibles : en_ligne | sous_compromis | en_pause"
   "_meta": {
     "last_mandat_signe": "2025-07-16",
     "last_vues_leboncoin_snapshot": 0,
