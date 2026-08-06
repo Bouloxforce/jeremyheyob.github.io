@@ -45,3 +45,15 @@ const fichiers = fs.readdirSync(CLIENT_DIR)
   .filter(file => file.endsWith("_data.json"));
 
 console.log(`📁 ${fichiers.length} bien(s) trouvé(s).`);
+
+// --------------------------------------------------
+// Parcours de tous les biens
+// --------------------------------------------------
+
+for (const fichier of fichiers) {
+
+  console.log("--------------------------------");
+
+  console.log(`📄 Traitement : ${fichier}`);
+
+}
