@@ -26,7 +26,7 @@
       "visites_programmees": 0
     }
   },
-  "statut_bien": "en_ligne",
+  "statut_bien": "en_ligne", // en_ligne | sous_compromis | en_pause
   "_meta": {
     "mise_en_ligne_ref": "2026-04-01",
     "last_weekly_run": "2026-08-03",
