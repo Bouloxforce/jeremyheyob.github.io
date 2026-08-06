@@ -12,6 +12,12 @@ const result = {
   sous_compromis: []
 };
 
+function readJson(filePath) {
+  return JSON.parse(
+    fs.readFileSync(filePath, "utf8")
+  );
+}
+
 // Sécurité
 if (!fs.existsSync(BIENS_DIR)) {
   console.error("❌ Dossier espace-visite/biens introuvable");
@@ -30,8 +36,11 @@ for (const slug of dossiers) {
   const documentsJsonPath = path.join(bienDir, "documents.json");
 
   // ---------- BIENS.JSON ----------
-  if (fs.existsSync(dataPath)) {
-    const data = JSON.parse(fs.readFileSync(dataPath, "utf8"));
+  if (!fs.existsSync(dataPath)) {
+  console.warn(`⚠️ JSON visite introuvable : ${slug}`);
+  continue;
+}
+    const data = readJson(dataPath);
 
 const clientPath = path.join(CLIENT_DIR, `${slug}_data.json`);
 
@@ -40,9 +49,7 @@ if (!fs.existsSync(clientPath)) {
   continue;
 }
 
-const clientData = JSON.parse(
-  fs.readFileSync(clientPath, "utf8")
-);
+const clientData = readJson(clientPath);
 
 const photosDir = path.join(bienDir, "photos");
 
@@ -65,18 +72,24 @@ if (!clientData?.bien?.nom || !data.ville || photos.length === 0) {
   console.warn(`⚠️ Bien ignoré : ${slug}`);
 
 } else {
-      nom: clientData.bien.nom,
-        slug,
-        ville: data.infos?.Secteur
-          ? `${data.ville} - Secteur ${data.infos.Secteur}`
-          : data.ville,
-        bien_type: data.bien_type,   // 👈 ICI
-        type: data.type || "",
-        surface: data.surface || null,
-        exterieur: data.exterieur || null,
-        annee: data.annee || null,
-        etage: data.etage || null,
-      };
+
+  const bien = {
+
+    nom: clientData.bien.nom,
+    slug,
+
+    ville: data.infos?.Secteur
+      ? `${data.ville} - Secteur ${data.infos.Secteur}`
+      : data.ville,
+
+    bien_type: data.bien_type,
+    type: data.type || "",
+    surface: data.surface || null,
+    exterieur: data.exterieur || null,
+    annee: data.annee || null,
+    etage: data.etage || null
+
+  };
 
       if (data.statut === "sous_compromis") {
         result.sous_compromis.push(bien);
@@ -97,14 +110,6 @@ if (!clientData?.bien?.nom || !data.ville || photos.length === 0) {
         .replace(/[-_]/g, " ")
         .replace(/\b\w/g, l => l.toUpperCase())
     }));
-
-    result.disponibles.sort((a, b) =>
-  a.nom.localeCompare(b.nom, "fr")
-);
-
-result.sous_compromis.sort((a, b) =>
-  a.nom.localeCompare(b.nom, "fr")
-);
     
     fs.writeFileSync(
       documentsJsonPath,
@@ -115,6 +120,14 @@ result.sous_compromis.sort((a, b) =>
     console.log(`📄 documents.json généré pour ${slug}`);
   }
 }
+
+result.disponibles.sort((a, b) =>
+  a.nom.localeCompare(b.nom, "fr")
+);
+
+result.sous_compromis.sort((a, b) =>
+  a.nom.localeCompare(b.nom, "fr")
+);
 
 // Écriture du fichier biens.json
 fs.writeFileSync(
