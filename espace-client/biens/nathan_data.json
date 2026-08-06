@@ -70,11 +70,11 @@
     "just_reset": false,
     "mise_en_ligne_initiale": "2026-05-02",
     "last_actuel_snapshot": {
-      "appels": 0,
+      "appels": 4,
       "offres": 0,
       "vues_leboncoin": 172,
       "emails": 2,
-      "visites_effectuees": 1,
+      "visites_effectuees": 4,
       "favoris_leboncoin": 5
     },
     "mise_en_ligne_ref": "2026-05-02",
@@ -293,7 +293,9 @@
     "text": "La commercialisation se déroule dans de bonnes conditions. Les indicateurs actuels sont cohérents avec le marché. La stratégie en place est maintenue.",
     "phase_active": "90+",
     "noExploitableData": false,
-    "alertes": [],
-    "generatedAt": "2026-08-06T11:12:24.555Z"
+    "alertes": [
+      "❗ Visites sans offres"
+    ],
+    "generatedAt": "2026-08-06T11:47:20.497Z"
   }
 }
