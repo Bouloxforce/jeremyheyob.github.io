@@ -83,21 +83,21 @@
   },
   "stats": {
     "cumul": {
-      "appels": 0,
+      "appels": 4,
       "offres": 0,
       "vues_leboncoin": 172,
       "emails": 2,
-      "visites_effectuees": 1,
+      "visites_effectuees": 4,
       "favoris_leboncoin": 5
     },
     "actuel": {
-      "appels": 0,
+      "appels": 4,
       "emails": 2,
-      "visites_effectuees": 1,
+      "visites_effectuees": 4,
       "offres": 0,
       "vues_leboncoin": 172,
       "favoris_leboncoin": 5,
-      "visites_programmees": 1
+      "visites_programmees": 0
     }
   },
   "dates": {
