@@ -1,33 +1,40 @@
 {
+  "slug": "elisa",
   "statut": "disponible",
 
-  "bien_type": "Appartement",
-  "type": "T3",
-  "surface": 72,
-  "exterieur": 8,
-  "annee": 2017,
-  "etage": "1er étage",
+  "nom": "Elisa",
+  "bien_type": "Maison",
+  "type": "T5",
+  "surface": 111,
+  "exterieur": 470,
+  "annee": 2015,
+  "etage": "Plein pied",
 
-  "prix": 210000,
-  "charges": "152 €/mois (chauffage, eau chaude, eau froide, entretiens parties communes, ascenseur, charges garage)",
-  "taxe_fonciere": "1152 €",
+  "prix": 379000,
+  "charges": "130 €/an (portail, espace vert, parking)",
+  "taxe_fonciere": "1776 €",
 
-  "ville": "Saint-Priest",
-  "secteur": "Centre-Ville",
+  "ville": "Charvieu-Chavagneux",
+  "secteur": "Piarday",
 
   "dpe": {
-    "energie": "B",
-    "ges": "B"
+    "energie": "C",
+    "ges": "C"
   },
 
-  "stationnement": "Garage en sus",
-  "chauffage": "Gaz collectif",
+  "stationnement": "Garage et place de parking",
+  "chauffage": "Gaz",
 
-  "proximite": "Écoles, commerces, Tram T2, C25",
+  "proximite": "Écoles, commerces, Tansports",
 
   "points_forts": [
-    "Sécurisé",
-    "Traversant",
-    "Garage"
-  ]
+    "Plein pied",
+    "Grand terrain plat",
+    "Pièce de vie de 48m2"
+  ],
+
+  "photos_count": 11,
+
+  "video": "https://youtu.be/BI3k54OKA_g",
+  "annonce": "https://www.agence.immo/achat/maison-plain-pied-5-pieces-charvieu-chavagneux-38230-VM14588"
 }
