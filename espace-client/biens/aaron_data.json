@@ -29,7 +29,7 @@
     }
   },
   "statut_bien": "en_ligne",
-  "_comment_statut_bien": "Valeurs possibles : en_ligne | sous_compromis | en_pause | vendu | archive | brouillon"
+  "_comment_statut_bien": "Valeurs possibles : en_ligne | sous_compromis | en_pause"
   "_meta": {
     "last_vues_leboncoin_snapshot": 214,
     "last_weekly_run": "2026-08-03",
