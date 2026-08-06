@@ -546,6 +546,10 @@ function processBien(filePath) {
   const joursArret = toNumber(data.jours_arret_diffusion);
   const phaseWin = getPhaseWindow(miseInitiale, todayYMD, joursArret);
   const strategicMonday = phaseWin ? lastMondayBefore(phaseWin.endISO) : null;
+
+  data.analysis ??= {};
+  data.analysis.text ??= "";
+   
   data.analysis.phase_active = phaseWin?.label || null;
 
   const isStrategicDay = strategicMonday && todayYMD === strategicMonday;
@@ -555,9 +559,6 @@ function processBien(filePath) {
    const inFirst21Days = Number.isFinite(daysInCurrentWindow) && daysInCurrentWindow <= 21;
 
   const healthy = isStatsHealthyActuelOnly(data);
-
-  data.analysis ??= {};
-  data.analysis.text ??= "";
 
   if (healthy) {
     data.analysis.text =
