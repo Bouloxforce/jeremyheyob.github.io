@@ -18,6 +18,12 @@ function readJson(filePath) {
   );
 }
 
+function readJson(filePath) {
+  return JSON.parse(
+    fs.readFileSync(filePath, "utf8")
+  );
+}
+
 // Sécurité
 if (!fs.existsSync(BIENS_DIR)) {
   console.error("❌ Dossier espace-visite/biens introuvable");
@@ -35,10 +41,71 @@ for (const slug of dossiers) {
   const documentsDir = path.join(bienDir, "documents");
   const documentsJsonPath = path.join(bienDir, "documents.json");
 
-  // ---------- BIENS.JSON ----------
-  if (!fs.existsSync(dataPath)) {
+// ---------- BIENS.JSON ----------
+
+if (!fs.existsSync(dataPath)) {
   console.warn(`⚠️ JSON visite introuvable : ${slug}`);
   continue;
+}
+
+const data = readJson(dataPath);
+
+const clientPath = path.join(CLIENT_DIR, `${slug}_data.json`);
+
+if (!fs.existsSync(clientPath)) {
+  console.warn(`⚠️ JSON client introuvable : ${slug}`);
+  continue;
+}
+
+const clientData = readJson(clientPath);
+
+const photosDir = path.join(bienDir, "photos");
+
+const photos = fs.existsSync(photosDir)
+  ? fs.readdirSync(photosDir).filter(file => {
+
+      const lower = file.toLowerCase();
+
+      if (lower === "photo-accueil.webp") {
+        return false;
+      }
+
+      return /\.(webp|jpg|jpeg|png)$/i.test(file);
+
+    })
+  : [];
+
+if (!clientData?.bien?.nom || !data.ville || photos.length === 0) {
+
+  console.warn(`⚠️ Bien ignoré : ${slug}`);
+
+} else {
+
+  const bien = {
+
+    nom: clientData.bien.nom,
+
+    slug,
+
+    ville: data.infos?.Secteur
+      ? `${data.ville} - Secteur ${data.infos.Secteur}`
+      : data.ville,
+
+    bien_type: data.bien_type,
+    type: data.type || "",
+    surface: data.surface || null,
+    exterieur: data.exterieur || null,
+    annee: data.annee || null,
+    etage: data.etage || null
+
+  };
+
+  if (data.statut === "sous_compromis") {
+    result.sous_compromis.push(bien);
+  } else {
+    result.disponibles.push(bien);
+  }
+
 }
     const data = readJson(dataPath);
 
