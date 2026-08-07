@@ -1,6 +1,6 @@
 {
   "statut_bien": "🔴",
-  "_comment_statut_bien": "Valeurs possibles : en_ligne | sous_compromis | en_pause"
+  "_comment_statut_bien": "Valeurs possibles : en_ligne | sous_compromis | en_pause",
   "_meta": {
     "weekly_cumul_base": {},
     "mise_en_ligne_ref": null,
