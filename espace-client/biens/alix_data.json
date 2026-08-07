@@ -27,7 +27,6 @@
     }
   },
   "statut_bien": "en_ligne",
-  "_comment_statut_bien": "Valeurs possibles : en_ligne | sous_compromis | en_pause"
   "_meta": {
     "mise_en_ligne_ref": "2026-04-01",
     "last_weekly_run": "2026-08-03",
