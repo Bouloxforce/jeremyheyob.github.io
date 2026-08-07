@@ -289,7 +289,7 @@
     "sous_titre": "Suivi de commercialisation"
   },
   "statut_bien": "en_ligne",
-  "_comment_statut_bien": "Valeurs possibles : en_ligne | sous_compromis | en_pause"
+  "_comment_statut_bien": "Valeurs possibles : en_ligne | sous_compromis | en_pause",
   "analysis": {
     "text": "La commercialisation se déroule dans de bonnes conditions. Les indicateurs actuels sont cohérents avec le marché. La stratégie en place est maintenue.",
     "phase_active": "90+",
