@@ -500,7 +500,7 @@
     }
   ],
   "statut_bien": "sous_compromis",
-  "_comment_statut_bien": "Valeurs possibles : en_ligne | sous_compromis | en_pause"
+  "_comment_statut_bien": "Valeurs possibles : en_ligne | sous_compromis | en_pause",
   "strategie_3090": {
     "intro": "",
     "etapes": [
