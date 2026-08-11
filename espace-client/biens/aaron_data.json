@@ -5,17 +5,18 @@
     ],
     "phase_active": "90+",
     "noExploitableData": false,
-    "generatedAt": "2026-08-09T11:45:24.680Z",
-    "text": "Les indicateurs actuels nécessitent une surveillance attentive. Une phase d’analyse est en cours afin d’objectiver la suite, sans ajustement de stratégie à ce stade."
+    "generatedAt": "2026-08-11T08:14:34.706Z",
+    "text": "Les indicateurs actuels nécessitent une surveillance attentive. Une phase d’analyse est en cours afin d’objectiver la suite, sans ajustement de stratégie à ce stade.",
+    "evolution_text": "Appels : stable\nEmails : +1\nVisites effectuées : stable\nOffres : stable\nVues Leboncoin : +32\nFavoris Leboncoin : +1"
   },
   "jours_arret_diffusion": 0,
   "stats": {
     "cumul": {
       "appels": 0,
       "offres": 0,
-      "vues_leboncoin": 214,
+      "vues_leboncoin": 246,
       "emails": 4,
-      "favoris_leboncoin": 7,
+      "favoris_leboncoin": 8,
       "visites_effectuees": 5
     },
     "actuel": {
@@ -33,12 +34,12 @@
     "last_actuel_snapshot": {
       "appels": 0,
       "offres": 0,
-      "vues_leboncoin": 214,
+      "vues_leboncoin": 246,
       "emails": 4,
-      "favoris_leboncoin": 7,
+      "favoris_leboncoin": 8,
       "visites_effectuees": 5
     },
-    "last_weekly_run": "2026-08-03",
+    "last_weekly_run": "2026-08-10",
     "just_reset": false,
     "mise_en_ligne_initiale": "2026-04-01",
     "mise_en_ligne_ref": "2026-04-01",
@@ -50,9 +51,17 @@
         "emails": 3,
         "visites_effectuees": 5,
         "favoris_leboncoin": 7
+      },
+      "2026-08-10": {
+        "appels": 0,
+        "emails": 4,
+        "visites_effectuees": 5,
+        "offres": 0,
+        "vues_leboncoin": 246,
+        "favoris_leboncoin": 8
       }
     },
-    "last_vues_leboncoin_snapshot": 214,
+    "last_vues_leboncoin_snapshot": 246,
     "has_had_reset": false
   },
   "liens": {
