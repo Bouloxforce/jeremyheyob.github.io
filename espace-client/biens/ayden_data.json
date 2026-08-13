@@ -86,7 +86,12 @@
     }
   },
 
-  "historique": [],
+  "historique": [    
+    {
+      "date": "2026-02-25",
+      "label": "✍️ Mandat enregistré"
+    },
+  ],
 
   "strategie_3090": {
     "intro": "",
