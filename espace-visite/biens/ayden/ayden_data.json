@@ -1,0 +1,40 @@
+{
+  "slug": "ayden",
+  "statut": "disponible",
+
+  "nom": "Ayden",
+  "bien_type": "Duplex",
+  "type": "T5",
+  "surface": 103,
+  "exterieur": 5,
+  "annee": 2011,
+  "etage": "2 niveaux",
+
+  "prix": 299000,
+  "charges": "340 €/an (chauffage, eau chaude, eau froide, entretiens des parties communes, ascenseur, caméras de surveillance)",
+  "taxe_fonciere": "environ 1400 €",
+
+  "ville": "Saint-Priest",
+  "secteur": "Centre-Ville",
+
+  "dpe": {
+    "energie": "C",
+    "ges": "C"
+  },
+
+  "stationnement": "Stationnement à côté de la résidence",
+  "chauffage": "Gaz",
+
+  "proximite": "Écoles, commerces, Tansports",
+
+  "points_forts": [
+    "Duplex",
+    "Vue sur Lyon",
+    "4 belles chambres"
+  ],
+
+  "photos_count": 15,
+
+  "video": "",
+  "annonce": ""
+}
