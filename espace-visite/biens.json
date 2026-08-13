@@ -25,6 +25,18 @@
       "photo": "/espace-visite/biens/alix/photos/photo-accueil.webp"
     },
     {
+      "nom": "Ayden",
+      "slug": "ayden",
+      "ville": "Saint-Priest",
+      "bien_type": "Duplex",
+      "type": "T5",
+      "surface": 103,
+      "exterieur": 5,
+      "annee": 2011,
+      "etage": "2 niveaux",
+      "photo": "/espace-visite/biens/ayden/photos/photo-accueil.webp"
+    },
+    {
       "nom": "Eliot",
       "slug": "eliot",
       "ville": "Saint-Priest",
