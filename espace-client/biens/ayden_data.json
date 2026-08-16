@@ -1,5 +1,5 @@
 {
-  "statut_bien": "🔴",
+  "statut_bien": "en_ligne",
   "_comment_statut_bien": "Valeurs possibles : en_ligne | sous_compromis | en_pause",
   "_meta": {
     "weekly_cumul_base": {
@@ -44,12 +44,12 @@
     "derniere_remontee": null
   },
   "liens": {
-    "agenceimmo": "🔴",
-    "leboncoin": "https://www.leboncoin.fr",
-    "seloger": "🔴",
-    "bienici": "🔴",
-    "logicimmo": "🔴",
-    "paruvendu": "🔴",
+    "agenceimmo": "https://agence.immo/achat/ayden-un-dernier-etage-t5-en-de-103-m-avec-vue-degagee-sur-lyon-va34474",
+    "leboncoin": "https://www.leboncoin.fr/ad/ventes_immobilieres/3250764574",
+    "seloger": "https://www.seloger.com/annonce/achat/auvergne-rhone-alpes/rhone-69/saint-priest-69800/26D8PMG1RTPM?serp_view=list&search=distributionTypes%3DBuy%26estateTypes%3DApartment%26locations%3DPOCOFR4525%26method%3Dform%26priceMax%3D299000%26priceMin%3D299000#ln=classified_search_results&m=classified_search_results_classified_classified_detail_M",
+    "bienici": "https://www.bienici.com/annonce/vente/saint-priest/appartement/5pieces/netty-jaujard-appt-34474?q=%2Frecherche%2Fachat%2Fsaint-priest-69800%3Fprix-min%3D299000%26prix-max%3D299000",
+    "logicimmo": "https://www.logic-immo.com/detail-annonce/vente/auvergne-rhone-alpes/rhone-69/saint-priest-69800/26D8PMG1RTPM?serp_view=list&search=distributionTypes%3DBuy%26estateTypes%3DApartment%26locations%3DPOCOFR4525%26method%3Dform%26priceMax%3D299000%26priceMin%3D299000%23ln%3Dclassified_search_results&m=classified_search_results_classified_classified_detail_M",
+    "paruvendu": "https://www.paruvendu.fr/immobilier/vente/appartement/1294262054A1KIVHAP000",
     "lefigaro": "🔴",
     "facebook": "🔴",
     "instagram": "🔴",
@@ -88,10 +88,6 @@
     }
   },
   "historique": [
-    {
-      "date": "2026-02-25",
-      "label": "✍️ Mandat enregistré"
-    },
     {
       "date": "2026-08-13",
       "label": "✍️ Mandat enregistré"
