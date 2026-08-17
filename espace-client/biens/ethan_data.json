@@ -26,7 +26,7 @@
       "offres": 0,
       "vues_leboncoin": 254,
       "favoris_leboncoin": 10,
-      "visites_programmees": 3
+      "visites_programmees": 0
     }
   },
   "statut_bien": "en_ligne",
@@ -115,10 +115,6 @@
     {
       "date": "2026-08-07",
       "label": "⬆️ Remontée automatique de l’annonce"
-    },
-    {
-      "date": "2026-08-07",
-      "label": "🚪 Nouvelle visite programmée le 26/08/2026 16:00"
     },
     {
       "date": "2026-08-07",
