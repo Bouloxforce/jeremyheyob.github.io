@@ -1,19 +1,17 @@
 {
   "analysis": {
-    "generatedAt": "2026-08-16T18:04:05.487Z",
+    "generatedAt": "2026-08-17T16:25:00.313Z",
     "phase_active": "90",
     "noExploitableData": false,
-    "evolution_text": "Appels : stable\nEmails : +1\nVisites effectuées : stable\nOffres : stable\nVues Leboncoin : +40\nFavoris Leboncoin : +3",
-    "alertes": [
-      "❗ Visites sans offres"
-    ],
-    "text": "Les indicateurs actuels nécessitent une surveillance attentive. Un point d’analyse sera réalisé à l’approche de la prochaine phase."
+    "evolution_text": "Appels : stable\nEmails : stable\nVisites effectuées : +3\nOffres : +2\nVues Leboncoin : stable\nFavoris Leboncoin : stable",
+    "alertes": [],
+    "text": "La commercialisation se déroule dans de bonnes conditions. Les indicateurs actuels sont cohérents avec le marché. La stratégie en place est maintenue."
   },
   "jours_arret_diffusion": 0,
   "stats": {
     "cumul": {
       "appels": 0,
-      "offres": 0,
+      "offres": 2,
       "vues_leboncoin": 254,
       "emails": 4,
       "visites_effectuees": 9,
@@ -32,32 +30,32 @@
   "statut_bien": "en_ligne",
   "_meta": {
     "last_vues_leboncoin_snapshot": 254,
-    "last_weekly_run": "2026-08-10",
+    "last_weekly_run": "2026-08-17",
     "has_had_reset": false,
     "mise_en_ligne_initiale": "2026-05-20",
     "last_actuel_snapshot": {
       "appels": 0,
-      "offres": 0,
+      "offres": 2,
       "vues_leboncoin": 254,
       "emails": 4,
       "visites_effectuees": 9,
       "favoris_leboncoin": 10
     },
     "weekly_cumul_base": {
-      "2026-08-03": {
-        "appels": 0,
-        "offres": 0,
-        "vues_leboncoin": 214,
-        "emails": 3,
-        "visites_effectuees": 6,
-        "favoris_leboncoin": 7
-      },
       "2026-08-10": {
         "appels": 0,
         "offres": 0,
         "vues_leboncoin": 254,
         "emails": 4,
         "visites_effectuees": 6,
+        "favoris_leboncoin": 10
+      },
+      "2026-08-17": {
+        "appels": 0,
+        "emails": 4,
+        "visites_effectuees": 9,
+        "offres": 2,
+        "vues_leboncoin": 254,
         "favoris_leboncoin": 10
       }
     },
