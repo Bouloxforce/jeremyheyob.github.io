@@ -10,7 +10,7 @@
   "annee": 2007,
   "etage": "1er étage",
 
-  "prix": 270000,
+  "prix": 280000,
   "charges": "315 €/mois (chauffage, eau chaude, eau froide, entretiens parties communes, charges parking, charges cave)",
   "taxe_fonciere": "1152 €",
 
@@ -22,7 +22,7 @@
     "ges": "C"
   },
 
-  "stationnement": "2 parkings en sus",
+  "stationnement": "2 parkings inclus",
   "chauffage": "Gaz collectif",
 
   "proximite": "Village, écoles, commerces, Tram T2, C25",
