@@ -1348,14 +1348,6 @@ function finalizeCarousel() {
 
   initCarouselAndLightbox();
 }
-  
-function checkCarouselInit() {
-  remainingChecks--;
-
-  if (remainingChecks === 0 && loadedImages > 0) {
-    initCarouselAndLightbox();
-  }
-}
 
   const infosEl = document.getElementById("bien-infos");
   const infos = buildInfos(data);
