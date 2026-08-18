@@ -1282,67 +1282,73 @@ function buildInfos(data) {
     chipsEl.appendChild(span);
   });
 
-  const track = document.getElementById("carousel-track");
-  const images = [];
-  let checkedCount = 0;
-  const totalToCheck = data.photos_count + 1;
+const track = document.getElementById("carousel-track");
+const images = [];
+let checkedCount = 0;
 
-  const MAX_IMAGES = 12;
+const totalToCheck = data.photos_count;
 
-  window.__firstImageSet = false;
+// Charger toutes les photos
+for (let i = 1; i <= data.photos_count; i++) {
 
-  for (let i = 0; i <= data.photos_count; i++) {
-    const filename = `${slug} ${i}.webp`;
-    const img = document.createElement("img");
+  const filename = `${slug} ${i}.webp`;
+  const img = document.createElement("img");
 
-    img.src = `/espace-visite/biens/${slug}/photos/${encodeURIComponent(filename)}`;
-    img.dataset.index = i;
+  img.src = `/espace-visite/biens/${slug}/photos/${encodeURIComponent(filename)}`;
+  img.dataset.index = i;
 
-    // ⬇️ CRITIQUE POUR CHROME
-    if (!window.__firstImageSet) {
-      img.loading = "eager";
-      img.fetchPriority = "high";
-      window.__firstImageSet = true;
-    } else {
-      img.loading = "lazy";
+  // Première photo chargée immédiatement
+  if (i === 1) {
+    img.loading = "eager";
+    img.fetchPriority = "high";
+  } else {
+    img.loading = "lazy";
+  }
+
+  img.decoding = "async";
+  img.width = 1200;
+  img.height = 800;
+
+  img.onload = () => {
+    checkedCount++;
+    images.push(img);
+
+    if (checkedCount === totalToCheck) {
+      finalizeCarousel();
     }
+  };
 
-    img.decoding = "async";
-    img.width = 1200;
-    img.height = 800;
+  img.onerror = () => {
+    checkedCount++;
 
-    img.onload = () => {
+    // Photo absente : on continue sans la mettre dans le carrousel
+    if (checkedCount === totalToCheck) {
+      finalizeCarousel();
+    }
+  };
+}
 
-      if (images.length >= MAX_IMAGES) return;
-      
-      images.push(img);
+function finalizeCarousel() {
 
-      checkedCount++;
-      if (checkedCount === totalToCheck) finalizeCarousel();
-    };
+  if (!images.length) return;
 
-    img.onerror = () => {
-      checkedCount++;
-      if (checkedCount === totalToCheck) finalizeCarousel();
-    };
-  }
+  // Remettre les photos dans l'ordre numérique
+  images.sort(
+    (a, b) => Number(a.dataset.index) - Number(b.dataset.index)
+  );
 
-  function finalizeCarousel() {
-    if (!images.length) return;
+  track.innerHTML = "";
 
-    images.sort((a, b) => Number(a.dataset.index) - Number(b.dataset.index));
+  images.forEach((img, index) => {
+    img.loading = index === 0 ? "eager" : "lazy";
+    img.fetchPriority = index === 0 ? "high" : "auto";
 
-    track.innerHTML = "";
+    track.appendChild(img);
+  });
 
-    images.forEach((img, index) => {
-      img.loading = index === 0 ? "eager" : "lazy";
-      img.fetchPriority = index === 0 ? "high" : "auto";
-      track.appendChild(img);
-    });
-
-    initCarouselAndLightbox(); // ✅ UNE SEULE FOIS, AU BON MOMENT
-  }
-
+  initCarouselAndLightbox();
+}
+  
 function checkCarouselInit() {
   remainingChecks--;
 
