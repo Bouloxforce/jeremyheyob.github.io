@@ -3,9 +3,11 @@
     "text": "La commercialisation se déroule dans de bonnes conditions. Les indicateurs actuels sont cohérents avec le marché. La stratégie en place est maintenue.",
     "phase_active": "90+",
     "noExploitableData": false,
-    "evolution_text": "Appels : stable\nEmails : stable\nVisites effectuées : +1\nOffres : +3\nVues Leboncoin : +31\nFavoris Leboncoin : +3",
-    "alertes": [],
-    "generatedAt": "2026-08-23T07:34:58.121Z"
+    "evolution_text": "Appels : stable\nEmails : stable\nVisites effectuées : stable\nOffres : stable\nVues Leboncoin : stable\nFavoris Leboncoin : stable",
+    "alertes": [
+      "❗ Aucune interaction récente"
+    ],
+    "generatedAt": "2026-08-24T07:09:50.493Z"
   },
   "jours_arret_diffusion": 0,
   "stats": {
@@ -30,7 +32,7 @@
   "statut_bien": "en_ligne",
   "_meta": {
     "last_vues_leboncoin_snapshot": 277,
-    "last_weekly_run": "2026-08-17",
+    "last_weekly_run": "2026-08-24",
     "has_had_reset": false,
     "mise_en_ligne_initiale": "2026-04-01",
     "mise_en_ligne_ref": "2026-04-01",
@@ -51,13 +53,13 @@
         "visites_effectuees": 6,
         "favoris_leboncoin": 11
       },
-      "2026-08-10": {
+      "2026-08-24": {
         "appels": 0,
-        "offres": 0,
-        "vues_leboncoin": 246,
         "emails": 4,
-        "visites_effectuees": 5,
-        "favoris_leboncoin": 8
+        "visites_effectuees": 6,
+        "offres": 3,
+        "vues_leboncoin": 277,
+        "favoris_leboncoin": 11
       }
     },
     "just_reset": false
