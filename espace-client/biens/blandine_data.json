@@ -1,7 +1,7 @@
 {
   "analysis": {
-    "generatedAt": "2026-08-28T15:44:05.300Z",
-    "phase_active": "90",
+    "generatedAt": "2026-08-29T07:16:30.328Z",
+    "phase_active": "90+",
     "noExploitableData": false,
     "evolution_text": "Appels : stable\nEmails : stable\nVisites effectuées : stable\nOffres : stable\nVues Leboncoin : stable\nFavoris Leboncoin : stable",
     "alertes": [
