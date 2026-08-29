@@ -80,6 +80,10 @@
   "_comment_statut_bien": "Valeurs possibles : en_ligne | sous_compromis | en_pause",
   "historique": [
     {
+      "date": "2026-08-29",
+      "label": "🚪 Nouvelle visite programmée le 05/09/2026 10:30"
+    },
+    {
       "date": "2026-08-27",
       "label": "⬆️ Remontée automatique de l’annonce"
     },
