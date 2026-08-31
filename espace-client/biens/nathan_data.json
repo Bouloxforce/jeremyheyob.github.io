@@ -4,7 +4,7 @@
     "phase_active": "90+",
     "noExploitableData": false,
     "evolution_text": "Appels : stable\nEmails : stable\nVisites effectuées : stable\nOffres : stable\nVues Leboncoin : stable\nFavoris Leboncoin : stable",
-    "generatedAt": "2026-08-30T08:36:21.541Z",
+    "generatedAt": "2026-08-31T07:28:53.805Z",
     "alertes": [
       "❗ Visites sans offres",
       "❗ Aucune interaction récente"
@@ -40,19 +40,11 @@
       "visites_effectuees": 4,
       "favoris_leboncoin": 0
     },
-    "last_weekly_run": "2026-08-24",
+    "last_weekly_run": "2026-08-31",
     "just_reset": false,
     "mise_en_ligne_initiale": "2026-05-02",
     "mise_en_ligne_ref": "2026-05-02",
     "weekly_cumul_base": {
-      "2026-08-17": {
-        "appels": 4,
-        "offres": 0,
-        "vues_leboncoin": 207,
-        "emails": 2,
-        "visites_effectuees": 4,
-        "favoris_leboncoin": 7
-      },
       "2026-08-24": {
         "appels": 4,
         "offres": 0,
@@ -60,6 +52,14 @@
         "emails": 2,
         "visites_effectuees": 4,
         "favoris_leboncoin": 7
+      },
+      "2026-08-31": {
+        "appels": 4,
+        "emails": 2,
+        "visites_effectuees": 4,
+        "offres": 0,
+        "vues_leboncoin": 0,
+        "favoris_leboncoin": 0
       }
     },
     "last_vues_leboncoin_snapshot": 0,
