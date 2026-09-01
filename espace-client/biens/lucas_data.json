@@ -1,2 +1,630 @@
-{"analysis":{"text":"La commercialisation se déroule dans de bonnes conditions. Les indicateurs actuels sont cohérents avec le marché. La stratégie en place est maintenue.","noExploitableData":false,"phase_active":"90+","evolution_text":"Appels : stable\nEmails : stable\nVisites effectuées : stable\nOffres : stable\nVues Leboncoin : stable\nFavoris Leboncoin : stable","alertes":["❗ Visites sans offres","❗ Aucune interaction récente"],"generatedAt":"2026-09-01T08:55:09.548Z"},"jours_arret_diffusion":38,"stats":{"cumul":{"appels":9,"offres":1,"vues_leboncoin":1529,"emails":21,"visites_effectuees":16,"favoris_leboncoin":56},"actuel":{"appels":3,"emails":4,"visites_effectuees":4,"offres":0,"vues_leboncoin":18,"favoris_leboncoin":1,"visites_programmees":1}},"statut_bien":"en_ligne","_meta":{"last_mandat_signe":"2025-07-16","last_weekly_run":"2026-08-31","last_vues_leboncoin_snapshot":18,"has_had_reset":true,"last_mise_en_ligne":"2026-01-10","mise_en_ligne_initiale":"2025-08-02","mise_en_ligne_ref":"2026-04-01","weekly_cumul_base":{"2026-08-31":{"appels":3,"offres":0,"vues_leboncoin":3,"emails":4,"visites_effectuees":3,"favoris_leboncoin":0},"2026-08-24":{"appels":3,"offres":0,"vues_leboncoin":152,"emails":4,"visites_effectuees":3,"favoris_leboncoin":10}},"last_actuel_snapshot":{"appels":3,"offres":0,"vues_leboncoin":18,"emails":4,"visites_effectuees":3,"favoris_leboncoin":1},"just_reset":false},"liens":{"lefigaro":"https:\/\/immobilier.lefigaro.fr\/annonces\/annonce-108152431.html","youtube":"https:\/\/youtu.be\/CeMHg5tvSCA","paruvendu":"https:\/\/www.paruvendu.fr\/immobilier\/vente\/appartement\/1294481430A1KIVHAP000","pagesjaunes":"https:\/\/www.pagesjaunes.fr\/actualites\/details-actu\/6a8412de50a488e0ded06312?from=FD","bienici":"https:\/\/www.bienici.com\/annonce\/vente\/saint-priest\/appartement\/4pieces\/netty-jaujard-appt-34491?q=%2Frecherche%2Fachat%2Fsaint-priest-69800%3Fprix-min%3D280000%26prix-max%3D280000","linkedin":"https:\/\/www.linkedin.com\/posts\/jeremyheyobimmobilier_situ%C3%A9-%C3%A0-la-limite-entre-le-centre-ville-de-activity-7495388562666811392-MGdj?utm_source=share&utm_medium=member_desktop&rcm=ACoAACoqsv0BA4ErXmoRlqB1Y2FgHmyLI_gjG78","seloger":"https:\/\/www.seloger.com\/annonce\/achat\/auvergne-rhone-alpes\/rhone-69\/saint-priest-69800\/26WJFUW49X2D#m=homepage_last_search_classified_card_classified_detail","agenceimmo":"https:\/\/agence.immo\/achat\/lucas-un-appartement-t4-avec-grand-balcon-et-garage-a-saint-priest-centre-va34491","logicimmo":"https:\/\/www.logic-immo.com\/detail-annonce\/vente\/auvergne-rhone-alpes\/rhone-69\/saint-priest-69800\/26WJFUW49X2D?serp_view=list&search=distributionTypes%3DBuy%26estateTypes%3DApartment%26locations%3DPOCOFR4525%26method%3Dform%26priceMax%3D280000%26priceMin%3D280000%23ln%3Dclassified_search_results&m=classified_search_results_classified_classified_detail_M","google":"https:\/\/share.google\/gy9S6RHskPEdA6YVp","facebook":"https:\/\/www.facebook.com\/jeremyheyobimmobilier\/posts\/pfbid036V5JpESkoFsgSfmS2kJq76QQoFRuK6uNWDvqEqLf3vApavvCbRoEF8rvLJmufUfwl","instagram":"https:\/\/www.instagram.com\/p\/DcLIrfqji45\/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==","leboncoin":"https:\/\/www.leboncoin.fr\/ad\/ventes_immobilieres\/3254694434"},"_comment_statut_bien":"Valeurs possibles : en_ligne | sous_compromis | en_pause","historique":[
-{"date":"2026-09-01","label":"🚪 Nouvelle visite programmée le 03/09/2026 17:30"},{"date":"2026-09-01","label":"📞 Nouvel appel reçu"},{"date":"2026-08-31","label":"🔄 Reporting et mise à jour des statistiques"},{"date":"2026-08-26","label":"⬆️ Remontée automatique de l’annonce"},{"date":"2026-08-24","label":"🚪 Nouvelle visite programmée le 01\/09\/2026 14:00"},{"date":"2026-08-24","label":"📞 Nouvel appel reçu"},{"date":"2026-08-24","label":"🔄 Reporting et mise à jour des statistiques"},{"date":"2026-08-22","label":"📩 Nouvel email reçu"},{"date":"2026-08-17","label":"🔄 Reporting et mise à jour des statistiques"},{"date":"2026-08-14","label":"⬆️ Remontée automatique de l’annonce"},{"date":"2026-08-10","label":"🔄 Reporting et mise à jour des statistiques"},{"date":"2026-08-09","label":"⬆️ Remontée automatique de l’annonce"},{"date":"2025-07-16","label":"✍️ Mandat enregistré"},{"date":"2026-01-10","label":"🌐 Annonce mise en ligne"},{"date":"2026-01-13","label":"⬆️ Remontée automatique de l'annonce"},{"date":"2026-01-16","label":"⬆️ Remontée automatique de l'annonce"},{"date":"2026-01-19","label":"📩 Nouvel email reçu"},{"date":"2026-01-19","label":"⬆️ Remontée automatique de l'annonce"},{"date":"2026-01-22","label":"⬆️ Remontée automatique de l’annonce"},{"date":"2026-01-23","label":"📩 Nouvel email reçu"},{"date":"2026-01-26","label":"🔄 Reporting et mise à jour des statistiques"},{"date":"2026-01-27","label":"⬆️ Remontée automatique de l’annonce"},{"date":"2026-01-28","label":"🚪 Nouvelle visite programmée le 02\/02\/2026 18:30"},{"date":"2026-01-28","label":"📞 Nouvel appel reçu"},{"date":"2026-01-30","label":"⬆️ Remontée automatique de l’annonce"},{"date":"2026-01-31","label":"⬆️ Remontée automatique de l’annonce"},{"date":"2026-02-02","label":"⬆️ Remontée automatique de l’annonce"},{"date":"2026-02-05","label":"⬆️ Remontée automatique de l’annonce"},{"date":"2026-02-07","label":"🚪 Nouvelle visite programmée le 09\/02\/2026 16:00"},{"date":"2026-02-07","label":"📞 Nouvel appel reçu"},{"date":"2026-02-09","label":"⬆️ Remontée automatique de l’annonce"},{"date":"2026-02-09","label":"🔄 Reporting et mise à jour des statistiques"},{"date":"2026-02-16","label":"⬆️ Remontée automatique de l’annonce"},{"date":"2026-02-19","label":"⬆️ Remontée automatique de l’annonce"},{"date":"2026-02-21","label":"🚪 Nouvelle visite programmée le 24\/02\/2026 13:00"},{"date":"2026-02-21","label":"📞 Nouvel appel reçu"},{"date":"2026-02-21","label":"📩 Nouvel email reçu"},{"date":"2026-02-21","label":"📩 Nouvel email reçu"},{"date":"2026-02-23","label":"⬆️ Remontée automatique de l’annonce"},{"date":"2026-02-23","label":"🔄 Reporting et mise à jour des statistiques"},{"date":"2026-02-24","label":"🚪 Nouvelle visite programmée le 27\/02\/2026 16:00"},{"date":"2026-02-24","label":"📞 Nouvel appel reçu"},{"date":"2026-02-25","label":"⬆️ Remontée automatique de l’annonce"},{"date":"2026-02-27","label":"⬆️ Remontée automatique de l’annonce"},{"date":"2026-02-28","label":"📩 Nouvel email reçu"},{"date":"2026-02-28","label":"🚪 Nouvelle visite programmée le 13\/03\/2026 16:00"},{"date":"2026-02-28","label":"📞 Nouvel appel reçu"},{"date":"2026-03-02","label":"⬆️ Remontée automatique de l’annonce"},{"date":"2026-03-02","label":"🔄 Reporting et mise à jour des statistiques"},{"date":"2026-03-05","label":"⬆️ Remontée automatique de l’annonce"},{"date":"2026-03-09","label":"⬆️ Remontée automatique de l’annonce"},{"date":"2026-03-09","label":"🔄 Reporting et mise à jour des statistiques"},{"date":"2026-03-12","label":"⬆️ Remontée automatique de l’annonce"},{"date":"2026-03-15","label":"⬆️ Remontée automatique de l’annonce"},{"date":"2026-03-15","label":"📩 Nouvel email reçu"},{"date":"2026-03-16","label":"🔄 Reporting et mise à jour des statistiques"},{"date":"2026-03-18","label":"⬆️ Remontée automatique de l’annonce"},{"date":"2026-03-18","label":"🚪 Nouvelle visite programmée le 10\/04\/2026 14:00"},{"date":"2026-03-18","label":"📞 Nouvel appel reçu"},{"date":"2026-03-21","label":"⬆️ Remontée automatique de l’annonce"},{"date":"2026-03-23","label":"🔄 Reporting et mise à jour des statistiques"},{"date":"2026-03-24","label":"⬆️ Remontée automatique de l’annonce"},{"date":"2026-03-26","label":"⬆️ Remontée automatique de l’annonce"},{"date":"2026-03-30","label":"⬆️ Remontée automatique de l’annonce"},{"date":"2026-03-30","label":"📩 Nouvel email reçu"},{"date":"2026-03-30","label":"🔄 Reporting et mise à jour des statistiques"},{"date":"2026-03-31","label":"⬆️ Remontée automatique de l’annonce"},{"date":"2026-04-01","label":"🌐 Annonce mise en ligne"},{"date":"2026-04-06","label":"⬆️ Remontée automatique de l’annonce"},{"date":"2026-04-06","label":"🔄 Reporting et mise à jour des statistiques"},{"date":"2026-04-06","label":"🔄 Reporting et mise à jour des statistiques"},{"date":"2026-04-09","label":"📩 Nouvel email reçu"},{"date":"2026-04-11","label":"⬆️ Remontée automatique de l’annonce"},{"date":"2026-04-11","label":"🚪 Nouvelle visite programmée le 14\/04\/2026 18:00"},{"date":"2026-04-11","label":"📞 Nouvel appel reçu"},{"date":"2026-04-13","label":"🔄 Reporting et mise à jour des statistiques"},{"date":"2026-04-16","label":"⬆️ Remontée automatique de l’annonce"},{"date":"2026-04-20","label":"🔄 Reporting et mise à jour des statistiques"},{"date":"2026-04-21","label":"⬆️ Remontée automatique de l’annonce"},{"date":"2026-04-26","label":"⬆️ Remontée automatique de l’annonce"},{"date":"2026-04-27","label":"🔄 Reporting et mise à jour des statistiques"},{"date":"2026-04-30","label":"⬆️ Remontée automatique de l’annonce"},{"date":"2026-05-01","label":"⬆️ Remontée automatique de l’annonce"},{"date":"2026-05-04","label":"🔄 Reporting et mise à jour des statistiques"},{"date":"2026-05-06","label":"⬆️ Remontée automatique de l’annonce"},{"date":"2026-05-11","label":"⬆️ Remontée automatique de l’annonce"},{"date":"2026-05-11","label":"🔄 Reporting et mise à jour des statistiques"},{"date":"2026-05-16","label":"⬆️ Remontée automatique de l’annonce"},{"date":"2026-05-18","label":"🔄 Reporting et mise à jour des statistiques"},{"date":"2026-05-19","label":"🚪 Nouvelle visite programmée le 25\/05\/2026 10:00"},{"date":"2026-05-19","label":"📞 Nouvel appel reçu"},{"date":"2026-05-21","label":"⬆️ Remontée automatique de l’annonce"},{"date":"2026-05-22","label":"🚪 Nouvelle visite programmée le 29\/05\/2026 18:00"},{"date":"2026-05-22","label":"📞 Nouvel appel reçu"},{"date":"2026-05-25","label":"🔄 Reporting et mise à jour des statistiques"},{"date":"2026-05-26","label":"⬆️ Remontée automatique de l’annonce"},{"date":"2026-06-01","label":"⬆️ Remontée automatique de l’annonce"},{"date":"2026-06-01","label":"🔄 Reporting et mise à jour des statistiques"},{"date":"2026-06-06","label":"⬆️ Remontée automatique de l’annonce"},{"date":"2026-06-08","label":"🔄 Reporting et mise à jour des statistiques"},{"date":"2026-06-11","label":"⬆️ Remontée automatique de l’annonce"},{"date":"2026-06-15","label":"🔄 Reporting et mise à jour des statistiques"},{"date":"2026-06-20","label":"📩 Nouvel email reçu"},{"date":"2026-06-22","label":"🔄 Reporting et mise à jour des statistiques"},{"date":"2026-06-29","label":"🔄 Reporting et mise à jour des statistiques"},{"date":"2026-07-01","label":"⬆️ Remontée automatique de l’annonce"},{"date":"2026-07-06","label":"⬆️ Remontée automatique de l’annonce"},{"date":"2026-07-06","label":"🔄 Reporting et mise à jour des statistiques"},{"date":"2026-07-07","label":"🚪 Nouvelle visite programmée le 13\/07\/2026 11:00"},{"date":"2026-07-07","label":"📞 Nouvel appel reçu"},{"date":"2026-07-11","label":"⬆️ Remontée automatique de l’annonce"},{"date":"2026-07-13","label":"🔄 Reporting et mise à jour des statistiques"},{"date":"2026-07-13","label":"🚪 Nouvelle visite programmée le 22\/07\/2026 13:30"},{"date":"2026-07-13","label":"📞 Nouvel appel reçu"},{"date":"2026-07-15","label":"⬆️ Remontée automatique de l’annonce"},{"date":"2026-07-16","label":"⬆️ Remontée automatique de l’annonce"},{"date":"2026-07-20","label":"🔄 Reporting et mise à jour des statistiques"},{"date":"2026-07-25","label":"⬆️ Remontée automatique de l’annonce"},{"date":"2026-07-27","label":"🔄 Reporting et mise à jour des statistiques"},{"date":"2026-07-30","label":"⬆️ Remontée automatique de l’annonce"},{"date":"2026-08-03","label":"🔄 Reporting et mise à jour des statistiques"},{"date":"2026-08-04","label":"⬆️ Remontée automatique de l’annonce"},{"date":"2026-08-04","label":"📄 Nouvelle offre d'achat"}],"strategie_3090":{"intro":"La commercialisation est structurée par paliers afin d’adapter la stratégie au comportement réel des acquéreurs et au contexte de marché.","etapes":[{"jours":"0–30 jours","titre":"Phase de test du marché","strategie":"Mise en ligne au prix de positionnement initial afin de tester la réaction réelle du marché."},{"jours":"31–60 jours","titre":"Phase d’ajustement stratégique","strategie":"Ajustements ciblés en fonction des données observées."},{"jours":"61–90 jours","titre":"Phase de derniers ajustements","strategie":"Optimisation finale du positionnement afin de favoriser le passage à l’offre."},{"jours":"+ 90 jours","titre":"Phase de poursuite maîtrisée","strategie":"Poursuite de la commercialisation avec stratégie définie."}]},"diffusion":{"remontee":{"frequence":"Remontée hebdomadaire automatique"}},"bien":{"nom":"Lucas","adresse_complete":"83 avenue Jean Jaurès 69800 Saint-Priest","sous_titre":"Suivi de commercialisation"},"marche":{"taux_credit":{"precedent":3.4199999999999999,"duree":"25 ans","source":"CAFPI – baromètre (taux moyen)","periode":"2026-08","moyen":3.4300000000000002,"updatedAt":"2026-08-11T06:54:21.585Z"}},"dates":{"derniere_remontee":"2026-08-26","mandat_signe":"2025-07-16","mise_en_ligne":"2026-04-01"}}
+{
+  "analysis": {
+    "text": "La commercialisation se déroule dans de bonnes conditions. Les indicateurs actuels sont cohérents avec le marché. La stratégie en place est maintenue.",
+    "noExploitableData": false,
+    "phase_active": "90+",
+    "evolution_text": "Appels : stable\nEmails : stable\nVisites effectuées : stable\nOffres : stable\nVues Leboncoin : stable\nFavoris Leboncoin : stable",
+    "alertes": [
+      "❗ Visites sans offres",
+      "❗ Aucune interaction récente"
+    ],
+    "generatedAt": "2026-09-01T13:09:00.253Z"
+  },
+  "jours_arret_diffusion": 38,
+  "stats": {
+    "cumul": {
+      "appels": 9,
+      "offres": 1,
+      "vues_leboncoin": 1529,
+      "emails": 21,
+      "visites_effectuees": 17,
+      "favoris_leboncoin": 56
+    },
+    "actuel": {
+      "appels": 3,
+      "emails": 4,
+      "visites_effectuees": 4,
+      "offres": 0,
+      "vues_leboncoin": 18,
+      "favoris_leboncoin": 1,
+      "visites_programmees": 1
+    }
+  },
+  "statut_bien": "en_ligne",
+  "_meta": {
+    "last_mandat_signe": "2025-07-16",
+    "last_weekly_run": "2026-08-31",
+    "last_vues_leboncoin_snapshot": 18,
+    "has_had_reset": true,
+    "last_mise_en_ligne": "2026-01-10",
+    "mise_en_ligne_initiale": "2025-08-02",
+    "mise_en_ligne_ref": "2026-04-01",
+    "weekly_cumul_base": {
+      "2026-08-31": {
+        "appels": 3,
+        "offres": 0,
+        "vues_leboncoin": 3,
+        "emails": 4,
+        "visites_effectuees": 3,
+        "favoris_leboncoin": 0
+      },
+      "2026-08-24": {
+        "appels": 3,
+        "offres": 0,
+        "vues_leboncoin": 152,
+        "emails": 4,
+        "visites_effectuees": 3,
+        "favoris_leboncoin": 10
+      }
+    },
+    "last_actuel_snapshot": {
+      "appels": 3,
+      "offres": 0,
+      "vues_leboncoin": 18,
+      "emails": 4,
+      "visites_effectuees": 4,
+      "favoris_leboncoin": 1
+    },
+    "just_reset": false
+  },
+  "liens": {
+    "lefigaro": "https://immobilier.lefigaro.fr/annonces/annonce-108152431.html",
+    "youtube": "https://youtu.be/CeMHg5tvSCA",
+    "paruvendu": "https://www.paruvendu.fr/immobilier/vente/appartement/1294481430A1KIVHAP000",
+    "pagesjaunes": "https://www.pagesjaunes.fr/actualites/details-actu/6a8412de50a488e0ded06312?from=FD",
+    "bienici": "https://www.bienici.com/annonce/vente/saint-priest/appartement/4pieces/netty-jaujard-appt-34491?q=%2Frecherche%2Fachat%2Fsaint-priest-69800%3Fprix-min%3D280000%26prix-max%3D280000",
+    "linkedin": "https://www.linkedin.com/posts/jeremyheyobimmobilier_situ%C3%A9-%C3%A0-la-limite-entre-le-centre-ville-de-activity-7495388562666811392-MGdj?utm_source=share&utm_medium=member_desktop&rcm=ACoAACoqsv0BA4ErXmoRlqB1Y2FgHmyLI_gjG78",
+    "seloger": "https://www.seloger.com/annonce/achat/auvergne-rhone-alpes/rhone-69/saint-priest-69800/26WJFUW49X2D#m=homepage_last_search_classified_card_classified_detail",
+    "agenceimmo": "https://agence.immo/achat/lucas-un-appartement-t4-avec-grand-balcon-et-garage-a-saint-priest-centre-va34491",
+    "logicimmo": "https://www.logic-immo.com/detail-annonce/vente/auvergne-rhone-alpes/rhone-69/saint-priest-69800/26WJFUW49X2D?serp_view=list&search=distributionTypes%3DBuy%26estateTypes%3DApartment%26locations%3DPOCOFR4525%26method%3Dform%26priceMax%3D280000%26priceMin%3D280000%23ln%3Dclassified_search_results&m=classified_search_results_classified_classified_detail_M",
+    "google": "https://share.google/gy9S6RHskPEdA6YVp",
+    "facebook": "https://www.facebook.com/jeremyheyobimmobilier/posts/pfbid036V5JpESkoFsgSfmS2kJq76QQoFRuK6uNWDvqEqLf3vApavvCbRoEF8rvLJmufUfwl",
+    "instagram": "https://www.instagram.com/p/DcLIrfqji45/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==",
+    "leboncoin": "https://www.leboncoin.fr/ad/ventes_immobilieres/3254694434"
+  },
+  "_comment_statut_bien": "Valeurs possibles : en_ligne | sous_compromis | en_pause",
+  "historique": [
+    {
+      "date": "2026-09-01",
+      "label": "🚪 Nouvelle visite programmée le 03/09/2026 17:30"
+    },
+    {
+      "date": "2026-09-01",
+      "label": "📞 Nouvel appel reçu"
+    },
+    {
+      "date": "2026-08-31",
+      "label": "🔄 Reporting et mise à jour des statistiques"
+    },
+    {
+      "date": "2026-08-26",
+      "label": "⬆️ Remontée automatique de l’annonce"
+    },
+    {
+      "date": "2026-08-24",
+      "label": "🚪 Nouvelle visite programmée le 01/09/2026 14:00"
+    },
+    {
+      "date": "2026-08-24",
+      "label": "📞 Nouvel appel reçu"
+    },
+    {
+      "date": "2026-08-24",
+      "label": "🔄 Reporting et mise à jour des statistiques"
+    },
+    {
+      "date": "2026-08-22",
+      "label": "📩 Nouvel email reçu"
+    },
+    {
+      "date": "2026-08-17",
+      "label": "🔄 Reporting et mise à jour des statistiques"
+    },
+    {
+      "date": "2026-08-14",
+      "label": "⬆️ Remontée automatique de l’annonce"
+    },
+    {
+      "date": "2026-08-10",
+      "label": "🔄 Reporting et mise à jour des statistiques"
+    },
+    {
+      "date": "2026-08-09",
+      "label": "⬆️ Remontée automatique de l’annonce"
+    },
+    {
+      "date": "2025-07-16",
+      "label": "✍️ Mandat enregistré"
+    },
+    {
+      "date": "2026-01-10",
+      "label": "🌐 Annonce mise en ligne"
+    },
+    {
+      "date": "2026-01-13",
+      "label": "⬆️ Remontée automatique de l'annonce"
+    },
+    {
+      "date": "2026-01-16",
+      "label": "⬆️ Remontée automatique de l'annonce"
+    },
+    {
+      "date": "2026-01-19",
+      "label": "📩 Nouvel email reçu"
+    },
+    {
+      "date": "2026-01-19",
+      "label": "⬆️ Remontée automatique de l'annonce"
+    },
+    {
+      "date": "2026-01-22",
+      "label": "⬆️ Remontée automatique de l’annonce"
+    },
+    {
+      "date": "2026-01-23",
+      "label": "📩 Nouvel email reçu"
+    },
+    {
+      "date": "2026-01-26",
+      "label": "🔄 Reporting et mise à jour des statistiques"
+    },
+    {
+      "date": "2026-01-27",
+      "label": "⬆️ Remontée automatique de l’annonce"
+    },
+    {
+      "date": "2026-01-28",
+      "label": "🚪 Nouvelle visite programmée le 02/02/2026 18:30"
+    },
+    {
+      "date": "2026-01-28",
+      "label": "📞 Nouvel appel reçu"
+    },
+    {
+      "date": "2026-01-30",
+      "label": "⬆️ Remontée automatique de l’annonce"
+    },
+    {
+      "date": "2026-01-31",
+      "label": "⬆️ Remontée automatique de l’annonce"
+    },
+    {
+      "date": "2026-02-02",
+      "label": "⬆️ Remontée automatique de l’annonce"
+    },
+    {
+      "date": "2026-02-05",
+      "label": "⬆️ Remontée automatique de l’annonce"
+    },
+    {
+      "date": "2026-02-07",
+      "label": "🚪 Nouvelle visite programmée le 09/02/2026 16:00"
+    },
+    {
+      "date": "2026-02-07",
+      "label": "📞 Nouvel appel reçu"
+    },
+    {
+      "date": "2026-02-09",
+      "label": "⬆️ Remontée automatique de l’annonce"
+    },
+    {
+      "date": "2026-02-09",
+      "label": "🔄 Reporting et mise à jour des statistiques"
+    },
+    {
+      "date": "2026-02-16",
+      "label": "⬆️ Remontée automatique de l’annonce"
+    },
+    {
+      "date": "2026-02-19",
+      "label": "⬆️ Remontée automatique de l’annonce"
+    },
+    {
+      "date": "2026-02-21",
+      "label": "🚪 Nouvelle visite programmée le 24/02/2026 13:00"
+    },
+    {
+      "date": "2026-02-21",
+      "label": "📞 Nouvel appel reçu"
+    },
+    {
+      "date": "2026-02-21",
+      "label": "📩 Nouvel email reçu"
+    },
+    {
+      "date": "2026-02-21",
+      "label": "📩 Nouvel email reçu"
+    },
+    {
+      "date": "2026-02-23",
+      "label": "⬆️ Remontée automatique de l’annonce"
+    },
+    {
+      "date": "2026-02-23",
+      "label": "🔄 Reporting et mise à jour des statistiques"
+    },
+    {
+      "date": "2026-02-24",
+      "label": "🚪 Nouvelle visite programmée le 27/02/2026 16:00"
+    },
+    {
+      "date": "2026-02-24",
+      "label": "📞 Nouvel appel reçu"
+    },
+    {
+      "date": "2026-02-25",
+      "label": "⬆️ Remontée automatique de l’annonce"
+    },
+    {
+      "date": "2026-02-27",
+      "label": "⬆️ Remontée automatique de l’annonce"
+    },
+    {
+      "date": "2026-02-28",
+      "label": "📩 Nouvel email reçu"
+    },
+    {
+      "date": "2026-02-28",
+      "label": "🚪 Nouvelle visite programmée le 13/03/2026 16:00"
+    },
+    {
+      "date": "2026-02-28",
+      "label": "📞 Nouvel appel reçu"
+    },
+    {
+      "date": "2026-03-02",
+      "label": "⬆️ Remontée automatique de l’annonce"
+    },
+    {
+      "date": "2026-03-02",
+      "label": "🔄 Reporting et mise à jour des statistiques"
+    },
+    {
+      "date": "2026-03-05",
+      "label": "⬆️ Remontée automatique de l’annonce"
+    },
+    {
+      "date": "2026-03-09",
+      "label": "⬆️ Remontée automatique de l’annonce"
+    },
+    {
+      "date": "2026-03-09",
+      "label": "🔄 Reporting et mise à jour des statistiques"
+    },
+    {
+      "date": "2026-03-12",
+      "label": "⬆️ Remontée automatique de l’annonce"
+    },
+    {
+      "date": "2026-03-15",
+      "label": "⬆️ Remontée automatique de l’annonce"
+    },
+    {
+      "date": "2026-03-15",
+      "label": "📩 Nouvel email reçu"
+    },
+    {
+      "date": "2026-03-16",
+      "label": "🔄 Reporting et mise à jour des statistiques"
+    },
+    {
+      "date": "2026-03-18",
+      "label": "⬆️ Remontée automatique de l’annonce"
+    },
+    {
+      "date": "2026-03-18",
+      "label": "🚪 Nouvelle visite programmée le 10/04/2026 14:00"
+    },
+    {
+      "date": "2026-03-18",
+      "label": "📞 Nouvel appel reçu"
+    },
+    {
+      "date": "2026-03-21",
+      "label": "⬆️ Remontée automatique de l’annonce"
+    },
+    {
+      "date": "2026-03-23",
+      "label": "🔄 Reporting et mise à jour des statistiques"
+    },
+    {
+      "date": "2026-03-24",
+      "label": "⬆️ Remontée automatique de l’annonce"
+    },
+    {
+      "date": "2026-03-26",
+      "label": "⬆️ Remontée automatique de l’annonce"
+    },
+    {
+      "date": "2026-03-30",
+      "label": "⬆️ Remontée automatique de l’annonce"
+    },
+    {
+      "date": "2026-03-30",
+      "label": "📩 Nouvel email reçu"
+    },
+    {
+      "date": "2026-03-30",
+      "label": "🔄 Reporting et mise à jour des statistiques"
+    },
+    {
+      "date": "2026-03-31",
+      "label": "⬆️ Remontée automatique de l’annonce"
+    },
+    {
+      "date": "2026-04-01",
+      "label": "🌐 Annonce mise en ligne"
+    },
+    {
+      "date": "2026-04-06",
+      "label": "⬆️ Remontée automatique de l’annonce"
+    },
+    {
+      "date": "2026-04-06",
+      "label": "🔄 Reporting et mise à jour des statistiques"
+    },
+    {
+      "date": "2026-04-06",
+      "label": "🔄 Reporting et mise à jour des statistiques"
+    },
+    {
+      "date": "2026-04-09",
+      "label": "📩 Nouvel email reçu"
+    },
+    {
+      "date": "2026-04-11",
+      "label": "⬆️ Remontée automatique de l’annonce"
+    },
+    {
+      "date": "2026-04-11",
+      "label": "🚪 Nouvelle visite programmée le 14/04/2026 18:00"
+    },
+    {
+      "date": "2026-04-11",
+      "label": "📞 Nouvel appel reçu"
+    },
+    {
+      "date": "2026-04-13",
+      "label": "🔄 Reporting et mise à jour des statistiques"
+    },
+    {
+      "date": "2026-04-16",
+      "label": "⬆️ Remontée automatique de l’annonce"
+    },
+    {
+      "date": "2026-04-20",
+      "label": "🔄 Reporting et mise à jour des statistiques"
+    },
+    {
+      "date": "2026-04-21",
+      "label": "⬆️ Remontée automatique de l’annonce"
+    },
+    {
+      "date": "2026-04-26",
+      "label": "⬆️ Remontée automatique de l’annonce"
+    },
+    {
+      "date": "2026-04-27",
+      "label": "🔄 Reporting et mise à jour des statistiques"
+    },
+    {
+      "date": "2026-04-30",
+      "label": "⬆️ Remontée automatique de l’annonce"
+    },
+    {
+      "date": "2026-05-01",
+      "label": "⬆️ Remontée automatique de l’annonce"
+    },
+    {
+      "date": "2026-05-04",
+      "label": "🔄 Reporting et mise à jour des statistiques"
+    },
+    {
+      "date": "2026-05-06",
+      "label": "⬆️ Remontée automatique de l’annonce"
+    },
+    {
+      "date": "2026-05-11",
+      "label": "⬆️ Remontée automatique de l’annonce"
+    },
+    {
+      "date": "2026-05-11",
+      "label": "🔄 Reporting et mise à jour des statistiques"
+    },
+    {
+      "date": "2026-05-16",
+      "label": "⬆️ Remontée automatique de l’annonce"
+    },
+    {
+      "date": "2026-05-18",
+      "label": "🔄 Reporting et mise à jour des statistiques"
+    },
+    {
+      "date": "2026-05-19",
+      "label": "🚪 Nouvelle visite programmée le 25/05/2026 10:00"
+    },
+    {
+      "date": "2026-05-19",
+      "label": "📞 Nouvel appel reçu"
+    },
+    {
+      "date": "2026-05-21",
+      "label": "⬆️ Remontée automatique de l’annonce"
+    },
+    {
+      "date": "2026-05-22",
+      "label": "🚪 Nouvelle visite programmée le 29/05/2026 18:00"
+    },
+    {
+      "date": "2026-05-22",
+      "label": "📞 Nouvel appel reçu"
+    },
+    {
+      "date": "2026-05-25",
+      "label": "🔄 Reporting et mise à jour des statistiques"
+    },
+    {
+      "date": "2026-05-26",
+      "label": "⬆️ Remontée automatique de l’annonce"
+    },
+    {
+      "date": "2026-06-01",
+      "label": "⬆️ Remontée automatique de l’annonce"
+    },
+    {
+      "date": "2026-06-01",
+      "label": "🔄 Reporting et mise à jour des statistiques"
+    },
+    {
+      "date": "2026-06-06",
+      "label": "⬆️ Remontée automatique de l’annonce"
+    },
+    {
+      "date": "2026-06-08",
+      "label": "🔄 Reporting et mise à jour des statistiques"
+    },
+    {
+      "date": "2026-06-11",
+      "label": "⬆️ Remontée automatique de l’annonce"
+    },
+    {
+      "date": "2026-06-15",
+      "label": "🔄 Reporting et mise à jour des statistiques"
+    },
+    {
+      "date": "2026-06-20",
+      "label": "📩 Nouvel email reçu"
+    },
+    {
+      "date": "2026-06-22",
+      "label": "🔄 Reporting et mise à jour des statistiques"
+    },
+    {
+      "date": "2026-06-29",
+      "label": "🔄 Reporting et mise à jour des statistiques"
+    },
+    {
+      "date": "2026-07-01",
+      "label": "⬆️ Remontée automatique de l’annonce"
+    },
+    {
+      "date": "2026-07-06",
+      "label": "⬆️ Remontée automatique de l’annonce"
+    },
+    {
+      "date": "2026-07-06",
+      "label": "🔄 Reporting et mise à jour des statistiques"
+    },
+    {
+      "date": "2026-07-07",
+      "label": "🚪 Nouvelle visite programmée le 13/07/2026 11:00"
+    },
+    {
+      "date": "2026-07-07",
+      "label": "📞 Nouvel appel reçu"
+    },
+    {
+      "date": "2026-07-11",
+      "label": "⬆️ Remontée automatique de l’annonce"
+    },
+    {
+      "date": "2026-07-13",
+      "label": "🔄 Reporting et mise à jour des statistiques"
+    },
+    {
+      "date": "2026-07-13",
+      "label": "🚪 Nouvelle visite programmée le 22/07/2026 13:30"
+    },
+    {
+      "date": "2026-07-13",
+      "label": "📞 Nouvel appel reçu"
+    },
+    {
+      "date": "2026-07-15",
+      "label": "⬆️ Remontée automatique de l’annonce"
+    },
+    {
+      "date": "2026-07-16",
+      "label": "⬆️ Remontée automatique de l’annonce"
+    },
+    {
+      "date": "2026-07-20",
+      "label": "🔄 Reporting et mise à jour des statistiques"
+    },
+    {
+      "date": "2026-07-25",
+      "label": "⬆️ Remontée automatique de l’annonce"
+    },
+    {
+      "date": "2026-07-27",
+      "label": "🔄 Reporting et mise à jour des statistiques"
+    },
+    {
+      "date": "2026-07-30",
+      "label": "⬆️ Remontée automatique de l’annonce"
+    },
+    {
+      "date": "2026-08-03",
+      "label": "🔄 Reporting et mise à jour des statistiques"
+    },
+    {
+      "date": "2026-08-04",
+      "label": "⬆️ Remontée automatique de l’annonce"
+    },
+    {
+      "date": "2026-08-04",
+      "label": "📄 Nouvelle offre d'achat"
+    }
+  ],
+  "strategie_3090": {
+    "intro": "La commercialisation est structurée par paliers afin d’adapter la stratégie au comportement réel des acquéreurs et au contexte de marché.",
+    "etapes": [
+      {
+        "jours": "0–30 jours",
+        "titre": "Phase de test du marché",
+        "strategie": "Mise en ligne au prix de positionnement initial afin de tester la réaction réelle du marché."
+      },
+      {
+        "jours": "31–60 jours",
+        "titre": "Phase d’ajustement stratégique",
+        "strategie": "Ajustements ciblés en fonction des données observées."
+      },
+      {
+        "jours": "61–90 jours",
+        "titre": "Phase de derniers ajustements",
+        "strategie": "Optimisation finale du positionnement afin de favoriser le passage à l’offre."
+      },
+      {
+        "jours": "+ 90 jours",
+        "titre": "Phase de poursuite maîtrisée",
+        "strategie": "Poursuite de la commercialisation avec stratégie définie."
+      }
+    ]
+  },
+  "diffusion": {
+    "remontee": {
+      "frequence": "Remontée hebdomadaire automatique"
+    }
+  },
+  "bien": {
+    "nom": "Lucas",
+    "adresse_complete": "83 avenue Jean Jaurès 69800 Saint-Priest",
+    "sous_titre": "Suivi de commercialisation"
+  },
+  "marche": {
+    "taux_credit": {
+      "precedent": 3.42,
+      "duree": "25 ans",
+      "source": "CAFPI – baromètre (taux moyen)",
+      "periode": "2026-08",
+      "moyen": 3.43,
+      "updatedAt": "2026-08-11T06:54:21.585Z"
+    }
+  },
+  "dates": {
+    "derniere_remontee": "2026-08-26",
+    "mandat_signe": "2025-07-16",
+    "mise_en_ligne": "2026-04-01"
+  }
+}
