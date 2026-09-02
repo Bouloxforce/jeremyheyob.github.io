@@ -157,18 +157,6 @@
       "annee": 2015,
       "etage": "2 niveaux",
       "photo": "/espace-visite/biens/louise/photos/photo-accueil.webp"
-    },
-    {
-      "nom": "Tiago",
-      "slug": "tiago",
-      "ville": "Pont de Cheruy",
-      "bien_type": "Maison",
-      "type": "T4",
-      "surface": 82,
-      "exterieur": 125,
-      "annee": 1998,
-      "etage": "2 niveaux",
-      "photo": "/espace-visite/biens/tiago/photos/photo-accueil.webp"
     }
   ]
 }
