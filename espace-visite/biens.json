@@ -37,6 +37,18 @@
       "photo": "/espace-visite/biens/ayden/photos/photo-accueil.webp"
     },
     {
+      "nom": "Elio",
+      "slug": "elio",
+      "ville": "Saint-Priest",
+      "bien_type": "Appartement",
+      "type": "T4",
+      "surface": 81,
+      "exterieur": 3,
+      "annee": 1964,
+      "etage": "1er étage",
+      "photo": "/espace-visite/biens/elio/photos/photo-accueil.webp"
+    },
+    {
       "nom": "Eliot",
       "slug": "eliot",
       "ville": "Saint-Priest",
