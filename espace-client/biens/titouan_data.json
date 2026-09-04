@@ -24,7 +24,7 @@
       "offres": 0,
       "vues_leboncoin": 83,
       "favoris_leboncoin": 5,
-      "visites_programmees": 1
+      "visites_programmees": 0
     }
   },
   "statut_bien": "en_ligne",
@@ -105,10 +105,6 @@
     {
       "date": "2026-08-27",
       "label": "📞 Nouvel appel reçu"
-    },
-    {
-      "date": "2026-08-25",
-      "label": "🚪 Nouvelle visite programmée le 04/09/2026 18:00"
     },
     {
       "date": "2026-08-25",
