@@ -73,18 +73,6 @@
       "photo": "/espace-visite/biens/ethan/photos/photo-accueil.webp"
     },
     {
-      "nom": "Gabin",
-      "slug": "gabin",
-      "ville": "Saint-Priest",
-      "bien_type": "Appartement",
-      "type": "T4",
-      "surface": 81,
-      "exterieur": 3,
-      "annee": 1964,
-      "etage": "1er étage",
-      "photo": "/espace-visite/biens/gabin/photos/photo-accueil.webp"
-    },
-    {
       "nom": "Lucas",
       "slug": "lucas",
       "ville": "Saint-Priest",
