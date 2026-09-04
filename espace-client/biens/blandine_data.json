@@ -1,2 +1,371 @@
-{"analysis":{"text":"La commercialisation se déroule dans de bonnes conditions. Les indicateurs actuels sont cohérents avec le marché. La stratégie en place est maintenue.","phase_active":"90+","noExploitableData":false,"evolution_text":"Appels : stable\nEmails : stable\nVisites effectuées : stable\nOffres : stable\nVues Leboncoin : +65\nFavoris Leboncoin : stable","alertes":["❗ Aucune interaction récente"],"generatedAt":"2026-09-04T16:33:48.943Z"},"jours_arret_diffusion":0,"stats":{"cumul":{"appels":6,"offres":2,"vues_leboncoin":1636,"emails":2,"visites_effectuees":8,"favoris_leboncoin":43},"actuel":{"appels":6,"emails":2,"visites_effectuees":8,"offres":2,"vues_leboncoin":1636,"favoris_leboncoin":43,"visites_programmees":1}},"statut_bien":"sous_compromis","_meta":{"last_vues_leboncoin_snapshot":1636,"last_weekly_run":"2026-08-31","has_had_reset":false,"mise_en_ligne_initiale":"2026-05-30","mise_en_ligne_ref":"2026-05-30","last_actuel_snapshot":{"appels":6,"offres":2,"vues_leboncoin":1636,"emails":2,"visites_effectuees":8,"favoris_leboncoin":43},"weekly_cumul_base":{"2026-08-31":{"appels":6,"offres":2,"vues_leboncoin":1576,"emails":2,"visites_effectuees":8,"favoris_leboncoin":44},"2026-08-24":{"appels":6,"offres":2,"vues_leboncoin":1511,"emails":2,"visites_effectuees":8,"favoris_leboncoin":45}},"just_reset":false},"liens":{"lefigaro":"https:\/\/immobilier.lefigaro.fr\/annonces\/annonce-104086091.html","youtube":"https:\/\/youtu.be\/LYy297chv3Q","paruvendu":"https:\/\/www.paruvendu.fr\/immobilier\/vente\/maison\/1291239817A1KIVHMN000","pagesjaunes":"https:\/\/www.pagesjaunes.fr\/actualites\/details-actu\/6a1d5571d5c2165caf5fec55","bienici":"https:\/\/www.bienici.com\/annonce\/vente\/charvieu-chavagneux\/maison\/5pieces\/netty-jaujard-house-15010?q=%2Frecherche%2Fachat%2Fcharvieu-chavagneux-38230","linkedin":"https:\/\/www.linkedin.com\/posts\/jeremyheyobimmobilier_situ%C3%A9e-dans-le-secteur-recherch%C3%A9-de-charvieu-le-haut-activity-7467924816075874304-89yM?utm_source=share&utm_medium=member_desktop&rcm=ACoAACoqsv0BA4ErXmoRlqB1Y2FgHmyLI_gjG78","seloger":"https:\/\/www.seloger.com\/annonces\/achat\/maison\/charvieu-chavagneux-38\/couronne-eloignee\/270437043.htm?search=distributionTypes%3DBuy%26estateTypes%3DHouse%2CApartment%26locations%3DAD08FR14890%26priceMax%3D380000%26priceMin%3D380000&serp_view=list#ln=classified_search_results&m=classified_search_results_classified_classified_detail_M","agenceimmo":"https:\/\/agence.immo\/achat\/maison-individuelle-5-pieces-charvieu-chavagneux-38230-VM15010","logicimmo":"https:\/\/www.logic-immo.com\/detail-vente-270437043.htm?serp_view=list&search=distributionTypes%3DBuy%26estateTypes%3DHouse%2CApartment%26locations%3DAD08FR14890%23ln%3Dclassified_search_results&m=classified_search_results_classified_classified_detail_M","google":"https:\/\/share.google\/vz0MDGSBO96mXKLY6","facebook":"https:\/\/www.facebook.com\/jeremyheyobimmobilier\/posts\/pfbid02RynxbRLwFautjRGDQJo22eVLmdhz44fHCKedcDH9sF83rb9vtB98b4UHtSUa5NUnl","instagram":"https:\/\/www.instagram.com\/p\/DZH_VLIiJjY\/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==","leboncoin":"https:\/\/www.leboncoin.fr\/ad\/ventes_immobilieres\/3206989475"},"_comment_statut_bien":"Valeurs possibles : en_ligne | sous_compromis | en_pause","historique":[
-{"date":"2026-09-04","label":"🚪 Nouvelle visite programmée le 11/09/2026 18:00"},{"date":"2026-09-04","label":"📞 Nouvel appel reçu"},{"date":"2026-08-31","label":"🔄 Reporting et mise à jour des statistiques"},{"date":"2026-08-29","label":"⬆️ Remontée automatique de l’annonce"},{"date":"2026-08-25","label":"⬆️ Remontée automatique de l’annonce"},{"date":"2026-08-24","label":"⬆️ Remontée automatique de l’annonce"},{"date":"2026-08-24","label":"🔄 Reporting et mise à jour des statistiques"},{"date":"2026-08-20","label":"⬆️ Remontée automatique de l’annonce"},{"date":"2026-08-17","label":"🔄 Reporting et mise à jour des statistiques"},{"date":"2026-08-15","label":"⬆️ Remontée automatique de l’annonce"},{"date":"2026-08-10","label":"🔄 Reporting et mise à jour des statistiques"},{"date":"2026-08-09","label":"⬆️ Remontée automatique de l’annonce"},{"date":"2026-05-27","label":"✍️ Mandat enregistré"},{"date":"2026-05-29","label":"📩 Nouvel email reçu"},{"date":"2026-05-30","label":"🚪 Nouvelle visite programmée le 01\/06\/2026 18:30"},{"date":"2026-05-30","label":"📞 Nouvel appel reçu"},{"date":"2026-05-30","label":"🚪 Nouvelle visite programmée le 01\/06\/2026 17:30"},{"date":"2026-05-30","label":"📞 Nouvel appel reçu"},{"date":"2026-05-30","label":"🌐 Annonce mise en ligne"},{"date":"2026-05-31","label":"📩 Nouvel email reçu"},{"date":"2026-06-01","label":"🚪 Nouvelle visite programmée le 01\/06\/2026 19:30"},{"date":"2026-06-01","label":"📞 Nouvel appel reçu"},{"date":"2026-06-02","label":"🚪 Nouvelle visite programmée le 08\/06\/2026 14:00"},{"date":"2026-06-02","label":"📞 Nouvel appel reçu"},{"date":"2026-06-03","label":"⬆️ Remontée automatique de l’annonce"},{"date":"2026-06-03","label":"🚪 Nouvelle visite programmée le 08\/06\/2026 15:15"},{"date":"2026-06-03","label":"📞 Nouvel appel reçu"},{"date":"2026-06-04","label":"🚪 Nouvelle visite programmée le 12\/06\/2026 16:00"},{"date":"2026-06-04","label":"📞 Nouvel appel reçu"},{"date":"2026-06-08","label":"⬆️ Remontée automatique de l’annonce"},{"date":"2026-06-08","label":"🚪 Nouvelle visite programmée le 10\/06\/2026 19:45"},{"date":"2026-06-08","label":"📞 Nouvel appel reçu"},{"date":"2026-06-08","label":"🔄 Reporting et mise à jour des statistiques"},{"date":"2026-06-09","label":"🚪 Nouvelle visite programmée le 12\/06\/2026 18:00"},{"date":"2026-06-09","label":"📞 Nouvel appel reçu"},{"date":"2026-06-12","label":"📄 Nouvelle offre d'achat"},{"date":"2026-06-13","label":"⬆️ Remontée automatique de l’annonce"},{"date":"2026-06-15","label":"🔄 Reporting et mise à jour des statistiques"},{"date":"2026-06-18","label":"⬆️ Remontée automatique de l’annonce"},{"date":"2026-06-22","label":"🔄 Reporting et mise à jour des statistiques"},{"date":"2026-06-23","label":"⬆️ Remontée automatique de l’annonce"},{"date":"2026-06-28","label":"⬆️ Remontée automatique de l’annonce"},{"date":"2026-06-29","label":"🔄 Reporting et mise à jour des statistiques"},{"date":"2026-06-29","label":"🔄 Reporting et mise à jour des statistiques"},{"date":"2026-06-30","label":"✍️ Signature du compromis le 09\/07\/2026 17:00"},{"date":"2026-07-04","label":"⬆️ Remontée automatique de l’annonce"},{"date":"2026-07-06","label":"🔄 Reporting et mise à jour des statistiques"},{"date":"2026-07-09","label":"⬆️ Remontée automatique de l’annonce"},{"date":"2026-07-13","label":"🔄 Reporting et mise à jour des statistiques"},{"date":"2026-07-14","label":"⬆️ Remontée automatique de l’annonce"},{"date":"2026-07-18","label":"⬆️ Remontée automatique de l’annonce"},{"date":"2026-07-19","label":"⬆️ Remontée automatique de l’annonce"},{"date":"2026-07-20","label":"🔄 Reporting et mise à jour des statistiques"},{"date":"2026-07-24","label":"⬆️ Remontée automatique de l’annonce"},{"date":"2026-07-27","label":"🔄 Reporting et mise à jour des statistiques"},{"date":"2026-07-29","label":"⬆️ Remontée automatique de l’annonce"},{"date":"2026-08-03","label":"⬆️ Remontée automatique de l’annonce"},{"date":"2026-08-03","label":"🔄 Reporting et mise à jour des statistiques"},{"date":"2026-08-05","label":"📄 Nouvelle offre d'achat"}],"strategie_3090":{"intro":"","etapes":[{"jours":"0–30 jours","titre":"Phase de test du marché","strategie":"Mise en ligne au prix de positionnement initial afin de tester la réaction réelle du marché."},{"jours":"31–60 jours","titre":"Phase d’ajustement stratégique","strategie":"Ajustements ciblés en fonction des données observées."},{"jours":"61–90 jours","titre":"Phase de derniers ajustements","strategie":"Optimisation finale du positionnement afin de favoriser le passage à l’offre."},{"jours":"+ 90 jours","titre":"Phase de poursuite maîtrisée","strategie":"Poursuite de la commercialisation avec stratégie définie."}]},"diffusion":{"remontee":{"frequence":"Remontée hebdomadaire automatique"}},"bien":{"nom":"Blandine","adresse_complete":"37 rue pierre corneille 38230 Charvieu-Chavagneux","sous_titre":"Suivi de commercialisation"},"marche":{"taux_credit":{"precedent":3.4199999999999999,"duree":"25 ans","source":"CAFPI – baromètre (taux moyen)","periode":"2026-08","moyen":3.4300000000000002,"updatedAt":"2026-08-11T06:54:21.584Z"}},"dates":{"derniere_remontee":"2026-08-29","mandat_signe":"2026-05-27","mise_en_ligne":"2026-05-30"}}
+{
+  "analysis": {
+    "text": "La commercialisation se déroule dans de bonnes conditions. Les indicateurs actuels sont cohérents avec le marché. La stratégie en place est maintenue.",
+    "phase_active": "90+",
+    "noExploitableData": false,
+    "evolution_text": "Appels : stable\nEmails : stable\nVisites effectuées : stable\nOffres : stable\nVues Leboncoin : +65\nFavoris Leboncoin : stable",
+    "alertes": [
+      "❗ Aucune interaction récente"
+    ],
+    "generatedAt": "2026-09-04T16:40:38.776Z"
+  },
+  "jours_arret_diffusion": 0,
+  "stats": {
+    "cumul": {
+      "appels": 6,
+      "offres": 2,
+      "vues_leboncoin": 1636,
+      "emails": 2,
+      "visites_effectuees": 8,
+      "favoris_leboncoin": 43
+    },
+    "actuel": {
+      "appels": 6,
+      "emails": 2,
+      "visites_effectuees": 8,
+      "offres": 2,
+      "vues_leboncoin": 1636,
+      "favoris_leboncoin": 43,
+      "visites_programmees": 1
+    }
+  },
+  "statut_bien": "sous_compromis",
+  "_meta": {
+    "last_vues_leboncoin_snapshot": 1636,
+    "last_weekly_run": "2026-08-31",
+    "has_had_reset": false,
+    "mise_en_ligne_initiale": "2026-05-30",
+    "mise_en_ligne_ref": "2026-05-30",
+    "last_actuel_snapshot": {
+      "appels": 6,
+      "offres": 2,
+      "vues_leboncoin": 1636,
+      "emails": 2,
+      "visites_effectuees": 8,
+      "favoris_leboncoin": 43
+    },
+    "weekly_cumul_base": {
+      "2026-08-31": {
+        "appels": 6,
+        "offres": 2,
+        "vues_leboncoin": 1576,
+        "emails": 2,
+        "visites_effectuees": 8,
+        "favoris_leboncoin": 44
+      },
+      "2026-08-24": {
+        "appels": 6,
+        "offres": 2,
+        "vues_leboncoin": 1511,
+        "emails": 2,
+        "visites_effectuees": 8,
+        "favoris_leboncoin": 45
+      }
+    },
+    "just_reset": false
+  },
+  "liens": {
+    "lefigaro": "https://immobilier.lefigaro.fr/annonces/annonce-104086091.html",
+    "youtube": "https://youtu.be/LYy297chv3Q",
+    "paruvendu": "https://www.paruvendu.fr/immobilier/vente/maison/1291239817A1KIVHMN000",
+    "pagesjaunes": "https://www.pagesjaunes.fr/actualites/details-actu/6a1d5571d5c2165caf5fec55",
+    "bienici": "https://www.bienici.com/annonce/vente/charvieu-chavagneux/maison/5pieces/netty-jaujard-house-15010?q=%2Frecherche%2Fachat%2Fcharvieu-chavagneux-38230",
+    "linkedin": "https://www.linkedin.com/posts/jeremyheyobimmobilier_situ%C3%A9e-dans-le-secteur-recherch%C3%A9-de-charvieu-le-haut-activity-7467924816075874304-89yM?utm_source=share&utm_medium=member_desktop&rcm=ACoAACoqsv0BA4ErXmoRlqB1Y2FgHmyLI_gjG78",
+    "seloger": "https://www.seloger.com/annonces/achat/maison/charvieu-chavagneux-38/couronne-eloignee/270437043.htm?search=distributionTypes%3DBuy%26estateTypes%3DHouse%2CApartment%26locations%3DAD08FR14890%26priceMax%3D380000%26priceMin%3D380000&serp_view=list#ln=classified_search_results&m=classified_search_results_classified_classified_detail_M",
+    "agenceimmo": "https://agence.immo/achat/maison-individuelle-5-pieces-charvieu-chavagneux-38230-VM15010",
+    "logicimmo": "https://www.logic-immo.com/detail-vente-270437043.htm?serp_view=list&search=distributionTypes%3DBuy%26estateTypes%3DHouse%2CApartment%26locations%3DAD08FR14890%23ln%3Dclassified_search_results&m=classified_search_results_classified_classified_detail_M",
+    "google": "https://share.google/vz0MDGSBO96mXKLY6",
+    "facebook": "https://www.facebook.com/jeremyheyobimmobilier/posts/pfbid02RynxbRLwFautjRGDQJo22eVLmdhz44fHCKedcDH9sF83rb9vtB98b4UHtSUa5NUnl",
+    "instagram": "https://www.instagram.com/p/DZH_VLIiJjY/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==",
+    "leboncoin": "https://www.leboncoin.fr/ad/ventes_immobilieres/3206989475"
+  },
+  "_comment_statut_bien": "Valeurs possibles : en_ligne | sous_compromis | en_pause",
+  "historique": [
+    {
+      "date": "2026-09-04",
+      "label": "🚪 Nouvelle visite programmée le 11/09/2026 18:00"
+    },
+    {
+      "date": "2026-09-04",
+      "label": "📞 Nouvel appel reçu"
+    },
+    {
+      "date": "2026-08-31",
+      "label": "🔄 Reporting et mise à jour des statistiques"
+    },
+    {
+      "date": "2026-08-29",
+      "label": "⬆️ Remontée automatique de l’annonce"
+    },
+    {
+      "date": "2026-08-25",
+      "label": "⬆️ Remontée automatique de l’annonce"
+    },
+    {
+      "date": "2026-08-24",
+      "label": "⬆️ Remontée automatique de l’annonce"
+    },
+    {
+      "date": "2026-08-24",
+      "label": "🔄 Reporting et mise à jour des statistiques"
+    },
+    {
+      "date": "2026-08-20",
+      "label": "⬆️ Remontée automatique de l’annonce"
+    },
+    {
+      "date": "2026-08-17",
+      "label": "🔄 Reporting et mise à jour des statistiques"
+    },
+    {
+      "date": "2026-08-15",
+      "label": "⬆️ Remontée automatique de l’annonce"
+    },
+    {
+      "date": "2026-08-10",
+      "label": "🔄 Reporting et mise à jour des statistiques"
+    },
+    {
+      "date": "2026-08-09",
+      "label": "⬆️ Remontée automatique de l’annonce"
+    },
+    {
+      "date": "2026-05-27",
+      "label": "✍️ Mandat enregistré"
+    },
+    {
+      "date": "2026-05-29",
+      "label": "📩 Nouvel email reçu"
+    },
+    {
+      "date": "2026-05-30",
+      "label": "🚪 Nouvelle visite programmée le 01/06/2026 18:30"
+    },
+    {
+      "date": "2026-05-30",
+      "label": "📞 Nouvel appel reçu"
+    },
+    {
+      "date": "2026-05-30",
+      "label": "🚪 Nouvelle visite programmée le 01/06/2026 17:30"
+    },
+    {
+      "date": "2026-05-30",
+      "label": "📞 Nouvel appel reçu"
+    },
+    {
+      "date": "2026-05-30",
+      "label": "🌐 Annonce mise en ligne"
+    },
+    {
+      "date": "2026-05-31",
+      "label": "📩 Nouvel email reçu"
+    },
+    {
+      "date": "2026-06-01",
+      "label": "🚪 Nouvelle visite programmée le 01/06/2026 19:30"
+    },
+    {
+      "date": "2026-06-01",
+      "label": "📞 Nouvel appel reçu"
+    },
+    {
+      "date": "2026-06-02",
+      "label": "🚪 Nouvelle visite programmée le 08/06/2026 14:00"
+    },
+    {
+      "date": "2026-06-02",
+      "label": "📞 Nouvel appel reçu"
+    },
+    {
+      "date": "2026-06-03",
+      "label": "⬆️ Remontée automatique de l’annonce"
+    },
+    {
+      "date": "2026-06-03",
+      "label": "🚪 Nouvelle visite programmée le 08/06/2026 15:15"
+    },
+    {
+      "date": "2026-06-03",
+      "label": "📞 Nouvel appel reçu"
+    },
+    {
+      "date": "2026-06-04",
+      "label": "🚪 Nouvelle visite programmée le 12/06/2026 16:00"
+    },
+    {
+      "date": "2026-06-04",
+      "label": "📞 Nouvel appel reçu"
+    },
+    {
+      "date": "2026-06-08",
+      "label": "⬆️ Remontée automatique de l’annonce"
+    },
+    {
+      "date": "2026-06-08",
+      "label": "🚪 Nouvelle visite programmée le 10/06/2026 19:45"
+    },
+    {
+      "date": "2026-06-08",
+      "label": "📞 Nouvel appel reçu"
+    },
+    {
+      "date": "2026-06-08",
+      "label": "🔄 Reporting et mise à jour des statistiques"
+    },
+    {
+      "date": "2026-06-09",
+      "label": "🚪 Nouvelle visite programmée le 12/06/2026 18:00"
+    },
+    {
+      "date": "2026-06-09",
+      "label": "📞 Nouvel appel reçu"
+    },
+    {
+      "date": "2026-06-12",
+      "label": "📄 Nouvelle offre d'achat"
+    },
+    {
+      "date": "2026-06-13",
+      "label": "⬆️ Remontée automatique de l’annonce"
+    },
+    {
+      "date": "2026-06-15",
+      "label": "🔄 Reporting et mise à jour des statistiques"
+    },
+    {
+      "date": "2026-06-18",
+      "label": "⬆️ Remontée automatique de l’annonce"
+    },
+    {
+      "date": "2026-06-22",
+      "label": "🔄 Reporting et mise à jour des statistiques"
+    },
+    {
+      "date": "2026-06-23",
+      "label": "⬆️ Remontée automatique de l’annonce"
+    },
+    {
+      "date": "2026-06-28",
+      "label": "⬆️ Remontée automatique de l’annonce"
+    },
+    {
+      "date": "2026-06-29",
+      "label": "🔄 Reporting et mise à jour des statistiques"
+    },
+    {
+      "date": "2026-06-29",
+      "label": "🔄 Reporting et mise à jour des statistiques"
+    },
+    {
+      "date": "2026-06-30",
+      "label": "✍️ Signature du compromis le 09/07/2026 17:00"
+    },
+    {
+      "date": "2026-07-04",
+      "label": "⬆️ Remontée automatique de l’annonce"
+    },
+    {
+      "date": "2026-07-06",
+      "label": "🔄 Reporting et mise à jour des statistiques"
+    },
+    {
+      "date": "2026-07-09",
+      "label": "⬆️ Remontée automatique de l’annonce"
+    },
+    {
+      "date": "2026-07-13",
+      "label": "🔄 Reporting et mise à jour des statistiques"
+    },
+    {
+      "date": "2026-07-14",
+      "label": "⬆️ Remontée automatique de l’annonce"
+    },
+    {
+      "date": "2026-07-18",
+      "label": "⬆️ Remontée automatique de l’annonce"
+    },
+    {
+      "date": "2026-07-19",
+      "label": "⬆️ Remontée automatique de l’annonce"
+    },
+    {
+      "date": "2026-07-20",
+      "label": "🔄 Reporting et mise à jour des statistiques"
+    },
+    {
+      "date": "2026-07-24",
+      "label": "⬆️ Remontée automatique de l’annonce"
+    },
+    {
+      "date": "2026-07-27",
+      "label": "🔄 Reporting et mise à jour des statistiques"
+    },
+    {
+      "date": "2026-07-29",
+      "label": "⬆️ Remontée automatique de l’annonce"
+    },
+    {
+      "date": "2026-08-03",
+      "label": "⬆️ Remontée automatique de l’annonce"
+    },
+    {
+      "date": "2026-08-03",
+      "label": "🔄 Reporting et mise à jour des statistiques"
+    },
+    {
+      "date": "2026-08-05",
+      "label": "📄 Nouvelle offre d'achat"
+    }
+  ],
+  "strategie_3090": {
+    "intro": "",
+    "etapes": [
+      {
+        "jours": "0–30 jours",
+        "titre": "Phase de test du marché",
+        "strategie": "Mise en ligne au prix de positionnement initial afin de tester la réaction réelle du marché."
+      },
+      {
+        "jours": "31–60 jours",
+        "titre": "Phase d’ajustement stratégique",
+        "strategie": "Ajustements ciblés en fonction des données observées."
+      },
+      {
+        "jours": "61–90 jours",
+        "titre": "Phase de derniers ajustements",
+        "strategie": "Optimisation finale du positionnement afin de favoriser le passage à l’offre."
+      },
+      {
+        "jours": "+ 90 jours",
+        "titre": "Phase de poursuite maîtrisée",
+        "strategie": "Poursuite de la commercialisation avec stratégie définie."
+      }
+    ]
+  },
+  "diffusion": {
+    "remontee": {
+      "frequence": "Remontée hebdomadaire automatique"
+    }
+  },
+  "bien": {
+    "nom": "Blandine",
+    "adresse_complete": "37 rue pierre corneille 38230 Charvieu-Chavagneux",
+    "sous_titre": "Suivi de commercialisation"
+  },
+  "marche": {
+    "taux_credit": {
+      "precedent": 3.42,
+      "duree": "25 ans",
+      "source": "CAFPI – baromètre (taux moyen)",
+      "periode": "2026-08",
+      "moyen": 3.43,
+      "updatedAt": "2026-08-11T06:54:21.584Z"
+    }
+  },
+  "dates": {
+    "derniere_remontee": "2026-08-29",
+    "mandat_signe": "2026-05-27",
+    "mise_en_ligne": "2026-05-30"
+  }
+}
