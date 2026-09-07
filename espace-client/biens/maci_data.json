@@ -7,7 +7,7 @@
     "alertes": [
       "❗ Aucune interaction récente"
     ],
-    "generatedAt": "2026-09-06T07:58:38.866Z"
+    "generatedAt": "2026-09-07T10:53:24.443Z"
   },
   "jours_arret_diffusion": 0,
   "stats": {
@@ -40,16 +40,16 @@
         "visites_effectuees": 0,
         "favoris_leboncoin": 0
       },
-      "2026-08-24": {
+      "2026-09-07": {
         "appels": 0,
-        "offres": 0,
-        "vues_leboncoin": 162,
         "emails": 0,
         "visites_effectuees": 0,
-        "favoris_leboncoin": 1
+        "offres": 0,
+        "vues_leboncoin": 0,
+        "favoris_leboncoin": 0
       }
     },
-    "last_weekly_run": "2026-08-31",
+    "last_weekly_run": "2026-09-07",
     "just_reset": false,
     "mise_en_ligne_initiale": "2026-05-30",
     "last_actuel_snapshot": {

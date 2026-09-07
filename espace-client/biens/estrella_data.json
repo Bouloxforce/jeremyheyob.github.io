@@ -7,7 +7,7 @@
     "alertes": [
       "❗ Aucune interaction récente"
     ],
-    "generatedAt": "2026-09-06T07:58:38.864Z"
+    "generatedAt": "2026-09-07T10:53:24.440Z"
   },
   "jours_arret_diffusion": 270,
   "stats": {
@@ -32,7 +32,7 @@
   "statut_bien": "en_ligne",
   "_meta": {
     "last_mandat_signe": "2024-03-16",
-    "last_weekly_run": "2026-08-31",
+    "last_weekly_run": "2026-09-07",
     "mise_en_ligne_ref": "2026-05-09",
     "just_reset": false,
     "last_mise_en_ligne": "2024-04-06",
@@ -54,12 +54,12 @@
         "visites_effectuees": 0,
         "favoris_leboncoin": 0
       },
-      "2026-08-24": {
+      "2026-09-07": {
         "appels": 0,
-        "offres": 0,
-        "vues_leboncoin": 0,
         "emails": 0,
         "visites_effectuees": 0,
+        "offres": 0,
+        "vues_leboncoin": 0,
         "favoris_leboncoin": 0
       }
     },

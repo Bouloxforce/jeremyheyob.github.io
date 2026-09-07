@@ -3,11 +3,11 @@
     "text": "Les indicateurs actuels nécessitent une surveillance attentive. Une phase d’analyse est en cours afin d’objectiver la suite, sans ajustement de stratégie à ce stade.",
     "phase_active": "90+",
     "noExploitableData": false,
-    "evolution_text": "Appels : stable\nEmails : stable\nVisites effectuées : +1\nOffres : stable\nVues Leboncoin : +35\nFavoris Leboncoin : +1",
+    "evolution_text": "Appels : stable\nEmails : +1\nVisites effectuées : stable\nOffres : stable\nVues Leboncoin : +38\nFavoris Leboncoin : +4",
     "alertes": [
       "❗ Visites sans offres"
     ],
-    "generatedAt": "2026-09-06T07:58:38.863Z"
+    "generatedAt": "2026-09-07T10:53:24.439Z"
   },
   "jours_arret_diffusion": 0,
   "stats": {
@@ -40,16 +40,16 @@
         "visites_effectuees": 5,
         "favoris_leboncoin": 27
       },
-      "2026-08-24": {
+      "2026-09-07": {
         "appels": 0,
+        "emails": 10,
+        "visites_effectuees": 5,
         "offres": 0,
-        "vues_leboncoin": 575,
-        "emails": 9,
-        "visites_effectuees": 4,
-        "favoris_leboncoin": 26
+        "vues_leboncoin": 648,
+        "favoris_leboncoin": 31
       }
     },
-    "last_weekly_run": "2026-08-31",
+    "last_weekly_run": "2026-09-07",
     "just_reset": false,
     "mise_en_ligne_initiale": "2026-04-25",
     "mise_en_ligne_ref": "2026-04-25",
