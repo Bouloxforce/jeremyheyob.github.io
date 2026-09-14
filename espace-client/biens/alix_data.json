@@ -1,9 +1,9 @@
 {
   "analysis": {
-    "generatedAt": "2026-09-13T11:50:23.101Z",
+    "generatedAt": "2026-09-14T07:27:00.749Z",
     "phase_active": "90+",
     "noExploitableData": false,
-    "evolution_text": "Appels : stable\nEmails : stable\nVisites effectuées : stable\nOffres : stable\nVues Leboncoin : +156\nFavoris Leboncoin : +8",
+    "evolution_text": "Appels : stable\nEmails : stable\nVisites effectuées : stable\nOffres : stable\nVues Leboncoin : +134\nFavoris Leboncoin : +6",
     "alertes": [
       "❗ Aucune interaction récente"
     ],
@@ -32,7 +32,7 @@
   "statut_bien": "en_ligne",
   "_meta": {
     "last_vues_leboncoin_snapshot": 3679,
-    "last_weekly_run": "2026-09-07",
+    "last_weekly_run": "2026-09-14",
     "has_had_reset": false,
     "mise_en_ligne_initiale": "2026-04-01",
     "last_actuel_snapshot": {
@@ -44,14 +44,6 @@
       "favoris_leboncoin": 179
     },
     "weekly_cumul_base": {
-      "2026-08-31": {
-        "appels": 14,
-        "offres": 2,
-        "vues_leboncoin": 3389,
-        "emails": 24,
-        "visites_effectuees": 47,
-        "favoris_leboncoin": 165
-      },
       "2026-09-07": {
         "appels": 14,
         "offres": 2,
@@ -59,6 +51,14 @@
         "emails": 24,
         "visites_effectuees": 47,
         "favoris_leboncoin": 173
+      },
+      "2026-09-14": {
+        "appels": 14,
+        "emails": 24,
+        "visites_effectuees": 47,
+        "offres": 2,
+        "vues_leboncoin": 3679,
+        "favoris_leboncoin": 179
       }
     },
     "mise_en_ligne_ref": "2026-04-01",

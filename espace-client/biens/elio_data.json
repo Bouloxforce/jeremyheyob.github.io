@@ -1,13 +1,14 @@
 {
   "analysis": {
     "alertes": [
-      "❗ Visites sans offres"
+      "❗ Visites sans offres",
+      "❗ Aucune interaction récente"
     ],
     "phase_active": "90+",
     "noExploitableData": false,
-    "evolution_text": "Appels : stable\nEmails : +1\nVisites effectuées : stable\nOffres : stable\nVues Leboncoin : +38\nFavoris Leboncoin : +4",
-    "generatedAt": "2026-09-13T11:50:23.103Z",
-    "text": "Les indicateurs actuels nécessitent une surveillance attentive. Une phase d’analyse est en cours afin d’objectiver la suite, sans ajustement de stratégie à ce stade."
+    "evolution_text": "Appels : stable\nEmails : stable\nVisites effectuées : stable\nOffres : stable\nVues Leboncoin : stable\nFavoris Leboncoin : stable",
+    "generatedAt": "2026-09-14T07:27:00.751Z",
+    "text": "Les indicateurs actuels nécessitent une surveillance attentive. Un point stratégique sera réalisé au moment prévu dans le plan de commercialisation."
   },
   "jours_arret_diffusion": 0,
   "stats": {
@@ -32,7 +33,7 @@
   "statut_bien": "en_ligne",
   "_meta": {
     "last_vues_leboncoin_snapshot": 26,
-    "last_weekly_run": "2026-09-07",
+    "last_weekly_run": "2026-09-14",
     "has_had_reset": false,
     "mise_en_ligne_initiale": "2026-04-25",
     "mise_en_ligne_ref": "2026-04-25",
@@ -45,14 +46,6 @@
       "favoris_leboncoin": 0
     },
     "weekly_cumul_base": {
-      "2026-08-31": {
-        "appels": 0,
-        "offres": 0,
-        "vues_leboncoin": 610,
-        "emails": 9,
-        "visites_effectuees": 5,
-        "favoris_leboncoin": 27
-      },
       "2026-09-07": {
         "appels": 0,
         "offres": 0,
@@ -60,6 +53,14 @@
         "emails": 10,
         "visites_effectuees": 5,
         "favoris_leboncoin": 31
+      },
+      "2026-09-14": {
+        "appels": 0,
+        "emails": 10,
+        "visites_effectuees": 5,
+        "offres": 0,
+        "vues_leboncoin": 26,
+        "favoris_leboncoin": 0
       }
     },
     "just_reset": false
