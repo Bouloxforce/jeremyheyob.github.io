@@ -3,10 +3,10 @@
     "alertes": [
       "❗ Aucune interaction récente"
     ],
-    "phase_active": "30",
+    "phase_active": "60",
     "noExploitableData": false,
     "evolution_text": "Appels : stable\nEmails : stable\nVisites effectuées : stable\nOffres : stable\nVues Leboncoin : +32\nFavoris Leboncoin : stable",
-    "generatedAt": "2026-09-14T10:18:50.432Z",
+    "generatedAt": "2026-09-15T07:23:36.329Z",
     "text": "La commercialisation se déroule dans de bonnes conditions. Les indicateurs actuels sont cohérents avec le marché. La stratégie en place est maintenue."
   },
   "jours_arret_diffusion": 0,
