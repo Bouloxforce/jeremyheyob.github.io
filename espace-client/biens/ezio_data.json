@@ -2,9 +2,18 @@
   "statut_bien": "🔴",
   "_comment_statut_bien": "Valeurs possibles : en_ligne | sous_compromis | en_pause",
   "_meta": {
-    "weekly_cumul_base": {},
-    "mise_en_ligne_ref": null,
-    "mise_en_ligne_initiale": null,
+    "weekly_cumul_base": {
+      "2026-09-14": {
+        "appels": 0,
+        "emails": 0,
+        "visites_effectuees": 0,
+        "offres": 0,
+        "vues_leboncoin": 0,
+        "favoris_leboncoin": 0
+      }
+    },
+    "mise_en_ligne_ref": "2026-09-19",
+    "mise_en_ligne_initiale": "2026-09-19",
     "last_actuel_snapshot": {
       "appels": 0,
       "emails": 0,
@@ -15,30 +24,25 @@
     },
     "just_reset": false,
     "has_had_reset": false,
-    "last_weekly_run": null,
-    "last_vues_leboncoin_snapshot": null
+    "last_weekly_run": "2026-09-14",
+    "last_vues_leboncoin_snapshot": 0
   },
-
   "bien": {
     "nom": "Ezio",
     "adresse_complete": "2 rue du Vallon 69330 Pusignan",
     "sous_titre": "Suivi de commercialisation"
   },
-
   "jours_arret_diffusion": 0,
-
   "diffusion": {
     "remontee": {
       "frequence": "Remontée hebdomadaire automatique"
     }
   },
-
   "dates": {
     "mandat_signe": "2026-09-16",
     "mise_en_ligne": "2026-09-19",
     "derniere_remontee": null
   },
-
   "liens": {
     "agenceimmo": "🔴",
     "leboncoin": "🔴",
@@ -54,7 +58,6 @@
     "google": "🔴",
     "youtube": "🔴"
   },
-
   "marche": {
     "taux_credit": {
       "moyen": null,
@@ -65,7 +68,6 @@
       "updatedAt": null
     }
   },
-
   "stats": {
     "actuel": {
       "appels": 0,
@@ -85,9 +87,16 @@
       "favoris_leboncoin": 0
     }
   },
-
-  "historique": [],
-
+  "historique": [
+    {
+      "date": "2026-09-16",
+      "label": "✍️ Mandat enregistré"
+    },
+    {
+      "date": "2026-09-19",
+      "label": "🌐 Annonce mise en ligne"
+    }
+  ],
   "strategie_3090": {
     "intro": "",
     "etapes": [
@@ -112,5 +121,12 @@
         "strategie": "Poursuite de la commercialisation avec stratégie définie."
       }
     ]
+  },
+  "analysis": {
+    "text": "La commercialisation se déroule dans de bonnes conditions. Les indicateurs actuels sont cohérents avec le marché. La stratégie en place est maintenue.",
+    "phase_active": "30",
+    "noExploitableData": false,
+    "alertes": [],
+    "generatedAt": "2026-09-17T11:29:20.935Z"
   }
 }
