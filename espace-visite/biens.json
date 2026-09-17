@@ -73,6 +73,18 @@
       "photo": "/espace-visite/biens/ethan/photos/photo-accueil.webp"
     },
     {
+      "nom": "Ezio",
+      "slug": "ezio",
+      "ville": "Pusignan",
+      "bien_type": "Appartement",
+      "type": "T3",
+      "surface": 63,
+      "exterieur": 24,
+      "annee": 1981,
+      "etage": "Dernier étage",
+      "photo": "/espace-visite/biens/ezio/photos/photo-accueil.webp"
+    },
+    {
       "nom": "Lucas",
       "slug": "lucas",
       "ville": "Saint-Priest",
