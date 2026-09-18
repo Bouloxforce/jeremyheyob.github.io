@@ -109,6 +109,18 @@
       "photo": "/espace-visite/biens/maci/photos/photo-accueil.webp"
     },
     {
+      "nom": "Milo",
+      "slug": "milo",
+      "ville": "Mions",
+      "bien_type": "Dulplex",
+      "type": "T5",
+      "surface": 110,
+      "exterieur": 9,
+      "annee": 2008,
+      "etage": "Dernier étage",
+      "photo": "/espace-visite/biens/milo/photos/photo-accueil.webp"
+    },
+    {
       "nom": "Nathan",
       "slug": "nathan",
       "ville": "Saint-Priest",
