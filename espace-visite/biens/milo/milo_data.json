@@ -1,0 +1,40 @@
+{
+  "slug": "milo",
+  "statut": "disponible",
+
+  "nom": "Ezio",
+  "bien_type": "Duplex",
+  "type": "T5",
+  "surface": 121,
+  "exterieur": 9,
+  "annee": 2008,
+  "etage": "Dernier étage",
+
+  "prix": 430000,
+  "charges": "175 €/mois (entretiens parties communes, eau froide, espace vert, garage, poubelle)",
+  "taxe_fonciere": "1648 €",
+
+  "ville": "Mions",
+  "secteur": "Centre",
+
+  "dpe": {
+    "energie": "C",
+    "ges": "C"
+  },
+
+  "stationnement": "Garage",
+  "chauffage": "Gaz",
+
+  "proximite": "Écoles, commerces, Tansports",
+
+  "points_forts": [
+    "Dernier étage",
+    "Grande pièce de vie",
+    "Grandes chambres"
+  ],
+
+  "photos_count": 17,
+
+  "video": "https://www.youtube.com/@jeremyheyobimmobilier",
+  "annonce": "https://www.jeremyheyob.fr"
+}
