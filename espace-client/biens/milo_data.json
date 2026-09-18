@@ -1,5 +1,5 @@
 {
-  "statut_bien": "🔴",
+  "statut_bien": "en_ligne",
   "_comment_statut_bien": "Valeurs possibles : en_ligne | sous_compromis | en_pause",
   "_meta": {
     "weekly_cumul_base": {
@@ -51,11 +51,11 @@
     "logicimmo": "🔴",
     "paruvendu": "🔴",
     "lefigaro": "🔴",
-    "facebook": "🔴",
-    "instagram": "🔴",
-    "linkedin": "🔴",
+    "facebook": "https://www.facebook.com/jeremyheyobimmobilier/posts/pfbid0279kgdqkGJ7JvG6qngtyRz6nfFaRXEYp2jzsj1oq7Db7D47XqGYKgpw7HYfJMeDhtl",
+    "instagram": "https://www.instagram.com/p/Ddcj56ziFQt/?utm_source=ig_web_copy_link&stkn=MzRlODBiNWFlZA==",
+    "linkedin": "https://www.linkedin.com/feed/update/urn:li:activity:7506848269168283649",
     "pagesjaunes": "🔴",
-    "google": "🔴",
+    "google": "https://share.google/xsdYHRN5B1om0ducK",
     "youtube": "🔴"
   },
   "marche": {
@@ -127,6 +127,6 @@
     "phase_active": "30",
     "noExploitableData": false,
     "alertes": [],
-    "generatedAt": "2026-09-18T22:50:58.888Z"
+    "generatedAt": "2026-09-18T09:19:21.615Z"
   }
 }
