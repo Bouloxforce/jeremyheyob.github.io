@@ -1,36 +1,36 @@
 {
-  "slug": "elisa",
+  "slug": "ezio",
   "statut": "disponible",
 
-  "nom": "Elisa",
-  "bien_type": "Maison",
-  "type": "T5",
-  "surface": 111,
-  "exterieur": 470,
-  "annee": 2015,
-  "etage": "Plein pied",
+  "nom": "Ezio",
+  "bien_type": "Appartement",
+  "type": "T3",
+  "surface": 63,
+  "exterieur": 24,
+  "annee": 1981,
+  "etage": "Dernier étage",
 
-  "prix": 379000,
-  "charges": "130 €/an (portail, espace vert, parking)",
+  "prix": 240000,
+  "charges": "80 €/mois (portail, espace vert, parking, poubelle)",
   "taxe_fonciere": "1776 €",
 
-  "ville": "Charvieu-Chavagneux",
-  "secteur": "Piarday",
+  "ville": "Pusignan",
+  "secteur": "Le Vallon",
 
   "dpe": {
-    "energie": "C",
-    "ges": "C"
+    "energie": "D",
+    "ges": "D"
   },
 
-  "stationnement": "Garage et place de parking",
+  "stationnement": "Nombreuses places",
   "chauffage": "Gaz",
 
   "proximite": "Écoles, commerces, Tansports",
 
   "points_forts": [
-    "Plein pied",
-    "Grand terrain plat",
-    "Pièce de vie de 48m2"
+    "Dernier étage",
+    "Grande terrasse",
+    "Douche italienne"
   ],
 
   "photos_count": 11,
