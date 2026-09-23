@@ -121,6 +121,18 @@
       "photo": "/espace-visite/biens/nathan/photos/photo-accueil.webp"
     },
     {
+      "nom": "Perriere",
+      "slug": "perriere",
+      "ville": "Vénissieux",
+      "bien_type": "Maison",
+      "type": "T4",
+      "surface": 142,
+      "exterieur": 370,
+      "annee": 2004,
+      "etage": "3 niveaux",
+      "photo": "/espace-visite/biens/perriere/photos/photo-accueil.webp"
+    },
+    {
       "nom": "Titouan",
       "slug": "titouan",
       "ville": "Saint-Priest",
