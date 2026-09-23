@@ -20,13 +20,13 @@
       "favoris_leboncoin": 7
     },
     "actuel": {
-      "appels": 0,
-      "emails": 0,
+      "appels": 1,
+      "emails": 1,
       "visites_effectuees": 0,
       "offres": 0,
       "vues_leboncoin": 88,
       "favoris_leboncoin": 7,
-      "visites_programmees": 1
+      "visites_programmees": 0
     }
   },
   "statut_bien": "en_ligne",
@@ -81,10 +81,6 @@
   },
   "_comment_statut_bien": "Valeurs possibles : en_ligne | sous_compromis | en_pause",
   "historique": [
-    {
-      "date": "2026-09-22",
-      "label": "🚪 Nouvelle visite programmée le 25/09/2026 18:30"
-    },
     {
       "date": "2026-09-22",
       "label": "📞 Nouvel appel reçu"
