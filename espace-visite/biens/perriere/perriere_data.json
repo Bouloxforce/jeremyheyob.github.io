@@ -1,0 +1,40 @@
+{
+  "slug": "perriere",
+  "statut": "disponible",
+
+  "nom": "Perriere",
+  "bien_type": "Maison",
+  "type": "T4",
+  "surface": 142,
+  "exterieur": 370,
+  "annee": 2004,
+  "etage": "3 niveaux",
+
+  "prix": 399000,
+  "charges": "0 €/mois",
+  "taxe_fonciere": "1911 €",
+
+  "ville": "Vénissieux",
+  "secteur": "Pasteur",
+
+  "dpe": {
+    "energie": "C",
+    "ges": "C"
+  },
+
+  "stationnement": "Nombreuses places",
+  "chauffage": "Gaz + Bois",
+
+  "proximite": "Écoles, commerces, Tansports",
+
+  "points_forts": [
+    "Rénové avec goût",
+    "Grande pièce de vie",
+    "Climatisation"
+  ],
+
+  "photos_count": 17,
+
+  "video": "https://www.youtube.com/@jeremyheyobimmobilier",
+  "annonce": "https://www.jeremyheyob.fr"
+}
