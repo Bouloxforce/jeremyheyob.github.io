@@ -41,7 +41,7 @@
 
   "liens": {
     "agenceimmo": "🔴",
-    "leboncoin": "🔴",
+    "leboncoin": "https://www.leboncoin.fr",
     "seloger": "🔴",
     "bienici": "🔴",
     "logicimmo": "🔴",
