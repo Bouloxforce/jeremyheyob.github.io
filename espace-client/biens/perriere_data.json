@@ -51,21 +51,21 @@
     "logicimmo": "🔴",
     "paruvendu": "🔴",
     "lefigaro": "🔴",
-    "facebook": "🔴",
-    "instagram": "🔴",
-    "linkedin": "🔴",
-    "pagesjaunes": "🔴",
-    "google": "🔴",
+    "facebook": "https://www.facebook.com/jeremyheyobimmobilier/posts/pfbid02Z9BgQP7M8r6Ph7NGtmjtTKnkVkYhERbgkWdLx8EZg712aeFSdB3R6oam9JkTMtFKl",
+    "instagram": "https://www.instagram.com/p/DdtjHPHjs2v/?utm_source=ig_web_copy_link&stkn=MzRlODBiNWFlZA==",
+    "linkedin": "https://www.linkedin.com/feed/update/urn:li:activity:7509237671743909888",
+    "pagesjaunes": "https://www.pagesjaunes.fr/actualites/details-actu/6ab67537068a197040744de0",
+    "google": "https://share.google/cuZXfvhEJYxujByAW",
     "youtube": "https://youtu.be/JGpzi3B-7l4"
   },
   "marche": {
     "taux_credit": {
-      "moyen": null,
-      "precedent": null,
+      "precedent": 3.43,
       "duree": "25 ans",
       "source": "CAFPI – baromètre (taux moyen)",
-      "periode": null,
-      "updatedAt": null
+      "periode": "2026-09",
+      "moyen": 3.53,
+      "updatedAt": "2026-09-11T10:22:36.868Z"
     }
   },
   "stats": {
