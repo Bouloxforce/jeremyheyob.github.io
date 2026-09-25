@@ -1,13 +1,11 @@
 {
   "analysis": {
-    "generatedAt": "2026-09-25T12:16:43.861Z",
-    "phase_active": "90+",
+    "text": "La commercialisation se déroule dans de bonnes conditions. Les indicateurs actuels sont cohérents avec le marché. La stratégie en place est maintenue.",
+    "evolution_text": "",
+    "generatedAt": "2026-09-25T12:31:24.949Z",
     "noExploitableData": false,
-    "evolution_text": "Appels : stable\nEmails : stable\nVisites effectuées : stable\nOffres : stable\nVues Leboncoin : +28\nFavoris Leboncoin : +1",
-    "alertes": [
-      "❗ Aucune interaction récente"
-    ],
-    "text": "La commercialisation se déroule dans de bonnes conditions. Les indicateurs actuels sont cohérents avec le marché. La stratégie en place est maintenue."
+    "alertes": [],
+    "phase_active": "90+"
   },
   "jours_arret_diffusion": 0,
   "stats": {
@@ -23,46 +21,38 @@
       "appels": 0,
       "emails": 0,
       "visites_effectuees": 0,
+      "visites_programmees": 0,
       "offres": 0,
-      "vues_leboncoin": 51,
-      "favoris_leboncoin": 2,
-      "visites_programmees": 0
+      "vues_leboncoin": 0,
+      "favoris_leboncoin": 0
     }
   },
   "statut_bien": "en_ligne",
   "_meta": {
     "last_vues_leboncoin_snapshot": 51,
-    "last_weekly_run": "2026-09-21",
-    "has_had_reset": false,
+    "has_had_reset": true,
     "mise_en_ligne_initiale": "2026-05-30",
     "last_actuel_snapshot": {
       "appels": 0,
       "offres": 0,
-      "vues_leboncoin": 51,
+      "vues_leboncoin": 0,
       "emails": 0,
       "visites_effectuees": 0,
-      "favoris_leboncoin": 2
+      "favoris_leboncoin": 0
     },
     "weekly_cumul_base": {
-      "2026-09-14": {
-        "appels": 0,
-        "offres": 0,
-        "vues_leboncoin": 23,
-        "emails": 0,
-        "visites_effectuees": 0,
-        "favoris_leboncoin": 1
-      },
       "2026-09-21": {
         "appels": 0,
         "emails": 0,
         "visites_effectuees": 0,
         "offres": 0,
-        "vues_leboncoin": 51,
-        "favoris_leboncoin": 2
+        "vues_leboncoin": 0,
+        "favoris_leboncoin": 0
       }
     },
-    "mise_en_ligne_ref": "2026-05-30",
-    "just_reset": false
+    "mise_en_ligne_ref": "2026-09-25",
+    "just_reset": false,
+    "last_weekly_run": "2026-09-21"
   },
   "liens": {
     "lefigaro": "https://immobilier.lefigaro.fr/annonces/annonce-109152031.html",
@@ -80,54 +70,6 @@
     "leboncoin": "https://www.leboncoin.fr/ad/ventes_immobilieres/3275698181"
   },
   "historique": [
-    {
-      "date": "2026-09-21",
-      "label": "🔄 Reporting et mise à jour des statistiques"
-    },
-    {
-      "date": "2026-09-19",
-      "label": "⬆️ Remontée automatique de l’annonce"
-    },
-    {
-      "date": "2026-09-14",
-      "label": "⬆️ Remontée automatique de l’annonce"
-    },
-    {
-      "date": "2026-09-14",
-      "label": "🔄 Reporting et mise à jour des statistiques"
-    },
-    {
-      "date": "2026-09-09",
-      "label": "⬆️ Remontée automatique de l’annonce"
-    },
-    {
-      "date": "2026-09-07",
-      "label": "🔄 Reporting et mise à jour des statistiques"
-    },
-    {
-      "date": "2026-08-31",
-      "label": "🔄 Reporting et mise à jour des statistiques"
-    },
-    {
-      "date": "2026-08-24",
-      "label": "🔄 Reporting et mise à jour des statistiques"
-    },
-    {
-      "date": "2026-08-17",
-      "label": "🔄 Reporting et mise à jour des statistiques"
-    },
-    {
-      "date": "2026-08-13",
-      "label": "⬆️ Remontée automatique de l’annonce"
-    },
-    {
-      "date": "2026-08-10",
-      "label": "🔄 Reporting et mise à jour des statistiques"
-    },
-    {
-      "date": "2026-08-08",
-      "label": "⬆️ Remontée automatique de l’annonce"
-    },
     {
       "date": "2026-05-11",
       "label": "✍️ Mandat enregistré"
@@ -227,6 +169,58 @@
     {
       "date": "2026-08-03",
       "label": "🔄 Reporting et mise à jour des statistiques"
+    },
+    {
+      "date": "2026-08-08",
+      "label": "⬆️ Remontée automatique de l’annonce"
+    },
+    {
+      "date": "2026-08-10",
+      "label": "🔄 Reporting et mise à jour des statistiques"
+    },
+    {
+      "date": "2026-08-13",
+      "label": "⬆️ Remontée automatique de l’annonce"
+    },
+    {
+      "date": "2026-08-17",
+      "label": "🔄 Reporting et mise à jour des statistiques"
+    },
+    {
+      "date": "2026-08-24",
+      "label": "🔄 Reporting et mise à jour des statistiques"
+    },
+    {
+      "date": "2026-08-31",
+      "label": "🔄 Reporting et mise à jour des statistiques"
+    },
+    {
+      "date": "2026-09-07",
+      "label": "🔄 Reporting et mise à jour des statistiques"
+    },
+    {
+      "date": "2026-09-09",
+      "label": "⬆️ Remontée automatique de l’annonce"
+    },
+    {
+      "date": "2026-09-14",
+      "label": "⬆️ Remontée automatique de l’annonce"
+    },
+    {
+      "date": "2026-09-14",
+      "label": "🔄 Reporting et mise à jour des statistiques"
+    },
+    {
+      "date": "2026-09-19",
+      "label": "⬆️ Remontée automatique de l’annonce"
+    },
+    {
+      "date": "2026-09-21",
+      "label": "🔄 Reporting et mise à jour des statistiques"
+    },
+    {
+      "date": "2026-09-25",
+      "label": "🌐 Annonce mise en ligne"
     }
   ],
   "_comment_statut_bien": "Valeurs possibles : en_ligne | sous_compromis | en_pause",

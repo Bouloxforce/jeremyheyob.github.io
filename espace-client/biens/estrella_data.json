@@ -1,13 +1,11 @@
 {
   "analysis": {
-    "alertes": [
-      "❗ Aucune interaction récente"
-    ],
+    "text": "La commercialisation se déroule dans de bonnes conditions. Les indicateurs actuels sont cohérents avec le marché. La stratégie en place est maintenue.",
+    "evolution_text": "",
+    "generatedAt": "2026-09-25T12:31:24.947Z",
     "noExploitableData": false,
-    "phase_active": "90+",
-    "evolution_text": "Appels : stable\nEmails : stable\nVisites effectuées : stable\nOffres : stable\nVues Leboncoin : +129\nFavoris Leboncoin : +3",
-    "generatedAt": "2026-09-25T12:16:43.858Z",
-    "text": "La commercialisation se déroule dans de bonnes conditions. Les indicateurs actuels sont cohérents avec le marché. La stratégie en place est maintenue."
+    "alertes": [],
+    "phase_active": "90+"
   },
   "jours_arret_diffusion": 270,
   "stats": {
@@ -21,50 +19,42 @@
     },
     "actuel": {
       "appels": 0,
-      "emails": 1,
-      "visites_effectuees": 1,
+      "emails": 0,
+      "visites_effectuees": 0,
+      "visites_programmees": 0,
       "offres": 0,
-      "vues_leboncoin": 221,
-      "favoris_leboncoin": 6,
-      "visites_programmees": 0
+      "vues_leboncoin": 0,
+      "favoris_leboncoin": 0
     }
   },
   "statut_bien": "en_ligne",
   "_meta": {
     "last_mandat_signe": "2024-03-16",
-    "last_weekly_run": "2026-09-21",
     "last_vues_leboncoin_snapshot": 221,
     "has_had_reset": true,
     "last_mise_en_ligne": "2024-04-06",
     "mise_en_ligne_initiale": "2024-04-06",
-    "mise_en_ligne_ref": "2026-05-09",
+    "mise_en_ligne_ref": "2026-09-25",
     "weekly_cumul_base": {
       "2026-09-21": {
         "appels": 0,
-        "offres": 0,
-        "vues_leboncoin": 221,
-        "emails": 1,
+        "emails": 0,
         "visites_effectuees": 0,
-        "favoris_leboncoin": 6
-      },
-      "2026-09-14": {
-        "appels": 0,
         "offres": 0,
-        "vues_leboncoin": 92,
-        "emails": 1,
-        "visites_effectuees": 0,
-        "favoris_leboncoin": 3
+        "vues_leboncoin": 0,
+        "favoris_leboncoin": 0
       }
     },
     "last_actuel_snapshot": {
       "appels": 0,
       "offres": 0,
-      "vues_leboncoin": 221,
-      "emails": 1,
-      "visites_effectuees": 1,
-      "favoris_leboncoin": 6
+      "vues_leboncoin": 0,
+      "emails": 0,
+      "visites_effectuees": 0,
+      "favoris_leboncoin": 0
     },
-    "just_reset": false
+    "just_reset": false,
+    "last_weekly_run": "2026-09-21"
   },
   "liens": {
     "lefigaro": "https://immobilier.lefigaro.fr/annonces/annonce-109151425.html",
@@ -83,50 +73,6 @@
   },
   "_comment_statut_bien": "Valeurs possibles : en_pause | sous_compromis | en_pause",
   "historique": [
-    {
-      "date": "2026-09-21",
-      "label": "⬆️ Remontée automatique de l’annonce"
-    },
-    {
-      "date": "2026-09-21",
-      "label": "🔄 Reporting et mise à jour des statistiques"
-    },
-    {
-      "date": "2026-09-18",
-      "label": "🚪 Nouvelle visite programmée le 22/09/2026 10:00"
-    },
-    {
-      "date": "2026-09-18",
-      "label": "📞 Nouvel appel reçu"
-    },
-    {
-      "date": "2026-09-14",
-      "label": "⬆️ Remontée automatique de l’annonce"
-    },
-    {
-      "date": "2026-09-14",
-      "label": "🔄 Reporting et mise à jour des statistiques"
-    },
-    {
-      "date": "2026-09-09",
-      "label": "⬆️ Remontée automatique de l’annonce"
-    },
-    {
-      "date": "2026-09-09",
-      "label": "📩 Nouvel email reçu"
-    },
-    {
-      "date": "2026-09-07",
-      "label": "🔄 Reporting et mise à jour des statistiques"
-    },
-    {
-      "date": "2026-08-31",
-      "label": "🔄 Reporting et mise à jour des statistiques"
-    },
-    {
-      "date": "2026-08-24",
-      "label": "🔄 Reporting et mise à jour des statistiques"
-    },
     {
       "date": "2024-03-16",
       "label": "✍️ Mandat enregistré"
@@ -282,6 +228,54 @@
     {
       "date": "2026-07-01",
       "label": "⬆️ Remontée automatique de l’annonce"
+    },
+    {
+      "date": "2026-08-24",
+      "label": "🔄 Reporting et mise à jour des statistiques"
+    },
+    {
+      "date": "2026-08-31",
+      "label": "🔄 Reporting et mise à jour des statistiques"
+    },
+    {
+      "date": "2026-09-07",
+      "label": "🔄 Reporting et mise à jour des statistiques"
+    },
+    {
+      "date": "2026-09-09",
+      "label": "⬆️ Remontée automatique de l’annonce"
+    },
+    {
+      "date": "2026-09-09",
+      "label": "📩 Nouvel email reçu"
+    },
+    {
+      "date": "2026-09-14",
+      "label": "⬆️ Remontée automatique de l’annonce"
+    },
+    {
+      "date": "2026-09-14",
+      "label": "🔄 Reporting et mise à jour des statistiques"
+    },
+    {
+      "date": "2026-09-18",
+      "label": "🚪 Nouvelle visite programmée le 22/09/2026 10:00"
+    },
+    {
+      "date": "2026-09-18",
+      "label": "📞 Nouvel appel reçu"
+    },
+    {
+      "date": "2026-09-21",
+      "label": "⬆️ Remontée automatique de l’annonce"
+    },
+    {
+      "date": "2026-09-21",
+      "label": "🔄 Reporting et mise à jour des statistiques"
+    },
+    {
+      "date": "2026-09-25",
+      "label": "🌐 Annonce mise en ligne"
     }
   ],
   "strategie_3090": {
