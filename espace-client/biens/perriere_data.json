@@ -1,2 +1,136 @@
-{"analysis":{"text":"La commercialisation se déroule dans de bonnes conditions. Les indicateurs actuels sont cohérents avec le marché. La stratégie en place est maintenue.","phase_active":"30","noExploitableData":false,"alertes":[],"generatedAt":"2026-09-26T07:33:09.549Z"},"jours_arret_diffusion":0,"stats":{"cumul":{"appels":0,"offres":0,"vues_leboncoin":0,"emails":0,"visites_effectuees":0,"favoris_leboncoin":0},"actuel":{"appels":0,"emails":1,"visites_effectuees":0,"offres":0,"vues_leboncoin":0,"favoris_leboncoin":0,"visites_programmees":0}},"statut_bien":"🔴","_meta":{"weekly_cumul_base":{"2026-09-21":{"appels":0,"offres":0,"vues_leboncoin":0,"emails":0,"visites_effectuees":0,"favoris_leboncoin":0}},"last_weekly_run":"2026-09-21","just_reset":false,"mise_en_ligne_initiale":"2026-09-26","last_actuel_snapshot":{"appels":0,"offres":0,"vues_leboncoin":0,"emails":0,"visites_effectuees":0,"favoris_leboncoin":0},"mise_en_ligne_ref":"2026-09-26","last_vues_leboncoin_snapshot":0,"has_had_reset":false},"liens":{"lefigaro":"🔴","youtube":"https:\/\/youtu.be\/JGpzi3B-7l4","paruvendu":"🔴","pagesjaunes":"https:\/\/www.pagesjaunes.fr\/actualites\/details-actu\/6ab67537068a197040744de0","bienici":"🔴","linkedin":"https:\/\/www.linkedin.com\/feed\/update\/urn:li:activity:7509237671743909888","seloger":"🔴","agenceimmo":"🔴","logicimmo":"🔴","google":"https:\/\/share.google\/cuZXfvhEJYxujByAW","facebook":"https:\/\/www.facebook.com\/jeremyheyobimmobilier\/posts\/pfbid02Z9BgQP7M8r6Ph7NGtmjtTKnkVkYhERbgkWdLx8EZg712aeFSdB3R6oam9JkTMtFKl","instagram":"https:\/\/www.instagram.com\/p\/DdtjHPHjs2v\/?utm_source=ig_web_copy_link&stkn=MzRlODBiNWFlZA==","leboncoin":"https:\/\/www.leboncoin.fr"},"_comment_statut_bien":"Valeurs possibles : en_ligne | sous_compromis | en_pause","historique":[
-{"date":"2026-09-26","label":"📩 Nouvel email reçu"},{"date":"2026-09-22","label":"✍️ Mandat enregistré"},{"date":"2026-09-26","label":"🌐 Annonce mise en ligne"}],"strategie_3090":{"intro":"","etapes":[{"jours":"0–30 jours","titre":"Phase de test du marché","strategie":"Mise en ligne au prix de positionnement initial afin de tester la réaction réelle du marché."},{"jours":"31–60 jours","titre":"Phase d’ajustement stratégique","strategie":"Ajustements ciblés en fonction des données observées."},{"jours":"61–90 jours","titre":"Phase de derniers ajustements","strategie":"Optimisation finale du positionnement afin de favoriser le passage à l’offre."},{"jours":"+ 90 jours","titre":"Phase de poursuite maîtrisée","strategie":"Poursuite de la commercialisation avec stratégie définie."}]},"diffusion":{"remontee":{"frequence":"Remontée hebdomadaire automatique"}},"bien":{"nom":"Perriere","adresse_complete":"20 bis chemin de la perrière 69200 Vénissieux","sous_titre":"Suivi de commercialisation"},"dates":{"derniere_remontee":null,"mandat_signe":"2026-09-22","mise_en_ligne":"2026-09-26"},"marche":{"taux_credit":{"precedent":3.4300000000000002,"duree":"25 ans","source":"CAFPI – baromètre (taux moyen)","periode":"2026-09","moyen":3.5299999999999998,"updatedAt":"2026-09-11T10:22:36.868Z"}}}
+{
+  "analysis": {
+    "text": "La commercialisation se déroule dans de bonnes conditions. Les indicateurs actuels sont cohérents avec le marché. La stratégie en place est maintenue.",
+    "phase_active": "30",
+    "noExploitableData": false,
+    "alertes": [],
+    "generatedAt": "2026-09-26T20:25:24.421Z"
+  },
+  "jours_arret_diffusion": 0,
+  "stats": {
+    "cumul": {
+      "appels": 0,
+      "offres": 0,
+      "vues_leboncoin": 0,
+      "emails": 1,
+      "visites_effectuees": 0,
+      "favoris_leboncoin": 0
+    },
+    "actuel": {
+      "appels": 0,
+      "emails": 1,
+      "visites_effectuees": 0,
+      "offres": 0,
+      "vues_leboncoin": 0,
+      "favoris_leboncoin": 0,
+      "visites_programmees": 0
+    }
+  },
+  "statut_bien": "🔴",
+  "_meta": {
+    "weekly_cumul_base": {
+      "2026-09-21": {
+        "appels": 0,
+        "offres": 0,
+        "vues_leboncoin": 0,
+        "emails": 0,
+        "visites_effectuees": 0,
+        "favoris_leboncoin": 0
+      }
+    },
+    "last_weekly_run": "2026-09-21",
+    "just_reset": false,
+    "mise_en_ligne_initiale": "2026-09-26",
+    "last_actuel_snapshot": {
+      "appels": 0,
+      "offres": 0,
+      "vues_leboncoin": 0,
+      "emails": 1,
+      "visites_effectuees": 0,
+      "favoris_leboncoin": 0
+    },
+    "mise_en_ligne_ref": "2026-09-26",
+    "last_vues_leboncoin_snapshot": 0,
+    "has_had_reset": false
+  },
+  "liens": {
+    "lefigaro": "🔴",
+    "youtube": "https://youtu.be/JGpzi3B-7l4",
+    "paruvendu": "🔴",
+    "pagesjaunes": "https://www.pagesjaunes.fr/actualites/details-actu/6ab67537068a197040744de0",
+    "bienici": "🔴",
+    "linkedin": "https://www.linkedin.com/feed/update/urn:li:activity:7509237671743909888",
+    "seloger": "🔴",
+    "agenceimmo": "🔴",
+    "logicimmo": "🔴",
+    "google": "https://share.google/cuZXfvhEJYxujByAW",
+    "facebook": "https://www.facebook.com/jeremyheyobimmobilier/posts/pfbid02Z9BgQP7M8r6Ph7NGtmjtTKnkVkYhERbgkWdLx8EZg712aeFSdB3R6oam9JkTMtFKl",
+    "instagram": "https://www.instagram.com/p/DdtjHPHjs2v/?utm_source=ig_web_copy_link&stkn=MzRlODBiNWFlZA==",
+    "leboncoin": "https://www.leboncoin.fr"
+  },
+  "_comment_statut_bien": "Valeurs possibles : en_ligne | sous_compromis | en_pause",
+  "historique": [
+    {
+      "date": "2026-09-26",
+      "label": "📩 Nouvel email reçu"
+    },
+    {
+      "date": "2026-09-22",
+      "label": "✍️ Mandat enregistré"
+    },
+    {
+      "date": "2026-09-26",
+      "label": "🌐 Annonce mise en ligne"
+    }
+  ],
+  "strategie_3090": {
+    "intro": "",
+    "etapes": [
+      {
+        "jours": "0–30 jours",
+        "titre": "Phase de test du marché",
+        "strategie": "Mise en ligne au prix de positionnement initial afin de tester la réaction réelle du marché."
+      },
+      {
+        "jours": "31–60 jours",
+        "titre": "Phase d’ajustement stratégique",
+        "strategie": "Ajustements ciblés en fonction des données observées."
+      },
+      {
+        "jours": "61–90 jours",
+        "titre": "Phase de derniers ajustements",
+        "strategie": "Optimisation finale du positionnement afin de favoriser le passage à l’offre."
+      },
+      {
+        "jours": "+ 90 jours",
+        "titre": "Phase de poursuite maîtrisée",
+        "strategie": "Poursuite de la commercialisation avec stratégie définie."
+      }
+    ]
+  },
+  "diffusion": {
+    "remontee": {
+      "frequence": "Remontée hebdomadaire automatique"
+    }
+  },
+  "bien": {
+    "nom": "Perriere",
+    "adresse_complete": "20 bis chemin de la perrière 69200 Vénissieux",
+    "sous_titre": "Suivi de commercialisation"
+  },
+  "dates": {
+    "derniere_remontee": null,
+    "mandat_signe": "2026-09-22",
+    "mise_en_ligne": "2026-09-26"
+  },
+  "marche": {
+    "taux_credit": {
+      "precedent": 3.43,
+      "duree": "25 ans",
+      "source": "CAFPI – baromètre (taux moyen)",
+      "periode": "2026-09",
+      "moyen": 3.53,
+      "updatedAt": "2026-09-11T10:22:36.868Z"
+    }
+  }
+}
