@@ -3,8 +3,8 @@
     "text": "La commercialisation se déroule dans de bonnes conditions. Les indicateurs actuels sont cohérents avec le marché. La stratégie en place est maintenue.",
     "noExploitableData": false,
     "phase_active": "90+",
-    "evolution_text": "",
-    "generatedAt": "2026-09-26T20:25:24.421Z",
+    "evolution_text": "Appels : stable\nEmails : +1\nVisites effectuées : stable\nOffres : stable\nVues Leboncoin : stable\nFavoris Leboncoin : stable",
+    "generatedAt": "2026-09-28T08:36:40.893Z",
     "alertes": []
   },
   "jours_arret_diffusion": 0,
@@ -30,7 +30,7 @@
   "statut_bien": "en_ligne",
   "_meta": {
     "mise_en_ligne_ref": "2026-09-25",
-    "last_weekly_run": "2026-09-21",
+    "last_weekly_run": "2026-09-28",
     "just_reset": false,
     "mise_en_ligne_initiale": "2026-05-02",
     "last_actuel_snapshot": {
@@ -48,6 +48,14 @@
         "vues_leboncoin": 0,
         "emails": 0,
         "visites_effectuees": 0,
+        "favoris_leboncoin": 0
+      },
+      "2026-09-28": {
+        "appels": 0,
+        "emails": 1,
+        "visites_effectuees": 0,
+        "offres": 0,
+        "vues_leboncoin": 0,
         "favoris_leboncoin": 0
       }
     },
