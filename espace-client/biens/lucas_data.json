@@ -1,13 +1,11 @@
 {
   "analysis": {
-    "generatedAt": "2026-10-02T15:36:03.863Z",
+    "text": "La commercialisation se déroule dans de bonnes conditions. Les indicateurs actuels sont cohérents avec le marché. La stratégie en place est maintenue.",
+    "evolution_text": "",
+    "generatedAt": "2026-10-02T21:08:06.882Z",
     "noExploitableData": false,
-    "phase_active": "90+",
-    "evolution_text": "Appels : stable\nEmails : stable\nVisites effectuées : stable\nOffres : stable\nVues Leboncoin : stable\nFavoris Leboncoin : stable",
-    "alertes": [
-      "❗ Aucune interaction récente"
-    ],
-    "text": "La commercialisation se déroule dans de bonnes conditions. Les indicateurs actuels sont cohérents avec le marché. La stratégie en place est maintenue."
+    "alertes": [],
+    "phase_active": "90+"
   },
   "jours_arret_diffusion": 38,
   "stats": {
@@ -23,16 +21,15 @@
       "appels": 0,
       "emails": 0,
       "visites_effectuees": 0,
+      "visites_programmees": 0,
       "offres": 0,
-      "vues_leboncoin": 19,
-      "favoris_leboncoin": 0,
-      "visites_programmees": 0
+      "vues_leboncoin": 0,
+      "favoris_leboncoin": 0
     }
   },
   "statut_bien": "en_ligne",
   "_meta": {
     "last_mandat_signe": "2025-07-16",
-    "last_weekly_run": "2026-09-28",
     "last_vues_leboncoin_snapshot": 19,
     "has_had_reset": true,
     "last_mise_en_ligne": "2026-01-10",
@@ -40,31 +37,24 @@
     "last_actuel_snapshot": {
       "appels": 0,
       "offres": 0,
-      "vues_leboncoin": 19,
+      "vues_leboncoin": 0,
       "emails": 0,
       "visites_effectuees": 0,
       "favoris_leboncoin": 0
     },
-    "mise_en_ligne_ref": "2026-09-25",
+    "mise_en_ligne_ref": "2026-10-02",
     "weekly_cumul_base": {
-      "2026-09-21": {
-        "appels": 0,
-        "offres": 0,
-        "vues_leboncoin": 0,
-        "emails": 0,
-        "visites_effectuees": 0,
-        "favoris_leboncoin": 0
-      },
       "2026-09-28": {
         "appels": 0,
-        "offres": 0,
-        "vues_leboncoin": 0,
         "emails": 0,
         "visites_effectuees": 0,
+        "offres": 0,
+        "vues_leboncoin": 0,
         "favoris_leboncoin": 0
       }
     },
-    "just_reset": false
+    "just_reset": false,
+    "last_weekly_run": "2026-09-28"
   },
   "liens": {
     "lefigaro": "https://immobilier.lefigaro.fr/annonces/annonce-109152225.html",
@@ -83,18 +73,6 @@
   },
   "_comment_statut_bien": "Valeurs possibles : en_ligne | sous_compromis | en_pause",
   "historique": [
-    {
-      "date": "2026-09-29",
-      "label": "⬆️ Remontée automatique de l’annonce"
-    },
-    {
-      "date": "2026-09-28",
-      "label": "🔄 Reporting et mise à jour des statistiques"
-    },
-    {
-      "date": "2026-09-24",
-      "label": "⬆️ Remontée automatique de l’annonce"
-    },
     {
       "date": "2025-07-16",
       "label": "✍️ Mandat enregistré"
@@ -628,7 +606,23 @@
       "label": "⬆️ Remontée automatique de l’annonce"
     },
     {
+      "date": "2026-09-24",
+      "label": "⬆️ Remontée automatique de l’annonce"
+    },
+    {
       "date": "2026-09-25",
+      "label": "🌐 Annonce mise en ligne"
+    },
+    {
+      "date": "2026-09-28",
+      "label": "🔄 Reporting et mise à jour des statistiques"
+    },
+    {
+      "date": "2026-09-29",
+      "label": "⬆️ Remontée automatique de l’annonce"
+    },
+    {
+      "date": "2026-10-02",
       "label": "🌐 Annonce mise en ligne"
     }
   ],
