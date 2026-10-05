@@ -18,13 +18,13 @@
       "favoris_leboncoin": 19
     },
     "actuel": {
-      "appels": 0,
+      "appels": 2,
       "emails": 1,
       "visites_effectuees": 0,
       "offres": 0,
       "vues_leboncoin": 168,
       "favoris_leboncoin": 12,
-      "visites_programmees": 2
+      "visites_programmees": 1
     }
   },
   "statut_bien": "en_ligne",
@@ -86,10 +86,6 @@
     {
       "date": "2026-10-04",
       "label": "⬆️ Remontée automatique de l’annonce"
-    },
-    {
-      "date": "2026-10-02",
-      "label": "🚪 Nouvelle visite programmée le 07/10/2026 17:00"
     },
     {
       "date": "2026-10-02",
