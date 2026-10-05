@@ -5,12 +5,12 @@
     "phase_active": "30",
     "evolution_text": "Appels : stable\nEmails : +1\nVisites effectuées : stable\nOffres : stable\nVues Leboncoin : +168\nFavoris Leboncoin : +12",
     "alertes": [],
-    "generatedAt": "2026-10-05T07:59:50.912Z"
+    "generatedAt": "2026-10-05T09:46:18.284Z"
   },
   "jours_arret_diffusion": 0,
   "stats": {
     "cumul": {
-      "appels": 2,
+      "appels": 4,
       "offres": 0,
       "vues_leboncoin": 256,
       "emails": 2,
@@ -34,7 +34,7 @@
     "has_had_reset": true,
     "mise_en_ligne_initiale": "2026-09-19",
     "last_actuel_snapshot": {
-      "appels": 0,
+      "appels": 2,
       "offres": 0,
       "vues_leboncoin": 168,
       "emails": 1,
