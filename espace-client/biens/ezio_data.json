@@ -4,7 +4,7 @@
     "noExploitableData": false,
     "phase_active": "30",
     "evolution_text": "Appels : stable\nEmails : +1\nVisites effectuées : stable\nOffres : stable\nVues Leboncoin : +168\nFavoris Leboncoin : +12",
-    "generatedAt": "2026-10-10T10:19:59.447Z",
+    "generatedAt": "2026-10-09T16:44:24.272Z",
     "alertes": []
   },
   "jours_arret_diffusion": 0,
@@ -79,6 +79,14 @@
   },
   "_comment_statut_bien": "Valeurs possibles : en_ligne | sous_compromis | en_pause",
   "historique": [
+    {
+      "date": "2026-10-09",
+      "label": "🚪 Nouvelle visite programmée le 12/10/2026 12:30"
+    },
+    {
+      "date": "2026-10-09",
+      "label": "📞 Nouvel appel reçu"
+    },
     {
       "date": "2026-10-06",
       "label": "📩 Nouvel email reçu"
