@@ -1,2 +1,229 @@
-{"analysis":{"text":"La commercialisation se déroule dans de bonnes conditions. Les indicateurs actuels sont cohérents avec le marché. La stratégie en place est maintenue.","noExploitableData":false,"phase_active":"30","evolution_text":"","generatedAt":"2026-10-17T13:45:18.382Z","alertes":[]},"jours_arret_diffusion":0,"stats":{"cumul":{"appels":4,"offres":0,"vues_leboncoin":322,"emails":5,"visites_effectuees":2,"favoris_leboncoin":27},"actuel":{"appels":0,"emails":0,"visites_effectuees":0,"offres":0,"vues_leboncoin":0,"favoris_leboncoin":0,"visites_programmees":1}},"statut_bien":"en_ligne","_meta":{"last_vues_leboncoin_snapshot":0,"last_weekly_run":"2026-10-12","has_had_reset":true,"mise_en_ligne_initiale":"2026-09-19","mise_en_ligne_ref":"2026-10-17","last_actuel_snapshot":{"appels":0,"offres":0,"vues_leboncoin":0,"emails":0,"visites_effectuees":0,"favoris_leboncoin":0},"weekly_cumul_base":{"2026-10-12":{"appels":0,"offres":0,"vues_leboncoin":0,"emails":0,"visites_effectuees":0,"favoris_leboncoin":0}},"just_reset":false},"liens":{"lefigaro":"https:\/\/immobilier.lefigaro.fr\/annonces\/annonce-109151813.html","youtube":"https:\/\/youtu.be\/bEA3O_JUAoQ","paruvendu":"https:\/\/www.paruvendu.fr\/immobilier\/vente\/appartement\/1295486877A1KIVHAP000","pagesjaunes":"https:\/\/www.pagesjaunes.fr\/actualites\/details\/6ad37607704bee84637f0fd5?from=FD","bienici":"https:\/\/www.bienici.com\/annonce\/vente\/pusignan\/appartement\/3pieces\/agence-immo-3-VA34574?q=%2Frecherche%2Fachat%2Fpusignan-69330%2Fappartement%2Cloft%2Cchateau%2Chotel","linkedin":"https:\/\/www.linkedin.com\/feed\/update\/urn:li:activity:7517211423882772481\/","seloger":"https:\/\/www.seloger.com\/annonce\/achat\/auvergne-rhone-alpes\/rhone-69\/pusignan-69330\/26ZEGA6Q3YM8?serp_view=list&search=distributionTypes%3DBuy%26estateTypes%3DApartment%26initialQuery%3Dpusignan%26locations%3DAD08FR28968%26method%3Dform#ln=classified_search_results&m=classified_search_results_classified_classified_detail_M","agenceimmo":"https:\/\/agence.immo\/achat\/ezio-un-magnifique-t3-avec-grande-terrasse-de-24-m-va34574","logicimmo":"https:\/\/www.logic-immo.com\/detail-annonce\/vente\/auvergne-rhone-alpes\/rhone-69\/pusignan-69330\/26ZEGA6Q3YM8?serp_view=list&search=distributionTypes%3DBuy%26estateTypes%3DApartment%26locations%3DAD08FR28968%26method%3Dform%23ln%3Dclassified_search_results&m=classified_search_results_classified_classified_detail_M","google":"https:\/\/share.google\/kG4AIB3E02XvCnTpJ","facebook":"https:\/\/www.facebook.com\/jeremyheyobimmobilier\/posts\/pfbid0R8qVogRiVF2DYVFamZhAyk5QCrHaW54pruGbDBRJFGz2x43dtRppbFPJSYyJXnC8l","instagram":"https:\/\/www.instagram.com\/p\/DemMmDkjrMw\/?utm_source=ig_web_copy_link&xtok=MzRlODBiNWFlZA==&srtk=MzRlODBiNWFlZA==","leboncoin":"https:\/\/www.leboncoin.fr\/ad\/ventes_immobilieres\/3289813022"},"_comment_statut_bien":"Valeurs possibles : en_ligne | sous_compromis | en_pause","historique":[
-{"date":"2026-10-17","label":"🚪 Nouvelle visite programmée le 20/10/2026 13:45"},{"date":"2026-10-17","label":"📞 Nouvel appel reçu"},{"date":"2026-09-16","label":"✍️ Mandat enregistré"},{"date":"2026-09-19","label":"⬆️ Remontée automatique de l’annonce"},{"date":"2026-09-19","label":"🌐 Annonce mise en ligne"},{"date":"2026-09-21","label":"🔄 Reporting et mise à jour des statistiques"},{"date":"2026-09-22","label":"📞 Nouvel appel reçu"},{"date":"2026-09-24","label":"⬆️ Remontée automatique de l’annonce"},{"date":"2026-09-25","label":"🌐 Annonce mise en ligne"},{"date":"2026-09-28","label":"🔄 Reporting et mise à jour des statistiques"},{"date":"2026-09-29","label":"⬆️ Remontée automatique de l’annonce"},{"date":"2026-09-30","label":"🚪 Nouvelle visite programmée le 05\/10\/2026 17:30"},{"date":"2026-09-30","label":"📞 Nouvel appel reçu"},{"date":"2026-10-02","label":"📞 Nouvel appel reçu"},{"date":"2026-10-02","label":"📩 Nouvel email reçu"},{"date":"2026-10-04","label":"⬆️ Remontée automatique de l’annonce"},{"date":"2026-10-05","label":"🔄 Reporting et mise à jour des statistiques"},{"date":"2026-10-06","label":"📩 Nouvel email reçu"},{"date":"2026-10-09","label":"🚪 Nouvelle visite programmée le 12\/10\/2026 12:30"},{"date":"2026-10-09","label":"📞 Nouvel appel reçu"},{"date":"2026-10-10","label":"📩 Nouvel email reçu"},{"date":"2026-10-12","label":"🔄 Reporting et mise à jour des statistiques"},{"date":"2026-10-14","label":"⬆️ Remontée automatique de l’annonce"},{"date":"2026-10-16","label":"📩 Nouvel email reçu"},{"date":"2026-10-17","label":"📩 Nouvel email reçu"},{"date":"2026-10-17","label":"🌐 Annonce mise en ligne"}],"strategie_3090":{"intro":"","etapes":[{"jours":"0–30 jours","titre":"Phase de test du marché","strategie":"Mise en ligne au prix de positionnement initial afin de tester la réaction réelle du marché."},{"jours":"31–60 jours","titre":"Phase d’ajustement stratégique","strategie":"Ajustements ciblés en fonction des données observées."},{"jours":"61–90 jours","titre":"Phase de derniers ajustements","strategie":"Optimisation finale du positionnement afin de favoriser le passage à l’offre."},{"jours":"+ 90 jours","titre":"Phase de poursuite maîtrisée","strategie":"Poursuite de la commercialisation avec stratégie définie."}]},"diffusion":{"remontee":{"frequence":"Remontée hebdomadaire automatique"}},"bien":{"nom":"Ezio","adresse_complete":"2 rue du Vallon 69330 Pusignan","sous_titre":"Suivi de commercialisation"},"dates":{"mandat_signe":"2026-09-16","mise_en_ligne":"2026-10-17","derniere_remontee":"2026-10-14"},"marche":{"taux_credit":{"precedent":3.5299999999999998,"duree":"25 ans","source":"CAFPI – baromètre (taux moyen)","periode":"2026-10","moyen":3.5899999999999999,"updatedAt":"2026-10-11T11:55:25.326Z"}}}
+{
+  "analysis": {
+    "text": "La commercialisation se déroule dans de bonnes conditions. Les indicateurs actuels sont cohérents avec le marché. La stratégie en place est maintenue.",
+    "noExploitableData": false,
+    "phase_active": "30",
+    "evolution_text": "",
+    "generatedAt": "2026-10-17T15:19:52.817Z",
+    "alertes": []
+  },
+  "jours_arret_diffusion": 0,
+  "stats": {
+    "cumul": {
+      "appels": 4,
+      "offres": 0,
+      "vues_leboncoin": 322,
+      "emails": 5,
+      "visites_effectuees": 2,
+      "favoris_leboncoin": 27
+    },
+    "actuel": {
+      "appels": 0,
+      "emails": 0,
+      "visites_effectuees": 0,
+      "offres": 0,
+      "vues_leboncoin": 0,
+      "favoris_leboncoin": 0,
+      "visites_programmees": 1
+    }
+  },
+  "statut_bien": "en_ligne",
+  "_meta": {
+    "last_vues_leboncoin_snapshot": 0,
+    "last_weekly_run": "2026-10-12",
+    "has_had_reset": true,
+    "mise_en_ligne_initiale": "2026-09-19",
+    "mise_en_ligne_ref": "2026-10-17",
+    "last_actuel_snapshot": {
+      "appels": 0,
+      "offres": 0,
+      "vues_leboncoin": 0,
+      "emails": 0,
+      "visites_effectuees": 0,
+      "favoris_leboncoin": 0
+    },
+    "weekly_cumul_base": {
+      "2026-10-12": {
+        "appels": 0,
+        "offres": 0,
+        "vues_leboncoin": 0,
+        "emails": 0,
+        "visites_effectuees": 0,
+        "favoris_leboncoin": 0
+      }
+    },
+    "just_reset": false
+  },
+  "liens": {
+    "lefigaro": "https://immobilier.lefigaro.fr/annonces/annonce-109151813.html",
+    "youtube": "https://youtu.be/bEA3O_JUAoQ",
+    "paruvendu": "https://www.paruvendu.fr/immobilier/vente/appartement/1295486877A1KIVHAP000",
+    "pagesjaunes": "https://www.pagesjaunes.fr/actualites/details/6ad37607704bee84637f0fd5?from=FD",
+    "bienici": "https://www.bienici.com/annonce/vente/pusignan/appartement/3pieces/agence-immo-3-VA34574?q=%2Frecherche%2Fachat%2Fpusignan-69330%2Fappartement%2Cloft%2Cchateau%2Chotel",
+    "linkedin": "https://www.linkedin.com/feed/update/urn:li:activity:7517211423882772481/",
+    "seloger": "https://www.seloger.com/annonce/achat/auvergne-rhone-alpes/rhone-69/pusignan-69330/26ZEGA6Q3YM8?serp_view=list&search=distributionTypes%3DBuy%26estateTypes%3DApartment%26initialQuery%3Dpusignan%26locations%3DAD08FR28968%26method%3Dform#ln=classified_search_results&m=classified_search_results_classified_classified_detail_M",
+    "agenceimmo": "https://agence.immo/achat/ezio-un-magnifique-t3-avec-grande-terrasse-de-24-m-va34574",
+    "logicimmo": "https://www.logic-immo.com/detail-annonce/vente/auvergne-rhone-alpes/rhone-69/pusignan-69330/26ZEGA6Q3YM8?serp_view=list&search=distributionTypes%3DBuy%26estateTypes%3DApartment%26locations%3DAD08FR28968%26method%3Dform%23ln%3Dclassified_search_results&m=classified_search_results_classified_classified_detail_M",
+    "google": "https://share.google/kG4AIB3E02XvCnTpJ",
+    "facebook": "https://www.facebook.com/jeremyheyobimmobilier/posts/pfbid0R8qVogRiVF2DYVFamZhAyk5QCrHaW54pruGbDBRJFGz2x43dtRppbFPJSYyJXnC8l",
+    "instagram": "https://www.instagram.com/p/DemMmDkjrMw/?utm_source=ig_web_copy_link&xtok=MzRlODBiNWFlZA==&srtk=MzRlODBiNWFlZA==",
+    "leboncoin": "https://www.leboncoin.fr/ad/ventes_immobilieres/3289813022"
+  },
+  "_comment_statut_bien": "Valeurs possibles : en_ligne | sous_compromis | en_pause",
+  "historique": [
+    {
+      "date": "2026-10-17",
+      "label": "🚪 Nouvelle visite programmée le 20/10/2026 13:45"
+    },
+    {
+      "date": "2026-10-17",
+      "label": "📞 Nouvel appel reçu"
+    },
+    {
+      "date": "2026-09-16",
+      "label": "✍️ Mandat enregistré"
+    },
+    {
+      "date": "2026-09-19",
+      "label": "⬆️ Remontée automatique de l’annonce"
+    },
+    {
+      "date": "2026-09-19",
+      "label": "🌐 Annonce mise en ligne"
+    },
+    {
+      "date": "2026-09-21",
+      "label": "🔄 Reporting et mise à jour des statistiques"
+    },
+    {
+      "date": "2026-09-22",
+      "label": "📞 Nouvel appel reçu"
+    },
+    {
+      "date": "2026-09-24",
+      "label": "⬆️ Remontée automatique de l’annonce"
+    },
+    {
+      "date": "2026-09-25",
+      "label": "🌐 Annonce mise en ligne"
+    },
+    {
+      "date": "2026-09-28",
+      "label": "🔄 Reporting et mise à jour des statistiques"
+    },
+    {
+      "date": "2026-09-29",
+      "label": "⬆️ Remontée automatique de l’annonce"
+    },
+    {
+      "date": "2026-09-30",
+      "label": "🚪 Nouvelle visite programmée le 05/10/2026 17:30"
+    },
+    {
+      "date": "2026-09-30",
+      "label": "📞 Nouvel appel reçu"
+    },
+    {
+      "date": "2026-10-02",
+      "label": "📞 Nouvel appel reçu"
+    },
+    {
+      "date": "2026-10-02",
+      "label": "📩 Nouvel email reçu"
+    },
+    {
+      "date": "2026-10-04",
+      "label": "⬆️ Remontée automatique de l’annonce"
+    },
+    {
+      "date": "2026-10-05",
+      "label": "🔄 Reporting et mise à jour des statistiques"
+    },
+    {
+      "date": "2026-10-06",
+      "label": "📩 Nouvel email reçu"
+    },
+    {
+      "date": "2026-10-09",
+      "label": "🚪 Nouvelle visite programmée le 12/10/2026 12:30"
+    },
+    {
+      "date": "2026-10-09",
+      "label": "📞 Nouvel appel reçu"
+    },
+    {
+      "date": "2026-10-10",
+      "label": "📩 Nouvel email reçu"
+    },
+    {
+      "date": "2026-10-12",
+      "label": "🔄 Reporting et mise à jour des statistiques"
+    },
+    {
+      "date": "2026-10-14",
+      "label": "⬆️ Remontée automatique de l’annonce"
+    },
+    {
+      "date": "2026-10-16",
+      "label": "📩 Nouvel email reçu"
+    },
+    {
+      "date": "2026-10-17",
+      "label": "📩 Nouvel email reçu"
+    },
+    {
+      "date": "2026-10-17",
+      "label": "🌐 Annonce mise en ligne"
+    }
+  ],
+  "strategie_3090": {
+    "intro": "",
+    "etapes": [
+      {
+        "jours": "0–30 jours",
+        "titre": "Phase de test du marché",
+        "strategie": "Mise en ligne au prix de positionnement initial afin de tester la réaction réelle du marché."
+      },
+      {
+        "jours": "31–60 jours",
+        "titre": "Phase d’ajustement stratégique",
+        "strategie": "Ajustements ciblés en fonction des données observées."
+      },
+      {
+        "jours": "61–90 jours",
+        "titre": "Phase de derniers ajustements",
+        "strategie": "Optimisation finale du positionnement afin de favoriser le passage à l’offre."
+      },
+      {
+        "jours": "+ 90 jours",
+        "titre": "Phase de poursuite maîtrisée",
+        "strategie": "Poursuite de la commercialisation avec stratégie définie."
+      }
+    ]
+  },
+  "diffusion": {
+    "remontee": {
+      "frequence": "Remontée hebdomadaire automatique"
+    }
+  },
+  "bien": {
+    "nom": "Ezio",
+    "adresse_complete": "2 rue du Vallon 69330 Pusignan",
+    "sous_titre": "Suivi de commercialisation"
+  },
+  "dates": {
+    "mandat_signe": "2026-09-16",
+    "mise_en_ligne": "2026-10-17",
+    "derniere_remontee": "2026-10-14"
+  },
+  "marche": {
+    "taux_credit": {
+      "precedent": 3.53,
+      "duree": "25 ans",
+      "source": "CAFPI – baromètre (taux moyen)",
+      "periode": "2026-10",
+      "moyen": 3.59,
+      "updatedAt": "2026-10-11T11:55:25.326Z"
+    }
+  }
+}
