@@ -167,10 +167,6 @@
       "date": "2026-10-16",
       "label": "📩 Nouvel email reçu"
     },
-    {
-      "date": "2026-10-17",
-      "label": "✍️ Mandat enregistré"
-    }
   ],
   "strategie_3090": {
     "intro": "",
@@ -208,9 +204,9 @@
     "sous_titre": "Suivi de commercialisation"
   },
   "dates": {
-    "mise_en_ligne": "2026-09-25",
+    "mise_en_ligne": "2026-10-17",
     "derniere_remontee": "2026-10-14",
-    "mandat_signe": "2026-10-17"
+    "mandat_signe": "2026-09-16"
   },
   "marche": {
     "taux_credit": {
