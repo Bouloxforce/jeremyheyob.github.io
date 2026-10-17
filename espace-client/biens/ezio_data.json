@@ -4,7 +4,7 @@
     "noExploitableData": false,
     "phase_active": "30",
     "evolution_text": "Appels : +2\nEmails : +2\nVisites effectuées : +1\nOffres : stable\nVues Leboncoin : +66\nFavoris Leboncoin : +8",
-    "generatedAt": "2026-10-17T07:28:51.814Z",
+    "generatedAt": "2026-10-17T08:09:57.316Z",
     "text": "La commercialisation se déroule dans de bonnes conditions. Les indicateurs actuels sont cohérents avec le marché. La stratégie en place est maintenue."
   },
   "jours_arret_diffusion": 0,
@@ -80,70 +80,6 @@
   "_comment_statut_bien": "Valeurs possibles : en_ligne | sous_compromis | en_pause",
   "historique": [
     {
-      "date": "2026-10-16",
-      "label": "📩 Nouvel email reçu"
-    },
-    {
-      "date": "2026-10-14",
-      "label": "⬆️ Remontée automatique de l’annonce"
-    },
-    {
-      "date": "2026-10-12",
-      "label": "🔄 Reporting et mise à jour des statistiques"
-    },
-    {
-      "date": "2026-10-10",
-      "label": "📩 Nouvel email reçu"
-    },
-    {
-      "date": "2026-10-09",
-      "label": "🚪 Nouvelle visite programmée le 12/10/2026 12:30"
-    },
-    {
-      "date": "2026-10-09",
-      "label": "📞 Nouvel appel reçu"
-    },
-    {
-      "date": "2026-10-06",
-      "label": "📩 Nouvel email reçu"
-    },
-    {
-      "date": "2026-10-05",
-      "label": "🔄 Reporting et mise à jour des statistiques"
-    },
-    {
-      "date": "2026-10-04",
-      "label": "⬆️ Remontée automatique de l’annonce"
-    },
-    {
-      "date": "2026-10-02",
-      "label": "📞 Nouvel appel reçu"
-    },
-    {
-      "date": "2026-10-02",
-      "label": "📩 Nouvel email reçu"
-    },
-    {
-      "date": "2026-09-30",
-      "label": "🚪 Nouvelle visite programmée le 05/10/2026 17:30"
-    },
-    {
-      "date": "2026-09-30",
-      "label": "📞 Nouvel appel reçu"
-    },
-    {
-      "date": "2026-09-29",
-      "label": "⬆️ Remontée automatique de l’annonce"
-    },
-    {
-      "date": "2026-09-28",
-      "label": "🔄 Reporting et mise à jour des statistiques"
-    },
-    {
-      "date": "2026-09-24",
-      "label": "⬆️ Remontée automatique de l’annonce"
-    },
-    {
       "date": "2026-09-16",
       "label": "✍️ Mandat enregistré"
     },
@@ -164,8 +100,76 @@
       "label": "📞 Nouvel appel reçu"
     },
     {
+      "date": "2026-09-24",
+      "label": "⬆️ Remontée automatique de l’annonce"
+    },
+    {
       "date": "2026-09-25",
       "label": "🌐 Annonce mise en ligne"
+    },
+    {
+      "date": "2026-09-28",
+      "label": "🔄 Reporting et mise à jour des statistiques"
+    },
+    {
+      "date": "2026-09-29",
+      "label": "⬆️ Remontée automatique de l’annonce"
+    },
+    {
+      "date": "2026-09-30",
+      "label": "🚪 Nouvelle visite programmée le 05/10/2026 17:30"
+    },
+    {
+      "date": "2026-09-30",
+      "label": "📞 Nouvel appel reçu"
+    },
+    {
+      "date": "2026-10-02",
+      "label": "📞 Nouvel appel reçu"
+    },
+    {
+      "date": "2026-10-02",
+      "label": "📩 Nouvel email reçu"
+    },
+    {
+      "date": "2026-10-04",
+      "label": "⬆️ Remontée automatique de l’annonce"
+    },
+    {
+      "date": "2026-10-05",
+      "label": "🔄 Reporting et mise à jour des statistiques"
+    },
+    {
+      "date": "2026-10-06",
+      "label": "📩 Nouvel email reçu"
+    },
+    {
+      "date": "2026-10-09",
+      "label": "🚪 Nouvelle visite programmée le 12/10/2026 12:30"
+    },
+    {
+      "date": "2026-10-09",
+      "label": "📞 Nouvel appel reçu"
+    },
+    {
+      "date": "2026-10-10",
+      "label": "📩 Nouvel email reçu"
+    },
+    {
+      "date": "2026-10-12",
+      "label": "🔄 Reporting et mise à jour des statistiques"
+    },
+    {
+      "date": "2026-10-14",
+      "label": "⬆️ Remontée automatique de l’annonce"
+    },
+    {
+      "date": "2026-10-16",
+      "label": "📩 Nouvel email reçu"
+    },
+    {
+      "date": "2026-10-17",
+      "label": "✍️ Mandat enregistré"
     }
   ],
   "strategie_3090": {
