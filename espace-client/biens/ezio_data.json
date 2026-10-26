@@ -3,8 +3,8 @@
     "alertes": [],
     "noExploitableData": false,
     "phase_active": "60",
-    "evolution_text": "Appels : stable\nEmails : +1\nVisites effectuées : stable\nOffres : stable\nVues Leboncoin : stable\nFavoris Leboncoin : stable",
-    "generatedAt": "2026-10-24T08:53:15.402Z",
+    "evolution_text": "Appels : stable\nEmails : +1\nVisites effectuées : +1\nOffres : stable\nVues Leboncoin : +23\nFavoris Leboncoin : +1",
+    "generatedAt": "2026-10-26T10:03:08.680Z",
     "text": "La commercialisation se déroule dans de bonnes conditions. Les indicateurs actuels sont cohérents avec le marché. La stratégie en place est maintenue."
   },
   "jours_arret_diffusion": 0,
@@ -30,14 +30,6 @@
   "statut_bien": "en_ligne",
   "_meta": {
     "weekly_cumul_base": {
-      "2026-10-12": {
-        "appels": 0,
-        "offres": 0,
-        "vues_leboncoin": 0,
-        "emails": 0,
-        "visites_effectuees": 0,
-        "favoris_leboncoin": 0
-      },
       "2026-10-19": {
         "appels": 0,
         "offres": 0,
@@ -45,9 +37,17 @@
         "emails": 1,
         "visites_effectuees": 0,
         "favoris_leboncoin": 0
+      },
+      "2026-10-26": {
+        "appels": 0,
+        "emails": 2,
+        "visites_effectuees": 1,
+        "offres": 0,
+        "vues_leboncoin": 23,
+        "favoris_leboncoin": 1
       }
     },
-    "last_weekly_run": "2026-10-19",
+    "last_weekly_run": "2026-10-26",
     "just_reset": false,
     "mise_en_ligne_initiale": "2026-09-19",
     "last_actuel_snapshot": {
