@@ -1,2 +1,199 @@
-{"analysis":{"text":"La commercialisation se déroule dans de bonnes conditions. Les indicateurs actuels sont cohérents avec le marché. La stratégie en place est maintenue.","noExploitableData":false,"phase_active":"30","evolution_text":"Appels : stable\nEmails : stable\nVisites effectuées : stable\nOffres : stable\nVues Leboncoin : +28\nFavoris Leboncoin : +4","alertes":["❗ Aucune interaction récente"],"generatedAt":"2026-10-26T10:03:08.682Z"},"jours_arret_diffusion":0,"stats":{"cumul":{"appels":1,"offres":0,"vues_leboncoin":117,"emails":2,"visites_effectuees":1,"favoris_leboncoin":6},"actuel":{"appels":0,"emails":0,"visites_effectuees":0,"offres":0,"vues_leboncoin":45,"favoris_leboncoin":4,"visites_programmees":0}},"statut_bien":"en_ligne","_meta":{"last_vues_leboncoin_snapshot":28,"last_weekly_run":"2026-10-26","has_had_reset":true,"mise_en_ligne_initiale":"2026-09-26","mise_en_ligne_ref":"2026-10-17","weekly_cumul_base":{"2026-10-26":{"appels":0,"offres":0,"vues_leboncoin":28,"emails":0,"visites_effectuees":0,"favoris_leboncoin":4},"2026-10-19":{"appels":0,"offres":0,"vues_leboncoin":0,"emails":0,"visites_effectuees":0,"favoris_leboncoin":0}},"last_actuel_snapshot":{"appels":0,"offres":0,"vues_leboncoin":28,"emails":0,"visites_effectuees":0,"favoris_leboncoin":4},"just_reset":false},"liens":{"lefigaro":"https:\/\/immobilier.lefigaro.fr\/annonces\/annonce-109961219.html","youtube":"https:\/\/youtu.be\/JGpzi3B-7l4","paruvendu":"https:\/\/www.paruvendu.fr\/immobilier\/vente\/maison\/1296362883A1KIVHMN000","pagesjaunes":"https:\/\/www.pagesjaunes.fr\/actualites\/details\/6ad372fd704bee84637f0fcd?from=FD","bienici":"https:\/\/www.bienici.com\/annonce\/vente\/venissieux\/maison\/4pieces\/agence-immo-3-VM17090?q=%2Frecherche%2Fachat%2Fvenissieux-69200%2Fmaisonvilla%2Cloft%2Cchateau%2Chotel","linkedin":"https:\/\/www.linkedin.com\/feed\/update\/urn:li:activity:7517208324522811393\/","seloger":"https:\/\/www.seloger.com\/annonce\/achat\/auvergne-rhone-alpes\/rhone-69\/venissieux-69200\/262JRY5NHWVN?serp_view=list&search=distributionTypes%3DBuy%26estateTypes%3DHouse%26initialQuery%3DV%25C3%25A9nissieux%26locations%3DAD08FR28944%26method%3Dform#ln=classified_search_results&m=classified_search_results_classified_classified_detail_M","agenceimmo":"https:\/\/agence.immo\/achat\/perriere-une-maison-familiale-142-m-avec-jardin-atelier-et-3-chambres-vm17090","logicimmo":"https:\/\/www.logic-immo.com\/detail-annonce\/vente\/auvergne-rhone-alpes\/rhone-69\/venissieux-69200\/262JRY5NHWVN?serp_view=list&search=distributionTypes%3DBuy%26estateTypes%3DHouse%26locations%3DPOCOFR4467%26method%3Dform%23ln%3Dclassified_search_results&m=classified_search_results_classified_classified_detail_M","google":"https:\/\/share.google\/003iTvnwOKmGtSRfv","facebook":"https:\/\/www.facebook.com\/jeremyheyobimmobilier\/posts\/pfbid0aqADsDZGfSMDaF1kUXJv1SrPeFztkwyArxFqdxbSsM8M59hTreWHTuchBi1xkxwTl","instagram":"https:\/\/www.instagram.com\/p\/DemLH3qDmlh\/?utm_source=ig_web_copy_link&dlrf=MzRlODBiNWFlZA==&srtk=MzRlODBiNWFlZA==","leboncoin":"https:\/\/www.leboncoin.fr\/ad\/ventes_immobilieres\/3289318522"},"_comment_statut_bien":"Valeurs possibles : en_ligne | sous_compromis | en_pause","historique":[
-{"date":"2026-10-26","label":"🔄 Reporting et mise à jour des statistiques"},{"date":"2026-10-23","label":"⬆️ Remontée automatique de l’annonce"},{"date":"2026-10-19","label":"🔄 Reporting et mise à jour des statistiques"},{"date":"2026-09-22","label":"✍️ Mandat enregistré"},{"date":"2026-09-26","label":"📩 Nouvel email reçu"},{"date":"2026-09-26","label":"🌐 Annonce mise en ligne"},{"date":"2026-09-28","label":"📞 Nouvel appel reçu"},{"date":"2026-09-28","label":"🔄 Reporting et mise à jour des statistiques"},{"date":"2026-10-03","label":"⬆️ Remontée automatique de l’annonce"},{"date":"2026-10-05","label":"🔄 Reporting et mise à jour des statistiques"},{"date":"2026-10-06","label":"📩 Nouvel email reçu"},{"date":"2026-10-08","label":"🚪 Nouvelle visite programmée le 09\/10\/2026 17:30"},{"date":"2026-10-08","label":"📞 Nouvel appel reçu"},{"date":"2026-10-12","label":"🔄 Reporting et mise à jour des statistiques"},{"date":"2026-10-13","label":"⬆️ Remontée automatique de l’annonce"},{"date":"2026-10-17","label":"🌐 Annonce mise en ligne"}],"strategie_3090":{"intro":"","etapes":[{"jours":"0–30 jours","titre":"Phase de test du marché","strategie":"Mise en ligne au prix de positionnement initial afin de tester la réaction réelle du marché."},{"jours":"31–60 jours","titre":"Phase d’ajustement stratégique","strategie":"Ajustements ciblés en fonction des données observées."},{"jours":"61–90 jours","titre":"Phase de derniers ajustements","strategie":"Optimisation finale du positionnement afin de favoriser le passage à l’offre."},{"jours":"+ 90 jours","titre":"Phase de poursuite maîtrisée","strategie":"Poursuite de la commercialisation avec stratégie définie."}]},"diffusion":{"remontee":{"frequence":"Remontée hebdomadaire automatique"}},"bien":{"nom":"Perriere","adresse_complete":"20 bis chemin de la perrière 69200 Vénissieux","sous_titre":"Suivi de commercialisation"},"dates":{"derniere_remontee":"2026-10-23","mandat_signe":"2026-09-22","mise_en_ligne":"2026-10-17"},"marche":{"taux_credit":{"precedent":3.5299999999999998,"duree":"25 ans","source":"CAFPI – baromètre (taux moyen)","periode":"2026-10","moyen":3.5899999999999999,"updatedAt":"2026-10-11T11:55:25.327Z"}}}
+{
+  "analysis": {
+    "text": "La commercialisation se déroule dans de bonnes conditions. Les indicateurs actuels sont cohérents avec le marché. La stratégie en place est maintenue.",
+    "noExploitableData": false,
+    "phase_active": "60",
+    "evolution_text": "Appels : stable\nEmails : stable\nVisites effectuées : stable\nOffres : stable\nVues Leboncoin : +28\nFavoris Leboncoin : +4",
+    "alertes": [
+      "❗ Aucune interaction récente"
+    ],
+    "generatedAt": "2026-10-27T09:21:06.185Z"
+  },
+  "jours_arret_diffusion": 0,
+  "stats": {
+    "cumul": {
+      "appels": 1,
+      "offres": 0,
+      "vues_leboncoin": 134,
+      "emails": 2,
+      "visites_effectuees": 1,
+      "favoris_leboncoin": 6
+    },
+    "actuel": {
+      "appels": 0,
+      "emails": 0,
+      "visites_effectuees": 0,
+      "offres": 0,
+      "vues_leboncoin": 45,
+      "favoris_leboncoin": 4,
+      "visites_programmees": 0
+    }
+  },
+  "statut_bien": "en_ligne",
+  "_meta": {
+    "last_vues_leboncoin_snapshot": 45,
+    "last_weekly_run": "2026-10-26",
+    "has_had_reset": true,
+    "mise_en_ligne_initiale": "2026-09-26",
+    "mise_en_ligne_ref": "2026-10-17",
+    "weekly_cumul_base": {
+      "2026-10-26": {
+        "appels": 0,
+        "offres": 0,
+        "vues_leboncoin": 28,
+        "emails": 0,
+        "visites_effectuees": 0,
+        "favoris_leboncoin": 4
+      },
+      "2026-10-19": {
+        "appels": 0,
+        "offres": 0,
+        "vues_leboncoin": 0,
+        "emails": 0,
+        "visites_effectuees": 0,
+        "favoris_leboncoin": 0
+      }
+    },
+    "last_actuel_snapshot": {
+      "appels": 0,
+      "offres": 0,
+      "vues_leboncoin": 45,
+      "emails": 0,
+      "visites_effectuees": 0,
+      "favoris_leboncoin": 4
+    },
+    "just_reset": false
+  },
+  "liens": {
+    "lefigaro": "https://immobilier.lefigaro.fr/annonces/annonce-109961219.html",
+    "youtube": "https://youtu.be/JGpzi3B-7l4",
+    "paruvendu": "https://www.paruvendu.fr/immobilier/vente/maison/1296362883A1KIVHMN000",
+    "pagesjaunes": "https://www.pagesjaunes.fr/actualites/details/6ad372fd704bee84637f0fcd?from=FD",
+    "bienici": "https://www.bienici.com/annonce/vente/venissieux/maison/4pieces/agence-immo-3-VM17090?q=%2Frecherche%2Fachat%2Fvenissieux-69200%2Fmaisonvilla%2Cloft%2Cchateau%2Chotel",
+    "linkedin": "https://www.linkedin.com/feed/update/urn:li:activity:7517208324522811393/",
+    "seloger": "https://www.seloger.com/annonce/achat/auvergne-rhone-alpes/rhone-69/venissieux-69200/262JRY5NHWVN?serp_view=list&search=distributionTypes%3DBuy%26estateTypes%3DHouse%26initialQuery%3DV%25C3%25A9nissieux%26locations%3DAD08FR28944%26method%3Dform#ln=classified_search_results&m=classified_search_results_classified_classified_detail_M",
+    "agenceimmo": "https://agence.immo/achat/perriere-une-maison-familiale-142-m-avec-jardin-atelier-et-3-chambres-vm17090",
+    "logicimmo": "https://www.logic-immo.com/detail-annonce/vente/auvergne-rhone-alpes/rhone-69/venissieux-69200/262JRY5NHWVN?serp_view=list&search=distributionTypes%3DBuy%26estateTypes%3DHouse%26locations%3DPOCOFR4467%26method%3Dform%23ln%3Dclassified_search_results&m=classified_search_results_classified_classified_detail_M",
+    "google": "https://share.google/003iTvnwOKmGtSRfv",
+    "facebook": "https://www.facebook.com/jeremyheyobimmobilier/posts/pfbid0aqADsDZGfSMDaF1kUXJv1SrPeFztkwyArxFqdxbSsM8M59hTreWHTuchBi1xkxwTl",
+    "instagram": "https://www.instagram.com/p/DemLH3qDmlh/?utm_source=ig_web_copy_link&dlrf=MzRlODBiNWFlZA==&srtk=MzRlODBiNWFlZA==",
+    "leboncoin": "https://www.leboncoin.fr/ad/ventes_immobilieres/3289318522"
+  },
+  "_comment_statut_bien": "Valeurs possibles : en_ligne | sous_compromis | en_pause",
+  "historique": [
+    {
+      "date": "2026-10-26",
+      "label": "🔄 Reporting et mise à jour des statistiques"
+    },
+    {
+      "date": "2026-10-23",
+      "label": "⬆️ Remontée automatique de l’annonce"
+    },
+    {
+      "date": "2026-10-19",
+      "label": "🔄 Reporting et mise à jour des statistiques"
+    },
+    {
+      "date": "2026-09-22",
+      "label": "✍️ Mandat enregistré"
+    },
+    {
+      "date": "2026-09-26",
+      "label": "📩 Nouvel email reçu"
+    },
+    {
+      "date": "2026-09-26",
+      "label": "🌐 Annonce mise en ligne"
+    },
+    {
+      "date": "2026-09-28",
+      "label": "📞 Nouvel appel reçu"
+    },
+    {
+      "date": "2026-09-28",
+      "label": "🔄 Reporting et mise à jour des statistiques"
+    },
+    {
+      "date": "2026-10-03",
+      "label": "⬆️ Remontée automatique de l’annonce"
+    },
+    {
+      "date": "2026-10-05",
+      "label": "🔄 Reporting et mise à jour des statistiques"
+    },
+    {
+      "date": "2026-10-06",
+      "label": "📩 Nouvel email reçu"
+    },
+    {
+      "date": "2026-10-08",
+      "label": "🚪 Nouvelle visite programmée le 09/10/2026 17:30"
+    },
+    {
+      "date": "2026-10-08",
+      "label": "📞 Nouvel appel reçu"
+    },
+    {
+      "date": "2026-10-12",
+      "label": "🔄 Reporting et mise à jour des statistiques"
+    },
+    {
+      "date": "2026-10-13",
+      "label": "⬆️ Remontée automatique de l’annonce"
+    },
+    {
+      "date": "2026-10-17",
+      "label": "🌐 Annonce mise en ligne"
+    }
+  ],
+  "strategie_3090": {
+    "intro": "",
+    "etapes": [
+      {
+        "jours": "0–30 jours",
+        "titre": "Phase de test du marché",
+        "strategie": "Mise en ligne au prix de positionnement initial afin de tester la réaction réelle du marché."
+      },
+      {
+        "jours": "31–60 jours",
+        "titre": "Phase d’ajustement stratégique",
+        "strategie": "Ajustements ciblés en fonction des données observées."
+      },
+      {
+        "jours": "61–90 jours",
+        "titre": "Phase de derniers ajustements",
+        "strategie": "Optimisation finale du positionnement afin de favoriser le passage à l’offre."
+      },
+      {
+        "jours": "+ 90 jours",
+        "titre": "Phase de poursuite maîtrisée",
+        "strategie": "Poursuite de la commercialisation avec stratégie définie."
+      }
+    ]
+  },
+  "diffusion": {
+    "remontee": {
+      "frequence": "Remontée hebdomadaire automatique"
+    }
+  },
+  "bien": {
+    "nom": "Perriere",
+    "adresse_complete": "20 bis chemin de la perrière 69200 Vénissieux",
+    "sous_titre": "Suivi de commercialisation"
+  },
+  "dates": {
+    "derniere_remontee": "2026-10-23",
+    "mandat_signe": "2026-09-22",
+    "mise_en_ligne": "2026-10-17"
+  },
+  "marche": {
+    "taux_credit": {
+      "precedent": 3.53,
+      "duree": "25 ans",
+      "source": "CAFPI – baromètre (taux moyen)",
+      "periode": "2026-10",
+      "moyen": 3.59,
+      "updatedAt": "2026-10-11T11:55:25.327Z"
+    }
+  }
+}
