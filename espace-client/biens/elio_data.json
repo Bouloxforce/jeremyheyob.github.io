@@ -1,13 +1,11 @@
 {
   "analysis": {
-    "alertes": [
-      "❗ Aucune interaction récente"
-    ],
+    "text": "La commercialisation se déroule dans de bonnes conditions. Les indicateurs actuels sont cohérents avec le marché. La stratégie en place est maintenue.",
+    "evolution_text": "",
+    "generatedAt": "2026-10-30T21:38:20.363Z",
     "noExploitableData": false,
-    "phase_active": "90+",
-    "evolution_text": "Appels : stable\nEmails : stable\nVisites effectuées : stable\nOffres : stable\nVues Leboncoin : +30\nFavoris Leboncoin : +1",
-    "generatedAt": "2026-10-30T20:53:17.186Z",
-    "text": "La commercialisation se déroule dans de bonnes conditions. Les indicateurs actuels sont cohérents avec le marché. La stratégie en place est maintenue."
+    "alertes": [],
+    "phase_active": "90+"
   },
   "jours_arret_diffusion": 0,
   "stats": {
@@ -23,10 +21,10 @@
       "appels": 0,
       "emails": 0,
       "visites_effectuees": 0,
+      "visites_programmees": 0,
       "offres": 0,
       "vues_leboncoin": 0,
-      "favoris_leboncoin": 0,
-      "visites_programmees": 0
+      "favoris_leboncoin": 0
     }
   },
   "statut_bien": "en_ligne",
@@ -34,35 +32,27 @@
     "last_actuel_snapshot": {
       "appels": 0,
       "offres": 0,
-      "vues_leboncoin": 171,
-      "emails": 1,
-      "visites_effectuees": 1,
-      "favoris_leboncoin": 1
+      "vues_leboncoin": 0,
+      "emails": 0,
+      "visites_effectuees": 0,
+      "favoris_leboncoin": 0
     },
-    "last_weekly_run": "2026-10-26",
     "just_reset": false,
     "mise_en_ligne_initiale": "2026-04-25",
-    "mise_en_ligne_ref": "2026-09-25",
+    "mise_en_ligne_ref": "2026-10-31",
     "weekly_cumul_base": {
       "2026-10-26": {
         "appels": 0,
-        "offres": 0,
-        "vues_leboncoin": 148,
-        "emails": 1,
+        "emails": 0,
         "visites_effectuees": 0,
-        "favoris_leboncoin": 1
-      },
-      "2026-10-19": {
-        "appels": 0,
         "offres": 0,
-        "vues_leboncoin": 118,
-        "emails": 1,
-        "visites_effectuees": 0,
+        "vues_leboncoin": 0,
         "favoris_leboncoin": 0
       }
     },
-    "last_vues_leboncoin_snapshot": 171,
-    "has_had_reset": true
+    "last_vues_leboncoin_snapshot": 0,
+    "has_had_reset": true,
+    "last_weekly_run": "2026-10-26"
   },
   "liens": {
     "lefigaro": "https://immobilier.lefigaro.fr/annonces/annonce-109152353.html",
@@ -81,66 +71,6 @@
   },
   "_comment_statut_bien": "Valeurs possibles : en_ligne | sous_compromis | en_pause",
   "historique": [
-    {
-      "date": "2026-10-29",
-      "label": "⬆️ Remontée automatique de l’annonce"
-    },
-    {
-      "date": "2026-10-26",
-      "label": "🚪 Nouvelle visite programmée le 28/10/2026 18:00"
-    },
-    {
-      "date": "2026-10-26",
-      "label": "📞 Nouvel appel reçu"
-    },
-    {
-      "date": "2026-10-26",
-      "label": "🔄 Reporting et mise à jour des statistiques"
-    },
-    {
-      "date": "2026-10-21",
-      "label": "⬆️ Remontée automatique de l’annonce"
-    },
-    {
-      "date": "2026-10-19",
-      "label": "🔄 Reporting et mise à jour des statistiques"
-    },
-    {
-      "date": "2026-10-19",
-      "label": "📩 Nouvel email reçu"
-    },
-    {
-      "date": "2026-10-16",
-      "label": "⬆️ Remontée automatique de l’annonce"
-    },
-    {
-      "date": "2026-10-12",
-      "label": "🔄 Reporting et mise à jour des statistiques"
-    },
-    {
-      "date": "2026-10-11",
-      "label": "⬆️ Remontée automatique de l’annonce"
-    },
-    {
-      "date": "2026-10-05",
-      "label": "⬆️ Remontée automatique de l’annonce"
-    },
-    {
-      "date": "2026-10-05",
-      "label": "🔄 Reporting et mise à jour des statistiques"
-    },
-    {
-      "date": "2026-09-29",
-      "label": "⬆️ Remontée automatique de l’annonce"
-    },
-    {
-      "date": "2026-09-28",
-      "label": "🔄 Reporting et mise à jour des statistiques"
-    },
-    {
-      "date": "2026-09-24",
-      "label": "⬆️ Remontée automatique de l’annonce"
-    },
     {
       "date": "2026-04-16",
       "label": "✍️ Mandat enregistré"
@@ -470,7 +400,71 @@
       "label": "🔄 Reporting et mise à jour des statistiques"
     },
     {
+      "date": "2026-09-24",
+      "label": "⬆️ Remontée automatique de l’annonce"
+    },
+    {
       "date": "2026-09-25",
+      "label": "🌐 Annonce mise en ligne"
+    },
+    {
+      "date": "2026-09-28",
+      "label": "🔄 Reporting et mise à jour des statistiques"
+    },
+    {
+      "date": "2026-09-29",
+      "label": "⬆️ Remontée automatique de l’annonce"
+    },
+    {
+      "date": "2026-10-05",
+      "label": "⬆️ Remontée automatique de l’annonce"
+    },
+    {
+      "date": "2026-10-05",
+      "label": "🔄 Reporting et mise à jour des statistiques"
+    },
+    {
+      "date": "2026-10-11",
+      "label": "⬆️ Remontée automatique de l’annonce"
+    },
+    {
+      "date": "2026-10-12",
+      "label": "🔄 Reporting et mise à jour des statistiques"
+    },
+    {
+      "date": "2026-10-16",
+      "label": "⬆️ Remontée automatique de l’annonce"
+    },
+    {
+      "date": "2026-10-19",
+      "label": "🔄 Reporting et mise à jour des statistiques"
+    },
+    {
+      "date": "2026-10-19",
+      "label": "📩 Nouvel email reçu"
+    },
+    {
+      "date": "2026-10-21",
+      "label": "⬆️ Remontée automatique de l’annonce"
+    },
+    {
+      "date": "2026-10-26",
+      "label": "🚪 Nouvelle visite programmée le 28/10/2026 18:00"
+    },
+    {
+      "date": "2026-10-26",
+      "label": "📞 Nouvel appel reçu"
+    },
+    {
+      "date": "2026-10-26",
+      "label": "🔄 Reporting et mise à jour des statistiques"
+    },
+    {
+      "date": "2026-10-29",
+      "label": "⬆️ Remontée automatique de l’annonce"
+    },
+    {
+      "date": "2026-10-31",
       "label": "🌐 Annonce mise en ligne"
     }
   ],
