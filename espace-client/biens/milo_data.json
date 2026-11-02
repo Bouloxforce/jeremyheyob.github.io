@@ -1,10 +1,12 @@
 {
   "analysis": {
     "text": "La commercialisation se déroule dans de bonnes conditions. Les indicateurs actuels sont cohérents avec le marché. La stratégie en place est maintenue.",
-    "evolution_text": "",
-    "generatedAt": "2026-11-01T08:42:44.425Z",
+    "evolution_text": "Appels : stable\nEmails : stable\nVisites effectuées : stable\nOffres : stable\nVues Leboncoin : stable\nFavoris Leboncoin : stable",
+    "generatedAt": "2026-11-02T09:12:39.996Z",
     "noExploitableData": false,
-    "alertes": [],
+    "alertes": [
+      "❗ Aucune interaction récente"
+    ],
     "phase_active": "60"
   },
   "jours_arret_diffusion": 0,
@@ -48,11 +50,19 @@
         "offres": 0,
         "vues_leboncoin": 0,
         "favoris_leboncoin": 0
+      },
+      "2026-11-02": {
+        "appels": 0,
+        "emails": 0,
+        "visites_effectuees": 0,
+        "offres": 0,
+        "vues_leboncoin": 0,
+        "favoris_leboncoin": 0
       }
     },
     "last_vues_leboncoin_snapshot": 0,
     "has_had_reset": true,
-    "last_weekly_run": "2026-10-26"
+    "last_weekly_run": "2026-11-02"
   },
   "liens": {
     "lefigaro": "https://immobilier.lefigaro.fr/annonces/annonce-110428969.html",
