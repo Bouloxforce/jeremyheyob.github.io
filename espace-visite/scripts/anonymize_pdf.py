@@ -65,6 +65,9 @@ def boxes_to_redact(image, lines, known_values):
         text = line["text"]
         x0, y0, x1, y1 = line["box"]
         sensitive = any(p.search(text) for p in PATTERNS)
+        # Redact explicit personal-data labels themselves, even when OCR splits the value.
+        if LABEL.search(text):
+            sensitive = True
         if ADDRESS_WORDS.search(text) and re.search(r"\d", text):
             sensitive = True
         if any(value and value.casefold() in text.casefold() for value in known_values):
