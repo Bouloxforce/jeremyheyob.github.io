@@ -32,6 +32,16 @@ class RedactionTests(unittest.TestCase):
         for sample in samples:
             self.assertTrue(any(pattern.search(sample) for pattern in MODULE.PATTERNS), sample)
 
+    def test_personal_data_labels_are_redacted(self):
+        image = Image.new("RGB", (1000, 1400), "white")
+        lines = [
+            {"text": "Téléphone :", "box": (100, 300, 300, 330)},
+            {"text": "06 12 34 56 78", "box": (100, 345, 350, 375)},
+        ]
+        boxes = MODULE.boxes_to_redact(image, lines, [])
+        self.assertTrue(any(x0 <= 100 and y0 <= 300 and x1 >= 300 for x0, y0, x1, y1 in boxes))
+        self.assertTrue(any(y0 <= 345 and y1 >= 375 for x0, y0, x1, y1 in boxes))
+
     def test_signature_heading_triggers_large_redaction_zone(self):
         image = Image.new("RGB", (1000, 1400), "white")
         lines = [
