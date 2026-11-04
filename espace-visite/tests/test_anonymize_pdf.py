@@ -105,7 +105,7 @@ class RedactionTests(unittest.TestCase):
 
         def fake_check_output(command, text=True):
             self.assertIn("--diff-filter=A", command)
-            return "\\n".join([added, modified, renamed])
+            return "\n".join([added, modified, renamed])
 
         with patch.dict(os.environ, {"GITHUB_EVENT_BEFORE": "a" * 40, "GITHUB_SHA": "b" * 40}):
             with patch.object(MODULE.subprocess, "check_output", side_effect=fake_check_output):
