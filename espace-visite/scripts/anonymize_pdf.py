@@ -215,7 +215,7 @@ def discover_values(source):
     return sorted(values, key=len, reverse=True)
 
 def verify_page(image, known_values):
-    text = pytesseract.image_to_string(image, lang="fra+eng", config="--psm 6")
+    text = pytesseract.image_to_string(image, lang="fra+eng", config="--psm 6", timeout=30)
     if any(pattern.search(text) for pattern in PATTERNS):
         raise RuntimeError("Une coordonnée ou une adresse reste détectée après occultation")
     if DOSSIER.search(text) or ADEME.search(text):
