@@ -25,7 +25,7 @@ jobs:
           sudo apt-get update
           sudo apt-get install -y tesseract-ocr tesseract-ocr-fra
           python -m pip install --upgrade pip
-          pip install PyMuPDF Pillow pytesseract
+          pip install PyMuPDF Pillow pytesseract opencv-python-headless numpy
 
       - name: Anonymiser les PDF et vérifier chaque page
         run: python espace-visite/scripts/anonymize_pdf.py
