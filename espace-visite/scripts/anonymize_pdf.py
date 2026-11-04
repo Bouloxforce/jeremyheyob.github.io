@@ -78,7 +78,7 @@ def boxes_to_redact(image, lines, known_values):
             boxes.append((max(0, x0-pad), max(0, y0-pad), min(image.width, x1+pad), min(image.height, y1+pad)))
 
         # When a field label has no value on the same line, redact the next nearby line.
-        if re.search(r"\b(adresse|nom et prénom|propriétaire|nom)\b", text, re.I):
+        if re.search(r"\b(adresse|domicile|nom et prénom|propriétaire|proprietaire|vendeur|acquéreur|acquereur|nom|prénom|prenom|téléphone|telephone|mobile|courriel|email|signature|signé|signe|cachet)\b", text, re.I):
             if index + 1 < len(lines):
                 nxt = lines[index + 1]
                 nx0, ny0, nx1, ny1 = nxt["box"]
