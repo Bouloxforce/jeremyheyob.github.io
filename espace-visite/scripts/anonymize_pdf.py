@@ -89,7 +89,9 @@ def boxes_to_redact(image, lines, known_values):
     return boxes
 
 def qr_boxes(image):
-    rgb = np.array(image.convert("RGB"))
+    scale = min(1.0, 1400.0 / max(image.size))
+    preview = image if scale == 1.0 else image.resize((int(image.width*scale), int(image.height*scale)))
+    rgb = np.array(preview.convert("RGB"))
     detector = cv2.QRCodeDetector()
     boxes = []
     try:
@@ -113,6 +115,8 @@ def qr_boxes(image):
                 boxes.append((max(0,int(x0)-margin), max(0,int(y0)-margin), min(image.width,int(x1)+margin), min(image.height,int(y1)+margin)))
         except cv2.error:
             pass
+    if scale != 1.0:
+        boxes = [(int(x0/scale), int(y0/scale), int(x1/scale), int(y1/scale)) for x0,y0,x1,y1 in boxes]
     return boxes
 
 def discover_values(pages):
