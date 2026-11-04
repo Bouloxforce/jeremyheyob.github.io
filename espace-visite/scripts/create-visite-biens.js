@@ -23,7 +23,7 @@ function cityFromAddress(address) {
 }
 
 function assertNoAddressLeak(data, sourceAddress = "") {
-  const streetAddress = /\\b\\d{1,4}\\s+(?:bis\\s+|ter\\s+)?(?:rue|avenue|impasse|boulevard|chemin|allée|allee|place|route|square|passage)\\b/i;
+  const streetAddress = /\b\d{1,4}\s+(?:bis\s+|ter\s+)?(?:rue|avenue|impasse|boulevard|chemin|allée|allee|place|route|square|passage)\b/i;
   const normalizedSourceAddress = sourceAddress.trim().toLocaleLowerCase("fr-FR");
   function visit(value, key = "") {
     if (typeof value === "string") {
