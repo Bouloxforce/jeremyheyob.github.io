@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """Conservative PDF sanitizer. Any uncertain or failed check aborts publication."""
-import io, re, sys
+import io, re, sys, os, subprocess
 from pathlib import Path
 import fitz
 import pytesseract
@@ -67,7 +67,7 @@ def verify_image(image):
         raise RuntimeError("Libellé nominatif/signature encore détecté après anonymisation")
 
 def main():
-    pdfs = sorted(ROOT.glob("*/documents/*.pdf"))
+    before = os.environ.get("GITHUB_EVENT_BEFORE", "")\n    current = os.environ.get("GITHUB_SHA", "HEAD")\n    if not before or set(before) == {"0"}:\n        print("Déclenchement manuel : aucun PDF nouveau à traiter.")\n        return\n    changed = subprocess.check_output(["git", "diff", "--name-only", before, current], text=True).splitlines()\n    pdfs = [Path(name) for name in changed if name.lower().endswith(".pdf") and name.startswith(str(ROOT) + "/") and "/documents/" in name]\n    pdfs = [p for p in pdfs if p.exists()]
     failures = []
     for path in pdfs:
         tmp = path.with_name(path.stem + ".sanitized.tmp.pdf")
