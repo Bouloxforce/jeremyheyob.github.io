@@ -41,6 +41,11 @@ class RedactionTests(unittest.TestCase):
         values = MODULE.values_from_text(text)
         self.assertIn("Jean Dupont", values)
         self.assertIn("12 rue des Lilas", values)
+
+    def test_values_on_lines_after_labels_are_extracted(self):
+        text = "Identité du propriétaire\nNom et prénom :\nJean Dupont\nAdresse :\n12 rue des Lilas"
+        values = MODULE.values_from_text(text)
+        self.assertIn("Jean Dupont", values)
         self.assertIn("12 rue des Lilas", values)
 
     def test_sensitive_patterns(self):
