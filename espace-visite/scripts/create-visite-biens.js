@@ -22,12 +22,25 @@ function cityFromAddress(address) {
   return match ? match[1].trim() : "";
 }
 
+function assertNoAddressLeak(data) {
+  function visit(value, key = "") {
+    if (/adresse|address/i.test(key) && typeof value === "string" && value.trim()) {
+      throw new Error("Publication bloquée : un champ d'adresse non vide est présent dans les données publiques.");
+    }
+    if (value && typeof value === "object") {
+      for (const [childKey, childValue] of Object.entries(value)) visit(childValue, childKey);
+    }
+  }
+  visit(data);
+}
+
 if (!fs.existsSync(sourceDir)) {
   console.log("Aucun dossier source de biens : rien à créer.");
   process.exit(0);
 }
 
 let created = 0;
+let skippedPaused = 0;
 for (const entry of fs.readdirSync(sourceDir, { withFileTypes: true })) {
   if (!entry.isFile() || !entry.name.endsWith("_data.json")) continue;
 
@@ -41,12 +54,28 @@ for (const entry of fs.readdirSync(sourceDir, { withFileTypes: true })) {
   if (fs.existsSync(outputPath)) continue;
 
   const source = JSON.parse(fs.readFileSync(path.join(sourceDir, entry.name), "utf8"));
+  const sourceStatus = source?.statut_bien;
+  if (sourceStatus === "en_pause") {
+    skippedPaused++;
+    console.log("Bien en pause, aucun dossier public créé : " + slug);
+    continue;
+  }
+  if (!["en_ligne", "sous_compromis"].includes(sourceStatus)) {
+    throw new Error("Statut source inconnu ou absent pour " + slug + " : " + String(sourceStatus));
+  }
+
   const data = emptyLike(template);
+  const publicName = typeof source?.bien?.nom === "string" ? source.bien.nom.trim() : "";
+  const publicCity = cityFromAddress(source?.bien?.adresse_complete);
 
   data.slug = slug;
-  data.nom = typeof source?.bien?.nom === "string" ? source.bien.nom : "";
-  data.statut = source?.statut_bien === "sous_compromis" ? "sous_compromis" : "disponible";
-  data.ville = cityFromAddress(source?.bien?.adresse_complete);
+  data.nom = publicName;
+  if (data.bien && typeof data.bien === "object") data.bien.nom = publicName;
+  data.statut = sourceStatus === "sous_compromis" ? "sous_compromis" : "disponible";
+  data.ville = publicCity;
+
+  // Aucune adresse (même partielle) ne doit être copiée dans l'espace public.
+  assertNoAddressLeak(data);
 
   fs.mkdirSync(path.join(bienDir, "photos"), { recursive: true });
   fs.mkdirSync(path.join(bienDir, "documents"), { recursive: true });
@@ -55,4 +84,4 @@ for (const entry of fs.readdirSync(sourceDir, { withFileTypes: true })) {
   console.log("Dossier espace-visite créé : " + slug);
 }
 
-console.log("Création terminée : " + created + " nouveau(x) dossier(s).");
+console.log("Création terminée : " + created + " nouveau(x) dossier(s), " + skippedPaused + " bien(s) en pause ignoré(s).");
