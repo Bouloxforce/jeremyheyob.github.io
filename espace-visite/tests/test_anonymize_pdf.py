@@ -22,6 +22,20 @@ class RedactionTests(unittest.TestCase):
         boxes = MODULE.qr_boxes(Image.fromarray(canvas))
         self.assertTrue(boxes, "Le QR de test doit être détecté")
 
+    def test_native_pdf_text_is_mapped_to_rendered_coordinates(self):
+        import fitz
+        document = fitz.open()
+        page = document.new_page(width=595, height=842)
+        page.insert_text((72, 100), "Telephone : 06 12 34 56 78", fontsize=12)
+        image = Image.new("RGB", (1190, 1684), "white")
+        lines = MODULE.native_text_lines(page, image)
+        self.assertTrue(any("Telephone" in line["text"] for line in lines))
+        line = next(line for line in lines if "Telephone" in line["text"])
+        self.assertGreaterEqual(line["box"][0], 140)
+        self.assertLessEqual(line["box"][0], 150)
+        self.assertGreaterEqual(line["box"][1], 170)
+        document.close()
+
     def test_sensitive_patterns(self):
         samples = [
             "contact@example.fr",
