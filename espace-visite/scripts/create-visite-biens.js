@@ -66,12 +66,12 @@ for (const entry of fs.readdirSync(sourceDir, { withFileTypes: true })) {
 
   if (fs.existsSync(outputPath)) {
     const existing = JSON.parse(fs.readFileSync(outputPath, "utf8"));
+    assertNoAddressLeak(existing, source?.bien?.adresse_complete || "");
     const nextStatus = sourceStatus === "sous_compromis"
       ? "sous_compromis"
       : sourceStatus === "en_pause" ? "en_pause" : "disponible";
     if (existing.statut !== nextStatus) {
       existing.statut = nextStatus;
-      assertNoAddressLeak(existing, source?.bien?.adresse_complete || "");
       fs.writeFileSync(outputPath, JSON.stringify(existing, null, 2) + "\n", "utf8");
       statusesUpdated++;
     }
