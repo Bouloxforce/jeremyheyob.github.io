@@ -22,10 +22,17 @@ function cityFromAddress(address) {
   return match ? match[1].trim() : "";
 }
 
-function assertNoAddressLeak(data) {
+function assertNoAddressLeak(data, sourceAddress = "") {
+  const streetAddress = /\\b\\d{1,4}\\s+(?:bis\\s+|ter\\s+)?(?:rue|avenue|impasse|boulevard|chemin|allée|allee|place|route|square|passage)\\b/i;
+  const normalizedSourceAddress = sourceAddress.trim().toLocaleLowerCase("fr-FR");
   function visit(value, key = "") {
-    if (/adresse|address/i.test(key) && typeof value === "string" && value.trim()) {
-      throw new Error("Publication bloquée : un champ d'adresse non vide est présent dans les données publiques.");
+    if (typeof value === "string") {
+      const normalized = value.trim().toLocaleLowerCase("fr-FR");
+      if ((/adresse|address/i.test(key) && normalized) ||
+          streetAddress.test(value) ||
+          (normalizedSourceAddress.length >= 8 && normalized.includes(normalizedSourceAddress))) {
+        throw new Error("Publication bloquée : une adresse ou un champ d'adresse est présent dans les données publiques (" + key + ").");
+      }
     }
     if (value && typeof value === "object") {
       for (const [childKey, childValue] of Object.entries(value)) visit(childValue, childKey);
@@ -64,7 +71,7 @@ for (const entry of fs.readdirSync(sourceDir, { withFileTypes: true })) {
       : sourceStatus === "en_pause" ? "en_pause" : "disponible";
     if (existing.statut !== nextStatus) {
       existing.statut = nextStatus;
-      assertNoAddressLeak(existing);
+      assertNoAddressLeak(existing, source?.bien?.adresse_complete || "");
       fs.writeFileSync(outputPath, JSON.stringify(existing, null, 2) + "\n", "utf8");
       statusesUpdated++;
     }
@@ -89,7 +96,7 @@ for (const entry of fs.readdirSync(sourceDir, { withFileTypes: true })) {
   data.ville = publicCity;
 
   // Aucune adresse (même partielle) ne doit être copiée dans l'espace public.
-  assertNoAddressLeak(data);
+  assertNoAddressLeak(data, source?.bien?.adresse_complete || "");
 
   fs.mkdirSync(path.join(bienDir, "photos"), { recursive: true });
   fs.mkdirSync(path.join(bienDir, "documents"), { recursive: true });
