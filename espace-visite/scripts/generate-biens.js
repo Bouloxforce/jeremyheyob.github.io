@@ -5,7 +5,7 @@ import path from "path";
 const BIENS_DIR = "espace-visite/biens";
 const OUTPUT_FILE = "espace-visite/biens.json";
 
-const STREET_ADDRESS = /\\b\\d{1,4}\\s+(?:bis\\s+|ter\\s+)?(?:rue|avenue|impasse|boulevard|chemin|allée|allee|place|route|square|passage)\\b/i;
+const STREET_ADDRESS = /\b\d{1,4}\s+(?:bis\s+|ter\s+)?(?:rue|avenue|impasse|boulevard|chemin|allée|allee|place|route|square|passage)\b/i;
 
 function assertPublicDataSafe(value, key = "") {
   if (typeof value === "string") {
