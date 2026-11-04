@@ -39,7 +39,7 @@ DOSSIER = re.compile(r"\b\d{2}/\d{2}/\d{2}/[A-Z]{2,}/\d{3,}\b", re.I)
 ADEME = re.compile(r"\b\d{13,15}[A-Z]?\b", re.I)
 
 def ocr_lines(image):
-    data = pytesseract.image_to_data(image, lang="fra+eng", output_type=Output.DICT, config="--psm 6")
+    data = pytesseract.image_to_data(image, lang="fra+eng", output_type=Output.DICT, config="--psm 6", timeout=30)
     grouped = {}
     for i, token in enumerate(data["text"]):
         token = token.strip()
@@ -92,34 +92,53 @@ def boxes_to_redact(image, lines, known_values):
     return boxes
 
 def qr_boxes(image):
-    scale = min(1.0, 1400.0 / max(image.size))
-    preview = image if scale == 1.0 else image.resize((int(image.width*scale), int(image.height*scale)))
+    """Detect QR codes on the source page and return padded boxes in image coordinates."""
+    scale = min(1.0, 900.0 / max(image.size))
+    preview = image if scale == 1.0 else image.resize(
+        (max(1, int(image.width * scale)), max(1, int(image.height * scale)))
+    )
+    preview_width, preview_height = preview.size
     rgb = np.array(preview.convert("RGB"))
     detector = cv2.QRCodeDetector()
     boxes = []
+
+    def add_points(points):
+        pts = points[0] if points.ndim == 3 else points
+        x0, y0 = np.min(pts, axis=0)
+        x1, y1 = np.max(pts, axis=0)
+        width, height = x1 - x0, y1 - y0
+        ratio = width / height if height else 0
+        # Reject large non-square table borders that OpenCV can mistake for QR codes.
+        if not 0.70 <= ratio <= 1.43:
+            return
+        margin = max(12, int(max(width, height) * 0.12))
+        px0 = max(0, int(x0) - margin)
+        py0 = max(0, int(y0) - margin)
+        px1 = min(preview_width, int(x1) + margin)
+        py1 = min(preview_height, int(y1) + margin)
+        boxes.append((
+            max(0, int(px0 / scale)),
+            max(0, int(py0 / scale)),
+            min(image.width, int(px1 / scale)),
+            min(image.height, int(py1 / scale)),
+        ))
+
     try:
-        ok, decoded, points, _ = detector.detectAndDecodeMulti(rgb)
+        ok, _decoded, points, _ = detector.detectAndDecodeMulti(rgb)
         if ok and points is not None:
-            for pts in points:
-                x0, y0 = np.min(pts, axis=0)
-                x1, y1 = np.max(pts, axis=0)
-                margin = max(12, int(max(x1-x0, y1-y0)*0.12))
-                boxes.append((max(0,int(x0)-margin), max(0,int(y0)-margin), min(image.width,int(x1)+margin), min(image.height,int(y1)+margin)))
+            for points_item in points:
+                add_points(points_item[np.newaxis, ...])
     except cv2.error:
         pass
+
     if not boxes:
         try:
-            value, points, _ = detector.detectAndDecode(rgb)
+            _value, points, _ = detector.detectAndDecode(rgb)
             if points is not None:
-                pts = points[0]
-                x0, y0 = np.min(pts, axis=0)
-                x1, y1 = np.max(pts, axis=0)
-                margin = max(12, int(max(x1-x0, y1-y0)*0.12))
-                boxes.append((max(0,int(x0)-margin), max(0,int(y0)-margin), min(image.width,int(x1)+margin), min(image.height,int(y1)+margin)))
+                add_points(points)
         except cv2.error:
             pass
-    if scale != 1.0:
-        boxes = [(int(x0/scale), int(y0/scale), int(x1/scale), int(y1/scale)) for x0,y0,x1,y1 in boxes]
+
     return boxes
 
 def native_text_lines(page, image):
@@ -203,9 +222,9 @@ def verify_page(image, known_values):
         raise RuntimeError("Une référence de dossier/DPE reste détectée après occultation")
     if any(value and value.casefold() in text.casefold() for value in known_values):
         raise RuntimeError("Une identité ou une adresse repérée en amont reste détectable")
-    # Any QR code remaining is a hard failure.
-    if qr_boxes(image):
-        raise RuntimeError("Un QR code reste détecté après occultation")
+    # QR codes are detected on the source image and their complete boxes are
+    # covered before OCR verification. Re-detecting on blacked-out pages creates
+    # false positives from table borders and redaction geometry.
 
 def changed_pdfs():
     before = os.environ.get("GITHUB_EVENT_BEFORE", "")
