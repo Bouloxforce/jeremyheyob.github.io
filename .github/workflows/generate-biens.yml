@@ -7,6 +7,10 @@ on:
       - "espace-client/biens/**/*_data.json"
       - "espace-visite/biens/**/*_data.json"
       - "espace-visite/biens/**/documents/**"
+      - "espace-visite/scripts/**"
+      - "espace-visite/tests/**"
+      - "espace-visite/archives/template_data.json"
+      - ".github/workflows/generate-biens.yml"
 
 permissions:
   contents: write
