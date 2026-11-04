@@ -8,17 +8,29 @@ on:
       - "espace-visite/biens/**/*_data.json"
       - "espace-visite/biens/**/documents/**"
 
+permissions:
+  contents: write
+
 jobs:
   build:
     runs-on: ubuntu-latest
-
     steps:
       - name: Checkout repo
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
 
-      - name: Setup Node
+      - name: Installer Python et OCR
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y tesseract-ocr tesseract-ocr-fra
+          python -m pip install --upgrade pip
+          pip install PyMuPDF Pillow pytesseract
+
+      - name: Anonymiser les PDF et vérifier chaque page
+        run: python espace-visite/scripts/anonymize_pdf.py
+
+      - name: Installer Node
         uses: actions/setup-node@v4
         with:
           node-version: 24
@@ -31,8 +43,8 @@ jobs:
 
       - name: Commit auto
         run: |
-          git config user.name "github-actions"
-          git config user.email "actions@github.com"
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add espace-visite/biens.json espace-visite/biens
-          git diff --cached --quiet || git commit -m "auto: create biens & update documents"
+          git diff --cached --quiet || git commit -m "auto: anonymize PDFs and update properties"
           git push
