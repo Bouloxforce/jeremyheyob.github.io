@@ -30,7 +30,13 @@ jobs:
           python -m pip install --upgrade pip
           pip install PyMuPDF Pillow pytesseract opencv-python-headless numpy
 
-      - name: Tester le moteur PDF\n        run: python -m unittest discover -s espace-visite/tests -v\n\n      - name: Vérifier la syntaxe du moteur\n        run: python -m py_compile espace-visite/scripts/anonymize_pdf.py\n\n      - name: Anonymiser les PDF et vérifier chaque page
+      - name: Vérifier la syntaxe du moteur
+        run: python -m py_compile espace-visite/scripts/anonymize_pdf.py
+
+      - name: Tester le moteur PDF
+        run: python -m unittest discover -s espace-visite/tests -v
+
+      - name: Anonymiser les PDF et vérifier chaque page
         run: python espace-visite/scripts/anonymize_pdf.py
 
       - name: Installer Node
