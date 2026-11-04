@@ -119,24 +119,37 @@ def qr_boxes(image):
         boxes = [(int(x0/scale), int(y0/scale), int(x1/scale), int(y1/scale)) for x0,y0,x1,y1 in boxes]
     return boxes
 
-def discover_values(pages):
+def render_page(page):
+    pix = page.get_pixmap(dpi=DPI, alpha=False, colorspace=fitz.csRGB)
+    try:
+        return Image.open(io.BytesIO(pix.tobytes("png"))).convert("RGB")
+    finally:
+        del pix
+
+def discover_values(source):
     values = set()
-    for image in pages[:min(4, len(pages))]:
-        for line in ocr_lines(image):
-            text = line["text"].strip(" .:-")
-            match = OWNER_LABEL.search(text)
-            if match and len(match.group(1).strip()) >= 3:
-                values.add(match.group(1).strip())
-            if ADDRESS_WORDS.search(text) and re.search(r"\d", text):
-                values.add(text)
+    for page_number in range(min(4, len(source))):
+        image = render_page(source[page_number])
+        try:
+            for line in ocr_lines(image):
+                text = line["text"].strip(" .:-")
+                match = OWNER_LABEL.search(text)
+                if match and len(match.group(1).strip()) >= 3:
+                    values.add(match.group(1).strip())
+                if ADDRESS_WORDS.search(text) and re.search(r"\d", text):
+                    values.add(text)
+        finally:
+            image.close()
     return sorted(values, key=len, reverse=True)
 
-def verify_page(image):
+def verify_page(image, known_values):
     text = pytesseract.image_to_string(image, lang="fra+eng", config="--psm 6")
     if any(pattern.search(text) for pattern in PATTERNS):
         raise RuntimeError("Une coordonnée ou une adresse reste détectée après occultation")
     if DOSSIER.search(text) or ADEME.search(text):
         raise RuntimeError("Une référence de dossier/DPE reste détectée après occultation")
+    if any(value and value.casefold() in text.casefold() for value in known_values):
+        raise RuntimeError("Une identité ou une adresse repérée en amont reste détectable")
     # Any QR code remaining is a hard failure.
     if qr_boxes(image):
         raise RuntimeError("Un QR code reste détecté après occultation")
@@ -158,45 +171,70 @@ def main():
     failures = []
     for path in pdfs:
         tmp = path.with_name(path.stem + ".sanitized.tmp.pdf")
+        source = None
+        output = None
         try:
             source = fitz.open(path)
             if source.is_encrypted or len(source) == 0:
                 raise RuntimeError("PDF chiffré ou vide")
-            images = []
-            page_sizes = []
-            for page in source:
-                pix = page.get_pixmap(dpi=DPI, alpha=False)
-                images.append(Image.open(io.BytesIO(pix.tobytes("png"))).convert("RGB"))
-                page_sizes.append((page.rect.width, page.rect.height))
-            known_values = discover_values(images)
+
+            # First pass: identify personal values on the first four pages only.
+            known_values = discover_values(source)
             output = fitz.open()
-            for number, image in enumerate(images, start=1):
-                lines = ocr_lines(image)
-                if len(lines) < MIN_WORDS_PER_PAGE:
-                    raise RuntimeError(f"OCR insuffisant page {number}")
-                draw = ImageDraw.Draw(image)
-                for box in boxes_to_redact(image, lines, known_values) + qr_boxes(image):
-                    draw.rectangle(box, fill="black")
-                verify_page(image)
-                buffer = io.BytesIO()
-                image.save(buffer, format="PNG", optimize=True)
-                page = output.new_page(width=page_sizes[number-1][0], height=page_sizes[number-1][1])
-                page.insert_image(page.rect, stream=buffer.getvalue())
+
+            # Second pass: render, redact, OCR-verify and write one page at a time.
+            for number, source_page in enumerate(source, start=1):
+                image = render_page(source_page)
+                try:
+                    lines = ocr_lines(image)
+                    if len(lines) < MIN_WORDS_PER_PAGE:
+                        raise RuntimeError(f"OCR insuffisant page {number}")
+
+                    draw = ImageDraw.Draw(image)
+                    redactions = boxes_to_redact(image, lines, known_values)
+                    redactions.extend(qr_boxes(image))
+                    for box in redactions:
+                        draw.rectangle(box, fill="black")
+
+                    verify_page(image, known_values)
+                    buffer = io.BytesIO()
+                    image.save(buffer, format="PNG", optimize=True)
+                    page = output.new_page(
+                        width=source_page.rect.width,
+                        height=source_page.rect.height
+                    )
+                    page.insert_image(page.rect, stream=buffer.getvalue())
+                    buffer.close()
+                finally:
+                    image.close()
+
             output.set_metadata({})
             output.save(tmp, garbage=4, deflate=True, clean=True)
             output.close()
+            output = None
             source.close()
+            source = None
 
             check = fitz.open(tmp)
-            if len(check) != len(images) or check.metadata.get("author") or check.metadata.get("title"):
-                raise RuntimeError("Vérification structure/métadonnées échouée")
-            for page in check:
-                if page.get_text().strip():
-                    raise RuntimeError("Du texte extractible subsiste dans le PDF aplati")
-            check.close()
+            try:
+                if check.page_count == 0:
+                    raise RuntimeError("PDF de sortie vide")
+                metadata = check.metadata or {}
+                if any(metadata.get(key) for key in ("author", "title", "subject", "keywords", "creator")):
+                    raise RuntimeError("Métadonnées personnelles encore présentes")
+                for page_number, page in enumerate(check, start=1):
+                    if page.get_text().strip():
+                        raise RuntimeError(f"Du texte extractible subsiste page {page_number}")
+            finally:
+                check.close()
+
             tmp.replace(path)
             print("PDF anonymisé et contrôlé :", path)
         except Exception as error:
+            if output is not None:
+                output.close()
+            if source is not None:
+                source.close()
             if tmp.exists():
                 tmp.unlink()
             failures.append(f"{path}: {error}")
@@ -205,5 +243,3 @@ def main():
         print("\n".join(failures), file=sys.stderr)
         sys.exit(1)
 
-if __name__ == "__main__":
-    main()
