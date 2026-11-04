@@ -84,7 +84,7 @@ def boxes_to_redact(image, lines, known_values):
 
         # A signature heading makes the lower signature panel untrusted.
         if re.search(r"signature|signé par|signe par|cachet", text, re.I):
-            boxes.append((0, max(0, y0-int(image.height*0.018)), image.width, min(image.height, y1+int(image.height*0.16))))
+            boxes.append((0, max(0, y0-int(image.height*0.018)), image.width, image.height))
 
     return boxes
 
