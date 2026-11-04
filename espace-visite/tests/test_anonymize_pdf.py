@@ -95,5 +95,25 @@ class RedactionTests(unittest.TestCase):
         self.assertEqual(MODULE.qr_boxes(image), [])
 
 
+    def test_only_newly_added_pdfs_are_selected(self):
+        from unittest.mock import patch
+        import os
+
+        added = "espace-visite/biens/maison/documents/nouveau.pdf"
+        modified = "espace-visite/biens/maison/documents/existant.pdf"
+        renamed = "espace-visite/biens/maison/documents/renomme.pdf"
+
+        def fake_check_output(command, text=True):
+            self.assertIn("--diff-filter=A", command)
+            return "\\n".join([added, modified, renamed])
+
+        with patch.dict(os.environ, {"GITHUB_EVENT_BEFORE": "a" * 40, "GITHUB_SHA": "b" * 40}):
+            with patch.object(MODULE.subprocess, "check_output", side_effect=fake_check_output):
+                with patch.object(MODULE.Path, "exists", return_value=True):
+                    selected = MODULE.changed_pdfs()
+
+        self.assertEqual(selected, [Path(added)])
+
+
 if __name__ == "__main__":
     unittest.main()
