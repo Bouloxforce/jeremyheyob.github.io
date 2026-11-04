@@ -4,6 +4,7 @@ on:
   workflow_dispatch:
   push:
     paths:
+      - "espace-client/biens/**/*_data.json"
       - "espace-visite/biens/**/*_data.json"
       - "espace-visite/biens/**/documents/**"
 
@@ -14,11 +15,16 @@ jobs:
     steps:
       - name: Checkout repo
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
       - name: Setup Node
         uses: actions/setup-node@v4
         with:
           node-version: 24
+
+      - name: Créer les dossiers des nouveaux biens
+        run: node espace-visite/scripts/create-visite-biens.js
 
       - name: Générer JSON (biens + documents)
         run: node espace-visite/scripts/generate-biens.js
@@ -27,6 +33,6 @@ jobs:
         run: |
           git config user.name "github-actions"
           git config user.email "actions@github.com"
-          git add espace-visite/biens.json espace-visite/biens/**/documents.json
-          git commit -m "auto: update biens & documents" || echo "No changes"
+          git add espace-visite/biens.json espace-visite/biens
+          git diff --cached --quiet || git commit -m "auto: create biens & update documents"
           git push
