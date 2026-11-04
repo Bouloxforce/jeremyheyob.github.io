@@ -37,7 +37,7 @@ class RedactionTests(unittest.TestCase):
         document.close()
 
     def test_sensitive_values_are_extracted_from_later_pages(self):
-        text = "Annexe technique\\nPropriétaire : Jean Dupont\\n12 rue des Lilas"
+        text = "Annexe technique\nPropriétaire : Jean Dupont\n12 rue des Lilas"
         values = MODULE.values_from_text(text)
         self.assertIn("Jean Dupont", values)
         self.assertIn("12 rue des Lilas", values)
