@@ -159,12 +159,21 @@ def render_page(page):
 
 def values_from_text(text):
     values = set()
-    for raw_line in text.splitlines():
-        line = raw_line.strip(" .:-")
+    lines = [raw.strip(" .:-") for raw in text.splitlines()]
+    for index, line in enumerate(lines):
         match = OWNER_LABEL.search(line)
         if match and len(match.group(1).strip()) >= 3:
             values.add(match.group(1).strip())
-        if ADDRESS_WORDS.search(line) and re.search(r"\d", line):
+
+        # Names and addresses are often printed on the line after their label.
+        if re.search(r"\\b(nom et prénom|nom|prénom|prenom|propriétaire|proprietaire|vendeur|acquéreur|acquereur)\\b\\s*:?[ ]*$", line, re.I):
+            if index + 1 < len(lines) and len(lines[index + 1]) >= 3:
+                values.add(lines[index + 1])
+        if re.search(r"\\b(adresse|domicile)\\b\\s*:?[ ]*$", line, re.I):
+            if index + 1 < len(lines) and ADDRESS_WORDS.search(lines[index + 1]) and re.search(r"\\d", lines[index + 1]):
+                values.add(lines[index + 1])
+
+        if ADDRESS_WORDS.search(line) and re.search(r"\\d", line):
             values.add(line)
     return values
 
@@ -223,7 +232,7 @@ def main():
                 raise RuntimeError("PDF chiffré ou vide")
 
             expected_pages = len(source)
-            # First pass: identify personal values on the first four pages only.
+            # First pass: extract native text from all pages and OCR the first four as a scanned-document fallback.
             known_values = discover_values(source)
             output = fitz.open()
 
