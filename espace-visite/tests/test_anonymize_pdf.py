@@ -87,5 +87,13 @@ class RedactionTests(unittest.TestCase):
         self.assertTrue(any(x0 == 0 and x1 == image.width for x0, y0, x1, y1 in boxes))
 
 
+    def test_wide_rectangle_is_not_misclassified_as_qr(self):
+        image = Image.new("RGB", (900, 700), "white")
+        from PIL import ImageDraw
+        draw = ImageDraw.Draw(image)
+        draw.rectangle((100, 100, 650, 260), outline="black", width=8)
+        self.assertEqual(MODULE.qr_boxes(image), [])
+
+
 if __name__ == "__main__":
     unittest.main()
