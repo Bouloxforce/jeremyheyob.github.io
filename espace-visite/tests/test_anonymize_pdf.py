@@ -41,6 +41,7 @@ class RedactionTests(unittest.TestCase):
         values = MODULE.values_from_text(text)
         self.assertIn("Jean Dupont", values)
         self.assertIn("12 rue des Lilas", values)
+        self.assertIn("12 rue des Lilas", values)
 
     def test_sensitive_patterns(self):
         samples = [
