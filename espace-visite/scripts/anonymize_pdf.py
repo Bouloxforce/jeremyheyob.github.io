@@ -164,7 +164,7 @@ def values_from_text(text):
         match = OWNER_LABEL.search(line)
         if match and len(match.group(1).strip()) >= 3:
             values.add(match.group(1).strip())
-        if ADDRESS_WORDS.search(line) and re.search(r"\\d", line):
+        if ADDRESS_WORDS.search(line) and re.search(r"\d", line):
             values.add(line)
     return values
 
