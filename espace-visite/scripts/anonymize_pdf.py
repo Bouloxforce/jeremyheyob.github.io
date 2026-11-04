@@ -178,6 +178,7 @@ def main():
             if source.is_encrypted or len(source) == 0:
                 raise RuntimeError("PDF chiffré ou vide")
 
+            expected_pages = len(source)
             # First pass: identify personal values on the first four pages only.
             known_values = discover_values(source)
             output = fitz.open()
@@ -217,8 +218,8 @@ def main():
 
             check = fitz.open(tmp)
             try:
-                if check.page_count == 0:
-                    raise RuntimeError("PDF de sortie vide")
+                if check.page_count != expected_pages:
+                    raise RuntimeError("Le nombre de pages du PDF de sortie ne correspond pas à l’original")
                 metadata = check.metadata or {}
                 if any(metadata.get(key) for key in ("author", "title", "subject", "keywords", "creator")):
                     raise RuntimeError("Métadonnées personnelles encore présentes")
