@@ -1,5 +1,10 @@
 name: Génération automatique des biens
 
+# Serialize writes to the same branch: parallel runs could race during auto-commit/push.
+concurrency:
+  group: generate-biens-${{ github.ref }}
+  cancel-in-progress: false
+
 on:
   workflow_dispatch:
   push:
