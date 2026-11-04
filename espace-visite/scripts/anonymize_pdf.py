@@ -157,18 +157,31 @@ def render_page(page):
     finally:
         del pix
 
+def values_from_text(text):
+    values = set()
+    for raw_line in text.splitlines():
+        line = raw_line.strip(" .:-")
+        match = OWNER_LABEL.search(line)
+        if match and len(match.group(1).strip()) >= 3:
+            values.add(match.group(1).strip())
+        if ADDRESS_WORDS.search(line) and re.search(r"\\d", line):
+            values.add(line)
+    return values
+
 def discover_values(source):
     values = set()
+    # Extract embedded text from every page, not just the first four.
+    # This catches identities repeated in annexes and later diagnostic pages.
+    for page in source:
+        values.update(values_from_text(page.get_text("text")))
+
+    # Scanned documents have no native text: OCR the first four pages as a
+    # fallback for cover-page identity and address fields.
     for page_number in range(min(4, len(source))):
         image = render_page(source[page_number])
         try:
             for line in ocr_lines(image):
-                text = line["text"].strip(" .:-")
-                match = OWNER_LABEL.search(text)
-                if match and len(match.group(1).strip()) >= 3:
-                    values.add(match.group(1).strip())
-                if ADDRESS_WORDS.search(text) and re.search(r"\d", text):
-                    values.add(text)
+                values.update(values_from_text(line["text"]))
         finally:
             image.close()
     return sorted(values, key=len, reverse=True)
