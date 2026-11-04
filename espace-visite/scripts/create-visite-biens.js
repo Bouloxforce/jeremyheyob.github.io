@@ -40,28 +40,42 @@ if (!fs.existsSync(sourceDir)) {
 }
 
 let created = 0;
+let statusesUpdated = 0;
 let skippedPaused = 0;
 for (const entry of fs.readdirSync(sourceDir, { withFileTypes: true })) {
   if (!entry.isFile() || !entry.name.endsWith("_data.json")) continue;
 
   const slug = entry.name.slice(0, -10);
-  if (!/^[a-z0-9-]+$/i.test(slug)) {
-    throw new Error("Slug invalide : " + entry.name);
+  if (!/^[a-z0-9-]+$/i.test(slug)) throw new Error("Slug invalide : " + entry.name);
+
+  const source = JSON.parse(fs.readFileSync(path.join(sourceDir, entry.name), "utf8"));
+  const sourceStatus = source?.statut_bien;
+  if (!["en_ligne", "sous_compromis", "en_pause"].includes(sourceStatus)) {
+    throw new Error("Statut source inconnu ou absent pour " + slug + " : " + String(sourceStatus));
   }
 
   const bienDir = path.join(destDir, slug);
   const outputPath = path.join(bienDir, entry.name);
-  if (fs.existsSync(outputPath)) continue;
 
-  const source = JSON.parse(fs.readFileSync(path.join(sourceDir, entry.name), "utf8"));
-  const sourceStatus = source?.statut_bien;
+  if (fs.existsSync(outputPath)) {
+    const existing = JSON.parse(fs.readFileSync(outputPath, "utf8"));
+    const nextStatus = sourceStatus === "sous_compromis"
+      ? "sous_compromis"
+      : sourceStatus === "en_pause" ? "en_pause" : "disponible";
+    if (existing.statut !== nextStatus) {
+      existing.statut = nextStatus;
+      assertNoAddressLeak(existing);
+      fs.writeFileSync(outputPath, JSON.stringify(existing, null, 2) + "\n", "utf8");
+      statusesUpdated++;
+    }
+    if (sourceStatus === "en_pause") skippedPaused++;
+    continue;
+  }
+
   if (sourceStatus === "en_pause") {
     skippedPaused++;
     console.log("Bien en pause, aucun dossier public créé : " + slug);
     continue;
-  }
-  if (!["en_ligne", "sous_compromis"].includes(sourceStatus)) {
-    throw new Error("Statut source inconnu ou absent pour " + slug + " : " + String(sourceStatus));
   }
 
   const data = emptyLike(template);
@@ -84,4 +98,4 @@ for (const entry of fs.readdirSync(sourceDir, { withFileTypes: true })) {
   console.log("Dossier espace-visite créé : " + slug);
 }
 
-console.log("Création terminée : " + created + " nouveau(x) dossier(s), " + skippedPaused + " bien(s) en pause ignoré(s).");
+console.log("Création terminée : " + created + " nouveau(x) dossier(s), " + statusesUpdated + " statut(s) actualisé(s), " + skippedPaused + " bien(s) en pause.");
