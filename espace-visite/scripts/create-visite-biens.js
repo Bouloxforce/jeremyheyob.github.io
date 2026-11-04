@@ -1,86 +1,36 @@
 import fs from "node:fs";
 import path from "node:path";
 
-const SOURCE_DIR = "espace-client/biens";
-const DEST_DIR = "espace-visite/biens";
-const TEMPLATE_FILE = "espace-visite/archives/template_data.json";
-
-if (!fs.existsSync(SOURCE_DIR)) {
-  console.log("Aucun dossier source espace-client/biens.");
-  process.exit(0);
-}
-if (!fs.existsSync(TEMPLATE_FILE)) {
-  throw new Error(`Modèle introuvable : ${TEMPLATE_FILE}`);
-}
-
-const template = JSON.parse(fs.readFileSync(TEMPLATE_FILE, "utf8"));
-const sources = fs.readdirSync(SOURCE_DIR, { withFileTypes: true })
-  .filter(entry => entry.isFile() && entry.name.endsWith("_data.json"))
-  .map(entry => entry.name)
-  .sort();
-
-function blankPublicData(slug) {
-  return {
-    ...template,
-    slug,
-    statut: "disponible",
-    nom: "",
-    bien_type: "",
-    type: "",
-    surface: null,
-    exterieur: null,
-    annee: null,
-    etage: "",
-    prix: null,
-    charges: "",
-    taxe_fonciere: "",
-    ville: "",
-    secteur: "",
-    dpe: { energie: "", ges: "" },
-    stationnement: "",
-    chauffage: "",
-    proximite: "",
-    points_forts: [],
-    photos_count: 0,
-    video: "",
-    annonce: ""
-  };
-}
-
+const sourceDir = "espace-client/biens";
+const destDir = "espace-visite/biens";
+const templatePath = "espace-visite/archives/template_data.json";
+const template = JSON.parse(fs.readFileSync(templatePath, "utf8"));
 let created = 0;
 
-for (const filename of sources) {
-  const slug = filename.slice(0, -"_data.json".length);
-  const sourcePath = path.join(SOURCE_DIR, filename);
-  const bienDir = path.join(DEST_DIR, slug);
-  const publicJsonPath = path.join(bienDir, `${slug}_data.json`);
+for (const entry of fs.readdirSync(sourceDir, { withFileTypes: true })) {
+  if (!entry.isFile() || !entry.name.endsWith("_data.json")) continue;
+  const slug = entry.name.slice(0, -10);
+  const bienDir = path.join(destDir, slug);
+  const outputPath = path.join(bienDir, entry.name);
+  if (fs.existsSync(outputPath)) continue;
 
-  if (fs.existsSync(publicJsonPath)) continue;
+  const source = JSON.parse(fs.readFileSync(path.join(sourceDir, entry.name), "utf8"));
+  const data = JSON.parse(JSON.stringify(template));
+  data.slug = slug;
+  data.nom = source.bien && source.bien.nom ? source.bien.nom : "";
+  data.statut = source.statut_bien === "sous_compromis" ? "sous_compromis" : "disponible";
 
-  const source = JSON.parse(fs.readFileSync(sourcePath, "utf8"));
-  const data = blankPublicData(slug);
-
-  // Seules les informations déjà présentes dans le JSON client et utiles
-  // à l'identification du bien sont reprises. Les autres champs restent vides.
-  data.nom = source.bien?.nom || "";
-  const address = source.bien?.adresse_complete || "";
-  const cityMatch = address.match(/\\b\\d{5}\\s+(.+)$/);
-  data.ville = cityMatch ? cityMatch[1].trim() : "";
-
-  if (source.statut_bien === "sous_compromis") {
-    data.statut = "sous_compromis";
-  } else {
-    data.statut = "disponible";
-  }
+  const address = source.bien && source.bien.adresse_complete ? source.bien.adresse_complete : "";
+  const postalStart = address.search(/[0-9]{5}/);
+  data.ville = postalStart >= 0 ? address.slice(postalStart + 5).trim() : "";
 
   fs.mkdirSync(path.join(bienDir, "photos"), { recursive: true });
   fs.mkdirSync(path.join(bienDir, "documents"), { recursive: true });
-  fs.writeFileSync(path.join(bienDir, "photos", "invalid"), "", { flag: "a" });
-  fs.writeFileSync(path.join(bienDir, "documents", "invalid"), "", { flag: "a" });
-  fs.writeFileSync(publicJsonPath, JSON.stringify(data, null, 2) + "\\n", "utf8");
-
+  fs.writeFileSync(path.join(bienDir, "photos", "invalid"), "");
+  fs.writeFileSync(path.join(bienDir, "documents", "invalid"), "");
+  fs.writeFileSync(outputPath, JSON.stringify(data, null, 2) + String.fromCharCode(10), "utf8");
   created++;
-  console.log(`Dossier espace-visite créé : ${slug}`);
+  console.log("Dossier espace-visite créé : " + slug);
 }
 
-console.log(`Création terminée : ${created} nouveau(x) dossier(s).`);
+console.log("Création terminée : " + created + " nouveau(x) dossier(s).");
