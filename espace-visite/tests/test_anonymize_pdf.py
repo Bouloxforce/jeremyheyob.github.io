@@ -42,6 +42,16 @@ class RedactionTests(unittest.TestCase):
         self.assertTrue(any(x0 <= 100 and y0 <= 300 and x1 >= 300 for x0, y0, x1, y1 in boxes))
         self.assertTrue(any(y0 <= 345 and y1 >= 375 for x0, y0, x1, y1 in boxes))
 
+    def test_name_on_following_line_is_redacted(self):
+        image = Image.new("RGB", (1000, 1400), "white")
+        lines = [
+            {"text": "Nom et prénom :", "box": (100, 300, 350, 330)},
+            {"text": "Jean Dupont", "box": (100, 345, 280, 375)},
+        ]
+        boxes = MODULE.boxes_to_redact(image, lines, [])
+        self.assertTrue(any(x0 <= 100 and x1 >= 350 and y0 <= 300 for x0, y0, x1, y1 in boxes))
+        self.assertTrue(any(x0 <= 100 and x1 >= 280 and y0 <= 345 for x0, y0, x1, y1 in boxes))
+
     def test_signature_heading_triggers_large_redaction_zone(self):
         image = Image.new("RGB", (1000, 1400), "white")
         lines = [
