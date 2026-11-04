@@ -122,6 +122,34 @@ def qr_boxes(image):
         boxes = [(int(x0/scale), int(y0/scale), int(x1/scale), int(y1/scale)) for x0,y0,x1,y1 in boxes]
     return boxes
 
+def native_text_lines(page, image):
+    """Return text lines with PDF-native coordinates mapped to the rendered page."""
+    if page.rotation != 0:
+        return []
+    words = page.get_text("words")
+    if not words:
+        return []
+    sx = image.width / page.rect.width
+    sy = image.height / page.rect.height
+    grouped = {}
+    for word in words:
+        x0, y0, x1, y1, value, block_no, line_no, _word_no = word
+        key = (block_no, line_no)
+        entry = grouped.setdefault(key, {"text": [], "box": [x0, y0, x1, y1]})
+        entry["text"].append(value)
+        entry["box"][0] = min(entry["box"][0], x0)
+        entry["box"][1] = min(entry["box"][1], y0)
+        entry["box"][2] = max(entry["box"][2], x1)
+        entry["box"][3] = max(entry["box"][3], y1)
+    lines = []
+    for entry in grouped.values():
+        x0, y0, x1, y1 = entry["box"]
+        lines.append({
+            "text": " ".join(entry["text"]),
+            "box": (int(x0*sx), int(y0*sy), int(x1*sx), int(y1*sy)),
+        })
+    return lines
+
 def render_page(page):
     pix = page.get_pixmap(dpi=DPI, alpha=False, colorspace=fitz.csRGB)
     try:
@@ -191,11 +219,15 @@ def main():
                 image = render_page(source_page)
                 try:
                     lines = ocr_lines(image)
-                    if len(lines) < MIN_WORDS_PER_PAGE:
-                        raise RuntimeError(f"OCR insuffisant page {number}")
+                    native_lines = native_text_lines(source_page, image)
+                    if len(lines) < MIN_WORDS_PER_PAGE and len(native_lines) < MIN_WORDS_PER_PAGE:
+                        raise RuntimeError(f"OCR et texte natif insuffisants page {number}")
 
+                    # Use both OCR and embedded PDF text: either source can expose data
+                    # missed by the other. Duplicate boxes are harmless.
+                    all_lines = lines + native_lines
                     draw = ImageDraw.Draw(image)
-                    redactions = boxes_to_redact(image, lines, known_values)
+                    redactions = boxes_to_redact(image, all_lines, known_values)
                     redactions.extend(qr_boxes(image))
                     for box in redactions:
                         draw.rectangle(box, fill="black")
