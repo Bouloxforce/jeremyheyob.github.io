@@ -166,14 +166,14 @@ def values_from_text(text):
             values.add(match.group(1).strip())
 
         # Names and addresses are often printed on the line after their label.
-        if re.search(r"\\b(nom et prénom|nom|prénom|prenom|propriétaire|proprietaire|vendeur|acquéreur|acquereur)\\b\\s*:?[ ]*$", line, re.I):
+        if re.search(r"\b(nom et prénom|nom|prénom|prenom|propriétaire|proprietaire|vendeur|acquéreur|acquereur)\\b\\s*:?[ ]*$", line, re.I):
             if index + 1 < len(lines) and len(lines[index + 1]) >= 3:
                 values.add(lines[index + 1])
-        if re.search(r"\\b(adresse|domicile)\\b\\s*:?[ ]*$", line, re.I):
-            if index + 1 < len(lines) and ADDRESS_WORDS.search(lines[index + 1]) and re.search(r"\\d", lines[index + 1]):
+        if re.search(r"\b(adresse|domicile)\\b\\s*:?[ ]*$", line, re.I):
+            if index + 1 < len(lines) and ADDRESS_WORDS.search(lines[index + 1]) and re.search(r"\d", lines[index + 1]):
                 values.add(lines[index + 1])
 
-        if ADDRESS_WORDS.search(line) and re.search(r"\\d", line):
+        if ADDRESS_WORDS.search(line) and re.search(r"\d", line):
             values.add(line)
     return values
 
