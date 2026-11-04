@@ -9,12 +9,9 @@ on:
   workflow_dispatch:
   push:
     paths:
-      - "espace-client/biens/**/*_data.json"
-      - "espace-visite/biens/**/*_data.json"
-      - "espace-visite/biens/**/documents/**"
-      - "espace-visite/scripts/**"
+      - "espace-visite/biens/*/documents/**/*.pdf"
+      - "espace-visite/scripts/anonymize_pdf.py"
       - "espace-visite/tests/**"
-      - "espace-visite/archives/template_data.json"
       - ".github/workflows/generate-biens.yml"
 
 permissions:
@@ -48,22 +45,11 @@ jobs:
       - name: Anonymiser les PDF et vérifier chaque page
         run: python espace-visite/scripts/anonymize_pdf.py
 
-      - name: Installer Node
-        uses: actions/setup-node@v4
-        with:
-          node-version: 24
-
-      - name: Créer les dossiers des nouveaux biens
-        run: node espace-visite/scripts/create-visite-biens.js
-
-      - name: Générer JSON (biens + documents)
-        run: node espace-visite/scripts/generate-biens.js
-
       - name: Commit auto
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add espace-visite/biens.json espace-visite/biens
-          git diff --cached --quiet || git commit -m "auto: anonymize PDFs and update properties"
+          git add -u -- 'espace-visite/biens/*/documents/*.pdf'
+          git diff --cached --quiet || git commit -m "auto: anonymize newly added PDFs"
           git pull --rebase origin "$GITHUB_REF_NAME"
           git push
