@@ -32,7 +32,9 @@ for (const slug of dossiers) {
   if (fs.existsSync(dataPath)) {
     const data = JSON.parse(fs.readFileSync(dataPath, "utf8"));
 
-    if (!data.nom || !data.ville || !data.photos_count || data.photos_count < 1) {
+    if (data.statut === "en_pause") {
+      console.log(`⏸️ Bien masqué car en pause : ${slug}`);
+    } else if (!data.nom || !data.ville || !data.photos_count || data.photos_count < 1) {
       console.warn(`⚠️ Bien ignoré (données incomplètes) : ${slug}`);
     } else {
       const bien = {
