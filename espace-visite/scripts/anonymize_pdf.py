@@ -212,8 +212,18 @@ def changed_pdfs():
     current = os.environ.get("GITHUB_SHA", "HEAD")
     if not before or set(before) == {"0"}:
         return []
-    names = subprocess.check_output(["git", "diff", "--name-only", before, current], text=True).splitlines()
-    return [Path(name) for name in names if name.lower().endswith(".pdf") and name.startswith(str(ROOT) + "/") and "/documents/" in name and Path(name).exists()]
+    # Process only PDFs newly added by this push. Never rewrite an existing PDF,
+    # even if a later commit modifies or renames it.
+    names = subprocess.check_output(
+        ["git", "diff", "--diff-filter=A", "--name-only", before, current], text=True
+    ).splitlines()
+    return [
+        Path(name) for name in names
+        if name.lower().endswith(".pdf")
+        and name.startswith(str(ROOT) + "/")
+        and "/documents/" in name
+        and Path(name).exists()
+    ]
 
 def main():
     pdfs = changed_pdfs()
