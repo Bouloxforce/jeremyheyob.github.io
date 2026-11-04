@@ -56,4 +56,5 @@ jobs:
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add espace-visite/biens.json espace-visite/biens
           git diff --cached --quiet || git commit -m "auto: anonymize PDFs and update properties"
+          git pull --rebase origin "$GITHUB_REF_NAME"
           git push
