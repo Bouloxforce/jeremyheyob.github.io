@@ -1,6 +1,6 @@
 {
   "analysis": {
-    "text": "Les indicateurs actuels nécessitent une surveillance attentive. Une phase d’analyse est en cours afin d’objectiver la suite, sans ajustement de stratégie à ce stade.",
+    "text": "Les indicateurs actuels nécessitent une surveillance attentive. Un point d’analyse sera réalisé à l’approche de la prochaine phase.",
     "noExploitableData": false,
     "phase_active": "60",
     "evolution_text": "Appels : stable\nEmails : stable\nVisites effectuées : stable\nOffres : stable\nVues Leboncoin : +326\nFavoris Leboncoin : +1",
@@ -8,7 +8,7 @@
       "❗ Vues sans contacts",
       "❗ Aucune interaction récente"
     ],
-    "generatedAt": "2026-11-09T10:08:21.901Z"
+    "generatedAt": "2026-11-10T07:27:29.224Z"
   },
   "jours_arret_diffusion": 0,
   "stats": {
