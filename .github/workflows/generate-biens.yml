@@ -1,74 +1,57 @@
-name: Anonymisation automatique des nouveaux PDF
-
+name: Synchronisation des biens et anonymisation des nouveaux PDF
 concurrency:
-  group: anonymize-pdfs-${{ github.ref }}
+  group: property-automation-${{ github.ref }}
   cancel-in-progress: false
-
 on:
   push:
     paths:
+      - "espace-client/biens/*.json"
       - "espace-visite/biens/**/documents/*.pdf"
       - ".github/workflows/generate-biens.yml"
-
 permissions:
   contents: write
-
 jobs:
-  anonymize:
+  automate:
     if: github.actor != 'github-actions[bot]'
     runs-on: ubuntu-latest
     env:
       GITHUB_EVENT_BEFORE: ${{ github.event.before }}
       GITHUB_SHA: ${{ github.sha }}
     steps:
-      - name: Checkout repo
+      - name: Checkout
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
-
       - name: Installer Python et OCR
         run: |
           sudo apt-get update
           sudo apt-get install -y tesseract-ocr tesseract-ocr-fra
           python -m pip install --upgrade pip
           pip install PyMuPDF Pillow pytesseract opencv-python-headless numpy
-
-      - name: Vérifier la syntaxe du moteur
-        run: python -m py_compile espace-visite/scripts/anonymize_pdf.py
-
-      - name: Tester le moteur PDF
+      - name: Vérifier la syntaxe
+        run: |
+          python -m py_compile espace-visite/scripts/anonymize_pdf.py
+          python -m py_compile espace-visite/scripts/sync_client_to_visite.py
+      - name: Tests automatisés
         run: python -m unittest discover -s espace-visite/tests -v
-
+      - name: Synchroniser les JSON client modifiés
+        run: python espace-visite/scripts/sync_client_to_visite.py
       - name: Anonymiser uniquement les PDF nouvellement ajoutés
         run: python espace-visite/scripts/anonymize_pdf.py
-
-      - name: Commit uniquement les nouveaux PDF anonymisés
+      - name: Enregistrer les résultats générés
         shell: bash
         run: |
           set -euo pipefail
           if [[ -z "${GITHUB_EVENT_BEFORE}" || "${GITHUB_EVENT_BEFORE}" =~ ^0+$ ]]; then
-            echo "Aucun commit parent exploitable : aucun fichier à committer."
+            echo "Aucun commit parent exploitable."
             exit 0
           fi
-
-          mapfile -t NEW_PDFS < <(
-            git diff --diff-filter=A --name-only "${GITHUB_EVENT_BEFORE}" "${GITHUB_SHA}" -- 'espace-visite/biens/*/documents/*.pdf'
-          )
-
-          if (( ${#NEW_PDFS[@]} == 0 )); then
-            echo "Aucun nouveau PDF détecté."
-            exit 0
-          fi
-
+          mapfile -t NEW_PDFS < <(git diff --diff-filter=A --name-only "${GITHUB_EVENT_BEFORE}" "${GITHUB_SHA}" -- 'espace-visite/biens/*/documents/*.pdf')
+          git add -- 'espace-visite/biens/*/*_data.json' 'espace-visite/biens/*/.sync_metadata.json'
+          if (( ${#NEW_PDFS[@]} > 0 )); then git add -- "${NEW_PDFS[@]}"; fi
+          if git diff --cached --quiet; then echo "Aucun changement généré."; exit 0; fi
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add -- "${NEW_PDFS[@]}"
-
-          if git diff --cached --quiet; then
-            echo "Aucune modification à enregistrer."
-            exit 0
-          fi
-
-          git commit -m "auto: anonymize newly added PDFs"
+          git commit -m "auto: sync public listings and anonymize new PDFs"
           git pull --rebase origin "${GITHUB_REF_NAME}"
           git push
