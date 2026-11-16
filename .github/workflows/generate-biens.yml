@@ -12,6 +12,8 @@ on:
       - "espace-visite/tests/*.py"
 permissions:
   contents: write
+  issues: write
+  pull-requests: write
 jobs:
   automate:
     if: github.actor != 'github-actions[bot]'
@@ -39,7 +41,41 @@ jobs:
       - name: Synchroniser les JSON client modifiés
         run: python espace-visite/scripts/sync_client_to_visite.py
       - name: Anonymiser uniquement les PDF nouvellement ajoutés
+        id: anonymize
         run: python espace-visite/scripts/anonymize_pdf.py
+      - name: Notifier sur GitHub si l'anonymisation échoue
+        if: failure() && steps.anonymize.outcome == 'failure'
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const owner = context.repo.owner;
+            const repo = context.repo.repo;
+            const branch = context.ref.replace('refs/heads/', '');
+            const runUrl = `https://github.com/${owner}/${repo}/actions/runs/${context.runId}`;
+            const title = 'Échec de l’anonymisation d’un PDF — publication bloquée';
+            const body = [
+              '⚠️ **Un PDF nouvellement ajouté n’a pas passé les contrôles d’anonymisation.**',
+              '',
+              'Le workflow s’est arrêté avant l’étape d’enregistrement des résultats générés.',
+              'Le fichier original n’a pas été remplacé par un fichier anonymisé.',
+              '',
+              `- Branche : ${branch}`,
+              `- Commit : ${context.sha}`,
+              `- Déclencheur : ${context.actor}`,
+              `- Exécution et détails de l’erreur : ${runUrl}`,
+              '',
+              'Ne republiez pas ce document avant correction et validation.'
+            ].join('\n');
+            const prs = await github.rest.pulls.list({
+              owner, repo, state: 'open', head: `${owner}:${branch}`
+            });
+            if (prs.data.length > 0) {
+              await github.rest.issues.createComment({
+                owner, repo, issue_number: prs.data[0].number, body
+              });
+            } else {
+              await github.rest.issues.create({ owner, repo, title, body });
+            }
       - name: Enregistrer les résultats générés
         shell: bash
         run: |
