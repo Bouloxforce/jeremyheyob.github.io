@@ -1,0 +1,11 @@
+{
+  "version": 1,
+  "auto_values": {
+    "nom": "Testauto",
+    "statut": "disponible",
+    "ville": "Pont-de-Chéruy",
+    "photos_count": 0,
+    "annee": 1989
+  },
+  "manual_fields": []
+}

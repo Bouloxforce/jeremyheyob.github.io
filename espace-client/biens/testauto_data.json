@@ -1,0 +1,135 @@
+{
+  "analysis": {
+    "text": "La commercialisation se déroule dans de bonnes conditions. Les indicateurs actuels sont cohérents avec le marché. La stratégie en place est maintenue.",
+    "phase_active": "90+",
+    "noExploitableData": false,
+    "evolution_text": "Appels : stable\nEmails : stable\nVisites effectuées : stable\nOffres : stable\nVues Leboncoin : +70\nFavoris Leboncoin : stable",
+    "alertes": [
+      "❗ Aucune interaction récente"
+    ],
+    "generatedAt": "2026-09-02T07:22:59.235Z"
+  },
+  "jours_arret_diffusion": 0,
+  "stats": {
+    "cumul": {
+      "appels": 1,
+      "offres": 3,
+      "vues_leboncoin": 1766,
+      "emails": 9,
+      "visites_effectuees": 14,
+      "favoris_leboncoin": 38
+    },
+    "actuel": {
+      "appels": 1,
+      "emails": 9,
+      "visites_effectuees": 14,
+      "offres": 3,
+      "vues_leboncoin": 1766,
+      "favoris_leboncoin": 38,
+      "visites_programmees": 2
+    }
+  },
+  "statut_bien": "en_ligne",
+  "_meta": {
+    "mise_en_ligne_ref": "2026-04-01",
+    "last_weekly_run": "2026-08-31",
+    "just_reset": false,
+    "mise_en_ligne_initiale": "2026-04-01",
+    "last_actuel_snapshot": {
+      "appels": 1,
+      "offres": 3,
+      "vues_leboncoin": 1766,
+      "emails": 9,
+      "visites_effectuees": 14,
+      "favoris_leboncoin": 38
+    },
+    "weekly_cumul_base": {
+      "2026-08-31": {
+        "appels": 1,
+        "offres": 3,
+        "vues_leboncoin": 1708,
+        "emails": 9,
+        "visites_effectuees": 14,
+        "favoris_leboncoin": 39
+      },
+      "2026-08-24": {
+        "appels": 1,
+        "offres": 3,
+        "vues_leboncoin": 1638,
+        "emails": 9,
+        "visites_effectuees": 14,
+        "favoris_leboncoin": 39
+      }
+    },
+    "last_vues_leboncoin_snapshot": 1766,
+    "has_had_reset": false
+  },
+  "liens": {
+    "lefigaro": "https://immobilier.lefigaro.fr/annonces/annonce-98169551.html",
+    "youtube": "https://youtu.be/vS3caaylMNo",
+    "paruvendu": "https://www.paruvendu.fr/immobilier/vente/maison/1288718109A1KIVHMN000",
+    "pagesjaunes": "https://www.pagesjaunes.fr/actualites/details-actu/699c45bff89b4f9760bda618",
+    "bienici": "https://www.bienici.com/annonce/vente/pont-de-cheruy/maison/4pieces/netty-jaujard-house-14339?q=%2Frecherche%2Fachat%2Fpont-de-cheruy-38230%3Fprix-min%3D250000%26prix-max%3D260000",
+    "linkedin": "https://www.linkedin.com/posts/jeremyheyobimmobilier_situ%C3%A9e-dans-un-secteur-r%C3%A9sidentiel-calme-activity-7431671818664472576-K0bi?utm_source=share&utm_medium=member_desktop&rcm=ACoAACoqsv0BA4ErXmoRlqB1Y2FgHmyLI_gjG78",
+    "seloger": "https://www.seloger.com/annonces/achat/maison/pont-de-cheruy-38/261571967.htm?serp_view=list&search=distributionTypes%3DBuy%26estateTypes%3DHouse%2CApartment%26locations%3DAD08FR15106%26priceMax%3D260000%26priceMin%3D250000&sort_order_ab_test=sort_order_variant#ln=classified_search_results&m=classified_search_results_classified_classified_detail_M",
+    "agenceimmo": "https://www.agence.immo/achat/maison-mitoyenne-1-cote-4-pieces-pont-de-cheruy-38230-VM14339",
+    "logicimmo": "https://www.logic-immo.com/detail-vente-261571967.htm?serp_view=list&search=distributionTypes%3DBuy%26estateTypes%3DHouse%2CApartment%26locations%3DAD08FR15106%26priceMax%3D260000%26priceMin%3D250000%23ln%3Dclassified_search_results&m=classified_search_results_classified_classified_detail_M",
+    "google": "https://share.google/xUHcSmmYHmBay86zs",
+    "facebook": "https://www.facebook.com/jeremyheyobimmobilier/posts/pfbid02vtDtL9YazKEHDPorNmbEVyVqsjHBtrnHhyMNtwFHZTarp58ErNcsA8v35dAhSrh8l",
+    "instagram": "https://www.instagram.com/p/DVGaFxAiAVV/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==",
+    "leboncoin": "https://www.leboncoin.fr/ad/ventes_immobilieres/3171846183"
+  },
+  "historique": [
+  ],
+  "_comment_statut_bien": "Valeurs possibles : en_ligne | sous_compromis | en_pause",
+  "strategie_3090": {
+    "intro": "",
+    "etapes": [
+      {
+        "jours": "0–30 jours",
+        "titre": "Phase de test du marché",
+        "strategie": "Mise en ligne au prix de positionnement initial afin de tester la réaction réelle du marché."
+      },
+      {
+        "jours": "31–60 jours",
+        "titre": "Phase d’ajustement stratégique",
+        "strategie": "Ajustements ciblés en fonction des données observées."
+      },
+      {
+        "jours": "61–90 jours",
+        "titre": "Phase de derniers ajustements",
+        "strategie": "Optimisation finale du positionnement afin de favoriser le passage à l’offre."
+      },
+      {
+        "jours": "+ 90 jours",
+        "titre": "Phase de poursuite maîtrisée",
+        "strategie": "Poursuite de la commercialisation avec stratégie définie."
+      }
+    ]
+  },
+  "diffusion": {
+    "remontee": {
+      "frequence": "Remontée hebdomadaire automatique"
+    }
+  },
+  "bien": {
+    "nom": "Testauto",
+    "adresse_complete": "4 bis rue Louis Chauvin 38230 Pont-de-Chéruy",
+    "sous_titre": "Suivi de commercialisation"
+  },
+  "marche": {
+    "taux_credit": {
+      "precedent": 3.42,
+      "duree": "25 ans",
+      "source": "CAFPI – baromètre (taux moyen)",
+      "periode": "2026-08",
+      "moyen": 3.43,
+      "updatedAt": "2026-08-11T06:54:21.587Z"
+    }
+  },
+  "dates": {
+    "mandat_signe": "2026-02-19",
+    "mise_en_ligne": "2026-04-01",
+    "derniere_remontee": "2026-09-01"
+  }
+}
