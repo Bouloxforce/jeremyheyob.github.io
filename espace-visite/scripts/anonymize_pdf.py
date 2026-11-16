@@ -197,21 +197,18 @@ def values_from_text(text):
     return values
 
 def discover_values(source):
+    """Discover identities/addresses from native text AND OCR on every page."""
     values = set()
-    # Extract embedded text from every page, not just the first four.
-    # This catches identities repeated in annexes and later diagnostic pages.
-    for page in source:
+    for page_number, page in enumerate(source, start=1):
         values.update(values_from_text(page.get_text("text")))
-
-    # Scanned documents have no native text: OCR the first four pages as a
-    # fallback for cover-page identity and address fields.
-    for page_number in range(min(4, len(source))):
-        image = render_page(source[page_number])
+        image = render_page(page)
         try:
-            for line in ocr_lines(image):
-                values.update(values_from_text(line["text"]))
+            page_lines = ocr_lines(image)
+            page_text = "\n".join(line["text"] for line in page_lines)
+            values.update(values_from_text(page_text))
         finally:
             image.close()
+        print(f"  OCR préalable page {page_number}/{len(source)} : {len(page_lines)} lignes détectées", flush=True)
     return sorted(values, key=len, reverse=True)
 
 def verify_page(image, known_values):
@@ -229,29 +226,40 @@ def verify_page(image, known_values):
 def changed_pdfs():
     before = os.environ.get("GITHUB_EVENT_BEFORE", "")
     current = os.environ.get("GITHUB_SHA", "HEAD")
+    print(f"Recherche des nouveaux PDF : before={before or '(vide)'} ; sha={current}", flush=True)
     if not before or set(before) == {"0"}:
+        print("Aucun commit parent exploitable : aucun PDF ne sera traité.", flush=True)
         return []
     # Process only PDFs newly added by this push. Never rewrite an existing PDF,
     # even if a later commit modifies or renames it.
     names = subprocess.check_output(
         ["git", "diff", "--diff-filter=A", "--name-only", before, current], text=True
     ).splitlines()
-    return [
-        Path(name) for name in names
+    candidates = [
+        name for name in names
         if name.lower().endswith(".pdf")
         and name.startswith(str(ROOT) + "/")
         and "/documents/" in name
-        and Path(name).exists()
     ]
+    print(f"PDF ajoutés détectés dans le diff : {len(candidates)}", flush=True)
+    for name in candidates:
+        print(f"  - {name} (présent dans le workspace : {Path(name).exists()})", flush=True)
+    selected = [Path(name) for name in candidates if Path(name).exists()]
+    if len(selected) != len(candidates):
+        missing = len(candidates) - len(selected)
+        raise RuntimeError(f"{missing} PDF ajouté(s) absent(s) du workspace : traitement interrompu")
+    return selected
 
 def main():
     pdfs = changed_pdfs()
     if not pdfs:
-        print("Aucun nouveau PDF à traiter.")
+        print("Aucun nouveau PDF sélectionné pour cette exécution.", flush=True)
         return
 
+    print(f"Début anonymisation : {len(pdfs)} PDF à traiter.", flush=True)
     failures = []
     for path in pdfs:
+        print(f"Traitement : {path}", flush=True)
         tmp = path.with_name(path.stem + ".sanitized.tmp.pdf")
         source = None
         output = None
@@ -261,8 +269,10 @@ def main():
                 raise RuntimeError("PDF chiffré ou vide")
 
             expected_pages = len(source)
-            # First pass: extract native text from all pages and OCR the first four as a scanned-document fallback.
+            # First pass: extract native text and OCR every page to identify
+            # names/addresses that may reappear in later annexes.
             known_values = discover_values(source)
+            print(f"  Valeurs sensibles candidates découvertes : {len(known_values)}", flush=True)
             output = fitz.open()
 
             # Second pass: render, redact, OCR-verify and write one page at a time.
@@ -280,6 +290,7 @@ def main():
                     draw = ImageDraw.Draw(image)
                     redactions = boxes_to_redact(image, all_lines, known_values)
                     redactions.extend(qr_boxes(image))
+                    print(f"  Page {number}/{expected_pages} : {len(lines)} lignes OCR, {len(native_lines)} lignes PDF, {len(redactions)} zones à occulter", flush=True)
                     for box in redactions:
                         draw.rectangle(box, fill="black")
 
@@ -316,7 +327,7 @@ def main():
                 check.close()
 
             tmp.replace(path)
-            print("PDF anonymisé et contrôlé :", path)
+            print(f"SUCCÈS — PDF anonymisé et contrôlé : {path} ({expected_pages} pages)", flush=True)
         except Exception as error:
             if output is not None:
                 output.close()
@@ -327,6 +338,8 @@ def main():
             failures.append(f"{path}: {error}")
 
     if failures:
+        print("ÉCHEC — aucun des PDF en erreur ne doit être publié comme anonymisé :", file=sys.stderr)
         print("\n".join(failures), file=sys.stderr)
         sys.exit(1)
+    print(f"TERMINÉ — {len(pdfs)} PDF anonymisé(s) et contrôlé(s).", flush=True)
 
