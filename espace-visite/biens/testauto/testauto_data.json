@@ -1,0 +1,27 @@
+{
+  "slug": "testauto",
+  "statut": "disponible",
+  "nom": "Testauto",
+  "bien_type": "",
+  "type": "",
+  "surface": null,
+  "exterieur": null,
+  "annee": null,
+  "etage": "",
+  "prix": null,
+  "charges": "",
+  "taxe_fonciere": "",
+  "ville": "Pont-de-Chéruy",
+  "secteur": "",
+  "dpe": {
+    "energie": "",
+    "ges": ""
+  },
+  "stationnement": "",
+  "chauffage": "",
+  "proximite": "",
+  "points_forts": [],
+  "photos_count": 0,
+  "video": "",
+  "annonce": ""
+}
