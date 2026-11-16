@@ -84,9 +84,16 @@ def sync(path,template):
   parts=field.split("."); current=get(public,parts)
   if field in manual: continue
   if field in auto and current!=auto[field]: manual.add(field); continue
-  if field not in auto and current not in (None,"",[],{}): manual.add(field); continue
+  if field not in auto and current not in (None,"",[],{}) and (existed or field != "statut"): manual.add(field); continue
   put(public,parts,value); auto[field]=value
- public["photos_count"]=sum(1 for f in (folder/"photos").iterdir() if f.is_file() and f.suffix.lower() in {".jpg",".jpeg",".png",".webp",".avif"})
+ photo_count=sum(1 for f in (folder/"photos").iterdir() if f.is_file() and f.suffix.lower() in {".jpg",".jpeg",".png",".webp",".avif"})
+ if "photos_count" in manual:
+  pass
+ elif "photos_count" in auto and public.get("photos_count") != auto["photos_count"]:
+  manual.add("photos_count")
+ else:
+  public["photos_count"]=photo_count
+  auto["photos_count"]=photo_count
  meta["manual_fields"]=sorted(manual)
  for dest,data in ((public_path,public),(meta_path,meta)):
   tmp=dest.with_suffix(dest.suffix+".tmp"); tmp.write_text(json.dumps(data,ensure_ascii=False,indent=2)+"\n",encoding="utf-8"); tmp.replace(dest)
