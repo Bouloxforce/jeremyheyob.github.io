@@ -9,8 +9,9 @@ on:
   workflow_dispatch:
   push:
     paths:
+      - "espace-client/biens/**/*_data.json"
       - "espace-visite/biens/**/documents/*.pdf"
-      - "espace-visite/scripts/anonymize_pdf.py"
+      - "espace-visite/scripts/**"
       - "espace-visite/tests/**"
       - ".github/workflows/generate-biens.yml"
 
@@ -29,6 +30,11 @@ jobs:
         with:
           fetch-depth: 0
 
+      - name: Installer Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 24
+
       - name: Installer Python et OCR
         run: |
           sudo apt-get update
@@ -36,20 +42,29 @@ jobs:
           python -m pip install --upgrade pip
           pip install PyMuPDF Pillow pytesseract opencv-python-headless numpy
 
-      - name: Vérifier la syntaxe du moteur
-        run: python -m py_compile espace-visite/scripts/anonymize_pdf.py
+      - name: Vérifier la syntaxe des scripts
+        run: |
+          node --check espace-visite/scripts/create-visite-biens.js
+          node --check espace-visite/scripts/generate-biens.js
+          python -m py_compile espace-visite/scripts/anonymize_pdf.py
 
       - name: Tester le moteur PDF
         run: python -m unittest discover -s espace-visite/tests -v
 
-      - name: Anonymiser les PDF et vérifier chaque page
+      - name: Créer les espaces de visite des nouveaux biens
+        run: node espace-visite/scripts/create-visite-biens.js
+
+      - name: Anonymiser les PDF nouvellement ajoutés et vérifier chaque page
         run: python espace-visite/scripts/anonymize_pdf.py
+
+      - name: Générer les données publiques et les listes de documents
+        run: node espace-visite/scripts/generate-biens.js
 
       - name: Commit auto
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add -u -- ':(glob)espace-visite/biens/*/documents/*.pdf'
-          git diff --cached --quiet || git commit -m "auto: anonymize newly added PDFs"
+          git add -A -- espace-visite/biens espace-visite/biens.json
+          git diff --cached --quiet || git commit -m "auto: generate visit spaces and anonymize new PDFs"
           git pull --rebase origin "$GITHUB_REF_NAME"
           git push
