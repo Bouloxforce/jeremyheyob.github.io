@@ -19,8 +19,20 @@ PDF_RULES={
 def changed_sources():
  before=os.getenv("GITHUB_EVENT_BEFORE",""); current=os.getenv("GITHUB_SHA","HEAD")
  if not before or set(before)=={"0"}: return []
- names=subprocess.check_output(["git","diff","--diff-filter=AM","--name-only",before,current,"--",str(CLIENT)],text=True).splitlines()
- return [Path(n) for n in names if n.endswith(".json") and Path(n).is_file()]
+ names=subprocess.check_output(
+  ["git","diff","--diff-filter=AM","--name-only",before,current,"--","espace-client/biens","espace-visite/biens"],
+  text=True
+ ).splitlines()
+ selected=set()
+ for name in names:
+  changed=Path(name)
+  if name.startswith("espace-client/biens/") and changed.suffix.lower()==".json" and changed.is_file():
+   selected.add(changed)
+  elif name.startswith("espace-visite/biens/") and changed.suffix.lower()==".pdf" and "documents" in changed.parts:
+   slug=changed.parent.parent.name
+   source=CLIENT/(slug+"_data.json")
+   if source.is_file(): selected.add(source)
+ return sorted(selected)
 def get(obj,path):
  for k in path:
   if not isinstance(obj,dict) or k not in obj: return None
