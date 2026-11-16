@@ -115,5 +115,55 @@ class RedactionTests(unittest.TestCase):
         self.assertEqual(selected, [Path(added)])
 
 
+    def test_scanned_pdf_pipeline_ocr_redacts_later_page(self):
+        """Exercise OCR, value discovery, masking and verification on a scanned PDF."""
+        import fitz
+        import io
+        from PIL import ImageDraw, ImageFont
+
+        def scanned_page(lines):
+            image = Image.new("RGB", (1800, 2400), "white")
+            draw = ImageDraw.Draw(image)
+            font = ImageFont.truetype("/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf", 54)
+            y = 180
+            for line in lines:
+                draw.text((120, y), line, fill="black", font=font)
+                y += 110
+            buffer = io.BytesIO()
+            image.save(buffer, format="PNG")
+            image.close()
+            return buffer.getvalue()
+
+        document = fitz.open()
+        page1 = document.new_page(width=595, height=842)
+        page1.insert_image(page1.rect, stream=scanned_page([
+            "DIAGNOSTIC IMMOBILIER", "Rapport technique de controle",
+            "Resultats des verifications", "Informations generales",
+            "Mesures et observations", "Synthese du diagnostic",
+            "Document de demonstration", "Fin de premiere page"
+        ]))
+        page2 = document.new_page(width=595, height=842)
+        page2.insert_image(page2.rect, stream=scanned_page([
+            "ANNEXE IDENTIFICATION", "Nom et prenom :", "Jean Dupont",
+            "Adresse :", "12 rue des Lilas", "Telephone : 06 12 34 56 78",
+            "Informations complementaires", "Fin du document"
+        ]))
+
+        known = MODULE.discover_values(document)
+        self.assertTrue(any("Jean Dupont" in value for value in known), known)
+        self.assertTrue(any("12 rue des Lilas" in value for value in known), known)
+        for page in document:
+            image = MODULE.render_page(page)
+            try:
+                lines = MODULE.ocr_lines(image)
+                self.assertGreaterEqual(len(lines), MODULE.MIN_WORDS_PER_PAGE)
+                draw = ImageDraw.Draw(image)
+                for box in MODULE.boxes_to_redact(image, lines, known):
+                    draw.rectangle(box, fill="black")
+                MODULE.verify_page(image, known)
+            finally:
+                image.close()
+        document.close()
+
 if __name__ == "__main__":
     unittest.main()
