@@ -8,6 +8,8 @@ on:
       - "espace-client/biens/*.json"
       - "espace-visite/biens/**/documents/*.pdf"
       - ".github/workflows/generate-biens.yml"
+      - "espace-visite/scripts/*.py"
+      - "espace-visite/tests/*.py"
 permissions:
   contents: write
 jobs:
