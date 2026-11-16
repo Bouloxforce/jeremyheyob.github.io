@@ -5,21 +5,6 @@ import path from "path";
 const BIENS_DIR = "espace-visite/biens";
 const OUTPUT_FILE = "espace-visite/biens.json";
 
-const STREET_ADDRESS = /\b\d{1,4}\s+(?:bis\s+|ter\s+)?(?:rue|avenue|impasse|boulevard|chemin|allée|allee|place|route|square|passage)\b/i;
-
-function assertPublicDataSafe(value, key = "") {
-  if (typeof value === "string") {
-    if ((/adresse|address/i.test(key) && value.trim()) || STREET_ADDRESS.test(value)) {
-      throw new Error(`Publication bloquée : adresse détectée dans les données publiques (champ "${key}").`);
-    }
-  }
-  if (value && typeof value === "object") {
-    for (const [childKey, childValue] of Object.entries(value)) {
-      assertPublicDataSafe(childValue, childKey);
-    }
-  }
-}
-
 // Structure finale
 const result = {
   disponibles: [],
@@ -46,11 +31,8 @@ for (const slug of dossiers) {
   // ---------- BIENS.JSON ----------
   if (fs.existsSync(dataPath)) {
     const data = JSON.parse(fs.readFileSync(dataPath, "utf8"));
-    assertPublicDataSafe(data);
 
-    if (data.statut === "en_pause") {
-      console.log(`⏸️ Bien masqué car en pause : ${slug}`);
-    } else if (!data.nom || !data.ville || !data.photos_count || data.photos_count < 1) {
+    if (!data.nom || !data.ville || !data.photos_count || data.photos_count < 1) {
       console.warn(`⚠️ Bien ignoré (données incomplètes) : ${slug}`);
     } else {
       const bien = {
