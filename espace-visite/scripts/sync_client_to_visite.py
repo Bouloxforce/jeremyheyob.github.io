@@ -69,6 +69,10 @@ def sync(path,template):
  slug=path.stem[:-5] if path.stem.endswith("_data") else path.stem
  client=json.loads(path.read_text(encoding="utf-8")); folder=VISIT/slug
  folder.mkdir(parents=True,exist_ok=True); (folder/"photos").mkdir(exist_ok=True); (folder/"documents").mkdir(exist_ok=True)
+ # Git ne versionne pas les dossiers vides : conserver explicitement les deux répertoires.
+ for subdir in ("photos","documents"):
+  keep=folder/subdir/".gitkeep"
+  if not keep.exists(): keep.write_text("",encoding="utf-8")
  public_path=folder/f"{slug}_data.json"; meta_path=folder/META; existed=public_path.exists()
  public=json.loads(public_path.read_text(encoding="utf-8")) if existed else blank_template(template,slug)
  if meta_path.exists(): meta=json.loads(meta_path.read_text(encoding="utf-8"))
