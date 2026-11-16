@@ -49,7 +49,8 @@ jobs:
             exit 0
           fi
           mapfile -t NEW_PDFS < <(git diff --diff-filter=A --name-only "${GITHUB_EVENT_BEFORE}" "${GITHUB_SHA}" -- 'espace-visite/biens/*/documents/*.pdf')
-          git add -- 'espace-visite/biens/*/*_data.json' 'espace-visite/biens/*/.sync_metadata.json'
+          # Stage only actual workspace changes under public property folders.
+          git add -A -- espace-visite/biens
           if (( ${#NEW_PDFS[@]} > 0 )); then git add -- "${NEW_PDFS[@]}"; fi
           if git diff --cached --quiet; then echo "Aucun changement généré."; exit 0; fi
           git config user.name "github-actions[bot]"
