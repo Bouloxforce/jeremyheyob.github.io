@@ -1,2 +1,295 @@
-{"analysis":{"generatedAt":"2026-11-15T12:27:55.072Z","noExploitableData":false,"phase_active":"90+","evolution_text":"","alertes":[],"text":"La commercialisation se déroule dans de bonnes conditions. Les indicateurs actuels sont cohérents avec le marché. La stratégie en place est maintenue."},"jours_arret_diffusion":0,"stats":{"cumul":{"appels":0,"offres":0,"vues_leboncoin":257,"emails":1,"visites_effectuees":1,"favoris_leboncoin":6},"actuel":{"appels":0,"emails":0,"visites_effectuees":0,"offres":0,"vues_leboncoin":4,"favoris_leboncoin":0,"visites_programmees":0}},"statut_bien":"en_ligne","_meta":{"mise_en_ligne_ref":"2026-11-14","last_weekly_run":"2026-11-09","just_reset":false,"mise_en_ligne_initiale":"2026-08-15","last_actuel_snapshot":{"appels":0,"offres":0,"vues_leboncoin":0,"emails":0,"visites_effectuees":0,"favoris_leboncoin":0},"weekly_cumul_base":{"2026-11-09":{"appels":0,"offres":0,"vues_leboncoin":0,"emails":0,"visites_effectuees":0,"favoris_leboncoin":0}},"last_vues_leboncoin_snapshot":0,"has_had_reset":true},"liens":{"lefigaro":"https:\/\/immobilier.lefigaro.fr\/annonces\/annonce-110913373.html","youtube":"https:\/\/youtu.be\/sS4nErjslhc","paruvendu":"https:\/\/www.paruvendu.fr\/immobilier\/vente\/appartement\/1297463408A1KIVHAP000","pagesjaunes":"https:\/\/www.pagesjaunes.fr\/actualites\/details\/6af839842f8e69483c8f9dfd","bienici":"https:\/\/www.bienici.com\/annonce\/vente\/saint-priest\/appartement\/5pieces\/agence-immo-3-VA34610?q=%2Frecherche%2Fachat%2Fsaint-priest-69800%3Fprix-min%3D280000%26prix-max%3D280000","linkedin":"https:\/\/lnkd.in\/p\/eUXWgXar","seloger":"https:\/\/www.seloger.com\/annonce\/achat\/auvergne-rhone-alpes\/rhone-69\/saint-priest-69800\/26Q9SRDCGNEM?serp_view=list&search=distributionTypes%3DBuy%26estateTypes%3DHouse%2CApartment%26locations%3DPOCOFR4525%26method%3Dform%26priceMax%3D280000%26priceMin%3D280000#ln=classified_search_results&m=classified_search_results_classified_classified_detail_M","agenceimmo":"https:\/\/agence.immo\/achat\/ayden-un-dernier-etage-t5-en-de-103-m-avec-vue-degagee-sur-lyon-va34610","logicimmo":"https:\/\/www.logic-immo.com\/detail-annonce\/vente\/auvergne-rhone-alpes\/rhone-69\/saint-priest-69800\/26Q9SRDCGNEM?serp_view=list&search=distributionTypes%3DBuy%26estateTypes%3DHouse%2CApartment%26locations%3DPOCOFR4525%26method%3Dform%26priceMax%3D280000%26priceMin%3D280000%23ln%3Dclassified_search_results&m=classified_search_results_classified_classified_detail_M","google":"https:\/\/share.google\/wYYh5Ww1XIR6nrYaY","facebook":"https:\/\/www.facebook.com\/jeremyheyobimmobilier\/posts\/pfbid0VuUrgGZNRykvNPksWhSuVK6cFyKtqiUMUbeGCjMnLyM4oGZR22UqPSH8DVZK5Uqgl","instagram":"https:\/\/www.instagram.com\/p\/Dft-YgKjp32\/?utm_source=ig_web_copy_link&psln=MzRlODBiNWFlZA==&srtk=MzRlODBiNWFlZA==","leboncoin":"https:\/\/www.leboncoin.fr\/ad\/ventes_immobilieres\/3309047637"},"_comment_statut_bien":"Valeurs possibles : en_ligne | sous_compromis | en_pause","historique":[
-{"date":"2026-11-16","label":"🔄 Reporting et mise à jour des statistiques"},{"date":"2026-08-13","label":"✍️ Mandat enregistré"},{"date":"2026-08-15","label":"🌐 Annonce mise en ligne"},{"date":"2026-08-17","label":"🔄 Reporting et mise à jour des statistiques"},{"date":"2026-08-20","label":"⬆️ Remontée automatique de l’annonce"},{"date":"2026-08-24","label":"🔄 Reporting et mise à jour des statistiques"},{"date":"2026-08-25","label":"⬆️ Remontée automatique de l’annonce"},{"date":"2026-08-29","label":"⬆️ Remontée automatique de l’annonce"},{"date":"2026-08-30","label":"⬆️ Remontée automatique de l’annonce"},{"date":"2026-08-31","label":"🔄 Reporting et mise à jour des statistiques"},{"date":"2026-09-04","label":"⬆️ Remontée automatique de l’annonce"},{"date":"2026-09-04","label":"📩 Nouvel email reçu"},{"date":"2026-09-07","label":"🔄 Reporting et mise à jour des statistiques"},{"date":"2026-09-09","label":"⬆️ Remontée automatique de l’annonce"},{"date":"2026-09-14","label":"🔄 Reporting et mise à jour des statistiques"},{"date":"2026-09-14","label":"🚪 Nouvelle visite programmée le 02\/10\/2026 14:30"},{"date":"2026-09-14","label":"📞 Nouvel appel reçu"},{"date":"2026-09-15","label":"⬆️ Remontée automatique de l’annonce"},{"date":"2026-09-20","label":"⬆️ Remontée automatique de l’annonce"},{"date":"2026-09-21","label":"🔄 Reporting et mise à jour des statistiques"},{"date":"2026-09-24","label":"⬆️ Remontée automatique de l’annonce"},{"date":"2026-09-25","label":"🌐 Annonce mise en ligne"},{"date":"2026-09-28","label":"🔄 Reporting et mise à jour des statistiques"},{"date":"2026-09-29","label":"⬆️ Remontée automatique de l’annonce"},{"date":"2026-10-04","label":"⬆️ Remontée automatique de l’annonce"},{"date":"2026-10-05","label":"🔄 Reporting et mise à jour des statistiques"},{"date":"2026-10-09","label":"⬆️ Remontée automatique de l’annonce"},{"date":"2026-10-12","label":"🔄 Reporting et mise à jour des statistiques"},{"date":"2026-10-14","label":"⬆️ Remontée automatique de l’annonce"},{"date":"2026-10-19","label":"🔄 Reporting et mise à jour des statistiques"},{"date":"2026-10-20","label":"⬆️ Remontée automatique de l’annonce"},{"date":"2026-10-25","label":"⬆️ Remontée automatique de l’annonce"},{"date":"2026-10-26","label":"🔄 Reporting et mise à jour des statistiques"},{"date":"2026-10-31","label":"⬆️ Remontée automatique de l’annonce"},{"date":"2026-11-02","label":"🔄 Reporting et mise à jour des statistiques"},{"date":"2026-11-02","label":"🔄 Reporting et mise à jour des statistiques"},{"date":"2026-11-06","label":"⬆️ Remontée automatique de l’annonce"},{"date":"2026-11-09","label":"🔄 Reporting et mise à jour des statistiques"},{"date":"2026-11-09","label":"🔄 Reporting et mise à jour des statistiques"},{"date":"2026-11-14","label":"🌐 Annonce mise en ligne"}],"strategie_3090":{"intro":"","etapes":[{"jours":"0–30 jours","titre":"Phase de test du marché","strategie":"Mise en ligne au prix de positionnement initial afin de tester la réaction réelle du marché."},{"jours":"31–60 jours","titre":"Phase d’ajustement stratégique","strategie":"Ajustements ciblés en fonction des données observées."},{"jours":"61–90 jours","titre":"Phase de derniers ajustements","strategie":"Optimisation finale du positionnement afin de favoriser le passage à l’offre."},{"jours":"+ 90 jours","titre":"Phase de poursuite maîtrisée","strategie":"Poursuite de la commercialisation avec stratégie définie."}]},"diffusion":{"remontee":{"frequence":"Remontée hebdomadaire automatique"}},"bien":{"nom":"Ayden","adresse_complete":"6 rue michel petrucciani 69800 Saint-Priest","sous_titre":"Suivi de commercialisation"},"dates":{"mise_en_ligne":"2026-11-14","derniere_remontee":"2026-11-06","mandat_signe":"2026-08-13"},"marche":{"taux_credit":{"precedent":3.5899999999999999,"duree":"25 ans","source":"CAFPI – baromètre (taux moyen)","periode":"2026-11","moyen":3.77,"updatedAt":"2026-11-11T13:20:59.221Z"}}}
+{
+  "analysis": {
+    "generatedAt": "2026-11-17T10:37:14.521Z",
+    "noExploitableData": false,
+    "phase_active": "90+",
+    "evolution_text": "Appels : stable\nEmails : stable\nVisites effectuées : stable\nOffres : stable\nVues Leboncoin : +4\nFavoris Leboncoin : stable",
+    "alertes": [
+      "❗ Aucune interaction récente"
+    ],
+    "text": "La commercialisation se déroule dans de bonnes conditions. Les indicateurs actuels sont cohérents avec le marché. La stratégie en place est maintenue."
+  },
+  "jours_arret_diffusion": 0,
+  "stats": {
+    "cumul": {
+      "appels": 0,
+      "offres": 0,
+      "vues_leboncoin": 261,
+      "emails": 1,
+      "visites_effectuees": 1,
+      "favoris_leboncoin": 6
+    },
+    "actuel": {
+      "appels": 0,
+      "emails": 0,
+      "visites_effectuees": 0,
+      "offres": 0,
+      "vues_leboncoin": 4,
+      "favoris_leboncoin": 0,
+      "visites_programmees": 0
+    }
+  },
+  "statut_bien": "en_ligne",
+  "_meta": {
+    "mise_en_ligne_ref": "2026-11-14",
+    "last_weekly_run": "2026-11-16",
+    "just_reset": false,
+    "mise_en_ligne_initiale": "2026-08-15",
+    "last_actuel_snapshot": {
+      "appels": 0,
+      "offres": 0,
+      "vues_leboncoin": 4,
+      "emails": 0,
+      "visites_effectuees": 0,
+      "favoris_leboncoin": 0
+    },
+    "weekly_cumul_base": {
+      "2026-11-09": {
+        "appels": 0,
+        "offres": 0,
+        "vues_leboncoin": 0,
+        "emails": 0,
+        "visites_effectuees": 0,
+        "favoris_leboncoin": 0
+      },
+      "2026-11-16": {
+        "appels": 0,
+        "emails": 0,
+        "visites_effectuees": 0,
+        "offres": 0,
+        "vues_leboncoin": 4,
+        "favoris_leboncoin": 0
+      }
+    },
+    "last_vues_leboncoin_snapshot": 4,
+    "has_had_reset": true
+  },
+  "liens": {
+    "lefigaro": "https://immobilier.lefigaro.fr/annonces/annonce-110913373.html",
+    "youtube": "https://youtu.be/sS4nErjslhc",
+    "paruvendu": "https://www.paruvendu.fr/immobilier/vente/appartement/1297463408A1KIVHAP000",
+    "pagesjaunes": "https://www.pagesjaunes.fr/actualites/details/6af839842f8e69483c8f9dfd",
+    "bienici": "https://www.bienici.com/annonce/vente/saint-priest/appartement/5pieces/agence-immo-3-VA34610?q=%2Frecherche%2Fachat%2Fsaint-priest-69800%3Fprix-min%3D280000%26prix-max%3D280000",
+    "linkedin": "https://lnkd.in/p/eUXWgXar",
+    "seloger": "https://www.seloger.com/annonce/achat/auvergne-rhone-alpes/rhone-69/saint-priest-69800/26Q9SRDCGNEM?serp_view=list&search=distributionTypes%3DBuy%26estateTypes%3DHouse%2CApartment%26locations%3DPOCOFR4525%26method%3Dform%26priceMax%3D280000%26priceMin%3D280000#ln=classified_search_results&m=classified_search_results_classified_classified_detail_M",
+    "agenceimmo": "https://agence.immo/achat/ayden-un-dernier-etage-t5-en-de-103-m-avec-vue-degagee-sur-lyon-va34610",
+    "logicimmo": "https://www.logic-immo.com/detail-annonce/vente/auvergne-rhone-alpes/rhone-69/saint-priest-69800/26Q9SRDCGNEM?serp_view=list&search=distributionTypes%3DBuy%26estateTypes%3DHouse%2CApartment%26locations%3DPOCOFR4525%26method%3Dform%26priceMax%3D280000%26priceMin%3D280000%23ln%3Dclassified_search_results&m=classified_search_results_classified_classified_detail_M",
+    "google": "https://share.google/wYYh5Ww1XIR6nrYaY",
+    "facebook": "https://www.facebook.com/jeremyheyobimmobilier/posts/pfbid0VuUrgGZNRykvNPksWhSuVK6cFyKtqiUMUbeGCjMnLyM4oGZR22UqPSH8DVZK5Uqgl",
+    "instagram": "https://www.instagram.com/p/Dft-YgKjp32/?utm_source=ig_web_copy_link&psln=MzRlODBiNWFlZA==&srtk=MzRlODBiNWFlZA==",
+    "leboncoin": "https://www.leboncoin.fr/ad/ventes_immobilieres/3309047637"
+  },
+  "_comment_statut_bien": "Valeurs possibles : en_ligne | sous_compromis | en_pause",
+  "historique": [
+    {
+      "date": "2026-11-16",
+      "label": "🔄 Reporting et mise à jour des statistiques"
+    },
+    {
+      "date": "2026-08-13",
+      "label": "✍️ Mandat enregistré"
+    },
+    {
+      "date": "2026-08-15",
+      "label": "🌐 Annonce mise en ligne"
+    },
+    {
+      "date": "2026-08-17",
+      "label": "🔄 Reporting et mise à jour des statistiques"
+    },
+    {
+      "date": "2026-08-20",
+      "label": "⬆️ Remontée automatique de l’annonce"
+    },
+    {
+      "date": "2026-08-24",
+      "label": "🔄 Reporting et mise à jour des statistiques"
+    },
+    {
+      "date": "2026-08-25",
+      "label": "⬆️ Remontée automatique de l’annonce"
+    },
+    {
+      "date": "2026-08-29",
+      "label": "⬆️ Remontée automatique de l’annonce"
+    },
+    {
+      "date": "2026-08-30",
+      "label": "⬆️ Remontée automatique de l’annonce"
+    },
+    {
+      "date": "2026-08-31",
+      "label": "🔄 Reporting et mise à jour des statistiques"
+    },
+    {
+      "date": "2026-09-04",
+      "label": "⬆️ Remontée automatique de l’annonce"
+    },
+    {
+      "date": "2026-09-04",
+      "label": "📩 Nouvel email reçu"
+    },
+    {
+      "date": "2026-09-07",
+      "label": "🔄 Reporting et mise à jour des statistiques"
+    },
+    {
+      "date": "2026-09-09",
+      "label": "⬆️ Remontée automatique de l’annonce"
+    },
+    {
+      "date": "2026-09-14",
+      "label": "🔄 Reporting et mise à jour des statistiques"
+    },
+    {
+      "date": "2026-09-14",
+      "label": "🚪 Nouvelle visite programmée le 02/10/2026 14:30"
+    },
+    {
+      "date": "2026-09-14",
+      "label": "📞 Nouvel appel reçu"
+    },
+    {
+      "date": "2026-09-15",
+      "label": "⬆️ Remontée automatique de l’annonce"
+    },
+    {
+      "date": "2026-09-20",
+      "label": "⬆️ Remontée automatique de l’annonce"
+    },
+    {
+      "date": "2026-09-21",
+      "label": "🔄 Reporting et mise à jour des statistiques"
+    },
+    {
+      "date": "2026-09-24",
+      "label": "⬆️ Remontée automatique de l’annonce"
+    },
+    {
+      "date": "2026-09-25",
+      "label": "🌐 Annonce mise en ligne"
+    },
+    {
+      "date": "2026-09-28",
+      "label": "🔄 Reporting et mise à jour des statistiques"
+    },
+    {
+      "date": "2026-09-29",
+      "label": "⬆️ Remontée automatique de l’annonce"
+    },
+    {
+      "date": "2026-10-04",
+      "label": "⬆️ Remontée automatique de l’annonce"
+    },
+    {
+      "date": "2026-10-05",
+      "label": "🔄 Reporting et mise à jour des statistiques"
+    },
+    {
+      "date": "2026-10-09",
+      "label": "⬆️ Remontée automatique de l’annonce"
+    },
+    {
+      "date": "2026-10-12",
+      "label": "🔄 Reporting et mise à jour des statistiques"
+    },
+    {
+      "date": "2026-10-14",
+      "label": "⬆️ Remontée automatique de l’annonce"
+    },
+    {
+      "date": "2026-10-19",
+      "label": "🔄 Reporting et mise à jour des statistiques"
+    },
+    {
+      "date": "2026-10-20",
+      "label": "⬆️ Remontée automatique de l’annonce"
+    },
+    {
+      "date": "2026-10-25",
+      "label": "⬆️ Remontée automatique de l’annonce"
+    },
+    {
+      "date": "2026-10-26",
+      "label": "🔄 Reporting et mise à jour des statistiques"
+    },
+    {
+      "date": "2026-10-31",
+      "label": "⬆️ Remontée automatique de l’annonce"
+    },
+    {
+      "date": "2026-11-02",
+      "label": "🔄 Reporting et mise à jour des statistiques"
+    },
+    {
+      "date": "2026-11-02",
+      "label": "🔄 Reporting et mise à jour des statistiques"
+    },
+    {
+      "date": "2026-11-06",
+      "label": "⬆️ Remontée automatique de l’annonce"
+    },
+    {
+      "date": "2026-11-09",
+      "label": "🔄 Reporting et mise à jour des statistiques"
+    },
+    {
+      "date": "2026-11-09",
+      "label": "🔄 Reporting et mise à jour des statistiques"
+    },
+    {
+      "date": "2026-11-14",
+      "label": "🌐 Annonce mise en ligne"
+    }
+  ],
+  "strategie_3090": {
+    "intro": "",
+    "etapes": [
+      {
+        "jours": "0–30 jours",
+        "titre": "Phase de test du marché",
+        "strategie": "Mise en ligne au prix de positionnement initial afin de tester la réaction réelle du marché."
+      },
+      {
+        "jours": "31–60 jours",
+        "titre": "Phase d’ajustement stratégique",
+        "strategie": "Ajustements ciblés en fonction des données observées."
+      },
+      {
+        "jours": "61–90 jours",
+        "titre": "Phase de derniers ajustements",
+        "strategie": "Optimisation finale du positionnement afin de favoriser le passage à l’offre."
+      },
+      {
+        "jours": "+ 90 jours",
+        "titre": "Phase de poursuite maîtrisée",
+        "strategie": "Poursuite de la commercialisation avec stratégie définie."
+      }
+    ]
+  },
+  "diffusion": {
+    "remontee": {
+      "frequence": "Remontée hebdomadaire automatique"
+    }
+  },
+  "bien": {
+    "nom": "Ayden",
+    "adresse_complete": "6 rue michel petrucciani 69800 Saint-Priest",
+    "sous_titre": "Suivi de commercialisation"
+  },
+  "dates": {
+    "mise_en_ligne": "2026-11-14",
+    "derniere_remontee": "2026-11-06",
+    "mandat_signe": "2026-08-13"
+  },
+  "marche": {
+    "taux_credit": {
+      "precedent": 3.59,
+      "duree": "25 ans",
+      "source": "CAFPI – baromètre (taux moyen)",
+      "periode": "2026-11",
+      "moyen": 3.77,
+      "updatedAt": "2026-11-11T13:20:59.221Z"
+    }
+  }
+}
