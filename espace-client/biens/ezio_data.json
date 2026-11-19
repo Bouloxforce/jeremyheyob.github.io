@@ -1,13 +1,13 @@
 {
   "analysis": {
-    "generatedAt": "2026-11-17T10:37:14.523Z",
+    "generatedAt": "2026-11-19T09:31:22.584Z",
     "noExploitableData": false,
-    "phase_active": "60",
+    "phase_active": "90",
     "evolution_text": "Appels : stable\nEmails : stable\nVisites effectuées : +3\nOffres : stable\nVues Leboncoin : +79\nFavoris Leboncoin : +4",
     "alertes": [
       "❗ Visites sans offres"
     ],
-    "text": "Les indicateurs actuels nécessitent une surveillance attentive. Un point d’analyse sera réalisé à l’approche de la prochaine phase."
+    "text": "Les indicateurs actuels nécessitent une surveillance attentive. Une phase d’analyse est en cours afin d’objectiver la suite, sans ajustement de stratégie à ce stade."
   },
   "jours_arret_diffusion": 0,
   "stats": {
