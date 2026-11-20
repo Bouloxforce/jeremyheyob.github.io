@@ -107,18 +107,6 @@
       "annee": 2004,
       "etage": "3 niveaux",
       "photo": "/espace-visite/biens/perriere/photos/photo-accueil.webp"
-    },
-    {
-      "nom": "Titouan",
-      "slug": "titouan",
-      "ville": "Saint-Priest",
-      "bien_type": "Appartement",
-      "type": "T4",
-      "surface": 80,
-      "exterieur": null,
-      "annee": 1967,
-      "etage": "R+1",
-      "photo": "/espace-visite/biens/titouan/photos/photo-accueil.webp"
     }
   ],
   "sous_compromis": [
@@ -133,6 +121,18 @@
       "annee": 1983,
       "etage": "2 niveaux",
       "photo": "/espace-visite/biens/alix/photos/photo-accueil.webp"
+    },
+    {
+      "nom": "Titouan",
+      "slug": "titouan",
+      "ville": "Saint-Priest",
+      "bien_type": "Appartement",
+      "type": "T4",
+      "surface": 80,
+      "exterieur": null,
+      "annee": 1967,
+      "etage": "R+1",
+      "photo": "/espace-visite/biens/titouan/photos/photo-accueil.webp"
     }
   ]
 }
