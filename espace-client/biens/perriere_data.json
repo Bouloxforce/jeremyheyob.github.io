@@ -2,7 +2,7 @@
   "analysis": {
     "text": "La commercialisation se déroule dans de bonnes conditions. Les indicateurs actuels sont cohérents avec le marché. La stratégie en place est maintenue.",
     "evolution_text": "",
-    "generatedAt": "2026-11-20T20:57:22.412Z",
+    "generatedAt": "2026-11-21T13:13:12.454Z",
     "noExploitableData": false,
     "alertes": [],
     "phase_active": "60"
@@ -50,7 +50,7 @@
         "favoris_leboncoin": 0
       }
     },
-    "last_vues_leboncoin_snapshot": 104,
+    "last_vues_leboncoin_snapshot": 0,
     "has_had_reset": true,
     "last_weekly_run": "2026-11-16"
   },
